@@ -1,0 +1,11 @@
+{
+  "name": "@newcross-ui/react-native",
+  "version": "1.0.0",
+  "description": "Components for react native apps",
+  "author": "harinder.singh <harinder.singh@newcrosshealthcare.com>",
+  "homepage": "",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  }
+}
