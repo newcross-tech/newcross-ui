@@ -2,10 +2,32 @@
   "name": "@newcross-ui/react-native",
   "version": "1.0.0",
   "description": "Components for react native apps",
-  "author": "harinder.singh <harinder.singh@newcrosshealthcare.com>",
-  "homepage": "",
+  "author": "itdev@newcrosshealthcare.com",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/newcrossdev/newcross-ui.git"
+  },
+  "bugs": {
+    "url": "https://bitbucket.org/newcrossdev/newcross-ui/issues"
+  },
+  "main": "build/cjs/index.js",
+  "module": "build/esm/index.js",
+  "react-native": "src/index.ts",
+  "types": "build/esm/index.d.ts",
+  "files": [
+    "build"
+  ],
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "prebuild": "rm -rf build",
+    "build:esm": "tsc --outDir build/esm",
+    "build:cjs": "tsc --module commonjs --outDir build/cjs",
+    "build": "yarn build:cjs && yarn build:esm",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-native": ">=0.63.0"
   }
 }
