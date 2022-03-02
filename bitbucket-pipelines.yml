@@ -3,12 +3,22 @@ image: node:14
 pipelines:
   pull-requests:
     '**':
-      - parallel:
-          - step:
-              name: Format check
-              script:
-                - yarn format:check
-          - step:
-              name: Lint check
-              script:
-                - yarn lint:check
+      - step:
+          name: Build, Format & Lint checks
+          caches:
+            - node
+          script:
+            - yarn install
+            - yarn format:check
+            - yarn lint:check
+
+  branches:
+    main:
+      - step:
+          name: Build, Format & Lint checks
+          caches:
+            - node
+          script:
+            - yarn install
+            - yarn format:check
+            - yarn lint:check
