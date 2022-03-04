@@ -10,7 +10,9 @@ npm-debug.*
 *.key
 *.mobileprovision
 *.orig.*
+.serverless
 web-build/
 
 # macOS
 .DS_Store
+storybook-static

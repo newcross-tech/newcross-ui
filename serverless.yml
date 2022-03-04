@@ -1,0 +1,25 @@
+service: design-system
+
+plugins:
+  - serverless-s3-sync
+
+custom:
+  env: ${file(environment.js):${opt:stage, self:provider.stage, "acceptance"}}
+  s3Sync:
+    - bucketName: ${self:custom.env.bucketName}
+      localDir: storybook-static
+
+provider:
+  name: aws
+  region: ${self:custom.env.region}
+
+resources:
+  Resources:
+    DesignSystemBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.env.bucketName}
+        AccessControl: PublicRead
+        WebsiteConfiguration:
+          IndexDocument: index.html
+          ErrorDocument: index.html

@@ -4,7 +4,7 @@ pipelines:
   pull-requests:
     '**':
       - step:
-          name: Build & Test
+          name: Lint, Format & Test
           caches:
             - node
           script:
@@ -16,7 +16,7 @@ pipelines:
   branches:
     main:
       - step:
-          name: Build & Test
+          name: Lint, Format, Test & Build
           caches:
             - node
           script:
@@ -24,3 +24,19 @@ pipelines:
             - yarn format:check
             - yarn lint:check
             - yarn test
+            - yarn build-storybook
+          artifacts:
+            - storybook-static/**
+
+      - step:
+          name: Deploy to acceptance
+          deployment: acceptance
+          script:
+            - yarn deploy:acceptance
+
+      - step:
+          name: Deploy to production
+          deployment: production
+          trigger: 'manual'
+          script:
+            - yarn deploy
