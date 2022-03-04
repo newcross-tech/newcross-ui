@@ -1,13 +1,21 @@
 import React from 'react';
-import { TouchableOpacity, Text } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import buttonStyle from './Button.style';
 import { ButtonProps } from './Button.types';
 
-const Button = (props: ButtonProps) => {
+const Button = ({ onPress, text, ...rest }: ButtonProps) => {
   return (
-    <TouchableOpacity>
-      <Text>Hello</Text>
+    <TouchableOpacity
+      style={styles.button}
+      onPress={onPress}
+      accessibilityRole="button"
+      {...rest}
+    >
+      <Text style={styles.buttonText}>{text}</Text>
     </TouchableOpacity>
   );
 };
+
+const styles = StyleSheet.create(buttonStyle);
 
 export default Button;

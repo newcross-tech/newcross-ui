@@ -4,21 +4,23 @@ pipelines:
   pull-requests:
     '**':
       - step:
-          name: Build, Format & Lint checks
+          name: Build & Test
           caches:
             - node
           script:
             - yarn install
             - yarn format:check
             - yarn lint:check
+            - yarn test
 
   branches:
     main:
       - step:
-          name: Build, Format & Lint checks
+          name: Build & Test
           caches:
             - node
           script:
             - yarn install
             - yarn format:check
             - yarn lint:check
+            - yarn test

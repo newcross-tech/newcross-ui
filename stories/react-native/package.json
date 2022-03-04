@@ -8,7 +8,9 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "prestart": "sb-rn-get-stories --config-path .ondevice",
+    "storybook-watcher": "sb-rn-watcher --config-path .ondevice"
   },
   "dependencies": {
     "expo": "~44.0.0",

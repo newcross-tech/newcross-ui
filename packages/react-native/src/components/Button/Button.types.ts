@@ -1,3 +1,8 @@
-import { TouchableOpacityProps } from 'react-native';
+import { TouchableOpacityProps, ViewStyle, TextStyle } from 'react-native';
 
-export type ButtonProps = TouchableOpacityProps;
+export type ButtonProps = TouchableOpacityProps & { text: string };
+
+export type ButtonStyle = {
+  button: ViewStyle;
+  buttonText: TextStyle;
+};

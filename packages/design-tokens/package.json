@@ -9,9 +9,6 @@
     "type": "git",
     "url": "git+ssh://git@bitbucket.org/newcrossdev/newcross-ui.git"
   },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
-  },
   "bugs": {
     "url": "https://bitbucket.org/newcrossdev/newcross-ui/issues"
   }
