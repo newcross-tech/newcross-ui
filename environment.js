@@ -1,7 +1,7 @@
 module.exports = () => {
   const region = 'eu-west-2';
 
-  const prodSetting = {
+  const productionSetting = {
     bucketName: 'design-system.newcrosshealthcare.com',
     region,
   };
@@ -11,7 +11,7 @@ module.exports = () => {
   };
 
   return {
-    prod: prodSetting,
+    production: productionSetting,
     acceptance: acceptanceSetting,
   };
 };

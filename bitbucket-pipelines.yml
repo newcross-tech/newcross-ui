@@ -36,11 +36,15 @@ pipelines:
           name: Deploy to acceptance
           deployment: acceptance
           script:
-            - yarn deploy:acceptance
+            - npm i -g serverless@3.7.1 serverless-s3-sync@3.0.0
+            - serverless config credentials --provider aws --key ${AWS_ACCESS_KEY_ID} --secret ${AWS_SECRET_ACCESS_KEY}
+            - serverless deploy -s acceptance
 
       - step:
           name: Deploy to production
           deployment: production
           trigger: 'manual'
           script:
-            - yarn deploy
+            - npm i -g serverless@3.7.1 serverless-s3-sync@3.0.0
+            - serverless config credentials --provider aws --key ${AWS_ACCESS_KEY_ID} --secret ${AWS_SECRET_ACCESS_KEY}
+            - serverless deploy -s production
