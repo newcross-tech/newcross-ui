@@ -66,6 +66,8 @@
     "format": "prettier --write '**/*.{ts,tsx,json}'",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006",
+    "build": "lerna run build",
+    "postbuild": "yarn build-storybook",
     "build-storybook": "build-storybook",
     "test": "lerna run test",
     "deploy": "sls deploy -s prod",
