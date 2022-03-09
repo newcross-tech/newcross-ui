@@ -58,7 +58,7 @@ resources:
             - DomainName:
                 Fn::GetAtt:
                   - DesignSystemBucket
-                  - DomainName
+                  - RegionalDomainName
               Id: S3Origin
               S3OriginConfig:
                 OriginAccessIdentity:
