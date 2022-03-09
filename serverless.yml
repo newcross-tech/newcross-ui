@@ -19,7 +19,77 @@ resources:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: ${self:custom.env.bucketName}
-        AccessControl: PublicRead
         WebsiteConfiguration:
           IndexDocument: index.html
           ErrorDocument: index.html
+    DesignSystemBucketPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        Bucket: !Ref DesignSystemBucket
+        PolicyDocument:
+          Statement:
+            - Effect: Allow
+              Action:
+                - s3:GetObject
+              Resource:
+                Fn::Join:
+                  - /
+                  - - Fn::GetAtt:
+                        - DesignSystemBucket
+                        - Arn
+                    - '*'
+              Principal:
+                CanonicalUser:
+                  Fn::GetAtt:
+                    - DesignSystemOriginAccessIdentity
+                    - S3CanonicalUserId
+    DesignSystemOriginAccessIdentity:
+      Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+      Properties:
+        CloudFrontOriginAccessIdentityConfig:
+          Comment: Origin Access Identity to Access Design System Bucket
+    DesignSystemCloudFront:
+      Type: AWS::CloudFront::Distribution
+      DependsOn:
+        - DesignSystemBucket
+      Properties:
+        DistributionConfig:
+          Origins:
+            - DomainName:
+                Fn::GetAtt:
+                  - DesignSystemBucket
+                  - DomainName
+              Id: S3Origin
+              S3OriginConfig:
+                OriginAccessIdentity:
+                  Fn::Join:
+                    - /
+                    - - origin-access-identity
+                      - cloudfront
+                      - !Ref DesignSystemOriginAccessIdentity
+          CustomErrorResponses:
+            - ErrorCachingMinTTL: 0
+              ErrorCode: 403
+              ResponseCode: 200
+              ResponsePagePath: /index.html
+          DefaultCacheBehavior:
+            AllowedMethods:
+              - GET
+              - HEAD
+            Compress: true
+            ForwardedValues:
+              QueryString: true
+              Cookies:
+                Forward: none
+            TargetOriginId: S3Origin
+            ViewerProtocolPolicy: redirect-to-https
+          Comment: Design system website for ${opt:stage, self:provider.stage, "acceptance"}
+          HttpVersion: http2
+          Enabled: true
+          PriceClass: PriceClass_100
+          ViewerCertificate:
+            AcmCertificateArn: ${self:custom.env.certificateArn}
+            MinimumProtocolVersion: TLSv1.1_2016
+            SslSupportMethod: sni-only
+          Aliases:
+            - ${self:custom.env.bucketName}
