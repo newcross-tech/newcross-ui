@@ -11,6 +11,9 @@
   "bugs": {
     "url": "https://bitbucket.org/newcrossdev/newcross-ui/issues"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "main": "build/cjs/index.js",
   "module": "build/esm/index.js",
   "react-native": "src/index.ts",
