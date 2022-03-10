@@ -1,0 +1,19 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# 1.1.0 (2022-03-10)
+
+
+### Bug Fixes
+
+* add publish config ([28b2981](https://bitbucket.org/newcrossdev/newcross-ui/commits/28b2981c637b69ba9afcb8ce2f75b9712ed30f9d))
+
+
+### Features
+
+* **hfp-664:** initial setup of design system for newcross ([ca8a2bb](https://bitbucket.org/newcrossdev/newcross-ui/commits/ca8a2bb3eb3aa85f22dac9ff76d9378c25a1a817))
+* **hfp-670:** setup react native project with jest and RNTL ([c069ad0](https://bitbucket.org/newcrossdev/newcross-ui/commits/c069ad0ff8ad6313d1e8da8e68edb214384528e1))
+* **hfp-816:** setup storybook for ios and android ([26fcb4c](https://bitbucket.org/newcrossdev/newcross-ui/commits/26fcb4ccd3954ad38ca645674bb8f3d50bfc650c))
+* **hfp-816:** setup storybook for react native web ([e266292](https://bitbucket.org/newcrossdev/newcross-ui/commits/e26629217bd6754658600062e362526168430e60))
