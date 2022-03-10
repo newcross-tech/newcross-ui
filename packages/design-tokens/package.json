@@ -1,4 +1,5 @@
 {
+  "private": true,
   "name": "@newcross-ui/design-tokens",
   "version": "1.0.0",
   "description": "Design tokens for native and web projects across multiple brands",
