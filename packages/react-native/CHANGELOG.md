@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.1.3...@newcross-ui/react-native@1.1.4) (2022-03-11)
+
+
+### Bug Fixes
+
+* **hfp-874:** need to send src folder with artifacts ([007542f](https://bitbucket.org/newcrossdev/newcross-ui/commits/007542fec97d1ba3262591c09ad931d32dd476ec))
+
+
+
+
+
 ## [1.1.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.1.2...@newcross-ui/react-native@1.1.3) (2022-03-11)
 
 
