@@ -19,7 +19,8 @@
   "react-native": "src/index.ts",
   "types": "build/esm/index.d.ts",
   "files": [
-    "build"
+    "build",
+    "src"
   ],
   "scripts": {
     "prebuild": "rm -rf build",
