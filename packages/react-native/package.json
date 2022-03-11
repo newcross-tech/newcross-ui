@@ -16,11 +16,9 @@
   },
   "main": "build/cjs/index.js",
   "module": "build/esm/index.js",
-  "react-native": "src/index.ts",
   "types": "build/esm/index.d.ts",
   "files": [
-    "build",
-    "src"
+    "build"
   ],
   "scripts": {
     "prebuild": "rm -rf build",
