@@ -1,0 +1,15 @@
+{
+  "spacing": {
+    "base": {
+      "0": { "value": 0, "type": "size" },
+      "4": { "value": 4, "type": "size" },
+      "8": { "value": 8, "type": "size" },
+      "12": { "value": 12, "type": "size" },
+      "16": { "value": 16, "type": "size" },
+      "24": { "value": 24, "type": "size" },
+      "32": { "value": 32, "type": "size" },
+      "40": { "value": 40, "type": "size" },
+      "48": { "value": 48, "type": "size" }
+    }
+  }
+}

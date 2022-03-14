@@ -12,6 +12,7 @@ npm-debug.*
 *.orig.*
 .serverless
 web-build/
+**/scss
 
 # macOS
 .DS_Store

@@ -25,11 +25,15 @@
     "build:esm": "tsc --outDir build/esm",
     "build:cjs": "tsc --module commonjs --outDir build/cjs",
     "build": "yarn build:cjs && yarn build:esm",
+    "build:watch": "tsc --outDir build/esm --watch",
     "test": "jest",
     "test:watch": "jest --watch"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-native": ">=0.63.0"
+  },
+  "dependencies": {
+    "@newcross-ui/design-tokens": "^1.1.0"
   }
 }

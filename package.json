@@ -48,6 +48,7 @@
     "lerna": "^4.0.0",
     "lint-staged": "^12.3.4",
     "metro-react-native-babel-preset": "^0.69.0",
+    "nodemon": "^2.0.15",
     "prettier": "^2.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -56,8 +57,11 @@
     "react-test-renderer": "^17.0.2",
     "serverless": "^3.7.1",
     "serverless-s3-sync": "^3.0.0",
+    "style-dictionary": "^3.7.0",
     "ts-jest": "^27.1.3",
-    "typescript": "^4.6.2"
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.2",
+    "webpack": "^5.70.0"
   },
   "scripts": {
     "lint:check": "eslint '**/*.{ts,tsx,json}'",
@@ -67,7 +71,6 @@
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006",
     "build": "lerna run build",
-    "postbuild": "yarn build-storybook",
     "build-storybook": "build-storybook",
     "test": "lerna run test",
     "deploy": "sls deploy -s production",
