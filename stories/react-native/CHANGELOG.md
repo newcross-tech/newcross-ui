@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.1.4...@newcross-stories/react-native@1.2.0) (2022-03-15)
+
+
+### Features
+
+* **hfp-857:** create radio component for react native ([6ab9132](https://bitbucket.org/newcrossdev/newcross-ui/commits/6ab91322a03b06af18fbb04ea0a84494b3f31aec))
+
+
+
+
+
 ## [1.1.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.1.3...@newcross-stories/react-native@1.1.4) (2022-03-11)
 
 **Note:** Version bump only for package @newcross-stories/react-native
