@@ -1,10 +1,11 @@
-import StyleDictionary from 'style-dictionary';
+import StyleDictionary, { Config } from 'style-dictionary';
 
 const brands = ['healthforce'];
 
-const getStyleDictionaryConfig = (brand: string) => ({
+const getStyleDictionaryConfig = (brand: string): Config => ({
   transform: {
     'size/pxToRem': require('./transforms/pxToRem'),
+    'size/px': require('./transforms/toPx'),
   },
   source: [
     'src/global/**/*.json',
@@ -14,7 +15,7 @@ const getStyleDictionaryConfig = (brand: string) => ({
   platforms: {
     native: {
       transforms: ['attribute/cti', 'name/cti/pascal', 'color/rgb'],
-      buildPath: `build/${brand}/`,
+      buildPath: `build/js/${brand}/`,
       files: [
         {
           destination: 'index.js',
@@ -33,11 +34,60 @@ const getStyleDictionaryConfig = (brand: string) => ({
         'color/rgb',
         'size/pxToRem',
       ],
-      buildPath: `scss/${brand}/`,
+      buildPath: `build/scss/${brand}/`,
       files: [
         {
           destination: '_tokens.scss',
           format: 'scss/variables',
+        },
+      ],
+    },
+    'web/category': {
+      transforms: ['attribute/cti', 'name/cti/kebab', 'color/rgb', 'size/px'],
+      buildPath: `build/css/${brand}/`,
+      files: [
+        {
+          destination: 'spacing.css',
+          format: 'css/variables',
+          options: {
+            fileHeader: () => {
+              return ['@tokens Spacing', '@presenter Spacing'];
+            },
+          },
+          filter: {
+            attributes: {
+              category: 'spacing',
+            },
+          },
+        },
+        {
+          destination: 'color.css',
+          format: 'css/variables',
+          options: {
+            fileHeader: () => {
+              return ['@tokens Color', '@presenter Color'];
+            },
+          },
+          filter: {
+            attributes: {
+              category: 'color',
+            },
+          },
+        },
+        {
+          destination: 'brand-color.css',
+          format: 'css/variables',
+          options: {
+            fileHeader: () => {
+              return ['@tokens Brand Color', '@presenter Color'];
+            },
+          },
+          filter: {
+            attributes: {
+              category: 'brand',
+              type: 'color',
+            },
+          },
         },
       ],
     },

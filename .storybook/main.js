@@ -8,6 +8,7 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@storybook/addon-react-native-web',
+    'storybook-design-token',
   ],
   framework: '@storybook/react',
   core: {

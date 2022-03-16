@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-const buildPath = 'build';
+const buildPath = 'build/js';
 
 const createIndexFiles = (fileNames: Array<string>) => {
   const folderNames = fs.readdirSync(buildPath);

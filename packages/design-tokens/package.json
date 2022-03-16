@@ -5,10 +5,9 @@
   "author": "itdev@newcrosshealthcare.com",
   "homepage": "https://bitbucket.org/newcrossdev/newcross-ui#readme",
   "license": "MIT",
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "main": "build/js/index.js",
+  "types": "build/js/index.d.ts",
   "files": [
-    "scss",
     "build"
   ],
   "repository": {
@@ -22,7 +21,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "prebuild": "rm -rf build scss",
+    "prebuild": "rm -rf build",
     "build": "ts-node config.ts && ts-node scripts/createIndexFiles.ts",
     "build:watch": "nodemon --watch 'src/**' --exec 'yarn build'"
   }
