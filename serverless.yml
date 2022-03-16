@@ -93,3 +93,16 @@ resources:
             SslSupportMethod: sni-only
           Aliases:
             - ${self:custom.env.bucketName}
+    DesignSystemDNSName:
+      Type: AWS::Route53::RecordSetGroup
+      Properties:
+        HostedZoneId: ${self:custom.env.domainHostedZoneId} # route53 domain hostedzone id
+        RecordSets:
+          - Name: ${self:custom.env.recordSet}
+            Type: A
+            AliasTarget:
+              HostedZoneId: ${self:custom.env.globalHostedZoneId} # global cloudfront hostedzone id
+              DNSName:
+                Fn::GetAtt:
+                  - DesignSystemCloudFront
+                  - DomainName
