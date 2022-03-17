@@ -3,7 +3,6 @@
   "version": "1.3.1",
   "description": "Design tokens for native and web projects across multiple brands",
   "author": "itdev@newcrosshealthcare.com",
-  "homepage": "https://bitbucket.org/newcrossdev/newcross-ui#readme",
   "license": "MIT",
   "main": "build/js/index.js",
   "types": "build/js/index.d.ts",

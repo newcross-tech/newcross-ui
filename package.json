@@ -24,8 +24,6 @@
     "@storybook/addon-ondevice-backgrounds": "^6.0.1-beta.3",
     "@storybook/addon-ondevice-controls": "^6.0.1-beta.3",
     "@storybook/addon-react-native-web": "^0.0.18",
-    "@storybook/builder-webpack5": "^6.4.19",
-    "@storybook/manager-webpack5": "^6.4.19",
     "@storybook/react": "^6.4.19",
     "@storybook/react-native": "^6.0.1-beta.3",
     "@storybook/testing-library": "^0.0.9",
@@ -61,8 +59,7 @@
     "style-dictionary": "^3.7.0",
     "ts-jest": "^27.1.3",
     "ts-node": "^10.7.0",
-    "typescript": "^4.6.2",
-    "webpack": "^5.70.0"
+    "typescript": "^4.6.2"
   },
   "scripts": {
     "lint:check": "eslint '**/*.{ts,tsx,json}'",
