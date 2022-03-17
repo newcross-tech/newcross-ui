@@ -13,7 +13,9 @@ const {
   RadioSelectedBackgroundColor,
   RadioDisabledBorderColor,
   RadioSelectedDisabledBackgroundColor,
-  SpacingBase4,
+  RadioLabelLineHeight,
+  RadioPadding,
+  SpacingBase12,
 } = healthforce;
 
 const radioStyle = (
@@ -22,6 +24,7 @@ const radioStyle = (
   container: {
     alignItems: 'center',
     flexDirection: 'row',
+    padding: RadioPadding,
   },
   radio: {
     justifyContent: 'center',
@@ -41,7 +44,10 @@ const radioStyle = (
       : RadioSelectedBackgroundColor,
     borderRadius: RadioSelectedHeight / 2,
   },
-  radioText: { margin: SpacingBase4 },
+  radioLabel: {
+    marginLeft: SpacingBase12,
+    lineHeight: RadioLabelLineHeight,
+  },
 });
 
 export default radioStyle;

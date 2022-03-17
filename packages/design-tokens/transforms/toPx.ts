@@ -5,7 +5,11 @@ StyleDictionary.registerTransform({
   type: 'value',
   name: 'size/px',
   matcher: (token) => {
-    return token.attributes?.category === 'size' || token.type === 'spacing';
+    return (
+      token.attributes?.category === 'size' ||
+      token.type === 'spacing' ||
+      token.type === 'size'
+    );
   },
   transformer: (token) => {
     const val = parseFloat(token.value);

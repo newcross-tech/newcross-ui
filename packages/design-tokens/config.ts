@@ -1,4 +1,5 @@
 import StyleDictionary, { Config } from 'style-dictionary';
+import { storybookTokens } from './transforms/constants';
 
 const brands = ['healthforce'];
 
@@ -45,51 +46,22 @@ const getStyleDictionaryConfig = (brand: string): Config => ({
     'web/category': {
       transforms: ['attribute/cti', 'name/cti/kebab', 'color/rgb', 'size/px'],
       buildPath: `build/css/${brand}/`,
-      files: [
-        {
-          destination: 'spacing.css',
+      files: storybookTokens.map(
+        ({ destination, headers, filterAttributes }) => ({
+          destination,
           format: 'css/variables',
           options: {
             fileHeader: () => {
-              return ['@tokens Spacing', '@presenter Spacing'];
+              return headers;
             },
           },
           filter: {
             attributes: {
-              category: 'spacing',
+              ...filterAttributes,
             },
           },
-        },
-        {
-          destination: 'color.css',
-          format: 'css/variables',
-          options: {
-            fileHeader: () => {
-              return ['@tokens Color', '@presenter Color'];
-            },
-          },
-          filter: {
-            attributes: {
-              category: 'color',
-            },
-          },
-        },
-        {
-          destination: 'brand-color.css',
-          format: 'css/variables',
-          options: {
-            fileHeader: () => {
-              return ['@tokens Brand Color', '@presenter Color'];
-            },
-          },
-          filter: {
-            attributes: {
-              category: 'brand',
-              type: 'color',
-            },
-          },
-        },
-      ],
+        })
+      ),
     },
   },
 });

@@ -4,7 +4,7 @@ export type RadioStyle = {
   container: ViewStyle;
   radio: ViewStyle;
   radioSelected: ViewStyle;
-  radioText: TextStyle;
+  radioLabel: TextStyle;
 };
 
 export type RadioProps = {

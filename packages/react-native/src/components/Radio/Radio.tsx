@@ -23,7 +23,7 @@ const Radio: FC<RadioProps> = ({ selected, disabled, label, onPress }) => {
         )}
       </View>
       {label && (
-        <Text testID="radio-label" style={styles.radioText}>
+        <Text testID="radio-label" style={styles.radioLabel}>
           {label}
         </Text>
       )}
