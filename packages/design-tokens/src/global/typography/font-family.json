@@ -1,7 +1,7 @@
 {
   "typography": {
     "font-family": {
-      "poppins": { "value": "poppins" }
+      "poppins-regular": { "value": "poppins" }
     }
   }
 }
