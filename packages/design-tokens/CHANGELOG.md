@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.3.1...@newcross-ui/design-tokens@1.3.2) (2022-03-21)
+
+
+### Bug Fixes
+
+* **hfp-912:** crash issue with storybook website ([7ad3724](https://bitbucket.org/newcrossdev/newcross-ui/commits/7ad37240e611a4921d63684b4182871cbcf59a76))
+
+
+
+
+
 ## [1.3.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.3.0...@newcross-ui/design-tokens@1.3.1) (2022-03-17)
 
 **Note:** Version bump only for package @newcross-ui/design-tokens
