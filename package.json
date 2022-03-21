@@ -69,6 +69,7 @@
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006",
     "build": "lerna run build",
+    "build:watch": "lerna run build:watch --stream",
     "build-storybook": "build-storybook",
     "test": "lerna run test",
     "deploy": "sls deploy -s production",

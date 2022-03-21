@@ -9,7 +9,12 @@ export type RadioProps = {
   selected?: boolean;
 };
 
-const Radio: FC<RadioProps> = ({ selected, disabled, label, onPress }) => {
+const Radio: FC<RadioProps> = ({
+  selected = false,
+  disabled = false,
+  label,
+  onPress,
+}) => {
   const styles = radioStyle(disabled);
 
   const handlePress = () => {
@@ -19,21 +24,26 @@ const Radio: FC<RadioProps> = ({ selected, disabled, label, onPress }) => {
   };
 
   return (
-    <Pressable onPress={handlePress} style={styles.container}>
-      <View testID="radio-view" style={styles.radio}>
-        {selected && (
-          <View
-            testID="radio-selected-view"
-            style={styles.radioSelected}
-          ></View>
-        )}
-      </View>
+    <View style={styles.container}>
+      <Pressable
+        onPress={handlePress}
+        disabled={disabled}
+        style={({ pressed }) => [
+          { ...styles.wrapper, opacity: pressed ? 0.5 : 1 },
+        ]}
+      >
+        <View testID="radio-view" style={styles.radio}>
+          {selected && (
+            <View testID="radio-selected-view" style={styles.radioSelected} />
+          )}
+        </View>
+      </Pressable>
       {label && (
         <Text testID="radio-label" style={styles.radioLabel}>
           {label}
         </Text>
       )}
-    </Pressable>
+    </View>
   );
 };
 

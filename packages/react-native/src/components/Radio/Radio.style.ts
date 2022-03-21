@@ -6,7 +6,6 @@ const {
   RadioHeight,
   RadioWidth,
   RadioBorderWidth,
-  RadioBackgroundColor,
   RadioBorderColor,
   RadioSelectedHeight,
   RadioSelectedWidth,
@@ -15,7 +14,8 @@ const {
   RadioSelectedDisabledBackgroundColor,
   RadioLabelLineHeight,
   RadioPadding,
-  SpacingBase12,
+  RadioLabelFontFamily,
+  SpacingBase4,
 } = healthforce;
 
 const radioStyle = (
@@ -24,6 +24,8 @@ const radioStyle = (
   container: {
     alignItems: 'center',
     flexDirection: 'row',
+  },
+  wrapper: {
     padding: RadioPadding,
   },
   radio: {
@@ -34,7 +36,6 @@ const radioStyle = (
     borderWidth: RadioBorderWidth,
     borderRadius: RadioHeight / 2,
     borderColor: disabled ? RadioDisabledBorderColor : RadioBorderColor,
-    backgroundColor: RadioBackgroundColor,
   },
   radioSelected: {
     width: RadioSelectedWidth,
@@ -45,8 +46,10 @@ const radioStyle = (
     borderRadius: RadioSelectedHeight / 2,
   },
   radioLabel: {
-    marginLeft: SpacingBase12,
+    paddingLeft: SpacingBase4,
     lineHeight: RadioLabelLineHeight,
+    fontFamily: RadioLabelFontFamily,
+    paddingRight: RadioPadding,
   },
 });
 
