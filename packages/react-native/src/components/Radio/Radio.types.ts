@@ -6,10 +6,3 @@ export type RadioStyle = {
   radioSelected: ViewStyle;
   radioLabel: TextStyle;
 };
-
-export type RadioProps = {
-  disabled?: boolean;
-  label?: string;
-  onPress?: () => void;
-  selected?: boolean;
-};

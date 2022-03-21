@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
-import { RadioProps } from './Radio.types';
-import Radio from './Radio';
+import Radio, { RadioProps } from './Radio';
 
 const renderComponent = (props: RadioProps) => {
   const { getByText, queryByTestId } = render(<Radio {...props} />);

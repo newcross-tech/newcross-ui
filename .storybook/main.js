@@ -12,4 +12,13 @@ module.exports = {
   ],
   framework: '@storybook/react',
   typescript: { reactDocgen: 'react-docgen-typescript' },
+  webpackFinal: async (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      // This is required to show props table in storybook.
+      '@newcross-ui/react-native': '@newcross-ui/react-native/src/index',
+    };
+    config.resolve.extensions.push('.stories.tsx');
+    return config;
+  },
 };
