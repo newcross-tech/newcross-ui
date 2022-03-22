@@ -3,7 +3,9 @@ import fs from 'fs';
 const buildPath = 'build/js';
 
 const createIndexFiles = (fileNames: Array<string>) => {
-  const folderNames = fs.readdirSync(buildPath);
+  const folderNames = fs
+    .readdirSync(buildPath)
+    .filter((name) => fs.statSync(`${buildPath}/${name}`).isDirectory());
 
   fileNames.forEach((fileName) => {
     const stream = fs.createWriteStream(`${buildPath}/${fileName}`);

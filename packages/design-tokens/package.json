@@ -21,7 +21,8 @@
   },
   "scripts": {
     "prebuild": "rm -rf build",
-    "build": "ts-node config.ts && ts-node scripts/createIndexFiles.ts",
-    "build:watch": "nodemon --watch 'src/**' --exec 'yarn build'"
+    "build:tokens": "ts-node config.ts && ts-node scripts/createIndexFiles.ts",
+    "build": "yarn build:tokens",
+    "build:watch": "nodemon --watch 'src/**' --exec 'yarn build:tokens'"
   }
 }
