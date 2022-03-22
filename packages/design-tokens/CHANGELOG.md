@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.3.2...@newcross-ui/design-tokens@1.4.0) (2022-03-22)
+
+
+### Features
+
+* **hfp-915:** add build watch command and upgrade to node 16 ([2c239b9](https://bitbucket.org/newcrossdev/newcross-ui/commits/2c239b99b3d375bd40922916eaa86f78f004b320))
+
+
+
+
+
 ## [1.3.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.3.1...@newcross-ui/design-tokens@1.3.2) (2022-03-21)
 
 
