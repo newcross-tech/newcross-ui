@@ -1,11 +1,52 @@
-# `react-native`
+# Halo Design System - React Native
 
-> TODO: description
+React Native components for react-native based projects inside Newcross Healthcare.
 
-## Usage
+# Get started
 
+Our library is made to be used with `react-native` and because of this, we assume that you already have a few things setup and a `react-native` project up and running.
+
+If that is not the case, we strongly recommend that you follow the [getting started](https://reactnative.dev/docs/getting-started) and [environment setup](https://reactnative.dev/docs/environment-setup) from the official `react-native` docs.
+
+## Prerequisites
+
+- `node>=16`
+- `yarn` or `npm`
+- a working project with:
+  - `react` >=16.8.0
+  - `react-native` >=0.63.0
+
+## Installation
+
+To start using the `@newcross-ui/react-native` components on your project, first you will need to install it
+
+```sh
+npm install --save @newcross-ui/react-native
+
+# OR
+
+yarn add @newcross-ui/react-native
 ```
-const reactNative = require('react-native');
 
-// TODO: DEMONSTRATE API
+**Dependencies**
+
+This package currently depend on `@newcross-ui/design-tokens`. This packages will be installed automatically with the command above.
+
+### Using the components in your app
+
+```javascript
+import React from 'react';
+import { View, Text } from 'react-native';
+import { Radio } from '@newcross-ui/react-native';
+
+export const App = () => {
+  const onPress = () => console.log('I am pressed!');
+
+  return (
+    <View>
+      <Text>A page title</Text>
+      <Radio selected={false} onPress={onPress} label="Primary" />
+    </View>
+  );
+};
 ```

@@ -1,24 +1,16 @@
-import { View, StyleSheet, Platform } from 'react-native';
 import { Story, Meta } from '@storybook/react';
 import { Button, ButtonProps } from '@newcross-ui/react-native';
+import Container from '../Container';
 
 export default {
-  title: 'ReactNative/Button',
+  title: 'ReactNative/Components/Button',
   component: Button,
 } as Meta;
 
 const Template: Story<ButtonProps> = () => (
-  <View style={styles.container}>
+  <Container>
     <Button text="Primary" />
-  </View>
+  </Container>
 );
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: Platform.OS === 'web' ? 'flex-start' : 'center',
-  },
-});
 
 export const Primary = Template.bind({});
