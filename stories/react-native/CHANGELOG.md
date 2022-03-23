@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.3.3...@newcross-stories/react-native@1.4.0) (2022-03-23)
+
+
+### Features
+
+* **hfp-920:** added poppins google font for storybooks ([3503e6e](https://bitbucket.org/newcrossdev/newcross-ui/commits/3503e6eab2c4d35dc6969eb9b867bc27d0f03f7d))
+
+
+
+
+
 ## [1.3.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.3.2...@newcross-stories/react-native@1.3.3) (2022-03-22)
 
 **Note:** Version bump only for package @newcross-stories/react-native
