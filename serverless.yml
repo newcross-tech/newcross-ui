@@ -79,10 +79,17 @@ resources:
             Compress: true
             ForwardedValues:
               QueryString: true
+              Headers:
+                - 'Origin'
+                - 'Access-Control-Request-Method'
+                - 'Access-Control-Request-Headers'
               Cookies:
                 Forward: none
             TargetOriginId: S3Origin
             ViewerProtocolPolicy: redirect-to-https
+            MinTTL: 0
+            MaxTTL: 0
+            DefaultTTL: 0
           Comment: Design system website for ${opt:stage, self:provider.stage, "acceptance"}
           HttpVersion: http2
           Enabled: true

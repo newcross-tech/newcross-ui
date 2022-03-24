@@ -12,6 +12,9 @@ module.exports = {
     'storybook-design-token',
   ],
   framework: '@storybook/react',
+  core: {
+    builder: 'webpack5',
+  },
   typescript: { reactDocgen: 'react-docgen-typescript' },
   webpackFinal: async (config) => {
     config.resolve.alias = {
