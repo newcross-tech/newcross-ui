@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.4.0...@newcross-stories/react-native@1.4.1) (2022-03-24)
+
+
+### Bug Fixes
+
+* cloudfront with no cache setting and webpack 5 ([30e1eed](https://bitbucket.org/newcrossdev/newcross-ui/commits/30e1eede58434b5caedc12d10ab161d6517d6708))
+
+
+
+
+
 # [1.4.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.3.3...@newcross-stories/react-native@1.4.0) (2022-03-23)
 
 
