@@ -8,18 +8,14 @@ Design tokens library contains all the design decisions across web and mobile ap
 
 ## Prerequisites
 
-- `node>=14`
-- `yarn` or `npm`
+- `node>=16`
+- `yarn`
 
 ## Installation
 
 To start using the `@newcross-ui/design-tokens` on your project, first you will need to install it
 
 ```sh
-npm install --save @newcross-ui/design-tokens
-
-# OR
-
 yarn add @newcross-ui/design-tokens
 ```
 
@@ -35,7 +31,7 @@ const {
   RadioWidth,
   RadioBorderWidth,
   RadioBorderColor,
-  RadioPadding
+  RadioPadding,
 } = healthforce;
 
 const radioStyle = (): StyleSheet.NamedStyles<RadioStyle> => ({
@@ -48,5 +44,5 @@ const radioStyle = (): StyleSheet.NamedStyles<RadioStyle> => ({
     borderWidth: RadioBorderWidth,
     borderRadius: RadioHeight / 2,
   },
-})
+});
 ```

@@ -1,7 +1,7 @@
 {
   "brand": {
     "color": {
-      "primary": { "value": "{color.base.blue.100.value}" },
+      "primary": { "value": "{color.base.gravitas.value}" },
       "secondary": { "value": "{color.base.green.100.value}" }
     }
   }

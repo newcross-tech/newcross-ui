@@ -1,0 +1,8 @@
+{
+  "brand": {
+    "color": {
+      "primary": { "value": "{color.base.heritage.value}" },
+      "secondary": { "value": "{color.base.blue.100.value}" }
+    }
+  }
+}

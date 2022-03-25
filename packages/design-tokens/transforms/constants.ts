@@ -6,7 +6,7 @@ type StorybookToken = {
   filterAttributes: FilterAttributes;
 };
 
-export const storybookTokens: Array<StorybookToken> = [
+export const getGlobalStorybookTokens = (): Array<StorybookToken> => [
   {
     destination: 'spacing.css',
     headers: ['@tokens Spacing', '@presenter Spacing'],
@@ -16,11 +16,6 @@ export const storybookTokens: Array<StorybookToken> = [
     destination: 'color.css',
     headers: ['@tokens Color', '@presenter Color'],
     filterAttributes: { category: 'color' },
-  },
-  {
-    destination: 'brand-color.css',
-    headers: ['@tokens Brand Color', '@presenter Color'],
-    filterAttributes: { category: 'brand', type: 'color' },
   },
   {
     destination: 'font-family.css',
@@ -41,5 +36,15 @@ export const storybookTokens: Array<StorybookToken> = [
     destination: 'line-height.css',
     headers: ['@tokens LineHeight', '@presenter LineHeight'],
     filterAttributes: { type: 'line-height' },
+  },
+];
+
+export const getBrandStorybookTokens = (
+  brand: string
+): Array<StorybookToken> => [
+  {
+    destination: `${brand}-color.css`,
+    headers: [`@tokens ${brand} Color`, '@presenter Color'],
+    filterAttributes: { category: 'brand', type: 'color' },
   },
 ];

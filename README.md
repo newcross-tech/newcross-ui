@@ -16,15 +16,12 @@ Design system consist of design tokens, React & React Native components for web 
 
 - Request NPM Access token by sending an email to `itdev@newcrosshealthcaretest.com`
 - Setup NPM_TOKEN env variable:
-
-```
-cd ~
-vim .zshrc OR vim .bash_profile
-```
-
-- Click `i` on your keyboard and paste `export NPM_TOKEN=*****-***-***-***-*****` at the top of file.
-- Enter `:wq` on your keyboard to save the changes
-- Once you reopen your terminal, `NPM_TOKEN` will be exported as env variable
+  - `cd ~`
+  - `vim .zshrc OR vim .bash_profile`
+  - Click `i` on your keyboard and paste `export NPM_TOKEN=*****-***-***-***-*****` at the top of file.
+  - Enter `:wq` on your keyboard to save the changes
+  - Reopen your terminal, `NPM_TOKEN` will be exported as env variable
+- Install commitizen globally by running `npm install -g commitizen`. This is required to manage conventional commits
 
 ### Local setup
 

@@ -1,13 +1,20 @@
 import StyleDictionary, { Config } from 'style-dictionary';
-import { storybookTokens } from './transforms/constants';
+import {
+  getBrandStorybookTokens,
+  getGlobalStorybookTokens,
+} from './transforms/constants';
 
-const brands = ['healthforce'];
+const brands = ['healthforce', 'homeclinic', 'yourcare', 'yourlife'];
 
-const getStyleDictionaryConfig = (brand: string): Config => ({
+const commonConfig = {
   transform: {
     'size/pxToRem': require('./transforms/pxToRem'),
     'size/px': require('./transforms/toPx'),
   },
+};
+
+const getStyleDictionaryConfig = (brand: string): Config => ({
+  ...commonConfig,
   source: [
     'src/global/**/*.json',
     'src/components/*.json',
@@ -43,10 +50,43 @@ const getStyleDictionaryConfig = (brand: string): Config => ({
         },
       ],
     },
+  },
+});
+
+const getGlobalStyleConfig = {
+  ...commonConfig,
+  source: ['src/global/**/*.json'],
+  platforms: {
+    'web/category': {
+      transforms: ['attribute/cti', 'name/cti/kebab', 'color/rgb', 'size/px'],
+      buildPath: `build/css/`,
+      files: getGlobalStorybookTokens().map(
+        ({ destination, headers, filterAttributes }) => ({
+          destination,
+          format: 'css/variables',
+          options: {
+            fileHeader: () => {
+              return headers;
+            },
+          },
+          filter: {
+            attributes: {
+              ...filterAttributes,
+            },
+          },
+        })
+      ),
+    },
+  },
+};
+
+const getBrandStyleConfig = (brand: string) => ({
+  source: ['src/global/**/*.json', `src/brands/${brand}/*.json`],
+  platforms: {
     'web/category': {
       transforms: ['attribute/cti', 'name/cti/kebab', 'color/rgb', 'size/px'],
       buildPath: `build/css/${brand}/`,
-      files: storybookTokens.map(
+      files: getBrandStorybookTokens(brand).map(
         ({ destination, headers, filterAttributes }) => ({
           destination,
           format: 'css/variables',
@@ -66,6 +106,15 @@ const getStyleDictionaryConfig = (brand: string): Config => ({
   },
 });
 
+// generate native & web tokens
 brands.map((brand) => {
   StyleDictionary.extend(getStyleDictionaryConfig(brand)).buildAllPlatforms();
+});
+
+// generate global tokens for storybook
+StyleDictionary.extend(getGlobalStyleConfig).buildAllPlatforms();
+
+// generate brand tokens for storybook
+brands.map((brand) => {
+  StyleDictionary.extend(getBrandStyleConfig(brand)).buildAllPlatforms();
 });

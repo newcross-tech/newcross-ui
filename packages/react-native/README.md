@@ -11,7 +11,7 @@ If that is not the case, we strongly recommend that you follow the [getting star
 ## Prerequisites
 
 - `node>=16`
-- `yarn` or `npm`
+- `yarn`
 - a working project with:
   - `react` >=16.8.0
   - `react-native` >=0.63.0
@@ -21,10 +21,6 @@ If that is not the case, we strongly recommend that you follow the [getting star
 To start using the `@newcross-ui/react-native` components on your project, first you will need to install it
 
 ```sh
-npm install --save @newcross-ui/react-native
-
-# OR
-
 yarn add @newcross-ui/react-native
 ```
 

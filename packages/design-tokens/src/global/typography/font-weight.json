@@ -1,7 +1,10 @@
 {
   "typography": {
     "font-weight": {
-      "400": { "value": 400 }
+      "regular": { "value": 400 },
+      "semi-bold": { "value": 600 },
+      "bold": { "value": 700 },
+      "extra-bold": { "value": 800 }
     }
   }
 }
