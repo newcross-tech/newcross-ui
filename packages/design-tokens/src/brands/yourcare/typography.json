@@ -1,0 +1,7 @@
+{
+  "brand": {
+    "font-family": {
+      "value": "{typography.font-family.poppins-regular.value}"
+    }
+  }
+}

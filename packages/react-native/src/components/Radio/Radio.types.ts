@@ -1,4 +1,5 @@
 import { TextStyle, ViewStyle } from 'react-native';
+import { RadioProps } from './Radio';
 
 export type RadioStyle = {
   container: ViewStyle;
@@ -7,3 +8,5 @@ export type RadioStyle = {
   radioSelected: ViewStyle;
   radioLabel: TextStyle;
 };
+
+export type PressedRadioProps = RadioProps & { pressed: boolean };

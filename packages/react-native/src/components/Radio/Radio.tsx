@@ -1,20 +1,21 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Pressable, View, Text } from 'react-native';
-import radioStyle from './Radio.style';
+import radioStyle, { pressedRadioStyle } from './Radio.style';
+import { PressedRadioProps } from './Radio.types';
 
 export type RadioProps = {
   disabled?: boolean;
-  label: string;
+  label?: string;
   onPress?: () => void;
   selected?: boolean;
 };
 
-const Radio: FC<RadioProps> = ({
+const Radio = ({
   selected = false,
   disabled = false,
   label,
   onPress,
-}) => {
+}: RadioProps) => {
   const styles = radioStyle(disabled);
 
   const handlePress = () => {
@@ -28,9 +29,9 @@ const Radio: FC<RadioProps> = ({
       <Pressable
         onPress={handlePress}
         disabled={disabled}
-        style={({ pressed }) => [
-          { ...styles.wrapper, opacity: pressed ? 0.5 : 1 },
-        ]}
+        style={({ pressed }) =>
+          pressedRadioStyle({ disabled, pressed } as PressedRadioProps)
+        }
       >
         <View testID="radio-view" style={styles.radio}>
           {selected && (

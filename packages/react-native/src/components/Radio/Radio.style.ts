@@ -1,56 +1,51 @@
 import { StyleSheet } from 'react-native';
-import { healthforce } from '@newcross-ui/design-tokens';
-import { RadioStyle } from './Radio.types';
+import { PressedRadioProps, RadioStyle } from './Radio.types';
+import useTheme from '../../hooks/useTheme';
 
-const {
-  RadioHeight,
-  RadioWidth,
-  RadioBorderWidth,
-  RadioBorderColor,
-  RadioSelectedHeight,
-  RadioSelectedWidth,
-  RadioSelectedBackgroundColor,
-  RadioDisabledBorderColor,
-  RadioSelectedDisabledBackgroundColor,
-  RadioLabelLineHeight,
-  RadioPadding,
-  RadioLabelFontFamily,
-  SpacingBase4,
-} = healthforce;
+export const pressedRadioStyle = ({ disabled, pressed }: PressedRadioProps) => [
+  radioStyle(disabled).wrapper,
+  { opacity: pressed ? 0.5 : 1 },
+];
 
 const radioStyle = (
   disabled: boolean | undefined
-): StyleSheet.NamedStyles<RadioStyle> => ({
-  container: {
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
-  wrapper: {
-    padding: RadioPadding,
-  },
-  radio: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: RadioWidth,
-    height: RadioHeight,
-    borderWidth: RadioBorderWidth,
-    borderRadius: RadioHeight / 2,
-    borderColor: disabled ? RadioDisabledBorderColor : RadioBorderColor,
-  },
-  radioSelected: {
-    width: RadioSelectedWidth,
-    height: RadioSelectedHeight,
-    backgroundColor: disabled
-      ? RadioSelectedDisabledBackgroundColor
-      : RadioSelectedBackgroundColor,
-    borderRadius: RadioSelectedHeight / 2,
-  },
-  radioLabel: {
-    paddingLeft: SpacingBase4,
-    lineHeight: RadioLabelLineHeight,
-    fontFamily: RadioLabelFontFamily,
-    paddingRight: RadioPadding,
-  },
-});
+): StyleSheet.NamedStyles<RadioStyle> => {
+  const theme = useTheme();
+
+  return StyleSheet.create({
+    container: {
+      alignItems: 'center',
+      flexDirection: 'row',
+    },
+    wrapper: {
+      padding: theme.RadioPadding,
+    },
+    radio: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: theme.RadioWidth,
+      height: theme.RadioHeight,
+      borderWidth: theme.RadioBorderWidth,
+      borderRadius: theme.RadioHeight / 2,
+      borderColor: disabled
+        ? theme.RadioDisabledBorderColor
+        : theme.RadioBorderColor,
+    },
+    radioSelected: {
+      width: theme.RadioSelectedWidth,
+      height: theme.RadioSelectedHeight,
+      backgroundColor: disabled
+        ? theme.RadioSelectedDisabledBackgroundColor
+        : theme.RadioSelectedBackgroundColor,
+      borderRadius: theme.RadioSelectedHeight / 2,
+    },
+    radioLabel: {
+      paddingLeft: theme.SpacingBase4,
+      lineHeight: theme.RadioLabelLineHeight,
+      fontFamily: theme.RadioLabelFontFamily,
+      paddingRight: theme.RadioPadding,
+    },
+  });
+};
 
 export default radioStyle;

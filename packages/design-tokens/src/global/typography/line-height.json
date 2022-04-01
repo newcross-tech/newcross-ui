@@ -1,7 +1,9 @@
 {
   "typography": {
     "line-height": {
-      "21": { "value": 21, "type": "size" }
+      "21": { "value": 21, "type": "size" },
+      "24": { "value": 24, "type": "size" },
+      "30": { "value": 30, "type": "size" }
     }
   }
 }

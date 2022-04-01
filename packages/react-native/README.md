@@ -28,18 +28,37 @@ yarn add @newcross-ui/react-native
 
 This package currently depend on `@newcross-ui/design-tokens`. This packages will be installed automatically with the command above.
 
-### Using the components in your app
+**How to use design tokens with react native components**
+
+Wrap your application in a ThemeProvider
+
+```javascript
+import React from 'react';
+import { ThemeProvider, Brand } from '@newcross-ui/react-native';
+import RootComponent from './RootComponent';
+
+const App = () => {
+  return (
+    <ThemeProvider brand={Brand.healthforce}>
+      <RootComponent />
+    </ThemeProvider>
+  );
+};
+```
+
+### Use components in your app
 
 ```javascript
 import React from 'react';
 import { View, Text } from 'react-native';
-import { Radio } from '@newcross-ui/react-native';
+import { Radio, useTheme } from '@newcross-ui/react-native';
 
 export const App = () => {
+  const theme = useTheme();
   const onPress = () => console.log('I am pressed!');
 
   return (
-    <View>
+    <View style={{ padding: theme.SpacingBase24 }}>
       <Text>A page title</Text>
       <Radio selected={false} onPress={onPress} label="Primary" />
     </View>

@@ -27,7 +27,8 @@
     "build": "yarn build:cjs && yarn build:esm",
     "build:watch": "tsc --outDir build/esm --watch",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "peerDependencies": {
     "react": ">=16.8.0",

@@ -8,9 +8,7 @@
     "background-color": { "value": "{color.base.white.value}" },
 
     "label": {
-      "font-family": {
-        "value": "{typography.font-family.poppins-regular.value}"
-      },
+      "font-family": { "value": "{brand.font-family.value}" },
       "font-size": { "value": "{typography.font-size.14.value}" },
       "font-weight": { "value": "{typography.font-weight.regular.value}" },
       "line-height": { "value": "{typography.line-height.21.value}" }

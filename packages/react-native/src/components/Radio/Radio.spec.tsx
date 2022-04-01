@@ -71,4 +71,19 @@ describe('Radio Component', () => {
     // Assert
     expect(onPress).not.toBeCalled();
   });
+
+  it(`doesn't call onPress when onPress prop is not provided`, () => {
+    // Arrange
+    const onPress = jest.fn();
+
+    // Act
+    const { queryByTestId } = renderComponent({ disabled: false });
+
+    const radio = queryByTestId('radio-view');
+
+    fireEvent.press(radio);
+
+    // Assert
+    expect(onPress).not.toBeCalled();
+  });
 });

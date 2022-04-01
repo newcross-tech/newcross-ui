@@ -1,0 +1,9 @@
+{
+  "border": {
+    "base": {
+      "radius": {
+        "rounded": { "value": 9999 }
+      }
+    }
+  }
+}
