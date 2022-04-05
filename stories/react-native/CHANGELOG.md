@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.4.2...@newcross-stories/react-native@1.5.0) (2022-04-05)
+
+
+### Features
+
+* **hfp-940:** create react native button component ([1d041fa](https://bitbucket.org/newcrossdev/newcross-ui/commits/1d041fa234dc09a001dca5aae906f9c9e4c106e3))
+
+
+
+
+
 ## [1.4.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.4.1...@newcross-stories/react-native@1.4.2) (2022-03-25)
 
 **Note:** Version bump only for package @newcross-stories/react-native
