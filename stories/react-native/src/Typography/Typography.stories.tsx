@@ -37,4 +37,8 @@ const Template: Story<TypographyProps> = (props) => (
 );
 
 export const Interactive = Template.bind({});
-Interactive.args = { children: 'My Text', style: { color: 'blue' } };
+Interactive.args = {
+  children: 'My Text',
+  style: { color: 'blue' },
+  variant: Variant.heading3,
+};

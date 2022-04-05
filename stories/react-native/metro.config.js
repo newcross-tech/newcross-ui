@@ -22,7 +22,7 @@ defaultConfig.transformer.getTransformOptions = async () => ({
 });
 
 // 1. Watch all files within the monorepo
-defaultConfig.watchFolders = [workspaceRoot, './.ondevice'];
+defaultConfig.watchFolders = [workspaceRoot, `${projectRoot}/.ondevice`];
 // 2. Let Metro know where to resolve packages, and in what order
 defaultConfig.resolver.nodeModulesPaths = [
   path.resolve(projectRoot, 'node_modules'),
