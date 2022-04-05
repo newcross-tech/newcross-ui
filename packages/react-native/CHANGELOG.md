@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.3.0...@newcross-ui/react-native@1.4.0) (2022-04-05)
+
+
+### Features
+
+* **hfp-949:** create typography component ([0e09620](https://bitbucket.org/newcrossdev/newcross-ui/commits/0e09620ade8dc891cc2591ade6731a0433844700))
+
+
+
+
+
 # [1.3.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.2.6...@newcross-ui/react-native@1.3.0) (2022-04-05)
 
 
