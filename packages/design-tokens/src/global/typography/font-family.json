@@ -1,7 +1,10 @@
 {
   "typography": {
     "font-family": {
-      "poppins-regular": { "value": "poppins" }
+      "poppins-regular": { "value": "poppinsRegular" },
+      "poppins-semi-bold": { "value": "poppinsSemiBold" },
+      "poppins-bold": { "value": "poppinsBold" },
+      "poppins-extra-bold": { "value": "poppinsExtraBold" }
     }
   }
 }

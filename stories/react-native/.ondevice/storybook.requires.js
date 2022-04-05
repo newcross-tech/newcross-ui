@@ -29,6 +29,7 @@ const getStories = () => {
   return [
     require("../src/Button/Button.stories.tsx"),
     require("../src/Radio/Radio.stories.tsx"),
+    require("../src/Typography/Typography.stories.tsx"),
   ];
 };
 

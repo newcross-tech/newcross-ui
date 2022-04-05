@@ -2,11 +2,6 @@ import { ViewStyle, TextStyle } from 'react-native';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ButtonProps } from './Button';
 
-export type ButtonStyle = {
-  container: ViewStyle;
-  buttonText: TextStyle;
-};
-
 export enum Colors {
   primary = 'primary',
   secondary = 'secondary',

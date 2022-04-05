@@ -1,12 +1,24 @@
 import React from 'react';
-import { Pressable, View, Text } from 'react-native';
+import { Pressable, View, Text, GestureResponderEvent } from 'react-native';
 import radioStyle, { pressedRadioStyle } from './Radio.style';
 import { PressedRadioProps } from './Radio.types';
 
 export type RadioProps = {
+  /**
+   * Disable radio
+   */
   disabled?: boolean;
+  /**
+   * Identifier of each radio component
+   */
   label?: string;
-  onPress?: () => void;
+  /**
+   * Called when a single tap gesture is detected.
+   */
+  onPress?: (event: GestureResponderEvent) => void;
+  /**
+   * Specifies whether the radio is selected
+   */
   selected?: boolean;
 };
 
@@ -18,9 +30,9 @@ const Radio = ({
 }: RadioProps) => {
   const styles = radioStyle(disabled);
 
-  const handlePress = () => {
+  const handlePress = (event: GestureResponderEvent) => {
     if (!disabled && onPress) {
-      onPress();
+      onPress(event);
     }
   };
 

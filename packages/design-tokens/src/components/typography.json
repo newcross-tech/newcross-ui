@@ -1,0 +1,40 @@
+{
+  "typography": {
+    "heading-3": {
+      "font-family": { "value": "{brand.font-family.bold.value}" },
+      "font-size": { "value": "{typography.font-size.28.value}" },
+      "font-weight": { "value": "{typography.font-weight.bold.value}" },
+      "line-height": { "value": "{typography.line-height.42.value}" }
+    },
+    "heading-5": {
+      "font-family": { "value": "{brand.font-family.semi-bold.value}" },
+      "font-size": { "value": "{typography.font-size.20.value}" },
+      "font-weight": { "value": "{typography.font-weight.semi-bold.value}" },
+      "line-height": { "value": "{typography.line-height.30.value}" }
+    },
+    "heading-6": {
+      "font-family": { "value": "{brand.font-family.semi-bold.value}" },
+      "font-size": { "value": "{typography.font-size.16.value}" },
+      "font-weight": { "value": "{typography.font-weight.semi-bold.value}" },
+      "line-height": { "value": "{typography.line-height.24.value}" }
+    },
+    "heading-7": {
+      "font-family": { "value": "{brand.font-family.semi-bold.value}" },
+      "font-size": { "value": "{typography.font-size.14.value}" },
+      "font-weight": { "value": "{typography.font-weight.semi-bold.value}" },
+      "line-height": { "value": "{typography.line-height.21.value}" }
+    },
+    "paragraph-1": {
+      "font-family": { "value": "{brand.font-family.regular.value}" },
+      "font-size": { "value": "{typography.font-size.14.value}" },
+      "font-weight": { "value": "{typography.font-weight.regular.value}" },
+      "line-height": { "value": "{typography.line-height.21.value}" }
+    },
+    "paragraph-2": {
+      "font-family": { "value": "{brand.font-family.regular.value}" },
+      "font-size": { "value": "{typography.font-size.12.value}" },
+      "font-weight": { "value": "{typography.font-weight.regular.value}" },
+      "line-height": { "value": "{typography.line-height.18.value}" }
+    }
+  }
+}

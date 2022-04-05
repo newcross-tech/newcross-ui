@@ -1,7 +1,14 @@
 {
   "brand": {
     "font-family": {
-      "value": "{typography.font-family.poppins-regular.value}"
+      "regular": { "value": "{typography.font-family.poppins-regular.value}" },
+      "semi-bold": {
+        "value": "{typography.font-family.poppins-semi-bold.value}"
+      },
+      "bold": { "value": "{typography.font-family.poppins-bold.value}" },
+      "extra-bold": {
+        "value": "{typography.font-family.poppins-extra-bold.value}"
+      }
     }
   }
 }

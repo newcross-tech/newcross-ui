@@ -1,6 +1,5 @@
 import { StyleSheet, ViewStyle } from 'react-native';
 import {
-  ButtonStyle,
   Colors,
   PressedButtonProps,
   Sizes,
@@ -13,6 +12,7 @@ import {
 } from './Button.types';
 import { ButtonProps } from './Button';
 import useTheme from '../../hooks/useTheme';
+import { FontWeight } from '../../types';
 
 const getBackgroundColor = ({
   disabled,
@@ -51,12 +51,7 @@ export const pressedButtonStyle = ({
   ];
 };
 
-const buttonStyle = ({
-  fullWidth,
-  disabled,
-  color,
-  size,
-}: ButtonProps): StyleSheet.NamedStyles<ButtonStyle> => {
+const buttonStyle = ({ fullWidth, disabled, color, size }: ButtonProps) => {
   const theme = useTheme();
 
   const paddingValues = getPaddingValues(theme);
@@ -79,7 +74,7 @@ const buttonStyle = ({
     buttonText: {
       textAlign: 'center',
       fontFamily,
-      fontWeight,
+      fontWeight: fontWeight as FontWeight,
       color: disabled ? disabledColor : colorValues[color as Colors],
       ...typographyValues[size as Sizes],
     },
