@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.6.0...@newcross-stories/react-native@1.6.1) (2022-04-06)
+
+
+### Bug Fixes
+
+* typography interactive section by passing varient ([f9ca9ce](https://bitbucket.org/newcrossdev/newcross-ui/commits/f9ca9cee7531e1dfcdb00c3b3bcb5c15262d45f2))
+
+
+
+
+
 # [1.6.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.5.0...@newcross-stories/react-native@1.6.0) (2022-04-05)
 
 
