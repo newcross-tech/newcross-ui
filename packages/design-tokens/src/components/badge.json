@@ -1,0 +1,43 @@
+{
+  "badge": {
+    "padding": {
+      "value": "{spacing.base.4.value}"
+    },
+    "background-color": {
+      "value": "{color.base.red.200.value}"
+    },
+    "color": {
+      "value": "{color.base.white.value}"
+    },
+    "border-radius": {
+      "value": "{border.base.radius.rounded.value}"
+    },
+    "small": {
+      "height": {
+        "value": "{spacing.base.8.value}"
+      },
+      "width": {
+        "value": "{spacing.base.8.value}"
+      },
+      "position": { "value": "{spacing.base.0.value}" }
+    },
+    "medium": {
+      "height": {
+        "value": "{spacing.base.16.value}"
+      },
+      "width": {
+        "value": "{spacing.base.16.value}"
+      },
+      "position": { "value": "{spacing.base.4.value}" }
+    },
+    "large": {
+      "height": {
+        "value": "{spacing.base.24.value}"
+      },
+      "width": {
+        "value": "{spacing.base.24.value}"
+      },
+      "position": { "value": "{spacing.base.8.value}" }
+    }
+  }
+}

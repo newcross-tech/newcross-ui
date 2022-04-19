@@ -1,2 +1,2 @@
 export { default, TypographyProps } from './Typography';
-export { Variant } from './Typography.types';
+export { TypographyVariant } from './Typography.types';

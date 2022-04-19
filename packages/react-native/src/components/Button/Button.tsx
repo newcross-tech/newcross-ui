@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Pressable, Text, GestureResponderEvent } from 'react-native';
 import buttonStyle, { pressedButtonStyle } from './Button.style';
-import { Colors, Sizes } from './Button.types';
+import { ButtonColors, ButtonSizes } from './Button.types';
 
 export type ButtonProps = {
   /**
@@ -15,7 +15,7 @@ export type ButtonProps = {
   /**
    * Used to define background color
    */
-  color?: Colors;
+  color?: ButtonColors;
   /**
    * Either children or a render prop that receives a boolean
    * reflecting whether the component is currently pressed.
@@ -28,7 +28,7 @@ export type ButtonProps = {
   /**
    * Used to define size of button
    */
-  size?: Sizes;
+  size?: ButtonSizes;
   /**
    * Used to locate this view in end-to-end tests.
    */
@@ -37,11 +37,11 @@ export type ButtonProps = {
 
 const Button = ({
   onPress,
-  color = Colors.primary,
+  color = ButtonColors.primary,
   disabled = false,
   children,
   fullWidth = false,
-  size = Sizes.default,
+  size = ButtonSizes.default,
   ...rest
 }: ButtonProps) => {
   const styles = buttonStyle({ disabled, color, fullWidth, size });

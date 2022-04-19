@@ -27,7 +27,9 @@ argsEnhancers.forEach((enhancer) => addArgsEnhancer(enhancer));
 
 const getStories = () => {
   return [
+    require("../src/Badge/Badge.stories.tsx"),
     require("../src/Button/Button.stories.tsx"),
+    require("../src/Card/Card.stories.tsx"),
     require("../src/Radio/Radio.stories.tsx"),
     require("../src/Typography/Typography.stories.tsx"),
   ];

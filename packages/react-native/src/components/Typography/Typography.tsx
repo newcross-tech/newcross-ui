@@ -1,13 +1,13 @@
 import React, { ReactNode } from 'react';
 import { TextStyle, Text } from 'react-native';
 import typographyStyle from './Typography.style';
-import { Variant } from './Typography.types';
+import { TypographyVariant } from './Typography.types';
 
 export type TypographyProps = {
   /**
    * Applies the theme typography styles.
    */
-  variant: Variant;
+  variant: TypographyVariant;
   /**
    * The content of the component.
    */

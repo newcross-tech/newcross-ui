@@ -1,8 +1,8 @@
 import { StyleSheet, ViewStyle } from 'react-native';
 import {
-  Colors,
+  ButtonColors,
   PressedButtonProps,
-  Sizes,
+  ButtonSizes,
   getPaddingValues,
   getColorValues,
   getTypographyValues,
@@ -27,15 +27,15 @@ const getBackgroundColor = ({
 
   if (disabled) {
     return {
-      backgroundColor: disabledBackgroundColorValues[color as Colors],
+      backgroundColor: disabledBackgroundColorValues[color as ButtonColors],
     };
   }
   if (pressed) {
     return {
-      backgroundColor: pressedBackgroundColorValues[color as Colors],
+      backgroundColor: pressedBackgroundColorValues[color as ButtonColors],
     };
   }
-  return { backgroundColor: backgroundColorValues[color as Colors] };
+  return { backgroundColor: backgroundColorValues[color as ButtonColors] };
 };
 
 export const pressedButtonStyle = ({
@@ -68,15 +68,15 @@ const buttonStyle = ({ fullWidth, disabled, color, size }: ButtonProps) => {
   return StyleSheet.create({
     container: {
       alignSelf: fullWidth ? 'stretch' : 'flex-start',
-      ...paddingValues[size as Sizes],
+      ...paddingValues[size as ButtonSizes],
       borderRadius,
     },
     buttonText: {
       textAlign: 'center',
       fontFamily,
       fontWeight: fontWeight as FontWeight,
-      color: disabled ? disabledColor : colorValues[color as Colors],
-      ...typographyValues[size as Sizes],
+      color: disabled ? disabledColor : colorValues[color as ButtonColors],
+      ...typographyValues[size as ButtonSizes],
     },
   });
 };

@@ -8,7 +8,7 @@ export default {
   component: Radio,
 } as Meta;
 
-export const All = () => {
+export const Variants = () => {
   return (
     <Container>
       <View>

@@ -13,7 +13,12 @@ npm-debug.*
 .serverless
 web-build/
 **/coverage
+**/package-lock.json
+**/yarn-error.log
 
 # macOS
 .DS_Store
 storybook-static
+
+# misc
+.idea

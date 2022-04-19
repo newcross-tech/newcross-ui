@@ -2,12 +2,12 @@ import { ViewStyle, TextStyle } from 'react-native';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ButtonProps } from './Button';
 
-export enum Colors {
+export enum ButtonColors {
   primary = 'primary',
   secondary = 'secondary',
 }
 
-export enum Sizes {
+export enum ButtonSizes {
   default = 'default',
   small = 'small',
 }
@@ -16,40 +16,40 @@ export type PressedButtonProps = ButtonProps & { pressed: boolean };
 
 export const getColorValues = (
   theme: ThemeDesignTokens
-): Record<Colors, string> => ({
-  [Colors.primary]: theme.ButtonPrimaryColor,
-  [Colors.secondary]: theme.ButtonSecondaryColor,
+): Record<ButtonColors, string> => ({
+  [ButtonColors.primary]: theme.ButtonPrimaryColor,
+  [ButtonColors.secondary]: theme.ButtonSecondaryColor,
 });
 
 export const getBackgroundColorValues = (
   theme: ThemeDesignTokens
-): Record<Colors, string> => ({
-  [Colors.primary]: theme.ButtonPrimaryBackgroundColor,
-  [Colors.secondary]: theme.ButtonSecondaryBackgroundColor,
+): Record<ButtonColors, string> => ({
+  [ButtonColors.primary]: theme.ButtonPrimaryBackgroundColor,
+  [ButtonColors.secondary]: theme.ButtonSecondaryBackgroundColor,
 });
 
 export const getPressedBackgroundColorValues = (
   theme: ThemeDesignTokens
-): Record<Colors, string> => ({
-  [Colors.primary]: theme.ButtonPrimaryPressedBackgroundColor,
-  [Colors.secondary]: theme.ButtonSecondaryPressedBackgroundColor,
+): Record<ButtonColors, string> => ({
+  [ButtonColors.primary]: theme.ButtonPrimaryPressedBackgroundColor,
+  [ButtonColors.secondary]: theme.ButtonSecondaryPressedBackgroundColor,
 });
 
 export const getDisabledBackgroundColorValues = (
   theme: ThemeDesignTokens
-): Record<Colors, string> => ({
-  [Colors.primary]: theme.ButtonPrimaryDisabledBackgroundColor,
-  [Colors.secondary]: theme.ButtonSecondaryDisabledBackgroundColor,
+): Record<ButtonColors, string> => ({
+  [ButtonColors.primary]: theme.ButtonPrimaryDisabledBackgroundColor,
+  [ButtonColors.secondary]: theme.ButtonSecondaryDisabledBackgroundColor,
 });
 
 export const getPaddingValues = (
   theme: ThemeDesignTokens
-): Record<Sizes, ViewStyle> => ({
-  [Sizes.default]: {
+): Record<ButtonSizes, ViewStyle> => ({
+  [ButtonSizes.default]: {
     paddingVertical: theme.ButtonPaddingVertical,
     paddingHorizontal: theme.ButtonPaddingHorizontal,
   },
-  [Sizes.small]: {
+  [ButtonSizes.small]: {
     paddingVertical: theme.ButtonSmallPaddingVertical,
     paddingHorizontal: theme.ButtonSmallPaddingHorizontal,
   },
@@ -57,12 +57,12 @@ export const getPaddingValues = (
 
 export const getTypographyValues = (
   theme: ThemeDesignTokens
-): Record<Sizes, TextStyle> => ({
-  [Sizes.default]: {
+): Record<ButtonSizes, TextStyle> => ({
+  [ButtonSizes.default]: {
     fontSize: theme.ButtonFontSize,
     lineHeight: theme.ButtonLineHeight,
   },
-  [Sizes.small]: {
+  [ButtonSizes.small]: {
     fontSize: theme.ButtonSmallFontSize,
     lineHeight: theme.ButtonSmallLineHeight,
   },
