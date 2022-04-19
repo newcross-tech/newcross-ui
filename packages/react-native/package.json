@@ -1,6 +1,6 @@
 {
   "name": "@newcross-ui/react-native",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Components for react native apps",
   "author": "itdev@newcrosshealthcare.com",
   "license": "MIT",
@@ -35,6 +35,6 @@
     "react-native": ">=0.63.0"
   },
   "dependencies": {
-    "@newcross-ui/design-tokens": "^1.7.0"
+    "@newcross-ui/design-tokens": "^1.8.0"
   }
 }

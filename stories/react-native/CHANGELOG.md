@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.6.1...@newcross-stories/react-native@1.7.0) (2022-04-19)
+
+
+### Features
+
+* **hfp-938/958:** create card and badge component ([857d19c](https://bitbucket.org/newcrossdev/newcross-ui/commits/857d19c4b319779a9e16d48a6176e236e6e27f66))
+
+
+
+
+
 ## [1.6.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.6.0...@newcross-stories/react-native@1.6.1) (2022-04-06)
 
 
