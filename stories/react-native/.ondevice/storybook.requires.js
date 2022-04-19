@@ -5,15 +5,15 @@ import {
   addDecorator,
   addParameters,
   addArgsEnhancer,
-} from "@storybook/react-native";
+} from '@storybook/react-native';
 
-import "@storybook/addon-ondevice-controls/register";
-import "@storybook/addon-ondevice-backgrounds/register";
-import "@storybook/addon-ondevice-actions/register";
+import '@storybook/addon-ondevice-controls/register';
+import '@storybook/addon-ondevice-backgrounds/register';
+import '@storybook/addon-ondevice-actions/register';
 
-import { argsEnhancers } from "@storybook/addon-actions/dist/modern/preset/addArgs";
+import { argsEnhancers } from '@storybook/addon-actions/dist/modern/preset/addArgs';
 
-import { decorators, parameters } from "./preview";
+import { decorators, parameters } from './preview';
 
 if (decorators) {
   decorators.forEach((decorator) => addDecorator(decorator));
@@ -27,11 +27,12 @@ argsEnhancers.forEach((enhancer) => addArgsEnhancer(enhancer));
 
 const getStories = () => {
   return [
-    require("../src/Badge/Badge.stories.tsx"),
-    require("../src/Button/Button.stories.tsx"),
-    require("../src/Card/Card.stories.tsx"),
-    require("../src/Radio/Radio.stories.tsx"),
-    require("../src/Typography/Typography.stories.tsx"),
+    require('../src/Badge/Badge.stories.tsx'),
+    require('../src/Button/Button.stories.tsx'),
+    require('../src/Card/Card.stories.tsx'),
+    require('../src/Link/Link.stories.tsx'),
+    require('../src/Radio/Radio.stories.tsx'),
+    require('../src/Typography/Typography.stories.tsx'),
   ];
 };
 

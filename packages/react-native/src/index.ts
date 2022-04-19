@@ -17,5 +17,6 @@ export {
   BadgeSizes,
   BadgePositions,
 } from './components/Badge';
+export { default as Link, LinkProps, LinkSizes } from './components/Link';
 export { default as Brand } from './theme/Brand';
 export { default as ThemeProvider, ThemeContext } from './theme/ThemeProvider';

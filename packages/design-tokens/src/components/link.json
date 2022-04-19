@@ -1,0 +1,29 @@
+{
+  "link": {
+    "padding": { "value": "{spacing.base.4.value}" },
+    "margin": { "value": "{spacing.base.8.value}" },
+    "color": { "value": "{color.base.gravitas.value}" },
+
+    "pressed": {
+      "opacity": { "value": "{opacity.base.md.value}" }
+    },
+
+    "text": {
+      "font-family": { "value": "{brand.font-family.regular.value}" },
+
+      "small": {
+        "font-size": { "value": "{typography.font-size.14.value}" },
+        "line-height": { "value": "{typography.line-height.21.value}" }
+      },
+      "medium": {
+        "font-size": { "value": "{typography.font-size.16.value}" },
+        "line-height": { "value": "{typography.line-height.24.value}" }
+      }
+    },
+
+    "icon": {
+      "small": { "size": { "value": "{spacing.base.12.value}" } },
+      "medium": { "size": { "value": "{spacing.base.16.value}" } }
+    }
+  }
+}
