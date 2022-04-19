@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.5.0...@newcross-ui/react-native@1.6.0) (2022-04-19)
+
+
+### Features
+
+* **hfp-962:** create link component ([7d9bcef](https://bitbucket.org/newcrossdev/newcross-ui/commits/7d9bcef286de9430fada17cd0417fbfc9d718e31))
+
+
+
+
+
 # [1.5.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.4.0...@newcross-ui/react-native@1.5.0) (2022-04-19)
 
 
