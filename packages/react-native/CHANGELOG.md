@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.6.0...@newcross-ui/react-native@1.7.0) (2022-04-20)
+
+
+### Features
+
+* **hfp-959:** create bottom sheet component ([b3dc4a4](https://bitbucket.org/newcrossdev/newcross-ui/commits/b3dc4a44c473f4a16e45ae0a14a0f7dfd750d404))
+
+
+
+
+
 # [1.6.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.5.0...@newcross-ui/react-native@1.6.0) (2022-04-19)
 
 

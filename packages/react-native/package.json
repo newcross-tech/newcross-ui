@@ -1,6 +1,6 @@
 {
   "name": "@newcross-ui/react-native",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "Components for react native apps",
   "author": "itdev@newcrosshealthcare.com",
   "license": "MIT",
@@ -30,10 +30,10 @@
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-native": ">=0.63.0",
-    "react-native-reanimated": ">=2.0.0",
-    "react-native-gesture-handler": ">=2.0.0"
+    "react-native-gesture-handler": ">=2.0.0",
+    "react-native-reanimated": ">=2.0.0"
   },
   "dependencies": {
-    "@newcross-ui/design-tokens": "^1.9.0"
+    "@newcross-ui/design-tokens": "^1.10.0"
   }
 }
