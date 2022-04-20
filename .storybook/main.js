@@ -8,7 +8,13 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    '@storybook/addon-react-native-web',
+    {
+      name: '@storybook/addon-react-native-web',
+      options: {
+        modulesToTranspile: ['react-native-reanimated'],
+        babelPlugins: ['react-native-reanimated/plugin'],
+      },
+    },
     'storybook-design-token',
   ],
   framework: '@storybook/react',

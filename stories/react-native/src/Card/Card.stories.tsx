@@ -14,7 +14,7 @@ import Spacing from '../Spacing';
 import { healthforce } from '@newcross-ui/design-tokens';
 import CardContent from './CardContent';
 import CardThumbnail from './CardThumbnail';
-import { parameters } from '../utils';
+import { getParameters } from '../utils';
 
 const {
   ColorBaseGravitas,
@@ -28,7 +28,7 @@ const {
 export default {
   title: 'ReactNative/Components/Card',
   component: Card,
-  parameters,
+  parameters: getParameters(),
 } as Meta;
 
 export const Variants: Story<CardProps> = () => (
@@ -90,7 +90,7 @@ export const Variants: Story<CardProps> = () => (
   </Container>
 );
 
-const Template: Story<CardProps> = ({ children, fullWidth, ...rest }) => (
+const Template: Story<CardProps> = ({ fullWidth, ...rest }) => (
   <Container>
     <Card
       thumbnailContent={

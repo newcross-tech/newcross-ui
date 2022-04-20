@@ -14,25 +14,24 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "main": "build/cjs/index.js",
-  "module": "build/esm/index.js",
-  "types": "build/esm/index.d.ts",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "files": [
     "build"
   ],
   "scripts": {
     "prebuild": "rm -rf build",
-    "build:esm": "tsc --outDir build/esm",
-    "build:cjs": "tsc --module commonjs --outDir build/cjs",
-    "build": "yarn build:cjs && yarn build:esm",
-    "build:watch": "tsc --outDir build/esm --watch",
+    "build": "tsc --outDir build",
+    "build:watch": "tsc --outDir build --watch",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
-    "react-native": ">=0.63.0"
+    "react-native": ">=0.63.0",
+    "react-native-reanimated": ">=2.0.0",
+    "react-native-gesture-handler": ">=2.0.0"
   },
   "dependencies": {
     "@newcross-ui/design-tokens": "^1.9.0"

@@ -1,0 +1,19 @@
+{
+  "bottom-sheet": {
+    "background-color": { "value": "{color.base.white.value}" },
+    "border-radius": { "value": "{border.base.radius.md.value}" },
+    "position": { "value": "{spacing.base.0.value}" },
+
+    "line": {
+      "margin-top": { "value": "{spacing.base.12.value}" },
+      "background-color": { "value": "{color.base.grey.100.value}" },
+      "height": { "value": "{spacing.base.4.value}" },
+      "width": { "value": "{spacing.base.64.value}" },
+      "border-radius": { "value": "{border.base.radius.rounded.value}" }
+    },
+    "backdrop": {
+      "background-color": { "value": "{color.base.black.value}" },
+      "opacity": { "value": "{opacity.base.md.value}" }
+    }
+  }
+}

@@ -17,7 +17,7 @@ import { healthforce } from '@newcross-ui/design-tokens';
 import Container from '../Container';
 import Spacing from '../Spacing';
 import { isWebPlatform } from '../utils';
-import { parameters } from '../utils';
+import { getParameters } from '../utils';
 
 const {
   ColorBaseWhite,
@@ -30,7 +30,7 @@ const {
 export default {
   title: 'ReactNative/Components/Badge',
   component: Badge,
-  parameters,
+  parameters: getParameters(),
 } as Meta;
 
 export const VariantsWithIcons = () => {
