@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.10.0...@newcross-ui/design-tokens@1.11.0) (2022-05-03)
+
+
+### Features
+
+* **hfp-961:** create a slider component for the design system ([b33f895](https://bitbucket.org/newcrossdev/newcross-ui/commits/b33f895c4f1c50238215504ea3fbc02e212cdab1))
+
+
+
+
+
 # [1.10.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.9.0...@newcross-ui/design-tokens@1.10.0) (2022-04-20)
 
 

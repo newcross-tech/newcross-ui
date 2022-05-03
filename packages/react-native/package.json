@@ -1,6 +1,6 @@
 {
   "name": "@newcross-ui/react-native",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "Components for react native apps",
   "author": "itdev@newcrosshealthcare.com",
   "license": "MIT",
@@ -35,11 +35,11 @@
     "react-native-svg": ">=12.0.0"
   },
   "dependencies": {
-    "@newcross-ui/design-tokens": "^1.10.0",
-    "@fortawesome/react-native-fontawesome": "^0.2.7",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/pro-light-svg-icons": "^6.1.1",
     "@fortawesome/pro-solid-svg-icons": "^6.1.1",
-    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/react-native-fontawesome": "^0.2.7",
+    "@newcross-ui/design-tokens": "^1.11.0",
     "@react-native-community/slider": "^4.2.2"
   }
 }
