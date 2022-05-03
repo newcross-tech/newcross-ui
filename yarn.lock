@@ -3219,10 +3219,10 @@
   dependencies:
     invariant "^2.2.4"
 
-"@react-native-community/slider@^4.2.1":
-  version "4.2.1"
-  resolved "https://registry.npmjs.org/@react-native-community/slider/-/slider-4.2.1.tgz"
-  integrity sha512-6HUS5HbB9bvEN4GiwBlxECgPWQIugHE+kfnxqX2jHUl1SE57MRpw00m1qVs4hXtEPQndBl6mAQiGbKCOtLPVbg==
+"@react-native-community/slider@^4.2.2":
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/@react-native-community/slider/-/slider-4.2.2.tgz#06a0de89c26c6bd03d95798b777db1872b60c066"
+  integrity sha512-C1ldx1ypQo+uDWx78TUBG0evLVopKYHK2mQencl+vxi4ebMTL+ipJv5MF5mEvmZWLUOAMm5AsoQNHChYUdyWrQ==
 
 "@react-native/assets@1.0.0":
   version "1.0.0"
@@ -17809,6 +17809,11 @@ store2@^2.12.0:
   version "2.13.1"
   resolved "https://registry.npmjs.org/store2/-/store2-2.13.1.tgz"
   integrity sha512-iJtHSGmNgAUx0b/MCS6ASGxb//hGrHHRgzvN+K5bvkBTN7A9RTpPSf1WSp+nPGvWCJ1jRnvY7MKnuqfoi3OEqg==
+
+storybook-addon-state@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/storybook-addon-state/-/storybook-addon-state-1.0.3.tgz#f7657c7acfb2ac2adcbdccdd2ba6d95ebddd90a7"
+  integrity sha512-0lpedSYu2xIlq4QK/8YH4Cuj6vt2p8iRCcJBb4JFxyLZ6RAMHFFkf072BKl4WrU1LfLq3/7SD4snvxRoTjvsvw==
 
 storybook-design-token@^2.0.0:
   version "2.0.0"

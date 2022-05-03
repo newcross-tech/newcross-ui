@@ -1,0 +1,6 @@
+{
+  "slider": {
+    "background-color": { "value": "{color.base.green.100.value}" },
+    "interactive-color": { "value": "{color.base.gravitas.value}" }
+  }
+}
