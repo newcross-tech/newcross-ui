@@ -26,7 +26,21 @@ yarn add @newcross-ui/react-native
 
 **Dependencies**
 
-This package currently depend on `@newcross-ui/design-tokens`. This packages will be installed automatically with the command above.
+We need to install these libraries `react-native-gesture-handler`, `react-native-reanimated` and `react-native-svg`. If you already have these libraries installed and at the latest version, you can skip this step.
+
+### Installing dependencies into an Expo managed project​
+
+```
+expo install react-native-gesture-handler react-native-reanimated react-native-svg
+
+```
+
+### Installing dependencies into a bare React Native project​
+
+```
+yarn add react-native-gesture-handler react-native-reanimated react-native-svg
+
+```
 
 **How to use design tokens with react native components**
 
