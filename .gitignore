@@ -15,6 +15,7 @@ web-build/
 **/coverage
 **/package-lock.json
 **/yarn-error.log
+**/storybook.requires.js
 
 # macOS
 .DS_Store

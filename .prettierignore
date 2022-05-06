@@ -4,3 +4,4 @@
 **/coverage
 .serverless
 storybook-static
+**/storybook.requires.js

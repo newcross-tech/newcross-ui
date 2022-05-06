@@ -25,4 +25,8 @@ export {
   BottomSheetRefProps,
 } from './components/BottomSheet';
 export { default as ThemeProvider, ThemeContext } from './theme/ThemeProvider';
+export {
+  default as ToggleSwitch,
+  ToggleSwitchProps,
+} from './components/ToggleSwitch';
 export { default as Slider, SliderProps } from './components/Slider';
