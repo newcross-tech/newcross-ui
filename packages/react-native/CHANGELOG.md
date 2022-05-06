@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.8.1...@newcross-ui/react-native@1.9.0) (2022-05-06)
+
+
+### Features
+
+* **component:** create ToggleSwitch component. ([5f9e9f1](https://bitbucket.org/newcrossdev/newcross-ui/commits/5f9e9f1d7309a1a7b72933bd4f3509034fc2110c))
+
+
+
+
+
 ## [1.8.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.8.0...@newcross-ui/react-native@1.8.1) (2022-05-03)
 
 **Note:** Version bump only for package @newcross-ui/react-native
