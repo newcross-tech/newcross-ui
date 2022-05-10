@@ -1,9 +1,18 @@
 import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds';
 import { healthforce } from '@newcross-ui/design-tokens';
+import { ThemeProvider, Brand } from '@newcross-ui/react-native';
 
 const { ColorBaseGrey600 } = healthforce;
 
-export const decorators = [withBackgrounds];
+const withThemeProvider = (Story) => {
+  return (
+    <ThemeProvider brand={Brand.healthforce}>
+      <Story />
+    </ThemeProvider>
+  );
+};
+
+export const decorators = [withBackgrounds, withThemeProvider];
 export const parameters = {
   backgrounds: [
     { name: 'figma', value: ColorBaseGrey600, default: true },

@@ -26,11 +26,11 @@ export const Variants = () => {
         Secondary Disabled
       </Button>
       <Spacing />
-      <Button color={ButtonColors.secondary} fullWidth>
-        Primary full width
-      </Button>
+      <Button fullWidth>Primary full width</Button>
       <Spacing />
-      <Button fullWidth>Secondary full width</Button>
+      <Button color={ButtonColors.secondary} fullWidth>
+        Secondary full width
+      </Button>
     </Container>
   );
 };

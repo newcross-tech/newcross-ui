@@ -1,7 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { View, StyleSheet, ViewStyle } from 'react-native';
 import { healthforce } from '@newcross-ui/design-tokens';
-import { ThemeProvider, Brand } from '@newcross-ui/react-native';
 
 const { SpacingBase12 } = healthforce;
 
@@ -25,11 +24,7 @@ const Container: FC<ContainerProps> = ({
     },
   });
 
-  return (
-    <ThemeProvider brand={Brand.healthforce}>
-      <View style={[styles.container, containerStyle]}>{children}</View>
-    </ThemeProvider>
-  );
+  return <View style={[styles.container, containerStyle]}>{children}</View>;
 };
 
 export default Container;

@@ -1,0 +1,7 @@
+{
+  "brand": {
+    "border": {
+      "radius": { "value": "{border.base.radius.md.value}" }
+    }
+  }
+}
