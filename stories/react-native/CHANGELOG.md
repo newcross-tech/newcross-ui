@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.11.0...@newcross-stories/react-native@1.12.0) (2022-05-10)
+
+
+### Features
+
+* **hfp-1079:** add dropdown to select brand and logo for design system ([f464500](https://bitbucket.org/newcrossdev/newcross-ui/commits/f464500732ed20ca3bcebd142bacfd279461edf2))
+
+
+
+
+
 # [1.11.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.10.1...@newcross-stories/react-native@1.11.0) (2022-05-06)
 
 
