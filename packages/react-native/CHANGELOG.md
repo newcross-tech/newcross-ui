@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.9.1...@newcross-ui/react-native@1.10.0) (2022-05-11)
+
+
+### Features
+
+* **hfp-960:** create toggle button and toggle button group ([a5f4a87](https://bitbucket.org/newcrossdev/newcross-ui/commits/a5f4a87aecbb32592108793528f0516953705d40))
+
+
+
+
+
 ## [1.9.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.9.0...@newcross-ui/react-native@1.9.1) (2022-05-10)
 
 **Note:** Version bump only for package @newcross-ui/react-native
