@@ -8,17 +8,17 @@
         "value": "{opacity.base.sm.value}"
       },
       "radius": {
-        "value": "{border.base.radius.md.value}"
+        "value": "{border.base.radius.lg.value}"
       },
       "elevation": {
-        "value": "{shadow.elevation.sm.value}"
+        "value": "{shadow.base.elevation.sm.value}"
       }
     },
     "padding": {
       "value": "{spacing.base.16.value}"
     },
     "border-radius": {
-      "value": "{border.base.radius.sm.value}"
+      "value": "{border.base.radius.md.value}"
     },
     "background-color": {
       "value": "{color.base.white.value}"

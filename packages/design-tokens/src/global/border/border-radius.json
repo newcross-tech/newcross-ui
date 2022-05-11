@@ -2,8 +2,9 @@
   "border": {
     "base": {
       "radius": {
-        "sm": { "value": 8 },
-        "md": { "value": 16 },
+        "sm": { "value": 4 },
+        "md": { "value": 8 },
+        "lg": { "value": 16 },
         "rounded": { "value": 9999 }
       }
     }

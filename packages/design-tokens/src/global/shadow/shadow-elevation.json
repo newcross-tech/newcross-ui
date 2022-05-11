@@ -1,0 +1,10 @@
+{
+  "shadow": {
+    "base": {
+      "elevation": {
+        "sm": { "value": 4 },
+        "md": { "value": 8 }
+      }
+    }
+  }
+}

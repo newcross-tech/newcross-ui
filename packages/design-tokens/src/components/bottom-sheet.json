@@ -1,7 +1,7 @@
 {
   "bottom-sheet": {
     "background-color": { "value": "{color.base.white.value}" },
-    "border-radius": { "value": "{border.base.radius.md.value}" },
+    "border-radius": { "value": "{border.base.radius.lg.value}" },
     "position": { "value": "{spacing.base.0.value}" },
 
     "line": {

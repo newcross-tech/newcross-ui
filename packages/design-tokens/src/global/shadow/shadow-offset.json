@@ -1,0 +1,10 @@
+{
+  "shadow": {
+    "base": {
+      "offset": {
+        "sm": { "value": 0 },
+        "md": { "value": 4 }
+      }
+    }
+  }
+}
