@@ -1,0 +1,49 @@
+{
+  "toast": {
+    "font-family": { "value": "{brand.font-family.regular.value}" },
+    "font-size": { "value": "{typography.font-size.12.value}" },
+    "line-height": { "value": "{typography.line-height.18.value}" },
+    "padding": { "value": "{spacing.base.12.value}" },
+    "color": { "value": "{brand.color.primary.value}" },
+    "elevation": { "value": "{shadow.base.elevation.sm.value}" },
+
+    "status": {
+      "size": { "value": "{typography.font-size.16.value}" },
+
+      "info": {
+        "background-color": { "value": "{brand.color.secondary.value}" },
+
+        "icon": {
+          "color": { "value": "{color.base.gravitas.value}" }
+        }
+      },
+      "success": {
+        "background-color": { "value": "{color.base.green.400.value}" },
+
+        "icon": {
+          "color": { "value": "{brand.color.secondary.value}" }
+        }
+      },
+      "warning": {
+        "background-color": { "value": "{color.base.yellow.300.value}" },
+
+        "icon": {
+          "color": { "value": "{color.base.yellow.400.value}" }
+        }
+      },
+      "error": {
+        "background-color": { "value": "{color.base.red.100.value}" },
+
+        "icon": {
+          "color": { "value": "{color.base.red.200.value}" }
+        }
+      }
+    },
+
+    "close-icon": {
+      "height": { "value": "{typography.font-size.14.value}" },
+      "width": { "value": "{typography.font-size.14.value}" },
+      "color": { "value": "{brand.color.primary.value}" }
+    }
+  }
+}
