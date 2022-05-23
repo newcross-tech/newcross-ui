@@ -1,7 +1,22 @@
-import React, { ReactNode } from 'react';
-import { Pressable, Text, GestureResponderEvent } from 'react-native';
-import buttonStyle, { pressedButtonStyle } from './Button.style';
-import { ButtonColors, ButtonSizes } from './Button.types';
+import React, {
+  ReactElement,
+  ReactNode,
+  cloneElement,
+  isValidElement,
+} from 'react';
+import {
+  Pressable,
+  Text,
+  GestureResponderEvent,
+  ViewStyle,
+  TextStyle,
+} from 'react-native';
+import { pressedButtonStyle, pressedButtonTextStyle } from './Button.style';
+
+import { ButtonVariant, ButtonSizes, ButtonCorners } from './Button.types';
+
+import { PressedButtonProps } from './Button.types';
+import { iconStyles } from './Button.style';
 
 export type ButtonProps = {
   /**
@@ -13,14 +28,22 @@ export type ButtonProps = {
    */
   disabled?: boolean;
   /**
-   * Used to define background color
+   * Used to define background variant
    */
-  color?: ButtonColors;
+  variant?: ButtonVariant;
   /**
    * Either children or a render prop that receives a boolean
    * reflecting whether the component is currently pressed.
    */
   children?: ReactNode;
+  /**
+   * Set the left icon element.
+   */
+  leftIcon?: ReactElement;
+  /**
+   * Set the right icon element.
+   */
+  rightIcon?: ReactElement;
   /**
    * To toggle between auto and full width button
    */
@@ -33,30 +56,125 @@ export type ButtonProps = {
    * Used to locate this view in end-to-end tests.
    */
   testID?: string;
+  /**
+   * Used to add custom styles.
+   */
+  style?: ViewStyle;
+  /**
+   * Used to add custom pressed styles.
+   */
+  pressedStyle?: ViewStyle;
+  /**
+   * Used to add custom text styles.
+   */
+  textStyle?: TextStyle;
+  /**
+   * Used to add custom pressed text styles.
+   */
+  pressedTextStyle?: TextStyle;
+  /**
+   * Used to add custom disabled text styles.
+   */
+  disabledTextStyle?: TextStyle;
+  /**
+   * Used to set the border radius style e.g. pill, squared
+   */
+  corners?: ButtonCorners;
 };
 
 const Button = ({
   onPress,
-  color = ButtonColors.primary,
+  variant = ButtonVariant.primary,
   disabled = false,
   children,
+  leftIcon,
+  rightIcon,
   fullWidth = false,
-  size = ButtonSizes.default,
+  size = ButtonSizes.medium,
+  style,
+  pressedStyle,
+  textStyle,
+  pressedTextStyle,
+  disabledTextStyle,
+  corners,
+  testID,
   ...rest
 }: ButtonProps) => {
-  const styles = buttonStyle({ disabled, color, fullWidth, size });
+  const renderIcon = ({
+    testID,
+    leftIcon,
+    rightIcon,
+    pressed,
+  }: PressedButtonProps) => {
+    const icon = leftIcon || rightIcon;
+
+    return (
+      isValidElement(icon) &&
+      cloneElement(icon, {
+        testID: testID,
+        style: iconStyles({
+          rightIcon,
+          leftIcon,
+          disabled,
+          pressed,
+          variant,
+          style,
+          pressedStyle,
+          size,
+        }),
+      })
+    );
+  };
 
   return (
     <Pressable
       style={({ pressed }) =>
-        pressedButtonStyle({ disabled, color, pressed, fullWidth, size })
+        pressedButtonStyle({
+          disabled,
+          variant,
+          pressed,
+          fullWidth,
+          size,
+          style,
+          pressedStyle,
+          corners,
+        })
       }
       onPress={onPress}
       accessibilityRole="button"
+      testID={testID}
       disabled={disabled}
       {...rest}
     >
-      <Text style={styles.buttonText}>{children}</Text>
+      {({ pressed }) => (
+        <>
+          {leftIcon &&
+            renderIcon({
+              leftIcon,
+              testID: 'leftIcon',
+              pressed,
+            })}
+          <Text
+            style={pressedButtonTextStyle({
+              size,
+              disabled,
+              pressed,
+              variant,
+              textStyle,
+              pressedTextStyle,
+              disabledTextStyle,
+            })}
+          >
+            {children}
+          </Text>
+          {rightIcon &&
+            renderIcon({
+              rightIcon,
+              testID: 'rightIcon',
+              pressed,
+            })}
+        </>
+      )}
     </Pressable>
   );
 };

@@ -1,6 +1,11 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import Button, { ButtonProps } from './Button';
+import {
+  faChevronRight,
+  faChevronLeft,
+} from '@fortawesome/pro-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 describe('Button Component', () => {
   it('renders successfully', () => {
@@ -45,5 +50,31 @@ describe('Button Component', () => {
 
     // Assert
     expect(onPress).not.toBeCalled();
+  });
+  it(`renders successfully when left icon prop is given`, () => {
+    // Arrange
+    const props: ButtonProps = {
+      leftIcon: <FontAwesomeIcon icon={faChevronLeft} />,
+      testID: 'button',
+    };
+
+    // Act
+    const { getByTestId } = render(<Button {...props} />);
+
+    // Assert
+    expect(getByTestId('leftIcon')).toBeTruthy();
+  });
+  it(`renders successfully when right icon prop is given`, () => {
+    // Arrange
+    const props: ButtonProps = {
+      rightIcon: <FontAwesomeIcon icon={faChevronRight} />,
+      testID: 'button',
+    };
+
+    // Act
+    const { getByTestId } = render(<Button {...props} />);
+
+    // Assert
+    expect(getByTestId('rightIcon')).toBeTruthy();
   });
 });

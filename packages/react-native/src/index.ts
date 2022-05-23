@@ -1,8 +1,9 @@
 export {
   default as Button,
   ButtonProps,
-  ButtonColors,
+  ButtonVariant,
   ButtonSizes,
+  ButtonCorners,
 } from './components/Button';
 export { default as Radio, RadioProps } from './components/Radio';
 export {
