@@ -1,0 +1,18 @@
+{
+  "calendar": {
+    "font-family": { "value": "{brand.font-family.regular.value}" },
+    "color": { "value": "{brand.color.primary.value}" },
+    "font-size": { "value": "{typography.font-size.16.value}" },
+
+    "header": {
+      "font-weight": { "value": "{typography.font-weight.semi-bold.value}" },
+      "weekdays": {
+        "font-weight": { "value": "{typography.font-weight.regular.value}" }
+      }
+    },
+
+    "days": {
+      "font-size": { "value": "{typography.font-size.14.value}" }
+    }
+  }
+}

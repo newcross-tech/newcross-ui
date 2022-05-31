@@ -42,3 +42,4 @@ export {
 } from './components/ToggleSwitch';
 export { default as Slider, SliderProps } from './components/Slider';
 export { default as Toast, ToastProps, ToastStatus } from './components/Toast';
+export { default as Calendar, CalendarProps } from './components/Calendar';

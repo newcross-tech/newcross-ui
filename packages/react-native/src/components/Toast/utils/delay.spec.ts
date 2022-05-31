@@ -1,4 +1,4 @@
-import { delay } from './Toast';
+import { delay } from './delay';
 
 jest.useFakeTimers();
 

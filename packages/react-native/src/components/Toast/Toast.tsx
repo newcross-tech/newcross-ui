@@ -1,4 +1,4 @@
-import { Pressable } from 'react-native';
+import { Pressable, ViewStyle, TextStyle } from 'react-native';
 import React, { ReactNode, isValidElement, useEffect } from 'react';
 import toastStyle from './Toast.style';
 import Animated from 'react-native-reanimated';
@@ -17,6 +17,7 @@ import {
 } from './Toast.constants';
 import Typography, { TypographyVariant } from '../Typography';
 import useTheme from '../../hooks/useTheme';
+import { delay } from './utils';
 
 export type ToastProps = {
   /**
@@ -50,15 +51,9 @@ export type ToastProps = {
    */
   autoHide?: boolean;
   /**
-   * override the toast styles using this prop
+   * Overwrites or extends the styles applied to the component.
    */
-  overrideStyles?: object;
-};
-
-export const delay = (fn: VoidFunction, duration: number) => {
-  setTimeout(() => {
-    return fn();
-  }, duration);
+  style?: ViewStyle | TextStyle;
 };
 
 const Toast = ({
@@ -69,7 +64,7 @@ const Toast = ({
   status,
   customStatusIcon,
   show,
-  overrideStyles,
+  style,
   ...rest
 }: ToastProps) => {
   const styles = toastStyle({
@@ -123,7 +118,7 @@ const Toast = ({
       {show && (
         <Animated.View
           {...animatedProps}
-          style={[styles.container, overrideStyles]}
+          style={[styles.container, style]}
           {...rest}
         >
           {(isValidElement(customStatusIcon) && customStatusIcon) || icon}

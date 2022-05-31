@@ -31,7 +31,7 @@ export const getBorderValues = (
 
 export const getBorderStyle = (
   theme: ThemeDesignTokens,
-  disabled: ButtonProps
+  { disabled }: ButtonProps
 ) => ({
   [ButtonVariant.outlinePrimary]: {
     borderWidth: theme.ButtonVariantOutlinePrimaryBorderWidth,
