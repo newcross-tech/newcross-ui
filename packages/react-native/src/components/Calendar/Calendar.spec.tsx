@@ -25,35 +25,35 @@ describe('Calendar Component', () => {
 
   it('gets correct month on press of right arrow', async () => {
     // Arrange
-    const { getByTestId } = render(<Calendar />);
+    const { getByTestId } = render(
+      <Calendar startDate={new Date('2022-05-01')} />
+    );
 
     // Act
     const rightArrow = getByTestId('calendar-component-next');
-    getByTestId('HEADER_MONTH_NAME').props.children = 'May 2022';
     fireEvent.press(rightArrow);
 
     // Assert
     await waitFor(() => {
       expect(getByTestId('HEADER_MONTH_NAME')).toBeTruthy;
-      expect(getByTestId('HEADER_MONTH_NAME').props.children).toBe('June 2022');
+      expect(getByTestId('HEADER_MONTH_NAME').props.children).toBe('Jun 2022');
     });
   });
 
   it('gets correct month on press of left arrow', async () => {
     // Arrange
-    const { getByTestId } = render(<Calendar />);
+    const { getByTestId } = render(
+      <Calendar startDate={new Date('2022-05-01')} />
+    );
 
     // Act
     const leftArrow = getByTestId('calendar-component-previous');
-    getByTestId('HEADER_MONTH_NAME').props.children = 'May 2022';
     fireEvent.press(leftArrow);
 
     // Assert
     await waitFor(() => {
       expect(getByTestId('HEADER_MONTH_NAME')).toBeTruthy;
-      expect(getByTestId('HEADER_MONTH_NAME').props.children).toBe(
-        'April 2022'
-      );
+      expect(getByTestId('HEADER_MONTH_NAME').props.children).toBe('Apr 2022');
     });
   });
 });

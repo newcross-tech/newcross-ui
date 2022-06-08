@@ -4,7 +4,11 @@ import {
   CalendarProps as NativeCalendarProps,
   LocaleConfig,
 } from 'react-native-calendars';
-import { SHORT_WEEK_DAYS, FIRST_DAY_OF_THE_WEEK } from './Calendar.constants';
+import {
+  SHORT_MONTH_NAME,
+  SHORT_WEEK_DAYS,
+  FIRST_DAY_OF_THE_WEEK,
+} from './Calendar.constants';
 import Button, { ButtonVariant, ButtonSizes, ButtonCorners } from '../Button';
 import {
   faChevronRight,
@@ -35,18 +39,27 @@ export type CalendarProps = {
    * Used to locate this view in end-to-end tests.
    */
   testID?: string;
+  /**
+   * Used to specify start date for calendar to begin on
+   * e.g. 2022-05-01
+   */
+  startDate?: Date;
 } & NativeCalendarProps;
 
 const Calendar = ({
   hideExtraDays = true,
   firstDay = FIRST_DAY_OF_THE_WEEK,
+  startDate,
   ...rest
 }: CalendarProps) => {
   const styles = calendarStyles();
   LocaleConfig.locales[LocaleConfig.defaultLocale].dayNamesShort =
     SHORT_WEEK_DAYS;
+  LocaleConfig.locales[LocaleConfig.defaultLocale].monthNames =
+    SHORT_MONTH_NAME;
 
-  const [date, setDate] = useState(new Date());
+  const initialDate: Date = startDate ? startDate : new Date();
+  const [date, setDate] = useState(initialDate);
   const [previousMonth, setPreviousMonth] = useState(getPreviousMonth(date, 1));
   const [nextMonth, setNextMonth] = useState(getNextMonth(date, 1));
 

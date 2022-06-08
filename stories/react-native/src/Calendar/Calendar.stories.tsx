@@ -2,10 +2,12 @@ import { Meta, Story } from '@storybook/react';
 import { Calendar, CalendarProps } from '@newcross-ui/react-native';
 import Container from '../Container';
 import { isWebPlatform } from '../utils';
+import { getParameters } from '../utils';
 
 export default {
   title: 'ReactNative/Components/Calendar',
   component: Calendar,
+  parameters: getParameters(),
 } as Meta;
 
 export const Variants = () => {

@@ -53,7 +53,7 @@ export const Variants = () => {
         message="This is an info toast with a close icon!"
         onClose={() => setShowInfoToastWithClose(false)}
         autoHide={false}
-        overrideStyles={{
+        style={{
           paddingTop: Platform.OS === 'android' ? 50 : undefined,
         }}
       />
@@ -63,7 +63,7 @@ export const Variants = () => {
         message="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
         onClose={() => setShowInfoMultiLine(false)}
         autoHide={false}
-        overrideStyles={{
+        style={{
           paddingTop: Platform.OS === 'android' ? 50 : undefined,
         }}
       />
@@ -72,7 +72,7 @@ export const Variants = () => {
         status={ToastStatus.info}
         message="This is an info toast!"
         onClose={() => setShowInfoToast(false)}
-        overrideStyles={{
+        style={{
           paddingTop: Platform.OS === 'android' ? 50 : undefined,
         }}
       />
@@ -81,7 +81,7 @@ export const Variants = () => {
         status={ToastStatus.success}
         message="This is a success toast!"
         onClose={() => setShowSucessToast(false)}
-        overrideStyles={{
+        style={{
           paddingTop: Platform.OS === 'android' ? 50 : undefined,
         }}
       />
@@ -90,7 +90,7 @@ export const Variants = () => {
         status={ToastStatus.warning}
         message="This is a warning toast!"
         onClose={() => setShowWarningToast(false)}
-        overrideStyles={{
+        style={{
           paddingTop: Platform.OS === 'android' ? 50 : undefined,
         }}
       />
@@ -99,7 +99,7 @@ export const Variants = () => {
         status={ToastStatus.error}
         message="This is an error toast!"
         onClose={() => setShowErrorToast(false)}
-        overrideStyles={{
+        style={{
           paddingTop: Platform.OS === 'android' ? 50 : undefined,
         }}
       />
@@ -108,7 +108,7 @@ export const Variants = () => {
         status={ToastStatus.error}
         message="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
         onClose={() => setShowErrorToastMultiLine(false)}
-        overrideStyles={{
+        style={{
           paddingTop: Platform.OS === 'android' ? 50 : undefined,
         }}
       />
