@@ -42,7 +42,7 @@
         "value": "{border.base.radius.md.value}"
       },
       "offset": {
-        "height": { "value": "{shadow.base.offset.md.value}" },
+        "height": { "value": "{shadow.base.offset.lg.value}" },
         "width": { "value": "{shadow.base.offset.sm.value}" }
       },
       "elevation": {

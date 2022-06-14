@@ -3,17 +3,29 @@
     "background-color": { "value": "{color.base.white.value}" },
     "border-radius": { "value": "{border.base.radius.lg.value}" },
     "position": { "value": "{spacing.base.0.value}" },
-
-    "line": {
-      "margin-top": { "value": "{spacing.base.12.value}" },
-      "background-color": { "value": "{color.base.grey.100.value}" },
-      "height": { "value": "{spacing.base.4.value}" },
-      "width": { "value": "{spacing.base.64.value}" },
-      "border-radius": { "value": "{border.base.radius.rounded.value}" }
-    },
     "backdrop": {
       "background-color": { "value": "{color.base.black.value}" },
       "opacity": { "value": "{opacity.base.md.value}" }
+    },
+    "indicator": {
+      "margin-vertical": { "value": "{spacing.base.16.value}" },
+      "background-color": { "value": "{color.base.grey.100.value}" },
+      "border-radius": { "value": "{border.base.radius.rounded.value}" },
+      "height": { "value": "{spacing.base.12.value}" }
+    },
+    "indicator-container": {
+      "margin-bottom": { "value": "{spacing.base.4.value}" },
+      "min-height": { "value": "{spacing.base.32.value}" },
+      "scroll": {
+        "shadow": {
+          "color": { "value": "{color.base.black.value}" },
+          "opacity": { "value": "{opacity.base.sm.value}" },
+          "offset-height": { "value": "{shadow.base.offset.md.value}" },
+          "offset-width": { "value": "{shadow.base.offset.sm.value}" },
+          "elevation": { "value": "{shadow.base.elevation.sm.value}" },
+          "radius": { "value": "{border.base.radius.sm.value}" }
+        }
+      }
     }
   }
 }

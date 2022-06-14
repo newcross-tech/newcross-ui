@@ -1,5 +1,9 @@
-import { Dimensions, Pressable, View } from 'react-native';
-import { Gesture, GestureDetector } from 'react-native-gesture-handler';
+import { Dimensions, Pressable, View, ScrollViewProps } from 'react-native';
+import {
+  Gesture,
+  GestureDetector,
+  ScrollView,
+} from 'react-native-gesture-handler';
 import bottomSheetStyle from './BottomSheet.style';
 import Animated, {
   useSharedValue,
@@ -17,10 +21,14 @@ import React, {
 } from 'react';
 import {
   DEFAULT_COLLAPSE_THRESHOLD,
-  DEFAULT_SNAP_POINT,
   SPRING_CONFIG,
+  DEFAULT_MAX_HEIGHT,
 } from './BottomSheet.constants';
-import { normalizeSnapPoint } from './BottomSheet.utils';
+import {
+  normalizeSnapPoint,
+  normalizeContentHeightToDimensions,
+  normalizeContentHeightAsPercentage,
+} from './utils';
 import useTheme from '../../hooks/useTheme';
 
 const dimensions = Dimensions.get('window');
@@ -42,7 +50,11 @@ export type BottomSheetProps = {
    * control backdrop
    */
   hasBackdrop?: boolean;
-};
+  /**
+   * control gesture indicator
+   */
+  hasGestureIndicator?: boolean;
+} & ScrollViewProps;
 
 export type BottomSheetRefProps = {
   /**
@@ -65,19 +77,24 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
   (
     {
       children,
-      snapPoint = DEFAULT_SNAP_POINT,
+      snapPoint,
       collapseThreshold = DEFAULT_COLLAPSE_THRESHOLD,
       hasBackdrop = true,
+      hasGestureIndicator = true,
+      ...rest
     },
     ref
   ) => {
     const [active, setActive] = useState(false);
+    const [contentHeight, setContentHeight] = useState(0);
+
     const topPosition = useSharedValue(dimensions.height);
     const startTopPosition = useSharedValue(0);
     const theme = useTheme();
-
     const styles = bottomSheetStyle(theme);
-    const normalizedSnapPoint = normalizeSnapPoint(snapPoint);
+    const hasSnapPoint =
+      snapPoint || `${normalizeContentHeightToDimensions(contentHeight)}%`;
+    const normalizedSnapPoint = Math.round(normalizeSnapPoint(hasSnapPoint));
 
     const scrollTo = useCallback((destination: number) => {
       'worklet';
@@ -92,7 +109,7 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
     const expand = useCallback(() => {
       scrollTo(normalizedSnapPoint);
       setActive(true);
-    }, []);
+    }, [normalizedSnapPoint]);
 
     useImperativeHandle(ref, () => ({ scrollTo, collapse, expand }));
 
@@ -126,22 +143,43 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
       return { opacity: withSpring(opacity, SPRING_CONFIG) };
     });
 
+    const isContentGreaterThanMaxHeight =
+      normalizeContentHeightAsPercentage(contentHeight) > DEFAULT_MAX_HEIGHT;
+
     return (
       <>
         {active && hasBackdrop && (
           <AnimatedPressable
             testID="bottom-sheet-backdrop"
             style={[styles.backdrop, backdropAnimationStyle]}
-            onPress={collapse}
+            onPress={hasGestureIndicator ? collapse : null}
           />
         )}
-        <GestureDetector gesture={gesture}>
+        <GestureDetector gesture={hasGestureIndicator ? gesture : undefined}>
           <Animated.View
             style={[styles.container, animationStyle]}
             testID={active ? 'bottom-sheet-visible' : 'bottom-sheet-hidden'}
           >
-            <View style={styles.line} />
-            {children}
+            <View
+              style={[
+                isContentGreaterThanMaxHeight &&
+                  styles.indicatorContainerScroll,
+                styles.indicatorContainer,
+              ]}
+            >
+              {hasGestureIndicator && <View style={styles.indicator} />}
+            </View>
+
+            <ScrollView {...rest}>
+              <View
+                onLayout={(event) => {
+                  const { height } = event.nativeEvent.layout;
+                  setContentHeight(height);
+                }}
+              >
+                {children}
+              </View>
+            </ScrollView>
           </Animated.View>
         </GestureDetector>
       </>

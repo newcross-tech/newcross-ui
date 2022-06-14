@@ -3,7 +3,8 @@
     "base": {
       "offset": {
         "sm": { "value": 0 },
-        "md": { "value": 4 }
+        "md": { "value": 2 },
+        "lg": { "value": 4 }
       }
     }
   }

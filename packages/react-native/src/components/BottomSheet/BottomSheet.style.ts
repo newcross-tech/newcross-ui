@@ -1,4 +1,4 @@
-import { StyleSheet, useWindowDimensions } from 'react-native';
+import { StyleSheet, useWindowDimensions, Platform } from 'react-native';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 
 const bottomSheetStyle = (theme: ThemeDesignTokens) => {
@@ -14,13 +14,34 @@ const bottomSheetStyle = (theme: ThemeDesignTokens) => {
       borderTopStartRadius: theme.BottomSheetBorderRadius,
       borderTopEndRadius: theme.BottomSheetBorderRadius,
     },
-    line: {
-      alignSelf: 'center',
-      marginTop: theme.BottomSheetLineMarginTop,
-      height: theme.BottomSheetLineHeight,
-      backgroundColor: theme.BottomSheetLineBackgroundColor,
-      width: theme.BottomSheetLineWidth,
-      borderRadius: theme.BottomSheetLineBorderRadius,
+    indicatorContainer: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderTopStartRadius: theme.BottomSheetBorderRadius,
+      borderTopEndRadius: theme.BottomSheetBorderRadius,
+      marginBottom: theme.BottomSheetIndicatorContainerMarginBottom,
+      minHeight: theme.BottomSheetIndicatorContainerMinHeight,
+    },
+    indicatorContainerScroll: {
+      backgroundColor: theme.BottomSheetBackgroundColor,
+      shadowOpacity: theme.BottomSheetIndicatorContainerScrollShadowOpacity,
+      shadowColor: theme.BottomSheetIndicatorContainerScrollShadowColor,
+      shadowOffset: {
+        height: theme.BottomSheetIndicatorContainerScrollShadowOffsetHeight,
+        width: theme.BottomSheetIndicatorContainerScrollShadowOffsetWidth,
+      },
+      shadowRadius: theme.BottomSheetIndicatorContainerScrollShadowRadius,
+      ...Platform.select({
+        android: {
+          elevation: theme.BottomSheetIndicatorContainerScrollShadowElevation,
+        },
+      }),
+    },
+    indicator: {
+      backgroundColor: theme.BottomSheetIndicatorBackgroundColor,
+      width: '30%',
+      height: theme.BottomSheetIndicatorHeight / 2,
+      borderRadius: theme.BottomSheetIndicatorBorderRadius,
     },
     backdrop: {
       position: 'absolute',

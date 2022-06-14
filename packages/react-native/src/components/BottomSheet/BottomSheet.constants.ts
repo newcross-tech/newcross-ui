@@ -8,4 +8,8 @@ export const SPRING_CONFIG: WithSpringConfig = {
 };
 
 export const DEFAULT_SNAP_POINT = '50%';
+export const DEFAULT_MAX_SNAP_POINT = '95%';
+
 export const DEFAULT_COLLAPSE_THRESHOLD = 200;
+export const DEFAULT_MAX_HEIGHT = 95;
+export const DEFAULT_MIN_HEIGHT = 25;
