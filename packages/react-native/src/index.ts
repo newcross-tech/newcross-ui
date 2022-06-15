@@ -7,11 +7,17 @@ export {
 } from './components/Button';
 export { default as Radio, RadioProps } from './components/Radio';
 export {
+  default as Header,
+  HeaderProps,
+  HeaderColors,
+} from './components/Header';
+export {
   default as Typography,
   TypographyProps,
   TypographyVariant,
 } from './components/Typography';
 export { default as Card, CardProps, CardColors } from './components/Card';
+
 export {
   default as Badge,
   BadgeProps,

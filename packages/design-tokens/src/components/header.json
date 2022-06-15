@@ -1,0 +1,18 @@
+{
+  "header": {
+    "background-color": {
+      "primary": {
+        "value": "{color.base.gravitas.value}"
+      },
+      "secondary": {
+        "value": "{color.base.green.100.value}"
+      }
+    },
+    "padding-horizontal": { "value": "{spacing.base.16.value}" },
+    "padding-bottom": { "value": "{spacing.base.16.value}" },
+    "padding-top": { "value": "{spacing.base.64.value}" }
+  },
+  "header-tail": {
+    "height": { "value": "{spacing.base.32.value}" }
+  }
+}
