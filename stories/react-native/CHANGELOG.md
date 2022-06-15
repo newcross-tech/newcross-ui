@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.16.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.15.1...@newcross-stories/react-native@1.16.0) (2022-06-15)
+
+
+### Bug Fixes
+
+* **hfp-963:** fixes broken tests on calendar, uses 3 char for month names and fixes style property on toast stories ([cfe5f65](https://bitbucket.org/newcrossdev/newcross-ui/commits/cfe5f65b3066cef689c7075c0309e469e2097cee))
+
+
+### Features
+
+* **hfp-1109:** updated Bottom Sheet Component to open up to a dynamic snap point depending on the content's height. Also corrected indicator and gesture styles ([1d21a4d](https://bitbucket.org/newcrossdev/newcross-ui/commits/1d21a4d19b83675f1ff56369142fa1588d7f58eb))
+
+
+
+
+
 ## [1.15.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.15.0...@newcross-stories/react-native@1.15.1) (2022-05-31)
 
 **Note:** Version bump only for package @newcross-stories/react-native

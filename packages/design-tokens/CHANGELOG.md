@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.17.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.16.1...@newcross-ui/design-tokens@1.17.0) (2022-06-15)
+
+
+### Features
+
+* **hfp-1109:** updated Bottom Sheet Component to open up to a dynamic snap point depending on the content's height. Also corrected indicator and gesture styles ([1d21a4d](https://bitbucket.org/newcrossdev/newcross-ui/commits/1d21a4d19b83675f1ff56369142fa1588d7f58eb))
+
+
+
+
+
 ## [1.16.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.16.0...@newcross-ui/design-tokens@1.16.1) (2022-05-31)
 
 **Note:** Version bump only for package @newcross-ui/design-tokens
