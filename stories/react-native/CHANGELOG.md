@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.17.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.16.0...@newcross-stories/react-native@1.17.0) (2022-06-15)
+
+
+### Features
+
+* **hfp-1038:** Created header component ([622fe3d](https://bitbucket.org/newcrossdev/newcross-ui/commits/622fe3d119e46dd28d595799527be0b818ecf979))
+
+
+
+
+
 # [1.16.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.15.1...@newcross-stories/react-native@1.16.0) (2022-06-15)
 
 
