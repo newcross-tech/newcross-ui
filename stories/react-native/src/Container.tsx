@@ -8,18 +8,20 @@ type ContainerProps = {
   children: ReactNode;
   direction?: 'row' | 'column';
   containerStyle?: ViewStyle;
+  hasPadding?: boolean;
 };
 
 const Container: FC<ContainerProps> = ({
   children,
   direction,
   containerStyle,
+  hasPadding = true,
 }) => {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
       justifyContent: 'center',
-      padding: SpacingBase12,
+      padding: hasPadding ? SpacingBase12 : undefined,
       flexDirection: direction,
     },
   });
