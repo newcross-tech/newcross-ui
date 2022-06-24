@@ -23,7 +23,10 @@ const { SpacingBase0, SpacingBase24 } = healthforce;
 export default {
   title: 'ReactNative/Components/BottomSheet',
   component: BottomSheet,
-  parameters: { layout: 'fullscreen', ...getParameters(true, false) },
+  parameters: {
+    layout: 'fullscreen',
+    ...getParameters(true, false),
+  },
 } as Meta;
 
 export const VariantWithContent = () => {

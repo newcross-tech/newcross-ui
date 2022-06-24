@@ -1,23 +1,30 @@
 import { Parameters } from '@storybook/react';
-import { healthforce } from '@newcross-ui/design-tokens';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { isWebPlatform } from './isWebPlatform';
 
-const { ColorBaseGrey600 } = healthforce;
+type Backgrounds = 'white' | 'figma';
 
 export const getParameters = (
   showViewport = false,
-  showPanel = true
+  showPanel = true,
+  background: Backgrounds = 'figma'
 ): Parameters => {
-  return {
-    backgrounds: isWebPlatform && {
-      default: 'figma',
-      values: [{ name: 'figma', value: ColorBaseGrey600 }],
-    },
+  const parameters = {
     viewport: showViewport && {
       viewports: INITIAL_VIEWPORTS,
       defaultViewport: 'iphone6',
     },
     options: { showPanel },
   };
+
+  if (isWebPlatform) {
+    return {
+      backgrounds: {
+        default: background,
+      },
+      ...parameters,
+    };
+  }
+
+  return parameters;
 };

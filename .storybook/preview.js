@@ -30,7 +30,7 @@ export const parameters = {
     },
   },
   backgrounds: {
-    default: 'white',
+    default: 'figma',
     values: [
       {
         name: 'white',
