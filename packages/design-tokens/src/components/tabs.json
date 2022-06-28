@@ -1,0 +1,45 @@
+{
+  "tabs": {
+    "background-color": { "value": "{color.base.grey.400.value}" },
+    "border-radius": { "value": "{border.base.radius.rounded.value}" },
+    "padding-vertical": { "value": "{spacing.base.4.value}" },
+    "padding-horizontal": { "value": "{spacing.base.8.value}" },
+    "height": { "value": "{spacing.base.40.value}" },
+
+    "label": {
+      "font-family": { "value": "{brand.font-family.regular.value}" },
+      "font-size": { "value": "{typography.font-size.16.value}" },
+      "font-weight": { "value": "{typography.font-weight.regular.value}" },
+      "color": { "value": "{brand.color.primary.value}" },
+      "line-height": { "value": "{spacing.base.24.value}" },
+      "padding-horizontal": { "value": "{spacing.base.12.value}" },
+
+      "disabled": {
+        "color": { "value": "{color.base.grey.200.value}" }
+      }
+    },
+
+    "active-tab": {
+      "height": { "value": "{spacing.base.32.value}" },
+      "background-color": { "value": "{brand.color.secondary.value}" },
+      "border-radius": { "value": "{border.base.radius.rounded.value}" },
+      "padding": { "value": "{spacing.base.4.value}" },
+      "disabled": {
+        "background-color": { "value": "{color.base.grey.100.value}" }
+      },
+      "shadow": {
+        "color": { "value": "{color.base.black.value}" },
+        "opacity": { "value": "{opacity.base.sm.value}" },
+        "offset-height": { "value": "{shadow.base.offset.lg.value}" },
+        "offset-width": { "value": "{shadow.base.offset.sm.value}" },
+        "elevation": { "value": "{shadow.base.elevation.sm.value}" },
+        "radius": { "value": "{shadow.base.offset.lg.value}" }
+      }
+    },
+    "divider": {
+      "height": { "value": "{spacing.base.40.value}" },
+      "width": { "value": "{spacing.base.4.value}" },
+      "background-color": { "value": "{color.base.grey.100.value}" }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react-native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faKitMedical, faUser } from '@fortawesome/pro-light-svg-icons';
+import Tabs, { TabsProps } from './Tabs';
+
+describe('Tabs Component', () => {
+  it('renders successfully', () => {
+    // Arrange
+    const props: TabsProps = {
+      tabs: ['Label A', 'Label B'],
+      currentIndex: 0,
+      onCurrentIndexChange: jest.fn(),
+    };
+    // Act
+    const { getByText } = render(<Tabs {...props} />);
+
+    // Assert
+    expect(getByText(/label a/i)).toBeTruthy();
+    expect(getByText(/label b/i)).toBeTruthy();
+  });
+
+  it('renders successfully with icons', () => {
+    // Arrange
+    const props: TabsProps = {
+      tabs: [
+        <FontAwesomeIcon icon={faUser} />,
+        <FontAwesomeIcon icon={faKitMedical} />,
+      ],
+      currentIndex: 0,
+      onCurrentIndexChange: jest.fn(),
+    };
+    // Act
+    const { getByTestId } = render(<Tabs {...props} />);
+
+    // Assert
+    expect(getByTestId('tab-view-0')).toBeTruthy();
+    expect(getByTestId('tab-view-1')).toBeTruthy();
+  });
+
+  it('triggers onPress successfully', () => {
+    // Arrange
+    const onPress = jest.fn();
+    const props: TabsProps = {
+      tabs: ['Label A', 'Label B', 'Label C', 'Label D'],
+      currentIndex: 0,
+      onCurrentIndexChange: onPress,
+    };
+
+    // Act
+    const { getByTestId } = render(<Tabs {...props} />);
+    fireEvent.press(getByTestId('tab-3'));
+
+    // Assert
+    expect(onPress).toBeCalled();
+    expect(onPress).toHaveBeenCalledWith(3);
+  });
+
+  it('does not trigger onPress when disabled prop is passed', () => {
+    // Arrange
+    const onPress = jest.fn();
+    const props: TabsProps = {
+      tabs: ['Label A', 'Label B'],
+      currentIndex: 0,
+      onCurrentIndexChange: onPress,
+      disabled: true,
+    };
+
+    // Act
+    const { getByTestId } = render(<Tabs {...props} />);
+    fireEvent.press(getByTestId('tab-1'));
+
+    // Assert
+    expect(onPress).not.toBeCalled();
+  });
+});
