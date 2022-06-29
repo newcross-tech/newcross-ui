@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.19.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.18.0...@newcross-ui/design-tokens@1.19.0) (2022-06-29)
+
+
+### Features
+
+* **hfgo-1115:** create tabs components ([409c927](https://bitbucket.org/newcrossdev/newcross-ui/commits/409c9279a4d1e0a5209c9e95d3efe0c59d166b7b))
+
+
+
+
+
 # [1.18.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.17.0...@newcross-ui/design-tokens@1.18.0) (2022-06-15)
 
 

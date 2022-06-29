@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.18.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.17.0...@newcross-stories/react-native@1.18.0) (2022-06-29)
+
+
+### Features
+
+* **hfgo-1115:** create tabs components ([409c927](https://bitbucket.org/newcrossdev/newcross-ui/commits/409c9279a4d1e0a5209c9e95d3efe0c59d166b7b))
+* **hfp-1132:** update storybook styling ([eed0835](https://bitbucket.org/newcrossdev/newcross-ui/commits/eed0835a1e966bf5aabfa9184f6422be84397b71))
+
+
+
+
+
 # [1.17.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.16.0...@newcross-stories/react-native@1.17.0) (2022-06-15)
 
 
