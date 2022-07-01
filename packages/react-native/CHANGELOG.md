@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.16.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.15.0...@newcross-ui/react-native@1.16.0) (2022-07-01)
+
+
+### Features
+
+* **HGFO-1114:** create avatar component ([6782262](https://bitbucket.org/newcrossdev/newcross-ui/commits/67822625a455312d2063ef27fca564cc0db4f684))
+
+
+
+
+
 # [1.15.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.14.0...@newcross-ui/react-native@1.15.0) (2022-06-29)
 
 
