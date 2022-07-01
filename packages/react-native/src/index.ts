@@ -1,4 +1,9 @@
 export {
+  default as Avatar,
+  AvatarProps,
+  AvatarSizes,
+} from './components/Avatar';
+export {
   default as Button,
   ButtonProps,
   ButtonVariant,

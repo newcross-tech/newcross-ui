@@ -1,0 +1,113 @@
+{
+  "avatar": {
+    "border-radius": {
+      "value": "{border.base.radius.rounded.value}"
+    },
+    "inactive-background-color": {
+      "value": "{color.base.grey.100.value}"
+    },
+    "inactive-color": {
+      "value": "{color.base.grey.200.value}"
+    },
+    "active-ellipse": {
+      "border-color": {
+        "value": "{brand.color.secondary.value}"
+      },
+      "large": {
+        "width": {
+          "value": "{spacing.base.64.value}"
+        },
+        "height": {
+          "value": "{spacing.base.64.value}"
+        },
+        "border-width": {
+          "value": "{border.base.width.md.value}"
+        }
+      },
+      "medium": {
+        "width": {
+          "value": "{spacing.base.48.value}"
+        },
+        "height": {
+          "value": "{spacing.base.48.value}"
+        },
+        "border-width": {
+          "value": "{border.base.width.sm.value}"
+        }
+      },
+      "small": {
+        "width": {
+          "value": "{spacing.base.32.value}"
+        },
+        "height": {
+          "value": "{spacing.base.32.value}"
+        },
+        "border-width": {
+          "value": "{border.base.width.sm.value}"
+        }
+      }
+    },
+    "inner-ellipse": {
+      "color": {
+        "value": "{brand.color.primary.value}"
+      },
+      "background-color": {
+        "value": "{color.base.grey.400.value}"
+      },
+      "opacity": {
+        "value": "{opacity.base.md.value}"
+      },
+      "large": {
+        "width": {
+          "value": "{spacing.base.48.value}"
+        },
+        "height": {
+          "value": "{spacing.base.48.value}"
+        }
+      },
+      "medium": {
+        "width": {
+          "value": "{spacing.base.32.value}"
+        },
+        "height": {
+          "value": "{spacing.base.32.value}"
+        }
+      },
+      "small": {
+        "width": {
+          "value": "{spacing.base.24.value}"
+        },
+        "height": {
+          "value": "{spacing.base.24.value}"
+        }
+      },
+      "text": {
+        "font-family": {
+          "value": "{brand.font-family.regular.value}"
+        },
+        "font-weight": {
+          "value": "{typography.font-weight.semi-bold.value}"
+        },
+        "font-size": {
+          "value": "{typography.font-size.16.value}"
+        },
+        "line-height": {
+          "value": "{typography.line-height.24.value}"
+        }
+      },
+      "icon": {
+        "height": {
+          "large": {
+            "value": "{spacing.base.24.value}"
+          },
+          "medium": {
+            "value": "{spacing.base.16.value}"
+          },
+          "small": {
+            "value": "{spacing.base.12.value}"
+          }
+        }
+      }
+    }
+  }
+}
