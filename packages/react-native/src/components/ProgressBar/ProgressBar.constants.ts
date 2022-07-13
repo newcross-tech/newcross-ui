@@ -1,0 +1,13 @@
+export const DEFAULT_NUMBER_OF_LINES = 2;
+
+export const DEFAULT_NUMBER_OF_REPETITIONS = -1;
+
+export const DEFAULT_PROGRESS = 0;
+
+export const DEFAULT_HAS_PROGRESS_LABEL = true;
+
+export const DEFAULT_MIN_PROGRESS = 0;
+
+export const DEFAULT_MAX_PROGRESS = 100;
+
+export const DEFAULT_ANIMATION_DURATION = 2000;

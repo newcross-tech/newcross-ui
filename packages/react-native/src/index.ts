@@ -12,6 +12,13 @@ export {
 } from './components/Button';
 export { default as Radio, RadioProps } from './components/Radio';
 export {
+  default as ProgressBar,
+  ProgressBarProps,
+  ProgressBarVariant,
+  ProgressBarLabelPositions,
+  ProgressBarColorVariant,
+} from './components/ProgressBar';
+export {
   default as Header,
   HeaderProps,
   HeaderColors,
