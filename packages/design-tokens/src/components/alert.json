@@ -1,0 +1,43 @@
+{
+  "alert": {
+    "border": {
+      "width": {
+        "value": "{border.base.width.sm}"
+      },
+      "radius": {
+        "value": "{border.base.radius.sm}"
+      }
+    },
+    "color": {
+      "success": {
+        "primary": { "value": "{color.base.green.700.value}" },
+        "secondary": { "value": "{color.base.green.800.value}" }
+      },
+      "warning": {
+        "primary": { "value": "{color.base.orange.100.value}" },
+        "secondary": { "value": "{color.base.orange.200.value}" }
+      },
+      "error": {
+        "primary": { "value": "{color.base.red.300.value}" },
+        "secondary": { "value": "{color.base.red.400.value}" }
+      },
+      "info": {
+        "primary": { "value": "{color.base.blue.300.value}" },
+        "secondary": { "value": "{color.base.blue.200.value}" }
+      }
+    },
+    "text": {
+      "container-padding": {
+        "value": "{spacing.base.12.value}"
+      },
+      "color": {
+        "value": "{color.base.gravitas.value}"
+      }
+    },
+    "icon": {
+      "size": {
+        "value": "{spacing.base.24.value}"
+      }
+    }
+  }
+}

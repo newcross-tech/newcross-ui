@@ -13,6 +13,7 @@ const cardStyle = ({
   color,
   fullWidth,
   theme,
+  hasRightIcon,
 }: ThemedCardProps) => {
   const contentBorderRadiusValues = getContentBorderRadiusValues(
     !!thumbnailContent,
@@ -52,7 +53,7 @@ const cardStyle = ({
     content: {
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'space-between',
+      justifyContent: hasRightIcon ? 'space-between' : 'flex-start',
       flex: fullWidth ? 1 : undefined,
       padding: CardPadding,
       borderWidth: hasBorder ? CardBorderWidth : 0,

@@ -57,18 +57,28 @@ export type CardProps = {
    * Cards right hand side content if it has a rightIcon
    */
   rightIconContent?: ReactNode;
+  /**
+   * A test identifier for the component.
+   */
+  testID?: string;
+  /**
+   * Overwrites or extends the styles applied to the component's container.
+   */
+  containerStyle?: ViewStyle;
 };
 
 const Card = ({
   children,
   thumbnailContent,
   hasBorder,
+  testID = 'card',
   hasRoundedCorners,
   contentStyle,
   fullWidth,
   color = CardColors.primary,
   hasRightIcon = false,
   rightIconContent,
+  containerStyle,
   ...rest
 }: CardProps) => {
   const theme = useTheme();
@@ -80,19 +90,24 @@ const Card = ({
     color,
     fullWidth,
     theme,
+    hasRightIcon,
   });
 
   return (
-    <Pressable style={styles.container} {...rest} testID="card">
+    <Pressable
+      style={[styles.container, containerStyle]}
+      {...rest}
+      testID={`${testID}`}
+    >
       {thumbnailContent && (
-        <View style={styles.thumbnail} testID="card-thumbnail">
+        <View style={styles.thumbnail} testID={`${testID}-thumbnail`}>
           {thumbnailContent}
         </View>
       )}
       <View style={[styles.content, contentStyle]}>
         {children}
         {hasRightIcon && (
-          <View style={styles.rightIcon} testID="card-right-icon">
+          <View style={styles.rightIcon} testID={`${testID}-right-icon`}>
             {rightIconContent ?? (
               <FontAwesomeIcon
                 icon={faChevronRight}

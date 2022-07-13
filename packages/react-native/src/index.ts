@@ -3,6 +3,7 @@ export {
   AvatarProps,
   AvatarSizes,
 } from './components/Avatar';
+export { default as Alert, AlertProps, AlertVariant } from './components/Alert';
 export {
   default as Button,
   ButtonProps,
