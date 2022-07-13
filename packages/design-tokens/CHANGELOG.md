@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.21.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.20.0...@newcross-ui/design-tokens@1.21.0) (2022-07-13)
+
+
+### Features
+
+* **hfgo-1151:** creates the text input component ([10eb646](https://bitbucket.org/newcrossdev/newcross-ui/commits/10eb6464229f354df1c67134e164a86132da55c9))
+* **hfgo-1155:** created progress bar component ([09b9ba8](https://bitbucket.org/newcrossdev/newcross-ui/commits/09b9ba8142e20f96adf714a820a4e183dd72cd56))
+* **hfp-1144:** Create alert component ([280cd1e](https://bitbucket.org/newcrossdev/newcross-ui/commits/280cd1e4e845ac8bc0e117b82b10542af2a75f58))
+
+
+
+
+
 # [1.20.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.19.0...@newcross-ui/design-tokens@1.20.0) (2022-07-01)
 
 
