@@ -73,4 +73,22 @@ describe('Tabs Component', () => {
     // Assert
     expect(onPress).not.toBeCalled();
   });
+
+  it('calculates width of the tabs container', () => {
+    // Arrange
+    const widthOfContainer = 566;
+    const onPress = jest.fn();
+    const props: TabsProps = {
+      tabs: ['Label A', 'Label B'],
+      currentIndex: 0,
+      onCurrentIndexChange: onPress,
+    };
+
+    // Act
+    const { getByTestId } = render(<Tabs {...props} />);
+
+    fireEvent(getByTestId('tab-0'), 'layout', {
+      nativeEvent: { layout: { width: widthOfContainer } },
+    });
+  });
 });
