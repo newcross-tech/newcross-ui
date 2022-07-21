@@ -36,7 +36,6 @@ export const Overview = () => {
           label="Label"
           helperText="This is the example overview text"
           textContentType="password"
-          hasError={false}
           onChangeText={onChangeText}
         />
       </Container>
@@ -66,7 +65,6 @@ export const Variants = () => {
           value={text1}
           textContentType="name"
           onChangeText={onChangeText1}
-          hasError={false}
         />
         <Spacing />
 
@@ -78,7 +76,6 @@ export const Variants = () => {
           value={text2}
           textContentType="name"
           onChangeText={onChangeText2}
-          hasError={false}
         />
         <Spacing />
 
@@ -89,7 +86,6 @@ export const Variants = () => {
           value={text3}
           textContentType="name"
           onChangeText={onChangeText3}
-          hasError={false}
           placeholder="Disabled"
           disabled
         />
@@ -101,7 +97,6 @@ export const Variants = () => {
           textContentType="password"
           value={password}
           onChangeText={(text: string) => setPassword(text)}
-          hasError={false}
         />
         <Spacing />
 
@@ -113,7 +108,6 @@ export const Variants = () => {
           value={text4}
           textContentType="name"
           onChangeText={onChangeText4}
-          hasError={false}
         />
         <Spacing />
 
@@ -124,7 +118,6 @@ export const Variants = () => {
           value={text5}
           textContentType="name"
           onChangeText={onChangeText5}
-          hasError={false}
           label="Label"
         />
         <Spacing />
@@ -136,7 +129,6 @@ export const Variants = () => {
           value={text6}
           textContentType="name"
           onChangeText={onChangeText6}
-          hasError={false}
           label="Label"
           helperText="This is the helper text"
         />
@@ -151,7 +143,6 @@ export const Variants = () => {
           onChangeText={onChangeText7}
           label="Label"
           errorText="This is an error message"
-          hasError
         />
         <Spacing />
       </Container>
@@ -165,7 +156,6 @@ const Template: Story<TextInputProps> = ({
   helperText,
   textContentType,
   disabled,
-  hasError,
   isValid,
 }) => {
   const [text8, onChangeText8] = useState('text8', '');
@@ -179,7 +169,6 @@ const Template: Story<TextInputProps> = ({
         helperText={helperText}
         textContentType={textContentType}
         disabled={disabled}
-        hasError={hasError}
         isValid={isValid}
         onChangeText={onChangeText8}
         value={text8}
@@ -193,8 +182,8 @@ Interactive.args = {
   placeholder: 'this is placeholder text',
   label: 'Label',
   helperText: 'This is the helper text content',
+  errorText: '',
   textContentType: 'newPassword',
   disabled: false,
-  hasError: false,
   isValid: false,
 };

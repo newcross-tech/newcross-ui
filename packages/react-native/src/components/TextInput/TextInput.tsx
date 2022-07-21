@@ -9,7 +9,13 @@ import {
   TextInputProps as NativeTextInputProps,
 } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faEye, faEyeSlash, faCheck } from '@fortawesome/pro-solid-svg-icons';
+import {
+  faEye,
+  faEyeSlash,
+  faCheck,
+  faXmark,
+} from '@fortawesome/pro-solid-svg-icons';
+import { faSearch } from '@fortawesome/pro-light-svg-icons';
 import textInputStyle from './TextInput.style';
 import useTheme from '../../hooks/useTheme';
 
@@ -21,7 +27,7 @@ export type TextInputProps = {
   /**
    * Determines the type of the text input
    */
-  textContentType: string;
+  textContentType?: string;
   /**
    * Gives text input a label
    */
@@ -47,13 +53,17 @@ export type TextInputProps = {
    */
   onChangeText: (newState: string) => void;
   /**
-   * Updates border and helper text styles when true
-   */
-  hasError: boolean;
-  /**
    * Shows check mark when validation is met
    */
   isValid?: boolean;
+  /**
+   * If true alters text input to search bar styles
+   */
+  search?: boolean;
+  /**
+   * triggers the on press of the close icon
+   */
+  onClosePress?: VoidFunction;
   /**
    * Overwrites or extends the styles applied to the component.
    */
@@ -69,8 +79,9 @@ const TextInput = ({
   onChangeText,
   helperText,
   errorText,
-  hasError,
   isValid,
+  search,
+  onClosePress,
   style,
   ...rest
 }: TextInputProps) => {
@@ -78,7 +89,7 @@ const TextInput = ({
   const [selected, setSelected] = useState(false);
 
   const theme = useTheme();
-  const styles = textInputStyle(disabled, selected, hasError);
+  const styles = textInputStyle(disabled, selected, errorText, search);
 
   const handleSelected = () => {
     setSelected(!selected);
@@ -98,6 +109,11 @@ const TextInput = ({
         style={[styles.container, style]}
         pointerEvents={disabled ? 'none' : 'auto'}
       >
+        {search && (
+          <View testID="search-icon" style={styles.leftIcon}>
+            <FontAwesomeIcon icon={faSearch} style={styles.searchIcon} />
+          </View>
+        )}
         <NativeTextInput
           style={styles.inputContainer}
           value={value}
@@ -130,8 +146,17 @@ const TextInput = ({
             <FontAwesomeIcon icon={faCheck} style={styles.checkIcon} />
           </View>
         )}
+        {search && value.length !== 0 && onClosePress && (
+          <Pressable
+            onPress={onClosePress}
+            style={styles.rightIcon}
+            testID="search-close-icon"
+          >
+            <FontAwesomeIcon icon={faXmark} style={styles.closeIcon} />
+          </Pressable>
+        )}
       </View>
-      {(helperText || (errorText && hasError)) && (
+      {(helperText || errorText) && (
         <Text testID="message-text" style={styles.messageText}>
           {errorText || helperText}
         </Text>

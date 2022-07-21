@@ -52,6 +52,26 @@
 
     "validation-check": {
       "color": { "value": "{color.base.green.700.value}" }
+    },
+
+    "search-bar": {
+      "padding-horizontal": { "value": "{spacing.base.12.value}" },
+      "border-radius": { "value": "{border.base.radius.rounded.value}" },
+
+      "search-icon": {
+        "color": { "value": "{brand.color.primary.value}" }
+      },
+
+      "close-icon": {
+        "color": { "value": "{color.base.grey.200.value}" }
+      },
+
+      "shadow": {
+        "color": { "value": "{color.base.black.value}" },
+        "opacity": { "value": "{opacity.base.sm.value}" },
+        "elevation": { "value": "{shadow.base.elevation.sm.value}" },
+        "radius": { "value": "{shadow.base.offset.lg.value}" }
+      }
     }
   }
 }

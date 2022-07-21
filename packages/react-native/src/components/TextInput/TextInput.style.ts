@@ -5,9 +5,17 @@ import { FontWeight } from '../../types';
 const textInputStyle = (
   disabled: boolean | undefined,
   selected: boolean | undefined,
-  hasError: boolean
+  errorText?: string,
+  search?: boolean
 ) => {
   const theme = useTheme();
+
+  const shadowStyles = search && {
+    shadowColor: theme.TextInputSearchBarShadowColor,
+    shadowRadius: theme.TextInputSearchBarShadowRadius,
+    shadowOpacity: theme.TextInputSearchBarShadowOpacity,
+    elevation: theme.TextInputSearchBarShadowElevation,
+  };
 
   return StyleSheet.create({
     container: {
@@ -15,26 +23,31 @@ const textInputStyle = (
       alignItems: 'center',
       borderColor: selected
         ? theme.TextInputSelectedBorderColor
-        : hasError
+        : errorText
         ? theme.TextInputErrorColor
         : theme.TextInputBorderColor,
       borderWidth:
-        selected || hasError
+        selected || errorText
           ? theme.TextInputSelectedBorderWidth
           : theme.TextInputBorderWidth,
-      borderRadius: theme.TextInputBorderRadius,
+      borderRadius: search
+        ? theme.TextInputSearchBarBorderRadius
+        : theme.TextInputBorderRadius,
       backgroundColor: disabled
         ? theme.TextInputDisabledBackgroundColor
         : theme.TextInputBackgroundColor,
       justifyContent: 'space-between',
+      ...shadowStyles,
     },
     inputContainer: {
       flex: 1,
       fontFamily: theme.TextInputFontFamily,
       fontSize: theme.TextInputFontSize,
-      paddingHorizontal: theme.TextInputPaddingHorizontal,
+      paddingHorizontal: search
+        ? theme.TextInputSearchBarPaddingHorizontal
+        : theme.TextInputPaddingHorizontal,
       paddingVertical:
-        selected || hasError
+        selected || errorText
           ? theme.TextInputPaddingVertical - 1
           : theme.TextInputPaddingVertical,
       lineHeight: theme.TextInputLineHeight,
@@ -44,11 +57,21 @@ const textInputStyle = (
       paddingHorizontal: theme.TextInputRightIconPaddingHorizontal,
       justifyContent: 'center',
     },
+    leftIcon: {
+      paddingLeft: theme.TextInputRightIconPaddingHorizontal,
+      justifyContent: 'center',
+    },
     eyeIcon: {
       color: theme.TextInputRightIconColor,
     },
     checkIcon: {
       color: theme.TextInputValidationCheckColor,
+    },
+    searchIcon: {
+      color: theme.TextInputSearchBarSearchIconColor,
+    },
+    closeIcon: {
+      color: theme.TextInputSearchBarCloseIconColor,
     },
     label: {
       color: theme.TextInputLabelColor,
@@ -58,7 +81,7 @@ const textInputStyle = (
       marginBottom: theme.TextInputMarginTop,
     },
     messageText: {
-      color: hasError
+      color: errorText
         ? theme.TextInputErrorColor
         : theme.TextInputHelperTextColor,
       fontSize: theme.TextInputHelperTextFontSize,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
+import { render, fireEvent, act } from '@testing-library/react-native';
 import TextInput, { TextInputProps } from './TextInput';
 
 describe('TextInput Component', () => {
@@ -9,7 +9,6 @@ describe('TextInput Component', () => {
       testID: 'text-input-component',
       value: 'test',
       textContentType: 'name',
-      hasError: false,
       onChangeText: jest.fn(),
     };
 
@@ -25,7 +24,6 @@ describe('TextInput Component', () => {
     const props: TextInputProps = {
       value: 'test',
       textContentType: 'name',
-      hasError: false,
       placeholder: 'this is placeholder text',
       onChangeText: jest.fn(),
     };
@@ -43,7 +41,6 @@ describe('TextInput Component', () => {
       value: 'test',
       textContentType: 'password',
       secureTextEntry: true,
-      hasError: false,
       onChangeText: jest.fn(),
     };
 
@@ -62,7 +59,6 @@ describe('TextInput Component', () => {
       value: 'test',
       textContentType: 'newPassword',
       secureTextEntry: true,
-      hasError: false,
       onChangeText: jest.fn(),
     };
 
@@ -80,7 +76,6 @@ describe('TextInput Component', () => {
     const props: TextInputProps = {
       value: 'test',
       textContentType: 'name',
-      hasError: false,
       isValid: true,
       onChangeText: jest.fn(),
     };
@@ -97,7 +92,6 @@ describe('TextInput Component', () => {
     const props: TextInputProps = {
       value: 'test',
       textContentType: 'name',
-      hasError: false,
       label: 'This is the label',
       onChangeText: jest.fn(),
     };
@@ -115,7 +109,6 @@ describe('TextInput Component', () => {
     const props: TextInputProps = {
       value: 'test',
       textContentType: 'name',
-      hasError: false,
       helperText: 'this is helper text',
       onChangeText: jest.fn(),
     };
@@ -127,12 +120,11 @@ describe('TextInput Component', () => {
     expect(getByTestId('message-text')).toBeTruthy();
   });
 
-  it('displays error text sucessfully - hasError is true', () => {
+  it('displays error text sucessfully - errorText is true', () => {
     // Arrange
     const props: TextInputProps = {
       value: 'test',
       textContentType: 'name',
-      hasError: true,
       errorText: 'this is helper text',
       onChangeText: jest.fn(),
     };
@@ -150,7 +142,6 @@ describe('TextInput Component', () => {
       testID: 'text-input-component',
       value: 'test',
       textContentType: 'name',
-      hasError: false,
       disabled: true,
       onChangeText: jest.fn(),
     };
@@ -169,14 +160,15 @@ describe('TextInput Component', () => {
       testID: 'text-input-component',
       value: 'test',
       textContentType: 'name',
-      hasError: false,
       onFocus,
       onChangeText: jest.fn(),
     };
 
     // Act
     const { getByTestId } = render(<TextInput {...props} />);
-    fireEvent(getByTestId('text-input-component'), 'onFocus');
+    act(() => {
+      fireEvent(getByTestId('text-input-component'), 'onFocus');
+    });
 
     // Assert
     expect(getByTestId('text-input-component')).toBeTruthy();
@@ -189,7 +181,6 @@ describe('TextInput Component', () => {
       testID: 'text-input-component',
       value: 'test',
       textContentType: 'name',
-      hasError: false,
       onChangeText: jest.fn(),
     };
 
@@ -199,5 +190,58 @@ describe('TextInput Component', () => {
 
     // Assert
     expect(getByTestId('text-input-component')).toBeTruthy();
+  });
+});
+
+describe('SearchBar Component', () => {
+  it('displays text input as a search bar component when search prop is passed', () => {
+    // Arrange
+    const props: TextInputProps = {
+      value: '',
+      onChangeText: jest.fn(),
+      search: true,
+      onClosePress: jest.fn(),
+    };
+
+    // Act
+    const { getByTestId } = render(<TextInput {...props} />);
+
+    // Assert
+    expect(getByTestId('search-icon')).toBeTruthy();
+  });
+
+  it('displays close icon when search bar value is not empty', () => {
+    // Arrange
+    const props: TextInputProps = {
+      value: 'I am search for ...',
+      onChangeText: jest.fn(),
+      search: true,
+      onClosePress: jest.fn(),
+    };
+
+    // Act
+    const { getByTestId } = render(<TextInput {...props} />);
+
+    // Assert
+    expect(getByTestId('search-close-icon')).toBeTruthy();
+  });
+
+  it('triggers an onPress when onClosePress is pressed', () => {
+    // Arrange
+    const onClosePress = jest.fn();
+    const props: TextInputProps = {
+      testID: 'text-input-component',
+      value: 'I am search for ...',
+      onChangeText: jest.fn(),
+      search: true,
+      onClosePress,
+    };
+
+    // Act
+    const { getByTestId } = render(<TextInput {...props} />);
+    fireEvent.press(getByTestId('search-close-icon'));
+
+    // Assert
+    expect(onClosePress).toBeCalled();
   });
 });
