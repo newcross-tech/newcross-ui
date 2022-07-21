@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react-native';
+import { render, fireEvent } from '@testing-library/react-native';
 import { Text } from 'react-native';
 import Badge, { BadgeProps } from './Badge';
 
@@ -38,5 +38,19 @@ describe('Badge Component', () => {
     const { getByText } = render(<Badge {...props} />);
 
     expect(getByText(/!/i)).toBeTruthy();
+  });
+
+  it('triggers an onPress event when pressed', () => {
+    const onPress = jest.fn();
+    const props: BadgeProps = {
+      badgeContent: 7,
+      children: <Text>{'Text'}</Text>,
+      onPress,
+    };
+
+    const { getByText } = render(<Badge {...props} />);
+    fireEvent.press(getByText(/text/i));
+
+    expect(onPress).toBeCalled();
   });
 });

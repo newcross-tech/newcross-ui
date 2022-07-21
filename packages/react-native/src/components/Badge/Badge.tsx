@@ -1,5 +1,11 @@
 import React, { ReactNode } from 'react';
-import { TextStyle, View, ViewStyle } from 'react-native';
+import {
+  TextStyle,
+  View,
+  ViewStyle,
+  Pressable,
+  GestureResponderEvent,
+} from 'react-native';
 import badgeStyle from './Badge.style';
 import {
   getTypographyVariant,
@@ -35,6 +41,10 @@ export type BadgeProps = {
    * Positions are predefined
    */
   position?: BadgePositions;
+  /**
+   * Called when a single tap gesture is detected.
+   */
+  onPress?: (event: GestureResponderEvent) => void;
 };
 
 const Badge = ({
@@ -44,13 +54,14 @@ const Badge = ({
   maxNumber = 999,
   children,
   position,
+  onPress,
 }: BadgeProps) => {
   const styles = badgeStyle({ size, children, position });
   const isSmallBadge = size === BadgeSizes.small;
   const hasContent = !!badgeContent;
   const renderContent = hasContent && !isSmallBadge;
 
-  return (
+  const badge = (
     <View style={styles.badgeContainer}>
       <View style={[styles.badge, style]}>
         <Typography
@@ -62,6 +73,12 @@ const Badge = ({
       </View>
       {children}
     </View>
+  );
+
+  return onPress ? (
+    <Pressable onPress={onPress}>{badge}</Pressable>
+  ) : (
+    <>{badge}</>
   );
 };
 

@@ -143,7 +143,11 @@ const TextInput = ({
         )}
         {isValid && (
           <View testID="validation-check" style={styles.rightIcon}>
-            <FontAwesomeIcon icon={faCheck} style={styles.checkIcon} />
+            <FontAwesomeIcon
+              icon={faCheck}
+              style={styles.checkIcon}
+              size={theme.TextInputRightIconSize}
+            />
           </View>
         )}
         {search && value.length !== 0 && onClosePress && (
