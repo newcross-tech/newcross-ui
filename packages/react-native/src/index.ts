@@ -3,6 +3,12 @@ export {
   AvatarProps,
   AvatarSizes,
 } from './components/Avatar';
+export { default as Accordion, AccordionProps } from './components/Accordion';
+export {
+  default as AccordionGroup,
+  AccordionGroupProps,
+  AccordionGroupSpacing,
+} from './components/AccordionGroup';
 export { default as Alert, AlertProps, AlertVariant } from './components/Alert';
 export {
   default as Button,

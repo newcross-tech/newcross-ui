@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { TextStyle, Text } from 'react-native';
+import { TextStyle, Text, TextProps } from 'react-native';
 import typographyStyle from './Typography.style';
 import { TypographyVariant } from './Typography.types';
 
@@ -24,7 +24,7 @@ export type TypographyProps = {
    * Overwrites or extends the styles applied to the component.
    */
   style?: TextStyle;
-};
+} & TextProps;
 
 const Typography = ({
   children,
