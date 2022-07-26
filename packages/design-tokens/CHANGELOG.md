@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.22.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.21.0...@newcross-ui/design-tokens@1.22.0) (2022-07-26)
+
+
+### Features
+
+* **hfgo-1159:** search bar text input extension main ([9f0493b](https://bitbucket.org/newcrossdev/newcross-ui/commits/9f0493bc71d361f61f2027c0c76ab7c998da78db))
+* **hfgo-1172:** created accordion and accordion group component ([b3cab4c](https://bitbucket.org/newcrossdev/newcross-ui/commits/b3cab4c783ec918f662f9c9a2d5790eda5c0e493))
+
+
+
+
+
 # [1.21.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.20.0...@newcross-ui/design-tokens@1.21.0) (2022-07-13)
 
 

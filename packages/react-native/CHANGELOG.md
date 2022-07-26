@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.18.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.17.0...@newcross-ui/react-native@1.18.0) (2022-07-26)
+
+
+### Features
+
+* **hfgo-1159:** search bar text input extension main ([9f0493b](https://bitbucket.org/newcrossdev/newcross-ui/commits/9f0493bc71d361f61f2027c0c76ab7c998da78db))
+* **hfgo-1172:** created accordion and accordion group component ([b3cab4c](https://bitbucket.org/newcrossdev/newcross-ui/commits/b3cab4c783ec918f662f9c9a2d5790eda5c0e493))
+* **hfgo-1173:** badge tooltip extension main ([213c172](https://bitbucket.org/newcrossdev/newcross-ui/commits/213c172ecf351bf1e08719f16586698303550ede))
+
+
+
+
+
 # [1.17.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.16.0...@newcross-ui/react-native@1.17.0) (2022-07-13)
 
 
