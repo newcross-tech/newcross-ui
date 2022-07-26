@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.23.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.22.0...@newcross-ui/design-tokens@1.23.0) (2022-07-26)
+
+
+### Features
+
+* **hfgo-1158:** checkbox component main ([ea03226](https://bitbucket.org/newcrossdev/newcross-ui/commits/ea032267d0111f71dd7388461b619ab36b7b7d5a))
+
+
+
+
+
 # [1.22.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.21.0...@newcross-ui/design-tokens@1.22.0) (2022-07-26)
 
 
