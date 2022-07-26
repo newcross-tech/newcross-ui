@@ -70,3 +70,8 @@ export { default as Toast, ToastProps, ToastStatus } from './components/Toast';
 export { default as Calendar, CalendarProps } from './components/Calendar';
 export { default as Tabs, TabsProps } from './components/Tabs';
 export { default as TextInput, TextInputProps } from './components/TextInput';
+export {
+  default as Checkbox,
+  CheckboxProps,
+  CheckboxType,
+} from './components/Checkbox';
