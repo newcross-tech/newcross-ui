@@ -75,3 +75,8 @@ export {
   CheckboxProps,
   CheckboxType,
 } from './components/Checkbox';
+export {
+  default as ListOption,
+  ListOptionProps,
+  ListOptionAlignment,
+} from './components/ListOption';
