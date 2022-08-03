@@ -18,6 +18,7 @@ import {
 import { faSearch } from '@fortawesome/pro-light-svg-icons';
 import textInputStyle from './TextInput.style';
 import useTheme from '../../hooks/useTheme';
+import { faChevronDown } from '@fortawesome/pro-regular-svg-icons';
 
 export type TextInputProps = {
   /**
@@ -61,6 +62,12 @@ export type TextInputProps = {
    */
   search?: boolean;
   /**
+   * If true alters text input to have dropdown options
+   */
+  options?: boolean;
+  onOptionsPress?: VoidFunction;
+  selectedOption?: any;
+  /**
    * triggers the on press of the close icon
    */
   onClosePress?: VoidFunction;
@@ -81,6 +88,9 @@ const TextInput = ({
   errorText,
   isValid,
   search,
+  options,
+  onOptionsPress,
+  selectedOption,
   onClosePress,
   style,
   ...rest
@@ -113,6 +123,20 @@ const TextInput = ({
           <View testID="search-icon" style={styles.leftIcon}>
             <FontAwesomeIcon icon={faSearch} style={styles.searchIcon} />
           </View>
+        )}
+        {options && (
+          <Pressable
+            testID="options"
+            style={styles.leftIcon}
+            onPress={onOptionsPress}
+          >
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text style={{ fontSize: 20 }}>{selectedOption.flag}  </Text>
+              <FontAwesomeIcon icon={faChevronDown} style={styles.searchIcon} />
+              <Text style={{ fontSize: 20 }}>  |  </Text>
+              <Text>{selectedOption.dial_code}</Text>
+            </View>
+          </Pressable>
         )}
         <NativeTextInput
           style={styles.inputContainer}
