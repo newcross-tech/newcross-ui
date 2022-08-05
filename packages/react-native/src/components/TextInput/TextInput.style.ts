@@ -51,7 +51,6 @@ const textInputStyle = (
           ? theme.TextInputPaddingVertical - 1
           : theme.TextInputPaddingVertical,
       lineHeight: theme.TextInputLineHeight,
-      outlineStyle: 'none',
     },
     rightIcon: {
       paddingHorizontal: theme.TextInputRightIconPaddingHorizontal,

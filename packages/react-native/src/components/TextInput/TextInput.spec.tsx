@@ -186,7 +186,9 @@ describe('TextInput Component', () => {
 
     // Act
     const { getByTestId } = render(<TextInput {...props} />);
-    getByTestId('text-input-component').props.onFocus();
+    act(() => {
+      getByTestId('text-input-component').props.onFocus();
+    });
 
     // Assert
     expect(getByTestId('text-input-component')).toBeTruthy();
