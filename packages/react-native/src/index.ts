@@ -10,6 +10,12 @@ export {
   AccordionGroupSpacing,
 } from './components/AccordionGroup';
 export { default as Alert, AlertProps, AlertVariant } from './components/Alert';
+export { default as Pill, PillProps } from './components/Pill';
+export {
+  default as PillGroup,
+  PillGroupProps,
+  PillGroupOrientation,
+} from './components/PillGroup';
 export {
   default as Button,
   ButtonProps,

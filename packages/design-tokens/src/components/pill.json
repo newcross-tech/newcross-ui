@@ -1,0 +1,29 @@
+{
+  "pill": {
+    "margin": { "value": "{spacing.base.8.value}" },
+    "border-width": { "value": "{border.base.width.sm.value}" },
+    "border-radius": { "value": "{border.base.radius.rounded.value}" },
+    "background-color": { "value": "{color.base.white.value}" },
+    "border-color": { "value": "{color.base.green.100.value}" },
+    "padding-horizontal": { "value": "{spacing.base.16.value}" },
+    "padding-vertical": { "value": "{spacing.base.4.value}" },
+    "disabled": {
+      "background-color": { "value": "{color.base.grey.400.value}" },
+      "border-color": { "value": "{color.base.grey.100.value}" }
+    },
+    "icon": {
+      "color": { "value": "{color.base.gravitas.value}" },
+      "disabled": {
+        "color": { "value": "{color.base.grey.200.value}" }
+      },
+      "margin-right": { "value": "{spacing.base.8.value}" },
+      "margin-left": { "value": "{spacing.base.8.value}" }
+    },
+    "text": {
+      "color": { "value": "{color.base.gravitas.value}" },
+      "disabled": {
+        "color": { "value": "{color.base.grey.200.value}" }
+      }
+    }
+  }
+}
