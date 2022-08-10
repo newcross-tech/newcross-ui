@@ -2,6 +2,7 @@
   "border": {
     "base": {
       "radius": {
+        "squared": { "value": 0 },
         "sm": { "value": 4 },
         "md": { "value": 8 },
         "lg": { "value": 16 },

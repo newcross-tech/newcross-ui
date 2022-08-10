@@ -42,7 +42,7 @@ export {
   TypographyVariant,
 } from './components/Typography';
 export { default as Card, CardProps, CardColors } from './components/Card';
-
+export { default as CardGroup, CardGroupProps } from './components/CardGroup';
 export {
   default as Badge,
   BadgeProps,

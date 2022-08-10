@@ -65,6 +65,10 @@ export type CardProps = {
    * Overwrites or extends the styles applied to the component's container.
    */
   containerStyle?: ViewStyle;
+  /**
+   * Whether the cards have a shadow.
+   */
+  hasShadow?: boolean;
 };
 
 const Card = ({
@@ -79,12 +83,14 @@ const Card = ({
   hasRightIcon = false,
   rightIconContent,
   containerStyle,
+  hasShadow = true,
   ...rest
 }: CardProps) => {
   const theme = useTheme();
   const styles = cardStyle({
     children,
     hasBorder,
+    hasShadow,
     hasRoundedCorners,
     thumbnailContent,
     color,

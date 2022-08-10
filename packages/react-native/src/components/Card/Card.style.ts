@@ -9,6 +9,7 @@ import {
 const cardStyle = ({
   thumbnailContent,
   hasBorder,
+  hasShadow,
   hasRoundedCorners,
   color,
   fullWidth,
@@ -40,7 +41,7 @@ const cardStyle = ({
       alignSelf: fullWidth ? 'stretch' : 'flex-start',
       shadowColor: CardShadowColor,
       elevation: CardShadowElevation,
-      shadowOpacity: CardShadowOpacity,
+      shadowOpacity: hasShadow ? CardShadowOpacity : 0,
       shadowRadius: CardShadowRadius,
       borderRadius: hasRoundedCorners ? CardBorderRadius : 0,
       flexDirection: 'row',

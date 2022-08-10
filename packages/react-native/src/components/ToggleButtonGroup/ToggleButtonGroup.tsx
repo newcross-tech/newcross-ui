@@ -119,7 +119,7 @@ const ToggleButtonGroup = ({
           style: {
             ...style,
             ...calculateGap(
-              (gap = theme.ToggleButtonItemsGap),
+              gap ?? theme.ToggleButtonItemsGap,
               isLastChild,
               orientation
             ),

@@ -9,6 +9,7 @@ type ContainerProps = {
   direction?: 'row' | 'column';
   containerStyle?: ViewStyle;
   hasPadding?: boolean;
+  justifyContent?: 'center' | 'flex-start';
 };
 
 const Container: FC<ContainerProps> = ({
@@ -16,11 +17,12 @@ const Container: FC<ContainerProps> = ({
   direction,
   containerStyle,
   hasPadding = true,
+  justifyContent = 'center',
 }) => {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'center',
+      justifyContent,
       padding: hasPadding ? SpacingBase12 : undefined,
       flexDirection: direction,
     },
