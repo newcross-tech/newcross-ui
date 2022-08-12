@@ -27,7 +27,7 @@ export type BadgeProps = {
   /**
    * Used to define the content of the badge
    */
-  badgeContent?: any;
+  badgeContent?: number;
   /**
    * Used to define the max number to cap the value of the badge content
    */

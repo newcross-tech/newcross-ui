@@ -12,7 +12,6 @@ import { isWebPlatform } from '../utils';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './SearchBarInfo';
 import useState from 'storybook-addon-state';
-import List from './List';
 
 export default {
   title: 'ReactNative/Components/SearchBar',

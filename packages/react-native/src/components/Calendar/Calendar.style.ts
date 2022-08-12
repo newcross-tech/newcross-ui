@@ -3,7 +3,6 @@ import { FontWeight } from '../../types';
 
 export const calendarStyles = () => {
   const theme = useTheme();
-
   return {
     textMonthFontFamily: theme.CalendarFontFamily,
     textMonthFontWeight: theme.CalendarHeaderFontWeight as FontWeight,
@@ -17,5 +16,7 @@ export const calendarStyles = () => {
     textDayFontWeight: theme.CalendarHeaderWeekdaysFontWeight as FontWeight,
     textDayFontSize: theme.CalendarDaysFontSize,
     dayTextColor: theme.CalendarColor,
+    todayTextColor: theme.CalendarDaysCurrentColor,
+    textDisabledColor: theme.CalendarDaysDisabledColor,
   };
 };

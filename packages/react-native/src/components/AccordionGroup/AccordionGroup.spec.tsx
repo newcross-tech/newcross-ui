@@ -102,7 +102,6 @@ describe('Accordion Group Component', () => {
   });
   it('triggers onPress successfully and opens the pressed children with exclusiveSelection false', () => {
     // Arrange
-    const onPress = jest.fn;
     const props = { exclusiveSelection: false };
 
     // Act

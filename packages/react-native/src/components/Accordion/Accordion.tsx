@@ -1,11 +1,5 @@
 import React, { ReactNode, useState, useEffect } from 'react';
-import {
-  Pressable,
-  Text,
-  View,
-  LayoutChangeEvent,
-  ViewStyle,
-} from 'react-native';
+import { Pressable, View, LayoutChangeEvent, ViewStyle } from 'react-native';
 import accordionStyle from './Accordion.style';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronDown } from '@fortawesome/pro-regular-svg-icons';

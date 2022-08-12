@@ -1,7 +1,6 @@
 import useTheme from '../../../hooks/useTheme';
 import { HeaderColors } from '../Header.types';
 import { getFillColorValues } from './HeaderTail.types';
-import { StyleSheet } from 'react-native';
 
 const headerTailStyle = (color: HeaderColors) => {
   const theme = useTheme();

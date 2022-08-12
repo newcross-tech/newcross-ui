@@ -8,9 +8,8 @@ import {
   Typography,
   TypographyVariant,
 } from '@newcross-ui/react-native';
-import { Parameters } from '@storybook/react';
 import Container from '../Container';
-import { getParameters, isWebPlatform } from '../utils';
+import { isWebPlatform } from '../utils';
 import Spacing, { SpacingSizes } from '../Spacing';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './ProgressBarInfo';

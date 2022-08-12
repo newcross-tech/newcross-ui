@@ -10,9 +10,28 @@
         "font-weight": { "value": "{typography.font-weight.regular.value}" }
       }
     },
-
     "days": {
-      "font-size": { "value": "{typography.font-size.14.value}" }
+      "font-size": { "value": "{typography.font-size.14.value}" },
+      "disabled": {
+        "color": { "value": "{color.base.grey.100.value}" }
+      },
+      "current-color": { "value": "{color.base.blue.300.value}" },
+      "booked": {
+        "background-color": { "value": "{color.base.green.300.value}" }
+      },
+      "unavailable": {
+        "background-color": { "value": "{color.base.red.400.value}" }
+      },
+      "selected": {
+        "background-color": { "value": "{color.base.gravitas.value}" },
+        "color": { "value": "{color.base.white.value}" }
+      },
+      "inactive": {
+        "background-color": { "value": "{color.base.grey.400.value}" }
+      },
+      "date-range": {
+        "background-color": { "value": "{color.base.blue.400.value}" }
+      }
     }
   }
 }
