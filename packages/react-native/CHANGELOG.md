@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.20.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.20.0...@newcross-ui/react-native@1.20.1) (2022-08-12)
+
+
+### Bug Fixes
+
+* move calendar npm module from root to react native package ([795e402](https://bitbucket.org/newcrossdev/newcross-ui/commits/795e4028b64e80f0fdb9601bd13414259f46a7d8))
+
+
+
+
+
 # [1.20.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.19.0...@newcross-ui/react-native@1.20.0) (2022-08-12)
 
 
