@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.23.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.22.0...@newcross-stories/react-native@1.23.0) (2022-08-12)
+
+
+### Features
+
+* **hfgo-1175:** list option component ([d29e6f6](https://bitbucket.org/newcrossdev/newcross-ui/commits/d29e6f674d0d1a7d4aad73d4947327393c9f5f3a))
+* **hfgo-1176:** Created card group component ([f8fe5c2](https://bitbucket.org/newcrossdev/newcross-ui/commits/f8fe5c25d2d4f043f3651bade1f243a500c2393c))
+* **hfgo-1186:** calendar component phase 2 ([83bba9e](https://bitbucket.org/newcrossdev/newcross-ui/commits/83bba9e61a393fda82b42513d05de8694d75b3f4))
+* **hfgo-1187:** created pill component ([2582133](https://bitbucket.org/newcrossdev/newcross-ui/commits/2582133b6cf240386eb10d62da89860631e53252))
+
+
+
+
+
 # [1.22.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.21.0...@newcross-stories/react-native@1.22.0) (2022-07-26)
 
 
