@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.23.1...@newcross-stories/react-native@1.23.2) (2022-08-16)
+
+
+### Bug Fixes
+
+* **hfgo-1254:** change font names to default names as custom names show error in v4 app ([97c9849](https://bitbucket.org/newcrossdev/newcross-ui/commits/97c9849c0f4a2ea25fabf7893a829a8da02d2c61))
+
+
+
+
+
 ## [1.23.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.23.0...@newcross-stories/react-native@1.23.1) (2022-08-12)
 
 **Note:** Version bump only for package @newcross-stories/react-native
