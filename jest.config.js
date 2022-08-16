@@ -2,6 +2,7 @@ module.exports = {
   verbose: true,
   preset: 'ts-jest',
   testEnvironment: 'node',
+  testTimeout: 20000,
   collectCoverage: true,
   collectCoverageFrom: [
     'src/**/*.tsx',

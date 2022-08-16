@@ -76,7 +76,7 @@
     "build": "lerna run build",
     "build:watch": "lerna run build:watch --parallel",
     "build-storybook": "build-storybook",
-    "test": "lerna run test",
+    "test": "lerna run test --stream",
     "test:coverage": "lerna run test:coverage",
     "deploy": "sls deploy -s production",
     "deploy:acceptance": "sls deploy -s acceptance"
