@@ -10,10 +10,10 @@ import StorybookUIRoot from './.ondevice/Storybook';
 
 export default function App() {
   const [loaded] = useFonts({
-    poppinsRegular: Poppins_400Regular,
-    poppinsSemiBold: Poppins_600SemiBold,
-    poppinsBold: Poppins_700Bold,
-    poppinsExtraBold: Poppins_800ExtraBold,
+    'Poppins-Regular': Poppins_400Regular,
+    'Poppins-SemiBold': Poppins_600SemiBold,
+    'Poppins-Bold': Poppins_700Bold,
+    'Poppins-ExtraBold': Poppins_800ExtraBold,
   });
 
   if (!loaded) {
