@@ -14,7 +14,7 @@ If that is not the case, we strongly recommend that you follow the [getting star
 - `yarn`
 - a working project with:
   - `react` >=16.8.0
-  - `react-native` >=0.63.0
+  - `react-native` >=0.64.0
 
 ## Installation
 
