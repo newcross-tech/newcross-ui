@@ -8,3 +8,4 @@ export {
   ButtonSizes,
   ButtonCorners,
 } from './components/Button';
+export { default as Radio, RadioProps } from './components/Radio';
