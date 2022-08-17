@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.21.0 (2022-08-17)
+
+
+### Bug Fixes
+
+* add publish config ([28b2981](https://bitbucket.org/newcrossdev/newcross-ui/commits/28b2981c637b69ba9afcb8ce2f75b9712ed30f9d))
+* **hfgo-1232:** move react native svg to peer dependency ([a92cde6](https://bitbucket.org/newcrossdev/newcross-ui/commits/a92cde6f5580ab04c8e889794cb9cce987269227))
+* **hfp-874:** import issue by including src folder in the artifacts ([bb2183c](https://bitbucket.org/newcrossdev/newcross-ui/commits/bb2183c64f903b8648fed0363803e7c2a40eb4ef))
+* **hfp-874:** need to send src folder with artifacts ([007542f](https://bitbucket.org/newcrossdev/newcross-ui/commits/007542fec97d1ba3262591c09ad931d32dd476ec))
+* **hfp-963:** fixes broken tests on calendar, uses 3 char for month names and fixes style property on toast stories ([cfe5f65](https://bitbucket.org/newcrossdev/newcross-ui/commits/cfe5f65b3066cef689c7075c0309e469e2097cee))
+* move calendar npm module from root to react native package ([795e402](https://bitbucket.org/newcrossdev/newcross-ui/commits/795e4028b64e80f0fdb9601bd13414259f46a7d8))
+* publish new package ([dd7fce2](https://bitbucket.org/newcrossdev/newcross-ui/commits/dd7fce2e066dde1ebdc9d3f8695e600aff8b909a))
+
+
+### Features
+
+* **component:** create ToggleSwitch component. ([5f9e9f1](https://bitbucket.org/newcrossdev/newcross-ui/commits/5f9e9f1d7309a1a7b72933bd4f3509034fc2110c))
+* **hfgo-1115:** create tabs components ([409c927](https://bitbucket.org/newcrossdev/newcross-ui/commits/409c9279a4d1e0a5209c9e95d3efe0c59d166b7b))
+* **hfgo-1151:** creates the text input component ([10eb646](https://bitbucket.org/newcrossdev/newcross-ui/commits/10eb6464229f354df1c67134e164a86132da55c9))
+* **hfgo-1155:** created progress bar component ([09b9ba8](https://bitbucket.org/newcrossdev/newcross-ui/commits/09b9ba8142e20f96adf714a820a4e183dd72cd56))
+* **hfgo-1158:** checkbox component main ([ea03226](https://bitbucket.org/newcrossdev/newcross-ui/commits/ea032267d0111f71dd7388461b619ab36b7b7d5a))
+* **hfgo-1159:** search bar text input extension main ([9f0493b](https://bitbucket.org/newcrossdev/newcross-ui/commits/9f0493bc71d361f61f2027c0c76ab7c998da78db))
+* **hfgo-1172:** created accordion and accordion group component ([b3cab4c](https://bitbucket.org/newcrossdev/newcross-ui/commits/b3cab4c783ec918f662f9c9a2d5790eda5c0e493))
+* **hfgo-1173:** badge tooltip extension main ([213c172](https://bitbucket.org/newcrossdev/newcross-ui/commits/213c172ecf351bf1e08719f16586698303550ede))
+* **hfgo-1175:** list option component ([d29e6f6](https://bitbucket.org/newcrossdev/newcross-ui/commits/d29e6f674d0d1a7d4aad73d4947327393c9f5f3a))
+* **hfgo-1176:** Created card group component ([f8fe5c2](https://bitbucket.org/newcrossdev/newcross-ui/commits/f8fe5c25d2d4f043f3651bade1f243a500c2393c))
+* **hfgo-1186:** calendar component phase 2 ([83bba9e](https://bitbucket.org/newcrossdev/newcross-ui/commits/83bba9e61a393fda82b42513d05de8694d75b3f4))
+* **hfgo-1187:** created pill component ([2582133](https://bitbucket.org/newcrossdev/newcross-ui/commits/2582133b6cf240386eb10d62da89860631e53252))
+* **hfp-1038:** Created header component ([622fe3d](https://bitbucket.org/newcrossdev/newcross-ui/commits/622fe3d119e46dd28d595799527be0b818ecf979))
+* **hfp-1067:** Create extension of the button component. ([ad6f97c](https://bitbucket.org/newcrossdev/newcross-ui/commits/ad6f97c281d7aeda2ec20b696b981c9c41ffc169))
+* **hfp-1081:** creates toast component ([5a52d18](https://bitbucket.org/newcrossdev/newcross-ui/commits/5a52d1831c1fc52a202e567d5f7a7b173427d8cd))
+* **hfp-1109:** updated Bottom Sheet Component to open up to a dynamic snap point depending on the content's height. Also corrected indicator and gesture styles ([1d21a4d](https://bitbucket.org/newcrossdev/newcross-ui/commits/1d21a4d19b83675f1ff56369142fa1588d7f58eb))
+* **hfp-1144:** Create alert component ([280cd1e](https://bitbucket.org/newcrossdev/newcross-ui/commits/280cd1e4e845ac8bc0e117b82b10542af2a75f58))
+* **hfp-664:** initial setup of design system for newcross ([ca8a2bb](https://bitbucket.org/newcrossdev/newcross-ui/commits/ca8a2bb3eb3aa85f22dac9ff76d9378c25a1a817))
+* **hfp-670:** setup react native project with jest and RNTL ([c069ad0](https://bitbucket.org/newcrossdev/newcross-ui/commits/c069ad0ff8ad6313d1e8da8e68edb214384528e1))
+* **hfp-816:** setup storybook for ios and android ([26fcb4c](https://bitbucket.org/newcrossdev/newcross-ui/commits/26fcb4ccd3954ad38ca645674bb8f3d50bfc650c))
+* **hfp-816:** setup storybook for react native web ([e266292](https://bitbucket.org/newcrossdev/newcross-ui/commits/e26629217bd6754658600062e362526168430e60))
+* **hfp-857:** create radio component for react native ([6ab9132](https://bitbucket.org/newcrossdev/newcross-ui/commits/6ab91322a03b06af18fbb04ea0a84494b3f31aec))
+* **hfp-938/958:** create card and badge component ([857d19c](https://bitbucket.org/newcrossdev/newcross-ui/commits/857d19c4b319779a9e16d48a6176e236e6e27f66))
+* **hfp-940:** create react native button component ([1d041fa](https://bitbucket.org/newcrossdev/newcross-ui/commits/1d041fa234dc09a001dca5aae906f9c9e4c106e3))
+* **hfp-949:** create typography component ([0e09620](https://bitbucket.org/newcrossdev/newcross-ui/commits/0e09620ade8dc891cc2591ade6731a0433844700))
+* **hfp-959:** create bottom sheet component ([b3dc4a4](https://bitbucket.org/newcrossdev/newcross-ui/commits/b3dc4a44c473f4a16e45ae0a14a0f7dfd750d404))
+* **hfp-960:** create toggle button and toggle button group ([a5f4a87](https://bitbucket.org/newcrossdev/newcross-ui/commits/a5f4a87aecbb32592108793528f0516953705d40))
+* **hfp-961:** create a slider component for the design system ([b33f895](https://bitbucket.org/newcrossdev/newcross-ui/commits/b33f895c4f1c50238215504ea3fbc02e212cdab1))
+* **hfp-962:** create link component ([7d9bcef](https://bitbucket.org/newcrossdev/newcross-ui/commits/7d9bcef286de9430fada17cd0417fbfc9d718e31))
+* **HGFO-1114:** create avatar component ([6782262](https://bitbucket.org/newcrossdev/newcross-ui/commits/67822625a455312d2063ef27fca564cc0db4f684))
+
+
+
+
+
 ## [1.20.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.20.2...@newcross-ui/react-native@1.20.3) (2022-08-17)
 
 
