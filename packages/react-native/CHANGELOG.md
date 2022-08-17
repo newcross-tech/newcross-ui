@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/native@1.23.1...@newcross-ui/native@1.23.2) (2022-08-17)
+
+
+### Bug Fixes
+
+* bring accordian back ([105440d](https://bitbucket.org/newcrossdev/newcross-ui/commits/105440db9312bf975d81e5fd0beef23c3cefa8a4))
+
+
+
+
+
 ## [1.23.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/native@1.23.1...@newcross-ui/native@1.23.1) (2022-08-17)
 
 
