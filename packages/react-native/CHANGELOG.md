@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.22.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/native@1.21.6...@newcross-ui/native@1.22.0) (2022-08-17)
+
+
+### Features
+
+* add accordian component ([5fd353b](https://bitbucket.org/newcrossdev/newcross-ui/commits/5fd353b1493119d1c07c800b3a3bb51b044abc87))
+
+
+
+
+
 ## [1.21.6](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/native@1.21.5...@newcross-ui/native@1.21.6) (2022-08-17)
 
 
