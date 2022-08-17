@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.20.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.20.2...@newcross-ui/react-native@1.20.3) (2022-08-17)
+
+
+### Bug Fixes
+
+* **hfgo-1232:** move react native svg to peer dependency ([a92cde6](https://bitbucket.org/newcrossdev/newcross-ui/commits/a92cde6f5580ab04c8e889794cb9cce987269227))
+
+
+
+
+
 ## [1.20.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.20.1...@newcross-ui/react-native@1.20.2) (2022-08-16)
 
 **Note:** Version bump only for package @newcross-ui/react-native
