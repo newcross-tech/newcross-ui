@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.21.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/native@1.21.3...@newcross-ui/native@1.21.4) (2022-08-17)
+
+
+### Bug Fixes
+
+* add button component ([c979263](https://bitbucket.org/newcrossdev/newcross-ui/commits/c979263091a08eb73abd629cabfc265a3cec1908))
+
+
+
+
+
 ## [1.21.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/native@1.21.2...@newcross-ui/native@1.21.3) (2022-08-17)
 
 
