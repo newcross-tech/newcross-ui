@@ -1,1 +1,0 @@
-export { nameToAbbreviation } from './nameToAbbreviation';
