@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.21.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/native@1.21.1...@newcross-ui/native@1.21.2) (2022-08-17)
+
+
+### Bug Fixes
+
+* add missing imports ([a812c55](https://bitbucket.org/newcrossdev/newcross-ui/commits/a812c551f619680f82b9a43cca113ee99beb2e86))
+
+
+
+
+
 ## [1.21.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/native@1.21.0...@newcross-ui/native@1.21.1) (2022-08-17)
 
 
