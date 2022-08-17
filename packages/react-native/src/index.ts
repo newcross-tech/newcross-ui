@@ -28,4 +28,3 @@ export {
   ToggleButtonProps,
   ToggleButtonColors,
 } from './components/ToggleButton';
-export { default as Accordion, AccordionProps } from './components/Accordion';
