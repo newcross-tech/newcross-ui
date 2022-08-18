@@ -1,3 +1,4 @@
+import React from 'react';
 import { TextStyle } from 'react-native';
 import { IconType } from './Icon.types';
 import getIconType from './Icon.utils';
