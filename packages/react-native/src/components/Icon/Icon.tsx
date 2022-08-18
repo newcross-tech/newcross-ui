@@ -29,7 +29,10 @@ export type IconProps = {
   brand?: boolean;
 };
 
-const Icon = ({ type = IconType['font-awesome-5'], ...rest }: IconProps) => {
+const Icon = ({
+  type = IconType['font-awesome-5-pro'],
+  ...rest
+}: IconProps) => {
   const IconComponent = getIconType(type);
 
   return <IconComponent {...rest} />;
