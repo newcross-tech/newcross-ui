@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.25.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/native@1.24.0...@newcross-ui/native@1.25.0) (2022-08-18)
+
+
+### Features
+
+* fix react import error ([cbd9f55](https://bitbucket.org/newcrossdev/newcross-ui/commits/cbd9f557c0dbee19fa4dd1c4da0e6a696db6b48a))
+
+
+
+
+
 # [1.24.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/native@1.23.2...@newcross-ui/native@1.24.0) (2022-08-18)
 
 
