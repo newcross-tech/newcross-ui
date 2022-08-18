@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.24.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/native@1.23.2...@newcross-ui/native@1.24.0) (2022-08-18)
+
+
+### Features
+
+* add icons component and remove fortawesome ([efccaad](https://bitbucket.org/newcrossdev/newcross-ui/commits/efccaad6f36a0786d7b6d670d7b50b9ae1de39ac))
+
+
+
+
+
 ## [1.23.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/native@1.23.1...@newcross-ui/native@1.23.2) (2022-08-17)
 
 

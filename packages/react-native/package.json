@@ -1,6 +1,6 @@
 {
   "name": "@newcross-ui/native",
-  "version": "1.23.2",
+  "version": "1.24.0",
   "description": "Components for react native apps",
   "author": "itdev@newcrosshealthcare.com",
   "license": "MIT",
@@ -38,7 +38,7 @@
   "dependencies": {
     "@newcross-ui/design-tokens": "^1.24.1",
     "@react-native-community/slider": "^4.2.2",
-    "react-native-calendars": "^1.1282.0",
-    "@types/react-native-vector-icons": "^6.4.11"
+    "@types/react-native-vector-icons": "^6.4.11",
+    "react-native-calendars": "^1.1282.0"
   }
 }
