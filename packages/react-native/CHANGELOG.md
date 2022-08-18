@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.25.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/native@1.25.0...@newcross-ui/native@1.25.1) (2022-08-18)
+
+
+### Bug Fixes
+
+* change to pro icons ([b1edada](https://bitbucket.org/newcrossdev/newcross-ui/commits/b1edada22995157b6453b5c97629f848ba89a584))
+
+
+
+
+
 # [1.25.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/native@1.24.0...@newcross-ui/native@1.25.0) (2022-08-18)
 
 
