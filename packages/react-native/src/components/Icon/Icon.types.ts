@@ -1,0 +1,17 @@
+export enum IconType {
+  'material' = 'material',
+  'material-community' = 'material-community',
+  'simple-line-icon' = 'simple-line-icon',
+  'zocial' = 'zocial',
+  'font-awesome' = 'font-awesome',
+  'octicon' = 'octicon',
+  'foundation' = 'foundation',
+  'evilicon' = 'evilicon',
+  'entypo' = 'entypo',
+  'antdesign' = 'antdesign',
+  'font-awesome-5' = 'font-awesome-5',
+  'font-awesome-5-pro' = 'font-awesome-5-pro',
+  'ionicon' = 'ionicon',
+  'feather' = 'feather',
+  'fontisto' = 'fontisto',
+}
