@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.25.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/native@1.25.1...@newcross-ui/native@1.25.2) (2022-08-19)
+
+
+### Bug Fixes
+
+* change to fontawesome ([8cd5129](https://bitbucket.org/newcrossdev/newcross-ui/commits/8cd5129fdf18ffdca806d5655f63c0a84315f8e8))
+
+
+
+
+
 ## [1.25.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/native@1.25.0...@newcross-ui/native@1.25.1) (2022-08-18)
 
 
