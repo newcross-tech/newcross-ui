@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.21.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.20.3...@newcross-ui/react-native@1.21.0) (2022-08-19)
+
+
+### Features
+
+* **hfgo-1261:** change fontawesome imports to explicit to reduce build time ([23b1608](https://bitbucket.org/newcrossdev/newcross-ui/commits/23b160828f05e088f285d0e04b2dd2bb5e290b78))
+
+
+
+
+
 ## [1.20.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.20.2...@newcross-ui/react-native@1.20.3) (2022-08-17)
 
 
