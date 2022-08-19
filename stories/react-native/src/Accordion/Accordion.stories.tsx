@@ -10,7 +10,7 @@ import Container from '../Container';
 import Spacing, { SpacingSizes } from '../Spacing';
 import { getParameters, isWebPlatform } from '../utils';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faCircleInfo } from '@fortawesome/pro-solid-svg-icons';
+import { faCircleInfo } from '@fortawesome/pro-solid-svg-icons/faCircleInfo';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './AccordionInfo';
 import { ScrollView } from 'react-native-gesture-handler';

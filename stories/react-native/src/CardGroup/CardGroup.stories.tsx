@@ -8,7 +8,7 @@ import {
 } from '@newcross-ui/react-native';
 import { healthforce } from '@newcross-ui/design-tokens';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faUser } from '@fortawesome/pro-light-svg-icons';
+import { faUser } from '@fortawesome/pro-light-svg-icons/faUser';
 import Spacing from '../Spacing';
 import Container from '../Container';
 import { getParameters } from '../utils';

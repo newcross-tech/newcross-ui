@@ -5,7 +5,7 @@ import { View } from 'react-native';
 import Link from '../Link';
 import { render } from '@testing-library/react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faCircleCheck } from '@fortawesome/pro-regular-svg-icons';
+import { faCircleCheck } from '@fortawesome/pro-regular-svg-icons/faCircleCheck';
 
 describe('Alert component', () => {
   it('renders successfully with custom title', () => {

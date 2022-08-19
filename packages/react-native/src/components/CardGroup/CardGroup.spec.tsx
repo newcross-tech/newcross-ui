@@ -3,7 +3,7 @@ import CardGroup, { CardGroupProps } from './CardGroup';
 import Card from '../Card/Card';
 import Typography, { TypographyVariant } from '../Typography';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faUser } from '@fortawesome/pro-light-svg-icons';
+import { faUser } from '@fortawesome/pro-light-svg-icons/faUser';
 import { render } from '@testing-library/react-native';
 
 describe('CardGroup component', () => {

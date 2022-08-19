@@ -12,17 +12,15 @@ import {
 import Container from '../Container';
 import { isWebPlatform } from '../utils';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import {
-  faBird,
-  faDog,
-  faCat,
-  faSnake,
-  faRabbit,
-  faPig,
-  faOtter,
-  faWhale,
-  faSheep,
-} from '@fortawesome/pro-solid-svg-icons';
+import { faBird } from '@fortawesome/pro-solid-svg-icons/faBird';
+import { faDog } from '@fortawesome/pro-solid-svg-icons/faDog';
+import { faCat } from '@fortawesome/pro-solid-svg-icons/faCat';
+import { faSnake } from '@fortawesome/pro-solid-svg-icons/faSnake';
+import { faRabbit } from '@fortawesome/pro-solid-svg-icons/faRabbit';
+import { faPig } from '@fortawesome/pro-solid-svg-icons/faPig';
+import { faOtter } from '@fortawesome/pro-solid-svg-icons/faOtter';
+import { faWhale } from '@fortawesome/pro-solid-svg-icons/faWhale';
+import { faSheep } from '@fortawesome/pro-solid-svg-icons/faSheep';
 import Spacing, { SpacingSizes } from '../Spacing';
 import { ScrollView } from 'react-native-gesture-handler';
 import { getParameters } from '../utils';

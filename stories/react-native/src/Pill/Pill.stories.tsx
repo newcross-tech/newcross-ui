@@ -8,7 +8,7 @@ import {
 } from '@newcross-ui/react-native';
 import Container from '../Container';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faBird } from '@fortawesome/pro-solid-svg-icons';
+import { faBird } from '@fortawesome/pro-solid-svg-icons/faBird';
 import Spacing, { SpacingSizes } from '../Spacing';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './PillInfo';

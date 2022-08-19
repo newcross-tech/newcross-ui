@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import ToggleButton, { ToggleButtonProps } from './ToggleButton';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faCalendarDays } from '@fortawesome/pro-solid-svg-icons';
+import { faCalendarDays } from '@fortawesome/pro-solid-svg-icons/faCalendarDays';
 
 describe('Toggle Button Component', () => {
   it('renders sucessfully', () => {

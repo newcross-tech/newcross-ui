@@ -8,10 +8,8 @@ import {
 } from '@newcross-ui/react-native';
 import Container from '../Container';
 import Spacing from '../Spacing';
-import {
-  faChevronRight,
-  faChevronLeft,
-} from '@fortawesome/pro-solid-svg-icons';
+import { faChevronRight } from '@fortawesome/pro-solid-svg-icons/faChevronRight';
+import { faChevronLeft } from '@fortawesome/pro-solid-svg-icons/faChevronLeft';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 export default {

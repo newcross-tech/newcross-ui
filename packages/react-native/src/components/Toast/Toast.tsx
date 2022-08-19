@@ -3,12 +3,10 @@ import React, { ReactNode, isValidElement, useEffect } from 'react';
 import toastStyle from './Toast.style';
 import Animated from 'react-native-reanimated';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import {
-  faXmark,
-  faTriangleExclamation,
-  faCircleInfo,
-  faCircleCheck,
-} from '@fortawesome/pro-solid-svg-icons';
+import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
+import { faCircleCheck } from '@fortawesome/pro-solid-svg-icons/faCircleCheck';
+import { faCircleInfo } from '@fortawesome/pro-solid-svg-icons/faCircleInfo';
+import { faTriangleExclamation } from '@fortawesome/pro-solid-svg-icons/faTriangleExclamation';
 import { ToastStatus } from './Toast.types';
 import {
   DEFAULT_AUTO_HIDE,

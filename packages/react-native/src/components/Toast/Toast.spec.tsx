@@ -3,7 +3,7 @@ import { render, fireEvent } from '@testing-library/react-native';
 import Toast, { ToastProps } from './Toast';
 import { ToastStatus } from './Toast.types';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faCalendarDays } from '@fortawesome/pro-solid-svg-icons';
+import { faCalendarDays } from '@fortawesome/pro-solid-svg-icons/faCalendarDays';
 
 describe('Toast component', () => {
   it('renders successfully', () => {

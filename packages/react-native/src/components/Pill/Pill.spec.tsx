@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import Pill, { PillProps } from './Pill';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faDog } from '@fortawesome/pro-solid-svg-icons';
+import { faDog } from '@fortawesome/pro-solid-svg-icons/faDog';
 
 describe('Pill Component', () => {
   it('renders successfully', () => {

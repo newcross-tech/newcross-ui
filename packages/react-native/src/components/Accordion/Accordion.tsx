@@ -2,7 +2,7 @@ import React, { ReactNode, useState, useEffect } from 'react';
 import { Pressable, View, LayoutChangeEvent, ViewStyle } from 'react-native';
 import accordionStyle from './Accordion.style';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faChevronDown } from '@fortawesome/pro-regular-svg-icons';
+import { faChevronDown } from '@fortawesome/pro-regular-svg-icons/faChevronDown';
 import Typography, { TypographyVariant } from '../Typography';
 
 import Animated, {

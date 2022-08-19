@@ -5,7 +5,7 @@ import { ListOptionAlignment } from './ListOption.types';
 import Typography, { TypographyVariant } from '../Typography';
 import listOptionStyle from './ListOption.style';
 import useTheme from '../../hooks/useTheme';
-import { faCheck } from '@fortawesome/pro-regular-svg-icons';
+import { faCheck } from '@fortawesome/pro-regular-svg-icons/faCheck';
 
 export type ListOptionProps = {
   /**

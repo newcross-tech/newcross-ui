@@ -9,13 +9,11 @@ import {
   TextInputProps as NativeTextInputProps,
 } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import {
-  faEye,
-  faEyeSlash,
-  faCheck,
-  faXmark,
-} from '@fortawesome/pro-solid-svg-icons';
-import { faSearch } from '@fortawesome/pro-light-svg-icons';
+import { faEye } from '@fortawesome/pro-solid-svg-icons/faEye';
+import { faEyeSlash } from '@fortawesome/pro-solid-svg-icons/faEyeSlash';
+import { faCheck } from '@fortawesome/pro-solid-svg-icons/faCheck';
+import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
+import { faSearch } from '@fortawesome/pro-light-svg-icons/faSearch';
 import textInputStyle from './TextInput.style';
 import useTheme from '../../hooks/useTheme';
 

@@ -7,11 +7,9 @@ import {
 import Container from '../Container';
 import Spacing from '../Spacing';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import {
-  faBarsFilter,
-  faHeart,
-  faCalendarDays,
-} from '@fortawesome/pro-solid-svg-icons';
+import { faBarsFilter } from '@fortawesome/pro-solid-svg-icons/faBarsFilter';
+import { faHeart } from '@fortawesome/pro-solid-svg-icons/faHeart';
+import { faCalendarDays } from '@fortawesome/pro-solid-svg-icons/faCalendarDays';
 import useState from 'storybook-addon-state';
 
 export default {

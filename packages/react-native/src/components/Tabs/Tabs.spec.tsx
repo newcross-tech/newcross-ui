@@ -1,7 +1,8 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faKitMedical, faUser } from '@fortawesome/pro-light-svg-icons';
+import { faKitMedical } from '@fortawesome/pro-light-svg-icons/faKitMedical';
+import { faUser } from '@fortawesome/pro-light-svg-icons/faUser';
 import Tabs, { TabsProps } from './Tabs';
 
 describe('Tabs Component', () => {

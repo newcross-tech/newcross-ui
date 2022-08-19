@@ -1,7 +1,7 @@
 import { createRef } from 'react';
 import { Meta, Story } from '@storybook/react';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faInfoCircle } from '@fortawesome/pro-regular-svg-icons';
+import { faInfoCircle } from '@fortawesome/pro-regular-svg-icons/faInfoCircle';
 import {
   Badge,
   BadgeProps,

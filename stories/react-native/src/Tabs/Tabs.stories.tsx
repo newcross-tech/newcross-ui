@@ -4,7 +4,8 @@ import Container from '../Container';
 import Spacing from '../Spacing';
 import useState from 'storybook-addon-state';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faKitMedical, faUser } from '@fortawesome/pro-light-svg-icons';
+import { faKitMedical } from '@fortawesome/pro-light-svg-icons/faKitMedical';
+import { faUser } from '@fortawesome/pro-light-svg-icons/faUser';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './TabsInfo';
 

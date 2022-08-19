@@ -11,7 +11,7 @@ import { healthforce } from '@newcross-ui/design-tokens';
 import Container from '../Container';
 import Spacing from '../Spacing';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faSliders } from '@fortawesome/pro-light-svg-icons';
+import { faSliders } from '@fortawesome/pro-light-svg-icons/faSliders';
 import { getParameters, isWebPlatform } from '../utils';
 
 const {

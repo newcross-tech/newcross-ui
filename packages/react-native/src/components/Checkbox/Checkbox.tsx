@@ -7,7 +7,8 @@ import {
   GestureResponderEvent,
 } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faCheck, faMinus } from '@fortawesome/pro-light-svg-icons';
+import { faCheck } from '@fortawesome/pro-light-svg-icons/faCheck';
+import { faMinus } from '@fortawesome/pro-light-svg-icons/faMinus';
 import checkboxStyle from './Checkbox.style';
 import { CheckboxType } from './Checkbox.types';
 import Typography, { TypographyVariant } from '../Typography';

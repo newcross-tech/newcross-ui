@@ -9,7 +9,7 @@ import {
 import cardStyle from './Card.style';
 import { CardColors } from './Card.types';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faChevronRight } from '@fortawesome/pro-light-svg-icons';
+import { faChevronRight } from '@fortawesome/pro-light-svg-icons/faChevronRight';
 import useTheme from '../../hooks/useTheme';
 
 export type CardProps = {

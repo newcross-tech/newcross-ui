@@ -8,7 +8,7 @@ jest.mock('@fortawesome/react-native-fontawesome', () => ({
   FontAwesomeIcon: iconName,
 }));
 
-jest.mock('@fortawesome/pro-light-svg-icons', () => ({
+jest.mock('@fortawesome/pro-light-svg-icons/faCircleChevronRight', () => ({
   faCircleChevronRight: 'bar',
 }));
 

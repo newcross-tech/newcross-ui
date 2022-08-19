@@ -6,7 +6,7 @@ import Card, { CardProps } from './Card';
 jest.mock('@fortawesome/react-native-fontawesome', () => ({
   FontAwesomeIcon: 'chevron-icon',
 }));
-jest.mock('@fortawesome/pro-light-svg-icons', () => ({
+jest.mock('@fortawesome/pro-light-svg-icons/faChevronRight', () => ({
   faChevronRight: 'bar',
 }));
 

@@ -17,7 +17,9 @@ import { getParameters, isWebPlatform } from '../utils';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './ListOptionInfo';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faCircle, faUser, faClose } from '@fortawesome/pro-solid-svg-icons';
+import { faCircle } from '@fortawesome/pro-solid-svg-icons/faCircle';
+import { faUser } from '@fortawesome/pro-solid-svg-icons/faUser';
+import { faClose } from '@fortawesome/pro-solid-svg-icons/faClose';
 import useState from 'storybook-addon-state';
 
 export default {

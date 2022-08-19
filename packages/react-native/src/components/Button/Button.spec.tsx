@@ -1,10 +1,8 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import Button, { ButtonProps } from './Button';
-import {
-  faChevronRight,
-  faChevronLeft,
-} from '@fortawesome/pro-solid-svg-icons';
+import { faChevronLeft } from '@fortawesome/pro-solid-svg-icons/faChevronLeft';
+import { faChevronRight } from '@fortawesome/pro-solid-svg-icons/faChevronRight';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 describe('Button Component', () => {

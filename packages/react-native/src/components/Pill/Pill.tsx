@@ -3,7 +3,7 @@ import { View, Pressable, ViewStyle } from 'react-native';
 import Typography, { TypographyVariant } from '../Typography';
 import pillStyle from './Pill.style';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faXmark } from '@fortawesome/pro-solid-svg-icons';
+import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
 
 export type PillProps = {
   /**

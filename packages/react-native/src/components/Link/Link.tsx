@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { View, Text, GestureResponderEvent } from 'react-native';
 import { Pressable } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faCircleChevronRight } from '@fortawesome/pro-solid-svg-icons';
+import { faCircleChevronRight } from '@fortawesome/pro-solid-svg-icons/faCircleChevronRight';
 import { getIconSizeValues, LinkSizes } from './Link.types';
 import linkStyle, { pressedLinkStyle } from './Link.style';
 import useTheme from '../../hooks/useTheme';

@@ -2,13 +2,11 @@ import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ViewStyle, TextStyle, ColorValue } from 'react-native';
 import { FontAwesomeIconStyle } from '@fortawesome/react-native-fontawesome';
 
-import {
-  IconDefinition,
-  faCircleCheck,
-  faCircleExclamation,
-  faTriangleExclamation,
-  faCircleInfo,
-} from '@fortawesome/pro-regular-svg-icons';
+import { IconDefinition } from '@fortawesome/pro-regular-svg-icons';
+import { faCircleCheck } from '@fortawesome/pro-regular-svg-icons/faCircleCheck';
+import { faCircleExclamation } from '@fortawesome/pro-regular-svg-icons/faCircleExclamation';
+import { faTriangleExclamation } from '@fortawesome/pro-regular-svg-icons/faTriangleExclamation';
+import { faCircleInfo } from '@fortawesome/pro-regular-svg-icons/faCircleInfo';
 
 export type AlertStyle = {
   alertContainer: ViewStyle;

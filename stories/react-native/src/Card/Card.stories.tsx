@@ -1,6 +1,6 @@
 import { Meta, Story } from '@storybook/react';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faUser } from '@fortawesome/pro-light-svg-icons';
+import { faUser } from '@fortawesome/pro-light-svg-icons/faUser';
 import {
   Badge,
   Card,

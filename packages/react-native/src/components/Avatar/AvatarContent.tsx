@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { nameToAbbreviation } from './utils';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faUser } from '@fortawesome/pro-regular-svg-icons';
+import { faUser } from '@fortawesome/pro-regular-svg-icons/faUser';
 import useTheme from '../../hooks/useTheme';
 import { AvatarProps } from './Avatar';
 import avatarStyles from './Avatar.style';

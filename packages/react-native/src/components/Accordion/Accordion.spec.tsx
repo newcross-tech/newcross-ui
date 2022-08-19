@@ -3,7 +3,7 @@ import { render, fireEvent } from '@testing-library/react-native';
 import { Text } from 'react-native';
 import Accordion, { AccordionProps } from './Accordion';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faCircleInfo } from '@fortawesome/pro-solid-svg-icons';
+import { faCircleInfo } from '@fortawesome/pro-solid-svg-icons/faCircleInfo';
 
 describe('Accordion Component', () => {
   it('renders successfully', () => {

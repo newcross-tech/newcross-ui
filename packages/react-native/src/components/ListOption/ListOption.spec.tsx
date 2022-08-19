@@ -3,7 +3,7 @@ import { render } from '@testing-library/react-native';
 import ListOption, { ListOptionProps } from './ListOption';
 import { ListOptionAlignment } from './ListOption.types';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faCheck } from '@fortawesome/pro-regular-svg-icons';
+import { faCheck } from '@fortawesome/pro-regular-svg-icons/faCheck';
 
 describe('List Option Component', () => {
   it('renders successfully', () => {

@@ -1,12 +1,10 @@
 import { View } from 'react-native';
 import { Meta, Story } from '@storybook/react';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import {
-  faBarsFilter,
-  faTrainSubway,
-  faKitMedical,
-  faUser,
-} from '@fortawesome/pro-light-svg-icons';
+import { faBarsFilter } from '@fortawesome/pro-light-svg-icons/faBarsFilter';
+import { faTrainSubway } from '@fortawesome/pro-light-svg-icons/faTrainSubway';
+import { faKitMedical } from '@fortawesome/pro-light-svg-icons/faKitMedical';
+import { faUser } from '@fortawesome/pro-light-svg-icons/faUser';
 import {
   Badge,
   BadgeProps,
