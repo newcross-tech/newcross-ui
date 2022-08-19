@@ -1,6 +1,7 @@
 import React, { ReactNode, useState, useEffect } from 'react';
 import { Pressable, View, LayoutChangeEvent, ViewStyle } from 'react-native';
-import Icon from '../Icon';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faChevronDown } from '@fortawesome/pro-regular-svg-icons';
 import accordionStyle from './Accordion.style';
 import Typography, { TypographyVariant } from '../Typography';
 
@@ -118,12 +119,7 @@ const Accordion = ({
               </Typography>
             </View>
             <Animated.View style={iconAnimationStyle}>
-              <Icon
-                name="chevron-down"
-                size={20}
-                iconStyle={styles.icon}
-                light
-              />
+              <FontAwesomeIcon icon={faChevronDown} style={styles.icon} />
             </Animated.View>
           </View>
         </View>
