@@ -9,13 +9,14 @@ import {
   ButtonSizes,
   ButtonCorners,
   Calendar,
+  Typography,
+  TypographyVariant,
 } from '@newcross-ui/react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { healthforce } from '@newcross-ui/design-tokens';
 import Container from '../Container';
 import { getParameters, isWebPlatform } from '../utils';
 import ButtonGroup from './ButtonGroup';
-import { Typography, TypographyVariant } from '@newcross-ui/react-native';
 import Spacing, { SpacingPositions } from '../Spacing';
 
 const { SpacingBase0, SpacingBase24 } = healthforce;
