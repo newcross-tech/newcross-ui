@@ -1,11 +1,11 @@
 import { create } from '@storybook/theming';
-import { healthforce } from '@newcross-ui/design-tokens';
+import { web } from '@newcross-ui/design-tokens';
 
-const { ColorBaseGravitas, ColorBaseVigour, ColorBaseWhite } = healthforce;
+const { ColorBaseGravitas, ColorBaseVigour, ColorBaseWhite } = web.healthforce;
 
 export default create({
-  base:'light',
-  colorSecondary: ColorBaseVigour, 
+  base: 'light',
+  colorSecondary: ColorBaseVigour,
   barTextColor: ColorBaseWhite,
   barSelectedColor: ColorBaseVigour,
   barBg: ColorBaseGravitas,

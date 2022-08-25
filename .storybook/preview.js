@@ -1,7 +1,7 @@
-import { healthforce } from '@newcross-ui/design-tokens';
+import { web } from '@newcross-ui/design-tokens';
 import { ThemeProvider, Brand } from '@newcross-ui/react-native';
 
-const { ColorBaseWhite, ColorBaseGrey600 } = healthforce;
+const { ColorBaseWhite, ColorBaseGrey600 } = web.healthforce;
 
 export const globalTypes = {
   brands: {

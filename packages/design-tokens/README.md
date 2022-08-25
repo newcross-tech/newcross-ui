@@ -24,7 +24,7 @@ yarn add @newcross-ui/design-tokens
 ```javascript
 // pick the brand and associated tokens
 
-import { healthforce } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-ui/design-tokens';
 
 const {
   RadioHeight,
@@ -32,7 +32,7 @@ const {
   RadioBorderWidth,
   RadioBorderColor,
   RadioPadding,
-} = healthforce;
+} = native.healthforce;
 
 const radioStyle = (): StyleSheet.NamedStyles<RadioStyle> => ({
   wrapper: {

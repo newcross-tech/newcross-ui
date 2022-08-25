@@ -11,7 +11,7 @@ import {
   BadgeSizes,
   BadgePositions,
 } from '@newcross-ui/react-native';
-import { healthforce } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-ui/design-tokens';
 import Container from '../Container';
 import Spacing from '../Spacing';
 import { isWebPlatform } from '../utils';
@@ -23,7 +23,7 @@ const {
   SpacingBase24,
   SpacingBase48,
   BorderBaseRadiusRounded,
-} = healthforce;
+} = native.healthforce;
 
 export default {
   title: 'ReactNative/Components/Badge',

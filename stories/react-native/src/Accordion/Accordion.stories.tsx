@@ -14,9 +14,9 @@ import { faCircleInfo } from '@fortawesome/pro-solid-svg-icons/faCircleInfo';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './AccordionInfo';
 import { ScrollView } from 'react-native-gesture-handler';
-import { healthforce } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-ui/design-tokens';
 
-const { ColorBaseGravitas } = healthforce;
+const { ColorBaseGravitas } = native.healthforce;
 
 export default {
   title: 'ReactNative/Components/Accordion',

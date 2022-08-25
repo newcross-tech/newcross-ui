@@ -1,14 +1,15 @@
 import fs from 'fs';
 
-const buildPath = 'build/js';
+const basePath = 'build/js';
+const buildPaths = [`${basePath}/native`, `${basePath}/web`];
 
-const createIndexFiles = (fileNames: Array<string>) => {
+const createIndexFiles = (fileNames: Array<string>, path: string) => {
   const folderNames = fs
-    .readdirSync(buildPath)
-    .filter((name) => fs.statSync(`${buildPath}/${name}`).isDirectory());
+    .readdirSync(path)
+    .filter((name) => fs.statSync(`${path}/${name}`).isDirectory());
 
   fileNames.forEach((fileName) => {
-    const stream = fs.createWriteStream(`${buildPath}/${fileName}`);
+    const stream = fs.createWriteStream(`${path}/${fileName}`);
 
     stream.once('open', () => {
       folderNames.forEach((name) => {
@@ -22,5 +23,11 @@ const createIndexFiles = (fileNames: Array<string>) => {
 };
 
 (() => {
-  createIndexFiles(['index.js', 'index.d.ts']);
+  // create index files for web and native folder
+  buildPaths.forEach((buildPath) => {
+    createIndexFiles(['index.js', 'index.d.ts'], buildPath);
+  });
+
+  // create index files for base path
+  createIndexFiles(['index.js', 'index.d.ts'], basePath);
 })();

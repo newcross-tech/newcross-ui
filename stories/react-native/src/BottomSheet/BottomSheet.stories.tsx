@@ -13,13 +13,13 @@ import {
   TypographyVariant,
 } from '@newcross-ui/react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { healthforce } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-ui/design-tokens';
 import Container from '../Container';
 import { getParameters, isWebPlatform } from '../utils';
 import ButtonGroup from './ButtonGroup';
 import Spacing, { SpacingPositions } from '../Spacing';
 
-const { SpacingBase0, SpacingBase24 } = healthforce;
+const { SpacingBase0, SpacingBase24 } = native.healthforce;
 
 export default {
   title: 'ReactNative/Components/BottomSheet',

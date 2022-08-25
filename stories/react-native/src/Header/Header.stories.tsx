@@ -7,11 +7,11 @@ import {
   Typography,
   TypographyVariant,
 } from '@newcross-ui/react-native';
-import { healthforce } from '@newcross-ui/design-tokens';
-import Container from '../Container';
-import Spacing from '../Spacing';
+import { native } from '@newcross-ui/design-tokens';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faSliders } from '@fortawesome/pro-light-svg-icons/faSliders';
+import Container from '../Container';
+import Spacing from '../Spacing';
 import { getParameters, isWebPlatform } from '../utils';
 
 const {
@@ -21,7 +21,7 @@ const {
   SpacingBase24,
   SpacingBase32,
   BorderBaseRadiusRounded,
-} = healthforce;
+} = native.healthforce;
 
 export default {
   title: 'ReactNative/Components/Header',

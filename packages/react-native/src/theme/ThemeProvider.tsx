@@ -1,9 +1,8 @@
-import React from 'react';
-import { createContext, ReactNode } from 'react';
+import React, { createContext, ReactNode } from 'react';
 import * as theme from '@newcross-ui/design-tokens';
 import Brand from './Brand';
 
-const defaultTheme = theme[Brand.healthforce];
+const defaultTheme = theme.native[Brand.healthforce];
 
 export type ThemeDesignTokens = typeof defaultTheme;
 
@@ -15,7 +14,7 @@ export type ThemeProviderProps = {
 };
 
 const ThemeProvider = ({ brand, children }: ThemeProviderProps) => (
-  <ThemeContext.Provider value={theme[brand] as ThemeDesignTokens}>
+  <ThemeContext.Provider value={theme.native[brand] as ThemeDesignTokens}>
     {children}
   </ThemeContext.Provider>
 );

@@ -23,7 +23,7 @@ const getStyleDictionaryConfig = (brand: string): Config => ({
   platforms: {
     native: {
       transforms: ['attribute/cti', 'name/cti/pascal', 'color/rgb'],
-      buildPath: `build/js/${brand}/`,
+      buildPath: `build/js/native/${brand}/`,
       files: [
         {
           destination: 'index.js',
@@ -38,15 +38,15 @@ const getStyleDictionaryConfig = (brand: string): Config => ({
     web: {
       transforms: [
         'attribute/cti',
-        'name/cti/kebab',
+        'name/cti/pascal',
         'color/rgb',
         'size/pxToRem',
       ],
-      buildPath: `build/scss/${brand}/`,
+      buildPath: `build/js/web/${brand}/`,
       files: [
         {
-          destination: '_tokens.scss',
-          format: 'scss/variables',
+          destination: 'index.js',
+          format: 'javascript/es6',
         },
       ],
     },

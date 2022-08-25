@@ -1,8 +1,8 @@
 import { Typography, TypographyVariant } from '@newcross-ui/react-native';
 import { TextStyle, View, ViewStyle } from 'react-native';
-import { healthforce } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-ui/design-tokens';
 
-const { SpacingBase24 } = healthforce;
+const { SpacingBase24 } = native.healthforce;
 
 type CardContentProps = {
   style?: ViewStyle | TextStyle;

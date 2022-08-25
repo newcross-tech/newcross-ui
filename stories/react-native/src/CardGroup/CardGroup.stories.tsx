@@ -6,7 +6,7 @@ import {
   Typography,
   TypographyVariant,
 } from '@newcross-ui/react-native';
-import { healthforce } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-ui/design-tokens';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faUser } from '@fortawesome/pro-light-svg-icons/faUser';
 import Spacing from '../Spacing';
@@ -16,7 +16,7 @@ import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './CardGroupInfo';
 
 const items = ['Item 1', 'Item 2', 'Item 3'];
-const { SpacingBase24, SpacingBase12 } = healthforce;
+const { SpacingBase24, SpacingBase12 } = native.healthforce;
 
 export default {
   title: 'ReactNative/Components/CardGroup',

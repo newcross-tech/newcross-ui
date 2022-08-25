@@ -1,9 +1,9 @@
 import { StyleSheet, View } from 'react-native';
-import { healthforce } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-ui/design-tokens';
 import { Button, ButtonSizes } from '@newcross-ui/react-native';
 import Spacing, { SpacingPositions } from '../Spacing';
 
-const { SpacingBase8, ColorBaseGreen300 } = healthforce;
+const { SpacingBase8, ColorBaseGreen300 } = native.healthforce;
 
 type ButtonGroupProps = {
   expand: VoidFunction;

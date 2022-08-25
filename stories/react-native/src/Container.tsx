@@ -1,8 +1,8 @@
 import { FC, ReactNode } from 'react';
 import { View, StyleSheet, ViewStyle } from 'react-native';
-import { healthforce } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-ui/design-tokens';
 
-const { SpacingBase12 } = healthforce;
+const { SpacingBase12 } = native.healthforce;
 
 type ContainerProps = {
   children: ReactNode;

@@ -1,10 +1,10 @@
 import { LinearGradient, LinearGradientProps } from 'expo-linear-gradient';
 import { View } from 'react-native';
 import { Typography, TypographyVariant } from '@newcross-ui/react-native';
-import { healthforce } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-ui/design-tokens';
 
 const { BorderBaseRadiusRounded, ColorBaseWhite, SpacingBase64, SpacingBase8 } =
-  healthforce;
+  native.healthforce;
 
 const CardThumbnail = (props: LinearGradientProps) => (
   <LinearGradient

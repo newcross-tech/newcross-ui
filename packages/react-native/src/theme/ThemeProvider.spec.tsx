@@ -8,7 +8,7 @@ import useTheme from '../hooks/useTheme';
 const tokens = { foo: 'bar' };
 
 jest.mock('@newcross-ui/design-tokens', () => ({
-  healthforce: tokens,
+  native: { healthforce: tokens },
 }));
 
 describe('ThemeProvider', () => {

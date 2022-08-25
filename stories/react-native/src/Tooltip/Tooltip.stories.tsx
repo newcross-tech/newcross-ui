@@ -10,13 +10,13 @@ import {
   BottomSheetRefProps,
   Button,
 } from '@newcross-ui/react-native';
-import { healthforce } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-ui/design-tokens';
 import Container from '../Container';
 import { getParameters } from '../utils';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './TooltipInfo';
 
-const { ColorBaseGravitas, SpacingBase24 } = healthforce;
+const { ColorBaseGravitas, SpacingBase24 } = native.healthforce;
 
 export default {
   title: 'ReactNative/Components/Tooltip',

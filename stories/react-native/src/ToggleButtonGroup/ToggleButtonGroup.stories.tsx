@@ -8,18 +8,18 @@ import {
   ToggleButtonGroupProps,
   ToggleButtonColors,
 } from '@newcross-ui/react-native';
-import Spacing, { SpacingPositions } from '../Spacing';
+import { native } from '@newcross-ui/design-tokens';
 import useState from 'storybook-addon-state';
+import Spacing, { SpacingPositions } from '../Spacing';
 import Container from '../Container';
 import { isWebPlatform } from '../utils';
-import { healthforce } from '@newcross-ui/design-tokens';
 
 export default {
   title: 'ReactNative/Components/ToggleButtonGroup',
   component: ToggleButtonGroup,
 } as Meta;
 
-const { SpacingBase32, SpacingBase12 } = healthforce;
+const { SpacingBase32, SpacingBase12 } = native.healthforce;
 
 export const Variants = () => {
   const [selectedSingleBtn, setSelectedSingleBtn] = useState(
