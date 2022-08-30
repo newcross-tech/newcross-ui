@@ -36,7 +36,7 @@ export const Variants: Story<CardProps> = () => (
     <Card hasRoundedCorners>
       <FontAwesomeIcon icon={faUser} size={SpacingBase24} />
       <Typography
-        variant={TypographyVariant.heading6}
+        variant={TypographyVariant.heading3}
         style={{ marginLeft: SpacingBase12, marginRight: SpacingBase12 }}
       >
         My Profile

@@ -163,7 +163,7 @@ export const VariantWithFullHeightAndScroll = () => {
                 padding: SpacingBase24,
               }}
             >
-              <Typography variant={TypographyVariant.paragraph1}>
+              <Typography variant={TypographyVariant.paragraph2}>
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy
                 text ever since the 1500s, when an unknown printer took a galley
@@ -176,7 +176,7 @@ export const VariantWithFullHeightAndScroll = () => {
                 Lorem Ipsum.
               </Typography>
               <Spacing position={SpacingPositions.Bottom} />
-              <Typography variant={TypographyVariant.paragraph1}>
+              <Typography variant={TypographyVariant.paragraph2}>
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy
                 text ever since the 1500s, when an unknown printer took a galley
@@ -189,7 +189,7 @@ export const VariantWithFullHeightAndScroll = () => {
                 Lorem Ipsum.
               </Typography>
               <Spacing position={SpacingPositions.Bottom} />
-              <Typography variant={TypographyVariant.paragraph1}>
+              <Typography variant={TypographyVariant.paragraph2}>
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy
                 text ever since the 1500s, when an unknown printer took a galley
@@ -238,7 +238,7 @@ export const VariantWithScrollableView = () => {
               padding: SpacingBase24,
             }}
           >
-            <Typography variant={TypographyVariant.paragraph1}>
+            <Typography variant={TypographyVariant.paragraph2}>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
@@ -251,7 +251,7 @@ export const VariantWithScrollableView = () => {
               Lorem Ipsum.
             </Typography>
             <Spacing position={SpacingPositions.Bottom} />
-            <Typography variant={TypographyVariant.paragraph1}>
+            <Typography variant={TypographyVariant.paragraph2}>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
@@ -264,7 +264,7 @@ export const VariantWithScrollableView = () => {
               Lorem Ipsum.
             </Typography>
             <Spacing position={SpacingPositions.Bottom} />
-            <Typography variant={TypographyVariant.paragraph1}>
+            <Typography variant={TypographyVariant.paragraph2}>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
@@ -307,7 +307,7 @@ export const VariantWithScrollableViewNoIndicator = () => {
               padding: SpacingBase24,
             }}
           >
-            <Typography variant={TypographyVariant.paragraph1}>
+            <Typography variant={TypographyVariant.paragraph2}>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
@@ -320,7 +320,7 @@ export const VariantWithScrollableViewNoIndicator = () => {
               Lorem Ipsum.
             </Typography>
             <Spacing position={SpacingPositions.Bottom} />
-            <Typography variant={TypographyVariant.paragraph1}>
+            <Typography variant={TypographyVariant.paragraph2}>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
@@ -333,7 +333,7 @@ export const VariantWithScrollableViewNoIndicator = () => {
               Lorem Ipsum.
             </Typography>
             <Spacing position={SpacingPositions.Bottom} />
-            <Typography variant={TypographyVariant.paragraph1}>
+            <Typography variant={TypographyVariant.paragraph2}>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s, when an unknown printer took a galley of

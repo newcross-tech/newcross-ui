@@ -29,19 +29,19 @@ export const Overview = () => {
       dontInfo={DONT}
     >
       <Container>
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Pill with Label
         </Typography>
         <Spacing size={SpacingSizes.Large} />
         <Pill label="Label" removable={false} />
         <Spacing size={SpacingSizes.Large} />
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Disabled Pill with Label
         </Typography>
         <Spacing size={SpacingSizes.Large} />
         <Pill label="Label" removable={false} disabled />
         <Spacing size={SpacingSizes.Large} />
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Removable Pill Group
         </Typography>
         <Spacing size={SpacingSizes.Large} />
@@ -57,19 +57,19 @@ export const Overview = () => {
 export const Variants = () => {
   return (
     <Container>
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Pill with Label
       </Typography>
       <Spacing size={SpacingSizes.Large} />
       <Pill label="Label" removable={false} />
       <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Disabled Pill with Label
       </Typography>
       <Spacing size={SpacingSizes.Large} />
       <Pill label="Label" removable={false} disabled />
       <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Pill with Icon
       </Typography>
       <Spacing size={SpacingSizes.Large} />
@@ -79,7 +79,7 @@ export const Variants = () => {
         icon={<FontAwesomeIcon icon={faBird} />}
       />
       <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Disabled Pill with Icon
       </Typography>
       <Spacing size={SpacingSizes.Large} />
@@ -90,13 +90,13 @@ export const Variants = () => {
         icon={<FontAwesomeIcon icon={faBird} />}
       />
       <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Removable Pill with Icon
       </Typography>
       <Spacing size={SpacingSizes.Large} />
       <Pill label="Label" icon={<FontAwesomeIcon icon={faBird} />} />
       <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Disabled Removable Pill with Icon
       </Typography>
       <Spacing size={SpacingSizes.Large} />

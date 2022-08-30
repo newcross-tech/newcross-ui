@@ -89,14 +89,14 @@ const Alert = ({
       <View style={[styles.textContainer, containerStyle]}>
         <Typography
           style={headerStyle || styles.text}
-          variant={TypographyVariant.heading7}
+          variant={TypographyVariant.heading4}
         >
           {title || defaultTitle[variant]}
         </Typography>
         {children && (
           <Typography
             style={contentStyle || styles.text}
-            variant={TypographyVariant.paragraph2}
+            variant={TypographyVariant.paragraph3}
           >
             {children}
           </Typography>

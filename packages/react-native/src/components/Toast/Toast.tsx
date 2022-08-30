@@ -121,7 +121,7 @@ const Toast = ({
         >
           {(isValidElement(customStatusIcon) && customStatusIcon) || icon}
           <Typography
-            variant={TypographyVariant.paragraph1}
+            variant={TypographyVariant.paragraph2}
             style={styles.text}
           >
             {message}

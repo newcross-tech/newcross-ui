@@ -1,11 +1,12 @@
 {
   "typography": {
     "line-height": {
+      "16": { "value": 16, "type": "size" },
       "18": { "value": 18, "type": "size" },
-      "21": { "value": 21, "type": "size" },
+      "20": { "value": 20, "type": "size" },
       "24": { "value": 24, "type": "size" },
-      "30": { "value": 30, "type": "size" },
-      "42": { "value": 42, "type": "size" }
+      "32": { "value": 32, "type": "size" },
+      "40": { "value": 40, "type": "size" }
     }
   }
 }

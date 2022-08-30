@@ -50,13 +50,13 @@ export const Overview = () => {
 export const VariantWithImage = () => {
   return (
     <Container>
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Active Variant
       </Typography>
       <BottomSpacing />
       <Avatar source={{ uri: person }} />
       <BottomSpacing />
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Inactive Variant
       </Typography>
       <BottomSpacing />
@@ -68,13 +68,13 @@ export const VariantWithImage = () => {
 export const VariantWithText = () => {
   return (
     <Container>
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Active Variant
       </Typography>
       <BottomSpacing />
       <Avatar name="John Doe" />
       <BottomSpacing />
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Inactive Variant
       </Typography>
       <BottomSpacing />
@@ -86,37 +86,37 @@ export const VariantWithText = () => {
 export const VariantWithIcon = () => {
   return (
     <Container>
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Active Variant
       </Typography>
       <BottomSpacing />
       <Avatar />
       <BottomSpacing />
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Inactive Variant
       </Typography>
       <BottomSpacing />
       <Avatar inactive />
       <BottomSpacing />
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Size Variants
       </Typography>
       <BottomSpacing />
       <Container direction="row">
         <Container containerStyle={{ alignItems: 'center' }}>
-          <Typography variant={TypographyVariant.paragraph1}>Large</Typography>
+          <Typography variant={TypographyVariant.paragraph2}>Large</Typography>
           <BottomSpacing />
           <Avatar size={AvatarSizes.large} />
         </Container>
         <HorizontalSpacing />
         <Container containerStyle={{ alignItems: 'center' }}>
-          <Typography variant={TypographyVariant.paragraph1}>Medium</Typography>
+          <Typography variant={TypographyVariant.paragraph2}>Medium</Typography>
           <BottomSpacing />
           <Avatar size={AvatarSizes.medium} />
         </Container>
         <HorizontalSpacing />
         <Container containerStyle={{ alignItems: 'center' }}>
-          <Typography variant={TypographyVariant.paragraph1}>Small</Typography>
+          <Typography variant={TypographyVariant.paragraph2}>Small</Typography>
           <BottomSpacing />
           <Avatar size={AvatarSizes.small} />
         </Container>
@@ -128,7 +128,7 @@ export const VariantWithIcon = () => {
 export const VariantWithBadge = () => {
   return (
     <Container>
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Variant with Badge
       </Typography>
       <BottomSpacing />

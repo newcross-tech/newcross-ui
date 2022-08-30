@@ -37,7 +37,7 @@ export const Overview = () => {
 export const Variants = () => {
   return (
     <Container>
-      <Typography variant={TypographyVariant.heading7}>Enabled</Typography>
+      <Typography variant={TypographyVariant.heading4}>Enabled</Typography>
       <Spacing />
       <Checkbox label="Label" />
       <Checkbox label="Label" defaultChecked />
@@ -47,7 +47,7 @@ export const Variants = () => {
         defaultChecked
       />
 
-      <Typography variant={TypographyVariant.heading7}>Disabled</Typography>
+      <Typography variant={TypographyVariant.heading4}>Disabled</Typography>
       <Spacing />
       <Checkbox label="Label" disabled />
       <Checkbox label="Label" defaultChecked disabled />
@@ -58,7 +58,7 @@ export const Variants = () => {
         disabled
       />
 
-      <Typography variant={TypographyVariant.heading7}>Error</Typography>
+      <Typography variant={TypographyVariant.heading4}>Error</Typography>
       <Spacing />
       <Checkbox label="Label" hasError />
       <Checkbox label="Label" defaultChecked hasError />
@@ -69,7 +69,7 @@ export const Variants = () => {
         hasError
       />
 
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         With long text
       </Typography>
       <Spacing />

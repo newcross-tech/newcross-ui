@@ -19,7 +19,7 @@
       "value": "{brand.color.primary.value}"
     },
     "line-height": {
-      "value": "{typography.line-height.21.value}"
+      "value": "{typography.line-height.20.value}"
     },
     "border-color": {
       "value": "{color.base.grey.100.value}"

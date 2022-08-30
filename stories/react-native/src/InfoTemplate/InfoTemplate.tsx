@@ -11,9 +11,9 @@ type HeaderProps = {
 
 const Header = ({ title, description }: HeaderProps) => (
   <>
-    <Typography variant={TypographyVariant.heading3}>{title}</Typography>
+    <Typography variant={TypographyVariant.heading1}>{title}</Typography>
     <Spacing />
-    <Typography variant={TypographyVariant.paragraph1}>
+    <Typography variant={TypographyVariant.paragraph2}>
       {description}
     </Typography>
   </>
@@ -29,7 +29,7 @@ const Usages = ({ doInfo = [], dontInfo = [] }: UsagesProps) => {
 
   return (
     <>
-      <Typography variant={TypographyVariant.heading5}>
+      <Typography variant={TypographyVariant.heading2}>
         Usage guidelines
       </Typography>
       <Spacing hasBorder />
@@ -38,11 +38,11 @@ const Usages = ({ doInfo = [], dontInfo = [] }: UsagesProps) => {
         {doInfo.map((doText, index) => (
           <Typography
             key={index}
-            variant={TypographyVariant.paragraph1}
+            variant={TypographyVariant.paragraph2}
             style={styles.usagesText}
           >
             <Typography
-              variant={TypographyVariant.heading7}
+              variant={TypographyVariant.heading4}
               style={styles.doStyle}
             >
               DO:
@@ -54,11 +54,11 @@ const Usages = ({ doInfo = [], dontInfo = [] }: UsagesProps) => {
         {dontInfo.map((dontText, index) => (
           <Typography
             key={index}
-            variant={TypographyVariant.paragraph1}
+            variant={TypographyVariant.paragraph2}
             style={styles.usagesText}
           >
             <Typography
-              variant={TypographyVariant.heading7}
+              variant={TypographyVariant.heading4}
               style={styles.dontStyle}
             >
               DON'T:
@@ -77,7 +77,7 @@ const Examples = ({ children, title }: ExamplesProps) => {
   const styles = infoTemplateStyle();
   return (
     <>
-      <Typography variant={TypographyVariant.heading5}>Examples</Typography>
+      <Typography variant={TypographyVariant.heading2}>Examples</Typography>
       <Spacing hasBorder />
       <Spacing />
       {children &&
@@ -91,7 +91,7 @@ const Examples = ({ children, title }: ExamplesProps) => {
         ))}
 
       <Spacing />
-      <Typography variant={TypographyVariant.paragraph1}>
+      <Typography variant={TypographyVariant.paragraph2}>
         Visit the Variants page to view all possible states and options for
         the&nbsp;
         {title} component.

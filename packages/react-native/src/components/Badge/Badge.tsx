@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 import {
   TextStyle,
   View,
@@ -27,7 +27,7 @@ export type BadgeProps = {
   /**
    * Used to define the content of the badge
    */
-  badgeContent?: number;
+  badgeContent?: number | string | ReactElement;
   /**
    * Used to define the max number to cap the value of the badge content
    */
@@ -58,6 +58,7 @@ const Badge = ({
 }: BadgeProps) => {
   const styles = badgeStyle({ size, children, position });
   const isSmallBadge = size === BadgeSizes.small;
+  const isNumber = typeof badgeContent === 'number';
   const hasContent = !!badgeContent;
   const renderContent = hasContent && !isSmallBadge;
 
@@ -68,7 +69,10 @@ const Badge = ({
           variant={getTypographyVariant(size)}
           style={styles.badgeText}
         >
-          {renderContent && calculateDisplayNumber(badgeContent, maxNumber)}
+          {renderContent &&
+            (isNumber
+              ? calculateDisplayNumber(badgeContent, maxNumber)
+              : badgeContent)}
         </Typography>
       </View>
       {children}

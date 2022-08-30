@@ -85,7 +85,7 @@ const Dropdown = ({
     <>
       {label && (
         <Typography
-          variant={TypographyVariant.paragraph1}
+          variant={TypographyVariant.paragraph2}
           testID={`dropdown-label-${testID}`}
           style={labelTextInputContainerStyle}
         >
@@ -101,7 +101,7 @@ const Dropdown = ({
         {selectedValue ? (
           <Typography
             testID={`dropdown-selected-value-${testID}`}
-            variant={TypographyVariant.paragraph1}
+            variant={TypographyVariant.paragraph2}
             style={[textInputContainerStyle, styles.textContainer]}
           >
             {selectedValue}
@@ -109,7 +109,7 @@ const Dropdown = ({
         ) : (
           <Typography
             testID={`dropdown-placeholder-${testID}`}
-            variant={TypographyVariant.paragraph1}
+            variant={TypographyVariant.paragraph2}
             style={[textInputContainerStyle, styles.textContainer]}
           >
             {placeholder}
@@ -119,7 +119,7 @@ const Dropdown = ({
       </Pressable>
       {errorText && (
         <Typography
-          variant={TypographyVariant.paragraph1}
+          variant={TypographyVariant.paragraph2}
           testID={`dropdown-error-text-${testID}`}
           style={errorTextInputContainerStyle}
         >

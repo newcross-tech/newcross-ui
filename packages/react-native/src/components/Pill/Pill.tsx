@@ -55,7 +55,7 @@ const Pill = ({
       <View style={styles.pillContent} testID={`pill-content-${testID}`}>
         {isValidElement(icon) && cloneElement(icon, { style: styles.pillIcon })}
         <Typography
-          variant={TypographyVariant.heading6}
+          variant={TypographyVariant.paragraph1}
           style={styles.pillText}
           testID={`pill-typography-${testID}`}
         >

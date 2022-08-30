@@ -28,13 +28,13 @@ export const Variants = () => {
           justifyContent: 'flex-start',
         }}
       >
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Accordion Group (Exclusive Selection)
         </Typography>
         <Spacing size={SpacingSizes.Large} />
         <AccordionGroup>
           <Accordion label={'Section 1'}>
-            <Typography variant={TypographyVariant.paragraph1}>
+            <Typography variant={TypographyVariant.paragraph2}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
               consequat. Mauris quis dapibus nisi. Donec malesuada condimentum
@@ -44,7 +44,7 @@ export const Variants = () => {
             </Typography>
           </Accordion>
           <Accordion label={'Section 2'}>
-            <Typography variant={TypographyVariant.paragraph1}>
+            <Typography variant={TypographyVariant.paragraph2}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
               consequat. Mauris quis dapibus nisi. Donec malesuada condimentum
@@ -54,7 +54,7 @@ export const Variants = () => {
             </Typography>
           </Accordion>
           <Accordion label={'Section 3'}>
-            <Typography variant={TypographyVariant.paragraph1}>
+            <Typography variant={TypographyVariant.paragraph2}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
               consequat. Mauris quis dapibus nisi. Donec malesuada condimentum
@@ -66,13 +66,13 @@ export const Variants = () => {
         </AccordionGroup>
         <Spacing size={SpacingSizes.Large} />
         <Spacing size={SpacingSizes.Large} />
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Accordion Group (Multiple Selection)
         </Typography>
         <Spacing size={SpacingSizes.Large} />
         <AccordionGroup exclusiveSelection={false}>
           <Accordion label={'Section 1'}>
-            <Typography variant={TypographyVariant.paragraph1}>
+            <Typography variant={TypographyVariant.paragraph2}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
               consequat.Mauris quis dapibus nisi. Donec malesuada condimentum
@@ -82,7 +82,7 @@ export const Variants = () => {
             </Typography>
           </Accordion>
           <Accordion label={'Section 2'}>
-            <Typography variant={TypographyVariant.paragraph1}>
+            <Typography variant={TypographyVariant.paragraph2}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
               consequat. Mauris quis dapibus nisi. Donec malesuada condimentum
@@ -92,7 +92,7 @@ export const Variants = () => {
             </Typography>
           </Accordion>
           <Accordion label={'Section 3'}>
-            <Typography variant={TypographyVariant.paragraph1}>
+            <Typography variant={TypographyVariant.paragraph2}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
               consequat.Mauris quis dapibus nisi. Donec malesuada condimentum
@@ -118,7 +118,7 @@ const Template: Story<AccordionProps> = ({ ...rest }) => {
     >
       <AccordionGroup {...rest}>
         <Accordion>
-          <Typography variant={TypographyVariant.paragraph1}>
+          <Typography variant={TypographyVariant.paragraph2}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
             consequat. Mauris quis dapibus nisi. Donec malesuada condimentum
@@ -128,7 +128,7 @@ const Template: Story<AccordionProps> = ({ ...rest }) => {
           </Typography>
         </Accordion>
         <Accordion>
-          <Typography variant={TypographyVariant.paragraph1}>
+          <Typography variant={TypographyVariant.paragraph2}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
             consequat. Mauris quis dapibus nisi. Donec malesuada condimentum

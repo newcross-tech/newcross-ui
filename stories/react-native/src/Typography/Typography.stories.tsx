@@ -6,6 +6,7 @@ import {
 } from '@newcross-ui/react-native';
 import Container from '../Container';
 import Spacing from '../Spacing';
+import { Fragment } from 'react';
 
 export default {
   title: 'ReactNative/Components/Typography',
@@ -13,23 +14,38 @@ export default {
 } as Meta;
 
 export const Variants = () => {
+  const {
+    heading1,
+    heading2,
+    heading3,
+    heading4,
+    heading5,
+    paragraph1,
+    paragraph2,
+    paragraph3,
+    paragraph4,
+  } = TypographyVariant;
+
+  const variants = [
+    { variant: heading1, text: 'h1 Heading 28px' },
+    { variant: heading2, text: 'h2 Heading 20px' },
+    { variant: heading3, text: 'h3 Heading 16px' },
+    { variant: heading4, text: 'h4 Heading 14px' },
+    { variant: heading5, text: 'h5 Heading 12px' },
+    { variant: paragraph1, text: 'p1 Paragraph 16px' },
+    { variant: paragraph2, text: 'p2 Paragraph 14px' },
+    { variant: paragraph3, text: 'p3 Paragraph 12px' },
+    { variant: paragraph4, text: 'p4 Paragraph 10px' },
+  ];
+
   return (
     <Container>
-      <Typography variant={TypographyVariant.heading3}>h3 Heading</Typography>
-      <Spacing />
-      <Typography variant={TypographyVariant.heading5}>h5 Heading</Typography>
-      <Spacing />
-      <Typography variant={TypographyVariant.heading6}>h6 Heading</Typography>
-      <Spacing />
-      <Typography variant={TypographyVariant.heading7}>h7 Heading</Typography>
-      <Spacing />
-      <Typography variant={TypographyVariant.paragraph1}>
-        p1 Paragraph
-      </Typography>
-      <Spacing />
-      <Typography variant={TypographyVariant.paragraph2}>
-        p2 Paragraph
-      </Typography>
+      {variants.map(({ variant, text }, index) => (
+        <Fragment key={`${variant}${text}${index}`}>
+          <Typography variant={variant}>{text}</Typography>
+          <Spacing />
+        </Fragment>
+      ))}
     </Container>
   );
 };
@@ -44,5 +60,5 @@ export const Interactive = Template.bind({});
 Interactive.args = {
   children: 'My Text',
   style: { color: 'blue' },
-  variant: TypographyVariant.heading3,
+  variant: TypographyVariant.heading1,
 };

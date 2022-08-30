@@ -77,7 +77,7 @@ export const Variants = () => {
   return (
     <>
       <Container>
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Default Dropdown
         </Typography>
         <Spacing size={SpacingSizes.Large} />
@@ -91,14 +91,14 @@ export const Variants = () => {
         />
 
         <Spacing size={SpacingSizes.Large} />
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Disabled Dropdown
         </Typography>
         <Spacing size={SpacingSizes.Large} />
 
         <DropDown placeholder={'Disabled Dropdown'} disabled />
         <Spacing size={SpacingSizes.Large} />
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Disabled Dropdown
         </Typography>
         <Spacing size={SpacingSizes.Large} />
@@ -107,7 +107,7 @@ export const Variants = () => {
           errorText={'Please make a selection'}
         />
         <Spacing size={SpacingSizes.Large} />
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Focused Dropdown
         </Typography>
         <Spacing size={SpacingSizes.Large} />
@@ -168,7 +168,7 @@ const Template: Story<DropdownProps> = ({ ...rest }) => {
   return (
     <>
       <Container>
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Interactive Dropdown
         </Typography>
         <Spacing size={SpacingSizes.Large} />

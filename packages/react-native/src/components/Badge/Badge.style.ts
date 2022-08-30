@@ -41,6 +41,7 @@ const badgeStyle = ({
     badgeText: {
       color: theme.BadgeColor,
       textAlign: 'center',
+      lineHeight: undefined,
     },
   });
 };

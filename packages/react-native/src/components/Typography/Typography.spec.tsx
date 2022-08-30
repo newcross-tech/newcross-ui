@@ -8,7 +8,7 @@ describe('Typography Component', () => {
     // Arrange
     const props: TypographyProps = {
       children: 'My text',
-      variant: TypographyVariant.heading7,
+      variant: TypographyVariant.heading4,
     };
 
     // Act

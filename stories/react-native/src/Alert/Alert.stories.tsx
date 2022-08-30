@@ -37,42 +37,42 @@ export const Variants = () => {
   return (
     <ScrollView>
       <Container containerStyle={{ marginTop: 15 }}>
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Success Variant
         </Typography>
         <Alert variant={AlertVariant.success} action={<Link>Click Here</Link>}>
           This is success. This is success. This is success.
         </Alert>
         <Spacing />
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Warning Variant
         </Typography>
         <Alert variant={AlertVariant.warning} action={<Link>Click Here</Link>}>
           This is warning. This is warning. This is warning.
         </Alert>
         <Spacing />
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Error Variant
         </Typography>
         <Alert variant={AlertVariant.error} action={<Link>Click Here</Link>}>
           This is error. This is error. This is error.
         </Alert>
         <Spacing />
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Info Variant
         </Typography>
         <Alert variant={AlertVariant.info} action={<Link>Click Here</Link>}>
           This is info. This is info. This is info.
         </Alert>
         <Spacing />
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Variant without link
         </Typography>
         <Alert variant={AlertVariant.info}>
           This is success. This is success. This is success.
         </Alert>
         <Spacing />
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Variant without children and link
         </Typography>
         <Alert variant={AlertVariant.info} />

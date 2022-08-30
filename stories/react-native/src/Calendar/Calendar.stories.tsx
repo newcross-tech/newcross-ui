@@ -55,7 +55,7 @@ export const Variants = () => {
         }}
       >
         <Container containerStyle={containerStyle}>
-          <Typography variant={TypographyVariant.heading7}>
+          <Typography variant={TypographyVariant.heading4}>
             Single Date selection
           </Typography>
           <Spacing />
@@ -70,7 +70,7 @@ export const Variants = () => {
           />
         </Container>
         <Container containerStyle={containerStyle}>
-          <Typography variant={TypographyVariant.heading7}>
+          <Typography variant={TypographyVariant.heading4}>
             Multiple Date selection
           </Typography>
           <Spacing />
@@ -86,7 +86,7 @@ export const Variants = () => {
           />
         </Container>
         <Container containerStyle={containerStyle}>
-          <Typography variant={TypographyVariant.heading7}>
+          <Typography variant={TypographyVariant.heading4}>
             Single Date Range selection
           </Typography>
           <Spacing />
@@ -102,7 +102,7 @@ export const Variants = () => {
           />
         </Container>
         <Container containerStyle={containerStyle}>
-          <Typography variant={TypographyVariant.heading7}>
+          <Typography variant={TypographyVariant.heading4}>
             Multiple Date Range selection
           </Typography>
           <Spacing />

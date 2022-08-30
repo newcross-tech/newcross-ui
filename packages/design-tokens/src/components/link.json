@@ -13,7 +13,7 @@
 
       "small": {
         "font-size": { "value": "{typography.font-size.14.value}" },
-        "line-height": { "value": "{typography.line-height.21.value}" }
+        "line-height": { "value": "{typography.line-height.20.value}" }
       },
       "medium": {
         "font-size": { "value": "{typography.font-size.16.value}" },

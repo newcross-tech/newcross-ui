@@ -12,7 +12,7 @@ const CardContent = ({ style }: CardContentProps) => {
   return (
     <View style={style}>
       <Typography
-        variant={TypographyVariant.heading6}
+        variant={TypographyVariant.heading3}
         style={{ alignSelf: 'flex-start' }}
       >
         Heading
@@ -24,7 +24,7 @@ const CardContent = ({ style }: CardContentProps) => {
         08:00 - 15:00
       </Typography>
       <Typography
-        variant={TypographyVariant.heading7}
+        variant={TypographyVariant.heading4}
         style={{ alignSelf: 'flex-end' }}
       >
         £00.00

@@ -6,7 +6,7 @@
     "padding-horizontal": { "value": "{spacing.base.16.value}" },
     "font-family": { "value": "{brand.font-family.regular.value}" },
     "font-size": { "value": "{typography.font-size.14.value}" },
-    "line-height": { "value": "{typography.line-height.21.value}" },
+    "line-height": { "value": "{typography.line-height.20.value}" },
     "border-color": { "value": "{color.base.grey.100.value}" },
     "border-width": { "value": "{border.base.width.sm.value}" },
     "border-radius": { "value": "{border.base.radius.md.value}" },

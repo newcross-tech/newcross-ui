@@ -73,7 +73,7 @@ export const Variants = () => {
     <Container
       containerStyle={{ maxWidth: isWebPlatform ? '350px' : undefined }}
     >
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         With placeholder
       </Typography>
       <Spacing />
@@ -85,7 +85,7 @@ export const Variants = () => {
         onClosePress={() => setSearchPhrase('')}
       />
       <Spacing />
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         With a long search entry
       </Typography>
       <Spacing />
@@ -97,7 +97,7 @@ export const Variants = () => {
         onClosePress={() => setSearchPhrase1('')}
       />
       <Spacing />
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         With a filterable list
       </Typography>
       <Spacing />

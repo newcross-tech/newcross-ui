@@ -52,10 +52,7 @@ export const Overview = () => {
         {options.map((option) => (
           <ListOption
             leftIcon={
-              <Typography
-                variant={TypographyVariant.paragraph1}
-                style={{ fontSize: 20 }}
-              >
+              <Typography variant={TypographyVariant.paragraph2}>
                 {option.flag}
               </Typography>
             }
@@ -83,7 +80,7 @@ export const Variants = () => {
 
   return (
     <ScrollView style={{ maxWidth: isWebPlatform ? '320px' : undefined }}>
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Left Aligned Options
       </Typography>
       <Spacing />
@@ -96,7 +93,7 @@ export const Variants = () => {
       ))}
       <Spacing />
 
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Center Aligned Options
       </Typography>
       <Spacing />
@@ -110,7 +107,7 @@ export const Variants = () => {
       ))}
       <Spacing />
 
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Right Aligned Options
       </Typography>
       <Spacing />
@@ -124,7 +121,7 @@ export const Variants = () => {
       ))}
       <Spacing />
 
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         With Left Icon
       </Typography>
       <Spacing />
@@ -138,7 +135,7 @@ export const Variants = () => {
       ))}
       <Spacing />
 
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         With Right Icon
       </Typography>
       <Spacing />
@@ -152,7 +149,7 @@ export const Variants = () => {
       ))}
       <Spacing />
 
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         With Icons On Both Sides
       </Typography>
       <Spacing />
@@ -189,7 +186,7 @@ export const Variants = () => {
       ))}
       <Spacing />
 
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Selected by default
       </Typography>
       <Spacing />
@@ -258,11 +255,11 @@ export const GroupVariants = () => {
         width: isWebPlatform ? '320px' : undefined,
       }}
     >
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Limited Select
       </Typography>
       <Spacing />
-      <Typography variant={TypographyVariant.paragraph2}>
+      <Typography variant={TypographyVariant.paragraph3}>
         Select up to 2 options
       </Typography>
       <Spacing />
@@ -277,7 +274,7 @@ export const GroupVariants = () => {
       ))}
       <Spacing />
 
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Multiple Select
       </Typography>
       <Spacing />
@@ -291,12 +288,12 @@ export const GroupVariants = () => {
         />
       ))}
       <Spacing />
-      <Typography variant={TypographyVariant.paragraph1}>Selected:</Typography>
+      <Typography variant={TypographyVariant.paragraph2}>Selected:</Typography>
       <Spacing />
       {selectedList2.map((option) => {
         if (option.isSelected) {
           return (
-            <Typography variant={TypographyVariant.paragraph2}>
+            <Typography variant={TypographyVariant.paragraph3}>
               {option.label}
             </Typography>
           );
@@ -336,14 +333,14 @@ export const VariantWithBottomSheet = () => {
             Open To Select Options
           </Button>
           <Spacing />
-          <Typography variant={TypographyVariant.paragraph1}>
+          <Typography variant={TypographyVariant.paragraph2}>
             Selected:
           </Typography>
           <Spacing />
           {selectedList.map((option) => {
             if (option.isSelected) {
               return (
-                <Typography variant={TypographyVariant.paragraph2}>
+                <Typography variant={TypographyVariant.paragraph3}>
                   {option.label}
                 </Typography>
               );

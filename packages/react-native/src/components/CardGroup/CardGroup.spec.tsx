@@ -13,15 +13,15 @@ describe('CardGroup component', () => {
     children: [
       <Card>
         <FontAwesomeIcon icon={faUser} />
-        <Typography variant={TypographyVariant.heading6}>My Profile</Typography>
+        <Typography variant={TypographyVariant.heading3}>My Profile</Typography>
       </Card>,
       <Card>
         <FontAwesomeIcon icon={faUser} />
-        <Typography variant={TypographyVariant.heading6}>My Profile</Typography>
+        <Typography variant={TypographyVariant.heading3}>My Profile</Typography>
       </Card>,
       <Card>
         <FontAwesomeIcon icon={faUser} />
-        <Typography variant={TypographyVariant.heading6}>My Profile</Typography>
+        <Typography variant={TypographyVariant.heading3}>My Profile</Typography>
       </Card>,
     ],
   };

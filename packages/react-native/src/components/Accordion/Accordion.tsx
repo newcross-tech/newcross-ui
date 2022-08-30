@@ -111,7 +111,7 @@ const Accordion = ({
             <View style={styles.headerLabel}>
               {icon}
               <Typography
-                variant={TypographyVariant.heading6}
+                variant={TypographyVariant.paragraph1}
                 style={styles.text}
                 numberOfLines={2}
               >

@@ -36,12 +36,12 @@ export const Variants = () => {
         <View style={{ display: 'flex', flexDirection: 'column' }}>
           <Typography
             style={{ color: ColorBaseWhite }}
-            variant={TypographyVariant.heading7}
+            variant={TypographyVariant.heading2}
           >
             Welcome back&nbsp;
             <Typography
               style={{ color: ColorBaseGreen100 }}
-              variant={TypographyVariant.heading7}
+              variant={TypographyVariant.heading2}
             >
               Holly
             </Typography>
@@ -62,12 +62,12 @@ export const Variants = () => {
         <View style={{ display: 'flex', flexDirection: 'column' }}>
           <Typography
             style={{ color: ColorBaseWhite }}
-            variant={TypographyVariant.heading7}
+            variant={TypographyVariant.heading2}
           >
             Welcome back&nbsp;
             <Typography
               style={{ color: ColorBaseGreen100 }}
-              variant={TypographyVariant.heading7}
+              variant={TypographyVariant.heading2}
             >
               Holly
             </Typography>
@@ -93,7 +93,7 @@ export const Variants = () => {
         >
           <Typography
             style={{ color: ColorBaseWhite }}
-            variant={TypographyVariant.heading3}
+            variant={TypographyVariant.heading1}
           >
             Find shifts
           </Typography>

@@ -36,13 +36,13 @@ const CardThumbnail = (props: LinearGradientProps) => (
         }}
       >
         <Typography
-          variant={TypographyVariant.heading7}
+          variant={TypographyVariant.heading4}
           style={{ color: ColorBaseWhite }}
         >
           XX
         </Typography>
         <Typography
-          variant={TypographyVariant.heading5}
+          variant={TypographyVariant.heading2}
           style={{ color: ColorBaseWhite }}
         >
           XX

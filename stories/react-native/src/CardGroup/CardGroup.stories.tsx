@@ -30,7 +30,7 @@ const renderCardItems = (numberOfItems = items.length) =>
       <Container direction="row" hasPadding={false} justifyContent="flex-start">
         <FontAwesomeIcon icon={faUser} size={SpacingBase24} />
         <Typography
-          variant={TypographyVariant.heading6}
+          variant={TypographyVariant.heading3}
           style={{ marginLeft: SpacingBase12 }}
         >
           {item}
@@ -55,11 +55,11 @@ export const Overview = () => {
 export const Variants: Story<CardGroupProps> = () => {
   return (
     <Container>
-      <Typography variant={TypographyVariant.heading5}>Two Cards</Typography>
+      <Typography variant={TypographyVariant.heading2}>Two Cards</Typography>
       <Spacing />
       <CardGroup>{renderCardItems(2)}</CardGroup>
       <Spacing />
-      <Typography variant={TypographyVariant.heading5}>
+      <Typography variant={TypographyVariant.heading2}>
         Multiple Cards
       </Typography>
       <Spacing />

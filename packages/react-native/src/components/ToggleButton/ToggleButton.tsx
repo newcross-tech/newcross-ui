@@ -80,7 +80,7 @@ const ToggleButton = ({
         <View style={styles.insetShadow} testID={`${testID}-inset-shadow`} />
       )}
       {isValidElement(icon) && cloneElement(icon, { style: styles.icon })}
-      <Typography variant={TypographyVariant.paragraph1} style={styles.text}>
+      <Typography variant={TypographyVariant.paragraph2} style={styles.text}>
         {children}
       </Typography>
     </Pressable>

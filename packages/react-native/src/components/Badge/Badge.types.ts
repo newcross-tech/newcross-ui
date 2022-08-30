@@ -40,9 +40,9 @@ export const getHeightWidthValues = (
 
 export const getTypographyVariant = (size: BadgeSizes) =>
   ({
-    [BadgeSizes.large]: TypographyVariant.heading6,
-    [BadgeSizes.medium]: TypographyVariant.paragraph2,
-    [BadgeSizes.small]: TypographyVariant.paragraph2,
+    [BadgeSizes.large]: TypographyVariant.heading3,
+    [BadgeSizes.medium]: TypographyVariant.heading5,
+    [BadgeSizes.small]: TypographyVariant.heading5,
   }[size]);
 
 type PositionValues = Record<BadgeSizes, Record<BadgePositions, ViewStyle>>;

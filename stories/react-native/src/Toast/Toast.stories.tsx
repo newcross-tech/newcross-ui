@@ -114,7 +114,7 @@ export const Variants = () => {
       />
       <Spacing position={SpacingPositions.Bottom} />
       <Container>
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Action to dismiss toast
         </Typography>
         <Spacing position={SpacingPositions.Bottom} />
@@ -132,7 +132,7 @@ export const Variants = () => {
           Show Multi line Toast
         </Button>
         <Spacing position={SpacingPositions.Bottom} />
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Auto dismiss toast on set duration
         </Typography>
         <Spacing position={SpacingPositions.Bottom} />

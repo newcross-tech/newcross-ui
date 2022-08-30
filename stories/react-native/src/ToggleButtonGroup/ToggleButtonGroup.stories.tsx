@@ -38,7 +38,7 @@ export const Variants = () => {
   );
   return (
     <Container>
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Single Select Group
       </Typography>
       <Spacing position={SpacingPositions.Bottom} />
@@ -59,7 +59,7 @@ export const Variants = () => {
         </ToggleButton>
       </ToggleButtonGroup>
       <Spacing position={SpacingPositions.Bottom} />
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Multiple Select Group
       </Typography>
       <Spacing position={SpacingPositions.Bottom} />
@@ -82,7 +82,7 @@ export const Variants = () => {
         </ToggleButton>
       </ToggleButtonGroup>
       <Spacing position={SpacingPositions.Bottom} />
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Multiple Select Group with vertical orientation
       </Typography>
       <Spacing position={SpacingPositions.Bottom} />
@@ -113,7 +113,7 @@ export const Variants = () => {
         </ToggleButtonGroup>
       </Container>
       <Spacing position={SpacingPositions.Bottom} />
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Mutliple Select Group with horizontal
       </Typography>
       <Spacing position={SpacingPositions.Bottom} />

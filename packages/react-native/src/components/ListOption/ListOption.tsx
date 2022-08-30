@@ -80,7 +80,7 @@ const ListOption = ({
         <View style={styles.textContainer}>
           <Typography
             style={styles.optionText}
-            variant={TypographyVariant.paragraph1}
+            variant={TypographyVariant.paragraph2}
           >
             {value}
           </Typography>

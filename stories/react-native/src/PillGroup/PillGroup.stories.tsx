@@ -72,7 +72,7 @@ export const Variants = () => {
           justifyContent: 'flex-start',
         }}
       >
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Removable Pill Group (Interactive Section with Buttons)
         </Typography>
         <Container
@@ -97,7 +97,7 @@ export const Variants = () => {
         </PillGroup>
         <Spacing size={SpacingSizes.Large} />
         <Spacing size={SpacingSizes.Large} />
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Removable Pill Group with Pill Variants
         </Typography>
         <Spacing size={SpacingSizes.Large} />
@@ -114,7 +114,7 @@ export const Variants = () => {
         </PillGroup>
         <Spacing size={SpacingSizes.Large} />
         <Spacing size={SpacingSizes.Large} />
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Pill Group with Vertical Orientation
         </Typography>
         <Spacing size={SpacingSizes.Large} />

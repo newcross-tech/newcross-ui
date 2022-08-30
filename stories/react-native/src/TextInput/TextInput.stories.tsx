@@ -58,7 +58,7 @@ export const Variants = () => {
       <Container
         containerStyle={{ maxWidth: isWebPlatform ? '350px' : undefined }}
       >
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Without placeholder
         </Typography>
         <TextInput
@@ -68,7 +68,7 @@ export const Variants = () => {
         />
         <Spacing />
 
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           With placeholder
         </Typography>
         <TextInput
@@ -79,7 +79,7 @@ export const Variants = () => {
         />
         <Spacing />
 
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           With placeholder and disabled
         </Typography>
         <TextInput
@@ -91,7 +91,7 @@ export const Variants = () => {
         />
         <Spacing />
 
-        <Typography variant={TypographyVariant.heading7}>Password</Typography>
+        <Typography variant={TypographyVariant.heading4}>Password</Typography>
         <TextInput
           placeholder="Enter password"
           textContentType="password"
@@ -100,7 +100,7 @@ export const Variants = () => {
         />
         <Spacing />
 
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           With validation check
         </Typography>
         <TextInput
@@ -111,7 +111,7 @@ export const Variants = () => {
         />
         <Spacing />
 
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           With a label
         </Typography>
         <TextInput
@@ -122,7 +122,7 @@ export const Variants = () => {
         />
         <Spacing />
 
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           With helper text
         </Typography>
         <TextInput
@@ -134,7 +134,7 @@ export const Variants = () => {
         />
         <Spacing />
 
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           With error text
         </Typography>
         <TextInput

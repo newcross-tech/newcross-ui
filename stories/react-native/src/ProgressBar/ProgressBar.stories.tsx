@@ -36,7 +36,7 @@ export const Overview = () => {
       dontInfo={DONT}
     >
       <Container>
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Determinate Progress Bar
         </Typography>
         <Spacing size={SpacingSizes.Large} />
@@ -47,7 +47,7 @@ export const Overview = () => {
           progress={50}
         />
         <Spacing size={SpacingSizes.Large} />
-        <Typography variant={TypographyVariant.heading7}>
+        <Typography variant={TypographyVariant.heading4}>
           Indeterminate Progress Bar
         </Typography>
         <Spacing size={SpacingSizes.Large} />
@@ -63,7 +63,7 @@ export const Overview = () => {
 export const Variants = () => {
   return (
     <Container containerStyle={{ width: isWebPlatform ? '35%' : '100%' }}>
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Determinate Progress Bar
       </Typography>
       <Spacing size={SpacingSizes.Large} />
@@ -75,7 +75,7 @@ export const Variants = () => {
       />
       <Spacing size={SpacingSizes.Large} />
 
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Determinate Centered Positioned Label Progress Bar
       </Typography>
       <Spacing size={SpacingSizes.Large} />
@@ -86,7 +86,7 @@ export const Variants = () => {
         progress={25}
       />
       <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Determinate Two Line Label Progress Bar
       </Typography>
       <Spacing size={SpacingSizes.Large} />
@@ -100,7 +100,7 @@ export const Variants = () => {
       />
       <Spacing size={SpacingSizes.Large} />
 
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Determinate Dark Background Progress Bar
       </Typography>
       <Spacing size={SpacingSizes.Large} />
@@ -119,7 +119,7 @@ export const Variants = () => {
       </Container>
 
       <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading7}>
+      <Typography variant={TypographyVariant.heading4}>
         Indeterminate Progress Bar
       </Typography>
       <Spacing size={SpacingSizes.Large} />

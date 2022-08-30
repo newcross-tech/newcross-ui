@@ -57,7 +57,7 @@ const AvatarContent = ({
   if (abbreviation) {
     return (
       <Typography
-        variant={TypographyVariant.heading6}
+        variant={TypographyVariant.heading3}
         testID={`${testId}-with-text`}
         style={contentStyle || styles.text}
       >
