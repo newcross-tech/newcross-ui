@@ -9,9 +9,9 @@ import {
   Typography,
   TypographyVariant,
 } from '@newcross-ui/react-native';
+import { native } from '@newcross-ui/design-tokens';
 import Container from '../Container';
 import Spacing from '../Spacing';
-import { healthforce } from '@newcross-ui/design-tokens';
 import CardContent from './CardContent';
 import CardThumbnail from './CardThumbnail';
 import { getParameters } from '../utils';
@@ -23,7 +23,7 @@ const {
   ColorBaseYellow300,
   SpacingBase24,
   SpacingBase12,
-} = healthforce;
+} = native.healthforce;
 
 export default {
   title: 'ReactNative/Components/Card',

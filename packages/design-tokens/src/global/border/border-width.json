@@ -2,9 +2,9 @@
   "border": {
     "base": {
       "width": {
-        "sm": { "value": 1 },
-        "md": { "value": 2 },
-        "lg": { "value": 4 }
+        "sm": { "value": 1, "type": "size" },
+        "md": { "value": 2, "type": "size" },
+        "lg": { "value": 4, "type": "size" }
       }
     }
   }

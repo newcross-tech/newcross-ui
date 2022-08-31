@@ -8,14 +8,14 @@ import {
   Typography,
   TypographyVariant,
 } from '@newcross-ui/react-native';
+import { native } from '@newcross-ui/design-tokens';
 import Container from '../Container';
 import { isWebPlatform } from '../utils';
 import Spacing, { SpacingSizes } from '../Spacing';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './ProgressBarInfo';
-import { healthforce } from '@newcross-ui/design-tokens';
 
-const { ColorBaseGravitas } = healthforce;
+const { ColorBaseGravitas } = native.healthforce;
 
 export default {
   title: 'ReactNative/Components/ProgressBar',

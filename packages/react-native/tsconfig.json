@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "jsx": "react-native",
-    "module": "ESNext"
+    "outDir": "build"
   },
   "exclude": ["**/*.spec.tsx", "**/*.d.ts", "build"]
 }

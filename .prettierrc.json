@@ -1,3 +1,6 @@
 {
-  "singleQuote": true
+  "singleQuote": true,
+  "overrides": [
+    { "files": "**/react/**/*.style.ts", "options": { "printWidth": 120 } }
+  ]
 }

@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
+import { native } from '@newcross-ui/design-tokens';
 import { isWebPlatform } from '../utils';
-import { healthforce } from '@newcross-ui/design-tokens';
 
 const {
   ColorBaseRed200,
@@ -12,7 +12,7 @@ const {
   BorderBaseWidthSm,
   BorderBaseWidthLg,
   TypographyLineHeight24,
-} = healthforce;
+} = native.healthforce;
 
 const infoTemplateStyle = () => {
   return StyleSheet.create({

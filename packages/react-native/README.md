@@ -1,6 +1,6 @@
 # Halo Design System - React Native
 
-React Native components for react-native based projects inside Newcross Healthcare.
+React Native components for react-native based projects in Newcross Healthcare.
 
 # Get started
 

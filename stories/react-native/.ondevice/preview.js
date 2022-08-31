@@ -1,8 +1,8 @@
 import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds';
-import { healthforce } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-ui/design-tokens';
 import { ThemeProvider, Brand } from '@newcross-ui/react-native';
 
-const { ColorBaseGrey600, ColorBaseWhite } = healthforce;
+const { ColorBaseGrey600, ColorBaseWhite } = native.healthforce;
 
 const withThemeProvider = (Story) => {
   return (

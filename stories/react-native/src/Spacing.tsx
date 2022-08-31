@@ -1,5 +1,5 @@
 import { View, ViewStyle } from 'react-native';
-import { healthforce } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-ui/design-tokens';
 
 const {
   SpacingBase12,
@@ -7,7 +7,7 @@ const {
   SpacingBase32,
   BorderBaseWidthSm,
   ColorBaseGrey100,
-} = healthforce;
+} = native.healthforce;
 
 export enum SpacingPositions {
   Bottom = 'Bottom',

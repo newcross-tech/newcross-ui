@@ -5,7 +5,11 @@ StyleDictionary.registerTransform({
   type: 'value',
   name: 'size/pxToRem',
   matcher: (token) => {
-    return token.attributes?.category === 'size' || token.type === 'spacing';
+    return (
+      token.attributes?.category === 'size' ||
+      token.type === 'spacing' ||
+      token.type === 'size'
+    );
   },
   transformer: (token, options) => {
     const baseFont = getBasePxFontSize(options);

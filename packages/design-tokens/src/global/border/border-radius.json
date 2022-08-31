@@ -2,11 +2,11 @@
   "border": {
     "base": {
       "radius": {
-        "squared": { "value": 0 },
-        "sm": { "value": 4 },
-        "md": { "value": 8 },
-        "lg": { "value": 16 },
-        "rounded": { "value": 9999 }
+        "squared": { "value": 0, "type": "size" },
+        "sm": { "value": 4, "type": "size" },
+        "md": { "value": 8, "type": "size" },
+        "lg": { "value": 16, "type": "size" },
+        "rounded": { "value": 9999, "type": "size" }
       }
     }
   }
