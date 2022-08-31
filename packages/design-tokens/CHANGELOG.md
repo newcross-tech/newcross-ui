@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.25.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.24.1...@newcross-ui/design-tokens@1.25.0) (2022-08-31)
+
+
+### Features
+
+* **hfgo-1177:** created dropdown ([f53fc27](https://bitbucket.org/newcrossdev/newcross-ui/commits/f53fc27cd10dff558bcb83f7c467bcb60ded19e8))
+* **hfgo-1269:** update typography component ([a53c271](https://bitbucket.org/newcrossdev/newcross-ui/commits/a53c2711f929de09b48eb8288c207ece33ee04e6))
+* **hfgo-1277:** add web component support for HALO Design System ([3be9eb8](https://bitbucket.org/newcrossdev/newcross-ui/commits/3be9eb81ca4b2063fbb3ad80c2e0006c0ddd2e56))
+
+
+
+
+
 ## [1.24.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.24.0...@newcross-ui/design-tokens@1.24.1) (2022-08-16)
 
 
