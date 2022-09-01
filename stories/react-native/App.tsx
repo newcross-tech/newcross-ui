@@ -6,6 +6,7 @@ import {
   Poppins_700Bold,
   Poppins_800ExtraBold,
 } from '@expo-google-fonts/poppins';
+import { useFonts as useIconFonts } from 'expo-font';
 import StorybookUIRoot from './.ondevice/Storybook';
 
 export default function App() {
@@ -17,6 +18,14 @@ export default function App() {
   });
 
   if (!loaded) {
+    return null;
+  }
+  
+  const [fontsLoaded] = useIconFonts({
+    IcoMoon: require('../../assets/fonts/icomoon.ttf'),
+  });
+
+  if (!fontsLoaded) {
     return null;
   }
 

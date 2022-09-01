@@ -87,3 +87,4 @@ export {
   ListOptionProps,
   ListOptionAlignment,
 } from './components/ListOption';
+export { default as CustomIcon } from './components/CustomIcon';
