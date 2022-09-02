@@ -25,6 +25,7 @@ export {
 } from './components/Button';
 export { default as Radio, RadioProps } from './components/Radio';
 export { default as DropDown, DropdownProps } from './components/Dropdown';
+export { default as PhoneInput } from './components/PhoneInput';
 export {
   default as ProgressBar,
   ProgressBarProps,

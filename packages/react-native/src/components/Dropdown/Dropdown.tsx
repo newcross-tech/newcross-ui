@@ -20,6 +20,14 @@ export type DropdownProps = {
    */
   style?: ViewStyle;
   /**
+   * Used to add custom styles.
+   */
+  contentStyle?: ViewStyle;
+  /**
+   * Used to add custom styles.
+   */
+  iconStyle?: ViewStyle;
+  /**
    * Adds error text.
    */
   errorText?: string;
@@ -53,6 +61,8 @@ const Dropdown = ({
   label,
   focused = false,
   style,
+  contentStyle,
+  iconStyle,
   onPress,
   testID,
 }: DropdownProps) => {
@@ -101,21 +111,32 @@ const Dropdown = ({
         {selectedValue ? (
           <Typography
             testID={`dropdown-selected-value-${testID}`}
-            variant={TypographyVariant.paragraph2}
-            style={[textInputContainerStyle, styles.textContainer]}
+            variant={TypographyVariant.paragraph1}
+            style={[
+              textInputContainerStyle,
+              styles.textContainer,
+              contentStyle,
+            ]}
           >
             {selectedValue}
           </Typography>
         ) : (
           <Typography
             testID={`dropdown-placeholder-${testID}`}
-            variant={TypographyVariant.paragraph2}
-            style={[textInputContainerStyle, styles.textContainer]}
+            variant={TypographyVariant.paragraph1}
+            style={[
+              textInputContainerStyle,
+              styles.textContainer,
+              contentStyle,
+            ]}
           >
             {placeholder}
           </Typography>
         )}
-        <FontAwesomeIcon style={styles.icon} icon={faChevronDown} />
+        <FontAwesomeIcon
+          style={[styles.icon, iconStyle]}
+          icon={faChevronDown}
+        />
       </Pressable>
       {errorText && (
         <Typography

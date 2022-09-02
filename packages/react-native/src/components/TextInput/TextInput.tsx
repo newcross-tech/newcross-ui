@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import {
   View,
   Text,
@@ -66,6 +66,10 @@ export type TextInputProps = {
    * Overwrites or extends the styles applied to the component.
    */
   style?: ViewStyle | TextStyle;
+  /**
+   * Includes a dropdown component
+   */
+  includeDropdown?: ReactNode;
 } & NativeTextInputProps;
 
 const TextInput = ({
@@ -79,6 +83,7 @@ const TextInput = ({
   errorText,
   isValid,
   search,
+  includeDropdown,
   onClosePress,
   style,
   ...rest
@@ -112,6 +117,7 @@ const TextInput = ({
             <FontAwesomeIcon icon={faSearch} style={styles.searchIcon} />
           </View>
         )}
+        {!!includeDropdown && includeDropdown}
         <NativeTextInput
           style={styles.inputContainer}
           value={value}
@@ -158,11 +164,11 @@ const TextInput = ({
           </Pressable>
         )}
       </View>
-      {(helperText || errorText) && (
+      {helperText || errorText ? (
         <Text testID="message-text" style={styles.messageText}>
           {errorText || helperText}
         </Text>
-      )}
+      ) : null}
     </>
   );
 };

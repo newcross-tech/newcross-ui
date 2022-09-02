@@ -1,0 +1,16 @@
+{
+  "phone-input": {
+    "container": {
+      "padding-horizontal": { "value": "{spacing.base.16.value}" }
+    },
+    "dialcode": {
+      "padding-horizontal": { "value": "{spacing.base.8.value}" },
+      "color": { "value": "{color.base.grey.200.value}" }
+    },
+    "divider": {
+      "background-color": { "value": "{color.base.grey.300.value}" },
+      "height": { "value": "{spacing.base.24.value}" },
+      "width": { "value": "{spacing.base.4.value}" }
+    }
+  }
+}
