@@ -1,6 +1,15 @@
+import {
+  bottomSheetReducer,
+  BottomSheetActionType,
+  initialState,
+  BottomSheetContext,
+  getBottomSheetContent,
+} from '@newcross-stories/react-native/src/BottomSheet';
 import * as tokens from '@newcross-ui/design-tokens';
+import { BottomSheet } from '@newcross-ui/react-native';
 import * as Native from '@newcross-ui/react-native';
 import * as Web from '@newcross-ui/react';
+import { useReducer } from 'react';
 
 const { ColorBaseWhite, ColorBaseGrey600 } = tokens.web.healthforce;
 
@@ -54,11 +63,28 @@ export const parameters = {
 const withThemeProvider = (Story, context) => {
   const brand = context.globals.brands;
   const [componentType] = context.title ? context.title.split('/') : [];
+  const [state, dispatch] = useReducer(bottomSheetReducer, initialState);
+  const BottomSheetContent = getBottomSheetContent(state.contentType);
+
+  const providerState = { state, dispatch };
+
+  const closeBottomSheet = () =>
+    dispatch({
+      type: BottomSheetActionType.closeBottomSheet,
+    });
 
   const ThemeProviders = {
     [ComponentTypes.ReactNative]: (
       <Native.ThemeProvider brand={brand}>
-        <Story {...context} />
+        <BottomSheetContext.Provider value={providerState}>
+          <BottomSheet isOpen={state.isOpen} onBackdropPress={closeBottomSheet}>
+            <BottomSheetContent
+              onClose={closeBottomSheet}
+              data={state.contentData}
+            />
+          </BottomSheet>
+          <Story {...context} />
+        </BottomSheetContext.Provider>
       </Native.ThemeProvider>
     ),
     [ComponentTypes.React]: (

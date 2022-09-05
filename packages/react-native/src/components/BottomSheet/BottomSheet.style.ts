@@ -13,7 +13,9 @@ const bottomSheetStyle = (theme: ThemeDesignTokens) => {
       backgroundColor: theme.BottomSheetBackgroundColor,
       borderTopStartRadius: theme.BottomSheetBorderRadius,
       borderTopEndRadius: theme.BottomSheetBorderRadius,
+      zIndex: 2,
     },
+
     indicatorContainer: {
       justifyContent: 'center',
       alignItems: 'center',
@@ -49,6 +51,7 @@ const bottomSheetStyle = (theme: ThemeDesignTokens) => {
       height: dimensions.height,
       left: theme.BottomSheetPosition,
       right: theme.BottomSheetPosition,
+      zIndex: 1,
     },
   });
 };

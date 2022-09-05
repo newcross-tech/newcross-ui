@@ -12,7 +12,7 @@ export const getParameters = (
   const parameters = {
     viewport: showViewport && {
       viewports: INITIAL_VIEWPORTS,
-      defaultViewport: 'iphone6',
+      defaultViewport: 'iphone5',
     },
     options: { showPanel },
   };

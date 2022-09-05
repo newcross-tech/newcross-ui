@@ -18,6 +18,7 @@ import React, {
   useCallback,
   useImperativeHandle,
   useState,
+  useEffect,
 } from 'react';
 import {
   DEFAULT_COLLAPSE_THRESHOLD,
@@ -54,6 +55,14 @@ export type BottomSheetProps = {
    * control gesture indicator
    */
   hasGestureIndicator?: boolean;
+  /**
+   * boolean that controls whether the bottom sheet is open or close
+   */
+  isOpen?: boolean;
+  /**
+   * callback to run on backdrop press
+   */
+  onBackdropPress?: VoidFunction;
 } & ScrollViewProps;
 
 export type BottomSheetRefProps = {
@@ -61,14 +70,6 @@ export type BottomSheetRefProps = {
    * pass value to scroll to specific position
    */
   scrollTo: (destination: number) => void;
-  /**
-   * close bottom sheet
-   */
-  collapse: () => void;
-  /**
-   * open bottom sheet
-   */
-  expand: () => void;
 };
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
@@ -81,6 +82,8 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
       collapseThreshold = DEFAULT_COLLAPSE_THRESHOLD,
       hasBackdrop = true,
       hasGestureIndicator = true,
+      isOpen = false,
+      onBackdropPress,
       ...rest
     },
     ref
@@ -88,12 +91,17 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
     const [active, setActive] = useState(false);
     const [contentHeight, setContentHeight] = useState(0);
 
+    useEffect(() => {
+      isOpen ? expand() : collapse();
+    }, [isOpen, contentHeight]);
+
     const topPosition = useSharedValue(dimensions.height);
     const startTopPosition = useSharedValue(0);
     const theme = useTheme();
     const styles = bottomSheetStyle(theme);
     const hasSnapPoint =
       snapPoint || `${normalizeContentHeightToDimensions(contentHeight)}%`;
+
     const normalizedSnapPoint = Math.round(normalizeSnapPoint(hasSnapPoint));
 
     const scrollTo = useCallback((destination: number) => {
@@ -146,13 +154,19 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
     const isContentGreaterThanMaxHeight =
       normalizeContentHeightAsPercentage(contentHeight) > DEFAULT_MAX_HEIGHT;
 
+    const handleBackdropPress = () => {
+      if (hasGestureIndicator) {
+        onBackdropPress && onBackdropPress();
+      }
+    };
+
     return (
       <>
         {active && hasBackdrop && (
           <AnimatedPressable
             testID="bottom-sheet-backdrop"
             style={[styles.backdrop, backdropAnimationStyle]}
-            onPress={hasGestureIndicator ? collapse : null}
+            onPress={handleBackdropPress}
           />
         )}
         <GestureDetector gesture={hasGestureIndicator ? gesture : undefined}>
