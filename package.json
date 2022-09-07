@@ -108,5 +108,8 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
+  },
+  "dependencies": {
+    "react-native-svg-transformer": "^1.0.0"
   }
 }

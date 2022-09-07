@@ -4,6 +4,8 @@ import { native } from '@newcross-ui/design-tokens';
 
 const { SpacingBase24 } = native.healthforce;
 
+import Heart from '../heartBadge.svg';
+
 type CardContentProps = {
   style?: ViewStyle | TextStyle;
 };
@@ -11,6 +13,7 @@ type CardContentProps = {
 const CardContent = ({ style }: CardContentProps) => {
   return (
     <View style={style}>
+      <Heart />
       <Typography
         variant={TypographyVariant.heading3}
         style={{ alignSelf: 'flex-start' }}
