@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.23.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.22.0...@newcross-ui/react-native@1.23.0) (2022-09-07)
+
+
+### Features
+
+* **hfgo-1170:** add phone input ([f0eaea8](https://bitbucket.org/newcrossdev/newcross-ui/commits/f0eaea8ba6e85aa07445e4e0036d8e99e6ccc8b3))
+* **hfgo-1285:** updated color design tokens ([4550612](https://bitbucket.org/newcrossdev/newcross-ui/commits/4550612c8456c4745694de913aa640a7d8847ff5))
+* **hfgo-1292:** add state for bottomsheet ([5cdb337](https://bitbucket.org/newcrossdev/newcross-ui/commits/5cdb33718426d4cc6f902b02337f926a7ce43bac))
+
+
+
+
+
 # [1.22.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.21.0...@newcross-ui/react-native@1.22.0) (2022-08-31)
 
 
