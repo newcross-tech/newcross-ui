@@ -3,7 +3,7 @@ import { native } from '@newcross-ui/design-tokens';
 import { Button, ButtonSizes } from '@newcross-ui/react-native';
 import Spacing, { SpacingPositions } from '../Spacing';
 
-const { SpacingBase8, ColorBaseGreen300 } = native.healthforce;
+const { SpacingBase8, ColorBaseMint300 } = native.healthforce;
 
 type ButtonGroupProps = {
   expand: VoidFunction;
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingVertical: SpacingBase8,
     justifyContent: 'space-evenly',
-    backgroundColor: ColorBaseGreen300,
+    backgroundColor: ColorBaseMint300,
   },
 });
 

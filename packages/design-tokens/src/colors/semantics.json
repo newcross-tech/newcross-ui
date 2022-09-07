@@ -1,0 +1,62 @@
+{
+  "color": {
+    "semantics": {
+      "success": {
+        "100": {
+          "value": "{color.base.green.100.value}",
+          "type": "semantics"
+        },
+        "200": {
+          "value": "{color.base.green.200.value}",
+          "type": "semantics"
+        },
+        "300": {
+          "value": "{color.base.green.300.value}",
+          "type": "semantics"
+        }
+      },
+      "warning": {
+        "100": {
+          "value": "{color.base.red.300.value}",
+          "type": "semantics"
+        },
+        "200": {
+          "value": "{color.base.orange.200.value}",
+          "type": "semantics"
+        },
+        "300": {
+          "value": "{color.base.orange.300.value}",
+          "type": "semantics"
+        }
+      },
+      "error": {
+        "100": {
+          "value": "{color.base.red.100.value}",
+          "type": "semantics"
+        },
+        "200": {
+          "value": "{color.base.red.200.value}",
+          "type": "semantics"
+        },
+        "300": {
+          "value": "{color.base.red.400.value}",
+          "type": "semantics"
+        }
+      },
+      "info": {
+        "100": {
+          "value": "{color.base.blue.300.value}",
+          "type": "semantics"
+        },
+        "200": {
+          "value": "{color.base.blue.400.value}",
+          "type": "semantics"
+        },
+        "300": {
+          "value": "{color.base.blue.500.value}",
+          "type": "semantics"
+        }
+      }
+    }
+  }
+}

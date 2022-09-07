@@ -1,6 +1,6 @@
 {
   "checkbox": {
-    "background-color": { "value": "{color.base.white.value}" },
+    "background-color": { "value": "{color.neutral.white.value}" },
     "border-color": { "value": "{brand.color.primary.value}" },
     "border-width": { "value": "{border.base.width.sm.value}" },
     "border-radius": { "value": "{border.base.radius.sm.value}" },
@@ -13,31 +13,33 @@
       "margin-horizontal": { "value": "{spacing.base.12.value}" },
 
       "disabled": {
-        "color": { "value": "{color.base.grey.200.value}" }
+        "color": { "value": "{color.neutral.grey.100.value}" }
       }
     },
 
     "selected": {
-      "background-color": { "value": "{color.base.green.200.value}" },
+      "background-color": { "value": "{brand.color.secondary.200.value}" },
 
       "checkmark": {
         "color": { "value": "{brand.color.primary.value}" }
       }
     },
     "disabled": {
-      "background-color": { "value": "{color.base.grey.400.value}" },
-      "border-color": { "value": "{color.base.grey.200.value}" },
+      "background-color": { "value": "{color.primary.warmth.value}" },
+      "border-color": { "value": "{color.neutral.grey.100.value}" },
 
       "checkmark": {
-        "color": { "value": "{color.base.grey.200.value}" }
+        "color": { "value": "{color.neutral.grey.100.value}" }
       }
     },
     "error": {
-      "border-color": { "value": "{color.base.grey.300.value}" },
-      "background-color": { "value": "{color.base.red.300.value}" },
+      "border-color": { "value": "{color.semantics.error.100.value}" },
+      "background-color": {
+        "value": "{color.semantics.error.200.value}"
+      },
 
       "checkmark": {
-        "color": { "value": "{color.base.white.value}" }
+        "color": { "value": "{color.neutral.white.value}" }
       }
     }
   }

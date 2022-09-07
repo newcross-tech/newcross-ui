@@ -3,12 +3,12 @@ import { native } from '@newcross-ui/design-tokens';
 import { isWebPlatform } from '../utils';
 
 const {
-  ColorBaseRed200,
-  ColorBaseGreen500,
+  ColorBaseRed100,
+  ColorBaseMint100,
   SpacingBase12,
   SpacingBase32,
   SpacingBase64,
-  ColorBaseGrey100,
+  ColorBaseGrey200,
   BorderBaseWidthSm,
   BorderBaseWidthLg,
   TypographyLineHeight24,
@@ -26,7 +26,7 @@ const infoTemplateStyle = () => {
     exampleContainer: {
       flex: 1,
       paddingHorizontal: SpacingBase12,
-      borderColor: ColorBaseGrey100,
+      borderColor: ColorBaseMint100,
       borderWidth: BorderBaseWidthSm,
       borderRadius: BorderBaseWidthLg,
       padding: SpacingBase12,
@@ -34,8 +34,8 @@ const infoTemplateStyle = () => {
     childrenExampleContainer: {
       maxWidth: isWebPlatform ? '350px' : undefined,
     },
-    doStyle: { color: ColorBaseGreen500 },
-    dontStyle: { color: ColorBaseRed200 },
+    doStyle: { color: ColorBaseGrey200 },
+    dontStyle: { color: ColorBaseRed100 },
     usagesText: { lineHeight: TypographyLineHeight24 },
   });
 };

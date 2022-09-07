@@ -1,6 +1,6 @@
 {
   "tabs": {
-    "background-color": { "value": "{color.base.grey.400.value}" },
+    "background-color": { "value": "{color.primary.warmth.value}" },
     "border-radius": { "value": "{border.base.radius.rounded.value}" },
     "padding-vertical": { "value": "{spacing.base.4.value}" },
     "padding-horizontal": { "value": "{spacing.base.8.value}" },
@@ -15,20 +15,20 @@
       "padding-horizontal": { "value": "{spacing.base.12.value}" },
 
       "disabled": {
-        "color": { "value": "{color.base.grey.200.value}" }
+        "color": { "value": "{color.neutral.grey.100.value}" }
       }
     },
 
     "active-tab": {
       "height": { "value": "{spacing.base.32.value}" },
-      "background-color": { "value": "{brand.color.secondary.value}" },
+      "background-color": { "value": "{brand.color.secondary.100.value}" },
       "border-radius": { "value": "{border.base.radius.rounded.value}" },
       "padding": { "value": "{spacing.base.4.value}" },
       "disabled": {
-        "background-color": { "value": "{color.base.grey.100.value}" }
+        "background-color": { "value": "{color.neutral.grey.200.value}" }
       },
       "shadow": {
-        "color": { "value": "{color.base.black.value}" },
+        "color": { "value": "{color.neutral.black.value}" },
         "opacity": { "value": "{opacity.base.sm.value}" },
         "offset-height": { "value": "{shadow.base.offset.lg.value}" },
         "offset-width": { "value": "{shadow.base.offset.sm.value}" },
@@ -39,7 +39,7 @@
     "divider": {
       "height": { "value": "{spacing.base.40.value}" },
       "width": { "value": "{spacing.base.4.value}" },
-      "background-color": { "value": "{color.base.grey.100.value}" }
+      "background-color": { "value": "{color.neutral.grey.200.value}" }
     }
   }
 }

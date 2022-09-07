@@ -4,14 +4,14 @@
       "value": "{border.base.radius.rounded.value}"
     },
     "inactive-background-color": {
-      "value": "{color.base.grey.100.value}"
+      "value": "{color.neutral.grey.200.value}"
     },
     "inactive-color": {
-      "value": "{color.base.grey.200.value}"
+      "value": "{color.neutral.grey.100.value}"
     },
     "active-ellipse": {
       "border-color": {
-        "value": "{brand.color.secondary.value}"
+        "value": "{brand.color.secondary.100.value}"
       },
       "large": {
         "width": {
@@ -52,7 +52,7 @@
         "value": "{brand.color.primary.value}"
       },
       "background-color": {
-        "value": "{color.base.grey.400.value}"
+        "value": "{color.neutral.grey.400.value}"
       },
       "opacity": {
         "value": "{opacity.base.md.value}"

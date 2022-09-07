@@ -17,10 +17,10 @@ import CardThumbnail from './CardThumbnail';
 import { getParameters } from '../utils';
 
 const {
-  ColorBaseGravitas,
-  ColorBaseHeritage,
+  ColorBaseBlue100,
+  ColorBaseOrange100,
+  ColorBaseYellow100,
   ColorBaseYellow400,
-  ColorBaseYellow300,
   SpacingBase24,
   SpacingBase12,
 } = native.healthforce;
@@ -47,7 +47,7 @@ export const Variants: Story<CardProps> = () => (
     <Card
       hasRoundedCorners
       thumbnailContent={
-        <CardThumbnail colors={[ColorBaseGravitas, ColorBaseHeritage]} />
+        <CardThumbnail colors={[ColorBaseBlue100, ColorBaseOrange100]} />
       }
     >
       <CardContent />
@@ -58,7 +58,7 @@ export const Variants: Story<CardProps> = () => (
       hasBorder
       hasRoundedCorners
       thumbnailContent={
-        <CardThumbnail colors={[ColorBaseGravitas, ColorBaseHeritage]} />
+        <CardThumbnail colors={[ColorBaseBlue100, ColorBaseOrange100]} />
       }
     >
       <CardContent />
@@ -68,7 +68,7 @@ export const Variants: Story<CardProps> = () => (
       hasRightIcon
       hasBorder
       thumbnailContent={
-        <CardThumbnail colors={[ColorBaseGravitas, ColorBaseHeritage]} />
+        <CardThumbnail colors={[ColorBaseBlue100, ColorBaseOrange100]} />
       }
       rightIconContent={<Badge badgeContent={7} />}
     >
@@ -82,7 +82,7 @@ export const Variants: Story<CardProps> = () => (
       fullWidth
       color={CardColors.secondary}
       thumbnailContent={
-        <CardThumbnail colors={[ColorBaseYellow400, ColorBaseYellow300]} />
+        <CardThumbnail colors={[ColorBaseYellow100, ColorBaseYellow400]} />
       }
     >
       <CardContent style={{ flex: 1 }} />
@@ -94,7 +94,7 @@ const Template: Story<CardProps> = ({ fullWidth, ...rest }) => (
   <Container>
     <Card
       thumbnailContent={
-        <CardThumbnail colors={[ColorBaseGravitas, ColorBaseHeritage]} />
+        <CardThumbnail colors={[ColorBaseBlue100, ColorBaseOrange100]} />
       }
       fullWidth={fullWidth}
       {...rest}

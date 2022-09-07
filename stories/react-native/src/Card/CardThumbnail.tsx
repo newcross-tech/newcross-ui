@@ -3,8 +3,12 @@ import { View } from 'react-native';
 import { Typography, TypographyVariant } from '@newcross-ui/react-native';
 import { native } from '@newcross-ui/design-tokens';
 
-const { BorderBaseRadiusRounded, ColorBaseWhite, SpacingBase64, SpacingBase8 } =
-  native.healthforce;
+const {
+  BorderBaseRadiusRounded,
+  ColorBaseWhite100,
+  SpacingBase64,
+  SpacingBase8,
+} = native.healthforce;
 
 const CardThumbnail = (props: LinearGradientProps) => (
   <LinearGradient
@@ -37,13 +41,13 @@ const CardThumbnail = (props: LinearGradientProps) => (
       >
         <Typography
           variant={TypographyVariant.heading4}
-          style={{ color: ColorBaseWhite }}
+          style={{ color: ColorBaseWhite100 }}
         >
           XX
         </Typography>
         <Typography
           variant={TypographyVariant.heading2}
-          style={{ color: ColorBaseWhite }}
+          style={{ color: ColorBaseWhite100 }}
         >
           XX
         </Typography>

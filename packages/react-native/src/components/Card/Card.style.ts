@@ -32,7 +32,7 @@ const cardStyle = ({
     CardShadowElevation,
     CardShadowOpacity,
     CardShadowRadius,
-    ColorBaseWhite,
+    ColorBaseWhite100,
     SpacingBase12,
   } = theme;
 
@@ -60,7 +60,7 @@ const cardStyle = ({
       borderWidth: hasBorder ? CardBorderWidth : 0,
       borderColor: colorValues[color as CardColors],
       ...contentBorderRadiusValues,
-      backgroundColor: ColorBaseWhite,
+      backgroundColor: ColorBaseWhite100,
     },
     rightIcon: {
       marginLeft: SpacingBase12,

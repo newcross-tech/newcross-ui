@@ -2,7 +2,7 @@
   "card": {
     "shadow": {
       "color": {
-        "value": "{color.base.black.value}"
+        "value": "{color.neutral.black.value}"
       },
       "opacity": {
         "value": "{opacity.base.sm.value}"
@@ -21,17 +21,17 @@
       "value": "{border.base.radius.md.value}"
     },
     "background-color": {
-      "value": "{color.base.white.value}"
+      "value": "{color.neutral.white.value}"
     },
     "border-width": {
       "value": "{border.base.width.md.value}"
     },
     "border-color": {
       "primary": {
-        "value": "{color.base.gravitas.value}"
+        "value": "{brand.color.primary.value}"
       },
       "secondary": {
-        "value": "{color.base.yellow.100.value}"
+        "value": "{brand.color.secondary.100.value}"
       }
     }
   }

@@ -1,8 +1,21 @@
 {
   "brand": {
     "color": {
-      "primary": { "value": "{color.base.gravitas.value}" },
-      "secondary": { "value": "{color.base.purple.200.value}" }
+      "primary": { "value": "{color.primary.gravitas.value}" },
+      "secondary": {
+        "100": {
+          "value": "{color.base.magenta.100.value}"
+        },
+        "200": {
+          "value": "{color.base.magenta.200.value}"
+        },
+        "300": {
+          "value": "{color.base.magenta.300.value}"
+        },
+        "400": {
+          "value": "{color.base.magenta.400.value}"
+        }
+      }
     }
   }
 }

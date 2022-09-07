@@ -1,15 +1,15 @@
 {
   "bottom-sheet": {
-    "background-color": { "value": "{color.base.white.value}" },
+    "background-color": { "value": "{color.neutral.white.value}" },
     "border-radius": { "value": "{border.base.radius.lg.value}" },
     "position": { "value": "{spacing.base.0.value}" },
     "backdrop": {
-      "background-color": { "value": "{color.base.black.value}" },
+      "background-color": { "value": "{color.neutral.black.value}" },
       "opacity": { "value": "{opacity.base.md.value}" }
     },
     "indicator": {
       "margin-vertical": { "value": "{spacing.base.16.value}" },
-      "background-color": { "value": "{color.base.grey.100.value}" },
+      "background-color": { "value": "{color.neutral.grey.200.value}" },
       "border-radius": { "value": "{border.base.radius.rounded.value}" },
       "height": { "value": "{spacing.base.12.value}" }
     },
@@ -18,7 +18,7 @@
       "min-height": { "value": "{spacing.base.32.value}" },
       "scroll": {
         "shadow": {
-          "color": { "value": "{color.base.black.value}" },
+          "color": { "value": "{color.neutral.black.value}" },
           "opacity": { "value": "{opacity.base.sm.value}" },
           "offset-height": { "value": "{shadow.base.offset.md.value}" },
           "offset-width": { "value": "{shadow.base.offset.sm.value}" },

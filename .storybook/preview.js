@@ -11,7 +11,7 @@ import * as Native from '@newcross-ui/react-native';
 import * as Web from '@newcross-ui/react';
 import { useReducer } from 'react';
 
-const { ColorBaseWhite, ColorBaseGrey600 } = tokens.web.healthforce;
+const { ColorBaseWhite100, ColorBaseGrey300 } = tokens.web.healthforce;
 
 const ComponentTypes = {
   ReactNative: 'ReactNative',
@@ -49,11 +49,11 @@ export const parameters = {
     values: [
       {
         name: 'white',
-        value: ColorBaseWhite,
+        value: ColorBaseWhite100,
       },
       {
         name: 'figma',
-        value: ColorBaseGrey600,
+        value: ColorBaseGrey300,
       },
     ],
   },

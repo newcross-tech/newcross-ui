@@ -7,22 +7,22 @@
     "font-family": { "value": "{brand.font-family.regular.value}" },
     "font-size": { "value": "{typography.font-size.14.value}" },
     "line-height": { "value": "{typography.line-height.20.value}" },
-    "border-color": { "value": "{color.base.grey.100.value}" },
+    "border-color": { "value": "{color.neutral.grey.200.value}" },
     "border-width": { "value": "{border.base.width.sm.value}" },
     "border-radius": { "value": "{border.base.radius.md.value}" },
-    "background-color": { "value": "{color.base.white.value}" },
+    "background-color": { "value": "{color.neutral.white.value}" },
 
     "selected": {
-      "border-color": { "value": "{brand.color.secondary.value}" },
+      "border-color": { "value": "{brand.color.secondary.100.value}" },
       "border-width": { "value": "{border.base.width.md.value}" }
     },
 
     "disabled": {
-      "background-color": { "value": "{color.base.grey.400.value}" }
+      "background-color": { "value": "{color.primary.warmth.value}" }
     },
 
     "placeholder": {
-      "color": { "value": "{color.base.grey.200.value}" }
+      "color": { "value": "{color.neutral.grey.100.value}" }
     },
 
     "label": {
@@ -32,7 +32,7 @@
     },
 
     "helper-text": {
-      "color": { "value": "{color.base.grey.200.value}" },
+      "color": { "value": "{color.neutral.grey.100.value}" },
       "font-size": { "value": "{typography.font-size.12.value}" },
       "font-weight": { "value": "{typography.font-weight.regular.value}" },
       "line-height": { "value": "{typography.line-height.18.value}" },
@@ -47,11 +47,11 @@
     },
 
     "error": {
-      "color": { "value": "{color.base.red.500.value}" }
+      "color": { "value": "{color.semantics.error.100.value}" }
     },
 
     "validation-check": {
-      "color": { "value": "{color.base.green.700.value}" }
+      "color": { "value": "{color.semantics.success.200.value}" }
     },
 
     "search-bar": {
@@ -63,11 +63,11 @@
       },
 
       "close-icon": {
-        "color": { "value": "{color.base.grey.200.value}" }
+        "color": { "value": "{color.neutral.grey.100.value}" }
       },
 
       "shadow": {
-        "color": { "value": "{color.base.black.value}" },
+        "color": { "value": "{color.neutral.black.value}" },
         "opacity": { "value": "{opacity.base.sm.value}" },
         "elevation": { "value": "{shadow.base.elevation.sm.value}" },
         "radius": { "value": "{shadow.base.offset.lg.value}" }

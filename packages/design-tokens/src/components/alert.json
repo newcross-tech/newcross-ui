@@ -10,20 +10,20 @@
     },
     "color": {
       "success": {
-        "primary": { "value": "{color.base.green.700.value}" },
-        "secondary": { "value": "{color.base.green.800.value}" }
+        "primary": { "value": "{color.semantics.success.200.value}" },
+        "secondary": { "value": "{color.semantics.success.300.value}" }
       },
       "warning": {
-        "primary": { "value": "{color.base.orange.100.value}" },
-        "secondary": { "value": "{color.base.orange.200.value}" }
+        "primary": { "value": "{color.semantics.warning.200.value}" },
+        "secondary": { "value": "{color.semantics.warning.300.value}" }
       },
       "error": {
-        "primary": { "value": "{color.base.red.300.value}" },
-        "secondary": { "value": "{color.base.red.400.value}" }
+        "primary": { "value": "{color.semantics.error.100.value}" },
+        "secondary": { "value": "{color.semantics.error.300.value}" }
       },
       "info": {
-        "primary": { "value": "{color.base.blue.300.value}" },
-        "secondary": { "value": "{color.base.blue.200.value}" }
+        "primary": { "value": "{color.semantics.info.200.value}" },
+        "secondary": { "value": "{color.semantics.info.300.value}" }
       }
     },
     "text": {
@@ -31,7 +31,7 @@
         "value": "{spacing.base.12.value}"
       },
       "color": {
-        "value": "{color.base.gravitas.value}"
+        "value": "{brand.color.primary.value}"
       }
     },
     "icon": {

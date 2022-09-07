@@ -13,24 +13,26 @@
     "days": {
       "font-size": { "value": "{typography.font-size.14.value}" },
       "disabled": {
-        "color": { "value": "{color.base.grey.100.value}" }
+        "color": { "value": "{color.neutral.grey.200.value}" }
       },
-      "current-color": { "value": "{color.base.blue.300.value}" },
+      "current-color": { "value": "{brand.color.primary.value}" },
       "booked": {
-        "background-color": { "value": "{color.base.green.300.value}" }
+        "background-color": { "value": "{brand.color.secondary.300.value}" }
       },
       "unavailable": {
-        "background-color": { "value": "{color.base.red.400.value}" }
+        "background-color": {
+          "value": "{color.semantics.error.300.value}"
+        }
       },
       "selected": {
-        "background-color": { "value": "{color.base.gravitas.value}" },
-        "color": { "value": "{color.base.white.value}" }
+        "background-color": { "value": "{brand.color.primary.value}" },
+        "color": { "value": "{color.neutral.white.value}" }
       },
       "inactive": {
-        "background-color": { "value": "{color.base.grey.400.value}" }
+        "background-color": { "value": "{color.primary.warmth.value}" }
       },
       "date-range": {
-        "background-color": { "value": "{color.base.blue.400.value}" }
+        "background-color": { "value": "{color.primary.vigour.value}" }
       }
     }
   }

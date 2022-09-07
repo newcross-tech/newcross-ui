@@ -1,0 +1,22 @@
+{
+  "color": {
+    "primary": {
+      "gravitas": {
+        "value": "{color.base.blue.100.value}",
+        "type": "primary"
+      },
+      "heritage": {
+        "value": "{color.base.blue.200.value}",
+        "type": "primary"
+      },
+      "vigour": {
+        "value": "{color.base.orange.100.value}",
+        "type": "primary"
+      },
+      "warmth": {
+        "value": "{color.base.grey.500.value}",
+        "type": "primary"
+      }
+    }
+  }
+}

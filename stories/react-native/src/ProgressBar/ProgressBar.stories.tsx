@@ -15,7 +15,7 @@ import Spacing, { SpacingSizes } from '../Spacing';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './ProgressBarInfo';
 
-const { ColorBaseGravitas } = native.healthforce;
+const { ColorBaseBlue100 } = native.healthforce;
 
 export default {
   title: 'ReactNative/Components/ProgressBar',
@@ -107,7 +107,7 @@ export const Variants = () => {
 
       <Container
         hasPadding
-        containerStyle={{ backgroundColor: ColorBaseGravitas, flex: 0 }}
+        containerStyle={{ backgroundColor: ColorBaseBlue100, flex: 0 }}
       >
         <ProgressBar
           colorVariant={ProgressBarColorVariant.secondary}

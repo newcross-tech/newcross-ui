@@ -4,10 +4,10 @@
       "value": "{spacing.base.4.value}"
     },
     "background-color": {
-      "value": "{color.base.red.200.value}"
+      "value": "{color.semantics.error.200.value}"
     },
     "color": {
-      "value": "{color.base.white.value}"
+      "value": "{color.neutral.white.value}"
     },
     "border-radius": {
       "value": "{border.base.radius.rounded.value}"

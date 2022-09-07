@@ -2,7 +2,7 @@
   "link": {
     "padding": { "value": "{spacing.base.4.value}" },
     "margin": { "value": "{spacing.base.8.value}" },
-    "color": { "value": "{color.base.gravitas.value}" },
+    "color": { "value": "{brand.color.primary.value}" },
 
     "pressed": {
       "opacity": { "value": "{opacity.base.md.value}" }

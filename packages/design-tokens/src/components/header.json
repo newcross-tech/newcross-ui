@@ -2,10 +2,10 @@
   "header": {
     "background-color": {
       "primary": {
-        "value": "{color.base.gravitas.value}"
+        "value": "{brand.color.primary.value}"
       },
       "secondary": {
-        "value": "{color.base.green.100.value}"
+        "value": "{brand.color.secondary.200.value}"
       }
     },
     "padding-horizontal": { "value": "{spacing.base.16.value}" },

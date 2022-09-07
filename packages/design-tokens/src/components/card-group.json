@@ -2,14 +2,14 @@
   "card-group": {
     "divider": {
       "border-width": { "value": "{border.base.width.sm.value}" },
-      "border-color": { "value": "{color.base.grey.100.value}" }
+      "border-color": { "value": "{color.neutral.grey.200.value}" }
     },
     "border-radius": {
       "value": "{border.base.radius.md.value}"
     },
     "shadow": {
       "color": {
-        "value": "{color.base.black.value}"
+        "value": "{color.neutral.black.value}"
       },
       "opacity": {
         "value": "{opacity.base.sm.value}"

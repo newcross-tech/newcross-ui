@@ -16,7 +16,7 @@ import { getParameters } from '../utils';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './TooltipInfo';
 
-const { ColorBaseGravitas, SpacingBase24 } = native.healthforce;
+const { ColorBaseBlue100, SpacingBase24 } = native.healthforce;
 
 export default {
   title: 'ReactNative/Components/Tooltip',
@@ -39,7 +39,7 @@ export const Overview = () => {
             <FontAwesomeIcon
               icon={faInfoCircle}
               size={SpacingBase24}
-              color={ColorBaseGravitas}
+              color={ColorBaseBlue100}
             />
           }
           style={{
@@ -64,7 +64,7 @@ const Template: Story<BadgeProps> = () => {
             <FontAwesomeIcon
               icon={faInfoCircle}
               size={SpacingBase24}
-              color={ColorBaseGravitas}
+              color={ColorBaseBlue100}
             />
           }
           style={{

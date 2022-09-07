@@ -2,6 +2,7 @@ import StyleDictionary, { Config } from 'style-dictionary';
 import {
   getBrandStorybookTokens,
   getGlobalStorybookTokens,
+  getColorStorybookTokens,
 } from './transforms/constants';
 
 const brands = ['healthforce', 'homeclinic', 'yourcare', 'yourlife'];
@@ -18,6 +19,7 @@ const getStyleDictionaryConfig = (brand: string): Config => ({
   source: [
     'src/global/**/*.json',
     'src/components/*.json',
+    'src/colors/*.json',
     `src/brands/${brand}/*.json`,
   ],
   platforms: {
@@ -62,7 +64,7 @@ const getGlobalStyleConfig = {
   source: ['src/global/**/*.json'],
   platforms: {
     'web/category': {
-      transforms: ['attribute/cti', 'name/cti/kebab', 'color/rgb', 'size/px'],
+      transforms: ['attribute/cti', 'name/cti/kebab', 'color/hex', 'size/px'],
       buildPath: `build/css/`,
       files: getGlobalStorybookTokens().map(
         ({ destination, headers, filterAttributes }) => ({
@@ -85,10 +87,14 @@ const getGlobalStyleConfig = {
 };
 
 const getBrandStyleConfig = (brand: string) => ({
-  source: ['src/global/**/*.json', `src/brands/${brand}/*.json`],
+  source: [
+    'src/global/**/*.json',
+    'src/colors/*.json',
+    `src/brands/${brand}/*.json`,
+  ],
   platforms: {
     'web/category': {
-      transforms: ['attribute/cti', 'name/cti/kebab', 'color/rgb', 'size/px'],
+      transforms: ['attribute/cti', 'name/cti/kebab', 'color/hex', 'size/px'],
       buildPath: `build/css/${brand}/`,
       files: getBrandStorybookTokens(brand).map(
         ({ destination, headers, filterAttributes }) => ({
@@ -110,6 +116,32 @@ const getBrandStyleConfig = (brand: string) => ({
   },
 });
 
+const getColorStyleConfig = {
+  source: ['src/global/**/*.json', 'src/colors/*.json'],
+  platforms: {
+    'web/category': {
+      transforms: ['attribute/cti', 'name/cti/kebab', 'color/hex', 'size/px'],
+      buildPath: 'build/css/colors/',
+      files: getColorStorybookTokens().map(
+        ({ destination, headers, filterAttributes }) => ({
+          destination,
+          format: 'css/variables',
+          options: {
+            fileHeader: () => {
+              return headers;
+            },
+          },
+          filter: {
+            attributes: {
+              ...filterAttributes,
+            },
+          },
+        })
+      ),
+    },
+  },
+};
+
 // generate native & web tokens
 brands.map((brand) => {
   StyleDictionary.extend(getStyleDictionaryConfig(brand)).buildAllPlatforms();
@@ -122,3 +154,6 @@ StyleDictionary.extend(getGlobalStyleConfig).buildAllPlatforms();
 brands.map((brand) => {
   StyleDictionary.extend(getBrandStyleConfig(brand)).buildAllPlatforms();
 });
+
+// generate color tokens for storybook
+StyleDictionary.extend(getColorStyleConfig).buildAllPlatforms();

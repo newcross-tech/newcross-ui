@@ -4,7 +4,7 @@ const DESCRIPTION =
   'To navigate across months, the user can swipe horizontally or use the month buttons on either side to tap through consecutive months. ';
 
 const DO = [
-  'Always use ‘Gravitas’ as the selected state.',
+  'Always use ‘Blue100’ as the selected state.',
   'Show month names in short form, restricted to three letters .i.e. ‘Jun’ not ‘June’.',
 ];
 

@@ -48,3 +48,21 @@ export const getBrandStorybookTokens = (
     filterAttributes: { category: 'brand', type: 'color' },
   },
 ];
+
+export const getColorStorybookTokens = (): Array<StorybookToken> => [
+  {
+    destination: 'neutral.css',
+    headers: ['@tokens Neutral', '@presenter Color'],
+    filterAttributes: { category: 'color', type: 'neutral' },
+  },
+  {
+    destination: 'primary.css',
+    headers: ['@tokens Primary', '@presenter Color'],
+    filterAttributes: { category: 'color', type: 'primary' },
+  },
+  {
+    destination: 'semantics.css',
+    headers: ['@tokens Semantics', '@presenter Color'],
+    filterAttributes: { category: 'color', type: 'semantics' },
+  },
+];

@@ -2,17 +2,17 @@
   "dropdown": {
     "selected-value": {
       "color": {
-        "value": "{color.base.gravitas.value}"
+        "value": "{brand.color.primary.value}"
       }
     },
     "icon": {
       "padding-horizontal": { "value": "{spacing.base.16.value}" },
       "color": {
         "disabled": {
-          "value": "{color.base.grey.100.value}"
+          "value": "{color.neutral.grey.100.value}"
         },
         "default": {
-          "value": "{color.base.gravitas.value}"
+          "value": "{brand.color.primary.value}"
         }
       }
     }

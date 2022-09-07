@@ -2,14 +2,14 @@
   "toggle-switch": {
     "track-color": {
       "inactive": {
-        "value": "{color.base.grey.100.value}"
+        "value": "{color.neutral.grey.200.value}"
       },
       "active": {
-        "value": "{color.base.green.100.value}"
+        "value": "{brand.color.secondary.100.value}"
       }
     },
     "thumb-color": {
-      "value": "{color.base.white.value}"
+      "value": "{color.neutral.white.value}"
     }
   }
 }
