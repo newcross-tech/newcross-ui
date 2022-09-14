@@ -32,7 +32,7 @@
         "background-color": { "value": "{color.primary.warmth.value}" }
       },
       "date-range": {
-        "background-color": { "value": "{color.primary.vigour.value}" }
+        "background-color": { "value": "{brand.color.primary.value}" }
       }
     }
   }

@@ -17,10 +17,10 @@ import CardThumbnail from './CardThumbnail';
 import { getParameters } from '../utils';
 
 const {
-  ColorBaseBlue100,
-  ColorBaseOrange100,
-  ColorBaseYellow100,
-  ColorBaseYellow400,
+  BrandColorPrimary,
+  ColorPrimaryVigour,
+  BrandColorSecondary100,
+  BrandColorSecondary400,
   SpacingBase24,
   SpacingBase12,
 } = native.healthforce;
@@ -47,7 +47,7 @@ export const Variants: Story<CardProps> = () => (
     <Card
       hasRoundedCorners
       thumbnailContent={
-        <CardThumbnail colors={[ColorBaseBlue100, ColorBaseOrange100]} />
+        <CardThumbnail colors={[BrandColorPrimary, ColorPrimaryVigour]} />
       }
     >
       <CardContent />
@@ -58,7 +58,7 @@ export const Variants: Story<CardProps> = () => (
       hasBorder
       hasRoundedCorners
       thumbnailContent={
-        <CardThumbnail colors={[ColorBaseBlue100, ColorBaseOrange100]} />
+        <CardThumbnail colors={[BrandColorPrimary, ColorPrimaryVigour]} />
       }
     >
       <CardContent />
@@ -68,7 +68,7 @@ export const Variants: Story<CardProps> = () => (
       hasRightIcon
       hasBorder
       thumbnailContent={
-        <CardThumbnail colors={[ColorBaseBlue100, ColorBaseOrange100]} />
+        <CardThumbnail colors={[BrandColorPrimary, ColorPrimaryVigour]} />
       }
       rightIconContent={<Badge badgeContent={7} />}
     >
@@ -82,7 +82,9 @@ export const Variants: Story<CardProps> = () => (
       fullWidth
       color={CardColors.secondary}
       thumbnailContent={
-        <CardThumbnail colors={[ColorBaseYellow100, ColorBaseYellow400]} />
+        <CardThumbnail
+          colors={[BrandColorSecondary100, BrandColorSecondary400]}
+        />
       }
     >
       <CardContent style={{ flex: 1 }} />
@@ -94,7 +96,7 @@ const Template: Story<CardProps> = ({ fullWidth, ...rest }) => (
   <Container>
     <Card
       thumbnailContent={
-        <CardThumbnail colors={[ColorBaseBlue100, ColorBaseOrange100]} />
+        <CardThumbnail colors={[BrandColorPrimary, ColorPrimaryVigour]} />
       }
       fullWidth={fullWidth}
       {...rest}

@@ -18,7 +18,7 @@ import { isWebPlatform } from '../utils';
 import { getParameters } from '../utils';
 
 const {
-  ColorBaseWhite100,
+  ColorNeutralWhite,
   SpacingBase32,
   SpacingBase24,
   SpacingBase48,
@@ -44,7 +44,7 @@ export const VariantsWithIcons = () => {
       <Badge size={BadgeSizes.small} position={BadgePositions.TopRight}>
         <View
           style={{
-            backgroundColor: ColorBaseWhite100,
+            backgroundColor: ColorNeutralWhite,
             width: SpacingBase32,
             height: SpacingBase32,
             borderRadius: BorderBaseRadiusRounded,

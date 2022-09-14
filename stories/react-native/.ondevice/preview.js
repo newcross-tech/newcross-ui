@@ -8,7 +8,7 @@ import {
   useBottomSheetContext,
 } from '../src/BottomSheet';
 
-const { ColorBaseGrey300, ColorBaseWhite100 } = native.healthforce;
+const { ColorNeutralGrey300, ColorNeutralWhite } = native.healthforce;
 
 const withThemeProvider = (Story) => {
   const { state, dispatch } = useBottomSheetContext();
@@ -36,11 +36,11 @@ export const parameters = {
   backgrounds: [
     {
       name: 'white',
-      value: ColorBaseWhite100,
+      value: ColorNeutralWhite,
     },
     {
       name: 'figma',
-      value: ColorBaseGrey300,
+      value: ColorNeutralGrey300,
       default: true,
     },
   ],

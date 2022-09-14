@@ -16,8 +16,8 @@ import { getParameters, isWebPlatform } from '../utils';
 
 const {
   SpacingBase4,
-  ColorBaseMint100,
-  ColorBaseWhite100,
+  BrandColorSecondary100,
+  ColorNeutralWhite,
   SpacingBase24,
   SpacingBase32,
   BorderBaseRadiusRounded,
@@ -35,12 +35,12 @@ export const Variants = () => {
       <Header>
         <View style={{ display: 'flex', flexDirection: 'column' }}>
           <Typography
-            style={{ color: ColorBaseWhite100 }}
+            style={{ color: ColorNeutralWhite }}
             variant={TypographyVariant.heading2}
           >
             Welcome back&nbsp;
             <Typography
-              style={{ color: ColorBaseMint100 }}
+              style={{ color: BrandColorSecondary100 }}
               variant={TypographyVariant.heading2}
             >
               Holly
@@ -48,7 +48,7 @@ export const Variants = () => {
             !
           </Typography>
           <Typography
-            style={{ color: ColorBaseWhite100 }}
+            style={{ color: ColorNeutralWhite }}
             variant={TypographyVariant.paragraph2}
           >
             83% of your reviews are great!
@@ -61,12 +61,12 @@ export const Variants = () => {
       <Header hasHeaderTail>
         <View style={{ display: 'flex', flexDirection: 'column' }}>
           <Typography
-            style={{ color: ColorBaseWhite100 }}
+            style={{ color: ColorNeutralWhite }}
             variant={TypographyVariant.heading2}
           >
             Welcome back&nbsp;
             <Typography
-              style={{ color: ColorBaseMint100 }}
+              style={{ color: BrandColorSecondary100 }}
               variant={TypographyVariant.heading2}
             >
               Holly
@@ -74,7 +74,7 @@ export const Variants = () => {
             !
           </Typography>
           <Typography
-            style={{ color: ColorBaseWhite100 }}
+            style={{ color: ColorNeutralWhite }}
             variant={TypographyVariant.paragraph2}
           >
             83% of your reviews are great!
@@ -92,7 +92,7 @@ export const Variants = () => {
           }}
         >
           <Typography
-            style={{ color: ColorBaseWhite100 }}
+            style={{ color: ColorNeutralWhite }}
             variant={TypographyVariant.heading1}
           >
             Find shifts
@@ -100,7 +100,7 @@ export const Variants = () => {
           <View
             style={{
               marginTop: SpacingBase4,
-              backgroundColor: ColorBaseWhite100,
+              backgroundColor: ColorNeutralWhite,
               width: SpacingBase32,
               height: SpacingBase32,
               borderRadius: BorderBaseRadiusRounded,

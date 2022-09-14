@@ -16,7 +16,7 @@ import { TITLE, DESCRIPTION, DO, DONT } from './AccordionInfo';
 import { ScrollView } from 'react-native-gesture-handler';
 import { native } from '@newcross-ui/design-tokens';
 
-const { ColorBaseBlue100 } = native.healthforce;
+const { BrandColorPrimary } = native.healthforce;
 
 export default {
   title: 'ReactNative/Components/Accordion',
@@ -142,7 +142,7 @@ export const Variants = () => {
         <Accordion
           label={'Information'}
           icon={
-            <FontAwesomeIcon icon={faCircleInfo} color={ColorBaseBlue100} />
+            <FontAwesomeIcon icon={faCircleInfo} color={BrandColorPrimary} />
           }
           expanded={true}
         >

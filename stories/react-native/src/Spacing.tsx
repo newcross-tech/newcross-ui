@@ -6,7 +6,7 @@ const {
   SpacingBase24,
   SpacingBase32,
   BorderBaseWidthSm,
-  ColorBaseGrey200,
+  ColorNeutralGrey200,
 } = native.healthforce;
 
 export enum SpacingPositions {
@@ -50,7 +50,7 @@ const sizeValues: SizeValues = {
 
 const borderValues = (hasBorder: boolean | undefined) =>
   hasBorder
-    ? { borderBottomWidth: BorderBaseWidthSm, borderColor: ColorBaseGrey200 }
+    ? { borderBottomWidth: BorderBaseWidthSm, borderColor: ColorNeutralGrey200 }
     : undefined;
 
 const Spacing = ({

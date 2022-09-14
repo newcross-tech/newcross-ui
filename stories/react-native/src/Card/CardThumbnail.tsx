@@ -5,7 +5,7 @@ import { native } from '@newcross-ui/design-tokens';
 
 const {
   BorderBaseRadiusRounded,
-  ColorBaseWhite100,
+  ColorNeutralWhite,
   SpacingBase64,
   SpacingBase8,
 } = native.healthforce;
@@ -41,13 +41,13 @@ const CardThumbnail = (props: LinearGradientProps) => (
       >
         <Typography
           variant={TypographyVariant.heading4}
-          style={{ color: ColorBaseWhite100 }}
+          style={{ color: ColorNeutralWhite }}
         >
           XX
         </Typography>
         <Typography
           variant={TypographyVariant.heading2}
-          style={{ color: ColorBaseWhite100 }}
+          style={{ color: ColorNeutralWhite }}
         >
           XX
         </Typography>
