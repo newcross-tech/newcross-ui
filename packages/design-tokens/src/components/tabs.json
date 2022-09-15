@@ -7,11 +7,7 @@
     "height": { "value": "{spacing.base.40.value}" },
 
     "label": {
-      "font-family": { "value": "{brand.font-family.regular.value}" },
-      "font-size": { "value": "{typography.font-size.16.value}" },
-      "font-weight": { "value": "{typography.font-weight.regular.value}" },
       "color": { "value": "{brand.color.primary.value}" },
-      "line-height": { "value": "{spacing.base.24.value}" },
       "padding-horizontal": { "value": "{spacing.base.12.value}" },
 
       "disabled": {
@@ -21,7 +17,7 @@
 
     "active-tab": {
       "height": { "value": "{spacing.base.32.value}" },
-      "background-color": { "value": "{brand.color.secondary.100.value}" },
+      "background-color": { "value": "{brand.color.secondary.300.value}" },
       "border-radius": { "value": "{border.base.radius.rounded.value}" },
       "padding": { "value": "{spacing.base.4.value}" },
       "disabled": {

@@ -1,5 +1,6 @@
 import React, { useLayoutEffect, useState, Fragment, ReactNode } from 'react';
-import { View, Text, Pressable, ViewStyle, TextStyle } from 'react-native';
+import { View, Pressable, ViewStyle, TextStyle } from 'react-native';
+import Typography, { TypographyVariant } from '../Typography';
 import Animated, {
   withSpring,
   useSharedValue,
@@ -98,6 +99,7 @@ const Tabs = ({
         />
         {tabs.map((tab, index) => {
           const isString = typeof tab === 'string';
+          const isSelectedTab = currentIndex === index;
           return (
             <Fragment key={index}>
               <Pressable
@@ -106,7 +108,12 @@ const Tabs = ({
                 style={[styles.tab]}
               >
                 {isString ? (
-                  <Text
+                  <Typography
+                    variant={
+                      isSelectedTab
+                        ? TypographyVariant.heading3
+                        : TypographyVariant.paragraph1
+                    }
                     style={[
                       styles.label,
                       style,
@@ -115,7 +122,7 @@ const Tabs = ({
                     numberOfLines={1}
                   >
                     {tab}
-                  </Text>
+                  </Typography>
                 ) : (
                   <View
                     testID={`tab-view-${index}`}

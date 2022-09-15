@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
-import { FontWeight } from '../../types';
 
 const tabsStyle = (theme: ThemeDesignTokens) => {
   return StyleSheet.create({
@@ -16,11 +15,7 @@ const tabsStyle = (theme: ThemeDesignTokens) => {
       alignItems: 'center',
     },
     label: {
-      fontFamily: theme.TabsLabelFontFamily,
-      fontSize: theme.TabsLabelFontSize,
-      fontWeight: theme.TabsLabelFontWeight as FontWeight,
       color: theme.TabsLabelColor,
-      lineHeight: theme.TabsLabelLineHeight,
       textAlign: 'center',
       width: '90%',
       elevation: theme.TabsActiveTabShadowElevation,
