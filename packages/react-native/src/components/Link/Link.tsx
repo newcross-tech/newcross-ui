@@ -1,11 +1,16 @@
 import React, { ReactNode } from 'react';
-import { View, Text, GestureResponderEvent } from 'react-native';
-import { Pressable } from 'react-native';
+import {
+  View,
+  GestureResponderEvent,
+  TextStyle,
+  Pressable,
+} from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCircleChevronRight } from '@fortawesome/pro-solid-svg-icons/faCircleChevronRight';
-import { getIconSizeValues, LinkSizes } from './Link.types';
+import { getIconSizeValues, LinkSizes, getTypographySizes } from './Link.types';
 import linkStyle, { pressedLinkStyle } from './Link.style';
 import useTheme from '../../hooks/useTheme';
+import Typography from '../Typography';
 
 export type LinkProps = {
   /**
@@ -21,6 +26,10 @@ export type LinkProps = {
    */
   onPress?: (event: GestureResponderEvent) => void;
   /**
+   * Used to add custom styles.
+   */
+  style?: TextStyle;
+  /**
    * Show or hide icon
    */
   hasIcon?: boolean;
@@ -30,10 +39,11 @@ const Link = ({
   size = LinkSizes.small,
   children,
   onPress,
+  style,
   hasIcon = true,
 }: LinkProps) => {
   const theme = useTheme();
-  const styles = linkStyle(theme, { size });
+  const styles = linkStyle(theme);
 
   return (
     <Pressable
@@ -44,7 +54,12 @@ const Link = ({
       onPress={onPress}
     >
       <View style={styles.linkContent}>
-        <Text style={styles.linkText}>{children}</Text>
+        <Typography
+          variant={getTypographySizes()[size]}
+          style={[styles.linkText, style]}
+        >
+          {children}
+        </Typography>
         {hasIcon && (
           <View testID="link-icon">
             <FontAwesomeIcon

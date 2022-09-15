@@ -1,22 +1,14 @@
-import { TextStyle } from 'react-native';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
+import { TypographyVariant } from '../Typography';
 
 export enum LinkSizes {
   small = 'small',
   medium = 'medium',
 }
 
-export const getTextSizeValues = (
-  theme: ThemeDesignTokens
-): Record<LinkSizes, TextStyle> => ({
-  [LinkSizes.small]: {
-    fontSize: theme.LinkTextSmallFontSize,
-    lineHeight: theme.LinkTextSmallLineHeight,
-  },
-  [LinkSizes.medium]: {
-    fontSize: theme.LinkTextMediumFontSize,
-    lineHeight: theme.LinkTextMediumLineHeight,
-  },
+export const getTypographySizes = (): Record<LinkSizes, TypographyVariant> => ({
+  [LinkSizes.small]: TypographyVariant.paragraph2,
+  [LinkSizes.medium]: TypographyVariant.paragraph1,
 });
 
 export const getIconSizeValues = (

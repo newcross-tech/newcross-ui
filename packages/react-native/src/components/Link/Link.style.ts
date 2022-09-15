@@ -1,7 +1,5 @@
 import { StyleSheet, ViewStyle } from 'react-native';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
-import { LinkProps } from './Link';
-import { getTextSizeValues, LinkSizes } from './Link.types';
 
 export const pressedLinkStyle = (
   pressed: boolean,
@@ -9,10 +7,8 @@ export const pressedLinkStyle = (
   theme: ThemeDesignTokens
 ) => [currentStyle, { opacity: pressed ? theme.LinkPressedOpacity : 1 }];
 
-const linkStyle = (theme: ThemeDesignTokens, { size }: LinkProps) => {
-  const textSizeValues = getTextSizeValues(theme);
-
-  const { LinkPadding, LinkMargin, LinkTextFontFamily, LinkColor } = theme;
+const linkStyle = (theme: ThemeDesignTokens) => {
+  const { LinkPadding, LinkMargin, LinkColor } = theme;
 
   return StyleSheet.create({
     container: {
@@ -27,8 +23,6 @@ const linkStyle = (theme: ThemeDesignTokens, { size }: LinkProps) => {
       marginRight: LinkMargin,
       textDecorationLine: 'underline',
       color: LinkColor,
-      fontFamily: LinkTextFontFamily,
-      ...textSizeValues[size as LinkSizes],
     },
     linkIcon: {
       color: LinkColor,
