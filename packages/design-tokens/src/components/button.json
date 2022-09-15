@@ -5,101 +5,61 @@
         "value": "{spacing.base.8.value}"
       }
     },
-
     "corners": {
       "pill": {
-        "border-radius": { "value": "{brand.border.radius.value}" }
+        "border-radius": { "value": "{border.base.radius.rounded.value}" }
       },
       "rounded": {
         "border-radius": { "value": "{border.base.radius.sm.value}" }
       }
     },
-    "font-family": { "value": "{brand.font-family.regular.value}" },
-
-    "small": {
-      "padding-vertical": { "value": "{spacing.base.4.value}" },
-      "padding-horizontal": { "value": "{spacing.base.8.value}" },
-      "font-weight": { "value": "{typography.font-weight.regular.value}" },
-      "line-height": { "value": "{typography.line-height.20.value}" },
-      "font-size": { "value": "{typography.font-size.14.value}" },
-      "icon-size": { "value": "{spacing.base.12.value}" }
-    },
-
-    "medium": {
-      "padding-vertical": { "value": "{spacing.base.8.value}" },
-      "padding-horizontal": { "value": "{spacing.base.12.value}" },
-      "font-size": { "value": "{typography.font-size.16.value}" },
-      "line-height": { "value": "{typography.line-height.24.value}" },
-      "font-weight": { "value": "{typography.font-weight.semi-bold.value}" },
-      "icon-size": { "value": "{spacing.base.16.value}" }
-    },
-
-    "large": {
-      "padding-vertical": { "value": "{spacing.base.12.value}" },
-      "padding-horizontal": { "value": "{spacing.base.24.value}" },
-      "line-height": { "value": "{typography.line-height.32.value}" },
-      "font-size": { "value": "{typography.font-size.20.value}" },
-      "font-weight": { "value": "{typography.font-weight.semi-bold.value}" },
-      "icon-size": { "value": "{spacing.base.24.value}" }
-    },
-
-    "disabled": {
-      "color": { "value": "{color.neutral.grey.300.value}" }
+    "size": {
+      "small": {
+        "padding": { "value": "{spacing.base.8.value}" },
+        "icon-size": { "value": "{spacing.base.12.value}" }
+      },
+      "large": {
+        "padding": { "value": "{spacing.base.12.value}" },
+        "icon-size": { "value": "{spacing.base.24.value}" }
+      }
     },
 
     "variant": {
       "primary": {
-        "background-color": { "value": "{brand.color.primary.value}" },
-        "color": { "value": "{color.neutral.white.value}" },
-
-        "pressed": {
-          "background-color": {
-            "value": "{color.neutral.black.value}"
-          }
-        },
-        "disabled": {
-          "background-color": { "value": "{color.neutral.grey.200.value}" }
-        }
-      },
-
-      "secondary": {
-        "background-color": {
-          "value": "{brand.color.secondary.100.value}"
-        },
+        "background-color": { "value": "{brand.color.secondary.200.value}" },
         "color": { "value": "{brand.color.primary.value}" },
-
         "pressed": {
           "background-color": {
             "value": "{brand.color.secondary.400.value}"
           }
         },
         "disabled": {
-          "background-color": {
-            "value": "{brand.color.secondary.200.value}"
-          }
+          "background-color": { "value": "{color.neutral.grey.200.value}" },
+          "color": { "value": "{color.neutral.grey.100.value}" }
         }
       },
-
-      "outline-primary": {
+      "secondary": {
         "border": {
           "width": { "value": "{border.base.width.sm}" },
-          "color": { "value": "{brand.color.primary.value}" }
+          "color": { "value": "{brand.color.secondary.100.value}" }
         },
-        "background-color": { "value": "{color.neutral.white.value}" },
         "color": { "value": "{brand.color.primary.value}" },
-
         "pressed": {
-          "background-color": { "value": "{brand.color.primary.value}" },
-          "color": { "value": "{color.neutral.white.value}" }
-        },
-
-        "disabled": {
           "background-color": {
-            "value": "{color.neutral.grey.200.value}"
+            "value": "{brand.color.secondary.300.value}"
+          }
+        },
+        "disabled": {
+          "border": {
+            "color": { "value": "{color.neutral.grey.200.value}" }
           },
-          "color": { "value": "{color.neutral.grey.300.value}" },
-          "border-color": { "value": "{color.neutral.grey.300.value}" }
+          "color": { "value": "{color.neutral.grey.200.value}" }
         }
+      }
+    },
+    "mode": {
+      "dark": {
+        "color": { "value": "{color.neutral.white.value}" }
       }
     }
   }

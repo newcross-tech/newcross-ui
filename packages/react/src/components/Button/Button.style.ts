@@ -10,32 +10,25 @@ const getVariantStyles = (theme: ThemeDesignTokens) => ({
   `,
   [ButtonVariant.secondary]: css`
     color: ${theme.ButtonVariantSecondaryColor};
-    background-color: ${theme.ButtonVariantSecondaryBackgroundColor};
-  `,
-  [ButtonVariant.outlinePrimary]: css`
-    color: ${theme.ButtonVariantOutlinePrimaryColor};
-    background-color: ${theme.ButtonVariantOutlinePrimaryBackgroundColor};
-    border-width: ${theme.ButtonVariantOutlinePrimaryBorderWidth};
-    border-color: ${theme.ButtonVariantOutlinePrimaryBorderColor};
+    background-color: transparent;
+    border-width: ${theme.ButtonVariantSecondaryBorderWidth};
+    border-color: ${theme.ButtonVariantSecondaryBorderColor};
+    border-style: solid;
   `,
 });
 
 const getDisabledStyles = (theme: ThemeDesignTokens) => ({
   [ButtonVariant.primary]: css`
     cursor: default;
-    color: ${theme.ButtonVariantPrimaryColor};
+    color: ${theme.ButtonVariantPrimaryDisabledColor};
     background-color: ${theme.ButtonVariantPrimaryDisabledBackgroundColor};
   `,
   [ButtonVariant.secondary]: css`
     cursor: default;
-    color: ${theme.ButtonVariantSecondaryColor};
-    background-color: ${theme.ButtonVariantSecondaryDisabledBackgroundColor};
-  `,
-  [ButtonVariant.outlinePrimary]: css`
-    cursor: default;
-    color: ${theme.ButtonVariantOutlinePrimaryDisabledColor};
-    background-color: ${theme.ButtonVariantOutlinePrimaryDisabledBackgroundColor};
-    border-color: ${theme.ButtonVariantOutlinePrimaryDisabledBorderColor};
+    color: ${theme.ButtonVariantSecondaryDisabledColor};
+    border-width: ${theme.ButtonVariantSecondaryBorderWidth};
+    border-color: ${theme.ButtonVariantSecondaryDisabledBorderColor};
+    background-color: transparent;
   `,
 });
 
@@ -50,19 +43,18 @@ const getCornerStyles = (theme: ThemeDesignTokens) => ({
 
 const getSizeStyles = (theme: ThemeDesignTokens) => ({
   [ButtonSizes.small]: css`
-    font-size: ${theme.ButtonSmallFontSize};
-    line-height: ${theme.ButtonSmallLineHeight};
-    padding: ${theme.ButtonSmallPaddingVertical} ${theme.ButtonSmallPaddingHorizontal};
-  `,
-  [ButtonSizes.medium]: css`
-    font-size: ${theme.ButtonMediumFontSize};
-    line-height: ${theme.ButtonMediumLineHeight};
-    padding: ${theme.ButtonMediumPaddingVertical} ${theme.ButtonMediumPaddingHorizontal};
+    font-family: ${theme.TypographyHeading4FontFamily};
+    font-weight: ${theme.TypographyHeading4FontWeight};
+    font-size: ${theme.TypographyHeading4FontSize};
+    line-height: ${theme.TypographyHeading4LineHeight};
+    padding: ${theme.ButtonSizeSmallPadding};
   `,
   [ButtonSizes.large]: css`
-    font-size: ${theme.ButtonLargeFontSize};
-    line-height: ${theme.ButtonLargeLineHeight};
-    padding: ${theme.ButtonLargePaddingVertical} ${theme.ButtonLargePaddingHorizontal};
+    font-family: ${theme.TypographyHeading3FontFamily};
+    font-weight: ${theme.TypographyHeading3FontWeight};
+    font-size: ${theme.TypographyHeading3FontSize};
+    line-height: ${theme.TypographyHeading3LineHeight};
+    padding: ${theme.ButtonSizeLargePadding};
   `,
 });
 
@@ -77,10 +69,6 @@ const getHoverStyles = (theme: ThemeDesignTokens) => ({
   `,
   [ButtonVariant.secondary]: css`
     background-color: ${theme.ButtonVariantSecondaryPressedBackgroundColor};
-  `,
-  [ButtonVariant.outlinePrimary]: css`
-    color: ${theme.ButtonVariantOutlinePrimaryPressedColor};
-    background-color: ${theme.ButtonVariantOutlinePrimaryPressedBackgroundColor};
   `,
 });
 

@@ -5,6 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft } from '@fortawesome/pro-solid-svg-icons/faChevronLeft';
 import { faChevronRight } from '@fortawesome/pro-solid-svg-icons/faChevronRight';
 import { getShortMonth, getPreviousMonth, getNextMonth } from './utils/index';
+import useTheme from '../../hooks/useTheme';
+import { FontWeight } from 'react-native-svg';
+import { TypographyVariant } from '../Typography';
 
 type CalendarHeaderProps = {
   direction: Direction;
@@ -19,6 +22,7 @@ const CalendarHeader = ({
 }: CalendarHeaderProps) => {
   const [previousMonth, setPreviousMonth] = useState(getPreviousMonth(date, 1));
   const [nextMonth, setNextMonth] = useState(getNextMonth(date, 1));
+  const theme = useTheme();
 
   const onPreviousMonthPress = () => {
     onDateChange(getPreviousMonth(date, 1));
@@ -33,7 +37,7 @@ const CalendarHeader = ({
   };
 
   const buttonProps = {
-    variant: ButtonVariant.outlinePrimary,
+    variant: ButtonVariant.secondary,
     size: ButtonSizes.small,
     corners: ButtonCorners.rounded,
   };

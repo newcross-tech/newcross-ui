@@ -6,17 +6,23 @@ import React, {
 } from 'react';
 import {
   Pressable,
-  Text,
   GestureResponderEvent,
   ViewStyle,
   TextStyle,
 } from 'react-native';
 import { pressedButtonStyle, pressedButtonTextStyle } from './Button.style';
 
-import { ButtonVariant, ButtonSizes, ButtonCorners } from './Button.types';
+import {
+  ButtonVariant,
+  ButtonSizes,
+  ButtonCorners,
+  ClonedIcon,
+  Mode,
+} from './Button.types';
 
-import { PressedButtonProps } from './Button.types';
+import { PressedButtonProps, getTypographyValues } from './Button.types';
 import { iconStyles } from './Button.style';
+import Typography from '../Typography';
 
 export type ButtonProps = {
   /**
@@ -80,6 +86,10 @@ export type ButtonProps = {
    * Used to set the border radius style e.g. pill, squared
    */
   corners?: ButtonCorners;
+  /**
+   * Used to set dark or light mode
+   */
+  mode?: Mode;
 };
 
 const Button = ({
@@ -90,7 +100,7 @@ const Button = ({
   leftIcon,
   rightIcon,
   fullWidth = false,
-  size = ButtonSizes.medium,
+  size = ButtonSizes.large,
   style,
   pressedStyle,
   textStyle,
@@ -98,13 +108,18 @@ const Button = ({
   disabledTextStyle,
   corners,
   testID,
+  mode = Mode.light,
   ...rest
 }: ButtonProps) => {
+  const typographyVariantValue = getTypographyValues();
+
   const renderIcon = ({
     testID,
     leftIcon,
     rightIcon,
     pressed,
+    children,
+    mode,
   }: PressedButtonProps) => {
     const icon = leftIcon || rightIcon;
 
@@ -120,9 +135,12 @@ const Button = ({
           variant,
           style,
           pressedStyle,
+          pressedTextStyle,
           size,
+          children,
+          mode,
         }),
-      })
+      } as ClonedIcon)
     );
   };
 
@@ -138,6 +156,7 @@ const Button = ({
           style,
           pressedStyle,
           corners,
+          mode,
         })
       }
       onPress={onPress}
@@ -153,8 +172,11 @@ const Button = ({
               leftIcon,
               testID: 'leftIcon',
               pressed,
+              children,
+              mode,
             })}
-          <Text
+          <Typography
+            variant={typographyVariantValue[size as ButtonSizes]}
             style={pressedButtonTextStyle({
               size,
               disabled,
@@ -163,15 +185,18 @@ const Button = ({
               textStyle,
               pressedTextStyle,
               disabledTextStyle,
+              mode,
             })}
           >
             {children}
-          </Text>
+          </Typography>
           {rightIcon &&
             renderIcon({
               rightIcon,
               testID: 'rightIcon',
               pressed,
+              children,
+              mode,
             })}
         </>
       )}

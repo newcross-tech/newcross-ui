@@ -1,7 +1,12 @@
 import { ViewStyle, TextStyle } from 'react-native';
-import { FontWeight } from '../../types';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ButtonProps } from './Button';
+import { TypographyVariant } from '../Typography';
+
+export enum Mode {
+  light = 'light',
+  dark = 'dark',
+}
 
 export enum ButtonCorners {
   pill = 'pill',
@@ -11,13 +16,16 @@ export enum ButtonCorners {
 export enum ButtonVariant {
   primary = 'primary',
   secondary = 'secondary',
-  outlinePrimary = 'outline-primary',
 }
 
 export enum ButtonSizes {
   small = 'small',
-  medium = 'medium',
   large = 'large',
+}
+
+export interface ClonedIcon {
+  testId?: string;
+  style?: TextStyle;
 }
 
 export type PressedButtonProps = ButtonProps & { pressed: boolean };
@@ -33,20 +41,23 @@ export const getBorderStyle = (
   theme: ThemeDesignTokens,
   { disabled }: ButtonProps
 ) => ({
-  [ButtonVariant.outlinePrimary]: {
-    borderWidth: theme.ButtonVariantOutlinePrimaryBorderWidth,
+  [ButtonVariant.secondary]: {
+    borderWidth: theme.ButtonVariantSecondaryBorderWidth,
     borderColor: disabled
-      ? theme.ButtonVariantOutlinePrimaryDisabledBorderColor
-      : theme.ButtonVariantOutlinePrimaryBorderColor,
+      ? theme.ButtonVariantSecondaryDisabledBorderColor
+      : theme.ButtonVariantSecondaryBorderColor,
   },
 });
 
 export const getColorValues = (
-  theme: ThemeDesignTokens
+  theme: ThemeDesignTokens,
+  { mode }: ButtonProps
 ): Record<ButtonVariant, string> => ({
   [ButtonVariant.primary]: theme.ButtonVariantPrimaryColor,
-  [ButtonVariant.secondary]: theme.ButtonVariantSecondaryColor,
-  [ButtonVariant.outlinePrimary]: theme.ButtonVariantOutlinePrimaryColor,
+  [ButtonVariant.secondary]:
+    mode == Mode.dark
+      ? theme.ButtonModeDarkColor
+      : theme.ButtonVariantSecondaryColor,
 });
 
 export const getPressedColorValues = (
@@ -54,25 +65,20 @@ export const getPressedColorValues = (
 ): Record<ButtonVariant, string> => ({
   [ButtonVariant.primary]: theme.ButtonVariantPrimaryColor,
   [ButtonVariant.secondary]: theme.ButtonVariantSecondaryColor,
-  [ButtonVariant.outlinePrimary]: theme.ButtonVariantOutlinePrimaryPressedColor,
 });
 
 export const getDisabledColorValues = (
   theme: ThemeDesignTokens
 ): Record<ButtonVariant, string> => ({
-  [ButtonVariant.primary]: theme.ButtonVariantPrimaryColor,
-  [ButtonVariant.secondary]: theme.ButtonVariantSecondaryColor,
-  [ButtonVariant.outlinePrimary]:
-    theme.ButtonVariantOutlinePrimaryDisabledColor,
+  [ButtonVariant.primary]: theme.ButtonVariantPrimaryDisabledColor,
+  [ButtonVariant.secondary]: theme.ButtonVariantSecondaryDisabledColor,
 });
 
 export const getBackgroundColorValues = (
   theme: ThemeDesignTokens
 ): Record<ButtonVariant, string> => ({
   [ButtonVariant.primary]: theme.ButtonVariantPrimaryBackgroundColor,
-  [ButtonVariant.secondary]: theme.ButtonVariantSecondaryBackgroundColor,
-  [ButtonVariant.outlinePrimary]:
-    theme.ButtonVariantOutlinePrimaryBackgroundColor,
+  [ButtonVariant.secondary]: 'transparent',
 });
 
 export const getPressedBackgroundColorValues = (
@@ -80,70 +86,43 @@ export const getPressedBackgroundColorValues = (
 ): Record<ButtonVariant, string> => ({
   [ButtonVariant.primary]: theme.ButtonVariantPrimaryPressedBackgroundColor,
   [ButtonVariant.secondary]: theme.ButtonVariantSecondaryPressedBackgroundColor,
-  [ButtonVariant.outlinePrimary]:
-    theme.ButtonVariantOutlinePrimaryPressedBackgroundColor,
 });
 
 export const getDisabledBackgroundColorValues = (
   theme: ThemeDesignTokens
 ): Record<ButtonVariant, string> => ({
   [ButtonVariant.primary]: theme.ButtonVariantPrimaryDisabledBackgroundColor,
-  [ButtonVariant.secondary]:
-    theme.ButtonVariantSecondaryDisabledBackgroundColor,
-  [ButtonVariant.outlinePrimary]:
-    theme.ButtonVariantOutlinePrimaryDisabledBackgroundColor,
+  [ButtonVariant.secondary]: 'transparent',
 });
 
 export const getPaddingValues = (
   theme: ThemeDesignTokens
 ): Record<ButtonSizes, ViewStyle> => ({
   [ButtonSizes.small]: {
-    paddingVertical: theme.ButtonSmallPaddingVertical,
-    paddingHorizontal: theme.ButtonSmallPaddingHorizontal,
-  },
-  [ButtonSizes.medium]: {
-    paddingVertical: theme.ButtonMediumPaddingVertical,
-    paddingHorizontal: theme.ButtonMediumPaddingHorizontal,
+    padding: theme.ButtonSizeSmallPadding,
   },
   [ButtonSizes.large]: {
-    paddingVertical: theme.ButtonLargePaddingVertical,
-    paddingHorizontal: theme.ButtonLargePaddingHorizontal,
+    padding: theme.ButtonSizeLargePadding,
   },
 });
 
-export const getTypographyValues = (
-  theme: ThemeDesignTokens
-): Record<ButtonSizes, TextStyle> => ({
-  [ButtonSizes.small]: {
-    fontSize: theme.ButtonSmallFontSize,
-    lineHeight: theme.ButtonSmallLineHeight,
-    fontWeight: theme.ButtonSmallFontWeight as FontWeight,
-  },
-  [ButtonSizes.medium]: {
-    fontSize: theme.ButtonMediumFontSize,
-    lineHeight: theme.ButtonMediumLineHeight,
-    fontWeight: theme.ButtonMediumFontWeight as FontWeight,
-  },
-  [ButtonSizes.large]: {
-    fontSize: theme.ButtonLargeFontSize,
-    lineHeight: theme.ButtonLargeLineHeight,
-    fontWeight: theme.ButtonLargeFontWeight as FontWeight,
-  },
+export const getTypographyValues = (): Record<
+  ButtonSizes,
+  TypographyVariant
+> => ({
+  [ButtonSizes.small]: TypographyVariant.heading4,
+  [ButtonSizes.large]: TypographyVariant.heading3,
 });
 
 export const getIconSize = (
   theme: ThemeDesignTokens
 ): Record<ButtonSizes, TextStyle> => ({
   [ButtonSizes.small]: {
-    height: theme.ButtonSmallIconSize,
-    width: theme.ButtonSmallIconSize,
-  },
-  [ButtonSizes.medium]: {
-    height: theme.ButtonMediumIconSize,
-    width: theme.ButtonMediumIconSize,
+    height: theme.ButtonSizeSmallIconSize,
+    width: theme.ButtonSizeSmallIconSize,
   },
   [ButtonSizes.large]: {
-    height: theme.ButtonLargeIconSize,
-    width: theme.ButtonLargeIconSize,
+    height: theme.ButtonSizeLargeIconSize,
+    width: theme.ButtonSizeLargeIconSize,
   },
 });

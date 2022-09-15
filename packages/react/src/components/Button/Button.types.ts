@@ -1,7 +1,6 @@
 export enum ButtonVariant {
   primary = 'primary',
   secondary = 'secondary',
-  outlinePrimary = 'outline-primary',
 }
 
 export enum ButtonCorners {
@@ -11,6 +10,5 @@ export enum ButtonCorners {
 
 export enum ButtonSizes {
   small = 'small',
-  medium = 'medium',
   large = 'large',
 }

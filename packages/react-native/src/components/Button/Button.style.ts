@@ -1,5 +1,6 @@
 import { StyleSheet, ViewStyle, TextStyle } from 'react-native';
 import {
+  Mode,
   ButtonVariant,
   PressedButtonProps,
   ButtonSizes,
@@ -7,7 +8,6 @@ import {
   getColorValues,
   getPressedColorValues,
   getDisabledColorValues,
-  getTypographyValues,
   getBackgroundColorValues,
   getPressedBackgroundColorValues,
   getDisabledBackgroundColorValues,
@@ -59,23 +59,26 @@ export const getColor = ({
   textStyle,
   pressedTextStyle,
   disabledTextStyle,
+  mode,
 }: PressedButtonProps): TextStyle => {
   const theme = useTheme();
-
-  const colorValues = getColorValues(theme)[variant as ButtonVariant];
-  const pressedColorValues =
-    getPressedColorValues(theme)[variant as ButtonVariant];
-  const disabledColorValues =
-    getDisabledColorValues(theme)[variant as ButtonVariant];
+  const colorValues = getColorValues(theme, { mode })[variant as ButtonVariant];
+  const pressedColorValues = getPressedColorValues(theme);
+  const disabledColorValues = getDisabledColorValues(theme);
 
   if (disabled) {
     return {
-      color: disabledTextStyle?.color || disabledColorValues,
+      color:
+        disabledTextStyle?.color ||
+        disabledColorValues[variant as ButtonVariant],
     };
   }
 
   if (pressed) {
-    return { color: pressedTextStyle?.color || pressedColorValues };
+    return {
+      color:
+        pressedTextStyle?.color || pressedColorValues[variant as ButtonVariant],
+    };
   }
 
   return {
@@ -94,8 +97,14 @@ export const pressedButtonStyle = ({
   corners,
 }: PressedButtonProps) => {
   return [
-    buttonStyle({ fullWidth, disabled, variant, size, style, corners })
-      .container,
+    buttonStyle({
+      fullWidth,
+      disabled,
+      variant,
+      size,
+      style,
+      corners,
+    }).container,
     getBackgroundColor({ disabled, variant, pressed, style, pressedStyle }),
   ];
 };
@@ -108,18 +117,30 @@ export const pressedButtonTextStyle = ({
   style,
   textStyle,
   pressedStyle,
+  pressedTextStyle,
+  mode,
 }: PressedButtonProps) => {
   return [
-    buttonStyle({ disabled, style, size }).buttonText,
-    getColor({ disabled, pressed, variant, textStyle, pressedStyle }),
+    buttonStyle({ disabled, style, size, mode }).buttonText,
+
+    getColor({
+      disabled,
+      pressed,
+      variant,
+      textStyle,
+      pressedStyle,
+      pressedTextStyle,
+      mode,
+    }),
   ];
 };
 
-const iconSpacing = ({ leftIcon, rightIcon }: ButtonProps) => {
+const iconSpacing = ({ leftIcon, rightIcon, children }: ButtonProps) => {
   const theme = useTheme();
   const { ButtonIconSpacing } = theme;
-  if (leftIcon) return { marginRight: ButtonIconSpacing };
-  if (rightIcon) return { marginLeft: ButtonIconSpacing };
+
+  if (leftIcon && children) return { marginRight: ButtonIconSpacing };
+  if (rightIcon && children) return { marginLeft: ButtonIconSpacing };
 };
 
 export const iconStyles = ({
@@ -130,14 +151,24 @@ export const iconStyles = ({
   variant,
   style,
   pressedStyle,
+  pressedTextStyle,
   size,
+  children,
+  mode,
 }: PressedButtonProps) => {
   const theme = useTheme();
-
   return [
-    getColor({ disabled, pressed, variant, style, pressedStyle }),
+    getColor({
+      disabled,
+      pressed,
+      variant,
+      style,
+      pressedStyle,
+      pressedTextStyle,
+      mode,
+    }),
     getIconSize(theme)[size as ButtonSizes],
-    iconSpacing({ leftIcon, rightIcon }),
+    iconSpacing({ leftIcon, rightIcon, children }),
   ];
 };
 
@@ -149,17 +180,13 @@ const buttonStyle = ({
   style,
   textStyle,
   corners,
+  mode,
 }: ButtonProps) => {
   const theme = useTheme();
   const borderValues = getBorderValues(theme);
   const paddingValues = getPaddingValues(theme);
-  const colorValues = getColorValues(theme);
-  const typographyValues = getTypographyValues(theme);
-
+  const colorValues = getColorValues(theme, { mode });
   const borderStyle = getBorderStyle(theme, { disabled });
-
-  const { ButtonFontFamily: fontFamily, ButtonDisabledColor: disabledColor } =
-    theme;
 
   return StyleSheet.create({
     container: {
@@ -168,15 +195,13 @@ const buttonStyle = ({
       justifyContent: fullWidth ? 'center' : 'space-between',
       alignSelf: fullWidth ? 'stretch' : 'flex-start',
       borderRadius: borderValues[corners as ButtonCorners] || undefined,
-      ...borderStyle[variant as ButtonVariant.outlinePrimary],
+      ...borderStyle[variant as ButtonVariant.secondary],
       ...paddingValues[size as ButtonSizes],
       ...style,
     },
     buttonText: {
       textAlign: 'center',
-      fontFamily,
-      color: disabled ? disabledColor : colorValues[variant as ButtonVariant],
-      ...typographyValues[size as ButtonSizes],
+      color: colorValues[variant as ButtonVariant],
       ...textStyle,
     },
   });

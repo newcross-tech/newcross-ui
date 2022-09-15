@@ -1,7 +1,6 @@
 import { ButtonHTMLAttributes } from 'react';
 import * as Styled from './Button.style';
 import { ButtonCorners, ButtonSizes, ButtonVariant } from './Button.types';
-
 export type ButtonProps = {
   /**
    * Used to define background variant
@@ -24,7 +23,7 @@ export type ButtonProps = {
 const Button = ({
   children,
   variant = ButtonVariant.primary,
-  size = ButtonSizes.medium,
+  size = ButtonSizes.large,
   ...rest
 }: ButtonProps) => {
   return (
