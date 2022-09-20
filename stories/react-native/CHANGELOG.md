@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.27.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.26.0...@newcross-stories/react-native@1.27.0) (2022-09-20)
+
+
+### Features
+
+* **hfgo-1280:** update on button component ([1e451de](https://bitbucket.org/newcrossdev/newcross-ui/commits/1e451deb8c14b28e226f067dcd1da5e68e74a573))
+* **hfgo-1318:** Updated all of the colors with specific colors. ([8fb7fcf](https://bitbucket.org/newcrossdev/newcross-ui/commits/8fb7fcf18b40603addb7e501fd8b349b049111cb))
+
+
+
+
+
 # [1.26.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.25.0...@newcross-stories/react-native@1.26.0) (2022-09-07)
 
 

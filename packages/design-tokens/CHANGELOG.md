@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.27.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.26.0...@newcross-ui/design-tokens@1.27.0) (2022-09-20)
+
+
+### Features
+
+* **hfgo-1280:** update on button component ([1e451de](https://bitbucket.org/newcrossdev/newcross-ui/commits/1e451deb8c14b28e226f067dcd1da5e68e74a573))
+* **hfgo-1281:** segmented control update ([55e9caf](https://bitbucket.org/newcrossdev/newcross-ui/commits/55e9caf6b34bf39f0bf468853b0bff1fd38d7e59))
+* **hfgo-1318:** Updated all of the colors with specific colors. ([8fb7fcf](https://bitbucket.org/newcrossdev/newcross-ui/commits/8fb7fcf18b40603addb7e501fd8b349b049111cb))
+* **hfgo-1319:** added style as props and added Typography. ([239b719](https://bitbucket.org/newcrossdev/newcross-ui/commits/239b7191de13468e004a1956754b86138609666a))
+
+
+
+
+
 # [1.26.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.25.0...@newcross-ui/design-tokens@1.26.0) (2022-09-07)
 
 
