@@ -1,7 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import {
   View,
-  Text,
   TextStyle,
   ViewStyle,
   Pressable,
@@ -16,6 +15,7 @@ import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
 import { faSearch } from '@fortawesome/pro-light-svg-icons/faSearch';
 import textInputStyle from './TextInput.style';
 import useTheme from '../../hooks/useTheme';
+import Typography, { TypographyVariant } from '../Typography';
 
 export type TextInputProps = {
   /**
@@ -104,9 +104,13 @@ const TextInput = ({
   return (
     <>
       {label && (
-        <Text testID="label" style={styles.label}>
+        <Typography
+          variant={TypographyVariant.heading5}
+          testID="label"
+          style={styles.label}
+        >
           {label}
-        </Text>
+        </Typography>
       )}
       <View
         style={[styles.container, style]}
@@ -165,9 +169,13 @@ const TextInput = ({
         )}
       </View>
       {helperText || errorText ? (
-        <Text testID="message-text" style={styles.messageText}>
+        <Typography
+          variant={TypographyVariant.paragraph3}
+          testID="message-text"
+          style={styles.messageText}
+        >
           {errorText || helperText}
-        </Text>
+        </Typography>
       ) : null}
     </>
   );

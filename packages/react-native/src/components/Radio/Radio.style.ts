@@ -41,8 +41,6 @@ const radioStyle = (
     },
     radioLabel: {
       paddingLeft: theme.SpacingBase4,
-      lineHeight: theme.RadioLabelLineHeight,
-      fontFamily: theme.RadioLabelFontFamily,
       paddingRight: theme.RadioPadding,
     },
   });

@@ -16,8 +16,6 @@
     },
     "text": {
       "color": { "value": "{brand.color.primary.value}" },
-      "font-family": { "value": "{brand.font-family.regular.value}" },
-      "font-weight": { "value": "{typography.font-weight.regular.value}" },
       "margin-left": { "value": "{spacing.base.12.value}" }
     },
     "icon": {

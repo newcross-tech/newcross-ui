@@ -1,8 +1,5 @@
 {
   "toast": {
-    "font-family": { "value": "{brand.font-family.regular.value}" },
-    "font-size": { "value": "{typography.font-size.12.value}" },
-    "line-height": { "value": "{typography.line-height.18.value}" },
     "padding": { "value": "{spacing.base.12.value}" },
     "color": { "value": "{brand.color.primary.value}" },
     "elevation": { "value": "{shadow.base.elevation.sm.value}" },

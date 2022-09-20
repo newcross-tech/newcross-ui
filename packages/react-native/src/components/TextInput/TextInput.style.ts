@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 import useTheme from '../../hooks/useTheme';
-import { FontWeight } from '../../types';
 
 const textInputStyle = (
   disabled: boolean | undefined,
@@ -74,18 +73,12 @@ const textInputStyle = (
     },
     label: {
       color: theme.TextInputLabelColor,
-      fontWeight: theme.TextInputLabelFontWeight as FontWeight,
-      fontSize: theme.TextInputLabelFontSize,
-      lineHeight: theme.TextInputLineHeight,
       marginBottom: theme.TextInputMarginTop,
     },
     messageText: {
       color: errorText
         ? theme.TextInputErrorColor
         : theme.TextInputHelperTextColor,
-      fontSize: theme.TextInputHelperTextFontSize,
-      fontWeight: theme.TextInputHelperTextFontWeight as FontWeight,
-      lineHeight: theme.TextInputHelperTextLineHeight,
       paddingHorizontal: theme.TextInputHelperTextPaddingHorizontal,
       marginTop: theme.TextInputMarginBottom,
     },

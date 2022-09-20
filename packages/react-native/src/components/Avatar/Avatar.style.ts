@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 import useTheme from '../../hooks/useTheme';
-import { FontWeight } from '../../types';
 import { AvatarProps } from './Avatar';
 import {
   getActiveEllipseSize,
@@ -23,10 +22,6 @@ const avatarStyles = ({ inactive, source, size }: AvatarProps) => {
     AvatarBorderRadius,
     AvatarInnerEllipseColor,
     AvatarInnerEllipseBackgroundColor,
-    AvatarInnerEllipseTextFontFamily,
-    AvatarInnerEllipseTextFontWeight,
-    AvatarInnerEllipseTextFontSize,
-    AvatarInnerEllipseTextLineHeight,
     AvatarInnerEllipseOpacity,
   } = theme;
 
@@ -67,10 +62,6 @@ const avatarStyles = ({ inactive, source, size }: AvatarProps) => {
     text: {
       textAlign: 'center',
       textAlignVertical: 'center',
-      fontSize: AvatarInnerEllipseTextFontSize,
-      fontWeight: AvatarInnerEllipseTextFontWeight as FontWeight,
-      fontFamily: AvatarInnerEllipseTextFontFamily,
-      lineHeight: AvatarInnerEllipseTextLineHeight,
       color: textColor,
     },
     iconContainer: {

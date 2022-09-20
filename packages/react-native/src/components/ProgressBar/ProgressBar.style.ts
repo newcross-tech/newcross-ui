@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { FontWeight } from '../../types';
 import useTheme from '../../hooks/useTheme';
+
 import {
   getLabelPositionValues,
   getMarginBottomContainerValues,
@@ -80,10 +80,6 @@ const progressBarStyle = ({
     },
     allLabels: {
       position: isEachLabelSamePosition ? 'relative' : 'absolute',
-      fontFamily: theme.ProgressBarLabelFontFamily,
-      fontSize: theme.ProgressBarLabelFontSize,
-      fontWeight: theme.ProgressBarLabelFontWeight as FontWeight,
-      lineHeight: theme.ProgressBarLabelLineHeight,
       color: colorVariantValues[colorVariant as ProgressBarColorVariant],
     },
     label: {

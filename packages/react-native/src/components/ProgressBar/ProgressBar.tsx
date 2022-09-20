@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Dimensions, Text, LayoutChangeEvent } from 'react-native';
+import { View, Dimensions, LayoutChangeEvent } from 'react-native';
 import Animated, {
   withRepeat,
   withDelay,
@@ -23,6 +23,7 @@ import {
   DEFAULT_ANIMATION_DURATION,
 } from './ProgressBar.constants';
 import { normaliseValue } from './utils';
+import Typography, { TypographyVariant } from '../Typography';
 
 export type ProgressBarProps = {
   /**
@@ -159,33 +160,44 @@ const ProgressBar = ({
       onLayout={onLayoutLabels}
       testID="labels-container"
     >
-      <Text numberOfLines={DEFAULT_NUMBER_OF_LINES} style={styles.allLabels}>
+      <Typography
+        variant={TypographyVariant.paragraph1}
+        numberOfLines={DEFAULT_NUMBER_OF_LINES}
+        style={styles.allLabels}
+      >
         {label}
-      </Text>
+      </Typography>
       {isDeterminateAndHasProgressLabel && (
-        <Text style={styles.allLabels}>{normalisedProgress}%</Text>
+        <Typography
+          variant={TypographyVariant.paragraph1}
+          style={styles.allLabels}
+        >
+          {normalisedProgress}%
+        </Typography>
       )}
     </View>
   );
 
   const differentPositionLabelView = () => (
     <>
-      <Text
+      <Typography
+        variant={TypographyVariant.paragraph1}
         numberOfLines={DEFAULT_NUMBER_OF_LINES}
         style={[styles.allLabels, styles.label]}
         onLayout={onLayoutLabels}
         testID="label-container"
       >
         {label}
-      </Text>
+      </Typography>
 
       {isDeterminateAndHasProgressLabel && (
-        <Text
+        <Typography
+          variant={TypographyVariant.paragraph1}
           style={[styles.allLabels, styles.progress]}
           testID="progress-label-container"
         >
           {normalisedProgress}%
-        </Text>
+        </Typography>
       )}
     </>
   );

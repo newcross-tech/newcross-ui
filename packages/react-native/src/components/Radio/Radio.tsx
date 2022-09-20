@@ -1,7 +1,8 @@
 import React from 'react';
-import { Pressable, View, Text, GestureResponderEvent } from 'react-native';
+import { Pressable, View, GestureResponderEvent } from 'react-native';
 import radioStyle, { pressedRadioStyle } from './Radio.style';
 import { PressedRadioProps } from './Radio.types';
+import Typography, { TypographyVariant } from '../Typography';
 
 export type RadioProps = {
   /**
@@ -52,9 +53,13 @@ const Radio = ({
         </View>
       </Pressable>
       {label && (
-        <Text testID="radio-label" style={styles.radioLabel}>
+        <Typography
+          variant={TypographyVariant.paragraph2}
+          testID="radio-label"
+          style={styles.radioLabel}
+        >
           {label}
-        </Text>
+        </Typography>
       )}
     </View>
   );

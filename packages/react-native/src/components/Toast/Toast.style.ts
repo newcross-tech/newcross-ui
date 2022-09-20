@@ -32,9 +32,6 @@ const toastStyle = ({ status }: ToastProps) => {
     },
     text: {
       flex: 1,
-      lineHeight: theme.ToastLineHeight,
-      fontFamily: theme.ToastFontFamily,
-      fontSize: theme.ToastFontSize,
       color: theme.ToastColor,
     },
     closeIcon: {
