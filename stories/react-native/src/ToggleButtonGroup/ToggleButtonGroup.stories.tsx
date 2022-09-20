@@ -6,12 +6,13 @@ import {
   ToggleButtonGroup,
   ToggleButtonGroupOrientation,
   ToggleButtonGroupProps,
-  ToggleButtonColors,
 } from '@newcross-ui/react-native';
 import { native } from '@newcross-ui/design-tokens';
 import useState from 'storybook-addon-state';
-import Spacing, { SpacingPositions } from '../Spacing';
+import Spacing, { SpacingPositions, SpacingSizes } from '../Spacing';
 import Container from '../Container';
+import InfoTemplate from '../InfoTemplate/InfoTemplate';
+import { TITLE, DESCRIPTION, DO, DONT } from './ToggleButtonGroupInfo';
 import { isWebPlatform } from '../utils';
 
 export default {
@@ -36,27 +37,23 @@ export const Variants = () => {
     'selectedHorizontalBtnsArray',
     ['1', '2']
   );
+
   return (
     <Container>
+      <Spacing size={SpacingSizes.Large} />
+      <Spacing size={SpacingSizes.Small} />
       <Typography variant={TypographyVariant.heading4}>
         Single Select Group
       </Typography>
       <Spacing position={SpacingPositions.Bottom} />
       <ToggleButtonGroup
         selectedValue={selectedSingleBtn}
-        onSelect={setSelectedSingleBtn}
+        onSingleSelect={setSelectedSingleBtn}
         orientation={ToggleButtonGroupOrientation.horizontal}
       >
-        <ToggleButton fullWidth value="1">
-          Jun
-        </ToggleButton>
-        <ToggleButton fullWidth value="2">
-          Jul
-        </ToggleButton>
-
-        <ToggleButton fullWidth value="3">
-          Aug
-        </ToggleButton>
+        <ToggleButton value="1">Option A</ToggleButton>
+        <ToggleButton value="2">Option B</ToggleButton>
+        <ToggleButton value="3">Option C</ToggleButton>
       </ToggleButtonGroup>
       <Spacing position={SpacingPositions.Bottom} />
       <Typography variant={TypographyVariant.heading4}>
@@ -64,28 +61,21 @@ export const Variants = () => {
       </Typography>
       <Spacing position={SpacingPositions.Bottom} />
       <ToggleButtonGroup
-        selectMultiple
         selectedValue={selectedMultipleBtn}
-        onSelect={setSelectedMultipleBtn}
+        onMultiSelect={setSelectedMultipleBtn}
         orientation={ToggleButtonGroupOrientation.horizontal}
       >
-        <ToggleButton fullWidth value="1">
-          Jun
-        </ToggleButton>
+        <ToggleButton value="1">Option A</ToggleButton>
 
-        <ToggleButton fullWidth value="2">
-          Jul
-        </ToggleButton>
+        <ToggleButton value="2">Option B</ToggleButton>
 
-        <ToggleButton fullWidth value="3">
-          Aug
-        </ToggleButton>
+        <ToggleButton value="3">Option C</ToggleButton>
       </ToggleButtonGroup>
-      <Spacing position={SpacingPositions.Bottom} />
+      <Spacing size={SpacingSizes.Large} />
       <Typography variant={TypographyVariant.heading4}>
         Multiple Select Group with vertical orientation
       </Typography>
-      <Spacing position={SpacingPositions.Bottom} />
+      <Spacing size={SpacingSizes.Large} />
       <Container
         containerStyle={{
           width: isWebPlatform ? '25%' : '100%',
@@ -94,9 +84,8 @@ export const Variants = () => {
         }}
       >
         <ToggleButtonGroup
-          selectMultiple
           selectedValue={selectedVerticalMultipleBtn}
-          onSelect={setSelectedVerticalMultipleBtn}
+          onMultiSelect={setSelectedVerticalMultipleBtn}
           orientation={ToggleButtonGroupOrientation.vertical}
         >
           <ToggleButton fullWidth value="1">
@@ -114,59 +103,72 @@ export const Variants = () => {
       </Container>
       <Spacing position={SpacingPositions.Bottom} />
       <Typography variant={TypographyVariant.heading4}>
-        Mutliple Select Group with horizontal
+        Multiple Select Group with horizontal
       </Typography>
       <Spacing position={SpacingPositions.Bottom} />
       <Container
         containerStyle={{
           width: isWebPlatform ? '60%' : '100%',
-          padding: isWebPlatform ? 0 : SpacingBase32,
         }}
       >
         <ToggleButtonGroup
-          selectMultiple
           orientation={ToggleButtonGroupOrientation.horizontal}
           selectedValue={selectedHorizontalBtns}
-          onSelect={setSelectedHorizonalBtns}
+          onMultiSelect={setSelectedHorizonalBtns}
           style={{ marginBottom: SpacingBase12 }}
         >
-          <ToggleButton value="1" color={ToggleButtonColors.secondary}>
-            Jupiter Green
-          </ToggleButton>
-          <ToggleButton value="2" color={ToggleButtonColors.secondary}>
-            Belleview Care
-          </ToggleButton>
+          <ToggleButton value="1">Jupiter Green</ToggleButton>
+          <ToggleButton value="2">Belleview Care</ToggleButton>
         </ToggleButtonGroup>
         <ToggleButtonGroup
-          selectMultiple
           orientation={ToggleButtonGroupOrientation.horizontal}
           selectedValue={selectedHorizontalBtns}
-          onSelect={setSelectedHorizonalBtns}
+          onMultiSelect={setSelectedHorizonalBtns}
           style={{ marginBottom: SpacingBase12 }}
         >
-          <ToggleButton value="3" color={ToggleButtonColors.secondary}>
-            Jenny Gray care
-          </ToggleButton>
-          <ToggleButton value="4" color={ToggleButtonColors.secondary}>
-            Mount Pleasant
-          </ToggleButton>
+          <ToggleButton value="3">Jenny Gray care</ToggleButton>
+          <ToggleButton value="4">Mount Pleasant</ToggleButton>
         </ToggleButtonGroup>
         <ToggleButtonGroup
-          selectMultiple
           orientation={ToggleButtonGroupOrientation.horizontal}
           selectedValue={selectedHorizontalBtns}
-          onSelect={setSelectedHorizonalBtns}
+          onMultiSelect={setSelectedHorizonalBtns}
           style={{ marginBottom: SpacingBase12 }}
         >
-          <ToggleButton value="5" color={ToggleButtonColors.secondary}>
-            Leaf
-          </ToggleButton>
-          <ToggleButton value="6" color={ToggleButtonColors.secondary}>
-            Silver
-          </ToggleButton>
+          <ToggleButton value="5">Leaf</ToggleButton>
+          <ToggleButton value="6">Silver</ToggleButton>
         </ToggleButtonGroup>
       </Container>
     </Container>
+  );
+};
+
+export const Overview = () => {
+  const [selectedBtns, setSelectedBtns] = useState('selectedBtnsArray', [
+    '1',
+    '2',
+  ]);
+  return (
+    <InfoTemplate
+      title={TITLE}
+      description={DESCRIPTION}
+      doInfo={DO}
+      dontInfo={DONT}
+    >
+      <Container
+        hasPadding={false}
+        containerStyle={{ maxWidth: isWebPlatform ? '350px' : undefined }}
+      >
+        <ToggleButtonGroup
+          selectedValue={selectedBtns}
+          onMultiSelect={setSelectedBtns}
+        >
+          <ToggleButton value="1">Option A</ToggleButton>
+          <ToggleButton value="2">Option B</ToggleButton>
+          <ToggleButton value="3">Option C</ToggleButton>
+        </ToggleButtonGroup>
+      </Container>
+    </InfoTemplate>
   );
 };
 
@@ -180,7 +182,7 @@ const Template: Story<ToggleButtonGroupProps> = (props) => {
       <ToggleButtonGroup
         {...props}
         selectedValue={selectedBtns}
-        onSelect={setSelectedBtns}
+        onMultiSelect={setSelectedBtns}
       >
         <ToggleButton value="1">Jan</ToggleButton>
         <ToggleButton value="2">Feb</ToggleButton>

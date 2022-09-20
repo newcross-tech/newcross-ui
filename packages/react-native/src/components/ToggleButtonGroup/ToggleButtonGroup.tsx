@@ -12,7 +12,7 @@ import useTheme from '../../hooks/useTheme';
 
 export type ToggleButtonGroupProps = {
   /**
-   * The content of the component
+   * The content of the component.
    */
   children: Array<ReactElement<ToggleButtonProps>>;
   /**
@@ -21,13 +21,13 @@ export type ToggleButtonGroupProps = {
    */
   selectedValue: Array<string> | string;
   /**
-   * Callback fired when the value changes
+   * Callback fired when the value changes and used when we want single selection of the toggle button group.
    */
-  onSelect: (arg: Array<string> | string) => void;
+  onSingleSelect?: (arg: string) => void;
   /**
-   * If true, the ToggleButtons enable multiple buttons to be selected
+   * Callback fired when the value changes and used when we want multiple selection of the toggle button group.
    */
-  selectMultiple?: boolean;
+  onMultiSelect?: (arg: Array<string>) => void;
   /**
    * Used to locate this view in end-to-end tests.
    */
@@ -78,10 +78,10 @@ export const calculateGap = (
 const ToggleButtonGroup = ({
   children,
   selectedValue,
-  selectMultiple,
-  onSelect,
   orientation = ToggleButtonGroupOrientation.horizontal,
   style,
+  onSingleSelect,
+  onMultiSelect,
   gap,
   ...rest
 }: ToggleButtonGroupProps) => {
@@ -97,11 +97,10 @@ const ToggleButtonGroup = ({
 
   const handleOnPress = useCallback(
     (_, value: string) => {
-      const values = selectMultiple
-        ? getMultipleSelectedValues(value, selectedValue)
-        : value;
+      onSingleSelect && onSingleSelect(value);
 
-      onSelect(values);
+      onMultiSelect &&
+        onMultiSelect(getMultipleSelectedValues(value, selectedValue));
     },
     [selectedValue]
   );

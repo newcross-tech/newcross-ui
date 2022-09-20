@@ -1,16 +1,14 @@
 import { Meta, Story } from '@storybook/react';
-import {
-  ToggleButton,
-  ToggleButtonProps,
-  ToggleButtonColors,
-} from '@newcross-ui/react-native';
+import { ToggleButton, ToggleButtonProps } from '@newcross-ui/react-native';
 import Container from '../Container';
 import Spacing from '../Spacing';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faBarsFilter } from '@fortawesome/pro-solid-svg-icons/faBarsFilter';
-import { faHeart } from '@fortawesome/pro-solid-svg-icons/faHeart';
+import { faFilter } from '@fortawesome/pro-regular-svg-icons';
 import { faCalendarDays } from '@fortawesome/pro-solid-svg-icons/faCalendarDays';
 import useState from 'storybook-addon-state';
+import InfoTemplate from '../InfoTemplate/InfoTemplate';
+import { TITLE, DESCRIPTION, DO, DONT } from './ToggleButtonInfo';
+import { isWebPlatform } from '../utils';
 
 export default {
   title: 'ReactNative/Components/ToggleButton',
@@ -22,14 +20,14 @@ export const Variants = () => {
     <Container>
       <ToggleButton
         selected={false}
-        icon={<FontAwesomeIcon icon={faCalendarDays} />}
+        rightIcon={<FontAwesomeIcon icon={faCalendarDays} />}
       >
         Apr
       </ToggleButton>
       <Spacing />
       <ToggleButton
         selected={true}
-        icon={<FontAwesomeIcon icon={faCalendarDays} />}
+        rightIcon={<FontAwesomeIcon icon={faCalendarDays} />}
       >
         Apr
       </ToggleButton>
@@ -37,69 +35,67 @@ export const Variants = () => {
       <ToggleButton selected={false}>Fav (3)</ToggleButton>
       <Spacing />
       <ToggleButton selected={true}>Fav (3)</ToggleButton>
+
       <Spacing />
       <ToggleButton
         selected={false}
-        color={ToggleButtonColors.secondary}
-        icon={<FontAwesomeIcon icon={faHeart} />}
+        leftIcon={<FontAwesomeIcon icon={faFilter} />}
+        fullWidth
       >
-        Day
+        Filter By
       </ToggleButton>
       <Spacing />
       <ToggleButton
         selected={true}
-        color={ToggleButtonColors.secondary}
-        icon={<FontAwesomeIcon icon={faHeart} />}
-      >
-        Day
-      </ToggleButton>
-      <Spacing />
-      <ToggleButton
-        selected={false}
-        icon={<FontAwesomeIcon icon={faBarsFilter} />}
+        leftIcon={<FontAwesomeIcon icon={faFilter} />}
         fullWidth
       >
-        Sort
-      </ToggleButton>
-      <Spacing />
-      <ToggleButton
-        selected={true}
-        icon={<FontAwesomeIcon icon={faHeart} />}
-        fullWidth
-      >
-        Sort
-      </ToggleButton>
-      <Spacing />
-      <ToggleButton
-        selected={false}
-        fullWidth
-        color={ToggleButtonColors.secondary}
-      >
-        Day
-      </ToggleButton>
-      <Spacing />
-      <ToggleButton
-        selected={true}
-        fullWidth
-        color={ToggleButtonColors.secondary}
-      >
-        Day
+        Filter By
       </ToggleButton>
     </Container>
   );
 };
 
-const Template: Story<ToggleButtonProps> = (props) => {
-  const [primarySelected, setPrimarySelected] = useState(
-    'primarySelected',
-    false
+export const Overview = () => {
+  return (
+    <InfoTemplate
+      title={TITLE}
+      description={DESCRIPTION}
+      doInfo={DO}
+      dontInfo={DONT}
+    >
+      <Container
+        hasPadding={false}
+        containerStyle={{ maxWidth: isWebPlatform ? '350px' : undefined }}
+      >
+        <ToggleButton
+          selected={false}
+          leftIcon={<FontAwesomeIcon icon={faFilter} />}
+        >
+          Filter By
+        </ToggleButton>
+        <Spacing />
+        <ToggleButton
+          selected={true}
+          leftIcon={<FontAwesomeIcon icon={faFilter} />}
+        >
+          Filter By
+        </ToggleButton>
+      </Container>
+    </InfoTemplate>
   );
+};
+
+const Template: Story<ToggleButtonProps> = (props) => {
+  const [selected, setSelected] = useState('toggleButton', false);
+
   return (
     <Container>
       <ToggleButton
         {...props}
-        selected={primarySelected}
-        onPress={() => setPrimarySelected(!primarySelected)}
+        selected={selected || props.selected}
+        leftIcon={<FontAwesomeIcon icon={faFilter} />}
+        onPress={() => setSelected(!selected)}
       />
     </Container>
   );
@@ -108,5 +104,5 @@ const Template: Story<ToggleButtonProps> = (props) => {
 export const Interactive = Template.bind({});
 
 Interactive.args = {
-  children: 'Sort',
+  children: 'Filter By',
 };

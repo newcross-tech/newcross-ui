@@ -29,10 +29,10 @@ describe('ToggleButtonGroup', () => {
 
   it('selects multiple toggle buttons when selectMultiple prop is given', () => {
     // Arrange
+    const onMultipleSelect = jest.fn();
     const props = {
-      onSelect: jest.fn(),
+      onMultipleSelect: onMultipleSelect,
       selectedValue: ['1', '2'],
-      selectMultiple: true,
       orientation: ToggleButtonGroupOrientation.horizontal,
     };
     // Act
@@ -50,18 +50,17 @@ describe('ToggleButtonGroup', () => {
       </ToggleButtonGroup>
     );
     // Assert
-    expect(queryByTestId('1-inset-shadow')).toBeTruthy();
-    expect(queryByTestId('2-inset-shadow')).toBeTruthy();
-    expect(queryByTestId('3-inset-shadow')).toBeFalsy();
+    expect(queryByTestId('1-selected')).toBeTruthy();
+    expect(queryByTestId('2-selected')).toBeTruthy();
+    expect(queryByTestId('3')).toBeTruthy();
   });
 
   it('selects a single toggle buttons when selectMultiple prop is false', () => {
     // Arrange
-    const onSelect = jest.fn();
+    const onSingleSelect = jest.fn();
     const props = {
-      onSelect: onSelect,
+      onSingleSelect: onSingleSelect,
       selectedValue: '1',
-      selectMultiple: false,
     };
     // Act
     const { queryByTestId } = render(
@@ -79,9 +78,9 @@ describe('ToggleButtonGroup', () => {
     );
 
     // Assert
-    expect(queryByTestId('1-inset-shadow')).toBeTruthy();
-    expect(queryByTestId('2-inset-shadow')).toBeFalsy();
-    expect(queryByTestId('3-inset-shadow')).toBeFalsy();
+    expect(queryByTestId('1-selected')).toBeTruthy();
+    expect(queryByTestId('2')).toBeTruthy();
+    expect(queryByTestId('3')).toBeTruthy();
   });
 
   it('returns correct list of values when getMultipleSelectedValues is called', () => {

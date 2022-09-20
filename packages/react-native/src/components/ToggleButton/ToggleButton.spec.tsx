@@ -28,7 +28,7 @@ describe('Toggle Button Component', () => {
       children: 'Sort',
       onPress: jest.fn(),
       selected: false,
-      icon: <FontAwesomeIcon icon={faCalendarDays} />,
+      leftIcon: <FontAwesomeIcon icon={faCalendarDays} />,
       testID: 'test',
     };
 
@@ -69,7 +69,7 @@ describe('Toggle Button Component', () => {
 
     // Act
     const { getByTestId } = render(<ToggleButton {...props} />);
-    fireEvent.press(getByTestId('test'));
+    fireEvent.press(getByTestId('test-selected'));
 
     // Assert
     expect(onPress).toHaveBeenCalled();
@@ -90,5 +90,35 @@ describe('Toggle Button Component', () => {
 
     // Assert
     expect(onPress).not.toHaveBeenCalled();
+  });
+  it(`renders successfully when left icon prop is given`, () => {
+    // Arrange
+    const props: ToggleButtonProps = {
+      children: 'Sort',
+      selected: false,
+      testID: 'test',
+      leftIcon: <FontAwesomeIcon icon={faCalendarDays} />,
+    };
+
+    // Act
+    const { getByTestId } = render(<ToggleButton {...props} />);
+
+    // Assert
+    expect(getByTestId('toggle-button-left-icon')).toBeTruthy();
+  });
+  it(`renders successfully when right icon prop is given`, () => {
+    // Arrange
+    const props: ToggleButtonProps = {
+      children: 'Sort',
+      selected: false,
+      testID: 'test',
+      rightIcon: <FontAwesomeIcon icon={faCalendarDays} />,
+    };
+
+    // Act
+    const { getByTestId } = render(<ToggleButton {...props} />);
+
+    // Assert
+    expect(getByTestId('toggle-button-right-icon')).toBeTruthy();
   });
 });

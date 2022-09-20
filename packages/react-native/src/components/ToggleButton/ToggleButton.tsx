@@ -1,12 +1,12 @@
-import React, { cloneElement, isValidElement, ReactNode } from 'react';
-import {
-  Pressable,
-  GestureResponderEvent,
-  View,
-  ViewStyle,
-} from 'react-native';
+import React, {
+  ReactElement,
+  cloneElement,
+  isValidElement,
+  ReactNode,
+} from 'react';
+import { Pressable, GestureResponderEvent, ViewStyle } from 'react-native';
 import toggleStyle from './ToggleButton.style';
-import { ToggleButtonColors } from './ToggleButton.types';
+import { ClonedIcon } from './ToggleButton.types';
 import Typography, { TypographyVariant } from '../Typography';
 
 export type ToggleButtonProps = {
@@ -23,18 +23,11 @@ export type ToggleButtonProps = {
    * Specifies whether the toggle button is selected
    */
   selected?: boolean;
-  /**
-   * Used to define background color
-   */
-  color?: ToggleButtonColors;
+
   /**
    * To toggle between auto and full width button
    */
   fullWidth?: boolean;
-  /**
-   * pass icon to show on the left side of text
-   */
-  icon?: ReactNode;
   /**
    * The currently selected value within the group or an array of
    * selected values
@@ -48,21 +41,46 @@ export type ToggleButtonProps = {
    * Used to style the toggle button container.
    */
   style?: ViewStyle;
+  /**
+   * Set the left icon element.
+   */
+  leftIcon?: ReactElement;
+  /**
+   * Set the right icon element.
+   */
+  rightIcon?: ReactElement;
 };
 
 const ToggleButton = ({
+  leftIcon,
+  rightIcon,
   children,
   selected,
-  color = ToggleButtonColors.primary,
   onPress,
   fullWidth,
-  icon,
   value,
   testID,
   style,
   ...rest
 }: ToggleButtonProps) => {
-  const styles = toggleStyle({ selected, color, fullWidth });
+  const styles = toggleStyle({
+    selected,
+    fullWidth,
+    leftIcon,
+    rightIcon,
+    children,
+  });
+
+  const renderIcon = ({ testID, leftIcon, rightIcon }: ToggleButtonProps) => {
+    const icon = leftIcon || rightIcon;
+    return (
+      isValidElement(icon) &&
+      cloneElement(icon, {
+        testID: testID,
+        style: styles.icon,
+      } as ClonedIcon)
+    );
+  };
 
   const handleOnPress = (event: GestureResponderEvent) => {
     if (onPress) {
@@ -73,16 +91,24 @@ const ToggleButton = ({
     <Pressable
       style={[styles.container, style]}
       onPress={handleOnPress}
-      testID={testID}
+      testID={selected ? `${testID}-selected` : `${testID}`}
       {...rest}
     >
-      {selected && (
-        <View style={styles.insetShadow} testID={`${testID}-inset-shadow`} />
-      )}
-      {isValidElement(icon) && cloneElement(icon, { style: styles.icon })}
+      {leftIcon &&
+        renderIcon({
+          leftIcon,
+          testID: 'toggle-button-left-icon',
+          children,
+        })}
       <Typography variant={TypographyVariant.paragraph2} style={styles.text}>
         {children}
       </Typography>
+      {rightIcon &&
+        renderIcon({
+          rightIcon,
+          testID: 'toggle-button-right-icon',
+          children,
+        })}
     </Pressable>
   );
 };

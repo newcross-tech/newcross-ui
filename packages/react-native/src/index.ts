@@ -56,7 +56,6 @@ export { default as Link, LinkProps, LinkSizes } from './components/Link';
 export {
   default as ToggleButton,
   ToggleButtonProps,
-  ToggleButtonColors,
 } from './components/ToggleButton';
 export {
   default as ToggleButtonGroup,
