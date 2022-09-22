@@ -54,7 +54,7 @@ const Radio = ({
       </Pressable>
       {label && (
         <Typography
-          variant={TypographyVariant.paragraph2}
+          variant={TypographyVariant.paragraph1}
           testID="radio-label"
           style={styles.radioLabel}
         >

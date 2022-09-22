@@ -2,6 +2,8 @@ import { View } from 'react-native';
 import { Meta, Story } from '@storybook/react';
 import { Radio, RadioProps } from '@newcross-ui/react-native';
 import Container from '../Container';
+import InfoTemplate from '../InfoTemplate/InfoTemplate';
+import { TITLE, DESCRIPTION, DO, DONT } from './RadioInfo';
 
 export default {
   title: 'ReactNative/Components/Radio',
@@ -18,6 +20,23 @@ export const Variants = () => {
         <Radio selected label="Disabled Selected" disabled />
       </View>
     </Container>
+  );
+};
+
+export const Overview = () => {
+  return (
+    <InfoTemplate
+      title={TITLE}
+      description={DESCRIPTION}
+      doInfo={DO}
+      dontInfo={DONT}
+    >
+      <Container>
+        <View>
+          <Radio selected={true} label="Primary Selected" />
+        </View>
+      </Container>
+    </InfoTemplate>
   );
 };
 

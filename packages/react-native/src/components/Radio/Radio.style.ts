@@ -18,7 +18,7 @@ const radioStyle = (
       flexDirection: 'row',
     },
     wrapper: {
-      padding: theme.RadioPadding,
+      padding: theme.RadioPaddingRight,
     },
     radio: {
       justifyContent: 'center',
@@ -40,8 +40,9 @@ const radioStyle = (
       borderRadius: theme.RadioSelectedHeight / 2,
     },
     radioLabel: {
-      paddingLeft: theme.SpacingBase4,
-      paddingRight: theme.RadioPadding,
+      paddingLeft: theme.RadioPaddingLeft,
+      paddingRight: theme.RadioPaddingRight,
+      color: theme.RadioColor,
     },
   });
 };

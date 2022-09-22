@@ -1,11 +1,13 @@
 {
   "radio": {
-    "padding": { "value": "{spacing.base.8.value}" },
+    "padding-left": { "value": "{spacing.base.4.value}" },
+    "padding-right": { "value": "{spacing.base.8.value}" },
     "height": { "value": "{spacing.base.24.value}" },
     "width": { "value": "{spacing.base.24.value}" },
-    "border-width": { "value": "{size.base.border-width.md.value}" },
+    "border-width": { "value": "{size.base.border-width.sm.value}" },
     "border-color": { "value": "{brand.color.primary.value}" },
     "background-color": { "value": "{color.neutral.white.value}" },
+    "color": { "value": "{brand.color.primary.value}" },
 
     "disabled": {
       "border-color": { "value": "{color.neutral.grey.200.value}" }
