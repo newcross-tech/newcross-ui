@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.2.1...@newcross-ui/react@1.3.0) (2022-09-27)
+
+
+### Features
+
+* **ask-48:** typography web init, Button cleanup ([277f591](https://bitbucket.org/newcrossdev/newcross-ui/commits/277f591ef28b3080836eb37cfd05607af1f7b258))
+
+
+
+
+
 ## [1.2.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.2.0...@newcross-ui/react@1.2.1) (2022-09-27)
 
 **Note:** Version bump only for package @newcross-ui/react
