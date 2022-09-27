@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.28.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.27.0...@newcross-ui/design-tokens@1.28.0) (2022-09-27)
+
+
+### Features
+
+* **hfgo-1282:** update on toggle button component ([00204f1](https://bitbucket.org/newcrossdev/newcross-ui/commits/00204f1862f881b0456677220f0454cf651216f7))
+* **hfgo-1291:** update components to use Typography components. ([9d5d432](https://bitbucket.org/newcrossdev/newcross-ui/commits/9d5d432dae1cf94d9119eb35656d2acb4dd3ebc6))
+* **hfgo-1349:** update on radio component ([8aacd6b](https://bitbucket.org/newcrossdev/newcross-ui/commits/8aacd6b395ade01eff7d9da5e395ed0a15bcd554))
+
+
+
+
+
 # [1.27.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.26.0...@newcross-ui/design-tokens@1.27.0) (2022-09-20)
 
 
