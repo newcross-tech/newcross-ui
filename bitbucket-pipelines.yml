@@ -45,7 +45,6 @@ pipelines:
       - step:
           name: Deploy to production
           deployment: production
-          trigger: 'manual'
           script:
             - git remote set-url origin ${BITBUCKET_GIT_SSH_ORIGIN}
             - npm i -g serverless@3.7.1 serverless-s3-sync@3.0.0 lerna@4.0.0
