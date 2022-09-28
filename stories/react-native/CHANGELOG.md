@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.29.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.28.0...@newcross-stories/react-native@1.29.0) (2022-09-28)
+
+
+### Features
+
+* **hfgo-1283:** added SVGs to storybook ([a354517](https://bitbucket.org/newcrossdev/newcross-ui/commits/a354517813024d8c570404aef7e65317dcb21f24))
+
+
+
+
+
 # [1.28.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.27.0...@newcross-stories/react-native@1.28.0) (2022-09-27)
 
 
