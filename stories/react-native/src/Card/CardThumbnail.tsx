@@ -1,59 +1,56 @@
-import { LinearGradient, LinearGradientProps } from 'expo-linear-gradient';
 import { View } from 'react-native';
 import { Typography, TypographyVariant } from '@newcross-ui/react-native';
 import { native } from '@newcross-ui/design-tokens';
+import { ShiftCardDay, ShiftCardNight, ShiftCardSleeper } from './svg';
 
-const {
-  BorderBaseRadiusRounded,
-  ColorNeutralWhite,
-  SpacingBase64,
-  SpacingBase8,
-} = native.healthforce;
+const { BrandColorPrimary, ColorNeutralWhite } = native.healthforce;
 
-const CardThumbnail = (props: LinearGradientProps) => (
-  <LinearGradient
+export type CardThumbnailProps = {
+  shiftCardStatus?: string;
+};
+
+const CardThumbnail = ({ shiftCardStatus }: CardThumbnailProps) => (
+  <View
     style={{
-      flex: 1,
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center',
+      alignContent: 'center',
     }}
-    start={{ x: 1, y: 1 }}
-    {...props}
   >
     <View
       style={{
-        overflow: 'hidden',
-        borderRadius: BorderBaseRadiusRounded,
-        height: SpacingBase64,
-        width: SpacingBase64,
-        margin: SpacingBase8,
+        zIndex: 100,
+        flex: 1,
+        display: 'flex',
+        justifyContent: 'center',
+        alignSelf: 'center',
+        alignItems: 'center',
+        position: 'absolute',
       }}
     >
-      <LinearGradient
-        {...props}
+      <Typography
+        variant={TypographyVariant.heading4}
         style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100%',
+          color:
+            shiftCardStatus === 'day' ? BrandColorPrimary : ColorNeutralWhite,
         }}
       >
-        <Typography
-          variant={TypographyVariant.heading4}
-          style={{ color: ColorNeutralWhite }}
-        >
-          XX
-        </Typography>
-        <Typography
-          variant={TypographyVariant.heading2}
-          style={{ color: ColorNeutralWhite }}
-        >
-          XX
-        </Typography>
-      </LinearGradient>
+        XX
+      </Typography>
+      <Typography
+        variant={TypographyVariant.heading2}
+        style={{
+          color:
+            shiftCardStatus === 'day' ? BrandColorPrimary : ColorNeutralWhite,
+        }}
+      >
+        XX
+      </Typography>
     </View>
-  </LinearGradient>
+    {shiftCardStatus === 'day' && <ShiftCardDay />}
+    {shiftCardStatus === 'night' && <ShiftCardNight />}
+    {shiftCardStatus === 'sleeper' && <ShiftCardSleeper />}
+  </View>
 );
 
 export default CardThumbnail;

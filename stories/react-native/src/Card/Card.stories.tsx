@@ -15,15 +15,10 @@ import Spacing from '../Spacing';
 import CardContent from './CardContent';
 import CardThumbnail from './CardThumbnail';
 import { getParameters } from '../utils';
+import { BadgeBlack, Badge as BadgeSVG } from './svg';
+import { View, Platform } from 'react-native';
 
-const {
-  BrandColorPrimary,
-  ColorPrimaryVigour,
-  BrandColorSecondary100,
-  BrandColorSecondary400,
-  SpacingBase24,
-  SpacingBase12,
-} = native.healthforce;
+const { SpacingBase24, CardPadding, SpacingBase12 } = native.healthforce;
 
 export default {
   title: 'ReactNative/Components/Card',
@@ -31,73 +26,98 @@ export default {
   parameters: getParameters(),
 } as Meta;
 
-export const Variants: Story<CardProps> = () => (
-  <Container>
-    <Card hasRoundedCorners>
-      <FontAwesomeIcon icon={faUser} size={SpacingBase24} />
-      <Typography
-        variant={TypographyVariant.heading3}
-        style={{ marginLeft: SpacingBase12, marginRight: SpacingBase12 }}
+export const Variants: Story<CardProps> = () => {
+  const isWeb = Platform.OS === 'web';
+
+  return (
+    <Container>
+      <Card hasRoundedCorners>
+        <FontAwesomeIcon icon={faUser} size={SpacingBase24} />
+        <Typography
+          variant={TypographyVariant.heading3}
+          style={{ marginLeft: SpacingBase12, marginRight: SpacingBase12 }}
+        >
+          My Profile
+        </Typography>
+        <Badge badgeContent={7} />
+      </Card>
+      <Spacing />
+      <Card
+        hasRoundedCorners
+        thumbnailContent={<CardThumbnail shiftCardStatus="day" />}
       >
-        My Profile
-      </Typography>
-      <Badge badgeContent={7} />
-    </Card>
-    <Spacing />
-    <Card
-      hasRoundedCorners
-      thumbnailContent={
-        <CardThumbnail colors={[BrandColorPrimary, ColorPrimaryVigour]} />
-      }
-    >
-      <CardContent />
-    </Card>
-    <Spacing />
-    <Card
-      hasRightIcon
-      hasBorder
-      hasRoundedCorners
-      thumbnailContent={
-        <CardThumbnail colors={[BrandColorPrimary, ColorPrimaryVigour]} />
-      }
-    >
-      <CardContent />
-    </Card>
-    <Spacing />
-    <Card
-      hasRightIcon
-      hasBorder
-      thumbnailContent={
-        <CardThumbnail colors={[BrandColorPrimary, ColorPrimaryVigour]} />
-      }
-      rightIconContent={<Badge badgeContent={7} />}
-    >
-      <CardContent />
-    </Card>
-    <Spacing />
-    <Card
-      hasRightIcon
-      hasRoundedCorners
-      hasBorder
-      fullWidth
-      color={CardColors.secondary}
-      thumbnailContent={
-        <CardThumbnail
-          colors={[BrandColorSecondary100, BrandColorSecondary400]}
-        />
-      }
-    >
-      <CardContent style={{ flex: 1 }} />
-    </Card>
-  </Container>
-);
+        <CardContent />
+        <View
+          style={{
+            position: 'absolute',
+            alignSelf: 'flex-start',
+            marginTop: isWeb ? -CardPadding : 0,
+            paddingRight: CardPadding,
+            right: 0,
+          }}
+        >
+          <BadgeBlack />
+        </View>
+      </Card>
+      <Spacing />
+      <Card
+        hasRightIcon
+        hasBorder
+        hasRoundedCorners
+        thumbnailContent={<CardThumbnail shiftCardStatus="sleeper" />}
+      >
+        <CardContent />
+        <View
+          style={{
+            position: 'absolute',
+            alignSelf: 'flex-start',
+            marginTop: isWeb ? -CardPadding : 0,
+            paddingRight: CardPadding,
+            right: 0,
+          }}
+        >
+          <BadgeSVG />
+        </View>
+      </Card>
+      <Spacing />
+      <Card
+        hasRightIcon
+        hasBorder
+        thumbnailContent={<CardThumbnail shiftCardStatus="night" />}
+        rightIconContent={<Badge badgeContent={7} />}
+      >
+        <CardContent />
+      </Card>
+      <Spacing />
+      <Card
+        hasRightIcon
+        hasRoundedCorners
+        hasBorder
+        fullWidth
+        color={CardColors.secondary}
+        thumbnailContent={<CardThumbnail shiftCardStatus="day" />}
+      >
+        <CardContent style={{ flex: 1 }} />
+        <View
+          style={{
+            position: 'absolute',
+            alignSelf: 'flex-start',
+            marginTop: isWeb ? -CardPadding : 0,
+            paddingRight: CardPadding,
+            right: 0,
+          }}
+        >
+          <BadgeBlack />
+        </View>
+      </Card>
+    </Container>
+  );
+};
 
 const Template: Story<CardProps> = ({ fullWidth, ...rest }) => (
   <Container>
     <Card
-      thumbnailContent={
-        <CardThumbnail colors={[BrandColorPrimary, ColorPrimaryVigour]} />
-      }
+      thumbnailContent={<CardThumbnail shiftCardStatus="sleeper" />}
       fullWidth={fullWidth}
       {...rest}
     >
