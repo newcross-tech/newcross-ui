@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.3.0...@newcross-ui/react@1.4.0) (2022-09-29)
+
+
+### Features
+
+* **ask-57:** add Radio component support ([56fec2b](https://bitbucket.org/newcrossdev/newcross-ui/commits/56fec2b5f34366b0deec0ef8d291851ed1c28a62))
+
+
+
+
+
 # [1.3.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.2.1...@newcross-ui/react@1.3.0) (2022-09-27)
 
 
