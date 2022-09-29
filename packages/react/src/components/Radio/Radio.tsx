@@ -1,0 +1,62 @@
+import * as Styled from './Radio.style';
+import React, { ChangeEvent, useState } from 'react';
+import { TypographyVariant } from '../Typography';
+
+export type RadioProps = {
+  /**
+   * Disable radio
+   */
+  disabled?: boolean;
+  /**
+   * Identifier of each radio component
+   */
+  label?: string;
+  /**
+   * Called when a single tap gesture is detected.
+   */
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  /**
+   * Specifies whether the radio is selected
+   */
+  selected?: boolean;
+};
+
+const Radio = ({
+  selected = false,
+  disabled = false,
+  label,
+  onChange,
+}: RadioProps) => {
+  const [isSelected, setIsSelected] = useState(selected);
+
+  const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    if (disabled) return;
+    const checkedValue = event.target.checked;
+    setIsSelected(checkedValue);
+    if (onChange) {
+      onChange(event);
+    }
+  };
+
+  return (
+    <Styled.Radio>
+      <input
+        type="radio"
+        data-testid={'radio-input'}
+        checked={isSelected}
+        onChange={onChangeHandler}
+        disabled={disabled}
+      />
+      {label && (
+        <Styled.Label
+          variant={TypographyVariant.paragraph1}
+          testID="radio-label"
+        >
+          {label}
+        </Styled.Label>
+      )}
+    </Styled.Radio>
+  );
+};
+
+export default Radio;
