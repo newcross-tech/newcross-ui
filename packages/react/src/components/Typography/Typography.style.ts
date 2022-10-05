@@ -62,7 +62,8 @@ export const getTypographyStyles = (theme: ThemeDesignTokens) => ({
 });
 
 export const Typography = styled.div<TypographyProps>`
-  ${({ theme, variant }) => css`
+  ${({ theme, variant, gutterBottom }) => css`
     ${variant && getTypographyStyles(theme)[variant]};
+    margin-bottom: ${gutterBottom ? theme.SpacingBase8 : theme.SpacingBase0};
   `}
 `;

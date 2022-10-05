@@ -1,10 +1,11 @@
-import { ReactNode } from 'react';
+import { createContext, ReactNode } from 'react';
 import * as theme from '@newcross-ui/design-tokens';
 import { ThemeProvider as SCThemeProvider } from 'styled-components';
 import Brand from './Brand';
 
 const defaultTheme = theme.web[Brand.healthforce];
 
+export const ThemeContext = createContext(defaultTheme);
 export type ThemeDesignTokens = typeof defaultTheme;
 
 export type ThemeProviderProps = {

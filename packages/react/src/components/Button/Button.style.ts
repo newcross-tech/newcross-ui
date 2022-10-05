@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
-import { ButtonProps } from './Button';
-import { ButtonCorners, ButtonSizes, ButtonVariant } from './Button.types';
+import { ExtendedTheme } from '../../types/Theme';
+import { ButtonProps, IconProps } from './Button';
+import { ButtonCorners, ButtonSizes, ButtonVariant, getIconSize } from './Button.types';
 
 const getVariantStyles = (theme: ThemeDesignTokens) => ({
   [ButtonVariant.primary]: css`
@@ -11,9 +12,7 @@ const getVariantStyles = (theme: ThemeDesignTokens) => ({
   [ButtonVariant.secondary]: css`
     color: ${theme.ButtonVariantSecondaryColor};
     background-color: transparent;
-    border-width: ${theme.ButtonVariantSecondaryBorderWidth};
-    border-color: ${theme.ButtonVariantSecondaryBorderColor};
-    border-style: solid;
+    border: ${theme.ButtonVariantSecondaryBorderWidth} solid ${theme.ButtonVariantSecondaryBorderColor};
   `,
 });
 
@@ -26,8 +25,7 @@ const getDisabledStyles = (theme: ThemeDesignTokens) => ({
   [ButtonVariant.secondary]: css`
     cursor: default;
     color: ${theme.ButtonVariantSecondaryDisabledColor};
-    border-width: ${theme.ButtonVariantSecondaryBorderWidth};
-    border-color: ${theme.ButtonVariantSecondaryDisabledBorderColor};
+    border: ${theme.ButtonVariantSecondaryBorderWidth} solid ${theme.ButtonVariantSecondaryDisabledBorderColor};
     background-color: transparent;
   `,
 });
@@ -71,20 +69,29 @@ const getHoverStyles = (theme: ThemeDesignTokens) => ({
     background-color: ${theme.ButtonVariantSecondaryPressedBackgroundColor};
   `,
 });
-
-export const Button = styled.button<ButtonProps>`
+export const IconWrapper = styled.div<ExtendedTheme<IconProps>>`
+  ${({ theme, rightIcon, leftIcon, hasLabel, size }) => css`
+    display: flex;
+    align-items: center;
+    margin-left: ${rightIcon && hasLabel && theme.ButtonIconSpacing};
+    margin-right: ${leftIcon && hasLabel && theme.ButtonIconSpacing};
+    ${size && getIconSize(theme)[size]};
+  `};
+`;
+export const Button = styled.button<ExtendedTheme<ButtonProps>>`
   ${({ theme, variant, corners, size, disabled, fullWidth }) => css`
     display: inline-flex;
     cursor: pointer;
     justify-content: center;
     border-width: 0;
+    align-items: center;
 
     ${fullWidth && getFullWidthStyles()}
     ${corners && getCornerStyles(theme)[corners]}
     ${variant && getVariantStyles(theme)[variant]}
     ${disabled && variant && getDisabledStyles(theme)[variant]}
     ${size && getSizeStyles(theme)[size]}
-
+ 
     &:active {
       ${!disabled && variant && getHoverStyles(theme)[variant]}
     }

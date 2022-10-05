@@ -12,6 +12,7 @@
     "@babel/core": "^7.18.6",
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-conventional": "^16.2.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@react-native-async-storage/async-storage": "~1.17.3",
     "@react-native-community/datetimepicker": "6.2.0",
     "@rollup/plugin-commonjs": "^22.0.2",
@@ -88,7 +89,7 @@
     "build": "lerna run build",
     "build:watch": "lerna run build:watch --parallel",
     "build-storybook": "build-storybook",
-    "test": "lerna run test --stream",
+    "test": "lerna run test --stream --concurrency 1",
     "test:coverage": "lerna run test:coverage",
     "deploy": "sls deploy -s production",
     "deploy:acceptance": "sls deploy -s acceptance"

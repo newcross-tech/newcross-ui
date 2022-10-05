@@ -11,7 +11,10 @@ import Button, {
   ButtonVariant,
 } from '../../components/Button';
 import Typography, { TypographyVariant } from '../../components/Typography';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight } from '@fortawesome/pro-light-svg-icons/faChevronRight';
+import { faChevronLeft } from '@fortawesome/pro-light-svg-icons/faChevronLeft';
+import { faCircleChevronRight } from '@fortawesome/pro-solid-svg-icons/faCircleChevronRight';
 export default {
   title: 'React/Components/Button',
   component: Button,
@@ -117,9 +120,43 @@ export const Variants = () => {
     </Container>
   );
 };
-
+export const VariantsWithIcons = () => {
+  return (
+    <Container>
+      <Typography variant={TypographyVariant.heading4}>
+        Primary Button with Icons
+      </Typography>
+      <Spacing size={SpacingSizes.Large} />
+      <Button
+        size={ButtonSizes.small}
+        rightIcon={<FontAwesomeIcon icon={faChevronRight} />}
+      >
+        Right Icon
+      </Button>
+      <Spacing />
+      <Button leftIcon={<FontAwesomeIcon icon={faChevronLeft} />}>
+        Left Icon
+      </Button>
+      <Spacing />
+      <Button
+        rightIcon={<FontAwesomeIcon icon={faCircleChevronRight} />}
+      ></Button>
+      <Spacing />
+      <Button fullWidth rightIcon={<FontAwesomeIcon icon={faChevronRight} />}>
+        Full Width with Right Icon
+      </Button>
+      <Spacing />
+      <Button
+        fullWidth
+        rightIcon={<FontAwesomeIcon icon={faCircleChevronRight} />}
+      ></Button>
+    </Container>
+  );
+};
 const Template = ({ children, ...rest }: ButtonProps) => (
-  <Button {...rest}>{children}</Button>
+  <Button {...rest} rightIcon={<FontAwesomeIcon icon={faChevronRight} />}>
+    {children}
+  </Button>
 );
 
 export const Interactive: Story<ButtonProps> = Template.bind({});

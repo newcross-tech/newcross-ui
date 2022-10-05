@@ -5,6 +5,8 @@ export {
   ButtonSizes,
   ButtonVariant,
 } from './components/Button';
+export { default as RadioButton, RadioProps } from './components/Radio';
+export { default as Link, LinkProps, LinkSizes } from './components/Link';
 export {
   default as Typography,
   TypographyProps,

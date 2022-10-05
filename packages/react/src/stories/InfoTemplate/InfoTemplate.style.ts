@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Typography } from '@newcross-ui/react';
+import Typography from '../../components/Typography';
 
 export const StyledUsagesText = styled(Typography)`
   ${({ theme }) => css`

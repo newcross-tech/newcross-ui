@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import Spacing, { SpacingSizes } from '../Spacing';
-import { Typography, TypographyVariant } from '@newcross-ui/react';
+import Typography, { TypographyVariant } from '../../components/Typography';
 import {
   StyledChildrenContainer,
   StyledContainer,
