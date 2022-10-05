@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.30.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.29.0...@newcross-stories/react-native@1.30.0) (2022-10-05)
+
+
+### Features
+
+* **hfgo-1309:** Update components with dark mode ([515c123](https://bitbucket.org/newcrossdev/newcross-ui/commits/515c123372e21f12fa3e6b998000d21b42733bf2))
+
+
+
+
+
 # [1.29.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.28.0...@newcross-stories/react-native@1.29.0) (2022-09-28)
 
 
