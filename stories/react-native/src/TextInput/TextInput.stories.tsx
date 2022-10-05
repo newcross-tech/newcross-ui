@@ -1,17 +1,18 @@
-import { Meta, Story } from '@storybook/react';
-import { ScrollView } from 'react-native';
 import {
   TextInput,
   TextInputProps,
   Typography,
   TypographyVariant,
+  Mode,
 } from '@newcross-ui/react-native';
-import Spacing from '../Spacing';
-import Container from '../Container';
-import { isWebPlatform } from '../utils';
-import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import { TITLE, DESCRIPTION, DO, DONT } from './TextInputInfo';
+import { Meta, Story } from '@storybook/react';
+import { ScrollView } from 'react-native';
 import useState from 'storybook-addon-state';
+import Container from '../Container';
+import InfoTemplate from '../InfoTemplate/InfoTemplate';
+import Spacing from '../Spacing';
+import { isWebPlatform } from '../utils';
+import { DESCRIPTION, DO, DONT, TITLE } from './TextInputInfo';
 
 export default {
   title: 'ReactNative/Components/TextInput',
@@ -52,6 +53,7 @@ export const Variants = () => {
   const [text5, onChangeText5] = useState('text5', '');
   const [text6, onChangeText6] = useState('text6', '');
   const [text7, onChangeText7] = useState('text7', '');
+  const [text8, onChangeText8] = useState('text8', '');
 
   return (
     <ScrollView>
@@ -143,6 +145,19 @@ export const Variants = () => {
           onChangeText={onChangeText7}
           label="Label"
           errorText="This is an error message"
+        />
+        <Spacing />
+
+        <Typography variant={TypographyVariant.heading4}>
+          With dark mode
+        </Typography>
+        <TextInput
+          value={text8}
+          textContentType="name"
+          onChangeText={onChangeText8}
+          label="Label"
+          errorText="This is an error message"
+          mode={Mode.dark}
         />
         <Spacing />
       </Container>

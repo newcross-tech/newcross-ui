@@ -67,6 +67,11 @@
         "elevation": { "value": "{shadow.base.elevation.sm.value}" },
         "radius": { "value": "{shadow.base.offset.lg.value}" }
       }
+    },
+    "mode": {
+      "dark": {
+        "color": { "value": "{color.neutral.white.value}" }
+      }
     }
   }
 }

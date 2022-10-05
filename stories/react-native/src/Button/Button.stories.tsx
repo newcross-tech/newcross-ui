@@ -1,6 +1,5 @@
 import { Meta, Story } from '@storybook/react';
 import {
-  Mode,
   Button,
   ButtonProps,
   ButtonSizes,
@@ -8,6 +7,7 @@ import {
   ButtonCorners,
   Typography,
   TypographyVariant,
+  Mode,
 } from '@newcross-ui/react-native';
 import Container from '../Container';
 import Spacing, { SpacingSizes } from '../Spacing';

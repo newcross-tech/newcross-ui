@@ -1,6 +1,5 @@
 import { StyleSheet, ViewStyle, TextStyle } from 'react-native';
 import {
-  Mode,
   ButtonVariant,
   PressedButtonProps,
   ButtonSizes,

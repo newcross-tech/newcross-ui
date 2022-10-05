@@ -10,6 +10,11 @@
     "icon": {
       "small": { "size": { "value": "{spacing.base.12.value}" } },
       "medium": { "size": { "value": "{spacing.base.16.value}" } }
+    },
+    "mode": {
+      "dark": {
+        "color": { "value": "{color.neutral.white.value}" }
+      }
     }
   }
 }

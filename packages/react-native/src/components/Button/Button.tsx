@@ -10,6 +10,7 @@ import {
   ViewStyle,
   TextStyle,
 } from 'react-native';
+import { Mode } from '../../types';
 import { pressedButtonStyle, pressedButtonTextStyle } from './Button.style';
 
 import {
@@ -17,7 +18,6 @@ import {
   ButtonSizes,
   ButtonCorners,
   ClonedIcon,
-  Mode,
 } from './Button.types';
 
 import { PressedButtonProps, getTypographyValues } from './Button.types';

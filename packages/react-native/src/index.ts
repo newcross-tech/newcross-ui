@@ -18,7 +18,6 @@ export {
 } from './components/PillGroup';
 export {
   default as Button,
-  Mode,
   ButtonProps,
   ButtonVariant,
   ButtonSizes,
@@ -88,3 +87,4 @@ export {
   ListOptionProps,
   ListOptionAlignment,
 } from './components/ListOption';
+export * from './types';

@@ -1,5 +1,5 @@
+import { Link, LinkProps, LinkSizes, Mode } from '@newcross-ui/react-native';
 import { Meta, Story } from '@storybook/react';
-import { Link, LinkProps, LinkSizes } from '@newcross-ui/react-native';
 import Container from '../Container';
 import Spacing from '../Spacing';
 
@@ -14,6 +14,10 @@ export const Variants = () => {
       <Link size={LinkSizes.small}>My Link</Link>
       <Spacing />
       <Link size={LinkSizes.medium}>My Link</Link>
+      <Spacing />
+      <Link size={LinkSizes.medium} mode={Mode.dark}>
+        Dark Mode
+      </Link>
     </Container>
   );
 };

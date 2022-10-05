@@ -1,12 +1,8 @@
 import { ViewStyle, TextStyle } from 'react-native';
+import { Mode } from '../../types';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ButtonProps } from './Button';
 import { TypographyVariant } from '../Typography';
-
-export enum Mode {
-  light = 'light',
-  dark = 'dark',
-}
 
 export enum ButtonCorners {
   pill = 'pill',

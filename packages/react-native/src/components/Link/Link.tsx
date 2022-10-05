@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCircleChevronRight } from '@fortawesome/pro-solid-svg-icons/faCircleChevronRight';
+import { Mode } from '../../types';
 import { getIconSizeValues, LinkSizes, getTypographySizes } from './Link.types';
 import linkStyle, { pressedLinkStyle } from './Link.style';
 import useTheme from '../../hooks/useTheme';
@@ -33,6 +34,10 @@ export type LinkProps = {
    * Show or hide icon
    */
   hasIcon?: boolean;
+  /**
+   * Used to set dark or light mode
+   */
+  mode?: Mode;
 };
 
 const Link = ({
@@ -41,9 +46,10 @@ const Link = ({
   onPress,
   style,
   hasIcon = true,
+  mode = Mode.light,
 }: LinkProps) => {
   const theme = useTheme();
-  const styles = linkStyle(theme);
+  const styles = linkStyle(theme, mode);
 
   return (
     <Pressable

@@ -1,11 +1,13 @@
 import { StyleSheet } from 'react-native';
+import { Mode } from '../../types';
 import useTheme from '../../hooks/useTheme';
 
 const textInputStyle = (
   disabled: boolean | undefined,
   selected: boolean | undefined,
   errorText?: string,
-  search?: boolean
+  search?: boolean,
+  mode?: Mode
 ) => {
   const theme = useTheme();
 
@@ -72,7 +74,10 @@ const textInputStyle = (
       color: theme.TextInputSearchBarCloseIconColor,
     },
     label: {
-      color: theme.TextInputLabelColor,
+      color:
+        mode === Mode.dark
+          ? theme.ButtonModeDarkColor
+          : theme.TextInputLabelColor,
       marginBottom: theme.TextInputMarginTop,
     },
     messageText: {

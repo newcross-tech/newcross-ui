@@ -13,6 +13,7 @@ import { faEyeSlash } from '@fortawesome/pro-solid-svg-icons/faEyeSlash';
 import { faCheck } from '@fortawesome/pro-solid-svg-icons/faCheck';
 import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
 import { faSearch } from '@fortawesome/pro-light-svg-icons/faSearch';
+import { Mode } from '../../types';
 import textInputStyle from './TextInput.style';
 import useTheme from '../../hooks/useTheme';
 import Typography, { TypographyVariant } from '../Typography';
@@ -70,6 +71,10 @@ export type TextInputProps = {
    * Includes a dropdown component
    */
   includeDropdown?: ReactNode;
+  /**
+   * Used to set dark or light mode
+   */
+  mode?: Mode;
 } & NativeTextInputProps;
 
 const TextInput = ({
@@ -86,13 +91,14 @@ const TextInput = ({
   includeDropdown,
   onClosePress,
   style,
+  mode = Mode.light,
   ...rest
 }: TextInputProps) => {
   const [passwordVisibility, setPasswordVisibility] = useState(true);
   const [selected, setSelected] = useState(false);
 
   const theme = useTheme();
-  const styles = textInputStyle(disabled, selected, errorText, search);
+  const styles = textInputStyle(disabled, selected, errorText, search, mode);
 
   const handleSelected = () => {
     setSelected(!selected);
