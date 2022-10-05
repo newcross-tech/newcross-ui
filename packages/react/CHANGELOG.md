@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.4.1...@newcross-ui/react@1.5.0) (2022-10-05)
+
+
+### Features
+
+* **ask-49:** added link component to web ([8566b45](https://bitbucket.org/newcrossdev/newcross-ui/commits/8566b459074ebf7755231daaf0c3681fc8e26e9f))
+
+
+
+
+
 ## [1.4.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.4.0...@newcross-ui/react@1.4.1) (2022-10-05)
 
 **Note:** Version bump only for package @newcross-ui/react
