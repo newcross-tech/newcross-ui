@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.5.0...@newcross-ui/react@1.6.0) (2022-10-12)
+
+
+### Features
+
+* **ask-55:** Checkbox Component  ([ab20aca](https://bitbucket.org/newcrossdev/newcross-ui/commits/ab20acab163f1e52f6a6175a5700c9de6b56618d))
+
+
+
+
+
 # [1.5.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.4.1...@newcross-ui/react@1.5.0) (2022-10-05)
 
 
