@@ -1,5 +1,5 @@
 import * as Styled from './Radio.style';
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { TypographyVariant } from '../Typography';
 
 export type RadioProps = {
@@ -28,6 +28,10 @@ const Radio = ({
   onChange,
 }: RadioProps) => {
   const [isSelected, setIsSelected] = useState(selected);
+
+  useEffect(() => {
+    setIsSelected(selected);
+  }, [selected]);
 
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     if (disabled) return;

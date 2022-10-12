@@ -19,6 +19,10 @@ export type TypographyProps = {
    * Used to locate this view in end-to-end tests.
    */
   testID?: string;
+  /**
+   * Used to set maximum number of lines
+   */
+  numberOfLines?: number;
 };
 
 const Typography = ({ children, testID, ...rest }: TypographyProps) => {

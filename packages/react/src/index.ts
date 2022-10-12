@@ -6,6 +6,12 @@ export {
   ButtonVariant,
 } from './components/Button';
 export { default as RadioButton, RadioProps } from './components/Radio';
+export { default as Accordion, AccordionProps } from './components/Accordion';
+export {
+  default as AccordionGroup,
+  AccordionGroupProps,
+  AccordionGroupSpacing,
+} from './components/AccordionGroup';
 export { default as Link, LinkProps, LinkSizes } from './components/Link';
 export {
   default as Typography,

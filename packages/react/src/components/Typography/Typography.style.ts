@@ -62,8 +62,16 @@ export const getTypographyStyles = (theme: ThemeDesignTokens) => ({
 });
 
 export const Typography = styled.div<TypographyProps>`
-  ${({ theme, variant, gutterBottom }) => css`
+  ${({ theme, variant, gutterBottom, numberOfLines }) => css`
     ${variant && getTypographyStyles(theme)[variant]};
+    ${numberOfLines &&
+    css`
+      display: -webkit-box;
+      -webkit-line-clamp: ${numberOfLines};
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    `};
     margin-bottom: ${gutterBottom ? theme.SpacingBase8 : theme.SpacingBase0};
   `}
 `;
