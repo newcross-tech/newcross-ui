@@ -8,7 +8,6 @@ export const Label = styled(Typography)`
     padding-right: ${theme.RadioPaddingRight};
     color: ${theme.RadioColor};
   `}
-}
 `;
 
 export const Radio = styled.div`

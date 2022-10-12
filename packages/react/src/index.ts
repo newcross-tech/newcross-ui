@@ -14,3 +14,8 @@ export {
 } from './components/Typography';
 export { default as Brand } from './theme/Brand';
 export { default as ThemeProvider } from './theme/ThemeProvider';
+export {
+  default as Checkbox,
+  CheckboxProps,
+  CheckboxType,
+} from './components/Checkbox';
