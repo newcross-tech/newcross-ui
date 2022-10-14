@@ -1,0 +1,10 @@
+{
+  "carousel": {
+    "margin-bottom": { "value": "{spacing.base.24.value}" },
+    "pagination": {
+      "margin-horizontal": { "value": "{spacing.base.8.value}" },
+      "active-index-color": { "value": "{brand.color.secondary.100.value}" },
+      "inactive-index-color": { "value": "{color.neutral.grey.200.value}" }
+    }
+  }
+}

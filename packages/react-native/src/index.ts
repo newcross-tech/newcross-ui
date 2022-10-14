@@ -88,3 +88,4 @@ export {
   ListOptionAlignment,
 } from './components/ListOption';
 export * from './types';
+export { default as Carousel, CarouselProps } from './components/Carousel';
