@@ -1,9 +1,9 @@
 module.exports = {
-  verbose: true,
   preset: 'ts-jest',
   testEnvironment: 'node',
   testTimeout: 60000,
   collectCoverage: true,
+  maxWorkers: '50%',
   collectCoverageFrom: [
     'src/**/*.tsx',
     'src/**/utils/*.ts',

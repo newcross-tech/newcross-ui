@@ -15,7 +15,9 @@ pipelines:
             - yarn format:check
             - yarn lint:check
             - yarn build
-            - yarn test
+            - git checkout main
+            - git checkout $BITBUCKET_BRANCH
+            - npm run test --branch=main
 
   branches:
     main:
