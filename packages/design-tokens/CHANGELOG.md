@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.30.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.29.0...@newcross-ui/design-tokens@1.30.0) (2022-10-15)
+
+
+### Features
+
+* **HFGO-1306:** create carousel component ([101f015](https://bitbucket.org/newcrossdev/newcross-ui/commits/101f015b6a38c8d0702f144e7f9ef10ce78bd2e2))
+
+
+
+
+
 # [1.29.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.28.0...@newcross-ui/design-tokens@1.29.0) (2022-10-05)
 
 

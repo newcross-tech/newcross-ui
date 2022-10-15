@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.6.0...@newcross-ui/react@1.7.0) (2022-10-15)
+
+
+### Features
+
+* **ask-108:** Accordion Comp main ([ff07e6b](https://bitbucket.org/newcrossdev/newcross-ui/commits/ff07e6bf8d40c5bce642d2ac13a9f8a6e830ae1b))
+
+
+
+
+
 # [1.6.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.5.0...@newcross-ui/react@1.6.0) (2022-10-12)
 
 

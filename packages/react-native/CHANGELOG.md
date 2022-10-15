@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.27.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.26.0...@newcross-ui/react-native@1.27.0) (2022-10-15)
+
+
+### Features
+
+* **HFGO-1306:** create carousel component ([101f015](https://bitbucket.org/newcrossdev/newcross-ui/commits/101f015b6a38c8d0702f144e7f9ef10ce78bd2e2))
+
+
+
+
+
 # [1.26.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.25.0...@newcross-ui/react-native@1.26.0) (2022-10-05)
 
 
