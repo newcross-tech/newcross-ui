@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react';
 import { ViewStyle, Pressable } from 'react-native';
 import Typography, { TypographyVariant } from '../Typography';
-import textInputStyle from '../TextInput/TextInput.style';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronDown } from '@fortawesome/pro-solid-svg-icons/faChevronDown';
 import dropdownStyle from './Dropdown.style';
+import { Mode } from '../../types';
 
 export type DropdownProps = {
   /**
@@ -51,6 +51,10 @@ export type DropdownProps = {
    * Used to locate this view in end-to-end tests.
    */
   testID?: string;
+  /**
+   * Used to set dark or light mode
+   */
+  mode?: Mode;
 };
 
 const Dropdown = ({
@@ -65,31 +69,15 @@ const Dropdown = ({
   iconStyle,
   onPress,
   testID,
+  mode,
 }: DropdownProps) => {
-  const styles = dropdownStyle({ disabled, selectedValue });
-  const errorTextInputContainerStyle = textInputStyle(
+  const styles = dropdownStyle({
     disabled,
-    false,
+    selectedValue,
     errorText,
-    undefined
-  ).messageText;
-  const labelTextInputContainerStyle = textInputStyle(
-    false,
-    false,
-    undefined
-  ).label;
-  const pressableTextInputContainerStyle = textInputStyle(
-    disabled,
+    mode,
     focused,
-    errorText,
-    undefined
-  ).container;
-  const textInputContainerStyle = textInputStyle(
-    disabled,
-    false,
-    errorText,
-    undefined
-  ).inputContainer;
+  });
 
   return (
     <>
@@ -97,7 +85,7 @@ const Dropdown = ({
         <Typography
           variant={TypographyVariant.paragraph2}
           testID={`dropdown-label-${testID}`}
-          style={labelTextInputContainerStyle}
+          style={styles.label}
         >
           {label}
         </Typography>
@@ -106,17 +94,13 @@ const Dropdown = ({
         disabled={disabled}
         testID={`dropdown-pressable-${testID}`}
         onPress={onPress}
-        style={[pressableTextInputContainerStyle, style]}
+        style={[styles.pressableText, style]}
       >
         {selectedValue ? (
           <Typography
             testID={`dropdown-selected-value-${testID}`}
             variant={TypographyVariant.paragraph1}
-            style={[
-              textInputContainerStyle,
-              styles.textContainer,
-              contentStyle,
-            ]}
+            style={[styles.nativeInput, styles.textContainer, contentStyle]}
           >
             {selectedValue}
           </Typography>
@@ -124,11 +108,7 @@ const Dropdown = ({
           <Typography
             testID={`dropdown-placeholder-${testID}`}
             variant={TypographyVariant.paragraph1}
-            style={[
-              textInputContainerStyle,
-              styles.textContainer,
-              contentStyle,
-            ]}
+            style={[styles.nativeInput, styles.textContainer, contentStyle]}
           >
             {placeholder}
           </Typography>
@@ -142,7 +122,7 @@ const Dropdown = ({
         <Typography
           variant={TypographyVariant.paragraph2}
           testID={`dropdown-error-text-${testID}`}
-          style={errorTextInputContainerStyle}
+          style={styles.error}
         >
           {errorText}
         </Typography>

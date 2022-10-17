@@ -98,7 +98,16 @@ const TextInput = ({
   const [selected, setSelected] = useState(false);
 
   const theme = useTheme();
-  const styles = textInputStyle(disabled, selected, errorText, search, mode);
+  const styles = textInputStyle(
+    {
+      disabled,
+      errorText,
+      helperText,
+      search,
+      mode,
+    } as TextInputProps,
+    selected
+  );
 
   const handleSelected = () => {
     setSelected(!selected);
@@ -108,7 +117,7 @@ const TextInput = ({
   const isPasswordType = textContentType === 'password';
 
   return (
-    <>
+    <View style={[styles.container, style]}>
       {label && (
         <Typography
           variant={TypographyVariant.heading5}
@@ -119,7 +128,7 @@ const TextInput = ({
         </Typography>
       )}
       <View
-        style={[styles.container, style]}
+        style={styles.inputContainer}
         pointerEvents={disabled ? 'none' : 'auto'}
       >
         {search && (
@@ -129,7 +138,7 @@ const TextInput = ({
         )}
         {!!includeDropdown && includeDropdown}
         <NativeTextInput
-          style={styles.inputContainer}
+          style={styles.nativeInput}
           value={value}
           placeholder={placeholder}
           placeholderTextColor={theme.TextInputPlaceholderColor}
@@ -174,16 +183,16 @@ const TextInput = ({
           </Pressable>
         )}
       </View>
-      {helperText || errorText ? (
+      {(errorText || helperText) && (
         <Typography
           variant={TypographyVariant.paragraph3}
           testID="message-text"
-          style={styles.messageText}
+          style={styles.message}
         >
           {errorText || helperText}
         </Typography>
-      ) : null}
-    </>
+      )}
+    </View>
   );
 };
 

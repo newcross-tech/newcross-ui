@@ -1,23 +1,20 @@
-import {
-  TextInput,
-  TextInputProps,
-  Typography,
-  TypographyVariant,
-  Mode,
-} from '@newcross-ui/react-native';
+import { TextInput, TextInputProps, Mode } from '@newcross-ui/react-native';
 import { Meta, Story } from '@storybook/react';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import useState from 'storybook-addon-state';
+import { native } from '@newcross-ui/design-tokens';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import Spacing from '../Spacing';
 import { isWebPlatform } from '../utils';
 import { DESCRIPTION, DO, DONT, TITLE } from './TextInputInfo';
+import Spacing from '../Spacing';
 
 export default {
   title: 'ReactNative/Components/TextInput',
   component: TextInput,
 } as Meta;
+
+const { ColorPrimaryGravitas, SpacingBase8 } = native.healthforce;
 
 export const Overview = () => {
   const [text, onChangeText] = useState('text', '');
@@ -53,113 +50,74 @@ export const Variants = () => {
   const [text5, onChangeText5] = useState('text5', '');
   const [text6, onChangeText6] = useState('text6', '');
   const [text7, onChangeText7] = useState('text7', '');
-  const [text8, onChangeText8] = useState('text8', '');
 
   return (
     <ScrollView>
       <Container
         containerStyle={{ maxWidth: isWebPlatform ? '350px' : undefined }}
       >
-        <Typography variant={TypographyVariant.heading4}>
-          Without placeholder
-        </Typography>
         <TextInput
+          label="Without placeholder"
           value={text1}
           textContentType="name"
           onChangeText={onChangeText1}
         />
-        <Spacing />
-
-        <Typography variant={TypographyVariant.heading4}>
-          With placeholder
-        </Typography>
         <TextInput
+          label="With placeholder"
           placeholder="This is placeholder text"
           value={text2}
           textContentType="name"
           onChangeText={onChangeText2}
         />
-        <Spacing />
-
-        <Typography variant={TypographyVariant.heading4}>
-          With placeholder and disabled
-        </Typography>
         <TextInput
+          label="With placeholder and disabled"
           value={text3}
           textContentType="name"
           onChangeText={onChangeText3}
           placeholder="Disabled"
           disabled
         />
-        <Spacing />
-
-        <Typography variant={TypographyVariant.heading4}>Password</Typography>
         <TextInput
+          label="Password"
           placeholder="Enter password"
           textContentType="password"
           value={password}
           onChangeText={(text: string) => setPassword(text)}
         />
-        <Spacing />
-
-        <Typography variant={TypographyVariant.heading4}>
-          With validation check
-        </Typography>
         <TextInput
+          label="With validation check"
           isValid
           value={text4}
           textContentType="name"
           onChangeText={onChangeText4}
         />
-        <Spacing />
-
-        <Typography variant={TypographyVariant.heading4}>
-          With a label
-        </Typography>
         <TextInput
           value={text5}
           textContentType="name"
           onChangeText={onChangeText5}
-          label="Label"
+          label="With helper text"
+          helperText="This is the helper text"
         />
-        <Spacing />
-
-        <Typography variant={TypographyVariant.heading4}>
-          With helper text
-        </Typography>
         <TextInput
           value={text6}
           textContentType="name"
           onChangeText={onChangeText6}
-          label="Label"
-          helperText="This is the helper text"
+          label="With error text"
+          errorText="This is an error message"
         />
         <Spacing />
-
-        <Typography variant={TypographyVariant.heading4}>
-          With error text
-        </Typography>
         <TextInput
+          style={{
+            padding: SpacingBase8,
+            backgroundColor: ColorPrimaryGravitas,
+          }}
           value={text7}
           textContentType="name"
           onChangeText={onChangeText7}
-          label="Label"
-          errorText="This is an error message"
-        />
-        <Spacing />
-
-        <Typography variant={TypographyVariant.heading4}>
-          With dark mode
-        </Typography>
-        <TextInput
-          value={text8}
-          textContentType="name"
-          onChangeText={onChangeText8}
-          label="Label"
+          label="With dark mode"
           errorText="This is an error message"
           mode={Mode.dark}
         />
-        <Spacing />
       </Container>
     </ScrollView>
   );
