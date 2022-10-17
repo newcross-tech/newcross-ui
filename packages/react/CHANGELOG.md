@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.7.0...@newcross-ui/react@1.8.0) (2022-10-17)
+
+
+### Features
+
+* **ask-110:** TextInput Component ([5bc5eaa](https://bitbucket.org/newcrossdev/newcross-ui/commits/5bc5eaa6ca4a9269f73d52476b04ba221dcba321))
+
+
+
+
+
 # [1.7.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.6.0...@newcross-ui/react@1.7.0) (2022-10-15)
 
 
