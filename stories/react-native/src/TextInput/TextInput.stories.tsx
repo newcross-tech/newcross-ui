@@ -50,6 +50,7 @@ export const Variants = () => {
   const [text5, onChangeText5] = useState('text5', '');
   const [text6, onChangeText6] = useState('text6', '');
   const [text7, onChangeText7] = useState('text7', '');
+  const [text8, onChangeText8] = useState('text8', '');
 
   return (
     <ScrollView>
@@ -102,6 +103,13 @@ export const Variants = () => {
           value={text6}
           textContentType="name"
           onChangeText={onChangeText6}
+          label="Error state without message"
+          hasError
+        />
+        <TextInput
+          value={text6}
+          textContentType="name"
+          onChangeText={onChangeText7}
           label="With error text"
           errorText="This is an error message"
         />
@@ -113,7 +121,7 @@ export const Variants = () => {
           }}
           value={text7}
           textContentType="name"
-          onChangeText={onChangeText7}
+          onChangeText={onChangeText8}
           label="With dark mode"
           errorText="This is an error message"
           mode={Mode.dark}

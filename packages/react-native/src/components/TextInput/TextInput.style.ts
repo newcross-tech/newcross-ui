@@ -70,7 +70,7 @@ const disabledStyles = () => {
 };
 
 const textInputStyle = (
-  { errorText, search, disabled, mode, helperText }: TextInputProps,
+  { errorText, search, disabled, mode, helperText, hasError }: TextInputProps,
   selected = false
 ) => {
   const theme = useTheme();
@@ -79,7 +79,7 @@ const textInputStyle = (
     container: {
       paddingBottom: theme.TextInputMarginBottom,
 
-      ...(errorText && errorMessageStyles(theme).container),
+      ...((hasError || errorText) && errorMessageStyles(theme).container),
       ...(helperText && helperMessageStyles(theme).container),
     },
     inputContainer: {
@@ -93,7 +93,7 @@ const textInputStyle = (
       backgroundColor: theme.TextInputBackgroundColor,
 
       ...(selected && selectedStyles(theme).inputContainer),
-      ...(errorText && errorMessageStyles(theme).inputContainer),
+      ...((hasError || errorText) && errorMessageStyles(theme).inputContainer),
       ...(search && searchStyles(theme).inputContainer),
       ...(disabled && disabledStyles().inputContainer),
     },
@@ -107,7 +107,7 @@ const textInputStyle = (
 
       ...(selected && selectedStyles(theme).nativeInput),
       ...(helperText && helperMessageStyles(theme).nativeInput),
-      ...(errorText && errorMessageStyles(theme).nativeInput),
+      ...((hasError || errorText) && errorMessageStyles(theme).nativeInput),
       ...(search && searchStyles(theme).nativeInput),
     },
     rightIcon: {
@@ -141,7 +141,7 @@ const textInputStyle = (
       marginTop: theme.TextInputMarginTop,
       color: theme.TextInputHelperTextColor,
 
-      ...(errorText && errorMessageStyles(theme).message),
+      ...((hasError || errorText) && errorMessageStyles(theme).message),
       ...(helperText && helperMessageStyles(theme).message),
     },
   });

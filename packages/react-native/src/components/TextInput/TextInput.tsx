@@ -40,6 +40,10 @@ export type TextInputProps = {
    */
   errorText?: string;
   /**
+   * show error state without message
+   */
+  hasError?: boolean;
+  /**
    * Includes a placeholder text in the input box
    */
   placeholder?: string;
@@ -92,6 +96,9 @@ const TextInput = ({
   onClosePress,
   style,
   mode = Mode.light,
+  onBlur,
+  onFocus,
+  hasError,
   ...rest
 }: TextInputProps) => {
   const [passwordVisibility, setPasswordVisibility] = useState(true);
@@ -105,6 +112,7 @@ const TextInput = ({
       helperText,
       search,
       mode,
+      hasError,
     } as TextInputProps,
     selected
   );
@@ -147,8 +155,18 @@ const TextInput = ({
             passwordVisibility && (isNewPasswordType || isPasswordType)
           }
           onChangeText={onChangeText}
-          onFocus={handleSelected}
-          onBlur={handleSelected}
+          onFocus={(event) => {
+            if (onFocus) {
+              onFocus(event);
+            }
+            handleSelected();
+          }}
+          onBlur={(event) => {
+            if (onBlur) {
+              onBlur(event);
+            }
+            handleSelected();
+          }}
           {...rest}
         />
         {(isPasswordType || isNewPasswordType) && (

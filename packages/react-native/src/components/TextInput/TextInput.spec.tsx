@@ -156,11 +156,13 @@ describe('TextInput Component', () => {
   it('focuses the text input when selected is true', () => {
     // Arrange
     const onFocus = jest.fn();
+    const onBlur = jest.fn();
     const props: TextInputProps = {
       testID: 'text-input-component',
       value: 'test',
       textContentType: 'name',
       onFocus,
+      onBlur,
       onChangeText: jest.fn(),
     };
 
@@ -168,11 +170,13 @@ describe('TextInput Component', () => {
     const { getByTestId } = render(<TextInput {...props} />);
     act(() => {
       fireEvent(getByTestId('text-input-component'), 'onFocus');
+      fireEvent(getByTestId('text-input-component'), 'onBlur');
     });
 
     // Assert
     expect(getByTestId('text-input-component')).toBeTruthy();
     expect(onFocus).toHaveBeenCalledTimes(1);
+    expect(onBlur).toHaveBeenCalledTimes(1);
   });
 
   it('updates selected state to true when component is pressed', () => {

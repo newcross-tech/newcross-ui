@@ -11,7 +11,9 @@
       "40": { "value": 40, "type": "spacing" },
       "48": { "value": 48, "type": "spacing" },
       "56": { "value": 56, "type": "spacing" },
-      "64": { "value": 64, "type": "spacing" }
+      "64": { "value": 64, "type": "spacing" },
+      "72": { "value": 72, "type": "spacing" },
+      "80": { "value": 80, "type": "spacing" }
     }
   }
 }
