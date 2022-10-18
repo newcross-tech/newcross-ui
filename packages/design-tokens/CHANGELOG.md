@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.30.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.30.0...@newcross-ui/design-tokens@1.30.1) (2022-10-18)
+
+
+### Bug Fixes
+
+* **HFGO-1309:** TextInput to receive additional handlers ([aaf7d51](https://bitbucket.org/newcrossdev/newcross-ui/commits/aaf7d519844e278a12bdee10c0a0f6acee654d5b))
+
+
+
+
+
 # [1.30.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.29.0...@newcross-ui/design-tokens@1.30.0) (2022-10-15)
 
 

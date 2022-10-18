@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.31.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.31.1...@newcross-stories/react-native@1.31.2) (2022-10-18)
+
+
+### Bug Fixes
+
+* **HFGO-1309:** TextInput to receive additional handlers ([aaf7d51](https://bitbucket.org/newcrossdev/newcross-ui/commits/aaf7d519844e278a12bdee10c0a0f6acee654d5b))
+
+
+
+
+
 ## [1.31.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.31.0...@newcross-stories/react-native@1.31.1) (2022-10-17)
 
 **Note:** Version bump only for package @newcross-stories/react-native
