@@ -45,6 +45,10 @@ export type BadgeProps = {
    * Called when a single tap gesture is detected.
    */
   onPress?: (event: GestureResponderEvent) => void;
+  /**
+   * Used to locate end-to-end tests.
+   */
+  testID?: string;
 };
 
 const Badge = ({
@@ -55,6 +59,7 @@ const Badge = ({
   children,
   position,
   onPress,
+  testID,
 }: BadgeProps) => {
   const styles = badgeStyle({ size, children, position });
   const isSmallBadge = size === BadgeSizes.small;
@@ -63,7 +68,7 @@ const Badge = ({
   const renderContent = hasContent && !isSmallBadge;
 
   const badge = (
-    <View style={styles.badgeContainer}>
+    <View testID={testID} style={styles.badgeContainer}>
       <View style={[styles.badge, style]}>
         <Typography
           variant={getTypographyVariant(size)}

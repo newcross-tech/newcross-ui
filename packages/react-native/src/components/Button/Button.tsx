@@ -9,6 +9,7 @@ import {
   GestureResponderEvent,
   ViewStyle,
   TextStyle,
+  PressableProps,
 } from 'react-native';
 import { Mode } from '../../types';
 import { pressedButtonStyle, pressedButtonTextStyle } from './Button.style';
@@ -90,7 +91,7 @@ export type ButtonProps = {
    * Used to set dark or light mode
    */
   mode?: Mode;
-};
+} & PressableProps;
 
 const Button = ({
   onPress,

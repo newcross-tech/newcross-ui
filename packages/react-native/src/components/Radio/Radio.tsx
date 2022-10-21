@@ -1,5 +1,10 @@
 import React from 'react';
-import { Pressable, View, GestureResponderEvent } from 'react-native';
+import {
+  Pressable,
+  View,
+  GestureResponderEvent,
+  PressableProps,
+} from 'react-native';
 import radioStyle, { pressedRadioStyle } from './Radio.style';
 import { PressedRadioProps } from './Radio.types';
 import Typography, { TypographyVariant } from '../Typography';
@@ -21,13 +26,18 @@ export type RadioProps = {
    * Specifies whether the radio is selected
    */
   selected?: boolean;
-};
+  /**
+   * testID for end to end testing.
+   */
+  testID?: string;
+} & PressableProps;
 
 const Radio = ({
   selected = false,
   disabled = false,
   label,
   onPress,
+  testID,
 }: RadioProps) => {
   const styles = radioStyle(disabled);
 
@@ -40,6 +50,7 @@ const Radio = ({
   return (
     <View style={styles.container}>
       <Pressable
+        testID={testID}
         onPress={handlePress}
         disabled={disabled}
         style={({ pressed }) =>

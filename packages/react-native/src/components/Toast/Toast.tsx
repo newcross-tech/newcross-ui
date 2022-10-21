@@ -52,6 +52,10 @@ export type ToastProps = {
    * Overwrites or extends the styles applied to the component.
    */
   style?: ViewStyle | TextStyle;
+  /**
+   * testID for end to end testing.
+   */
+  testID?: string;
 };
 
 const Toast = ({

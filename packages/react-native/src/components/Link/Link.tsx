@@ -4,6 +4,7 @@ import {
   GestureResponderEvent,
   TextStyle,
   Pressable,
+  PressableProps,
 } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCircleChevronRight } from '@fortawesome/pro-solid-svg-icons/faCircleChevronRight';
@@ -38,7 +39,11 @@ export type LinkProps = {
    * Used to set dark or light mode
    */
   mode?: Mode;
-};
+  /**
+   * Used to locate end-to-end tests.
+   */
+  testID?: string;
+} & PressableProps;
 
 const Link = ({
   size = LinkSizes.small,
@@ -47,17 +52,21 @@ const Link = ({
   style,
   hasIcon = true,
   mode = Mode.light,
+  testID,
+  ...rest
 }: LinkProps) => {
   const theme = useTheme();
   const styles = linkStyle(theme, mode);
 
   return (
     <Pressable
+      testID={testID}
       accessibilityRole="link"
       style={({ pressed }) =>
         pressedLinkStyle(pressed, styles.container, theme)
       }
       onPress={onPress}
+      {...rest}
     >
       <View style={styles.linkContent}>
         <Typography

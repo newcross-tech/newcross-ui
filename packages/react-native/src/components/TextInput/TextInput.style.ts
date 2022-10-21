@@ -16,18 +16,24 @@ const selectedStyles = (theme: ThemeDesignTokens) => {
   });
 };
 
-const errorMessageStyles = (theme: ThemeDesignTokens) => {
+const errorMessageStyles = (theme: ThemeDesignTokens, mode?: Mode) => {
+  const isDarkMode = mode === Mode.dark;
+
   return StyleSheet.create({
     container: { paddingBottom: 0 },
     inputContainer: {
-      borderColor: theme.TextInputErrorColor,
+      borderColor: isDarkMode
+        ? theme.TextInputModeDarkErrorColor
+        : theme.TextInputErrorColor,
       borderWidth: theme.TextInputSelectedBorderWidth,
     },
     nativeInput: {
       paddingVertical: theme.TextInputPaddingVertical - 1,
     },
     message: {
-      color: theme.TextInputErrorColor,
+      color: isDarkMode
+        ? theme.TextInputModeDarkErrorColor
+        : theme.TextInputErrorColor,
     },
   });
 };
@@ -79,7 +85,7 @@ const textInputStyle = (
     container: {
       paddingBottom: theme.TextInputMarginBottom,
 
-      ...((hasError || errorText) && errorMessageStyles(theme).container),
+      ...((hasError || errorText) && errorMessageStyles(theme, mode).container),
       ...(helperText && helperMessageStyles(theme).container),
     },
     inputContainer: {
@@ -93,7 +99,8 @@ const textInputStyle = (
       backgroundColor: theme.TextInputBackgroundColor,
 
       ...(selected && selectedStyles(theme).inputContainer),
-      ...((hasError || errorText) && errorMessageStyles(theme).inputContainer),
+      ...((hasError || errorText) &&
+        errorMessageStyles(theme, mode).inputContainer),
       ...(search && searchStyles(theme).inputContainer),
       ...(disabled && disabledStyles().inputContainer),
     },
@@ -107,7 +114,8 @@ const textInputStyle = (
 
       ...(selected && selectedStyles(theme).nativeInput),
       ...(helperText && helperMessageStyles(theme).nativeInput),
-      ...((hasError || errorText) && errorMessageStyles(theme).nativeInput),
+      ...((hasError || errorText) &&
+        errorMessageStyles(theme, mode).nativeInput),
       ...(search && searchStyles(theme).nativeInput),
     },
     rightIcon: {
@@ -134,14 +142,14 @@ const textInputStyle = (
       color: theme.TextInputLabelColor,
       marginBottom: theme.TextInputMarginTop,
 
-      ...(mode === Mode.dark && { color: theme.ButtonModeDarkColor }),
+      ...(mode === Mode.dark && { color: theme.TextInputModeDarkLabelColor }),
     },
     message: {
       paddingHorizontal: theme.TextInputHelperTextPaddingHorizontal,
       marginTop: theme.TextInputMarginTop,
       color: theme.TextInputHelperTextColor,
 
-      ...((hasError || errorText) && errorMessageStyles(theme).message),
+      ...((hasError || errorText) && errorMessageStyles(theme, mode).message),
       ...(helperText && helperMessageStyles(theme).message),
     },
   });

@@ -129,7 +129,7 @@ const TextInput = ({
       {label && (
         <Typography
           variant={TypographyVariant.heading5}
-          testID="label"
+          testID="text-input-label"
           style={styles.label}
         >
           {label}
@@ -140,7 +140,7 @@ const TextInput = ({
         pointerEvents={disabled ? 'none' : 'auto'}
       >
         {search && (
-          <View testID="search-icon" style={styles.leftIcon}>
+          <View testID="text-input-search-icon" style={styles.leftIcon}>
             <FontAwesomeIcon icon={faSearch} style={styles.searchIcon} />
           </View>
         )}
@@ -173,7 +173,7 @@ const TextInput = ({
           <Pressable
             onPress={() => setPasswordVisibility(!passwordVisibility)}
             style={styles.rightIcon}
-            testID="eye-icon"
+            testID="text-input-eye-icon"
           >
             <FontAwesomeIcon
               icon={!passwordVisibility ? faEyeSlash : faEye}
@@ -183,7 +183,7 @@ const TextInput = ({
           </Pressable>
         )}
         {isValid && (
-          <View testID="validation-check" style={styles.rightIcon}>
+          <View testID="text-input-validation-check" style={styles.rightIcon}>
             <FontAwesomeIcon
               icon={faCheck}
               style={styles.checkIcon}
@@ -195,7 +195,7 @@ const TextInput = ({
           <Pressable
             onPress={onClosePress}
             style={styles.rightIcon}
-            testID="search-close-icon"
+            testID="text-input-search-close-icon"
           >
             <FontAwesomeIcon icon={faXmark} style={styles.closeIcon} />
           </Pressable>
@@ -204,7 +204,7 @@ const TextInput = ({
       {(errorText || helperText) && (
         <Typography
           variant={TypographyVariant.paragraph3}
-          testID="message-text"
+          testID="text-input-message-text"
           style={styles.message}
         >
           {errorText || helperText}

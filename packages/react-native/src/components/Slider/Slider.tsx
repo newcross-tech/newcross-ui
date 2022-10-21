@@ -103,6 +103,7 @@ const Slider = ({
   minimumValue = SLIDER_DEFAULT_MIN_VALUE,
   maximumValue = SLIDER_DEFAULT_MAX_VALUE,
   step = SLIDER_DEFAULT_STEP_VALUE,
+  testID = 'slider',
   ...rest
 }: SliderProps) => {
   const theme = useTheme();
@@ -110,7 +111,7 @@ const Slider = ({
 
   return (
     <CommunitySlider
-      testID="slider"
+      testID={testID}
       minimumValue={minimumValue}
       maximumValue={maximumValue}
       minimumTrackTintColor={SliderInteractiveColor}

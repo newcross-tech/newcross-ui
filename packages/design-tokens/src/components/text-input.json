@@ -70,7 +70,12 @@
     },
     "mode": {
       "dark": {
-        "color": { "value": "{color.neutral.white.value}" }
+        "label": {
+          "color": { "value": "{color.neutral.white.value}" }
+        },
+        "error": {
+          "color": { "value": "{color.semantics.warning.100.value}" }
+        }
       }
     }
   }

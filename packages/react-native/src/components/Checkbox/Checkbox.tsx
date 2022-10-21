@@ -5,6 +5,7 @@ import {
   TextStyle,
   ViewStyle,
   GestureResponderEvent,
+  PressableProps,
 } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCheck } from '@fortawesome/pro-light-svg-icons/faCheck';
@@ -50,7 +51,7 @@ export type CheckboxProps = {
    * Overwrites or extends the styles applied to the component.
    */
   style?: ViewStyle | TextStyle;
-};
+} & PressableProps;
 
 const Checkbox = ({
   onChange,

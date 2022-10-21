@@ -46,11 +46,11 @@ describe('TextInput Component', () => {
 
     // Act
     const { getByTestId } = render(<TextInput {...props} />);
-    fireEvent.press(getByTestId('eye-icon')); // make password visiible
-    fireEvent.press(getByTestId('eye-icon')); // hide password
+    fireEvent.press(getByTestId('text-input-eye-icon')); // make password visible
+    fireEvent.press(getByTestId('text-input-eye-icon')); // hide password
 
     // Assert
-    expect(getByTestId('eye-icon')).toBeTruthy();
+    expect(getByTestId('text-input-eye-icon')).toBeTruthy();
   });
 
   it('similar to previous test but with a different textContentType - `newPassword` type is selected and eye icon is pressed', () => {
@@ -64,11 +64,11 @@ describe('TextInput Component', () => {
 
     // Act
     const { getByTestId } = render(<TextInput {...props} />);
-    fireEvent.press(getByTestId('eye-icon')); // make password visiible
-    fireEvent.press(getByTestId('eye-icon')); // hide password
+    fireEvent.press(getByTestId('text-input-eye-icon')); // make password visiible
+    fireEvent.press(getByTestId('text-input-eye-icon')); // hide password
 
     // Assert
-    expect(getByTestId('eye-icon')).toBeTruthy();
+    expect(getByTestId('text-input-eye-icon')).toBeTruthy();
   });
 
   it('shows the validation check mark when isValid is true', () => {
@@ -84,7 +84,7 @@ describe('TextInput Component', () => {
     const { getByTestId } = render(<TextInput {...props} />);
 
     // Assert
-    expect(getByTestId('validation-check')).toBeTruthy();
+    expect(getByTestId('text-input-validation-check')).toBeTruthy();
   });
 
   it('displays label successfuly', () => {
@@ -100,7 +100,7 @@ describe('TextInput Component', () => {
     const { getByTestId, getByText } = render(<TextInput {...props} />);
 
     // Assert
-    expect(getByTestId('label')).toBeTruthy();
+    expect(getByTestId('text-input-label')).toBeTruthy();
     expect(getByText(/This is the label/i)).toBeTruthy();
   });
 
@@ -117,7 +117,7 @@ describe('TextInput Component', () => {
     const { getByTestId } = render(<TextInput {...props} />);
 
     // Assert
-    expect(getByTestId('message-text')).toBeTruthy();
+    expect(getByTestId('text-input-message-text')).toBeTruthy();
   });
 
   it('displays error text sucessfully - errorText is true', () => {
@@ -133,7 +133,7 @@ describe('TextInput Component', () => {
     const { getByTestId } = render(<TextInput {...props} />);
 
     // Assert
-    expect(getByTestId('message-text')).toBeTruthy();
+    expect(getByTestId('text-input-message-text')).toBeTruthy();
   });
 
   it('renders a text input that is disabled when the disabled prop is passed', () => {
@@ -211,7 +211,7 @@ describe('SearchBar Component', () => {
     const { getByTestId } = render(<TextInput {...props} />);
 
     // Assert
-    expect(getByTestId('search-icon')).toBeTruthy();
+    expect(getByTestId('text-input-search-icon')).toBeTruthy();
   });
 
   it('displays close icon when search bar value is not empty', () => {
@@ -227,7 +227,7 @@ describe('SearchBar Component', () => {
     const { getByTestId } = render(<TextInput {...props} />);
 
     // Assert
-    expect(getByTestId('search-close-icon')).toBeTruthy();
+    expect(getByTestId('text-input-search-close-icon')).toBeTruthy();
   });
 
   it('triggers an onPress when onClosePress is pressed', () => {
@@ -243,7 +243,7 @@ describe('SearchBar Component', () => {
 
     // Act
     const { getByTestId } = render(<TextInput {...props} />);
-    fireEvent.press(getByTestId('search-close-icon'));
+    fireEvent.press(getByTestId('text-input-search-close-icon'));
 
     // Assert
     expect(onClosePress).toBeCalled();

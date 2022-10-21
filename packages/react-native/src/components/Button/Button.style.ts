@@ -196,7 +196,7 @@ const buttonStyle = ({
       borderRadius: borderValues[corners as ButtonCorners] || undefined,
       ...borderStyle[variant as ButtonVariant.secondary],
       ...paddingValues[size as ButtonSizes],
-      ...style,
+      style,
     },
     buttonText: {
       textAlign: 'center',

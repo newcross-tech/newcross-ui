@@ -5,6 +5,7 @@ import {
   SwitchChangeEvent,
   StyleProp,
   ViewStyle,
+  SwitchProps,
 } from 'react-native';
 import useTheme from '../../hooks/useTheme';
 
@@ -61,7 +62,7 @@ export type ToggleSwitchProps = {
    * Used to change the style of the Toggle Switch component.
    */
   style?: StyleProp<ViewStyle>;
-};
+} & SwitchProps;
 
 const ToggleSwitch = ({
   trackColor,

@@ -25,6 +25,10 @@ export type HeaderProps = {
    * Support any kind of content
    */
   children?: ReactNode;
+  /**
+   * testID for end to end testing.
+   */
+  testID?: string;
 };
 
 const Header = ({
@@ -33,11 +37,12 @@ const Header = ({
   headerTailContent,
   style,
   children,
+  testID,
 }: HeaderProps) => {
   const styles = headerStyle(color);
 
   return (
-    <View>
+    <View testID={testID}>
       <View style={[styles.headerContainer, style]}>{children}</View>
       {hasHeaderTail && (
         <View testID="header-tail-content">
