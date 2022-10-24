@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.8.2...@newcross-ui/react@1.9.0) (2022-10-24)
+
+
+### Features
+
+* **ask-139:** checkboxGroup component based on antDesign ([312a8d2](https://bitbucket.org/newcrossdev/newcross-ui/commits/312a8d20f2cb83c8d7559c5715f852fcb787dfb8))
+
+
+
+
+
 ## [1.8.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.8.1...@newcross-ui/react@1.8.2) (2022-10-21)
 
 **Note:** Version bump only for package @newcross-ui/react
