@@ -29,3 +29,5 @@ export {
   default as CheckboxGroup,
   CheckboxGroupProps,
 } from './components/CheckboxGroup';
+
+export { default as Avatar, AvatarProps } from './components/Avatar';

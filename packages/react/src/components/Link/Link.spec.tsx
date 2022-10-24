@@ -1,5 +1,6 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
+import { byTestId, byText } from 'testing-library-selector';
 import Link, { LinkProps } from './Link';
 
 jest.mock('@fortawesome/react-fontawesome', () => ({
@@ -18,14 +19,19 @@ const renderComponent = (props: LinkProps) => {
 
   render(<Link {...customProps} />);
 };
-
+const baseTestId = 'link';
 describe('Link Component', () => {
+  const ui = {
+    linkComp: byTestId(`${baseTestId}-component`),
+    linkIcon: byTestId(`${baseTestId}-icon`),
+    linkByReg: (reg: RegExp) => byText(reg),
+  };
   it('should render successfully', () => {
     // Act
     renderComponent({});
 
     // Assert
-    expect(screen.getByText(/My Link/i)).toBeTruthy();
+    expect(ui.linkByReg(/My Link/i).get()).toBeTruthy();
   });
 
   it('triggers onClick successfully', () => {
@@ -38,8 +44,7 @@ describe('Link Component', () => {
     // Act
     renderComponent({ ...props });
 
-    const link = screen.getByTestId('link-component');
-    fireEvent.click(link);
+    fireEvent.click(ui.linkComp.get());
 
     // Assert
     expect(handleClick).toBeCalled();
@@ -55,6 +60,6 @@ describe('Link Component', () => {
     renderComponent({ ...props });
 
     // Assert
-    expect(screen.getByTestId('link-icon')).toBeTruthy();
+    expect(ui.linkIcon.get()).toBeTruthy();
   });
 });

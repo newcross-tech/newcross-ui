@@ -1,18 +1,24 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import Button, { ButtonProps } from './Button';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/pro-light-svg-icons/faChevronRight';
 import { faChevronLeft } from '@fortawesome/pro-light-svg-icons/faChevronLeft';
+import { byRole, byTestId } from 'testing-library-selector';
 
 describe('Button', () => {
+  const ui = {
+    rightIcon: byTestId('right-icon'),
+    leftIcon: byTestId('left-icon'),
+    buttonRole: byRole('button'),
+  };
   it('renders successfully', () => {
     // Act
     render(<Button />);
 
     // Assert
-    expect(screen.getByRole('button')).toBeInTheDocument();
+    expect(ui.buttonRole.get()).toBeInTheDocument();
   });
   it('triggers onClick successfully', () => {
     // Arrange
@@ -22,9 +28,7 @@ describe('Button', () => {
     // Act
     render(<Button {...props} />);
 
-    const button = screen.getByRole('button');
-
-    fireEvent.click(button);
+    fireEvent.click(ui.buttonRole.get());
 
     // Assert
     expect(onClick).toBeCalled();
@@ -38,9 +42,7 @@ describe('Button', () => {
     // Act
     render(<Button {...props} />);
 
-    const button = screen.getByRole('button');
-
-    fireEvent.click(button);
+    fireEvent.click(ui.buttonRole.get());
 
     // Assert
     expect(onClick).not.toBeCalled();
@@ -56,7 +58,7 @@ describe('Button', () => {
     render(<Button {...props} />);
 
     // Assert
-    expect(screen.getByTestId('left-icon')).toBeTruthy();
+    expect(ui.leftIcon.get()).toBeTruthy();
   });
   it(`renders successfully when right icon prop is given`, () => {
     // Arrange
@@ -69,6 +71,6 @@ describe('Button', () => {
     render(<Button {...props} />);
 
     // Assert
-    expect(screen.getByTestId('right-icon')).toBeTruthy();
+    expect(ui.rightIcon.get()).toBeTruthy();
   });
 });
