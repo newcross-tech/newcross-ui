@@ -1,11 +1,11 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import Checkbox, { CheckboxProps } from './Checkbox';
 import { CheckboxType } from './Checkbox.types';
+import { byTestId, byText } from 'testing-library-selector';
 
 const renderComponent = (props: CheckboxProps) => {
   const customProps: CheckboxProps = {
-    label: 'Label',
     checked: true,
     ...props,
   };
@@ -14,19 +14,25 @@ const renderComponent = (props: CheckboxProps) => {
 };
 
 describe('Checkbox Component', () => {
+  const ui = {
+    checkbox: byTestId(`checkbox-component`),
+    checkboxBox: byTestId(`checkbox-box`),
+    checkboxIcon: byTestId(`checkmark-icon`),
+    checkboxIndeterIcon: byTestId(`indeterminate-icon`),
+    getByReg: (text: RegExp) => byText(text),
+  };
   it('renders successfully', () => {
-    // Arrange
-
     // Act
-    renderComponent({});
+    renderComponent({ label: 'Label' });
 
     // Assert
-    expect(screen.getByText(/label/i)).toBeTruthy();
+    expect(ui.getByReg(/label/i).get()).toBeTruthy();
   });
 
   it('renders indeterminate checkbox successfully', () => {
     // Arrange
     const props: CheckboxProps = {
+      label: 'Label',
       type: CheckboxType.INDETERMINATE,
     };
 
@@ -34,12 +40,13 @@ describe('Checkbox Component', () => {
     renderComponent({ ...props });
 
     // Assert
-    expect(screen.getByText(/label/i)).toBeTruthy();
+    expect(ui.checkboxIndeterIcon.get()).toBeTruthy();
   });
 
   it('renders a disabled checkbox successfully', () => {
     // Arrange
     const props: CheckboxProps = {
+      label: 'Label',
       disabled: true,
     };
 
@@ -47,12 +54,13 @@ describe('Checkbox Component', () => {
     renderComponent({ ...props });
 
     // Assert
-    expect(screen.getByText(/label/i)).toBeTruthy();
+    expect(ui.getByReg(/label/i).get()).toBeTruthy();
   });
 
   it('renders an unchecked checkbox successfully', () => {
     // Arrange
     const props: CheckboxProps = {
+      label: 'Label',
       checked: false,
     };
 
@@ -60,47 +68,47 @@ describe('Checkbox Component', () => {
     renderComponent({ ...props });
 
     // Assert
-    expect(screen.queryByTestId('checkmark-icon')).toBeFalsy();
+    expect(ui.checkboxIcon.query()).toBeFalsy();
   });
 
   it('renders a checkbox with a default checkmark successfully', () => {
-    // Arrange
-    const props: CheckboxProps = {};
-
     // Act
-    renderComponent({ ...props });
+    renderComponent({ label: 'Label' });
 
     // Assert
-    expect(screen.getByText(/label/i)).toBeTruthy();
-    expect(screen.getByTestId('checkmark-icon')).toBeTruthy();
+    expect(ui.getByReg(/label/i).get()).toBeTruthy();
+    expect(ui.checkboxIcon.get()).toBeTruthy();
   });
 
   it('fires an onClick event to check the checkbox successfully', () => {
     // Arrange
     const props: CheckboxProps = {
+      label: 'Label',
       testID: 'checkbox-component',
+      checked: false,
     };
 
     // Act
     renderComponent({ ...props });
-    const checkbox = screen.getByTestId('checkbox-component');
-    fireEvent.click(checkbox);
+
+    fireEvent.click(ui.checkbox.get());
 
     // Assert
-    expect(screen.getByTestId('checkmark')).toBeTruthy();
+    expect(ui.checkboxIcon.get()).toBeTruthy();
   });
 
   it('onClick event wont be called when the checkbox is disabled ', () => {
     // Arrange
     const props: CheckboxProps = {
+      label: 'Label',
       testID: 'checkbox-component',
       disabled: true,
     };
     const onClick = jest.fn();
     // Act
     renderComponent({ ...props });
-    const checkbox = screen.getByTestId('checkbox-component');
-    fireEvent.click(checkbox);
+
+    fireEvent.click(ui.checkbox.get());
 
     // Assert
     expect(onClick).not.toHaveBeenCalled();
@@ -109,17 +117,16 @@ describe('Checkbox Component', () => {
     // Arrange
     const onChange = jest.fn();
     const props: CheckboxProps = {
+      label: 'Label',
       testID: 'checkbox-component',
-
       onChange,
     };
 
     // Act
     renderComponent({ ...props });
-    fireEvent.click(screen.getByTestId('checkbox-component'));
+    fireEvent.click(ui.checkbox.get());
 
     // Assert
-    expect(screen.getByTestId('checkbox-component')).toBeTruthy();
-    expect(screen.getByTestId('checkmark')).toBeTruthy();
+    expect(ui.checkbox.get()).toBeTruthy();
   });
 });

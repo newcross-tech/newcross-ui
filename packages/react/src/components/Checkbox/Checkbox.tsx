@@ -1,4 +1,4 @@
-import { MouseEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/pro-light-svg-icons/faCheck';
 import { faMinus } from '@fortawesome/pro-light-svg-icons/faMinus';
@@ -14,7 +14,7 @@ export type CheckboxProps = {
   /**
    * Label for the checkbox
    */
-  label?: string;
+  label: string;
   /**
    * Whether the press behavior is disabled.
    */
@@ -26,7 +26,7 @@ export type CheckboxProps = {
   /**
    * Callback fired when the state is changed.
    */
-  onChange?: (event: MouseEvent<HTMLDivElement>) => void;
+  onChange?: (selected: boolean) => void;
   /**
    * Determines selected/checked state
    */
@@ -51,10 +51,11 @@ const Checkbox = ({
 
   const icon = type === CheckboxType.INDETERMINATE ? faMinus : faCheck;
 
-  const handleChecked = (event: MouseEvent<HTMLDivElement>) => {
+  const handleChecked = () => {
     if (disabled) return;
-    onChange && onChange(event);
-    setSelected(!selected);
+    const currentValue = !selected;
+    onChange && onChange(currentValue);
+    setSelected(currentValue);
   };
 
   useEffect(() => {
@@ -65,21 +66,26 @@ const Checkbox = ({
     <Styled.Checkbox
       data-testid={testID}
       disabled={disabled}
+      label={label}
       onClick={handleChecked}
       {...rest}
     >
       <Styled.Box
-        data-testid="checkmark"
+        data-testid="checkmark-box"
         disabled={disabled}
         hasError={hasError}
+        label={label}
         selected={selected}
         type={type}
       >
         {selected && (
-          <FontAwesomeIcon data-testid="checkmark-icon" icon={icon} />
+          <FontAwesomeIcon
+            data-testid={type ? 'indeterminate-icon' : 'checkmark-icon'}
+            icon={icon}
+          />
         )}
       </Styled.Box>
-      <Styled.Label disabled={disabled}>
+      <Styled.Label label={label} disabled={disabled}>
         <Typography variant={TypographyVariant.paragraph1}>{label}</Typography>
       </Styled.Label>
     </Styled.Checkbox>

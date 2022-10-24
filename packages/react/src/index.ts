@@ -25,3 +25,7 @@ export {
   CheckboxProps,
   CheckboxType,
 } from './components/Checkbox';
+export {
+  default as CheckboxGroup,
+  CheckboxGroupProps,
+} from './components/CheckboxGroup';

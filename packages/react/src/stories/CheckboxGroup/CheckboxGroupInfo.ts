@@ -1,5 +1,5 @@
 const TITLE = 'Checkbox';
-const DESCRIPTION = `Checkboxes allow users to mark one individual item as selected.`;
+const DESCRIPTION = `Checkbox Group allow users to select multiple items from a list of individual items.`;
 
 const DO = [
   'Checkboxes should always have a label. ',
