@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.9.1...@newcross-ui/react@1.10.0) (2022-10-26)
+
+
+### Features
+
+* **ask-54:** add Badge Component ([3d37353](https://bitbucket.org/newcrossdev/newcross-ui/commits/3d3735382ae4553639fdcf97ca951ce064429c3e))
+
+
+
+
+
 ## [1.9.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.9.0...@newcross-ui/react@1.9.1) (2022-10-24)
 
 **Note:** Version bump only for package @newcross-ui/react
