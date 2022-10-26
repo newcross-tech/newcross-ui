@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/react';
+import React from 'react';
 import Link, { LinkProps, LinkSizes } from '../../components/Link';
 import Container from '../Container';
-import Spacing from '../Spacing';
 
 export default {
   title: 'React/Components/Link',
@@ -10,16 +10,15 @@ export default {
 
 export const Variants = () => {
   return (
-    <Container>
+    <Container direction="column">
       <Link size={LinkSizes.small}>My Link</Link>
-      <Spacing />
       <Link size={LinkSizes.medium}>My Link</Link>
     </Container>
   );
 };
 
 const Template: Story<LinkProps> = ({ children, ...rest }) => (
-  <Container>
+  <Container direction="column">
     <Link {...rest}>{children}</Link>
   </Container>
 );

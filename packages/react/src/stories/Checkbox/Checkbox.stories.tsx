@@ -1,13 +1,14 @@
 import { Meta, Story } from '@storybook/react';
+import React from 'react';
 import Checkbox, {
   CheckboxProps,
   CheckboxType,
 } from '../../components/Checkbox';
 import Typography, { TypographyVariant } from '../../components/Typography';
 import Container from '../Container';
-import Spacing from '../Spacing';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import { TITLE, DESCRIPTION, DO, DONT } from './CheckboxInfo';
+import Spacing from '../Spacing';
+import { DESCRIPTION, DO, DONT, TITLE } from './CheckboxInfo';
 
 export default {
   title: 'React/Components/Checkbox',
@@ -22,7 +23,7 @@ export const Overview = () => {
       doInfo={DO}
       dontInfo={DONT}
     >
-      <Container>
+      <Container display="block">
         <Checkbox label="Label" />
       </Container>
     </InfoTemplate>
@@ -31,7 +32,7 @@ export const Overview = () => {
 
 export const Variants = () => {
   return (
-    <Container>
+    <Container display="block">
       <Typography variant={TypographyVariant.heading4}>Enabled</Typography>
       <Spacing />
       <Checkbox label="Label" />
@@ -76,7 +77,7 @@ const Template: Story<CheckboxProps> = ({
   hasError,
   ...rest
 }) => (
-  <Container>
+  <Container display="block">
     <Checkbox
       type={type}
       label={label}

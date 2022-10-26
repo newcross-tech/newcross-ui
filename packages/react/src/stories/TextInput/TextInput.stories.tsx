@@ -1,11 +1,11 @@
 import { Meta, Story } from '@storybook/react';
+import React, { useState } from 'react';
+import TextInput, { TextInputProps } from '../../components/TextInput';
+import Typography, { TypographyVariant } from '../../components/Typography';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import { DESCRIPTION, DO, DONT, TITLE } from './TextInputInfo';
-import TextInput, { TextInputProps } from '../../components/TextInput';
-import { useState } from 'react';
-import Typography, { TypographyVariant } from '../../components/Typography';
 import Spacing from '../Spacing';
+import { DESCRIPTION, DO, DONT, TITLE } from './TextInputInfo';
 
 export default {
   title: 'React/Components/TextInput',
@@ -21,7 +21,7 @@ export const Overview = () => {
       doInfo={DO}
       dontInfo={DONT}
     >
-      <Container>
+      <Container direction="column" hasPadding={false}>
         <TextInput
           value={text}
           placeholder="This is placeholder text"
@@ -46,7 +46,7 @@ export const Variants = () => {
   const [text7, onChangeText7] = useState('text7');
 
   return (
-    <Container>
+    <Container direction="column" hasPadding={false}>
       <Typography variant={TypographyVariant.heading4}>
         Without placeholder
       </Typography>
@@ -131,7 +131,7 @@ const Template: Story<TextInputProps> = ({ value, ...rest }) => {
   const [text, setText] = useState(value);
 
   return (
-    <Container>
+    <Container direction="column" hasPadding={false}>
       <TextInput {...rest} value={text} onChange={setText} />
     </Container>
   );

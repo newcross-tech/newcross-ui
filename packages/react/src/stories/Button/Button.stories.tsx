@@ -1,9 +1,9 @@
-import React from 'react';
+import { faChevronLeft } from '@fortawesome/pro-light-svg-icons/faChevronLeft';
+import { faChevronRight } from '@fortawesome/pro-light-svg-icons/faChevronRight';
+import { faCircleChevronRight } from '@fortawesome/pro-solid-svg-icons/faCircleChevronRight';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Meta, Story } from '@storybook/react';
-import Spacing, { SpacingSizes } from '../Spacing';
-import Container from '../Container';
-import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import { DESCRIPTION, DO, DONT, TITLE } from './ButtonInfo';
+import React from 'react';
 import Button, {
   ButtonCorners,
   ButtonProps,
@@ -11,10 +11,10 @@ import Button, {
   ButtonVariant,
 } from '../../components/Button';
 import Typography, { TypographyVariant } from '../../components/Typography';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight } from '@fortawesome/pro-light-svg-icons/faChevronRight';
-import { faChevronLeft } from '@fortawesome/pro-light-svg-icons/faChevronLeft';
-import { faCircleChevronRight } from '@fortawesome/pro-solid-svg-icons/faCircleChevronRight';
+import Container from '../Container';
+import InfoTemplate from '../InfoTemplate/InfoTemplate';
+import Spacing, { SpacingSizes } from '../Spacing';
+import { DESCRIPTION, DO, DONT, TITLE } from './ButtonInfo';
 export default {
   title: 'React/Components/Button',
   component: Button,
@@ -28,7 +28,7 @@ export const Overview = () => {
       doInfo={DO}
       dontInfo={DONT}
     >
-      <Container hasPadding={false}>
+      <Container display={'block'} direction={'column'} hasPadding={false}>
         <Spacing />
         <Button corners={ButtonCorners.pill} variant={ButtonVariant.primary}>
           Primary Button
@@ -45,7 +45,7 @@ export const Overview = () => {
 
 export const VariantsWithSizes = () => {
   return (
-    <Container>
+    <Container display={'block'} direction="column">
       <Typography variant={TypographyVariant.heading4}>
         Primary Button with Different Sizes
       </Typography>
@@ -67,7 +67,7 @@ export const VariantsWithSizes = () => {
 
 export const VariantsWithCorners = () => {
   return (
-    <Container>
+    <Container display={'block'} direction="column">
       <Typography variant={TypographyVariant.heading4}>
         Primary Button with Different Corners
       </Typography>
@@ -83,7 +83,7 @@ export const VariantsWithCorners = () => {
 
 export const Variants = () => {
   return (
-    <Container>
+    <Container display={'block'} direction="column">
       <Typography variant={TypographyVariant.heading4}>
         Primary Button
       </Typography>
@@ -122,7 +122,7 @@ export const Variants = () => {
 };
 export const VariantsWithIcons = () => {
   return (
-    <Container>
+    <Container display={'block'} direction="column">
       <Typography variant={TypographyVariant.heading4}>
         Primary Button with Icons
       </Typography>

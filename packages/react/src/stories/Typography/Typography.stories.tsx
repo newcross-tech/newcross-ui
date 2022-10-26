@@ -1,11 +1,11 @@
-import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import Container from '../Container';
-import Spacing from '../Spacing';
+import React from 'react';
 import Typography, {
   TypographyProps,
   TypographyVariant,
 } from '../../components/Typography';
+import Container from '../Container';
+import Spacing from '../Spacing';
 
 export default {
   title: 'React/Components/Typography',
@@ -38,7 +38,7 @@ const variants = [
 
 export const Variants = () => {
   return (
-    <Container>
+    <Container direction="column" hasPadding={false}>
       {variants.map(({ variant, text }, index) => (
         <React.Fragment key={`${variant}${text}${index}`}>
           <Typography variant={variant}>{text}</Typography>
@@ -50,7 +50,7 @@ export const Variants = () => {
 };
 
 const Template: Story<TypographyProps> = (props) => (
-  <Container>
+  <Container direction="column" hasPadding={false}>
     <Typography {...props} />
   </Container>
 );
