@@ -1,6 +1,6 @@
 {
   "name": "@newcross-ui/react-native",
-  "version": "1.27.3",
+  "version": "1.27.4",
   "description": "Components for react native apps",
   "author": "itdev@newcrosshealthcare.com",
   "license": "MIT",
@@ -31,8 +31,8 @@
     "react": ">=16.8.0",
     "react-native": ">=0.63.0",
     "react-native-gesture-handler": ">=2.0.0",
-    "react-native-safe-area-context": ">=4.0.0",
     "react-native-reanimated": ">=2.0.0",
+    "react-native-safe-area-context": ">=4.0.0",
     "react-native-svg": ">=12.0.0"
   },
   "dependencies": {
@@ -41,7 +41,7 @@
     "@fortawesome/pro-regular-svg-icons": "^6.1.1",
     "@fortawesome/pro-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-native-fontawesome": "^0.2.7",
-    "@newcross-ui/design-tokens": "^1.30.2",
+    "@newcross-ui/design-tokens": "^1.30.3",
     "@react-native-community/slider": "^4.2.2",
     "react-native-calendars": "^1.1282.0"
   }
