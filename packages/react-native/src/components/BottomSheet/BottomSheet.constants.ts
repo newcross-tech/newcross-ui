@@ -7,9 +7,6 @@ export const SPRING_CONFIG: WithSpringConfig = {
   restSpeedThreshold: 0.1,
 };
 
-export const DEFAULT_SNAP_POINT = '50%';
-export const DEFAULT_MAX_SNAP_POINT = '95%';
-
-export const DEFAULT_COLLAPSE_THRESHOLD = 200;
-export const DEFAULT_MAX_HEIGHT = 95;
-export const DEFAULT_MIN_HEIGHT = 25;
+export const DEFAULT_MAX_SNAP_POINT = 0.9; // 90%
+export const DEFAULT_COLLAPSE_THRESHOLD = 50;
+export const INDICATOR_HEIGHT = 30;

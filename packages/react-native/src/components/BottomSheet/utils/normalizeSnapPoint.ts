@@ -1,19 +1,14 @@
-import { Dimensions } from 'react-native';
+import { SnapPointPayload } from '../BottomSheet.types';
 
-const dimensions = Dimensions.get('window');
-
-/**
- * Enter either a number or a string as a percentage value
- * to detremine snapPoint
- * @param snapPoint
- * @returns pixels or percentage of snapPoint for screen
- */
-
-export const normalizeSnapPoint = (snapPoint: string | number) => {
+export const normalizeSnapPoint = ({
+  snapPoint,
+  top,
+  windowHeight,
+}: Omit<SnapPointPayload, 'contentHeight' | 'bottom'>) => {
   if (typeof snapPoint === 'string') {
     const snapPointNumber = Number(snapPoint.split('%')[0]);
 
-    return ((100 - snapPointNumber) * dimensions.height) / 100;
+    return windowHeight - windowHeight * (snapPointNumber / 100) + top;
   }
-  return snapPoint;
+  return windowHeight - snapPoint;
 };

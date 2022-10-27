@@ -1,17 +1,3 @@
-import { Dimensions, Pressable, View, ScrollViewProps } from 'react-native';
-import {
-  Gesture,
-  GestureDetector,
-  ScrollView,
-} from 'react-native-gesture-handler';
-import bottomSheetStyle from './BottomSheet.style';
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withSpring,
-  runOnJS,
-  interpolate,
-} from 'react-native-reanimated';
 import React, {
   ReactNode,
   forwardRef,
@@ -21,18 +7,32 @@ import React, {
   useEffect,
 } from 'react';
 import {
+  Pressable,
+  View,
+  ScrollViewProps,
+  useWindowDimensions,
+} from 'react-native';
+import {
+  Gesture,
+  GestureDetector,
+  ScrollView,
+} from 'react-native-gesture-handler';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withSpring,
+  runOnJS,
+  interpolate,
+} from 'react-native-reanimated';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+import {
   DEFAULT_COLLAPSE_THRESHOLD,
   SPRING_CONFIG,
-  DEFAULT_MAX_HEIGHT,
 } from './BottomSheet.constants';
-import {
-  normalizeSnapPoint,
-  normalizeContentHeightToDimensions,
-  normalizeContentHeightAsPercentage,
-} from './utils';
+import bottomSheetStyle from './BottomSheet.style';
+import { normalizeSnapPoint, calculateSnapPoint } from './utils';
 import useTheme from '../../hooks/useTheme';
-
-const dimensions = Dimensions.get('window');
 
 export type BottomSheetProps = {
   /**
@@ -62,7 +62,7 @@ export type BottomSheetProps = {
   /**
    * callback to run on backdrop press
    */
-  onBackdropPress?: VoidFunction;
+  onClose?: VoidFunction;
 } & ScrollViewProps;
 
 export type BottomSheetRefProps = {
@@ -83,26 +83,30 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
       hasBackdrop = true,
       hasGestureIndicator = true,
       isOpen = false,
-      onBackdropPress,
+      onClose,
       ...rest
     },
     ref
   ) => {
+    const { bottom, top } = useSafeAreaInsets();
+    const { height: windowHeight } = useWindowDimensions();
+
     const [active, setActive] = useState(false);
     const [contentHeight, setContentHeight] = useState(0);
+
+    const topPosition = useSharedValue(windowHeight);
+    const startTopPosition = useSharedValue(0);
+
+    const theme = useTheme();
+    const styles = bottomSheetStyle(theme);
 
     useEffect(() => {
       isOpen ? expand() : collapse();
     }, [isOpen, contentHeight]);
 
-    const topPosition = useSharedValue(dimensions.height);
-    const startTopPosition = useSharedValue(0);
-    const theme = useTheme();
-    const styles = bottomSheetStyle(theme);
-    const hasSnapPoint =
-      snapPoint || `${normalizeContentHeightToDimensions(contentHeight)}%`;
-
-    const normalizedSnapPoint = Math.round(normalizeSnapPoint(hasSnapPoint));
+    const snapPointValue = snapPoint
+      ? normalizeSnapPoint({ snapPoint, top, windowHeight })
+      : calculateSnapPoint({ bottom, top, windowHeight, contentHeight });
 
     const scrollTo = useCallback((destination: number) => {
       'worklet';
@@ -110,14 +114,14 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
     }, []);
 
     const collapse = useCallback(() => {
-      scrollTo(dimensions.height);
+      scrollTo(windowHeight);
       setActive(false);
     }, []);
 
     const expand = useCallback(() => {
-      scrollTo(normalizedSnapPoint);
+      scrollTo(snapPointValue);
       setActive(true);
-    }, [normalizedSnapPoint]);
+    }, [snapPointValue]);
 
     useImperativeHandle(ref, () => ({ scrollTo, collapse, expand }));
 
@@ -129,11 +133,12 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
         topPosition.value = event.translationY + startTopPosition.value;
       })
       .onEnd(() => {
-        if (topPosition.value > normalizedSnapPoint + collapseThreshold) {
-          scrollTo(dimensions.height);
+        if (topPosition.value > snapPointValue + collapseThreshold) {
+          scrollTo(windowHeight);
           runOnJS(setActive)(false);
+          onClose && runOnJS(onClose)();
         } else {
-          scrollTo(normalizedSnapPoint);
+          scrollTo(snapPointValue);
         }
       });
 
@@ -144,7 +149,7 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
     const backdropAnimationStyle = useAnimatedStyle(() => {
       const opacity = interpolate(
         topPosition.value,
-        [dimensions.height, topPosition.value],
+        [windowHeight, topPosition.value],
         [0, theme.BottomSheetBackdropOpacity]
       );
 
@@ -152,11 +157,11 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
     });
 
     const isContentGreaterThanMaxHeight =
-      normalizeContentHeightAsPercentage(contentHeight) > DEFAULT_MAX_HEIGHT;
+      windowHeight - bottom - top < contentHeight;
 
     const handleBackdropPress = () => {
       if (hasGestureIndicator) {
-        onBackdropPress && onBackdropPress();
+        onClose && onClose();
       }
     };
 

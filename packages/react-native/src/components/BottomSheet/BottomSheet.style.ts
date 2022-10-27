@@ -21,8 +21,7 @@ const bottomSheetStyle = (theme: ThemeDesignTokens) => {
       alignItems: 'center',
       borderTopStartRadius: theme.BottomSheetBorderRadius,
       borderTopEndRadius: theme.BottomSheetBorderRadius,
-      marginBottom: theme.BottomSheetIndicatorContainerMarginBottom,
-      minHeight: theme.BottomSheetIndicatorContainerMinHeight,
+      paddingVertical: theme.BottomSheetIndicatorContainerPaddingVertical,
     },
     indicatorContainerScroll: {
       backgroundColor: theme.BottomSheetBackgroundColor,

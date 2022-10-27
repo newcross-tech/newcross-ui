@@ -14,8 +14,7 @@
       "height": { "value": "{spacing.base.12.value}" }
     },
     "indicator-container": {
-      "margin-bottom": { "value": "{spacing.base.4.value}" },
-      "min-height": { "value": "{spacing.base.32.value}" },
+      "padding-vertical": { "value": "{spacing.base.12.value}" },
       "scroll": {
         "shadow": {
           "color": { "value": "{color.neutral.black.value}" },

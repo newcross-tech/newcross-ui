@@ -7,6 +7,7 @@ import {
   getBottomSheetContent,
   useBottomSheetContext,
 } from '../src/BottomSheet';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const { ColorNeutralGrey300, ColorNeutralWhite } = native.healthforce;
 
@@ -19,15 +20,17 @@ const withThemeProvider = (Story) => {
       type: BottomSheetActionType.closeBottomSheet,
     });
   return (
-    <ThemeProvider brand={Brand.healthforce}>
-      <BottomSheet isOpen={state.isOpen} onBackdropPress={closeBottomSheet}>
-        <BottomSheetContent
-          onClose={closeBottomSheet}
-          data={state.contentData}
-        />
-      </BottomSheet>
-      <Story />
-    </ThemeProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <ThemeProvider brand={Brand.healthforce}>
+        <BottomSheet isOpen={state.isOpen} onClose={closeBottomSheet}>
+          <BottomSheetContent
+            onClose={closeBottomSheet}
+            data={state.contentData}
+          />
+        </BottomSheet>
+        <Story />
+      </ThemeProvider>
+    </GestureHandlerRootView>
   );
 };
 

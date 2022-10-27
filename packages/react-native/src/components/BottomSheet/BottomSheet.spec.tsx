@@ -1,68 +1,74 @@
-import React, { createRef } from 'react';
-import { render, act } from '@testing-library/react-native';
+import React from 'react';
+import { render } from '@testing-library/react-native';
 import { Text } from 'react-native';
-import BottomSheet, {
-  BottomSheetProps,
-  BottomSheetRefProps,
-} from './BottomSheet';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import BottomSheet, { BottomSheetProps } from './BottomSheet';
 
 describe('BottomSheet', () => {
-  it('opens bottom sheet when expand function is called', () => {
-    // Arrange
-    const props: BottomSheetProps = {
-      hasBackdrop: false,
-      children: <Text>Bottom sheet</Text>,
-    };
-    const ref = createRef<BottomSheetRefProps>();
-
-    // Act
-    const { getByTestId, queryByTestId } = render(
-      <BottomSheet ref={ref} {...props} />
-    );
-
-    act(() => {
-      ref.current?.expand();
-    });
-
-    // Assert
-    expect(getByTestId('bottom-sheet-visible')).toBeTruthy();
-    expect(queryByTestId('bottom-sheet-backdrop')).toBeFalsy();
-  });
-
-  it('closes bottom sheet when expand collapse is called', () => {
+  it('renders Backdrop when isOpen is true', () => {
     // Arrange
     const props: BottomSheetProps = {
       children: <Text>Bottom sheet</Text>,
-    };
-    const ref = createRef<BottomSheetRefProps>();
-
-    // Act
-    const { getByTestId } = render(<BottomSheet ref={ref} {...props} />);
-
-    act(() => {
-      ref.current?.collapse();
-    });
-
-    // Assert
-    expect(getByTestId('bottom-sheet-hidden')).toBeTruthy();
-  });
-
-  it('shows backdrop when sheet is active and hasBackdrop is true', () => {
-    // Arrange
-    const props: BottomSheetProps = {
+      isOpen: true,
       hasBackdrop: true,
-      children: <Text>Bottom sheet</Text>,
     };
-    const ref = createRef<BottomSheetRefProps>();
 
     // Act
-    const { getByTestId } = render(<BottomSheet ref={ref} {...props} />);
-
-    act(() => {
-      ref.current?.expand();
-    });
+    const { getByTestId } = render(
+      <SafeAreaProvider
+        initialMetrics={{
+          frame: { x: 0, y: 0, width: 0, height: 0 },
+          insets: { top: 0, left: 0, right: 0, bottom: 0 },
+        }}
+      >
+        <BottomSheet {...props} />
+      </SafeAreaProvider>
+    );
 
     // Assert
     expect(getByTestId('bottom-sheet-backdrop')).toBeTruthy();
+  });
+
+  it('renders successfuly when isOpen is true', () => {
+    // Arrange
+    const props: BottomSheetProps = {
+      children: <Text>Bottom sheet</Text>,
+      isOpen: true,
+    };
+
+    // Act
+    const { getByTestId } = render(
+      <SafeAreaProvider
+        initialMetrics={{
+          frame: { x: 0, y: 0, width: 0, height: 0 },
+          insets: { top: 0, left: 0, right: 0, bottom: 0 },
+        }}
+      >
+        <BottomSheet {...props} />
+      </SafeAreaProvider>
+    );
+    // Assert
+    expect(getByTestId('bottom-sheet-visible')).toBeTruthy();
+  });
+
+  it('is hidden successfuly when isOpen is false', () => {
+    // Arrange
+    const props: BottomSheetProps = {
+      children: <Text>Bottom sheet</Text>,
+      isOpen: false,
+    };
+    // Act
+    const { getByTestId } = render(
+      <SafeAreaProvider
+        initialMetrics={{
+          frame: { x: 0, y: 0, width: 0, height: 0 },
+          insets: { top: 0, left: 0, right: 0, bottom: 0 },
+        }}
+      >
+        <BottomSheet {...props} />
+      </SafeAreaProvider>
+    );
+    // Assert
+    expect(getByTestId('bottom-sheet-hidden')).toBeTruthy();
   });
 });

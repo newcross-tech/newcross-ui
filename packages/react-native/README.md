@@ -26,7 +26,7 @@ yarn add @newcross-ui/react-native
 
 **Dependencies**
 
-We need to install these libraries `react-native-gesture-handler`, `react-native-reanimated` and `react-native-svg`. If you already have these libraries installed and at the latest version, you can skip this step.
+We need to install these libraries `react-native-gesture-handler`, `react-native-reanimated`, `react-native-safe-area-context` and `react-native-svg`. If you already have these libraries installed and at the latest version, you can skip this step.
 
 ### Installing dependencies into an Expo managed project​
 
@@ -49,13 +49,16 @@ Wrap your application in a ThemeProvider
 ```javascript
 import React from 'react';
 import { ThemeProvider, Brand } from '@newcross-ui/react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import RootComponent from './RootComponent';
 
 const App = () => {
   return (
-    <ThemeProvider brand={Brand.healthforce}>
-      <RootComponent />
-    </ThemeProvider>
+    <SafeAreaProvider>
+      <ThemeProvider brand={Brand.healthforce}>
+        <RootComponent />
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
 };
 ```

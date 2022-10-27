@@ -12,6 +12,7 @@ import {
   bottomSheetReducer,
   initialState,
 } from './src/BottomSheet';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export default function App() {
   const [state, dispatch] = useReducer(bottomSheetReducer, initialState);
@@ -29,8 +30,10 @@ export default function App() {
   }
 
   return (
-    <BottomSheetContext.Provider value={providerState}>
-      <StorybookUIRoot />
-    </BottomSheetContext.Provider>
+    <SafeAreaProvider>
+      <BottomSheetContext.Provider value={providerState}>
+        <StorybookUIRoot />
+      </BottomSheetContext.Provider>
+    </SafeAreaProvider>
   );
 }

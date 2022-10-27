@@ -91,7 +91,7 @@ export const VariantWithFullHeightAndScroll = () => {
               });
           }}
           fullWidth
-          size={ButtonSizes.medium}
+          size={ButtonSizes.large}
         >
           Show full screen bottom sheet
         </Button>
