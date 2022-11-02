@@ -1,6 +1,7 @@
 import { Meta, Story } from '@storybook/react';
 import Avatar, { AvatarProps, AvatarSizes } from '../../components/Avatar';
 import Typography, { TypographyVariant } from '../../components/Typography';
+import Badge, { BadgeSizes, BadgePositions } from '../../components/Badge';
 import Container from '../Container';
 import Spacing, { SpacingPositions } from '../Spacing';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
@@ -71,6 +72,21 @@ export const VariantWithText = () => {
       </Typography>
       <BottomSpacing />
       <Avatar inactive name="John Doe" />
+    </Container>
+  );
+};
+export const VariantWithBadge = () => {
+  return (
+    <Container direction="column">
+      <Typography variant={TypographyVariant.heading4}>
+        Variant with Badge
+      </Typography>
+
+      <Container direction="row">
+        <Badge size={BadgeSizes.medium} position={BadgePositions.TopRight}>
+          <Avatar />
+        </Badge>
+      </Container>
     </Container>
   );
 };

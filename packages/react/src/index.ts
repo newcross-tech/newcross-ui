@@ -31,3 +31,5 @@ export {
 } from './components/CheckboxGroup';
 
 export { default as Avatar, AvatarProps } from './components/Avatar';
+export { default as Tabs, TabsProps } from './components/Tabs';
+export { default as Badge, BadgeProps } from './components/Badge';

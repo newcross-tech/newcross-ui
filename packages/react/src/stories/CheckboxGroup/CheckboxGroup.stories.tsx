@@ -21,11 +21,10 @@ export const Overview = () => {
       doInfo={DO}
       dontInfo={DONT}
     >
-      <Container>
+      <Container direction="column">
         <Typography variant={TypographyVariant.heading4}>
           Checkbox Group
         </Typography>
-        <Spacing size={SpacingSizes.Large} />
         <CheckboxGroup
           defaultChecked={[]}
           options={[
@@ -41,11 +40,11 @@ export const Overview = () => {
 
 export const Variants = () => {
   return (
-    <Container>
+    <Container direction="column">
       <Typography variant={TypographyVariant.heading4}>
         Everything is Checked
       </Typography>
-      <Spacing />
+
       <CheckboxGroup
         defaultChecked={['Apple', 'Banana', 'Pear']}
         options={['Apple', 'Banana', 'Pear']}
@@ -54,7 +53,7 @@ export const Variants = () => {
       <Typography variant={TypographyVariant.heading4}>
         One or more is Checked
       </Typography>
-      <Spacing />
+
       <CheckboxGroup
         defaultChecked={['Banana']}
         options={['Apple', 'Banana', 'Pear']}
@@ -63,7 +62,7 @@ export const Variants = () => {
       <Typography variant={TypographyVariant.heading4}>
         One or more is Disabled
       </Typography>
-      <Spacing />
+
       <CheckboxGroup
         defaultChecked={['Apple']}
         options={[
@@ -76,7 +75,7 @@ export const Variants = () => {
       <Typography variant={TypographyVariant.heading4}>
         One or more has Error
       </Typography>
-      <Spacing />
+
       <CheckboxGroup
         defaultChecked={['Apple', 'Banana']}
         options={[
@@ -89,9 +88,8 @@ export const Variants = () => {
   );
 };
 const Template: Story<CheckboxGroupProps> = () => (
-  <Container>
+  <Container direction="column">
     <Typography variant={TypographyVariant.heading4}>Checkbox Group</Typography>
-    <Spacing size={SpacingSizes.Large} />
     <CheckboxGroup defaultChecked={[]} options={['Apple', 'Banana', 'Pear']} />
   </Container>
 );
