@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.28.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.27.4...@newcross-ui/react-native@1.28.0) (2022-11-03)
+
+
+### Features
+
+* **HFGO-1410:** updated Toast and alert components ([89d2555](https://bitbucket.org/newcrossdev/newcross-ui/commits/89d2555fac28bed7c3641bad1d667aee1a4d0ded))
+
+
+
+
+
 ## [1.27.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.27.3...@newcross-ui/react-native@1.27.4) (2022-10-27)
 
 **Note:** Version bump only for package @newcross-ui/react-native

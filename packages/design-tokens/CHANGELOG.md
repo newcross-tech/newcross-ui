@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.31.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.30.3...@newcross-ui/design-tokens@1.31.0) (2022-11-03)
+
+
+### Features
+
+* **HFGO-1410:** updated Toast and alert components ([89d2555](https://bitbucket.org/newcrossdev/newcross-ui/commits/89d2555fac28bed7c3641bad1d667aee1a4d0ded))
+
+
+
+
+
 ## [1.30.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.30.2...@newcross-ui/design-tokens@1.30.3) (2022-10-27)
 
 **Note:** Version bump only for package @newcross-ui/design-tokens
