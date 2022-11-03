@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react';
 import {
   Toast,
   ToastProps,
-  ToastStatus,
+  Link,
   Button,
   ButtonSizes,
   Typography,
@@ -20,13 +20,11 @@ export default {
 } as Meta;
 
 export const Variants = () => {
-  const [showInfoToast, setShowInfoToast] = useState('showInfoToast', false);
-
-  const [showInfoToastWithClose, setShowInfoToastWithClose] = useState(
-    'showInfoToastWithoutClos',
+  const [showPersistentToast, setShowPersistentToast] = useState(
+    'showPersistentToast',
     false
   );
-  const [showSuccessToast, setShowSucessToast] = useState(
+  const [showSuccessToast, setShowSuccessToast] = useState(
     'showSuccessToast',
     false
   );
@@ -35,123 +33,131 @@ export const Variants = () => {
     false
   );
   const [showErrorToast, setShowErrorToast] = useState('showErrorToast', false);
+  const [showInfoToast, setShowInfoToast] = useState('showInfoToast', false);
 
-  const [showInfoMultiLine, setShowInfoMultiLine] = useState(
-    'showInfoMultiLine',
+  const [showMinmalSuccessToast, setShowMinimalSuccessToast] = useState(
+    'showMinimalSuccessToast',
     false
   );
-  const [showErrorToastMultiLine, setShowErrorToastMultiLine] = useState(
-    'showErrorToastMultiLine',
+  const [showMinimalWarningToast, setShowMinimalWarningToast] = useState(
+    'showMinimalWarningToast',
+    false
+  );
+  const [showMinimalErrorToast, setShowMinimalErrorToast] = useState(
+    'showMinimalErrorToast',
+    false
+  );
+  const [showMinimalInfoToast, setShowMinimalInfoToast] = useState(
+    'showMinimalInfoToast',
     false
   );
 
   return (
     <Container>
       <Toast
-        show={showInfoToastWithClose}
-        status={ToastStatus.info}
-        message="This is an info toast with a close icon!"
-        onClose={() => setShowInfoToastWithClose(false)}
-        autoHide={false}
-        style={{
-          paddingTop: Platform.OS === 'android' ? 50 : undefined,
-        }}
-      />
-      <Toast
-        show={showInfoMultiLine}
-        status={ToastStatus.info}
-        message="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-        onClose={() => setShowInfoMultiLine(false)}
-        autoHide={false}
-        style={{
-          paddingTop: Platform.OS === 'android' ? 50 : undefined,
-        }}
-      />
-      <Toast
-        show={showInfoToast}
-        status={ToastStatus.info}
-        message="This is an info toast!"
-        onClose={() => setShowInfoToast(false)}
-        style={{
-          paddingTop: Platform.OS === 'android' ? 50 : undefined,
-        }}
-      />
-      <Toast
         show={showSuccessToast}
-        status={ToastStatus.success}
+        variant="success"
         message="This is a success toast!"
-        onClose={() => setShowSucessToast(false)}
+        onClose={() => setShowSuccessToast(false)}
+        action={<Link>Click Here</Link>}
         style={{
           paddingTop: Platform.OS === 'android' ? 50 : undefined,
         }}
       />
       <Toast
         show={showWarningToast}
-        status={ToastStatus.warning}
+        variant="warning"
         message="This is a warning toast!"
         onClose={() => setShowWarningToast(false)}
+        action={<Link>Click Here</Link>}
         style={{
           paddingTop: Platform.OS === 'android' ? 50 : undefined,
         }}
       />
       <Toast
         show={showErrorToast}
-        status={ToastStatus.error}
+        variant="error"
         message="This is an error toast!"
         onClose={() => setShowErrorToast(false)}
+        action={<Link>Click Here</Link>}
         style={{
           paddingTop: Platform.OS === 'android' ? 50 : undefined,
         }}
       />
       <Toast
-        show={showErrorToastMultiLine}
-        status={ToastStatus.error}
-        message="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-        onClose={() => setShowErrorToastMultiLine(false)}
+        show={showInfoToast}
+        variant="info"
+        message="This is an info toast!"
+        onClose={() => setShowInfoToast(false)}
+        action={<Link>Click Here</Link>}
         style={{
           paddingTop: Platform.OS === 'android' ? 50 : undefined,
         }}
       />
+
+      <Toast
+        show={showMinmalSuccessToast}
+        variant="success"
+        message="This is a minimal success toast!"
+        hasTitle={false}
+        onClose={() => setShowMinimalSuccessToast(false)}
+        style={{
+          paddingTop: Platform.OS === 'android' ? 50 : undefined,
+        }}
+      />
+      <Toast
+        show={showMinimalWarningToast}
+        variant="warning"
+        message="This is a minimal warning toast!"
+        hasTitle={false}
+        onClose={() => setShowMinimalWarningToast(false)}
+        style={{
+          paddingTop: Platform.OS === 'android' ? 50 : undefined,
+        }}
+      />
+      <Toast
+        show={showMinimalErrorToast}
+        variant="error"
+        message="This is a minimal error toast!"
+        hasTitle={false}
+        onClose={() => setShowMinimalErrorToast(false)}
+        style={{
+          paddingTop: Platform.OS === 'android' ? 50 : undefined,
+        }}
+      />
+      <Toast
+        show={showMinimalInfoToast}
+        variant="info"
+        message="This is a minimal info toast!"
+        hasTitle={false}
+        onClose={() => setShowMinimalInfoToast(false)}
+        style={{
+          paddingTop: Platform.OS === 'android' ? 50 : undefined,
+        }}
+      />
+      <Toast
+        show={showPersistentToast}
+        variant="info"
+        message="This is an info toast!"
+        onClose={() => setShowPersistentToast(false)}
+        action={<Link>Click Here</Link>}
+        autoHide={false}
+        style={{
+          paddingTop: Platform.OS === 'android' ? 50 : undefined,
+        }}
+      />
+
       <Spacing position={SpacingPositions.Bottom} />
       <Container>
         <Typography variant={TypographyVariant.heading4}>
-          Action to dismiss toast
+          Default Toast
         </Typography>
         <Spacing position={SpacingPositions.Bottom} />
         <Button
           size={ButtonSizes.small}
-          onPress={() => setShowInfoToastWithClose(!showInfoToastWithClose)}
-        >
-          Show Info Toast With Close Icon
-        </Button>
-        <Spacing position={SpacingPositions.Bottom} />
-        <Button
-          size={ButtonSizes.small}
-          onPress={() => setShowInfoMultiLine(true)}
-        >
-          Show Multi line Toast
-        </Button>
-        <Spacing position={SpacingPositions.Bottom} />
-        <Typography variant={TypographyVariant.heading4}>
-          Auto dismiss toast on set duration
-        </Typography>
-        <Spacing position={SpacingPositions.Bottom} />
-        <Button size={ButtonSizes.small} onPress={() => setShowInfoToast(true)}>
-          Show Info Toast
-        </Button>
-        <Spacing position={SpacingPositions.Bottom} />
-        <Button
-          size={ButtonSizes.small}
-          onPress={() => setShowSucessToast(true)}
+          onPress={() => setShowSuccessToast(true)}
         >
           Show Success Toast
-        </Button>
-        <Spacing position={SpacingPositions.Bottom} />
-        <Button
-          size={ButtonSizes.small}
-          onPress={() => setShowWarningToast(true)}
-        >
-          Show Warning Toast
         </Button>
         <Spacing position={SpacingPositions.Bottom} />
         <Button
@@ -163,10 +169,58 @@ export const Variants = () => {
         <Spacing position={SpacingPositions.Bottom} />
         <Button
           size={ButtonSizes.small}
-          onPress={() => setShowErrorToastMultiLine(true)}
+          onPress={() => setShowWarningToast(true)}
         >
-          Show Error Toast Multi line
+          Show Warning Toast
         </Button>
+        <Spacing position={SpacingPositions.Bottom} />
+        <Button size={ButtonSizes.small} onPress={() => setShowInfoToast(true)}>
+          Show Info Toast
+        </Button>
+        <Spacing position={SpacingPositions.Bottom} />
+        <Typography variant={TypographyVariant.heading4}>
+          Minmal Toast
+        </Typography>
+        <Spacing position={SpacingPositions.Bottom} />
+        <Button
+          size={ButtonSizes.small}
+          onPress={() => setShowMinimalSuccessToast(true)}
+        >
+          Show Minimal Success Toast
+        </Button>
+        <Spacing position={SpacingPositions.Bottom} />
+        <Button
+          size={ButtonSizes.small}
+          onPress={() => setShowMinimalErrorToast(true)}
+        >
+          Show Minimal Error Toast
+        </Button>
+        <Spacing position={SpacingPositions.Bottom} />
+        <Button
+          size={ButtonSizes.small}
+          onPress={() => setShowMinimalWarningToast(true)}
+        >
+          Show Minimal Warning Toast
+        </Button>
+        <Spacing position={SpacingPositions.Bottom} />
+        <Button
+          size={ButtonSizes.small}
+          onPress={() => setShowMinimalInfoToast(true)}
+        >
+          Show Minimal Info Toast
+        </Button>
+        <Spacing position={SpacingPositions.Bottom} />
+        <Typography variant={TypographyVariant.heading4}>
+          Persistent Toast
+        </Typography>
+        <Spacing position={SpacingPositions.Bottom} />
+        <Button
+          size={ButtonSizes.small}
+          onPress={() => setShowPersistentToast(true)}
+        >
+          Show Persistent Toast
+        </Button>
+        <Spacing position={SpacingPositions.Bottom} />
       </Container>
     </Container>
   );
@@ -177,7 +231,7 @@ const Template: Story<ToastProps> = ({ ...rest }) => <Toast {...rest} />;
 export const Interactive = Template.bind({});
 Interactive.args = {
   show: true,
-  status: ToastStatus.info,
+  variant: 'info',
   message: 'this is a toast message',
   duration: 5000,
   autoHide: false,

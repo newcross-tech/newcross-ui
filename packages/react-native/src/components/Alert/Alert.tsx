@@ -1,11 +1,13 @@
 import React, { ReactNode } from 'react';
-import { View, TextStyle, ViewStyle } from 'react-native';
+import { View, TextStyle, ViewStyle, Pressable } from 'react-native';
 import alertStyle from './Alert.style';
-import { AlertVariant, getTitle, getAccentColor, getIcon } from './Alert.types';
+import { getTitle, getAccentColor, getIcon } from './Alert.types';
 import Typography, { TypographyVariant } from '../Typography';
 import useTheme from '../../hooks/useTheme';
 import Card from '../Card';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
+import { Variant } from '../../types';
 
 export type AlertProps = {
   /**
@@ -21,13 +23,29 @@ export type AlertProps = {
    */
   contentStyle?: TextStyle;
   /**
+   * Whether the alert has a close button.
+   */
+  hasCloseButton?: boolean;
+  /**
+   * The action to trigger when the close button is pressed.
+   */
+  onCloseButtonPress?: VoidFunction;
+  /**
+   * Whether the alert has a border.
+   */
+  hasBorder?: boolean;
+  /**
    * Accepts a variant of the Alert.
    */
-  variant: AlertVariant;
+  variant: Variant;
   /**
    * Overwrites a custom icon for the Alert.
    */
   icon?: ReactNode;
+  /**
+   * Whether the alert has a title.
+   */
+  hasTitle?: boolean;
   /**
    * Accepts a custom title.
    */
@@ -52,12 +70,16 @@ export type AlertProps = {
 
 const Alert = ({
   variant,
+  hasTitle = true,
   title,
   icon,
   children,
   fullWidth = true,
   containerStyle,
   headerStyle,
+  hasCloseButton,
+  onCloseButtonPress,
+  hasBorder = true,
   contentStyle,
   action,
   testID = 'alert',
@@ -68,7 +90,7 @@ const Alert = ({
   const accent = getAccentColor(theme);
 
   const defaultIcon = getIcon();
-  const styles = alertStyle({ variant });
+  const styles = alertStyle({ variant, hasBorder });
 
   return (
     <Card
@@ -76,23 +98,27 @@ const Alert = ({
       fullWidth={fullWidth}
       disabled
       contentStyle={styles.alertContainer}
+      containerStyle={styles.cardContainer}
+      hasShadow={false}
       {...rest}
     >
       {icon || (
         <FontAwesomeIcon
           style={[styles.iconStyle]}
-          size={theme.AlertIconSize}
+          size={theme.AlertIconSizeLeft}
           color={accent[variant]}
           icon={defaultIcon[variant]}
         />
       )}
       <View style={[styles.textContainer, containerStyle]}>
-        <Typography
-          style={headerStyle || styles.text}
-          variant={TypographyVariant.heading4}
-        >
-          {title || defaultTitle[variant]}
-        </Typography>
+        {hasTitle && (
+          <Typography
+            style={headerStyle || styles.text}
+            variant={TypographyVariant.heading4}
+          >
+            {title || defaultTitle[variant]}
+          </Typography>
+        )}
         {children && (
           <Typography
             style={contentStyle || styles.text}
@@ -103,6 +129,19 @@ const Alert = ({
         )}
         {action}
       </View>
+      {hasCloseButton && (
+        <Pressable
+          onPress={onCloseButtonPress}
+          style={[styles.iconStyle, styles.closeIconStyle]}
+          testID="alert-close-icon"
+        >
+          <FontAwesomeIcon
+            size={theme.AlertIconSizeRight}
+            color={theme.BrandColorPrimary}
+            icon={faXmark}
+          />
+        </Pressable>
+      )}
     </Card>
   );
 };

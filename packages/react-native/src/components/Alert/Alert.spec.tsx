@@ -1,6 +1,6 @@
 import React from 'react';
 import Alert, { AlertProps } from './Alert';
-import { AlertVariant } from './Alert.types';
+import { SemanticVariant } from '../../types';
 import { View } from 'react-native';
 import Link from '../Link';
 import { render } from '@testing-library/react-native';
@@ -11,7 +11,7 @@ describe('Alert component', () => {
   it('renders successfully with custom title', () => {
     // Arrange
     const props: AlertProps = {
-      variant: AlertVariant.info,
+      variant: SemanticVariant.info,
       title: 'Custom title',
     };
 
@@ -26,7 +26,7 @@ describe('Alert component', () => {
   it('renders successfully with text props', () => {
     // Arrange
     const props: AlertProps = {
-      variant: AlertVariant.success,
+      variant: SemanticVariant.success,
       children: 'This is success. This is success. This is success.',
       action: <Link>Click Here</Link>,
     };
@@ -42,10 +42,49 @@ describe('Alert component', () => {
     expect(getByText(/Click here/i)).toBeTruthy();
   });
 
+  it('renders successfully with close icon', () => {
+    // Arrange
+    const props: AlertProps = {
+      variant: SemanticVariant.success,
+      children: 'This is success. This is success. This is success.',
+      action: <Link>Click Here</Link>,
+      hasCloseButton: true,
+      onCloseButtonPress: jest.fn(),
+    };
+
+    // Act
+    const { getByTestId } = render(<Alert {...props} />);
+
+    // Assert
+    expect(getByTestId('alert-close-icon')).toBeTruthy();
+  });
+
+  it('renders successfully with no title', () => {
+    // Arrange
+    const props: AlertProps = {
+      variant: SemanticVariant.info,
+      children: 'This is success. This is success. This is success.',
+      hasTitle: false,
+    };
+
+    // Act
+    const { getByTestId, getByText, queryByText } = render(
+      <Alert {...props} />
+    );
+
+    // Assert
+    expect(getByTestId('alert')).toBeTruthy();
+    expect(
+      getByText('This is success. This is success. This is success.')
+    ).toBeTruthy();
+
+    expect(queryByText('Info')).toBeNull();
+  });
+
   it('renders successfully with custom icon', () => {
     // Arrange
     const props: AlertProps = {
-      variant: AlertVariant.success,
+      variant: SemanticVariant.success,
       icon: (
         <View testID={'alert-icon'}>
           <FontAwesomeIcon
@@ -67,25 +106,25 @@ describe('Alert component', () => {
 describe.each([
   [
     {
-      variant: AlertVariant.info,
+      variant: SemanticVariant.info,
     },
     'Info',
   ],
   [
     {
-      variant: AlertVariant.success,
+      variant: SemanticVariant.success,
     },
     'Success',
   ],
   [
     {
-      variant: AlertVariant.warning,
+      variant: SemanticVariant.warning,
     },
     'Warning',
   ],
   [
     {
-      variant: AlertVariant.error,
+      variant: SemanticVariant.error,
     },
     'Error',
   ],

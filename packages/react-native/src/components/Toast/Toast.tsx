@@ -1,20 +1,13 @@
-import { Pressable, ViewStyle, TextStyle } from 'react-native';
-import React, { ReactNode, isValidElement, useEffect } from 'react';
+import { ViewStyle, TextStyle } from 'react-native';
+import React, { ReactNode, useEffect } from 'react';
 import toastStyle from './Toast.style';
-import Animated from 'react-native-reanimated';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
-import { faCircleCheck } from '@fortawesome/pro-solid-svg-icons/faCircleCheck';
-import { faCircleInfo } from '@fortawesome/pro-solid-svg-icons/faCircleInfo';
-import { faTriangleExclamation } from '@fortawesome/pro-solid-svg-icons/faTriangleExclamation';
-import { ToastStatus } from './Toast.types';
+import Animated, { ComplexAnimationBuilder } from 'react-native-reanimated';
 import {
   DEFAULT_AUTO_HIDE,
   DEFAULT_DURATION,
   animatedProps,
 } from './Toast.constants';
-import Typography, { TypographyVariant } from '../Typography';
-import useTheme from '../../hooks/useTheme';
+import Alert, { AlertProps } from '../Alert';
 import { delay } from './utils';
 
 export type ToastProps = {
@@ -31,10 +24,6 @@ export type ToastProps = {
    * Pass the message for the toast notification
    */
   message: ReactNode | string;
-  /**
-   * Determines the status color of the toast
-   */
-  status: ToastStatus;
   /**
    * set how long the toast should appear for in ms
    */
@@ -56,59 +45,31 @@ export type ToastProps = {
    * testID for end to end testing.
    */
   testID?: string;
-};
+  /**
+   * Overwrites the Animation props for the Toast.
+   */
+  customAnimatedProps?: {
+    entering: ComplexAnimationBuilder;
+    exiting: ComplexAnimationBuilder;
+  };
+} & AlertProps;
 
 const Toast = ({
   message,
+  hasCloseButton = true,
+  hasBorder = false,
   duration = DEFAULT_DURATION,
   onClose,
   autoHide = DEFAULT_AUTO_HIDE,
-  status,
-  customStatusIcon,
+  variant,
   show,
   style,
+  customAnimatedProps,
   ...rest
 }: ToastProps) => {
-  const styles = toastStyle({
-    status,
-    message,
-    duration,
-    show,
-    autoHide,
-    onClose,
-  });
-  const theme = useTheme();
+  const styles = toastStyle();
 
-  const icon = {
-    [ToastStatus.info]: (
-      <FontAwesomeIcon
-        icon={faCircleInfo}
-        size={theme.ToastStatusSize}
-        style={styles.statusIcon}
-      />
-    ),
-    [ToastStatus.success]: (
-      <FontAwesomeIcon
-        icon={faCircleCheck}
-        size={theme.ToastStatusSize}
-        style={styles.statusIcon}
-      />
-    ),
-    [ToastStatus.warning]: (
-      <FontAwesomeIcon
-        icon={faTriangleExclamation}
-        size={theme.ToastStatusSize}
-        style={styles.statusIcon}
-      />
-    ),
-    [ToastStatus.error]: (
-      <FontAwesomeIcon
-        icon={faTriangleExclamation}
-        size={16}
-        style={styles.statusIcon}
-      />
-    ),
-  }[status as ToastStatus];
+  const animationProps = customAnimatedProps || animatedProps;
 
   useEffect(() => {
     if (!autoHide) return;
@@ -118,27 +79,16 @@ const Toast = ({
   return (
     <>
       {show && (
-        <Animated.View
-          {...animatedProps}
-          style={[styles.container, style]}
-          {...rest}
-        >
-          {(isValidElement(customStatusIcon) && customStatusIcon) || icon}
-          <Typography
-            variant={TypographyVariant.paragraph2}
-            style={styles.text}
+        <Animated.View {...animationProps} style={[styles.container, style]}>
+          <Alert
+            hasBorder={hasBorder}
+            hasCloseButton={hasCloseButton}
+            variant={variant}
+            onCloseButtonPress={onClose}
+            {...rest}
           >
             {message}
-          </Typography>
-          {!autoHide && (
-            <Pressable onPress={onClose} testID="toast-close-icon">
-              <FontAwesomeIcon
-                icon={faXmark}
-                size={theme.ToastStatusSize}
-                style={styles.closeIcon}
-              />
-            </Pressable>
-          )}
+          </Alert>
         </Animated.View>
       )}
     </>

@@ -2,7 +2,6 @@ import { Meta, Story } from '@storybook/react';
 import {
   Alert,
   AlertProps,
-  AlertVariant,
   Link,
   Typography,
   TypographyVariant,
@@ -26,7 +25,7 @@ export const Overview = () => {
       doInfo={DO}
       dontInfo={DONT}
     >
-      <Alert variant={AlertVariant.success} action={<Link>Click Here</Link>}>
+      <Alert variant="success" action={<Link>Click Here</Link>}>
         This is success. This is success. This is success.
       </Alert>
     </InfoTemplate>
@@ -40,42 +39,42 @@ export const Variants = () => {
         <Typography variant={TypographyVariant.heading4}>
           Success Variant
         </Typography>
-        <Alert variant={AlertVariant.success} action={<Link>Click Here</Link>}>
+        <Alert variant="success" action={<Link>Click Here</Link>}>
           This is success. This is success. This is success.
         </Alert>
         <Spacing />
         <Typography variant={TypographyVariant.heading4}>
           Warning Variant
         </Typography>
-        <Alert variant={AlertVariant.warning} action={<Link>Click Here</Link>}>
+        <Alert variant="warning" action={<Link>Click Here</Link>}>
           This is warning. This is warning. This is warning.
         </Alert>
         <Spacing />
         <Typography variant={TypographyVariant.heading4}>
           Error Variant
         </Typography>
-        <Alert variant={AlertVariant.error} action={<Link>Click Here</Link>}>
+        <Alert variant="error" action={<Link>Click Here</Link>}>
           This is error. This is error. This is error.
         </Alert>
         <Spacing />
         <Typography variant={TypographyVariant.heading4}>
           Info Variant
         </Typography>
-        <Alert variant={AlertVariant.info} action={<Link>Click Here</Link>}>
+        <Alert variant="info" action={<Link>Click Here</Link>}>
           This is info. This is info. This is info.
         </Alert>
         <Spacing />
         <Typography variant={TypographyVariant.heading4}>
           Variant without link
         </Typography>
-        <Alert variant={AlertVariant.info}>
+        <Alert variant="info">
           This is success. This is success. This is success.
         </Alert>
         <Spacing />
         <Typography variant={TypographyVariant.heading4}>
           Variant without children and link
         </Typography>
-        <Alert variant={AlertVariant.info} />
+        <Alert variant="info" />
       </Container>
     </ScrollView>
   );
@@ -89,5 +88,5 @@ const Template: Story<AlertProps> = (props) => (
 
 export const Interactive = Template.bind({});
 Interactive.args = {
-  variant: AlertVariant.info,
+  variant: 'info',
 };

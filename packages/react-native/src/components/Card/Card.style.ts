@@ -40,7 +40,7 @@ const cardStyle = ({
     container: {
       alignSelf: fullWidth ? 'stretch' : 'flex-start',
       shadowColor: CardShadowColor,
-      elevation: CardShadowElevation,
+      elevation: hasShadow ? CardShadowElevation : 0,
       shadowOpacity: hasShadow ? CardShadowOpacity : 0,
       shadowRadius: CardShadowRadius,
       borderRadius: hasRoundedCorners ? CardBorderRadius : 0,

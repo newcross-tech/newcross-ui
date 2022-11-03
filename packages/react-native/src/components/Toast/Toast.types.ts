@@ -1,26 +1,20 @@
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
-
-export enum ToastStatus {
-  info = 'info',
-  success = 'success',
-  warning = 'warning',
-  error = 'error',
-}
+import { SemanticVariant } from '../../types';
 
 export const getBackgroundColorValues = (
   theme: ThemeDesignTokens
-): Record<ToastStatus, string> => ({
-  [ToastStatus.info]: theme.ToastStatusInfoBackgroundColor,
-  [ToastStatus.success]: theme.ToastStatusSuccessBackgroundColor,
-  [ToastStatus.warning]: theme.ToastStatusWarningBackgroundColor,
-  [ToastStatus.error]: theme.ToastStatusErrorBackgroundColor,
+): Record<SemanticVariant, string> => ({
+  [SemanticVariant.info]: theme.ToastStatusInfoBackgroundColor,
+  [SemanticVariant.success]: theme.ToastStatusSuccessBackgroundColor,
+  [SemanticVariant.warning]: theme.ToastStatusWarningBackgroundColor,
+  [SemanticVariant.error]: theme.ToastStatusErrorBackgroundColor,
 });
 
 export const getStatusIconColorValues = (
   theme: ThemeDesignTokens
-): Record<ToastStatus, string> => ({
-  [ToastStatus.info]: theme.ToastStatusInfoIconColor,
-  [ToastStatus.success]: theme.ToastStatusSuccessIconColor,
-  [ToastStatus.warning]: theme.ToastStatusWarningIconColor,
-  [ToastStatus.error]: theme.ToastStatusErrorIconColor,
+): Record<SemanticVariant, string> => ({
+  [SemanticVariant.info]: theme.ToastStatusInfoIconColor,
+  [SemanticVariant.success]: theme.ToastStatusSuccessIconColor,
+  [SemanticVariant.warning]: theme.ToastStatusWarningIconColor,
+  [SemanticVariant.error]: theme.ToastStatusErrorIconColor,
 });

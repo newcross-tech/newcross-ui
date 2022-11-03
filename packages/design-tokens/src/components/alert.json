@@ -34,9 +34,36 @@
         "value": "{brand.color.primary.value}"
       }
     },
+    "shadow": {
+      "color": {
+        "value": "{color.neutral.black.value}"
+      },
+      "offset": {
+        "width": {
+          "value": "{shadow.base.offset.sm.value}"
+        },
+        "height": {
+          "value": "{shadow.base.offset.md.value}"
+        }
+      },
+      "radius": {
+        "value": "{shadow.base.offset.md.value}"
+      },
+      "opacity": {
+        "value": "{opacity.base.md.value}"
+      },
+      "elevation": {
+        "value": "{shadow.base.elevation.sm.value}"
+      }
+    },
     "icon": {
       "size": {
-        "value": "{spacing.base.24.value}"
+        "left": {
+          "value": "{spacing.base.24.value}"
+        },
+        "right": {
+          "value": "{spacing.base.12.value}"
+        }
       }
     }
   }

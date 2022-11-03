@@ -1,15 +1,12 @@
 import { StyleSheet } from 'react-native';
 import useTheme from '../../hooks/useTheme';
 import { AlertProps } from './Alert';
-import {
-  AlertStyle,
-  AlertVariant,
-  getAccentColor,
-  getBackgroundColor,
-} from './Alert.types';
+import { AlertStyle, getAccentColor, getBackgroundColor } from './Alert.types';
+import { SemanticVariant } from '../../types';
 
 const alertStyle = ({
   variant,
+  hasBorder,
 }: AlertProps): StyleSheet.NamedStyles<AlertStyle> => {
   const theme = useTheme();
   const {
@@ -17,27 +14,48 @@ const alertStyle = ({
     AlertBorderWidth,
     AlertBorderRadius,
     AlertTextContainerPadding,
+    AlertShadowColor,
+    AlertShadowOffsetWidth,
+    AlertShadowOffsetHeight,
+    AlertShadowOpacity,
+    AlertShadowRadius,
+    AlertShadowElevation,
   } = theme;
 
   const primaryColor = getAccentColor(theme);
   const secondaryColor = getBackgroundColor(theme);
 
   return StyleSheet.create({
+    cardContainer: {
+      shadowColor: AlertShadowColor,
+      shadowOffset: {
+        width: AlertShadowOffsetWidth,
+        height: AlertShadowOffsetHeight,
+      },
+      shadowRadius: AlertShadowRadius,
+      shadowOpacity: AlertShadowOpacity,
+      elevation: AlertShadowElevation,
+    },
     alertContainer: {
-      borderWidth: AlertBorderWidth,
       borderRadius: AlertBorderRadius,
-      borderColor: primaryColor[variant as AlertVariant],
-      backgroundColor: secondaryColor[variant as AlertVariant],
+      backgroundColor: secondaryColor[variant as SemanticVariant],
+      ...(hasBorder && {
+        borderWidth: AlertBorderWidth,
+        borderColor: primaryColor[variant as SemanticVariant],
+      }),
     },
     textContainer: {
       flexDirection: 'column',
-      paddingLeft: AlertTextContainerPadding,
+      paddingHorizontal: AlertTextContainerPadding,
     },
     text: {
       color: AlertTextColor,
     },
     iconStyle: {
       alignSelf: 'flex-start',
+    },
+    closeIconStyle: {
+      marginLeft: 'auto',
     },
   });
 };

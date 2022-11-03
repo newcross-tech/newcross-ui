@@ -9,7 +9,7 @@ export {
   AccordionGroupProps,
   AccordionGroupSpacing,
 } from './components/AccordionGroup';
-export { default as Alert, AlertProps, AlertVariant } from './components/Alert';
+export { default as Alert, AlertProps } from './components/Alert';
 export { default as Pill, PillProps } from './components/Pill';
 export {
   default as PillGroup,
@@ -73,7 +73,7 @@ export {
   ToggleSwitchProps,
 } from './components/ToggleSwitch';
 export { default as Slider, SliderProps } from './components/Slider';
-export { default as Toast, ToastProps, ToastStatus } from './components/Toast';
+export { default as Toast, ToastProps } from './components/Toast';
 export { default as Calendar, CalendarProps } from './components/Calendar';
 export { default as Tabs, TabsProps } from './components/Tabs';
 export { default as TextInput, TextInputProps } from './components/TextInput';
@@ -87,5 +87,5 @@ export {
   ListOptionProps,
   ListOptionAlignment,
 } from './components/ListOption';
-export * from './types';
+export { Mode } from './types';
 export { default as Carousel, CarouselProps } from './components/Carousel';

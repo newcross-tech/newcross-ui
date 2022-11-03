@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import Toast, { ToastProps } from './Toast';
-import { ToastStatus } from './Toast.types';
+import { SemanticVariant } from '../../types';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCalendarDays } from '@fortawesome/pro-solid-svg-icons/faCalendarDays';
 
@@ -11,7 +11,7 @@ describe('Toast component', () => {
     const props: ToastProps = {
       message: 'this is a toast notification',
       show: true,
-      status: ToastStatus.info,
+      variant: SemanticVariant.success,
       onClose: jest.fn(),
     };
 
@@ -27,7 +27,7 @@ describe('Toast component', () => {
     const props: ToastProps = {
       message: 'this is toast notification has a custom status icon',
       show: true,
-      status: ToastStatus.info,
+      variant: SemanticVariant.success,
       onClose: jest.fn(),
       customStatusIcon: <FontAwesomeIcon icon={faCalendarDays} />,
     };
@@ -47,19 +47,24 @@ describe('Toast component', () => {
     const props: ToastProps = {
       message: 'this is toast notification has a close icon',
       show: true,
-      status: ToastStatus.info,
+      variant: SemanticVariant.success,
       onClose: onClose,
+      hasCloseButton: true,
       autoHide: false,
     };
 
     // Act
     const { getByText, getByTestId } = render(<Toast {...props} />);
-    fireEvent.press(getByTestId('toast-close-icon'));
 
     // Assert
     expect(
       getByText(/this is toast notification has a close icon/i)
     ).toBeTruthy();
+
+    expect(getByTestId('alert-close-icon')).toBeTruthy();
+
+    fireEvent.press(getByTestId('alert-close-icon'));
+
     expect(onClose).toHaveBeenCalled();
   });
 });
