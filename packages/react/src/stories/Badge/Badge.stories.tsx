@@ -11,8 +11,7 @@ import {
 import { web } from '@newcross-ui/design-tokens';
 import React from 'react';
 import styled, { css } from 'styled-components';
-import {
-  Badge,
+import Badge, {
   BadgePositions,
   BadgeProps,
   BadgeSizes,

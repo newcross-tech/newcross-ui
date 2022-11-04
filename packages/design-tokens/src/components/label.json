@@ -1,0 +1,6 @@
+{
+  "label": {
+    "outline": { "value": "{border.base.width.sm.value}" },
+    "outline-offset": { "value": "{spacing.base.4.value}" }
+  }
+}

@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/pro-light-svg-icons/faCheck';
 import { faMinus } from '@fortawesome/pro-light-svg-icons/faMinus';
-import { CheckboxType } from './Checkbox.types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { SyntheticEvent, useEffect, useState } from 'react';
+import * as LabelStyled from '../Label/Label.style';
+import { TypographyVariant } from '../Typography';
 import * as Styled from './Checkbox.style';
-import Typography, { TypographyVariant } from '../Typography';
+import { CheckboxType } from './Checkbox.types';
 
 export type CheckboxProps = {
   /**
@@ -58,6 +59,18 @@ const Checkbox = ({
     setSelected(currentValue);
   };
 
+  const onChangeHandler = (event: SyntheticEvent) => {
+    event.preventDefault();
+    handleChecked();
+  };
+
+  const onKeyPressHandler = (event: React.KeyboardEvent<HTMLElement>) => {
+    event.preventDefault();
+    if (event.code === 'Space') {
+      handleChecked();
+    }
+  };
+
   useEffect(() => {
     setSelected(checked);
   }, [checked]);
@@ -67,7 +80,7 @@ const Checkbox = ({
       data-testid={testID}
       disabled={disabled}
       label={label}
-      onClick={handleChecked}
+      onClick={onChangeHandler}
       {...rest}
     >
       <Styled.Box
@@ -85,9 +98,15 @@ const Checkbox = ({
           />
         )}
       </Styled.Box>
-      <Styled.Label label={label} disabled={disabled}>
-        <Typography variant={TypographyVariant.paragraph1}>{label}</Typography>
-      </Styled.Label>
+      <LabelStyled.Label
+        disabled={disabled}
+        variant={TypographyVariant.paragraph1}
+        onKeyPress={onKeyPressHandler}
+        tabIndex={0}
+        data-testid={'checkmark-label'}
+      >
+        {label}
+      </LabelStyled.Label>
     </Styled.Checkbox>
   );
 };

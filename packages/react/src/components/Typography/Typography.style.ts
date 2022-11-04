@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
+import { FontWeight } from '../../types/FontWeight';
+import { ExtendedTheme } from '../../types/Theme';
 import { TypographyProps } from './Typography';
 import { TypographyVariant } from './Typography.types';
-import { FontWeight } from '../../types/FontWeight';
 
 export const getTypographyStyles = (theme: ThemeDesignTokens) => ({
   [TypographyVariant.heading1]: css`
@@ -61,17 +62,21 @@ export const getTypographyStyles = (theme: ThemeDesignTokens) => ({
   `,
 });
 
+export const getCoreStyles = ({ theme, variant, gutterBottom, numberOfLines }: ExtendedTheme<TypographyProps>) => css`
+  ${variant && getTypographyStyles(theme)[variant]};
+  ${numberOfLines &&
+  css`
+    display: -webkit-box;
+    -webkit-line-clamp: ${numberOfLines};
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  `};
+  margin-bottom: ${gutterBottom ? theme.SpacingBase8 : theme.SpacingBase0};
+`;
+
 export const Typography = styled.div<TypographyProps>`
-  ${({ theme, variant, gutterBottom, numberOfLines }) => css`
-    ${variant && getTypographyStyles(theme)[variant]};
-    ${numberOfLines &&
-    css`
-      display: -webkit-box;
-      -webkit-line-clamp: ${numberOfLines};
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    `};
-    margin-bottom: ${gutterBottom ? theme.SpacingBase8 : theme.SpacingBase0};
+  ${({ theme, variant, gutterBottom, numberOfLines }: ExtendedTheme<TypographyProps>) => css`
+    ${getCoreStyles({ theme, variant, gutterBottom, numberOfLines } as ExtendedTheme<TypographyProps>)};
   `}
 `;

@@ -1,8 +1,9 @@
+import { fireEvent, render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { byTestId, byText } from 'testing-library-selector';
 import Checkbox, { CheckboxProps } from './Checkbox';
 import { CheckboxType } from './Checkbox.types';
-import { byTestId, byText } from 'testing-library-selector';
 
 const renderComponent = (props: CheckboxProps) => {
   const customProps: CheckboxProps = {
@@ -19,6 +20,7 @@ describe('Checkbox Component', () => {
     checkboxBox: byTestId(`checkbox-box`),
     checkboxIcon: byTestId(`checkmark-icon`),
     checkboxIndeterIcon: byTestId(`indeterminate-icon`),
+    checkboxLabel: byTestId('checkmark-label'),
     getByReg: (text: RegExp) => byText(text),
   };
   it('renders successfully', () => {
@@ -128,5 +130,25 @@ describe('Checkbox Component', () => {
 
     // Assert
     expect(ui.checkbox.get()).toBeTruthy();
+  });
+
+  it('triggers onChange when Spacebar key detected', () => {
+    // Arrange
+    const onChange = jest.fn();
+    const props: CheckboxProps = {
+      label: 'Label',
+      testID: 'checkbox-component',
+      onChange,
+    };
+
+    // Act
+    renderComponent({ ...props });
+
+    const label = ui.checkboxLabel.get();
+    expect(label).toBeTruthy();
+
+    userEvent.type(label, ' ');
+
+    expect(ui.checkboxIcon.get()).toBeInTheDocument();
   });
 });

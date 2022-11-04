@@ -1,28 +1,28 @@
+import { faSearch } from '@fortawesome/pro-light-svg-icons/faSearch';
+import { faCheck } from '@fortawesome/pro-solid-svg-icons/faCheck';
+import { faEye } from '@fortawesome/pro-solid-svg-icons/faEye';
+import { faEyeSlash } from '@fortawesome/pro-solid-svg-icons/faEyeSlash';
+import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React, { ReactNode, useState } from 'react';
 import {
-  View,
-  TextStyle,
-  ViewStyle,
   Pressable,
   TextInput as NativeTextInput,
   TextInputProps as NativeTextInputProps,
+  TextStyle,
+  View,
+  ViewStyle,
 } from 'react-native';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faEye } from '@fortawesome/pro-solid-svg-icons/faEye';
-import { faEyeSlash } from '@fortawesome/pro-solid-svg-icons/faEyeSlash';
-import { faCheck } from '@fortawesome/pro-solid-svg-icons/faCheck';
-import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
-import { faSearch } from '@fortawesome/pro-light-svg-icons/faSearch';
-import { Mode } from '../../types';
-import textInputStyle from './TextInput.style';
 import useTheme from '../../hooks/useTheme';
+import { Mode } from '../../types';
 import Typography, { TypographyVariant } from '../Typography';
+import textInputStyle from './TextInput.style';
 
 export type TextInputProps = {
   /**
    * the value of the text input
    */
-  value: string;
+  value?: string;
   /**
    * Determines the type of the text input
    */
@@ -191,7 +191,7 @@ const TextInput = ({
             />
           </View>
         )}
-        {search && value.length !== 0 && onClosePress && (
+        {search && value?.length !== 0 && onClosePress && (
           <Pressable
             onPress={onClosePress}
             style={styles.rightIcon}
