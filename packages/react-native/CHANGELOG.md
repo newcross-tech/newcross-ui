@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.29.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.28.0...@newcross-ui/react-native@1.29.0) (2022-11-04)
+
+
+### Features
+
+* **ask-164:** keyboard Input Accessibility Checkbox ([368b185](https://bitbucket.org/newcrossdev/newcross-ui/commits/368b18598de5695745249b342f0cd047bd5d5749))
+
+
+
+
+
 # [1.28.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.27.4...@newcross-ui/react-native@1.28.0) (2022-11-03)
 
 

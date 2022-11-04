@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.32.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.31.0...@newcross-ui/design-tokens@1.32.0) (2022-11-04)
+
+
+### Features
+
+* **ask-164:** keyboard Input Accessibility Checkbox ([368b185](https://bitbucket.org/newcrossdev/newcross-ui/commits/368b18598de5695745249b342f0cd047bd5d5749))
+
+
+
+
+
 # [1.31.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.30.3...@newcross-ui/design-tokens@1.31.0) (2022-11-03)
 
 

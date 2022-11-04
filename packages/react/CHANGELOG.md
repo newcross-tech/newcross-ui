@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.10.3...@newcross-ui/react@1.11.0) (2022-11-04)
+
+
+### Features
+
+* **ask-164:** keyboard Input Accessibility Checkbox ([368b185](https://bitbucket.org/newcrossdev/newcross-ui/commits/368b18598de5695745249b342f0cd047bd5d5749))
+
+
+
+
+
 ## [1.10.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.10.2...@newcross-ui/react@1.10.3) (2022-11-03)
 
 **Note:** Version bump only for package @newcross-ui/react
