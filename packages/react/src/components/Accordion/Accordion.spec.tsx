@@ -1,9 +1,11 @@
-import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
-import Accordion, { AccordionProps } from './Accordion';
 import { faCircleInfo } from '@fortawesome/pro-solid-svg-icons/faCircleInfo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { fireEvent, render } from '@testing-library/react';
+import React from 'react';
 import { byTestId } from 'testing-library-selector';
+import Accordion, { AccordionProps } from './Accordion';
+
+import axe from '../../../testutils';
 
 const renderComponent = (props: AccordionProps) => {
   // Arrange
@@ -31,6 +33,16 @@ describe('Accordion Component', () => {
     contentCollapsed: (testID: string) =>
       byTestId(`accordion-body-container-${testID}`),
   };
+
+  it('should not have any a11y errors', async () => {
+    const testID = '1';
+
+    // Act
+    renderComponent({ testID });
+
+    const results = await axe(document.body);
+    expect(results).toHaveNoViolations();
+  });
 
   it('renders successfully', () => {
     const testID = '1';

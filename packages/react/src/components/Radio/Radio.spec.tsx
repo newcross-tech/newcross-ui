@@ -1,10 +1,19 @@
-import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
+import React from 'react';
 import Radio, { RadioProps } from './Radio';
+
+import axe from '../../../testutils';
 
 const renderComponent = (props: RadioProps) => render(<Radio {...props} />);
 
 describe('Radio', () => {
+  it('should not have any a11y errors', async () => {
+    // Act
+    renderComponent({ label: 'Hello' });
+
+    const results = await axe(document.body);
+    expect(results).toHaveNoViolations();
+  });
   it('renders with given label and default view', () => {
     // Act
     renderComponent({ label: 'Hello' });

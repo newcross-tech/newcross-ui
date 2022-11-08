@@ -1,10 +1,12 @@
-import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faKitMedical } from '@fortawesome/pro-light-svg-icons/faKitMedical';
 import { faUser } from '@fortawesome/pro-light-svg-icons/faUser';
-import Tabs, { TabsProps } from './Tabs';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { fireEvent, render } from '@testing-library/react';
+import React from 'react';
 import { byTestId, byText } from 'testing-library-selector';
+import Tabs, { TabsProps } from './Tabs';
+
+import axe from '../../../testutils';
 
 describe('Tabs Component', () => {
   const baseTestId = 'tab';
@@ -14,6 +16,22 @@ describe('Tabs Component', () => {
     tabComp: (index: number) => byTestId(`${baseTestId}-${index}`),
     tabByReg: (reg: RegExp) => byText(reg),
   };
+
+  it('should not have any a11y errors', async () => {
+    // Arrange
+    const props: TabsProps = {
+      tabs: ['Label A', 'Label B'],
+      currentIndex: 0,
+      onCurrentIndexChange: jest.fn(),
+    };
+
+    // Act
+    render(<Tabs {...props} />);
+
+    const results = await axe(document.body);
+    expect(results).toHaveNoViolations();
+  });
+
   it('renders successfully', () => {
     // Arrange
     const props: TabsProps = {

@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
-import Typography from '../Typography';
 import { Theme } from '../../types/Theme';
+import HaloLabel, { LabelProps } from '../Label';
 
-export const Label = styled(Typography)`
+export const Label = styled(HaloLabel)<LabelProps>`
   ${({ theme }: Theme) => css`
     padding-left: ${theme.RadioPaddingLeft};
     padding-right: ${theme.RadioPaddingRight};

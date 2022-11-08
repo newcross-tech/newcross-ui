@@ -1,9 +1,10 @@
-import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
+import React from 'react';
+import { byTestId } from 'testing-library-selector';
+import axe from '../../../testutils';
 import Accordion from '../Accordion/Accordion';
 import AccordionGroup from './AccordionGroup';
 import { AccordionGroupSpacing } from './AccordionGroup.types';
-import { byTestId } from 'testing-library-selector';
 
 describe('Accordion Group Component', () => {
   const ui = {
@@ -17,6 +18,22 @@ describe('Accordion Group Component', () => {
     accordionContentCollapsed: (testID: string) =>
       byTestId(`accordion-body-container-${testID}`),
   };
+
+  it('should not have any a11y errors', async () => {
+    // Arrange
+    const props = { exclusiveSelection: false };
+
+    // Act
+    render(
+      <AccordionGroup {...props}>
+        <Accordion label="Section 1"></Accordion>
+        <Accordion label="Section 2"></Accordion>
+      </AccordionGroup>
+    );
+
+    const results = await axe(document.body);
+    expect(results).toHaveNoViolations();
+  });
 
   it('renders successfully', () => {
     // Arrange

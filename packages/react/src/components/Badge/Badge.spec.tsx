@@ -1,6 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
 import { byTestId, byText } from 'testing-library-selector';
+import axe from '../../../testutils';
 import Typography, { TypographyVariant } from '../Typography';
 import Badge, { BadgeProps } from './Badge';
 
@@ -12,6 +13,21 @@ describe('Badge Component', () => {
     container: (testID: string) =>
       byTestId(`${baseTestId}-container-${testID}`),
   };
+
+  it('should not have any a11y errors', async () => {
+    const props: BadgeProps = {
+      badgeContent: 7,
+      children: (
+        <Typography variant={TypographyVariant.paragraph1}>{'Text'}</Typography>
+      ),
+    };
+
+    render(<Badge {...props} />);
+
+    const results = await axe(document.body);
+    expect(results).toHaveNoViolations();
+  });
+
   it('should render successfully', () => {
     const props: BadgeProps = {
       badgeContent: 7,

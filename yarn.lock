@@ -5770,6 +5770,14 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
+"@types/jest-axe@^3.5.5":
+  version "3.5.5"
+  resolved "https://registry.yarnpkg.com/@types/jest-axe/-/jest-axe-3.5.5.tgz#21fd8152dc3963bf6e1f72f34a7ce4e827838b7b"
+  integrity sha512-b8WDIdoeKtr/JDJ2+QjFXMuS8UhfdMA6+15Z5KjjIie3jQrSXD9KZWMSQxc0nPtx7L9rIFKdiDpQk+m7s4a/8w==
+  dependencies:
+    "@types/jest" "*"
+    axe-core "^3.5.5"
+
 "@types/jest@*":
   version "28.1.8"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-28.1.8.tgz#6936409f3c9724ea431efd412ea0238a0f03b09b"
@@ -7100,6 +7108,16 @@ aws4@^1.8.0:
   resolved "https://registry.npmjs.org/aws4/-/aws4-1.11.0.tgz"
   integrity sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA==
 
+axe-core@4.5.1:
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.5.1.tgz#04d561c11b6d76d096d34e9d14ba2c294fb20cdc"
+  integrity sha512-1exVbW0X1O/HSr/WMwnaweyqcWOgZgLiVxdLG34pvSQk4NlYQr9OUy0JLwuhFfuVNQzzqgH57eYzkFBCb3bIsQ==
+
+axe-core@^3.5.5:
+  version "3.5.6"
+  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-3.5.6.tgz#e762a90d7f6dbd244ceacb4e72760ff8aad521b5"
+  integrity sha512-LEUDjgmdJoA3LqklSTwKYqkjcZ4HKc4ddIYGSAiSkr46NTjzg2L9RNB+lekO9P7Dlpa87+hBtzc2Fzn/+GUWMQ==
+
 axios@^0.21.1:
   version "0.21.4"
   resolved "https://registry.npmjs.org/axios/-/axios-0.21.4.tgz"
@@ -8084,6 +8102,14 @@ ccount@^1.0.0:
   resolved "https://registry.npmjs.org/ccount/-/ccount-1.1.0.tgz"
   integrity sha512-vlNK021QdI7PNeiUh/lKkC/mNHHfV0m/Ad5JoI0TYtlBnJAslM/JIkm/tGC88bkLIwO6OQ5uV6ztS6kVAtCDlg==
 
+chalk@4.1.2, chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.1, chalk@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.npmjs.org/chalk/-/chalk-4.1.2.tgz"
+  integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
+  dependencies:
+    ansi-styles "^4.1.0"
+    supports-color "^7.1.0"
+
 chalk@^2.0.0, chalk@^2.0.1, chalk@^2.4.1, chalk@^2.4.2:
   version "2.4.2"
   resolved "https://registry.npmjs.org/chalk/-/chalk-2.4.2.tgz"
@@ -8097,14 +8123,6 @@ chalk@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-3.0.0.tgz#3f73c2bf526591f574cc492c51e2456349f844e4"
   integrity sha512-4D3B6Wf41KOYRFdszmDqMCGq5VV/uMAB273JILmO+3jAlh8X4qDtdtgCR3fxtbLEMzSx22QdhnDcJvu2u1fVwg==
-  dependencies:
-    ansi-styles "^4.1.0"
-    supports-color "^7.1.0"
-
-chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.1, chalk@^4.1.2:
-  version "4.1.2"
-  resolved "https://registry.npmjs.org/chalk/-/chalk-4.1.2.tgz"
-  integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
@@ -13496,6 +13514,16 @@ iterate-value@^1.0.2:
     es-get-iterator "^1.0.2"
     iterate-iterator "^1.0.1"
 
+jest-axe@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/jest-axe/-/jest-axe-7.0.0.tgz#0658629bdff87d50d35cb9eca66a9b462fb0092b"
+  integrity sha512-y+TH+GGH7zOYABWv5IrtGx4ove1dYcVg9Nv9pJZcqKQ+2goJCkAYoHAqergPaV/y9hh1Q9vZykjSXC/2U0Mjyg==
+  dependencies:
+    axe-core "4.5.1"
+    chalk "4.1.2"
+    jest-matcher-utils "29.2.2"
+    lodash.merge "4.6.2"
+
 jest-changed-files@^27.5.1:
   version "27.5.1"
   resolved "https://registry.npmjs.org/jest-changed-files/-/jest-changed-files-27.5.1.tgz"
@@ -13742,6 +13770,16 @@ jest-leak-detector@^27.5.1:
   dependencies:
     jest-get-type "^27.5.1"
     pretty-format "^27.5.1"
+
+jest-matcher-utils@29.2.2:
+  version "29.2.2"
+  resolved "https://registry.yarnpkg.com/jest-matcher-utils/-/jest-matcher-utils-29.2.2.tgz#9202f8e8d3a54733266784ce7763e9a08688269c"
+  integrity sha512-4DkJ1sDPT+UX2MR7Y3od6KtvRi9Im1ZGLGgdLFLm4lPexbTaCgJW5NN3IOXlQHF7NSHY/VHhflQ+WoKtD/vyCw==
+  dependencies:
+    chalk "^4.0.0"
+    jest-diff "^29.2.1"
+    jest-get-type "^29.2.0"
+    pretty-format "^29.2.1"
 
 jest-matcher-utils@^27.0.0, jest-matcher-utils@^27.5.1:
   version "27.5.1"
@@ -14737,7 +14775,7 @@ lodash.memoize@4.x, lodash.memoize@^4.1.2:
   resolved "https://registry.npmjs.org/lodash.memoize/-/lodash.memoize-4.1.2.tgz"
   integrity sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4=
 
-lodash.merge@^4.6.2:
+lodash.merge@4.6.2, lodash.merge@^4.6.2:
   version "4.6.2"
   resolved "https://registry.npmjs.org/lodash.merge/-/lodash.merge-4.6.2.tgz"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==

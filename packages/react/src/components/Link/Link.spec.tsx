@@ -1,7 +1,9 @@
-import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
+import React from 'react';
 import { byTestId, byText } from 'testing-library-selector';
 import Link, { LinkProps } from './Link';
+
+import axe from '../../../testutils';
 
 jest.mock('@fortawesome/react-fontawesome', () => ({
   FontAwesomeIcon: 'circle-chevron-right',
@@ -19,13 +21,24 @@ const renderComponent = (props: LinkProps) => {
 
   render(<Link {...customProps} />);
 };
+
 const baseTestId = 'link';
+
 describe('Link Component', () => {
   const ui = {
     linkComp: byTestId(`${baseTestId}-component`),
     linkIcon: byTestId(`${baseTestId}-icon`),
     linkByReg: (reg: RegExp) => byText(reg),
   };
+
+  it('should not have any a11y errors', async () => {
+    // Act
+    renderComponent({});
+
+    const results = await axe(document.body);
+    expect(results).toHaveNoViolations();
+  });
+
   it('should render successfully', () => {
     // Act
     renderComponent({});

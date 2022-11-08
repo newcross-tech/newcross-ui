@@ -1,6 +1,6 @@
-import * as Styled from './Radio.style';
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { TypographyVariant } from '../Typography';
+import * as Styled from './Radio.style';
 
 export type RadioProps = {
   /**
@@ -19,6 +19,10 @@ export type RadioProps = {
    * Specifies whether the radio is selected
    */
   selected?: boolean;
+  /**
+   * testID for end to end testing.
+   */
+  testID?: string;
 };
 
 const Radio = ({
@@ -26,6 +30,7 @@ const Radio = ({
   disabled = false,
   label,
   onChange,
+  testID,
 }: RadioProps) => {
   const [isSelected, setIsSelected] = useState(selected);
 
@@ -42,11 +47,14 @@ const Radio = ({
     }
   };
 
+  const id = `radio-input-${testID}`;
+
   return (
     <Styled.Radio>
       <input
+        id={id}
         type="radio"
-        data-testid={'radio-input'}
+        data-testid={id}
         checked={isSelected}
         onChange={onChangeHandler}
         disabled={disabled}
@@ -55,6 +63,7 @@ const Radio = ({
         <Styled.Label
           variant={TypographyVariant.paragraph1}
           testID="radio-label"
+          htmlFor={id}
         >
           {label}
         </Styled.Label>

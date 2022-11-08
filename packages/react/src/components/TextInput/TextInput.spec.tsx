@@ -1,7 +1,9 @@
-import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import TextInput, { TextInputProps } from './TextInput';
+import React from 'react';
 import { byPlaceholderText, byTestId, byText } from 'testing-library-selector';
+import TextInput, { TextInputProps } from './TextInput';
+
+import axe from '../../../testutils';
 
 const renderComponent = (props: TextInputProps) => {
   const customProps = {
@@ -25,9 +27,30 @@ describe('TextInput Component', () => {
     container: byTestId(`${baseTestId}-container`),
     containerFocused: byTestId(`${baseTestId}-container-focused`),
     eyeIcon: byTestId(`${baseTestId}-eye-icon`),
+    eyeSlash: byTestId(`${baseTestId}-eye-slash`),
+    eye: byTestId(`${baseTestId}-eye`),
     validationCheck: byTestId(`${baseTestId}-validation-check`),
     messageText: byTestId(`${baseTestId}-message-text`),
   };
+
+  it('should not have any a11y errors', async () => {
+    // Arrange
+    const testID = '1';
+    const onChange = jest.fn();
+    const props: TextInputProps = {
+      testID,
+      label: 'TextField',
+      value: 'test',
+      type: 'text',
+      onChange,
+    };
+
+    // Act
+    renderComponent({ ...props });
+
+    const results = await axe(document.body);
+    expect(results).toHaveNoViolations();
+  });
 
   it('renders successfully', () => {
     // Arrange
@@ -105,6 +128,28 @@ describe('TextInput Component', () => {
 
     // Assert
     expect(eyeIcon).toBeTruthy();
+  });
+
+  it('cannot toggle show/hide password eye icon successfully when `password` type and disabled', () => {
+    // Arrange
+    const testID = '1';
+    const onChange = jest.fn();
+    const props: TextInputProps = {
+      testID,
+      value: 'test',
+      type: 'password',
+      disabled: true,
+      onChange,
+    };
+
+    // Act
+    renderComponent({ ...props });
+
+    const eyeIcon = ui.eyeIcon.get();
+    fireEvent.click(eyeIcon); // make password visible
+
+    // Assert
+    expect(ui.eyeSlash.query()).not.toBeInTheDocument();
   });
 
   it('similar to previous test but with a different textContentType - `newPassword` type is selected and eye icon is pressed', () => {
@@ -259,6 +304,24 @@ describe('SearchBar Component', () => {
     searchIcon: byTestId(`${baseTestId}-search-icon`),
     searchCloseIcon: byTestId(`${baseTestId}-search-close-icon`),
   };
+
+  it('should not have any a11y errors', async () => {
+    // Arrange
+    const props: TextInputProps = {
+      value: '',
+      label: 'TextField',
+      onChange: jest.fn(),
+      search: true,
+      onClose: jest.fn(),
+    };
+
+    // Act
+    render(<TextInput {...props} />);
+
+    const results = await axe(document.body);
+    expect(results).toHaveNoViolations();
+  });
+
   it('displays text input as a search bar component when search prop is passed', () => {
     // Arrange
     const props: TextInputProps = {

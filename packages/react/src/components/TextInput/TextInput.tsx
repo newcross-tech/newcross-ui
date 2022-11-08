@@ -1,17 +1,18 @@
+import { faSearch } from '@fortawesome/pro-light-svg-icons/faSearch';
+import { faCheck } from '@fortawesome/pro-solid-svg-icons/faCheck';
+import { faEye } from '@fortawesome/pro-solid-svg-icons/faEye';
+import { faEyeSlash } from '@fortawesome/pro-solid-svg-icons/faEyeSlash';
+import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
 import React, {
   forwardRef,
   ForwardRefRenderFunction,
   InputHTMLAttributes,
   useState,
 } from 'react';
-import Typography, { TypographyVariant } from '../Typography';
+import Label from '../Label/Label';
+import { TypographyVariant } from '../Typography';
 import * as Styled from './TextInput.style';
 import { SearchIcon } from './TextInput.style';
-import { faSearch } from '@fortawesome/pro-light-svg-icons/faSearch';
-import { faCheck } from '@fortawesome/pro-solid-svg-icons/faCheck';
-import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
-import { faEye } from '@fortawesome/pro-solid-svg-icons/faEye';
-import { faEyeSlash } from '@fortawesome/pro-solid-svg-icons/faEyeSlash';
 
 export type TextInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
@@ -84,15 +85,18 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
 
   const isPasswordType = type === 'password';
 
+  const inputId = `${baseTestId}-component-${testID}`;
+
   return (
     <>
       {label && (
-        <Typography
+        <Label
+          htmlFor={inputId}
           variant={TypographyVariant.heading5}
           testID={`${baseTestId}-label`}
         >
           {label}
-        </Typography>
+        </Label>
       )}
       <Styled.Container
         isFocused={isFocused}
@@ -111,6 +115,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
           </Styled.LeftIconContainer>
         )}
         <input
+          id={inputId}
           ref={ref}
           type={passwordVisibility && isPasswordType ? 'password' : 'text'}
           value={value}
@@ -119,7 +124,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
           onBlur={() => triggerFocusState(false)}
           onChange={onChangeHandler}
           disabled={disabled}
-          data-testid={`${baseTestId}-component-${testID}`}
+          data-testid={inputId}
           {...otherProps}
         />
         {isPasswordType && (
@@ -130,6 +135,11 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
             }
           >
             <Styled.PasswordIcon
+              data-testid={
+                !passwordVisibility
+                  ? `${baseTestId}-eye-slash`
+                  : `${baseTestId}-eye`
+              }
               icon={!passwordVisibility ? faEyeSlash : faEye}
             />
           </Styled.RightIconContainer>

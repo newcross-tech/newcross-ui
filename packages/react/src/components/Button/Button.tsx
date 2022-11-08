@@ -54,19 +54,17 @@ export const ButtonIcon = ({
   leftIcon,
   children,
   size,
-}: IconProps) => {
-  return (
-    <Styled.IconWrapper
-      size={size}
-      leftIcon={leftIcon}
-      rightIcon={rightIcon}
-      data-testid={testID}
-      hasLabel={hasLabel}
-    >
-      {children}
-    </Styled.IconWrapper>
-  );
-};
+}: IconProps) => (
+  <Styled.IconWrapper
+    size={size}
+    leftIcon={leftIcon}
+    rightIcon={rightIcon}
+    data-testid={testID}
+    hasLabel={hasLabel}
+  >
+    {children}
+  </Styled.IconWrapper>
+);
 
 const Button = ({
   children,

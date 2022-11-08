@@ -1,7 +1,8 @@
-import React from 'react';
-import Avatar, { AvatarProps } from './Avatar';
 import { fireEvent, render } from '@testing-library/react';
+import React from 'react';
 import { byTestId, byText } from 'testing-library-selector';
+import axe from '../../../testutils';
+import Avatar, { AvatarProps } from './Avatar';
 
 describe('Avatar Component', () => {
   const baseTestId = 'avatar';
@@ -11,6 +12,17 @@ describe('Avatar Component', () => {
     avatarIcon: byTestId(`${baseTestId}-with-icon`),
     avatarByReg: (reg: RegExp) => byText(reg),
   };
+
+  it('should not have any a11y errors', async () => {
+    // Arrange
+    const props: AvatarProps = { name: 'John Doe' };
+
+    // Act
+    render(<Avatar {...props} />);
+
+    const results = await axe(document.body);
+    expect(results).toHaveNoViolations();
+  });
 
   it('renders successfully with text', () => {
     // Arrange

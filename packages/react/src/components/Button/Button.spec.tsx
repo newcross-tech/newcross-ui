@@ -1,11 +1,11 @@
-import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
-import Button, { ButtonProps } from './Button';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight } from '@fortawesome/pro-light-svg-icons/faChevronRight';
 import { faChevronLeft } from '@fortawesome/pro-light-svg-icons/faChevronLeft';
+import { faChevronRight } from '@fortawesome/pro-light-svg-icons/faChevronRight';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { fireEvent, render } from '@testing-library/react';
+import React from 'react';
 import { byRole, byTestId } from 'testing-library-selector';
+import axe from '../../../testutils';
+import Button, { ButtonProps } from './Button';
 
 describe('Button', () => {
   const ui = {
@@ -13,6 +13,19 @@ describe('Button', () => {
     leftIcon: byTestId('left-icon'),
     buttonRole: byRole('button'),
   };
+
+  it('should not have any a11y errors', async () => {
+    // Arrange
+    const onClick = jest.fn();
+    const props: ButtonProps = { children: 'Primary', onClick };
+
+    // Act
+    render(<Button {...props} />);
+
+    const results = await axe(document.body);
+    expect(results).toHaveNoViolations();
+  });
+
   it('renders successfully', () => {
     // Act
     render(<Button />);

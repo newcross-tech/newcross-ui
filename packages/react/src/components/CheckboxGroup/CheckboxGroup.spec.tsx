@@ -1,7 +1,8 @@
-import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import CheckboxGroup from './CheckboxGroup';
+import React from 'react';
 import { byTestId, byText } from 'testing-library-selector';
+import axe from '../../../testutils';
+import CheckboxGroup from './CheckboxGroup';
 
 describe('Checkbox Group Component', () => {
   const ui = {
@@ -11,6 +12,19 @@ describe('Checkbox Group Component', () => {
     checkboxIndeterIcon: byTestId(`indeterminate-icon`),
     childCheckbox: (text: string) => byText(text),
   };
+
+  it('should not have any a11y errors', async () => {
+    // Act
+    render(
+      <CheckboxGroup
+        defaultChecked={['Apple', 'Banana']}
+        options={['Apple', 'Banana']}
+      />
+    );
+
+    const results = await axe(document.body);
+    expect(results).toHaveNoViolations();
+  });
 
   it('renders successfully', () => {
     // Act

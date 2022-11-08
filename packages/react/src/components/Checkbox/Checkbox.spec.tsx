@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { byTestId, byText } from 'testing-library-selector';
+import axe from '../../../testutils';
 import Checkbox, { CheckboxProps } from './Checkbox';
 import { CheckboxType } from './Checkbox.types';
 
@@ -23,6 +23,15 @@ describe('Checkbox Component', () => {
     checkboxLabel: byTestId('checkmark-label'),
     getByReg: (text: RegExp) => byText(text),
   };
+
+  it('should not have any a11y errors', async () => {
+    // Act
+    renderComponent({ label: 'Label' });
+
+    const results = await axe(document.body);
+    expect(results).toHaveNoViolations();
+  });
+
   it('renders successfully', () => {
     // Act
     renderComponent({ label: 'Label' });
@@ -130,25 +139,5 @@ describe('Checkbox Component', () => {
 
     // Assert
     expect(ui.checkbox.get()).toBeTruthy();
-  });
-
-  it('triggers onChange when Spacebar key detected', () => {
-    // Arrange
-    const onChange = jest.fn();
-    const props: CheckboxProps = {
-      label: 'Label',
-      testID: 'checkbox-component',
-      onChange,
-    };
-
-    // Act
-    renderComponent({ ...props });
-
-    const label = ui.checkboxLabel.get();
-    expect(label).toBeTruthy();
-
-    userEvent.type(label, ' ');
-
-    expect(ui.checkboxIcon.get()).toBeInTheDocument();
   });
 });
