@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.11.0...@newcross-ui/react@1.12.0) (2022-11-08)
+
+
+### Features
+
+* **ASK-171:**  adding automated Accessibility Checks ([1d7e2ba](https://bitbucket.org/newcrossdev/newcross-ui/commits/1d7e2ba3d29a7844948960b3e3de91dce4310149))
+
+
+
+
+
 # [1.11.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.10.3...@newcross-ui/react@1.11.0) (2022-11-04)
 
 
