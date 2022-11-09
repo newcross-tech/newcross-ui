@@ -1,13 +1,9 @@
-import { createRef } from 'react';
 import { Meta, Story } from '@storybook/react';
 import {
   BottomSheet,
   BottomSheetProps,
-  BottomSheetRefProps,
   Button,
   ButtonSizes,
-  ButtonCorners,
-  Calendar,
 } from '@newcross-ui/react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { native } from '@newcross-ui/design-tokens';
@@ -31,7 +27,7 @@ export default {
 } as Meta;
 
 export const VariantWithContent = () => {
-  const { state, dispatch } = useBottomSheetContext();
+  const { dispatch } = useBottomSheetContext();
 
   return (
     <GestureHandlerRootView
@@ -67,7 +63,7 @@ export const VariantWithContent = () => {
 };
 
 export const VariantWithFullHeightAndScroll = () => {
-  const { state, dispatch } = useBottomSheetContext();
+  const { dispatch } = useBottomSheetContext();
 
   return (
     <GestureHandlerRootView
@@ -101,7 +97,7 @@ export const VariantWithFullHeightAndScroll = () => {
 };
 
 const Template: Story<BottomSheetProps> = () => {
-  const { state, dispatch } = useBottomSheetContext();
+  const { dispatch } = useBottomSheetContext();
 
   return (
     <GestureHandlerRootView

@@ -86,12 +86,14 @@ const withThemeProvider = (Story, context) => {
           }}
         >
           <BottomSheetContext.Provider value={providerState}>
-            <BottomSheet isOpen={state.isOpen} onClose={closeBottomSheet}>
-              <BottomSheetContent
-                onClose={closeBottomSheet}
-                data={state.contentData}
-              />
-            </BottomSheet>
+            {isBottomSheetStory && (
+              <BottomSheet isOpen={state.isOpen} onClose={closeBottomSheet}>
+                <BottomSheetContent
+                  onClose={closeBottomSheet}
+                  data={state.contentData}
+                />
+              </BottomSheet>
+            )}
             <Story {...context} />
           </BottomSheetContext.Provider>
         </SafeAreaProvider>

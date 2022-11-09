@@ -11,6 +11,7 @@ import {
   View,
   ScrollViewProps,
   useWindowDimensions,
+  ViewStyle,
 } from 'react-native';
 import {
   Gesture,
@@ -24,7 +25,10 @@ import Animated, {
   runOnJS,
   interpolate,
 } from 'react-native-reanimated';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import {
+  useSafeAreaInsets,
+  initialWindowMetrics,
+} from 'react-native-safe-area-context';
 
 import {
   DEFAULT_COLLAPSE_THRESHOLD,
@@ -63,6 +67,14 @@ export type BottomSheetProps = {
    * callback to run on backdrop press
    */
   onClose?: VoidFunction;
+  /**
+   * extend or overwrite bottom sheet  header styles
+   */
+  headerStyle?: ViewStyle;
+  /**
+   * extend or overwrite bottom sheet container styles
+   */
+  containerStyle?: ViewStyle;
 } & ScrollViewProps;
 
 export type BottomSheetRefProps = {
@@ -84,11 +96,18 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
       hasGestureIndicator = true,
       isOpen = false,
       onClose,
+      headerStyle,
+      containerStyle,
       ...rest
     },
     ref
   ) => {
     const { bottom, top } = useSafeAreaInsets();
+    const { bottom: initialBottom, top: initialTop } =
+      initialWindowMetrics?.insets || {};
+    const topSafeArea = top || initialTop || 0;
+    const bottomSafeArea = bottom || initialBottom || 0;
+
     const { height: windowHeight } = useWindowDimensions();
 
     const [active, setActive] = useState(false);
@@ -105,8 +124,13 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
     }, [isOpen, contentHeight]);
 
     const snapPointValue = snapPoint
-      ? normalizeSnapPoint({ snapPoint, top, windowHeight })
-      : calculateSnapPoint({ bottom, top, windowHeight, contentHeight });
+      ? normalizeSnapPoint({ snapPoint, top: topSafeArea, windowHeight })
+      : calculateSnapPoint({
+          bottom: bottomSafeArea,
+          top: topSafeArea,
+          windowHeight,
+          contentHeight,
+        });
 
     const scrollTo = useCallback((destination: number) => {
       'worklet';
@@ -157,7 +181,7 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
     });
 
     const isContentGreaterThanMaxHeight =
-      windowHeight - bottom - top < contentHeight;
+      windowHeight - bottomSafeArea - topSafeArea < contentHeight;
 
     const handleBackdropPress = () => {
       if (hasGestureIndicator) {
@@ -176,7 +200,7 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
         )}
         <GestureDetector gesture={hasGestureIndicator ? gesture : undefined}>
           <Animated.View
-            style={[styles.container, animationStyle]}
+            style={[styles.container, animationStyle, containerStyle]}
             testID={active ? 'bottom-sheet-visible' : 'bottom-sheet-hidden'}
           >
             <View
@@ -184,11 +208,11 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
                 isContentGreaterThanMaxHeight &&
                   styles.indicatorContainerScroll,
                 styles.indicatorContainer,
+                headerStyle,
               ]}
             >
               {hasGestureIndicator && <View style={styles.indicator} />}
             </View>
-
             <ScrollView {...rest}>
               <View
                 onLayout={(event) => {
