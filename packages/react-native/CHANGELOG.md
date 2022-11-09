@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.30.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.29.0...@newcross-ui/react-native@1.30.0) (2022-11-09)
+
+
+### Bug Fixes
+
+* **HFGO-1430:** missing alert and toast Variants ([dab7454](https://bitbucket.org/newcrossdev/newcross-ui/commits/dab74549b211757d459cbe87c5ee52893bb4fd62))
+
+
+### Features
+
+* **HFGO-1310:** update bottomSheet. ([e3c398f](https://bitbucket.org/newcrossdev/newcross-ui/commits/e3c398f76b57a2184d9a96510397836fde417172))
+
+
+
+
+
 # [1.29.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.28.0...@newcross-ui/react-native@1.29.0) (2022-11-04)
 
 

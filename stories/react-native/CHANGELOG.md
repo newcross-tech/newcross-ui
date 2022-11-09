@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.33.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.32.1...@newcross-stories/react-native@1.33.0) (2022-11-09)
+
+
+### Features
+
+* **HFGO-1310:** update bottomSheet. ([e3c398f](https://bitbucket.org/newcrossdev/newcross-ui/commits/e3c398f76b57a2184d9a96510397836fde417172))
+
+
+
+
+
 ## [1.32.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.32.0...@newcross-stories/react-native@1.32.1) (2022-11-04)
 
 **Note:** Version bump only for package @newcross-stories/react-native
