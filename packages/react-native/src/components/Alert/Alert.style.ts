@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 import useTheme from '../../hooks/useTheme';
 import { AlertProps } from './Alert';
 import { AlertStyle, getAccentColor, getBackgroundColor } from './Alert.types';
-import { SemanticVariant } from '../../types';
 
 const alertStyle = ({
   variant,
@@ -38,10 +37,10 @@ const alertStyle = ({
     },
     alertContainer: {
       borderRadius: AlertBorderRadius,
-      backgroundColor: secondaryColor[variant as SemanticVariant],
+      backgroundColor: secondaryColor[variant],
       ...(hasBorder && {
         borderWidth: AlertBorderWidth,
-        borderColor: primaryColor[variant as SemanticVariant],
+        borderColor: primaryColor[variant],
       }),
     },
     textContainer: {

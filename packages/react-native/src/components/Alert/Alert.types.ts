@@ -1,12 +1,18 @@
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ViewStyle, TextStyle, ColorValue } from 'react-native';
 import { FontAwesomeIconStyle } from '@fortawesome/react-native-fontawesome';
-
 import { IconDefinition } from '@fortawesome/pro-regular-svg-icons';
 import { faCheck } from '@fortawesome/pro-regular-svg-icons/faCheck';
 import { faCircleExclamation } from '@fortawesome/pro-regular-svg-icons/faCircleExclamation';
 import { faCircleInfo } from '@fortawesome/pro-regular-svg-icons/faCircleInfo';
-import { SemanticVariant } from '../../types';
+import { Variant } from '../../types';
+
+export enum AlertVariant {
+  success = 'success',
+  warning = 'warning',
+  error = 'error',
+  info = 'info',
+}
 
 export type AlertStyle = {
   cardContainer: ViewStyle;
@@ -17,34 +23,34 @@ export type AlertStyle = {
   closeIconStyle: FontAwesomeIconStyle;
 };
 
-export const getTitle = (): Record<SemanticVariant, string> => ({
-  [SemanticVariant.success]: 'Success',
-  [SemanticVariant.warning]: 'Warning',
-  [SemanticVariant.error]: 'Error',
-  [SemanticVariant.info]: 'Info',
+export const getTitle = (): Record<Variant, string> => ({
+  [AlertVariant.success]: 'Success',
+  [AlertVariant.warning]: 'Warning',
+  [AlertVariant.error]: 'Error',
+  [AlertVariant.info]: 'Info',
 });
 
 export const getAccentColor = (
   theme: ThemeDesignTokens
-): Record<SemanticVariant, string> => ({
-  [SemanticVariant.success]: theme.AlertColorSuccessPrimary,
-  [SemanticVariant.warning]: theme.AlertColorWarningPrimary,
-  [SemanticVariant.error]: theme.AlertColorErrorPrimary,
-  [SemanticVariant.info]: theme.AlertColorInfoPrimary,
+): Record<Variant, string> => ({
+  [AlertVariant.success]: theme.AlertColorSuccessPrimary,
+  [AlertVariant.warning]: theme.AlertColorWarningPrimary,
+  [AlertVariant.error]: theme.AlertColorErrorPrimary,
+  [AlertVariant.info]: theme.AlertColorInfoPrimary,
 });
 
 export const getBackgroundColor = (
   theme: ThemeDesignTokens
-): Record<SemanticVariant, ColorValue> => ({
-  [SemanticVariant.success]: theme.AlertColorSuccessSecondary,
-  [SemanticVariant.warning]: theme.AlertColorWarningSecondary,
-  [SemanticVariant.error]: theme.AlertColorErrorSecondary,
-  [SemanticVariant.info]: theme.AlertColorInfoSecondary,
+): Record<Variant, ColorValue> => ({
+  [AlertVariant.success]: theme.AlertColorSuccessSecondary,
+  [AlertVariant.warning]: theme.AlertColorWarningSecondary,
+  [AlertVariant.error]: theme.AlertColorErrorSecondary,
+  [AlertVariant.info]: theme.AlertColorInfoSecondary,
 });
 
-export const getIcon = (): Record<SemanticVariant, IconDefinition> => ({
-  [SemanticVariant.success]: faCheck,
-  [SemanticVariant.warning]: faCircleExclamation,
-  [SemanticVariant.error]: faCircleExclamation,
-  [SemanticVariant.info]: faCircleInfo,
+export const getIcon = (): Record<Variant, IconDefinition> => ({
+  [AlertVariant.success]: faCheck,
+  [AlertVariant.warning]: faCircleExclamation,
+  [AlertVariant.error]: faCircleExclamation,
+  [AlertVariant.info]: faCircleInfo,
 });

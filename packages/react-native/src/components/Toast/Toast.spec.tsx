@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import Toast, { ToastProps } from './Toast';
-import { SemanticVariant } from '../../types';
+import { ToastVariant } from './Toast.types';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCalendarDays } from '@fortawesome/pro-solid-svg-icons/faCalendarDays';
 
@@ -11,7 +11,7 @@ describe('Toast component', () => {
     const props: ToastProps = {
       message: 'this is a toast notification',
       show: true,
-      variant: SemanticVariant.success,
+      variant: ToastVariant.success,
       onClose: jest.fn(),
     };
 
@@ -27,7 +27,7 @@ describe('Toast component', () => {
     const props: ToastProps = {
       message: 'this is toast notification has a custom status icon',
       show: true,
-      variant: SemanticVariant.success,
+      variant: ToastVariant.success,
       onClose: jest.fn(),
       customStatusIcon: <FontAwesomeIcon icon={faCalendarDays} />,
     };
@@ -47,7 +47,7 @@ describe('Toast component', () => {
     const props: ToastProps = {
       message: 'this is toast notification has a close icon',
       show: true,
-      variant: SemanticVariant.success,
+      variant: ToastVariant.success,
       onClose: onClose,
       hasCloseButton: true,
       autoHide: false,

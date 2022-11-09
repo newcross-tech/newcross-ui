@@ -3,11 +3,5 @@ export enum Mode {
   light = 'light',
   dark = 'dark',
 }
-export enum SemanticVariant {
-  success = 'success',
-  warning = 'warning',
-  error = 'error',
-  info = 'info',
-}
 
 export type Variant = 'success' | 'warning' | 'error' | 'info';
