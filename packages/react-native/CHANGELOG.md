@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.30.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.30.0...@newcross-ui/react-native@1.30.1) (2022-11-10)
+
+
+### Bug Fixes
+
+* **HFGO-1430:** toast message space ([82b9701](https://bitbucket.org/newcrossdev/newcross-ui/commits/82b970135c4675d33ede79a07b8ce1f324cbd691))
+
+
+
+
+
 # [1.30.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.29.0...@newcross-ui/react-native@1.30.0) (2022-11-09)
 
 
