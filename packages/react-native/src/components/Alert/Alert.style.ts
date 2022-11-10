@@ -44,6 +44,7 @@ const alertStyle = ({
       }),
     },
     textContainer: {
+      flex: 1,
       flexDirection: 'column',
       paddingHorizontal: AlertTextContainerPadding,
     },

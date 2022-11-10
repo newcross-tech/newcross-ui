@@ -14,18 +14,6 @@ const toastStyle = () => {
       zIndex: 1,
       padding: theme.ToastPadding,
     },
-    statusIcon: {
-      marginRight: theme.ToastPadding,
-    },
-    text: {
-      flex: 1,
-      color: theme.ToastColor,
-    },
-    closeIcon: {
-      marginLeft: theme.ToastPadding,
-      color: theme.ToastCloseIconColor,
-      justifyContent: 'flex-end',
-    },
   });
 };
 
