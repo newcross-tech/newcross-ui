@@ -18,7 +18,7 @@ const HeaderTail = ({ color }: HeaderTailProps) => {
     <View style={styles.headerTailContainer}>
       <Svg
         style={{ position: 'absolute' }}
-        viewBox="18 4 300 24"
+        viewBox="18 4 300 20"
         fill="none"
         testID="header-tail"
       >
