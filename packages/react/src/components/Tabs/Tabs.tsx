@@ -72,17 +72,15 @@ const Tabs = ({
                     }
                     numberOfLines={1}
                   >
-                    <Styled.DisabledColor disabled={disabled}>
-                      {tab}
-                    </Styled.DisabledColor>
+                    <Styled.Content disabled={disabled}>{tab}</Styled.Content>
                   </Typography>
                 ) : (
-                  <Styled.DisabledColor
+                  <Styled.Content
                     disabled={disabled}
                     data-testid={`tab-view-${index}`}
                   >
                     {tab}
-                  </Styled.DisabledColor>
+                  </Styled.Content>
                 )}
               </Styled.Tab>
               <Styled.Divider

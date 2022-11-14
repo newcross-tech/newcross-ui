@@ -33,3 +33,5 @@ export {
 export { default as Avatar, AvatarProps } from './components/Avatar';
 export { default as Tabs, TabsProps } from './components/Tabs';
 export { default as Badge, BadgeProps } from './components/Badge';
+export { default as Pill, PillProps } from './components/Pill';
+export { default as PillGroup, PillGroupProps } from './components/PillGroup';

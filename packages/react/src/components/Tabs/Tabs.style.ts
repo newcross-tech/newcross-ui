@@ -37,9 +37,11 @@ export const InnerContainer = styled.div<DisabledType>`
   `};
 `;
 
-export const DisabledColor = styled.div<DisabledType>`
+export const Content = styled.div<DisabledType>`
   ${({ theme, disabled }: ExtendedTheme<DisabledType>) => css`
     color: ${disabled ? theme.TabsLabelDisabledColor : theme.TabsLabelColor};
+    padding-left: ${theme.TabsPaddingHorizontal};
+    padding-right: ${theme.TabsPaddingHorizontal};
   `};
 `;
 
@@ -57,6 +59,7 @@ export const ActiveTab = styled(animated.div)<DisabledType>`
   ${({ theme, disabled }: ExtendedTheme<DisabledType>) => css`
     background-color: ${theme.TabsActiveTabBackgroundColor};
     border-radius: ${theme.TabsActiveTabBorderRadius};
+
     height: ${theme.TabsActiveTabHeight};
     background-color: ${disabled && theme.TabsActiveTabDisabledBackgroundColor};
     box-shadow: ${theme.TabsActiveTabShadowOffsetWidth}px ${theme.TabsActiveTabShadowOffsetHeight}px
@@ -69,7 +72,5 @@ export const Divider = styled.div<TabsPropsDivider>`
     width: calc(${theme.TabsDividerWidth} / 4);
     height: calc(${theme.TabsDividerHeight} / 2);
     background-color: ${showDivider && theme.TabsDividerBackgroundColor};
-    margin-right: ${theme.SpacingBase12};
-    margin-left: ${theme.SpacingBase12};
   `};
 `;

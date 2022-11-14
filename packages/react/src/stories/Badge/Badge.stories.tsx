@@ -17,6 +17,7 @@ import Badge, {
   BadgeSizes,
 } from '../../components/Badge';
 import Container from '../Container';
+import Spacing, { SpacingPositions, SpacingSizes } from '../Spacing';
 
 const { SpacingBase24, SpacingBase48 } = web.healthforce;
 
@@ -51,11 +52,16 @@ const Icon = styled(FontAwesomeIcon)<IconProps>`
 export const VariantsWithIcons = () => {
   return (
     <Container display="inline-flex" justifyContent="space-around">
+      <Spacing position={SpacingPositions.Horizontal} />
       <Badge size={BadgeSizes.small} position={BadgePositions.TopRight}>
         <StyledWrapper>
           <Icon icon={faBarsFilter} $size={SpacingBase24} />
         </StyledWrapper>
       </Badge>
+      <Spacing
+        size={SpacingSizes.Large}
+        position={SpacingPositions.Horizontal}
+      />
       <Badge
         size={BadgeSizes.medium}
         badgeContent={9}
@@ -63,6 +69,10 @@ export const VariantsWithIcons = () => {
       >
         <Icon icon={faUser} $size={SpacingBase24} />
       </Badge>
+      <Spacing
+        size={SpacingSizes.Large}
+        position={SpacingPositions.Horizontal}
+      />
       <Badge
         size={BadgeSizes.large}
         badgeContent={'!'}
