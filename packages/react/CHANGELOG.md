@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.14.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.13.0...@newcross-ui/react@1.14.0) (2022-11-15)
+
+
+### Features
+
+* **ASK-120:** add Dropdown Component Phase 1 ([7f7dcf2](https://bitbucket.org/newcrossdev/newcross-ui/commits/7f7dcf2911c649ad8f18d3b7ce942156f18d1f27))
+
+
+
+
+
 # [1.13.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.12.1...@newcross-ui/react@1.13.0) (2022-11-15)
 
 
