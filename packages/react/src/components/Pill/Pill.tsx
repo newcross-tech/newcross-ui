@@ -57,6 +57,7 @@ const Pill = ({
   useEffect(() => {
     setSelected(selected);
   }, [selected]);
+
   const onRemoveHandler = () => {
     if (disabled) return;
     setIsDeleted(true);

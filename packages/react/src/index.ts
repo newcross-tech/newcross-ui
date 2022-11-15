@@ -35,3 +35,11 @@ export { default as Tabs, TabsProps } from './components/Tabs';
 export { default as Badge, BadgeProps } from './components/Badge';
 export { default as Pill, PillProps } from './components/Pill';
 export { default as PillGroup, PillGroupProps } from './components/PillGroup';
+export {
+  default as ToggleButtonGroup,
+  ToggleButtonGroupProps,
+} from './components/ToggleButtonGroup';
+export {
+  default as ToggleButton,
+  ToggleButtonProps,
+} from './components/ToggleButton';
