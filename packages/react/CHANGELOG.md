@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.12.1...@newcross-ui/react@1.13.0) (2022-11-15)
+
+
+### Features
+
+* **ask-59:** Toggle Button + group + tests ([1db8288](https://bitbucket.org/newcrossdev/newcross-ui/commits/1db82887c8107068ee64eff63f30bce4512f3f2b))
+
+
+
+
+
 ## [1.12.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.12.0...@newcross-ui/react@1.12.1) (2022-11-14)
 
 **Note:** Version bump only for package @newcross-ui/react
