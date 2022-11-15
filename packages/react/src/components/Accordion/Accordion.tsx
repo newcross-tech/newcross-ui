@@ -1,10 +1,12 @@
-import React, { ReactNode, useEffect, useRef, useState } from 'react';
-import * as Styled from './Accordion.style';
-import { Icon } from './Accordion.style';
-import { TypographyVariant } from '../Typography';
-import { faChevronDown } from '@fortawesome/pro-solid-svg-icons/faChevronDown';
 import { RotateProp } from '@fortawesome/fontawesome-svg-core';
+import { faChevronDown } from '@fortawesome/pro-solid-svg-icons/faChevronDown';
 import { useSpring } from '@react-spring/web';
+import { ReactNode, useEffect, useRef, useState } from 'react';
+import { useFirstRender } from '../../hooks/useFirstRender';
+import useTheme from '../../hooks/useTheme';
+import { TypographyVariant } from '../Typography';
+import { defaultAnimationSpeed } from './Accordion.constants';
+import * as Styled from './Accordion.style';
 
 export type AccordionProps = {
   /**
@@ -28,6 +30,10 @@ export type AccordionProps = {
    */
   label?: string;
   /**
+   * Used to override default animation speed.
+   */
+  $animationSpeed?: number;
+  /**
    * Used to locate this view in end-to-end tests.
    */
   testID?: string;
@@ -39,11 +45,14 @@ const Accordion = ({
   onClick,
   children,
   expanded = false,
+  $animationSpeed = defaultAnimationSpeed,
   label = 'Label',
 }: AccordionProps) => {
   const [openAccordion, setOpenAccordion] = useState(expanded);
   const [contentMaxHeight, setContentMaxHeight] = useState(0);
+  const theme = useTheme();
   const ref = useRef<HTMLDivElement>(null);
+  const { isFirstRender } = useFirstRender();
 
   useEffect(() => {
     setOpenAccordion(expanded);
@@ -65,12 +74,18 @@ const Accordion = ({
     return () => window.removeEventListener('resize', getContentHeight);
   }, [ref, contentMaxHeight]);
 
-  const springProps = useSpring(
-    Styled.getAnimatedStyles({
-      openAccordion,
-      contentMaxHeight,
-    })
-  );
+  const initialStyles = isFirstRender
+    ? {}
+    : Styled.getAnimatedStyles({
+        theme,
+        openAccordion,
+        contentMaxHeight,
+        $animationSpeed,
+      });
+
+  const springProps = useSpring({
+    ...initialStyles,
+  });
 
   return (
     <div data-testid={`accordion-pressable-container-${testID}`}>
@@ -90,9 +105,10 @@ const Accordion = ({
               {label}
             </Styled.Text>
           </Styled.HeaderLabel>
-          <Icon
+          <Styled.Icon
             icon={faChevronDown}
             rotation={(openAccordion ? 180 : 0) as RotateProp}
+            $animationSpeed={$animationSpeed}
           />
         </Styled.HeaderContent>
       </Styled.HeaderContainer>

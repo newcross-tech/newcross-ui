@@ -1,11 +1,11 @@
-import React from 'react';
 import { render } from '@testing-library/react';
+import React from 'react';
+import { byTestId } from 'testing-library-selector';
+import { axe } from '../../../testUtils';
+import ToggleButton from '../ToggleButton/ToggleButton';
 import ToggleButtonGroup, {
   getMultipleSelectedValues,
 } from './ToggleButtonGroup';
-import ToggleButton from '../ToggleButton/ToggleButton';
-import { byTestId } from 'testing-library-selector';
-import axe from '../../../testutils';
 
 describe('ToggleButtonGroup', () => {
   const baseTestId = 'toggle-button-group';

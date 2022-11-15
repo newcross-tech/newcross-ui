@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import * as Styled from './Typography.style';
 import { TypographyVariant } from './Typography.types';
 
@@ -23,7 +23,7 @@ export type TypographyProps = {
    * Used to set maximum number of lines
    */
   numberOfLines?: number;
-};
+} & HTMLAttributes<HTMLDivElement>;
 
 const Typography = ({ children, testID, ...rest }: TypographyProps) => {
   return (

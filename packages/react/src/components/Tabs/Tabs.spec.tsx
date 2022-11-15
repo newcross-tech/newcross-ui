@@ -6,7 +6,7 @@ import React from 'react';
 import { byTestId, byText } from 'testing-library-selector';
 import Tabs, { TabsProps } from './Tabs';
 
-import axe from '../../../testutils';
+import { axe } from '../../../testUtils';
 
 describe('Tabs Component', () => {
   const baseTestId = 'tab';

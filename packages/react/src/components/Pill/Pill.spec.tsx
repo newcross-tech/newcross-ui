@@ -1,10 +1,10 @@
-import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import Pill, { PillProps } from './Pill';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDog } from '@fortawesome/pro-solid-svg-icons/faDog';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { fireEvent, render } from '@testing-library/react';
+import React from 'react';
 import { byTestId, byText } from 'testing-library-selector';
-import axe from '../../../testutils';
+import { axe } from '../../../testUtils';
+import Pill, { PillProps } from './Pill';
 
 describe('Pill Component', () => {
   const baseTestId = 'pill';

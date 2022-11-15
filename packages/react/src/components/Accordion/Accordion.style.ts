@@ -1,26 +1,28 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { animated } from '@react-spring/web';
 import styled, { css } from 'styled-components';
 import { ExtendedTheme, Theme } from '../../types/Theme';
 import Typography from '../Typography';
-import { AccordionAnimatedStyleArgs, AccordionContentProps, AccordionTextProps } from './Accordion.types';
-import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
-import { animated } from '@react-spring/web';
-import useTheme from '../../hooks/useTheme';
 
-const getTransitionStyles = () => css`
-  transition: all 0.5s ease-in-out;
-`;
+import {
+  AccordionAnimatedStyleArgs,
+  AccordionContentProps,
+  AccordionIconProps,
+  AccordionTextProps,
+} from './Accordion.types';
 
-export const getAnimatedStyles = ({ openAccordion, contentMaxHeight }: AccordionAnimatedStyleArgs) => {
-  const theme = useTheme();
-
-  return {
-    opacity: openAccordion ? 1 : 0,
-    maxHeight: openAccordion && contentMaxHeight ? `${contentMaxHeight}px` : '0px',
-    config: { duration: 500 },
-    paddingTop: openAccordion ? theme.AccordionHeaderContentPaddingVertical : '0',
-    paddingBottom: openAccordion ? theme.AccordionHeaderContentPaddingVertical : '0',
-  };
-};
+export const getAnimatedStyles = ({
+  theme,
+  openAccordion,
+  contentMaxHeight,
+  $animationSpeed,
+}: AccordionAnimatedStyleArgs) => ({
+  opacity: openAccordion ? 1 : 0,
+  maxHeight: openAccordion && contentMaxHeight ? `${contentMaxHeight}px` : '0px',
+  config: { duration: $animationSpeed * 1000 },
+  paddingTop: openAccordion ? theme.AccordionHeaderContentPaddingVertical : '0',
+  paddingBottom: openAccordion ? theme.AccordionHeaderContentPaddingVertical : '0',
+});
 
 export const BodyContainer = styled.div`
   overflow: hidden;
@@ -74,8 +76,8 @@ export const Text = styled(Typography)`
 `;
 
 export const Icon = styled(FontAwesomeIcon)`
-  ${getTransitionStyles()};
-  ${({ theme }: ExtendedTheme<FontAwesomeIconProps>) => css`
+  ${({ theme, $animationSpeed }: ExtendedTheme<AccordionIconProps>) => css`
+    transition: ${`all ${$animationSpeed}s ease-in-out`};
     margin-top: ${theme.AccordionIconMarginVertical};
     margin-top: ${theme.AccordionIconMarginVertical};
   `}

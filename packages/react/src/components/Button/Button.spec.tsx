@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
 import { byRole, byTestId } from 'testing-library-selector';
-import axe from '../../../testutils';
+import { axe } from '../../../testUtils';
 import Button, { ButtonProps } from './Button';
 
 describe('Button', () => {

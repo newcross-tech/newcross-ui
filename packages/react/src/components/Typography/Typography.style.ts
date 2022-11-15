@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { getElipsisStyles } from '../../../utils/getElipsisStyles';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { FontWeight } from '../../types/FontWeight';
 import { ExtendedTheme } from '../../types/Theme';
@@ -64,14 +65,7 @@ export const getTypographyStyles = (theme: ThemeDesignTokens) => ({
 
 export const getCoreStyles = ({ theme, variant, gutterBottom, numberOfLines }: ExtendedTheme<TypographyProps>) => css`
   ${variant && getTypographyStyles(theme)[variant]};
-  ${numberOfLines &&
-  css`
-    display: -webkit-box;
-    -webkit-line-clamp: ${numberOfLines};
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  `};
+  ${numberOfLines && getElipsisStyles(numberOfLines)};
   margin-bottom: ${gutterBottom ? theme.SpacingBase8 : theme.SpacingBase0};
 `;
 

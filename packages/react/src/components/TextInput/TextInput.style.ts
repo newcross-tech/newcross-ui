@@ -5,7 +5,7 @@ import Typography from '../Typography';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const getActivePaddingStyles = (theme: ThemeDesignTokens) => css`
+export const getActivePaddingStyles = (theme: ThemeDesignTokens) => css`
   padding-top: calc(${theme.TextInputPaddingVertical} - 1px);
   padding-bottom: calc(${theme.TextInputPaddingVertical} - 1px);
 `;

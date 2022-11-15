@@ -3,7 +3,7 @@ import React from 'react';
 import { byPlaceholderText, byTestId, byText } from 'testing-library-selector';
 import TextInput, { TextInputProps } from './TextInput';
 
-import axe from '../../../testutils';
+import { axe } from '../../../testUtils';
 
 const renderComponent = (props: TextInputProps) => {
   const customProps = {

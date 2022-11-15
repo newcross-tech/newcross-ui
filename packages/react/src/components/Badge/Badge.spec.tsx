@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
 import { byTestId, byText } from 'testing-library-selector';
-import axe from '../../../testutils';
+import { axe } from '../../../testUtils';
 import Typography, { TypographyVariant } from '../Typography';
 import Badge, { BadgeProps } from './Badge';
 

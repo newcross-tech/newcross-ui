@@ -1,7 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
-import React from 'react';
 import { byTestId, byText } from 'testing-library-selector';
-import axe from '../../../testutils';
+import { axe, executeKeyPress } from '../../../testUtils';
 import Checkbox, { CheckboxProps } from './Checkbox';
 import { CheckboxType } from './Checkbox.types';
 
@@ -139,5 +138,22 @@ describe('Checkbox Component', () => {
 
     // Assert
     expect(ui.checkbox.get()).toBeTruthy();
+  });
+
+  it('when Spacebar pressed the checkbox checked successfully', () => {
+    // Arrange
+    const props: CheckboxProps = {
+      label: 'Label',
+      testID: 'checkbox-component',
+      checked: false,
+    };
+
+    // Act
+    renderComponent({ ...props });
+
+    executeKeyPress(ui.checkboxLabel.get());
+
+    // Assert
+    expect(ui.checkboxIcon.get()).toBeTruthy();
   });
 });

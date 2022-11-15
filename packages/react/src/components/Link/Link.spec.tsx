@@ -3,7 +3,7 @@ import React from 'react';
 import { byTestId, byText } from 'testing-library-selector';
 import Link, { LinkProps } from './Link';
 
-import axe from '../../../testutils';
+import { axe } from '../../../testUtils';
 
 jest.mock('@fortawesome/react-fontawesome', () => ({
   FontAwesomeIcon: 'circle-chevron-right',

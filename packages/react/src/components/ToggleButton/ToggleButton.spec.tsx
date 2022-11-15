@@ -1,10 +1,10 @@
-import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
-import ToggleButton, { ToggleButtonProps } from './ToggleButton';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDays } from '@fortawesome/pro-solid-svg-icons/faCalendarDays';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { fireEvent, render } from '@testing-library/react';
+import React from 'react';
 import { byTestId, byText } from 'testing-library-selector';
-import axe from '../../../testutils';
+import { axe } from '../../../testUtils';
+import ToggleButton, { ToggleButtonProps } from './ToggleButton';
 
 describe('Toggle Button Component', () => {
   const baseTestId = 'toggle-button';

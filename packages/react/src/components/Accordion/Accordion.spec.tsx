@@ -4,8 +4,7 @@ import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
 import { byTestId } from 'testing-library-selector';
 import Accordion, { AccordionProps } from './Accordion';
-
-import axe from '../../../testutils';
+import { axe } from '../../../testUtils';
 
 const renderComponent = (props: AccordionProps) => {
   // Arrange

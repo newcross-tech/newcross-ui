@@ -4,7 +4,7 @@ import { byText } from 'testing-library-selector';
 import { TypographyVariant } from '../Typography';
 import Label, { LabelProps } from './Label';
 
-import axe from '../../../testutils';
+import { axe } from '../../../testUtils';
 
 describe('Label', () => {
   const ui = {

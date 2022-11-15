@@ -1,9 +1,9 @@
-import React from 'react';
 import { render } from '@testing-library/react';
+import React from 'react';
+import { byTestId } from 'testing-library-selector';
+import { axe } from '../../../testUtils';
 import Pill from '../Pill/Pill';
 import PillGroup, { PillGroupProps } from './PillGroup';
-import { byTestId } from 'testing-library-selector';
-import axe from '../../../testutils';
 
 describe('Pill Group Component', () => {
   const baseTestId = 'pill-group';
