@@ -89,3 +89,6 @@ export {
 } from './components/ListOption';
 export { Mode } from './types';
 export { default as Carousel, CarouselProps } from './components/Carousel';
+export { Loader, LoaderProps } from './components/Loader';
+export { HealthforceIcon } from './icons/HealthforceIcon';
+export { NewcrossBrandIcon } from './icons/NewcrossBrandIcon';

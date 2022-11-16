@@ -3,8 +3,7 @@
  * @param fn
  * @param duration
  */
-export const delay = (fn: VoidFunction, duration: number) => {
-  setTimeout(() => {
+export const delay = (fn: VoidFunction, duration: number) =>
+  setInterval(() => {
     return fn();
   }, duration);
-};

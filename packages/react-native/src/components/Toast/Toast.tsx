@@ -72,8 +72,12 @@ const Toast = ({
   const animationProps = customAnimatedProps || animatedProps;
 
   useEffect(() => {
-    if (!autoHide) return;
-    autoHide && show && delay(onClose, duration);
+    if (!autoHide || !show) {
+      return;
+    }
+    const interval = delay(onClose, duration);
+
+    return () => clearInterval(interval);
   }, [show]);
 
   return (

@@ -1,0 +1,1 @@
+export { HealthforceIcon } from './HealthforceIcon';

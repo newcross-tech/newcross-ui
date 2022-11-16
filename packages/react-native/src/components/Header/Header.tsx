@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import headerStyle from './Header.style';
-import { View, ViewStyle } from 'react-native';
+import { View, ViewProps, ViewStyle } from 'react-native';
 import { HeaderColors } from './Header.types';
 import HeaderTail from './HeaderTail/HeaderTail';
 
@@ -29,7 +29,7 @@ export type HeaderProps = {
    * testID for end to end testing.
    */
   testID?: string;
-};
+} & ViewProps;
 
 const Header = ({
   color = HeaderColors.primary,
@@ -38,11 +38,12 @@ const Header = ({
   style,
   children,
   testID,
+  ...rest
 }: HeaderProps) => {
   const styles = headerStyle(color);
 
   return (
-    <View testID={testID}>
+    <View {...rest} testID={testID}>
       <View style={[styles.headerContainer, style]}>{children}</View>
       {hasHeaderTail && (
         <View testID="header-tail-content">

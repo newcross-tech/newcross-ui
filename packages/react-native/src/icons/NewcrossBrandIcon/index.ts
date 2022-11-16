@@ -1,0 +1,1 @@
+export { NewcrossBrandIcon } from './NewcrossBrandIcon';
