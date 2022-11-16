@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.31.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.30.1...@newcross-ui/react-native@1.31.0) (2022-11-16)
+
+
+### Features
+
+* **HFGO-1447:** create loading component ([a579737](https://bitbucket.org/newcrossdev/newcross-ui/commits/a5797374be269ac5a8aee461d48bba35051b1498))
+
+
+
+
+
 ## [1.30.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.30.0...@newcross-ui/react-native@1.30.1) (2022-11-10)
 
 
