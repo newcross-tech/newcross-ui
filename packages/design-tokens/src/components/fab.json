@@ -38,6 +38,9 @@
       }
     },
     "content": {
+      "slected-color": {
+        "value": "{brand.color.secondary.100.value}"
+      },
       "color": {
         "value": "{color.neutral.white.value}"
       },

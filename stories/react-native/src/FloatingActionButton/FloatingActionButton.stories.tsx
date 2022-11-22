@@ -10,6 +10,7 @@ import {
   TypographyVariant,
 } from '@newcross-ui/react-native';
 import { faCalendarDays } from '@fortawesome/pro-light-svg-icons/faCalendarDays';
+import { faBarsFilter } from '@fortawesome/pro-regular-svg-icons/faBarsFilter';
 
 export default {
   title: 'ReactNative/Components/FloatingActionButton',
@@ -30,8 +31,19 @@ export const Variants = () => {
       </Typography>
       <Spacing size={SpacingSizes.Large} />
       <FloatingActionButton
-        icon={faCalendarDays}
+        icon={faBarsFilter}
         variant={FABVariant.iconWithText}
+        text={'test'}
+      />
+      <Spacing size={SpacingSizes.Large} />
+      <Typography variant={TypographyVariant.heading4}>
+        Floating Action Button with text and selected
+      </Typography>
+      <Spacing size={SpacingSizes.Large} />
+      <FloatingActionButton
+        icon={faBarsFilter}
+        variant={FABVariant.iconWithText}
+        selected
         text={'test'}
       />
     </Container>

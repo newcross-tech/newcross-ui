@@ -8,6 +8,11 @@ const fabStyle = (variant: FABVariant) => {
     FabContainerBorderRadius,
     FabContentColor,
     FabContentWithTextMarginRight,
+    FabContainerShadowColor,
+    FabContainerShadowOffsetWidth,
+    FabContainerShadowOffsetHeight,
+    FabContainerShadowRadius,
+    FabContainerShadowElevation,
   } = useTheme();
   const containerStyle = getContainerStyle(useTheme());
   const isWithText = variant === 'iconWithText';
@@ -16,6 +21,14 @@ const fabStyle = (variant: FABVariant) => {
     container: {
       backgroundColor: FabContainerColor,
       borderRadius: FabContainerBorderRadius,
+      shadowColor: FabContainerShadowColor,
+      shadowOffset: {
+        width: FabContainerShadowOffsetWidth,
+        height: FabContainerShadowOffsetHeight,
+      },
+      shadowRadius: FabContainerShadowRadius,
+      shadowOpacity: 0.25,
+      elevation: FabContainerShadowElevation,
       alignSelf: 'flex-start',
       alignItems: 'center',
       justifyContent: 'center',
