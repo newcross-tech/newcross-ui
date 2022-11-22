@@ -1,0 +1,54 @@
+{
+  "fab": {
+    "container": {
+      "color": {
+        "value": "{brand.color.primary.value}"
+      },
+      "border-radius": {
+        "value": "{border.base.radius.rounded.value}"
+      },
+      "shadow": {
+        "color": {
+          "value": "{color.neutral.black.value}"
+        },
+        "offset": {
+          "width": {
+            "value": "{shadow.base.offset.sm.value}"
+          },
+          "height": {
+            "value": "{shadow.base.offset.md.value}"
+          }
+        },
+        "radius": {
+          "value": "{shadow.base.offset.md.value}"
+        },
+        "elevation": {
+          "value": "{shadow.base.elevation.md.value}"
+        }
+      },
+      "icon-only": {
+        "size": {
+          "value": "{spacing.base.48.value}"
+        }
+      },
+      "with-text": {
+        "size": {
+          "value": "{spacing.base.32.value}"
+        }
+      }
+    },
+    "content": {
+      "color": {
+        "value": "{color.neutral.white.value}"
+      },
+      "size": {
+        "value": "{spacing.base.16.value}"
+      },
+      "with-text": {
+        "margin-right": {
+          "value": "{spacing.base.8.value}"
+        }
+      }
+    }
+  }
+}
