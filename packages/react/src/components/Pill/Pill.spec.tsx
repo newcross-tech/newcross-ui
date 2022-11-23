@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
 import { byTestId, byText } from 'testing-library-selector';
-import { axe } from '../../../testUtils';
+import { axe, executeKeyPress } from '../../../testUtils';
 import Pill, { PillProps } from './Pill';
 
 describe('Pill Component', () => {
@@ -14,11 +14,6 @@ describe('Pill Component', () => {
     pillComp: byTestId(`${baseTestId}-component`),
     pillCompSelected: byTestId(`${baseTestId}-component-selected`),
     pillByReg: (reg: RegExp) => byText(reg),
-  };
-  const options = {
-    key: 'Space',
-    code: 'Space',
-    charCode: 32,
   };
 
   it('should not have any a11y errors', async () => {
@@ -71,7 +66,7 @@ describe('Pill Component', () => {
     };
     // Act
     render(<Pill {...props} />);
-    fireEvent.keyPress(ui.pillComp.get(), options);
+    executeKeyPress(ui.pillComp.get());
     // Assert
     expect(ui.pillCompSelected.get()).toBeInTheDocument();
   });
@@ -84,7 +79,7 @@ describe('Pill Component', () => {
     };
     // Act
     render(<Pill {...props} />);
-    fireEvent.keyPress(ui.pillClickable.get(), options);
+    executeKeyPress(ui.pillClickable.get());
     // Assert
     expect(ui.pillComp.query()).not.toBeInTheDocument();
   });

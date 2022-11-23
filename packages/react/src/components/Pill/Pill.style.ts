@@ -1,8 +1,9 @@
 import { PillProps } from './Pill';
 import styled, { css } from 'styled-components';
-import { ExtendedTheme, Theme } from '../../types/Theme';
+import { ExtendedTheme } from '../../types/Theme';
 import Typography from '../Typography';
 import { BackGroundProps, IconProps, RemoveIconProps, SelectedProps } from './Pill.types';
+import { getTabbedStateStyles } from '../../../utils/getTabbedStateStyles';
 
 const getBackgroundColor = ({ theme, disabled, isSelected }: ExtendedTheme<BackGroundProps>) => {
   if (disabled)
@@ -17,10 +18,6 @@ const getBackgroundColor = ({ theme, disabled, isSelected }: ExtendedTheme<BackG
     ${theme.PillBackgroundColor}
   `;
 };
-const getFocusVisableStyles = ({ theme }: Theme) => css`
-  outline: ${theme.ColorBaseBlue400} auto ${theme.LabelOutline};
-  outline-offset: ${theme.LabelOutlineOffset};
-`;
 
 export const Pill = styled.div<SelectedProps>`
   ${({ theme, disabled, isRemovable, isSelected }: ExtendedTheme<SelectedProps>) => css`
@@ -33,9 +30,7 @@ export const Pill = styled.div<SelectedProps>`
     border-color: ${disabled ? theme.PillDisabledBorderColor : theme.PillBorderColor};
     background-color: ${getBackgroundColor({ theme, disabled, isSelected })};
 
-    &:focus-visible {
-      ${getFocusVisableStyles({ theme })}
-    }
+    ${getTabbedStateStyles()}
   `};
 `;
 
@@ -66,8 +61,6 @@ export const RemoveIcon = styled.div<RemoveIconProps>`
     color: ${theme.PillIconDisabledColor};
     cursor: ${!disabled && 'pointer'};
 
-    &:focus-visible {
-      ${getFocusVisableStyles({ theme })}
-    }
+    ${getTabbedStateStyles()}
   `};
 `;

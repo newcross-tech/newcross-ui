@@ -105,7 +105,7 @@ export const Content = styled.div`
       padding-right: ${theme.BadgePadding};
       padding-left: ${theme.BadgePadding};
     `};
-    position: absolute;
+    position: ${position ? 'absolute' : 'relative'};
     ${getPositionValues(theme)[size as BadgeSizes][position as BadgePositions]};
     ${getHeightWidthValues(theme)[size as BadgeSizes]};
     background-color: ${theme.BadgeBackgroundColor};

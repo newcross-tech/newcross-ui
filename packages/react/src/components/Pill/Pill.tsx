@@ -92,7 +92,7 @@ const Pill = ({
       disabled={disabled}
       onClick={handleSelect}
       isRemovable={removable}
-      tabIndex={!disabled && !removable ? 0 : undefined}
+      tabIndex={!disabled && !removable ? 0 : -1}
       onKeyPress={(event) => onKeyPressHandler(event, true)}
     >
       <Styled.Content>
@@ -110,7 +110,7 @@ const Pill = ({
           <Styled.RemoveIcon
             data-testid={`${baseTestId}-clickable${testID}`}
             onClick={onRemoveHandler}
-            tabIndex={!disabled ? 0 : undefined}
+            tabIndex={!disabled ? 0 : -1}
             onKeyPress={(event) => onKeyPressHandler(event, false)}
             disabled={disabled}
             hasIcon={!!icon}

@@ -3,6 +3,7 @@ import { ExtendedTheme } from '../../types/Theme';
 import { ToggleButtonProps } from './ToggleButton';
 import Typography from '../Typography';
 import { ContentProps } from './ToggleButton.types';
+import { getTabbedStateStyles } from '../../../utils/getTabbedStateStyles';
 
 export const Container = styled.button<ToggleButtonProps>`
   ${({ theme, selected, fullWidth }: ExtendedTheme<ToggleButtonProps>) => css`
@@ -18,10 +19,7 @@ export const Container = styled.button<ToggleButtonProps>`
 
     width: ${fullWidth && '100%'};
     min-width: fit-content;
-    &:focus-visible {
-      outline: ${theme.ColorBaseBlue400} auto ${theme.LabelOutline};
-      outline-offset: ${theme.LabelOutlineOffset};
-    }
+    ${getTabbedStateStyles()}
   `};
 `;
 

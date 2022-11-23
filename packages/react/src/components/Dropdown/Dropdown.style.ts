@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { animated } from '@react-spring/web';
 import styled, { css } from 'styled-components';
 import { getElipsisStyles } from '../../../utils/getElipsisStyles';
+import { getTabbedStateStyles } from '../../../utils/getTabbedStateStyles';
 import { ExtendedTheme, Theme } from '../../types/Theme';
 import Typography, { TypographyProps } from '../Typography';
 import { defaultAnimationSpeed, dividerRotationDeg, optionNumberOfLines } from './Dropdown.constants';
@@ -122,11 +123,7 @@ export const HeaderContainer = styled.div`
     background-color: ${theme.AccordionHeaderBackgroundColor};
     border: ${theme.TextInputBorderWidth} solid ${theme.TextInputBorderColor};
     border-radius: ${theme.TextInputBorderRadius};
-
-    :focus-visible {
-      outline: ${theme.ColorBaseBlue400} auto ${theme.LabelOutline};
-      outline-offset: ${theme.SpacingBase4};
-    }
+    ${getTabbedStateStyles(theme.SpacingBase4)}
 
     ${disabled &&
     css`

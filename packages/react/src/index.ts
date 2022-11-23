@@ -43,3 +43,4 @@ export {
   default as ToggleButton,
   ToggleButtonProps,
 } from './components/ToggleButton';
+export { default as Card, CardProps } from './components/Card';

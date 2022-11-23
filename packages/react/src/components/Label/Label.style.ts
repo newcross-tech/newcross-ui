@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { getTabbedStateStyles } from '../../../utils/getTabbedStateStyles';
 import { ExtendedTheme } from '../../types/Theme';
 import { TypographyProps } from '../Typography';
 import * as TypographyStyled from '../Typography/Typography.style';
@@ -16,9 +17,6 @@ export const Label = styled.label<LabelProps>`
     margin-left: ${theme.CheckboxLabelMarginHorizontal};
     margin-right: ${theme.CheckboxLabelMarginHorizontal};
 
-    &:focus-visible {
-      outline: ${theme.ColorBaseBlue400} auto ${theme.LabelOutline};
-      outline-offset: ${theme.LabelOutlineOffset};
-    }
+    ${getTabbedStateStyles()}
   `}
 `;

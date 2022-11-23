@@ -112,7 +112,7 @@ const Dropdown = ({
         </Styled.Label>
       )}
       <Styled.HeaderContainer
-        tabIndex={!disabled ? 0 : undefined}
+        tabIndex={!disabled ? 0 : -1}
         onKeyPress={(event: React.KeyboardEvent<HTMLElement>) =>
           onSpacePressTrigger(event, toggleFocus)
         }

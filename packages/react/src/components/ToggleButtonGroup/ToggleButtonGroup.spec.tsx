@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
 import { byTestId } from 'testing-library-selector';
 import { axe } from '../../../testUtils';
@@ -31,8 +31,10 @@ describe('ToggleButtonGroup', () => {
     const results = await axe(document.body);
     expect(results).toHaveNoViolations();
   });
+
   it('renders successfully', () => {
     // Arrange
+
     const props = {
       onSingleSelect: jest.fn(),
       selectedValue: ['1'],
@@ -45,6 +47,7 @@ describe('ToggleButtonGroup', () => {
         <ToggleButton value="2">Date</ToggleButton>
       </ToggleButtonGroup>
     );
+
     // Assert
     expect(ui.toggleGroupComp.get()).toBeInTheDocument();
   });
@@ -70,10 +73,14 @@ describe('ToggleButtonGroup', () => {
         </ToggleButton>
       </ToggleButtonGroup>
     );
+
+    fireEvent.click(ui.toggleGroupId('3').get());
+
     // Assert
     expect(ui.toggleGroupSelectedId('1').get()).toBeInTheDocument();
     expect(ui.toggleGroupSelectedId('2').get()).toBeInTheDocument();
     expect(ui.toggleGroupId('3').get()).toBeInTheDocument();
+    expect(isMultiSelect).toHaveBeenCalled();
   });
 
   it('selects a single toggle buttons when selectMultiple prop is false', () => {
@@ -97,11 +104,12 @@ describe('ToggleButtonGroup', () => {
         </ToggleButton>
       </ToggleButtonGroup>
     );
-
+    fireEvent.click(ui.toggleGroupId('2').get());
     // Assert
     expect(ui.toggleGroupSelectedId('1').get()).toBeInTheDocument();
     expect(ui.toggleGroupId('2').get()).toBeInTheDocument();
     expect(ui.toggleGroupId('3').get()).toBeInTheDocument();
+    expect(onSingleSelect).toHaveBeenCalled();
   });
 
   it('returns correct list of values when getMultipleSelectedValues is called', () => {
