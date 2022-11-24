@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native';
-import useTheme from '../../hooks/useTheme';
+import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { FABVariant, getContainerStyle } from './FloatingActionButton.types';
 
-const fabStyle = (variant: FABVariant) => {
+const fabStyle = (variant: FABVariant, theme: ThemeDesignTokens) => {
   const {
     FabContainerColor,
     FabContainerBorderRadius,
@@ -13,8 +13,9 @@ const fabStyle = (variant: FABVariant) => {
     FabContainerShadowOffsetHeight,
     FabContainerShadowRadius,
     FabContainerShadowElevation,
-  } = useTheme();
-  const containerStyle = getContainerStyle(useTheme());
+    FabContainerShadowOpacity,
+  } = theme;
+  const containerStyle = getContainerStyle(theme);
   const isWithText = variant === 'iconWithText';
 
   return StyleSheet.create({
@@ -27,7 +28,7 @@ const fabStyle = (variant: FABVariant) => {
         height: FabContainerShadowOffsetHeight,
       },
       shadowRadius: FabContainerShadowRadius,
-      shadowOpacity: 0.25,
+      shadowOpacity: FabContainerShadowOpacity,
       elevation: FabContainerShadowElevation,
       alignSelf: 'flex-start',
       alignItems: 'center',

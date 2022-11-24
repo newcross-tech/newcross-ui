@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react-native';
+import { fireEvent, render, waitFor } from '@testing-library/react-native';
 import FloatingActionButton, {
   FloatingActionButtonProps,
 } from './FloatingActionButton';
@@ -9,10 +9,10 @@ describe('FloatingActionButton Component', () => {
   it('renders successfully with icon only', () => {
     // Act
     const { getByTestId } = render(<FloatingActionButton />);
-    const checkbox = getByTestId(/floating-action-button/i);
+    const button = getByTestId(/floating-action-button/i);
 
     // Assert
-    expect(checkbox).toBeTruthy();
+    expect(button).toBeTruthy();
   });
   it('renders successfully with icon with text', () => {
     // Arrange
@@ -25,32 +25,66 @@ describe('FloatingActionButton Component', () => {
     const { getByTestId, getByText } = render(
       <FloatingActionButton {...props} />
     );
-    const checkbox = getByTestId(/icon-with-text/i);
+    const button = getByTestId(/icon-with-text/i);
     const text = getByText(/label/i);
 
     // Assert
-    expect(checkbox).toBeTruthy();
+    expect(button).toBeTruthy();
     expect(text).toBeTruthy();
   });
-  it('renders successfully with icon with text and is selected', () => {
+  it('renders successfully with icon with text and icon when button is pressed', async () => {
     // Arrange
     const props: FloatingActionButtonProps = {
       variant: FABVariant.iconWithText,
       text: 'Label',
-      selected: true,
     };
-
+    const onPress = jest.fn();
     // Act
     const { getByTestId, getByText } = render(
-      <FloatingActionButton {...props} />
+      <FloatingActionButton {...props} onPress={onPress} />
     );
-    const checkbox = getByTestId(/icon-with-text/i);
+    const button = getByTestId(/icon-with-text/i);
     const text = getByText(/label/i);
-    const selected = getByTestId(/selected/i);
+
+    fireEvent.press(button);
+
+    const selected_icon = getByTestId(/selected-icon/i);
 
     // Assert
-    expect(checkbox).toBeTruthy();
+    expect(onPress).toBeCalled();
     expect(text).toBeTruthy();
-    expect(selected).toBeTruthy();
+
+    await waitFor(() => {
+      expect(selected_icon).toBeTruthy();
+    });
+    //test onPress to disable button
+  });
+  it('renders successfully with icon with text and icon when button is pressed', async () => {
+    // Arrange
+    const props: FloatingActionButtonProps = {
+      variant: FABVariant.iconWithText,
+      text: 'Label',
+    };
+    const onPress = jest.fn();
+    // Act
+    const { getByTestId, getByText } = render(
+      <FloatingActionButton {...props} onPress={onPress} />
+    );
+    const button = getByTestId(/icon-with-text/i);
+    const text = getByText(/label/i);
+
+    fireEvent.press(button);
+
+    const selected_icon = getByTestId(/selected-icon/i);
+
+    // Assert
+    expect(onPress).toBeCalled();
+    expect(text).toBeTruthy();
+
+    await waitFor(() => {
+      expect(selected_icon).toBeTruthy();
+    }).then(() => {
+      fireEvent.press(button);
+    });
   });
 });

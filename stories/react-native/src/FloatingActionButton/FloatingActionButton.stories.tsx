@@ -32,18 +32,8 @@ export const Variants = () => {
       <Spacing size={SpacingSizes.Large} />
       <FloatingActionButton
         icon={faBarsFilter}
+        onPress={() => console.log('pressed')}
         variant={FABVariant.iconWithText}
-        text={'test'}
-      />
-      <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading4}>
-        Floating Action Button with text and selected
-      </Typography>
-      <Spacing size={SpacingSizes.Large} />
-      <FloatingActionButton
-        icon={faBarsFilter}
-        variant={FABVariant.iconWithText}
-        selected
         text={'test'}
       />
     </Container>

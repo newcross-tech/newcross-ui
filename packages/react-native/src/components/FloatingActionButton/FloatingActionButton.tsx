@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, ViewStyle } from 'react-native';
+import React, { useState } from 'react';
+import { View, ViewStyle, Pressable } from 'react-native';
 import { IconDefinition } from '@fortawesome/pro-regular-svg-icons';
 import { faCalendarDays } from '@fortawesome/pro-light-svg-icons/faCalendarDays';
 import { faCheck } from '@fortawesome/pro-regular-svg-icons/faCheck';
@@ -13,10 +13,13 @@ export type FloatingActionButtonProps = {
   icon?: IconDefinition;
   text?: string;
   variant?: FABVariant;
-  selected?: boolean;
   customContainerStyle?: ViewStyle;
   customContentStyle?: ViewStyle;
   testID?: string;
+  /**
+   * Called when a single tap gesture is detected.
+   */
+  onPress?: () => void;
 };
 
 const FloatingActionButton = ({
@@ -24,18 +27,29 @@ const FloatingActionButton = ({
   variant = FABVariant.icon,
   text,
   testID = 'floating-action-button',
-  selected,
   customContainerStyle,
   customContentStyle,
+  onPress,
 }: FloatingActionButtonProps) => {
+  const [isPressed, setIsPressed] = useState(false);
+
+  const theme = useTheme();
   const isIcon = variant === FABVariant.icon;
   const isText = variant === FABVariant.iconWithText;
-  const styles = fabStyle(variant);
-  const { FabContentSize, FabContentColor, FabContentSlectedColor } =
-    useTheme();
+  const styles = fabStyle(variant, theme);
+  const { FabContentSize, FabContentColor, FabContentSlectedColor } = theme;
+
+  const handlePress = () => {
+    isPressed ? setIsPressed(false) : setIsPressed(true);
+    onPress && onPress();
+  };
 
   return (
-    <View testID={testID} style={[styles.container, customContainerStyle]}>
+    <Pressable
+      testID={testID}
+      style={[styles.container, customContainerStyle]}
+      onPress={() => handlePress()}
+    >
       {isIcon && (
         <FontAwesomeIcon
           color={FabContentColor}
@@ -58,7 +72,7 @@ const FloatingActionButton = ({
             <Typography
               style={[
                 styles.content,
-                selected && styles.iconWithText,
+                isPressed && styles.iconWithText,
                 customContentStyle,
               ]}
               variant={TypographyVariant.paragraph1}
@@ -66,7 +80,7 @@ const FloatingActionButton = ({
               {text}
             </Typography>
           )}
-          {selected && (
+          {isPressed && (
             <View testID="selected-icon">
               <FontAwesomeIcon
                 color={FabContentSlectedColor}
@@ -78,7 +92,7 @@ const FloatingActionButton = ({
           )}
         </View>
       )}
-    </View>
+    </Pressable>
   );
 };
 

@@ -19,6 +19,9 @@
             "value": "{shadow.base.offset.md.value}"
           }
         },
+        "opacity": {
+          "value": "{opacity.base.sm.value}"
+        },
         "radius": {
           "value": "{shadow.base.offset.md.value}"
         },
