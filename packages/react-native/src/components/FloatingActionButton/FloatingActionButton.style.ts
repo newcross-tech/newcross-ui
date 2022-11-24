@@ -14,6 +14,7 @@ const fabStyle = (variant: FABVariant, theme: ThemeDesignTokens) => {
     FabContainerShadowRadius,
     FabContainerShadowElevation,
     FabContainerShadowOpacity,
+    FabContainerWithTextMarginHorizontal,
   } = theme;
   const containerStyle = getContainerStyle(theme);
   const isWithText = variant === 'iconWithText';
@@ -39,8 +40,8 @@ const fabStyle = (variant: FABVariant, theme: ThemeDesignTokens) => {
       alignItems: 'center',
       justifyContent: 'center',
       flexDirection: 'row',
-      marginLeft: 16,
-      marginRight: 16,
+      marginLeft: FabContainerWithTextMarginHorizontal,
+      marginRight: FabContainerWithTextMarginHorizontal,
     },
     content: {
       color: FabContentColor,

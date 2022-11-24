@@ -35,6 +35,9 @@
         }
       },
       "with-text": {
+        "margin-horizontal": {
+          "value": "{spacing.base.16.value}"
+        },
         "size": {
           "value": "{spacing.base.32.value}"
         }
