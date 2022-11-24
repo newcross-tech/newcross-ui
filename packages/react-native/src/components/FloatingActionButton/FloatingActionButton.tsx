@@ -10,11 +10,29 @@ import fabStyle from './FloatingActionButton.style';
 import useTheme from '../../hooks/useTheme';
 
 export type FloatingActionButtonProps = {
+  /**
+   * The icon to display
+   */
   icon?: IconDefinition;
+  /**
+   * The text to display
+   */
   text?: string;
+  /**
+   * The variant of the FAB
+   */
   variant?: FABVariant;
+  /**
+   * Custom container style
+   */
   customContainerStyle?: ViewStyle;
+  /**
+   * Custom content style
+   */
   customContentStyle?: ViewStyle;
+  /**
+   * TestID for testing
+   */
   testID?: string;
   /**
    * Called when a single tap gesture is detected.
