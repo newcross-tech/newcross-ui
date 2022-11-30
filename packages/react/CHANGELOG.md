@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.14.1...@newcross-ui/react@1.15.0) (2022-11-30)
+
+
+### Features
+
+* **ask-114:** add Alert Banner Comp ([088052a](https://bitbucket.org/newcrossdev/newcross-ui/commits/088052ae6cb59644455cdeb47779f6ffe552ec01))
+
+
+
+
+
 ## [1.14.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.14.0...@newcross-ui/react@1.14.1) (2022-11-23)
 
 **Note:** Version bump only for package @newcross-ui/react
