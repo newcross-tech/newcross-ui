@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.18.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.17.0...@newcross-ui/react@1.18.0) (2022-12-01)
+
+
+### Features
+
+* **ASK-196:** add Dropdown V2 ([ff12adc](https://bitbucket.org/newcrossdev/newcross-ui/commits/ff12adc8c27fc2e1bc700bca225a743c02d8e086))
+
+
+
+
+
 # [1.17.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.16.0...@newcross-ui/react@1.17.0) (2022-12-01)
 
 
