@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.17.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.16.0...@newcross-ui/react@1.17.0) (2022-12-01)
+
+
+### Features
+
+* **ASK-128:** add Tooltip Comp ([33e9d1a](https://bitbucket.org/newcrossdev/newcross-ui/commits/33e9d1a14f1677d6e5573182d29ead3ae74562da))
+
+
+
+
+
 # [1.16.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.15.0...@newcross-ui/react@1.16.0) (2022-12-01)
 
 
