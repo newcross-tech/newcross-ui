@@ -1,0 +1,47 @@
+{
+  "layout": {
+    "dashboard": {
+      "desktop": {
+        "header": {
+          "column": {
+            "span": { "value": 12 }
+          }
+        },
+        "main": {
+          "column": {
+            "span": { "value": 10 }
+          }
+        },
+        "sidebar": {
+          "column": {
+            "span": { "value": 2 }
+          }
+        }
+      },
+      "tablet": {
+        "header": {
+          "column": {
+            "span": { "value": 8 }
+          }
+        },
+        "main": {
+          "column": {
+            "span": { "value": 8 }
+          }
+        }
+      },
+      "mobile": {
+        "header": {
+          "column": {
+            "span": { "value": 4 }
+          }
+        },
+        "main": {
+          "column": {
+            "span": { "value": 4 }
+          }
+        }
+      }
+    }
+  }
+}

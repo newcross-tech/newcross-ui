@@ -31,5 +31,5 @@ export function useOutsideDetector<T extends HTMLElement>(
     };
   }, [ref]);
 
-  return { clickedOutside, handler };
+  return { clickedOutside };
 }

@@ -18,6 +18,7 @@ export const Radio = styled.div`
     padding: ${theme.RadioPaddingRight};
 
     & input[type='radio'] {
+      margin-top: 0;
       -webkit-appearance: none;
       width: ${theme.RadioWidth};
       height: ${theme.RadioHeight};
@@ -29,9 +30,9 @@ export const Radio = styled.div`
       &:before {
         content: '';
         display: block;
-        width: 60%;
-        height: 60%;
-        margin: 20% auto;
+        width: 70%;
+        height: 70%;
+        margin: 15% auto;
         border-radius: 50%;
       }
 

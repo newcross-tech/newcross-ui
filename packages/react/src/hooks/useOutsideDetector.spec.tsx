@@ -6,6 +6,7 @@ import { byTestId } from 'testing-library-selector';
 import { useOutsideDetector } from './useOutsideDetector';
 
 describe('useOutsideDetector', () => {
+  const handler = jest.fn();
   const ref = createRef<HTMLDivElement>();
 
   const testID = 'element';
@@ -15,21 +16,7 @@ describe('useOutsideDetector', () => {
 
   beforeEach(() => render(<div ref={ref} data-testid={testID}></div>));
 
-  it('calls handler when click is outside element', () => {
-    const handler = jest.fn();
-
-    // Act
-    renderHook(() => useOutsideDetector(ref, handler));
-
-    fireEvent.click(document);
-
-    // Assert
-    expect(handler).toBeCalledTimes(1);
-  });
-
   it('does not call handler when element is focused', () => {
-    const handler = jest.fn();
-
     // Act
     renderHook(() => useOutsideDetector(ref, handler));
 

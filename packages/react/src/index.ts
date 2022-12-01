@@ -24,6 +24,7 @@ export {
   CheckboxGroupProps,
   default as CheckboxGroup,
 } from './components/CheckboxGroup';
+export { default as DashboardLayout } from './components/DashboardLayout';
 export { default as Dropdown, DropdownProps } from './components/Dropdown';
 export { default as Link, LinkProps, LinkSizes } from './components/Link';
 export { default as Pill, PillProps } from './components/Pill';

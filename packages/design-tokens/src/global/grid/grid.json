@@ -1,0 +1,23 @@
+{
+  "grid": {
+    "desktop": {
+      "gutter": { "value": "{spacing.base.48.value}" },
+      "breakpoint": { "value": 1920 },
+      "number-of-columns": { "value": 12 }
+    },
+    "laptop": {
+      "gutter": { "value": "{spacing.base.24.value}" },
+      "breakpoint": { "value": 1366 }
+    },
+    "tablet": {
+      "gutter": { "value": "{spacing.base.24.value}" },
+      "breakpoint": { "value": 768 },
+      "number-of-columns": { "value": 8 }
+    },
+    "mobile": {
+      "gutter": { "value": "{spacing.base.16.value}" },
+      "breakpoint": { "value": 375 },
+      "number-of-columns": { "value": 4 }
+    }
+  }
+}

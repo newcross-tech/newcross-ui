@@ -88,7 +88,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
   const inputId = `${baseTestId}-component-${testID}`;
 
   return (
-    <>
+    <Styled.Wrapper>
       {label && (
         <Label
           htmlFor={inputId}
@@ -169,7 +169,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
           {errorText || helperText}
         </Styled.MessageText>
       )}
-    </>
+    </Styled.Wrapper>
   );
 };
 

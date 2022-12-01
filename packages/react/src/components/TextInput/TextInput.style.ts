@@ -1,13 +1,18 @@
-import styled, { css } from 'styled-components';
-import { ExtendedTheme, Theme } from '../../types/Theme';
-import { ContainerProps, MessageTextProps } from './TextInput.types';
-import Typography from '../Typography';
-import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styled, { css } from 'styled-components';
+import { ThemeDesignTokens } from '../../theme/ThemeProvider';
+import { ExtendedTheme, Theme } from '../../types/Theme';
+import Typography from '../Typography';
+import { ContainerProps, MessageTextProps } from './TextInput.types';
 
 export const getActivePaddingStyles = (theme: ThemeDesignTokens) => css`
   padding-top: calc(${theme.TextInputPaddingVertical} - 1px);
   padding-bottom: calc(${theme.TextInputPaddingVertical} - 1px);
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Label = styled(Typography)`
