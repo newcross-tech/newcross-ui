@@ -27,20 +27,90 @@ export const Overview = () => {
         </Typography>
         <DropDown
           options={[
-            'Option 1',
-            'Option 2 may be something that has really long copy this ...',
-            'Option 3',
+            'Dropdown Option 1',
+            'Dropdown Option 2',
+            'Dropdown Option overflowing Dropdown Option overflowing Dropdown Option overflowing',
           ]}
           label="Label"
           placeholder="Select a 'label'"
+        />
+        <Spacing size={SpacingSizes.Large} />
+        <Typography variant={TypographyVariant.heading4}>
+          Multi Select
+        </Typography>
+        <DropDown
+          isMulti
+          options={[
+            'Dropdown Option 1',
+            'Dropdown Option 2',
+            'Dropdown Option overflowing Dropdown Option overflowing Dropdown Option overflowing',
+          ]}
+          label="Label"
+          placeholder="Select multiple 'labels'"
         />
       </Container>
     </InfoTemplate>
   );
 };
 
-export const Variants = () => {
-  const options = ['Option 1', 'Option 2', 'Option 3'];
+export const MultiSelectVariants = () => {
+  const options = [
+    'Option 1',
+    'Option 2',
+    'Option 3',
+    'Option 4',
+    'Option 5',
+    'Option 6',
+  ];
+
+  return (
+    <Container direction="column" hasPadding={false}>
+      <Typography variant={TypographyVariant.heading4}>
+        Default Multi Select
+      </Typography>
+      <DropDown
+        isMulti
+        label="Label"
+        placeholder="Select some 'labels'"
+        options={options}
+        testID={'Drop1'}
+      />
+
+      <Spacing size={SpacingSizes.Large} />
+      <Typography variant={TypographyVariant.heading4}>
+        Disabled Dropdown
+      </Typography>
+      <DropDown
+        isMulti
+        placeholder={'Disabled Dropdown'}
+        disabled
+        options={options}
+        testID={'Drop2'}
+      />
+      <Spacing size={SpacingSizes.Large} />
+      <Typography variant={TypographyVariant.heading4}>
+        Error Dropdown
+      </Typography>
+      <DropDown
+        isMulti
+        placeholder={'Error Dropdown'}
+        errorText={'Please make a selection'}
+        options={options}
+        testID={'Drop3'}
+      />
+    </Container>
+  );
+};
+
+export const SingleSelectVariants = () => {
+  const options = [
+    'Option 1',
+    'Option 2',
+    'Option 3',
+    'Option 4',
+    'Option 5',
+    'Option 6',
+  ];
 
   return (
     <Container direction="column" hasPadding={false}>
@@ -86,7 +156,13 @@ const Template: Story<DropdownProps> = ({ ...rest }) => (
 
 export const Interactive = Template.bind({});
 Interactive.args = {
-  options: ['Option 1', 'Option 2', 'Option 3'],
-  selectedValue: 'Option1',
+  options: [
+    'Option 1',
+    'Option 2',
+    'Option 3',
+    'Option 4',
+    'Option 5',
+    'Option 6',
+  ],
   placeholder: "Select a 'label'",
 };

@@ -11,5 +11,5 @@ export type BackGroundProps = Pick<SelectedProps, 'isSelected' | 'disabled'>;
 export type RemoveIconProps = IconProps & Pick<ExtendedPillProps, 'hasLabel'>;
 export type SelectedProps = Pick<
   ExtendedPillProps,
-  'isSelected' | 'isRemovable' | 'disabled'
+  'hasPadding' | 'isSelected' | 'isRemovable' | 'disabled'
 >;

@@ -1,7 +1,7 @@
-import { PillProps } from './Pill';
 import styled, { css } from 'styled-components';
 import { ExtendedTheme } from '../../types/Theme';
 import Typography from '../Typography';
+import { PillProps } from './Pill';
 import { BackGroundProps, IconProps, RemoveIconProps, SelectedProps } from './Pill.types';
 import { getTabbedStateStyles } from '../../../utils/getTabbedStateStyles';
 
@@ -20,12 +20,12 @@ const getBackgroundColor = ({ theme, disabled, isSelected }: ExtendedTheme<BackG
 };
 
 export const Pill = styled.div<SelectedProps>`
-  ${({ theme, disabled, isRemovable, isSelected }: ExtendedTheme<SelectedProps>) => css`
+  ${({ theme, disabled, isRemovable, isSelected, hasPadding }: ExtendedTheme<SelectedProps>) => css`
     width: fit-content;
     height: fit-content;
     cursor: ${!disabled && !isRemovable && 'pointer'};
     border: solid ${theme.PillBorderWidth};
-    margin: ${theme.PillMargin};
+    margin: ${hasPadding && theme.PillMargin};
     border-radius: ${theme.PillBorderRadius};
     border-color: ${disabled ? theme.PillDisabledBorderColor : theme.PillBorderColor};
     background-color: ${getBackgroundColor({ theme, disabled, isSelected })};

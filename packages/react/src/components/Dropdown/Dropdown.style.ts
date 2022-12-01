@@ -1,16 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { animated } from '@react-spring/web';
 import styled, { css } from 'styled-components';
-import { getElipsisStyles } from '../../../utils/getElipsisStyles';
-import { getTabbedStateStyles } from '../../../utils/getTabbedStateStyles';
+import { getAdjustedHaloValue, getElipsisStyles, getTabbedStateStyles } from '../../../utils';
 import { ExtendedTheme, Theme } from '../../types/Theme';
 import Typography, { TypographyProps } from '../Typography';
-import { defaultAnimationSpeed, dividerRotationDeg, optionNumberOfLines } from './Dropdown.constants';
-import { DropdownAnimatedStyleArgs, HeaderContainerProps, HeaderValueProps } from './Dropdown.types';
+import { defaultAnimationSpeed, optionNumberOfLines } from './Dropdown.constants';
+import { DropdownAnimatedStyleArgs, HeaderContainerProps, HeaderValueProps, OptionProps } from './Dropdown.types';
 
-const getPaddingStyles = () => css`
+const getPaddingStyles = (isMulti: boolean) => css`
   ${({ theme }: Theme) => css`
-    padding: ${theme.TextInputPaddingVertical} ${theme.TextInputPaddingHorizontal};
+    padding: ${!isMulti ? theme.SpacingBase8 : theme.SpacingBase4} ${theme.TextInputPaddingHorizontal};
   `};
 `;
 
@@ -24,13 +23,13 @@ export const Label = styled(Typography)`
   `}
 `;
 
-export const Option = styled(Typography)`
+export const Option = styled(Typography)<OptionProps>`
   cursor: pointer;
   ${getElipsisStyles(optionNumberOfLines)};
-  ${getPaddingStyles()};
 
-  ${({ theme }: ExtendedTheme<TypographyProps>) => css`
+  ${({ theme, isMulti }: ExtendedTheme<OptionProps>) => css`
     color: ${theme.AccordionIconColor};
+    ${getPaddingStyles(isMulti)};
 
     :hover {
       background-color: ${theme.ColorBaseMint400};
@@ -53,8 +52,6 @@ export const getAnimatedStyles = ({ theme, isFocused, hasError }: DropdownAnimat
   borderTopLeftRadius: 0,
   borderTopRightRadius: 0,
   borderTop: 'none',
-  paddingTop: theme.SpacingBase4,
-  paddingBottom: theme.SpacingBase4,
   config: { duration: defaultAnimationSpeed * 1000 },
 });
 
@@ -77,7 +74,21 @@ export const BodyContainer = styled.div`
 `;
 
 export const BodyContent = styled(animated.div)`
-  background: white;
+  overflow-y: auto;
+
+  ${({ theme }: Theme) => css`
+    max-height: ${getAdjustedHaloValue(10, theme.SpacingBase16)};
+    background: ${theme.ColorNeutralWhite};
+
+    ::-webkit-scrollbar {
+      width: ${theme.SpacingBase4};
+      margin-right: ${theme.SpacingBase4};
+    }
+    ::-webkit-scrollbar-thumb {
+      background: ${theme.ColorNeutralGrey300};
+      border-radius: ${theme.TextInputBorderRadius};
+    }
+  `};
 `;
 
 export const HeaderContent = styled.div`
@@ -87,34 +98,44 @@ export const HeaderContent = styled.div`
   justify-content: space-between;
   ${({ theme }: Theme) => css`
     color: ${theme.AccordionIconColor};
-    padding: ${theme.AccordionHeaderContentPaddingVertical} ${theme.AccordionHeaderContentPaddingHorizontal};
+    padding: ${theme.TextInputPaddingVertical} ${theme.TextInputPaddingHorizontal};
   `}
 `;
 
 export const Divider = styled.div`
-  transform: rotate(${dividerRotationDeg}deg);
   ${({ theme }: Theme) => css`
-    min-width: ${theme.SpacingBase24};
-    border: ${theme.BorderBaseWidthSm} solid ${theme.TextInputBorderColor};
+    border: ${theme.BorderBaseWidthSm} solid ${theme.ColorNeutralGrey200};
+    align-self: stretch;
+    display: flex;
   `}
 `;
 
-export const IconContainer = styled.div`
+export const IndicatorsContainer = styled.div`
   display: flex;
+  justify-self: right;
+  align-self: stretch;
   align-items: center;
-  justify-content: center;
-  ${({ theme }) => css`
-    gap: ${theme.SpacingBase4};
+
+  ${({ theme }: Theme) => css`
+    > div:not(:last-child) {
+      margin-right: ${theme.SpacingBase16};
+    }
   `};
 `;
 
 export const Icon = styled(FontAwesomeIcon)`
   transition: ${`all ${defaultAnimationSpeed}s ease-in-out`};
+  ${({ theme }) => css`
+    height: ${theme.SpacingBase24};
+    width: ${theme.SpacingBase24};
+  `};
 `;
 
 export const CloseIcon = styled(FontAwesomeIcon)`
   ${({ theme }: Theme) => css`
     color: ${theme.TextInputSearchBarCloseIconColor};
+    height: ${theme.SpacingBase16};
+    width: ${theme.SpacingBase16};
   `}
 `;
 
@@ -165,6 +186,8 @@ export const HeaderContainer = styled.div`
 `;
 
 export const HeaderLabel = styled.div`
+  display: flex;
+  align-items: center;
   width: 80%;
 `;
 
@@ -174,4 +197,12 @@ export const HeaderValue = styled(Typography)`
     css`
       color: ${theme.ColorNeutralGrey100};
     `}
+`;
+
+export const PillContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  ${({ theme }: Theme) => css`
+    gap: ${theme.SpacingBase8};
+  `};
 `;

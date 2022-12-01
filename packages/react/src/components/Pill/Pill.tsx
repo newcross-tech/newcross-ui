@@ -1,14 +1,15 @@
+import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   cloneElement,
   isValidElement,
   ReactNode,
+  SyntheticEvent,
   useEffect,
   useState,
 } from 'react';
 import { TypographyVariant } from '../Typography';
 import * as Styled from './Pill.style';
-import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export type PillProps = {
   /**
    * Text element to describe the pill.
@@ -29,11 +30,15 @@ export type PillProps = {
   /**
    * Called when a single tap gesture is detected.
    */
-  onClick?: VoidFunction;
+  onClick?: (event: SyntheticEvent) => void;
   /**
    * Used to locate this view in end-to-end tests.
    */
   testID?: string;
+  /**
+   * Used to apply padding
+   */
+  hasPadding?: boolean;
   /**
    * Checks if the Component is selected
    */
@@ -49,6 +54,7 @@ const Pill = ({
   onClick,
   selected = false,
   label,
+  hasPadding = true,
   testID = '',
 }: PillProps) => {
   const [isSelected, setSelected] = useState(selected);
@@ -58,10 +64,10 @@ const Pill = ({
     setSelected(selected);
   }, [selected]);
 
-  const onRemoveHandler = () => {
+  const onRemoveHandler = (event: SyntheticEvent) => {
     if (disabled) return;
     setIsDeleted(true);
-    onClick && onClick();
+    onClick && onClick(event);
   };
 
   const handleSelect = () => {
@@ -75,7 +81,7 @@ const Pill = ({
   ) => {
     event.preventDefault();
     if (event.code === 'Space') {
-      isSelectable ? handleSelect() : onRemoveHandler();
+      isSelectable ? handleSelect() : onRemoveHandler(event);
     }
   };
 
@@ -94,6 +100,7 @@ const Pill = ({
       isRemovable={removable}
       tabIndex={!disabled && !removable ? 0 : -1}
       onKeyPress={(event) => onKeyPressHandler(event, true)}
+      hasPadding={hasPadding}
     >
       <Styled.Content>
         <Styled.Icon
@@ -103,7 +110,11 @@ const Pill = ({
         >
           {isValidElement(icon) && cloneElement(icon)}
         </Styled.Icon>
-        <Styled.Text disabled={disabled} variant={TypographyVariant.paragraph1}>
+        <Styled.Text
+          disabled={disabled}
+          variant={TypographyVariant.paragraph1}
+          numberOfLines={2}
+        >
           {label}
         </Styled.Text>
         {removable && (

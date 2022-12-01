@@ -6,6 +6,22 @@ import Dropdown, { DropdownProps } from './Dropdown';
 
 const baseTestId = 'dropdown';
 const options = ['Option 1', 'Option 2', 'Option 3'];
+const testID = '1';
+const defaultProps: DropdownProps = {
+  options,
+  label: 'Dropdown',
+  placeholder: 'Click to open dropdown',
+  testID,
+};
+
+const renderComponent = (customProps: Partial<DropdownProps>) => {
+  const props = {
+    ...defaultProps,
+    ...customProps,
+  };
+
+  render(<Dropdown {...props} />);
+};
 
 describe('Dropdown Component', () => {
   const ui = {
@@ -17,6 +33,12 @@ describe('Dropdown Component', () => {
     text: (regex: RegExp) => byText(regex),
     dropdownValue: (testID: string) =>
       byTestId(`${baseTestId}-value-${testID}`),
+    dropdownMultiPillValue: (testID: string) =>
+      byTestId(`${baseTestId}-multi-pill-value-${testID}`),
+    dropdownMultiEmptyValue: (testID: string) =>
+      byTestId(`${baseTestId}-multi-value-${testID}`),
+    dropdownCheckboxOption: (option: string) =>
+      byTestId(`${baseTestId}-checkbox-${option}`),
     dropdownPlaceholder: (testID: string) =>
       byTestId(`${baseTestId}-placeholder-${testID}`),
     errorText: (testID: string) =>
@@ -25,102 +47,48 @@ describe('Dropdown Component', () => {
   };
 
   it('should not have any a11y errors', async () => {
-    // Arrange
-    const testID = '1';
-    const props: DropdownProps = {
-      options,
-      label: 'Dropdown',
-      placeholder: 'Click to open dropdown',
-      testID,
-    };
-
     // Act
-    render(<Dropdown {...props} />);
+    renderComponent({});
 
     const results = await axe(document.body);
     expect(results).toHaveNoViolations();
   });
 
   it('renders successfully with placeholder', () => {
-    // Arrange
-    const testID = '1';
-    const props: DropdownProps = {
-      options,
-      label: 'Dropdown',
-      placeholder: 'Click to open dropdown',
-      testID,
-    };
-
     // Act
-    render(<Dropdown {...props} />);
+    renderComponent({});
 
     // Assert
     expect(ui.dropdownPlaceholder(testID).get()).toBeInTheDocument();
   });
 
   it('renders successfully with selected value', () => {
-    // Arrange
-    const testID = '1';
-    const props: DropdownProps = {
-      options,
-      label: 'Dropdown',
-      selectedValue: 'Option 1',
-      testID,
-    };
-
     // Act
-    render(<Dropdown {...props} />);
+    renderComponent({ selectedValue: 'Option 1' });
 
     // Assert
     expect(ui.dropdownValue(testID).get()).toBeInTheDocument();
   });
 
   it('renders successfully with error text', () => {
-    // Arrange
-    const testID = '1';
-    const props: DropdownProps = {
-      options,
-      label: 'Dropdown',
-      errorText: 'Error',
-      testID,
-    };
-
     // Act
-    render(<Dropdown {...props} />);
+    renderComponent({ errorText: 'Error' });
 
     // Assert
     expect(ui.errorText(testID).get()).toBeInTheDocument();
   });
 
   it('renders successfully as disabled', () => {
-    // Arrange
-    const testID = '1';
-    const props: DropdownProps = {
-      options,
-      label: 'Dropdown',
-      disabled: true,
-      testID,
-    };
-
     // Act
-    render(<Dropdown {...props} />);
+    renderComponent({ disabled: true });
 
     // Assert
     expect(ui.label.get()).toBeInTheDocument();
   });
 
   it('renders value as disabled', () => {
-    // Arrange
-    const testID = '1';
-    const props: DropdownProps = {
-      options,
-      label: 'Dropdown',
-      disabled: true,
-      testID,
-    };
-
     // Act
-    render(<Dropdown {...props} />);
+    renderComponent({ disabled: true });
 
     // Assert
     expect(ui.label.get()).toBeInTheDocument();
@@ -132,16 +100,8 @@ describe('Dropdown Component', () => {
   });
 
   it('is focused when clicked', () => {
-    // Arrange
-    const testID = '1';
-    const props: DropdownProps = {
-      options,
-      label: 'Dropdown',
-      testID,
-    };
-
     // Act
-    render(<Dropdown {...props} />);
+    renderComponent({});
 
     fireEvent.click(ui.dropdownHeaderContainer(testID).get());
 
@@ -151,15 +111,10 @@ describe('Dropdown Component', () => {
 
   it('when option selected value and clear icon appear', () => {
     // Arrange
-    const testID = '1';
-    const props: DropdownProps = {
-      options,
-      label: 'Dropdown',
-      testID,
-    };
+    const onChange = jest.fn();
 
     // Act
-    render(<Dropdown {...props} />);
+    renderComponent({ onChange });
 
     // Assert
     fireEvent.click(ui.text(/Option 1/i).get());
@@ -167,19 +122,13 @@ describe('Dropdown Component', () => {
     // Assert
     expect(ui.dropdownValue(testID).get()).toBeInTheDocument();
     expect(ui.clearIconContainer.get()).toBeInTheDocument();
+
+    expect(onChange).toHaveBeenCalled();
   });
 
   it('when option selected value and clear placeholder is reset', () => {
-    // Arrange
-    const testID = '1';
-    const props: DropdownProps = {
-      options,
-      label: 'Dropdown',
-      testID,
-    };
-
     // Act
-    render(<Dropdown {...props} />);
+    renderComponent({});
 
     // Assert
     fireEvent.click(ui.text(/Option 1/i).get());
@@ -191,16 +140,8 @@ describe('Dropdown Component', () => {
   });
 
   it('toggles menu options when Spacebar', () => {
-    // Arrange
-    const testID = '1';
-    const props: DropdownProps = {
-      options,
-      label: 'Dropdown',
-      testID,
-    };
-
     // Act
-    render(<Dropdown {...props} />);
+    renderComponent({});
 
     // Assert
     executeKeyPress(ui.dropdownHeaderContainer(testID).get());
@@ -209,16 +150,8 @@ describe('Dropdown Component', () => {
   });
 
   it('select menu option when Spacebar is chosen', () => {
-    // Arrange
-    const testID = '1';
-    const props: DropdownProps = {
-      options,
-      label: 'Dropdown',
-      testID,
-    };
-
     // Act
-    render(<Dropdown {...props} />);
+    renderComponent({});
 
     // Assert
     executeKeyPress(ui.dropdownHeaderContainer(testID).get());
@@ -232,5 +165,35 @@ describe('Dropdown Component', () => {
     executeKeyPress(ui.text(/Option 1/i).get());
 
     expect(ui.dropdownValue(testID).get()).toBeInTheDocument();
+  });
+
+  it('when option selected value for multi select header id changes', () => {
+    //Act
+    renderComponent({ isMulti: true });
+
+    fireEvent.click(ui.text(/Option 1/i).get());
+
+    // Assert
+    expect(ui.dropdownMultiPillValue(testID).get()).toBeInTheDocument();
+  });
+
+  it('when default value for multi select when option is selected no value id is toggled', () => {
+    // Arrange
+    const optionValue = 'Option 1';
+
+    // Act
+    renderComponent({ selectedValue: [optionValue], isMulti: true });
+
+    const option = ui.dropdownCheckboxOption(optionValue).get();
+
+    fireEvent.click(option);
+
+    // Assert empty selection
+    expect(ui.dropdownMultiEmptyValue(testID).get()).toBeInTheDocument();
+
+    fireEvent.click(option);
+
+    // Assert multi select
+    expect(ui.dropdownMultiPillValue(testID).get()).toBeInTheDocument();
   });
 });

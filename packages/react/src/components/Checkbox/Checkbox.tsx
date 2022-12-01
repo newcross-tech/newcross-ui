@@ -37,6 +37,10 @@ export type CheckboxProps = {
    * Accepts a test ID to be used for the checkbox.
    */
   testID?: string;
+  /**
+   * Flag to enable/disable accessibility
+   */
+  allowTab?: boolean;
 };
 
 const Checkbox = ({
@@ -47,6 +51,7 @@ const Checkbox = ({
   disabled = false,
   hasError,
   testID,
+  allowTab = true,
   ...rest
 }: CheckboxProps) => {
   const [selected, setSelected] = useState(checked);
@@ -98,7 +103,7 @@ const Checkbox = ({
         onKeyPress={(event: React.KeyboardEvent<HTMLElement>) =>
           onSpacePressTrigger(event, handleChecked)
         }
-        tabIndex={0}
+        tabIndex={allowTab ? 0 : -1}
         data-testid={'checkmark-label'}
       >
         {label}
