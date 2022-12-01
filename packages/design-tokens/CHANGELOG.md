@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.33.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.32.0...@newcross-ui/design-tokens@1.33.0) (2022-12-01)
+
+
+### Features
+
+* **ASK-174:** add DashboardLayout  ([79276a6](https://bitbucket.org/newcrossdev/newcross-ui/commits/79276a61aa54f922a3365918f20a5b3f9d797dfc))
+
+
+
+
+
 # [1.32.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.31.0...@newcross-ui/design-tokens@1.32.0) (2022-11-04)
 
 
