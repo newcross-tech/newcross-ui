@@ -45,3 +45,4 @@ export {
 } from './components/ToggleButton';
 export { default as Card, CardProps } from './components/Card';
 export { default as Alert, AlertProps } from './components/Alert';
+export { default as Toast, ToastProps } from './components/Toast';
