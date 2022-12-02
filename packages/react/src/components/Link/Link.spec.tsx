@@ -3,7 +3,7 @@ import React from 'react';
 import { byTestId, byText } from 'testing-library-selector';
 import Link, { LinkProps } from './Link';
 
-import { axe } from '../../../testUtils';
+import { axe, executeKeyPress } from '../../../testUtils';
 
 jest.mock('@fortawesome/react-fontawesome', () => ({
   FontAwesomeIcon: 'circle-chevron-right',
@@ -44,35 +44,37 @@ describe('Link Component', () => {
     renderComponent({});
 
     // Assert
-    expect(ui.linkByReg(/My Link/i).get()).toBeTruthy();
+    expect(ui.linkComp.get()).toBeInTheDocument();
   });
 
   it('triggers onClick successfully', () => {
     // Arrange
-    const handleClick = jest.fn();
-    const props: LinkProps = {
-      onClick: handleClick,
-    };
+    const onClick = jest.fn();
 
     // Act
-    renderComponent({ ...props });
+    renderComponent({ onClick: onClick });
 
     fireEvent.click(ui.linkComp.get());
 
     // Assert
-    expect(handleClick).toBeCalled();
+    expect(onClick).toHaveBeenCalled();
   });
 
-  it('hides right icons when hasIcon is false', () => {
-    // Arrange
-    const props: LinkProps = {
-      hasIcon: true,
-    };
-
+  it('triggers onClick using Space successfully', () => {
+    const onClick = jest.fn();
     // Act
-    renderComponent({ ...props });
+    renderComponent({ onClick: onClick });
+
+    executeKeyPress(ui.linkComp.get());
+    // Assert
+    expect(onClick).toHaveBeenCalled();
+  });
+
+  it('render successfully with icon', () => {
+    // Act
+    renderComponent({ hasIcon: true });
 
     // Assert
-    expect(ui.linkIcon.get()).toBeTruthy();
+    expect(ui.linkIcon.get()).toBeInTheDocument();
   });
 });

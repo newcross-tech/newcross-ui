@@ -1,8 +1,10 @@
-import { AnchorHTMLAttributes, MouseEventHandler, ReactNode } from 'react';
+import { AnchorHTMLAttributes, ReactNode } from 'react';
 import * as Styled from './Link.style';
 import { faCircleChevronRight } from '@fortawesome/pro-solid-svg-icons/faCircleChevronRight';
 import { getTypographySizes, LinkSizes } from './Link.types';
 import Typography from '../Typography';
+import { onSpacePressTrigger } from '../../../utils/onSpacePressTrigger';
+import { TestProp } from '../../types/TestProp';
 
 export type LinkProps = {
   /**
@@ -16,48 +18,43 @@ export type LinkProps = {
   /**
    * Called when a single click is detected.
    */
-  onClick?: (event: MouseEventHandler) => void;
+  onClick?: VoidFunction;
   /**
    * Show or hide icon
    */
   hasIcon?: boolean;
-  /**
-   * Used to locate this view in end-to-end tests.
-   */
-  testId?: string;
-} & AnchorHTMLAttributes<HTMLAnchorElement>;
+} & TestProp &
+  AnchorHTMLAttributes<HTMLAnchorElement>;
+
+const baseTestId = 'link';
 
 const Link = ({
   size = LinkSizes.small,
   children,
   onClick,
   hasIcon = true,
-  testId,
+  testID = '',
   ...rest
-}: LinkProps) => {
-  return (
-    <Styled.Link
-      data-testid={testId || 'link-component'}
-      onClick={onClick}
-      size={size}
-      {...rest}
-    >
-      <Styled.LinkContent>
-        <Styled.LinkText>
-          <Typography variant={getTypographySizes()[size]}>
-            {children}
-          </Typography>
-        </Styled.LinkText>
-        {hasIcon && (
-          <Styled.Font
-            data-testid={'link-icon'}
-            $size={size}
-            icon={faCircleChevronRight}
-          />
-        )}
-      </Styled.LinkContent>
-    </Styled.Link>
-  );
-};
+}: LinkProps) => (
+  <Styled.Link
+    data-testid={`${baseTestId}-component${testID}`}
+    onClick={onClick}
+    tabIndex={0}
+    onKeyPress={(event) => onClick && onSpacePressTrigger(event, onClick)}
+    {...rest}
+  >
+    <Styled.LinkContent>
+      <Styled.LinkText>
+        <Typography variant={getTypographySizes()[size]}>{children}</Typography>
+      </Styled.LinkText>
+      {hasIcon && (
+        <Styled.LinkIcon
+          data-testid={`${baseTestId}-icon${testID}`}
+          icon={faCircleChevronRight}
+        />
+      )}
+    </Styled.LinkContent>
+  </Styled.Link>
+);
 
 export default Link;
