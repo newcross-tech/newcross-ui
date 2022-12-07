@@ -1,6 +1,7 @@
-import { ReactElement, ReactNode, useState, useEffect } from 'react';
-import * as Styled from './ToggleButton.style';
+import { ReactElement, ReactNode, useEffect, useState } from 'react';
+import { TestProp } from '../../types/TestProp';
 import { TypographyVariant } from '../Typography';
+import * as Styled from './ToggleButton.style';
 import { ContentProps } from './ToggleButton.types';
 
 export type ToggleButtonProps = {
@@ -27,10 +28,6 @@ export type ToggleButtonProps = {
    */
   value?: string;
   /**
-   * Used to locate this view in end-to-end tests.
-   */
-  testID?: string;
-  /**
    * Set the left icon element.
    */
   leftIcon?: ReactElement;
@@ -38,7 +35,8 @@ export type ToggleButtonProps = {
    * Set the right icon element.
    */
   rightIcon?: ReactElement;
-};
+} & TestProp;
+
 export const ToggleIcon = ({
   testID,
   rightIcon,
@@ -55,7 +53,9 @@ export const ToggleIcon = ({
     {children}
   </Styled.IconWrapper>
 );
+
 const baseTestId = 'toggle-button';
+
 const ToggleButton = ({
   leftIcon,
   rightIcon,

@@ -6,11 +6,6 @@ export enum ButtonVariant {
   secondary = 'secondary',
 }
 
-export enum ButtonCorners {
-  pill = 'pill',
-  rounded = 'rounded',
-}
-
 export enum ButtonSizes {
   small = 'small',
   large = 'large',

@@ -59,19 +59,4 @@ describe('Radio', () => {
     // Assert
     expect(onChange).not.toBeCalled();
   });
-
-  it(`doesn't call onChange when onChange prop is not provided`, () => {
-    // Arrange
-    const onChange = jest.fn();
-
-    // Act
-    renderComponent({ disabled: false });
-
-    const radio = screen.getByRole('radio');
-
-    fireEvent.click(radio);
-
-    // Assert
-    expect(onChange).not.toBeCalled();
-  });
 });

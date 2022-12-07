@@ -4,6 +4,7 @@ import { useSpring } from '@react-spring/web';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { useFirstRender } from '../../hooks/useFirstRender';
 import useTheme from '../../hooks/useTheme';
+import { TestProp } from '../../types/TestProp';
 import { TypographyVariant } from '../Typography';
 import { defaultAnimationSpeed } from './Accordion.constants';
 import * as Styled from './Accordion.style';
@@ -33,11 +34,7 @@ export type AccordionProps = {
    * Used to override default animation speed.
    */
   $animationSpeed?: number;
-  /**
-   * Used to locate this view in end-to-end tests.
-   */
-  testID?: string;
-};
+} & TestProp;
 
 const Accordion = ({
   icon,

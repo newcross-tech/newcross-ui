@@ -9,6 +9,7 @@ import React, {
   InputHTMLAttributes,
   useState,
 } from 'react';
+import { TestProp } from '../../types/TestProp';
 import Label from '../Label/Label';
 import { TypographyVariant } from '../Typography';
 import * as Styled from './TextInput.style';
@@ -46,11 +47,7 @@ export type TextInputProps = Omit<
    * triggers the on press of the close icon
    */
   onClose?: VoidFunction;
-  /**
-   * Used to locate this view in end-to-end tests.
-   */
-  testID?: string;
-};
+} & TestProp;
 
 const baseTestId = 'text-input';
 

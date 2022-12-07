@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Meta, Story } from '@storybook/react';
 import React from 'react';
 import Button, {
-  ButtonCorners,
   ButtonProps,
   ButtonSizes,
   ButtonVariant,
@@ -30,13 +29,9 @@ export const Overview = () => {
     >
       <Container display={'block'} direction={'column'} hasPadding={false}>
         <Spacing />
-        <Button corners={ButtonCorners.pill} variant={ButtonVariant.primary}>
-          Primary Button
-        </Button>
+        <Button variant={ButtonVariant.primary}>Primary Button</Button>
         <Spacing />
-        <Button corners={ButtonCorners.pill} variant={ButtonVariant.secondary}>
-          Secondary Button
-        </Button>
+        <Button variant={ButtonVariant.secondary}>Secondary Button</Button>
         <Spacing />
       </Container>
     </InfoTemplate>
@@ -65,22 +60,6 @@ export const VariantsWithSizes = () => {
   );
 };
 
-export const VariantsWithCorners = () => {
-  return (
-    <Container display={'block'} direction="column">
-      <Typography variant={TypographyVariant.heading4}>
-        Primary Button with Different Corners
-      </Typography>
-      <Spacing size={SpacingSizes.Large} />
-      <Button>Default Button</Button>
-      <Spacing />
-      <Button corners={ButtonCorners.rounded}>Rounded Button</Button>
-      <Spacing />
-      <Button corners={ButtonCorners.pill}>Pill Button</Button>
-    </Container>
-  );
-};
-
 export const Variants = () => {
   return (
     <Container display={'block'} direction="column">
@@ -88,15 +67,9 @@ export const Variants = () => {
         Primary Button
       </Typography>
       <Spacing size={SpacingSizes.Large} />
-      <Button corners={ButtonCorners.pill} variant={ButtonVariant.primary}>
-        Primary Button
-      </Button>
+      <Button variant={ButtonVariant.primary}>Primary Button</Button>
       <Spacing />
-      <Button
-        corners={ButtonCorners.pill}
-        disabled
-        variant={ButtonVariant.primary}
-      >
+      <Button disabled variant={ButtonVariant.primary}>
         Primary Disabled Button
       </Button>
       <Spacing size={SpacingSizes.Large} />
@@ -105,15 +78,9 @@ export const Variants = () => {
         Secondary Button
       </Typography>
       <Spacing size={SpacingSizes.Large} />
-      <Button corners={ButtonCorners.pill} variant={ButtonVariant.secondary}>
-        Secondary Button
-      </Button>
+      <Button variant={ButtonVariant.secondary}>Secondary Button</Button>
       <Spacing />
-      <Button
-        corners={ButtonCorners.pill}
-        disabled
-        variant={ButtonVariant.secondary}
-      >
+      <Button disabled variant={ButtonVariant.secondary}>
         Secondary Disabled Button
       </Button>
       <Spacing size={SpacingSizes.Large} />

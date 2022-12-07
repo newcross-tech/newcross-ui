@@ -1,4 +1,5 @@
 import { ChangeEvent, useEffect, useState } from 'react';
+import { TestProp } from '../../types/TestProp';
 import { TypographyVariant } from '../Typography';
 import * as Styled from './Radio.style';
 
@@ -19,11 +20,7 @@ export type RadioProps = {
    * Specifies whether the radio is selected
    */
   selected?: boolean;
-  /**
-   * testID for end to end testing.
-   */
-  testID?: string;
-};
+} & TestProp;
 
 const Radio = ({
   selected = false,

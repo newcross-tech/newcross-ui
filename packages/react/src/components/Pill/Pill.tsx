@@ -8,6 +8,7 @@ import {
   useEffect,
   useState,
 } from 'react';
+import { TestProp } from '../../types/TestProp';
 import { TypographyVariant } from '../Typography';
 import * as Styled from './Pill.style';
 export type PillProps = {
@@ -32,10 +33,6 @@ export type PillProps = {
    */
   onClick?: (event: SyntheticEvent) => void;
   /**
-   * Used to locate this view in end-to-end tests.
-   */
-  testID?: string;
-  /**
    * Used to apply padding
    */
   hasPadding?: boolean;
@@ -43,7 +40,7 @@ export type PillProps = {
    * Checks if the Component is selected
    */
   selected?: boolean;
-};
+} & TestProp;
 
 const baseTestId = 'pill';
 

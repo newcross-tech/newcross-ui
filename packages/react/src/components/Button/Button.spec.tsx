@@ -6,6 +6,15 @@ import { byRole, byTestId } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
 import Button, { ButtonProps } from './Button';
 
+const renderComponent = (customProps: Partial<ButtonProps>) => {
+  const props = {
+    children: 'Primary',
+    ...customProps,
+  };
+
+  render(<Button {...props} />);
+};
+
 describe('Button', () => {
   const ui = {
     rightIcon: byTestId('right-icon'),
@@ -16,10 +25,9 @@ describe('Button', () => {
   it('should not have any a11y errors', async () => {
     // Arrange
     const onClick = jest.fn();
-    const props: ButtonProps = { children: 'Primary', onClick };
 
     // Act
-    render(<Button {...props} />);
+    renderComponent({ onClick });
 
     const results = await axe(document.body);
     expect(results).toHaveNoViolations();
@@ -27,7 +35,7 @@ describe('Button', () => {
 
   it('renders successfully', () => {
     // Act
-    render(<Button />);
+    renderComponent({});
 
     // Assert
     expect(ui.buttonRole.get()).toBeInTheDocument();
@@ -35,10 +43,9 @@ describe('Button', () => {
   it('triggers onClick successfully', () => {
     // Arrange
     const onClick = jest.fn();
-    const props: ButtonProps = { children: 'Primary', onClick };
 
     // Act
-    render(<Button {...props} />);
+    renderComponent({ onClick });
 
     fireEvent.click(ui.buttonRole.get());
 
@@ -49,10 +56,9 @@ describe('Button', () => {
   it(`doesn't triggers onClick when button is disabled`, () => {
     // Arrange
     const onClick = jest.fn();
-    const props: ButtonProps = { children: 'Primary', disabled: true, onClick };
 
     // Act
-    render(<Button {...props} />);
+    renderComponent({ onClick, disabled: true });
 
     fireEvent.click(ui.buttonRole.get());
 
@@ -64,25 +70,27 @@ describe('Button', () => {
     const props: ButtonProps = {
       leftIcon: <FontAwesomeIcon icon={faChevronLeft} />,
       testID: 'button',
+      children: undefined,
     };
 
     // Act
-    render(<Button {...props} />);
+    renderComponent({ ...props });
 
     // Assert
-    expect(ui.leftIcon.get()).toBeTruthy();
+    expect(ui.leftIcon.get()).toBeInTheDocument();
   });
   it(`renders successfully when right icon prop is given`, () => {
     // Arrange
     const props: ButtonProps = {
       rightIcon: <FontAwesomeIcon icon={faChevronRight} />,
       testID: 'button',
+      children: undefined,
     };
 
     // Act
-    render(<Button {...props} />);
+    renderComponent({ ...props });
 
     // Assert
-    expect(ui.rightIcon.get()).toBeTruthy();
+    expect(ui.rightIcon.get()).toBeInTheDocument();
   });
 });

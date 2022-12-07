@@ -1,9 +1,5 @@
-import React, {
-  Children,
-  cloneElement,
-  ReactElement,
-  useCallback,
-} from 'react';
+import { Children, cloneElement, ReactElement, useCallback } from 'react';
+import { TestProp } from '../../types/TestProp';
 
 import { ToggleButtonProps } from '../ToggleButton';
 import { Container } from './ToggleButtonGroup.style';
@@ -27,14 +23,10 @@ export type ToggleButtonGroupProps = {
    */
   isMultiSelect?: (arg: Array<string>) => void;
   /**
-   * Used to locate this view in end-to-end tests.
-   */
-  testID?: string;
-  /**
    * Used to display the group in either a row or a column.
    */
   direction?: 'row' | 'column';
-};
+} & TestProp;
 
 export const getMultipleSelectedValues = (
   value: string,

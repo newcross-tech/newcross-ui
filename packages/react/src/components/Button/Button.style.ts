@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ExtendedTheme } from '../../types/Theme';
+import { getTabbedStateStyles } from '../../utils/css';
 import { ButtonProps, IconProps } from './Button';
-import { ButtonCorners, ButtonSizes, ButtonVariant, getIconSize } from './Button.types';
+import { ButtonSizes, ButtonVariant, getIconSize } from './Button.types';
 
 const getVariantStyles = (theme: ThemeDesignTokens) => ({
   [ButtonVariant.primary]: css`
@@ -27,15 +28,6 @@ const getDisabledStyles = (theme: ThemeDesignTokens) => ({
     color: ${theme.ButtonVariantSecondaryDisabledColor};
     border: ${theme.ButtonVariantSecondaryBorderWidth} solid ${theme.ButtonVariantSecondaryDisabledBorderColor};
     background-color: transparent;
-  `,
-});
-
-const getCornerStyles = (theme: ThemeDesignTokens) => ({
-  [ButtonCorners.pill]: css`
-    border-radius: ${theme.ButtonCornersPillBorderRadius};
-  `,
-  [ButtonCorners.rounded]: css`
-    border-radius: ${theme.ButtonCornersRoundedBorderRadius};
   `,
 });
 
@@ -79,15 +71,16 @@ export const IconWrapper = styled.div<ExtendedTheme<IconProps>>`
   `};
 `;
 export const Button = styled.button<ExtendedTheme<ButtonProps>>`
-  ${({ theme, variant, corners, size, disabled, fullWidth }) => css`
+  ${({ theme, variant, size, disabled, fullWidth }) => css`
     display: inline-flex;
     cursor: pointer;
     justify-content: center;
     border-width: 0;
     align-items: center;
 
+    ${getTabbedStateStyles()};
+    border-radius: ${theme.ButtonCornersPillBorderRadius};
     ${fullWidth && getFullWidthStyles()}
-    ${corners && getCornerStyles(theme)[corners]}
     ${variant && getVariantStyles(theme)[variant]}
     ${disabled && variant && getDisabledStyles(theme)[variant]}
     ${size && getSizeStyles(theme)[size]}

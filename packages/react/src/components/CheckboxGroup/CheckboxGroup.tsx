@@ -4,11 +4,11 @@ import Checkbox, { CheckboxType } from '../Checkbox';
 import * as Styled from './CheckboxGroup.style';
 import { OptionProps } from './CheckboxGroup.types';
 import {
+  getDefaultList,
   getIsOptionObject,
+  getLabel,
   getOptionsList,
   getValue,
-  getDefaultList,
-  getLabel,
 } from './utils';
 
 export type CheckboxGroupProps = {

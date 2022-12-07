@@ -1,4 +1,5 @@
 import { HTMLAttributes, ReactNode } from 'react';
+import { TestProp } from '../../types/TestProp';
 import * as Styled from './Typography.style';
 import { TypographyVariant } from './Typography.types';
 
@@ -16,14 +17,11 @@ export type TypographyProps = {
    */
   gutterBottom?: boolean;
   /**
-   * Used to locate this view in end-to-end tests.
-   */
-  testID?: string;
-  /**
    * Used to set maximum number of lines
    */
   numberOfLines?: number;
-} & HTMLAttributes<HTMLDivElement>;
+} & TestProp &
+  HTMLAttributes<HTMLDivElement>;
 
 const Typography = ({ children, testID, ...rest }: TypographyProps) => {
   return (

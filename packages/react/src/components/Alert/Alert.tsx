@@ -1,6 +1,7 @@
 import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
 import { ReactNode } from 'react';
 import { AlertVariant } from '../../types/AlertVariant';
+import { TestProp } from '../../types/TestProp';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import Card from '../Card';
 import { TypographyVariant } from '../Typography';
@@ -48,11 +49,7 @@ export type AlertProps = {
    * The action to be displayed in the alert.
    */
   action?: ReactNode;
-  /**
-   * A test identifier for the component.
-   */
-  testID?: string;
-};
+} & TestProp;
 
 const Alert = ({
   icon,

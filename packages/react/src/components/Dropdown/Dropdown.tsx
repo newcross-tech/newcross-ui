@@ -6,6 +6,7 @@ import { SyntheticEvent, useEffect, useRef, useState } from 'react';
 import { useKeypressListener } from '../../hooks/useKeypressListener';
 import { useOutsideDetector } from '../../hooks/useOutsideDetector';
 import useTheme from '../../hooks/useTheme';
+import { TestProp } from '../../types/TestProp';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import Checkbox from '../Checkbox';
 import * as TextStyled from '../TextInput/TextInput.style';
@@ -46,14 +47,10 @@ export type DropdownProps = {
    */
   isMulti?: boolean;
   /**
-   * Used to locate this view in end-to-end tests.
-   */
-  testID?: string;
-  /**
    * Callback fired when the state is changed.
    */
   onChange?: (value: DropdownValueType) => void;
-};
+} & TestProp;
 
 export const baseTestId = 'dropdown';
 

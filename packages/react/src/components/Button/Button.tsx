@@ -1,8 +1,8 @@
 import { ButtonHTMLAttributes, ReactElement, ReactNode } from 'react';
+import { TestProp } from '../../types/TestProp';
 import Typography from '../Typography';
 import * as Styled from './Button.style';
 import {
-  ButtonCorners,
   ButtonSizes,
   ButtonVariant,
   getTypographyValues,
@@ -13,10 +13,6 @@ export type ButtonProps = {
    * Used to define background variant
    */
   variant?: ButtonVariant;
-  /**
-   * Used to set the border radius style e.g. pill, squared
-   */
-  corners?: ButtonCorners;
   /**
    * Used to define size of button
    */
@@ -33,11 +29,8 @@ export type ButtonProps = {
    * Set the right icon element.
    */
   rightIcon?: ReactElement;
-  /**
-   * Used to locate this view in end-to-end tests.
-   */
-  testID?: string;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+} & TestProp &
+  ButtonHTMLAttributes<HTMLButtonElement>;
 
 export type IconProps = Pick<
   ButtonProps,

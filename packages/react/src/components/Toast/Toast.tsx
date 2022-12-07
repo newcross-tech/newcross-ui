@@ -1,7 +1,8 @@
-import React, { ReactNode, useEffect } from 'react';
-import * as Styled from './Toast.style';
 import { useTransition } from '@react-spring/web';
+import { ReactNode, useEffect } from 'react';
+import { TestProp } from '../../types/TestProp';
 import Alert, { AlertProps } from '../Alert';
+import * as Styled from './Toast.style';
 
 export type ToastProps = {
   /**
@@ -30,11 +31,8 @@ export type ToastProps = {
    * it also hides the close icon
    */
   autoHide?: boolean;
-  /**
-   * testID for end to end testing.
-   */
-  testID?: string;
-} & AlertProps;
+} & TestProp &
+  AlertProps;
 
 const Toast = ({
   show,

@@ -1,5 +1,6 @@
 import { faChevronRight } from '@fortawesome/pro-light-svg-icons/faChevronRight';
 import { ReactNode } from 'react';
+import { TestProp } from '../../types/TestProp';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import * as Styled from './Card.style';
 import { CardVariants } from './Card.types';
@@ -45,11 +46,7 @@ export type CardProps = {
    * Whether the cards have a shadow.
    */
   hasShadow?: boolean;
-  /**
-   * Accepts a test ID to be used.
-   */
-  testID?: string;
-};
+} & TestProp;
 
 const Card = ({
   children,

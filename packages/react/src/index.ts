@@ -8,7 +8,6 @@ export { AlertProps, default as Alert } from './components/Alert';
 export { AvatarProps, default as Avatar } from './components/Avatar';
 export { BadgeProps, default as Badge } from './components/Badge';
 export {
-  ButtonCorners,
   ButtonProps,
   ButtonSizes,
   ButtonVariant,

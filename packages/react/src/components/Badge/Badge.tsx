@@ -1,4 +1,5 @@
 import { ReactElement, ReactNode } from 'react';
+import { TestProp } from '../../types/TestProp';
 import * as Styled from './Badge.style';
 import { getTypographyVariant } from './Badge.style';
 import { BadgePositions, BadgeSizes } from './Badge.types';
@@ -30,11 +31,7 @@ export type BadgeProps = {
    * Called when a single tap gesture is detected.
    */
   onClick?: VoidFunction;
-  /**
-   * Used to locate this view in end-to-end tests.
-   */
-  testID?: string;
-};
+} & TestProp;
 
 const Badge = ({
   size = BadgeSizes.large,
