@@ -1,7 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
-import React from 'react';
 import { byTestId, byText } from 'testing-library-selector';
-import { axe } from '../../../testUtils';
+import { axe } from '../../utils/test/axeConfig';
 import Avatar, { AvatarProps } from './Avatar';
 
 describe('Avatar Component', () => {

@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react';
+import { faChevronRight } from '@fortawesome/pro-light-svg-icons/faChevronRight';
+import { ReactNode } from 'react';
+import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import * as Styled from './Card.style';
 import { CardVariants } from './Card.types';
-import { faChevronRight } from '@fortawesome/pro-light-svg-icons/faChevronRight';
-import { onSpacePressTrigger } from '../../../utils/onSpacePressTrigger';
 
 export type CardProps = {
   /**

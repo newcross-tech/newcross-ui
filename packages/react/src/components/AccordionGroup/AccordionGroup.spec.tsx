@@ -1,7 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
-import React from 'react';
 import { byTestId } from 'testing-library-selector';
-import { axe } from '../../../testUtils';
+import { axe } from '../../utils/test/axeConfig';
 import Accordion from '../Accordion/Accordion';
 import AccordionGroup from './AccordionGroup';
 import { AccordionGroupSpacing } from './AccordionGroup.types';

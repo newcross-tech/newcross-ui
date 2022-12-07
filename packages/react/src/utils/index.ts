@@ -1,5 +1,6 @@
+export { getElipsisStyles, getTabbedStateStyles } from './css';
 export { getAdjustedHaloValue } from './getAdjustedHaloValue';
-export { getElipsisStyles } from './getElipsisStyles';
+export { getHaloValue } from './getHaloValue';
 export { getRgba } from './getRgba';
-export { getTabbedStateStyles } from './getTabbedStateStyles';
 export { onSpacePressTrigger } from './onSpacePressTrigger';
+export { executeKeyPress } from './test';

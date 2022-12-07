@@ -1,11 +1,11 @@
-import Card from '../Card';
-import * as Styled from './Alert.style';
-import React, { ReactNode } from 'react';
-import { TypographyVariant } from '../Typography';
-import { getTitle, getIcon } from './Alert.types';
-import { AlertVariant } from '../../types/AlertVariant';
 import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
-import { onSpacePressTrigger } from '../../../utils/onSpacePressTrigger';
+import { ReactNode } from 'react';
+import { AlertVariant } from '../../types/AlertVariant';
+import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
+import Card from '../Card';
+import { TypographyVariant } from '../Typography';
+import * as Styled from './Alert.style';
+import { getIcon, getTitle } from './Alert.types';
 
 export type AlertProps = {
   /**

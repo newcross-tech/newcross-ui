@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
 import { animated } from '@react-spring/web';
+import styled, { css } from 'styled-components';
 import { Theme } from '../../types/Theme';
-import { getRgba } from '../../../utils/getRgba';
+import { getRgba } from '../../utils';
 
 export const getAnimatedStyles = () => {
   return {

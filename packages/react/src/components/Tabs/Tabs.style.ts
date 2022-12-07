@@ -1,9 +1,9 @@
 import { animated } from '@react-spring/web';
 import styled, { css } from 'styled-components';
 import { ExtendedTheme, Theme } from '../../types/Theme';
+import { getRgba } from '../../utils';
 import { defaultSpringConfig } from './Tabs.constants';
 import { AnimatedTabArgs, DisabledType, TabsPropsDivider } from './Tabs.types';
-import { getRgba } from '../../../utils/getRgba';
 
 export const getAnimatedStyles = ({ translateValue, index }: AnimatedTabArgs) => {
   return {

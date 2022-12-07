@@ -1,12 +1,12 @@
-import React from 'react';
+import { faCircleCheck } from '@fortawesome/pro-regular-svg-icons/faCircleCheck';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { fireEvent, render } from '@testing-library/react';
+import { byTestId, byText } from 'testing-library-selector';
+import { AlertVariant } from '../../types/AlertVariant';
+import { axe } from '../../utils/test/axeConfig';
+import { executeKeyPress } from '../../utils/test/executeKeyPress';
 import Link from '../Link';
 import Alert, { AlertProps } from './Alert';
-import { axe, executeKeyPress } from '../../../testUtils';
-import { byTestId, byText } from 'testing-library-selector';
-import { fireEvent, render } from '@testing-library/react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleCheck } from '@fortawesome/pro-regular-svg-icons/faCircleCheck';
-import { AlertVariant } from '../../types/AlertVariant';
 
 const baseTestId = 'alert';
 describe('Alert component', () => {

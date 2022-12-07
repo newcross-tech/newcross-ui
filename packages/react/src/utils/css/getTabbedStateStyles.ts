@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { Theme } from '../src/types/Theme';
+import { Theme } from '../../types/Theme';
 
 export const getTabbedStateStyles = (optionalOffset?: string) => css`
   ${({ theme }: Theme) => css`

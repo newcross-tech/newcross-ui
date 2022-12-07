@@ -1,10 +1,9 @@
 import { render } from '@testing-library/react';
-import React from 'react';
 import { byText } from 'testing-library-selector';
 import { TypographyVariant } from '../Typography';
 import Label, { LabelProps } from './Label';
 
-import { axe } from '../../../testUtils';
+import { axe } from '../../utils/test/axeConfig';
 
 describe('Label', () => {
   const ui = {

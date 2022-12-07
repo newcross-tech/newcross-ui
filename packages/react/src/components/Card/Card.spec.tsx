@@ -1,9 +1,9 @@
-import React from 'react';
-import Typography, { TypographyVariant } from '../../components/Typography';
-import { render, fireEvent } from '@testing-library/react';
-import Card, { CardProps } from './Card';
+import { fireEvent, render } from '@testing-library/react';
 import { byTestId, byText } from 'testing-library-selector';
-import { axe, executeKeyPress } from '../../../testUtils';
+import Typography, { TypographyVariant } from '../../components/Typography';
+import { executeKeyPress } from '../../utils';
+import { axe } from '../../utils/test/axeConfig';
+import Card, { CardProps } from './Card';
 
 jest.mock('@fortawesome/react-fontawesome', () => ({
   FontAwesomeIcon: 'chevron-icon',

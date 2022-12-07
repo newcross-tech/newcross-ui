@@ -2,9 +2,8 @@ import { faChevronLeft } from '@fortawesome/pro-light-svg-icons/faChevronLeft';
 import { faChevronRight } from '@fortawesome/pro-light-svg-icons/faChevronRight';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fireEvent, render } from '@testing-library/react';
-import React from 'react';
 import { byRole, byTestId } from 'testing-library-selector';
-import { axe } from '../../../testUtils';
+import { axe } from '../../utils/test/axeConfig';
 import Button, { ButtonProps } from './Button';
 
 describe('Button', () => {

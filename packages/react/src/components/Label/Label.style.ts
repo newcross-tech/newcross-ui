@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import { getTabbedStateStyles } from '../../../utils/getTabbedStateStyles';
 import { ExtendedTheme } from '../../types/Theme';
+import { getTabbedStateStyles } from '../../utils';
 import { TypographyProps } from '../Typography';
 import * as TypographyStyled from '../Typography/Typography.style';
 import { LabelProps } from './Label';

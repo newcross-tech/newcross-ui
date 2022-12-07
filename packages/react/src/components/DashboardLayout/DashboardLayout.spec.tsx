@@ -1,9 +1,8 @@
 import { render } from '@testing-library/react';
-import React from 'react';
 import { byText } from 'testing-library-selector';
 import DashboardLayout, { DashboardLayoutProps } from './DashboardLayout';
 
-import { axe } from '../../../testUtils';
+import { axe } from '../../utils/test/axeConfig';
 
 const renderComponent = () => {
   // Prepare

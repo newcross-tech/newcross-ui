@@ -1,10 +1,9 @@
 import { fireEvent, render } from '@testing-library/react';
-import React from 'react';
 import { byTestId, byText } from 'testing-library-selector';
 import { DropdownValueProps } from './Dropdown.types';
 import DropdownValue from './DropdownValue';
 
-import { axe } from '../../../testUtils';
+import { axe } from '../../utils/test/axeConfig';
 
 describe('DropdownValue', () => {
   const ui = {

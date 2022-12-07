@@ -1,8 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import React from 'react';
 import Radio, { RadioProps } from './Radio';
 
-import { axe } from '../../../testUtils';
+import { axe } from '../../utils/test/axeConfig';
 
 const renderComponent = (props: RadioProps) => render(<Radio {...props} />);
 

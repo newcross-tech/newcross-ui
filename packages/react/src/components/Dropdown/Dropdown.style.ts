@@ -1,8 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { animated } from '@react-spring/web';
 import styled, { css } from 'styled-components';
-import { getAdjustedHaloValue, getElipsisStyles, getTabbedStateStyles } from '../../../utils';
 import { ExtendedTheme, Theme } from '../../types/Theme';
+import { getElipsisStyles, getTabbedStateStyles } from '../../utils/css';
+import { getAdjustedHaloValue } from '../../utils/getAdjustedHaloValue';
 import Typography, { TypographyProps } from '../Typography';
 import { defaultAnimationSpeed, optionNumberOfLines } from './Dropdown.constants';
 import { DropdownAnimatedStyleArgs, HeaderContainerProps, HeaderValueProps, OptionProps } from './Dropdown.types';

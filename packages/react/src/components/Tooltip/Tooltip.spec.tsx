@@ -1,7 +1,6 @@
 import { render } from '@testing-library/react';
-import React from 'react';
 import { byText } from 'testing-library-selector';
-import { axe } from '../../../testUtils';
+import { axe } from '../../utils/test/axeConfig';
 import Tooltip, { TooltipProps } from './Tooltip';
 
 const renderComponent = (customProps: Partial<TooltipProps>) => {

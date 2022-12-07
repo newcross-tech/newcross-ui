@@ -2,7 +2,11 @@ const baseConfig = require('../../jest.config');
 
 module.exports = {
   ...baseConfig,
-  collectCoverageFrom: [...baseConfig.collectCoverageFrom, '!src/stories/**'],
+  collectCoverageFrom: [
+    ...baseConfig.collectCoverageFrom,
+    '!src/stories/**',
+    '!src/utils/test/**',
+  ],
   testEnvironment: 'jest-environment-jsdom',
   transform: {
     '^.+\\.(js|jsx)$': 'babel-jest',

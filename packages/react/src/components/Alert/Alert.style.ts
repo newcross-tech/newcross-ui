@@ -1,12 +1,12 @@
-import { AlertProps } from './Alert';
-import Typography from '../Typography';
-import styled, { css } from 'styled-components';
-import { ExtendedTheme, Theme } from '../../types/Theme';
-import { ThemeDesignTokens } from '../../theme/ThemeProvider';
-import { getAccentColor, IconProps } from './Alert.types';
-import { getTabbedStateStyles } from '../../../utils/getTabbedStateStyles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styled, { css } from 'styled-components';
+import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { AlertVariant } from '../../types/AlertVariant';
+import { ExtendedTheme, Theme } from '../../types/Theme';
+import { getTabbedStateStyles } from '../../utils';
+import Typography from '../Typography';
+import { AlertProps } from './Alert';
+import { getAccentColor, IconProps } from './Alert.types';
 
 const getBackgroundColor = (theme: ThemeDesignTokens) => ({
   [AlertVariant.success]: css`

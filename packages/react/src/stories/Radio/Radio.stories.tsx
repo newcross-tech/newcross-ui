@@ -1,8 +1,9 @@
 import { Meta, Story } from '@storybook/react';
+import React from 'react';
 import Radio, { RadioProps } from '../../components/Radio';
+import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './Radio.info';
-import Container from '../Container';
 
 export default {
   title: 'React/Components/Radio',

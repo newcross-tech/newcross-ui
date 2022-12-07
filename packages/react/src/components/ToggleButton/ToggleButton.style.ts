@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 import { ExtendedTheme } from '../../types/Theme';
-import { ToggleButtonProps } from './ToggleButton';
+import { getTabbedStateStyles } from '../../utils';
 import Typography from '../Typography';
+import { ToggleButtonProps } from './ToggleButton';
 import { ContentProps } from './ToggleButton.types';
-import { getTabbedStateStyles } from '../../../utils/getTabbedStateStyles';
 
 export const Container = styled.button<ToggleButtonProps>`
   ${({ theme, selected, fullWidth }: ExtendedTheme<ToggleButtonProps>) => css`

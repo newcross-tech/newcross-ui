@@ -1,9 +1,9 @@
 import { faDog } from '@fortawesome/pro-solid-svg-icons/faDog';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fireEvent, render } from '@testing-library/react';
-import React from 'react';
 import { byTestId, byText } from 'testing-library-selector';
-import { axe, executeKeyPress } from '../../../testUtils';
+import { axe } from '../../utils/test/axeConfig';
+import { executeKeyPress } from '../../utils/test/executeKeyPress';
 import Pill, { PillProps } from './Pill';
 
 describe('Pill Component', () => {

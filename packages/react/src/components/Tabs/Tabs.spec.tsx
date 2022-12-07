@@ -2,11 +2,10 @@ import { faKitMedical } from '@fortawesome/pro-light-svg-icons/faKitMedical';
 import { faUser } from '@fortawesome/pro-light-svg-icons/faUser';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fireEvent, render } from '@testing-library/react';
-import React from 'react';
 import { byTestId, byText } from 'testing-library-selector';
 import Tabs, { TabsProps } from './Tabs';
 
-import { axe } from '../../../testUtils';
+import { axe } from '../../utils/test/axeConfig';
 
 describe('Tabs Component', () => {
   const baseTestId = 'tab';

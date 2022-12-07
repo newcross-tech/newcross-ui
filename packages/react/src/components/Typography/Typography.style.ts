@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
-import { getElipsisStyles } from '../../../utils/getElipsisStyles';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { FontWeight } from '../../types/FontWeight';
 import { ExtendedTheme } from '../../types/Theme';
+import { getElipsisStyles } from '../../utils';
 import { TypographyProps } from './Typography';
 import { TypographyVariant } from './Typography.types';
 

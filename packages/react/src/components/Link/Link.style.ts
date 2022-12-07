@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled, { css } from 'styled-components';
-import { getTabbedStateStyles } from '../../../utils/getTabbedStateStyles';
 import { ExtendedTheme, Theme } from '../../types/Theme';
+import { getTabbedStateStyles } from '../../utils';
 import { LinkProps } from './Link';
 
 export const LinkIcon = styled(FontAwesomeIcon)`

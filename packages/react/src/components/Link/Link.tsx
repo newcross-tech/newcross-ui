@@ -1,10 +1,10 @@
-import { AnchorHTMLAttributes, ReactNode } from 'react';
-import * as Styled from './Link.style';
 import { faCircleChevronRight } from '@fortawesome/pro-solid-svg-icons/faCircleChevronRight';
-import { getTypographySizes, LinkSizes } from './Link.types';
-import Typography from '../Typography';
-import { onSpacePressTrigger } from '../../../utils/onSpacePressTrigger';
+import { AnchorHTMLAttributes, ReactNode } from 'react';
 import { TestProp } from '../../types/TestProp';
+import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
+import Typography from '../Typography';
+import * as Styled from './Link.style';
+import { getTypographySizes, LinkSizes } from './Link.types';
 
 export type LinkProps = {
   /**

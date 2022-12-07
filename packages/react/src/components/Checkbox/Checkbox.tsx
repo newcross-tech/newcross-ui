@@ -2,7 +2,7 @@ import { faCheck } from '@fortawesome/pro-light-svg-icons/faCheck';
 import { faMinus } from '@fortawesome/pro-light-svg-icons/faMinus';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SyntheticEvent, useEffect, useState } from 'react';
-import { onSpacePressTrigger } from '../../../utils/onSpacePressTrigger';
+import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import * as LabelStyled from '../Label/Label.style';
 import { TypographyVariant } from '../Typography';
 import * as Styled from './Checkbox.style';

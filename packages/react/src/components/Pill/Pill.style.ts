@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 import { ExtendedTheme } from '../../types/Theme';
+import { getTabbedStateStyles } from '../../utils';
 import Typography from '../Typography';
 import { PillProps } from './Pill';
 import { BackGroundProps, IconProps, RemoveIconProps, SelectedProps } from './Pill.types';
-import { getTabbedStateStyles } from '../../../utils/getTabbedStateStyles';
 
 const getBackgroundColor = ({ theme, disabled, isSelected }: ExtendedTheme<BackGroundProps>) => {
   if (disabled)

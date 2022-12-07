@@ -1,6 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import { byTestId, byText } from 'testing-library-selector';
-import { axe, executeKeyPress } from '../../../testUtils';
+import { axe } from '../../utils/test/axeConfig';
+import { executeKeyPress } from '../../utils/test/executeKeyPress';
 import Checkbox, { CheckboxProps } from './Checkbox';
 import { CheckboxType } from './Checkbox.types';
 

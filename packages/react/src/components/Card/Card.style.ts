@@ -1,11 +1,10 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styled, { css } from 'styled-components';
+import { ThemeDesignTokens } from '../../theme/ThemeProvider';
+import { ExtendedTheme, Theme } from '../../types/Theme';
+import { getRgba, getTabbedStateStyles } from '../../utils';
 import { CardProps } from '../Card';
 import { CardVariants } from './Card.types';
-import styled, { css } from 'styled-components';
-import { getRgba } from '../../../utils/getRgba';
-import { ExtendedTheme, Theme } from '../../types/Theme';
-import { ThemeDesignTokens } from '../../theme/ThemeProvider';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { getTabbedStateStyles } from '../../../utils/getTabbedStateStyles';
 
 export const getColorValues = (theme: ThemeDesignTokens) => ({
   [CardVariants.primary]: css`

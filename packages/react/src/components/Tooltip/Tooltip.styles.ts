@@ -10,9 +10,8 @@ import {
 
 import { faInfoCircle as outlineFaInfoCircle } from '@fortawesome/pro-regular-svg-icons/faInfoCircle';
 import { faQuestionCircle as outlineFaQuestionCircle } from '@fortawesome/pro-regular-svg-icons/faQuestionCircle';
-import { getHaloValue } from '../../../utils/getHaloValue';
-import { getRgba } from '../../../utils/getRgba';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
+import { getHaloValue, getRgba } from '../../utils';
 import { defaultAnimationSpeed } from './Tooltip.constants';
 
 export const getVariantIcon = () => ({

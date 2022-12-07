@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
-import React from 'react';
 import { byTestId, byText } from 'testing-library-selector';
-import { axe, executeKeyPress } from '../../../testUtils';
+import { axe } from '../../utils/test/axeConfig';
+import { executeKeyPress } from '../../utils/test/executeKeyPress';
 import Dropdown, { DropdownProps } from './Dropdown';
 
 const baseTestId = 'dropdown';
