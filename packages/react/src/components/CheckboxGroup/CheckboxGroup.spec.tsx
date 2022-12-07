@@ -1,12 +1,27 @@
 import { fireEvent, render } from '@testing-library/react';
 import { byTestId, byText } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
-import CheckboxGroup from './CheckboxGroup';
+import CheckboxGroup, { CheckboxGroupProps } from './CheckboxGroup';
 
+const baseTestId = 'checkbox';
+
+const defaultProps = {
+  defaultChecked: ['Apple', 'Banana', 'Pear'],
+  options: ['Apple', 'Banana', 'Pear'],
+};
+
+const renderComponent = (customProps: Partial<CheckboxGroupProps>) => {
+  const props = {
+    ...defaultProps,
+    ...customProps,
+  };
+
+  render(<CheckboxGroup {...props} />);
+};
 describe('Checkbox Group Component', () => {
   const ui = {
-    groupContainer: byTestId('checkbox-group'),
-    selectAllCheckbox: byTestId('checkbox-selectAll'),
+    groupContainer: byTestId(`${baseTestId}-group`),
+    selectAllCheckbox: byTestId(`${baseTestId}-selectAll`),
     checkboxIcon: byTestId(`checkmark-icon`),
     checkboxIndeterIcon: byTestId(`indeterminate-icon`),
     childCheckbox: (text: string) => byText(text),
@@ -14,12 +29,7 @@ describe('Checkbox Group Component', () => {
 
   it('should not have any a11y errors', async () => {
     // Act
-    render(
-      <CheckboxGroup
-        defaultChecked={['Apple', 'Banana']}
-        options={['Apple', 'Banana']}
-      />
-    );
+    renderComponent({});
 
     const results = await axe(document.body);
     expect(results).toHaveNoViolations();
@@ -27,28 +37,20 @@ describe('Checkbox Group Component', () => {
 
   it('renders successfully', () => {
     // Act
-    render(
-      <CheckboxGroup
-        defaultChecked={['Apple', 'Banana']}
-        options={['Apple', 'Banana']}
-      />
-    );
+    renderComponent({});
 
     // Assert
-    expect(ui.groupContainer.get()).toBeVisible();
+    expect(ui.groupContainer.get()).toBeInTheDocument();
   });
 
   it('when one or more child-Checkboxes are disabled, selectAll-Checkbox is disabled', () => {
     // Act
-    render(
-      <CheckboxGroup
-        defaultChecked={['Apple', 'Banana']}
-        options={[
-          { label: 'Apple', value: 'fruit1' },
-          { label: 'Banana', value: 'fruit2', disabled: true },
-        ]}
-      />
-    );
+    renderComponent({
+      options: [
+        { label: 'Apple', value: 'fruit1' },
+        { label: 'Banana', value: 'fruit2', disabled: true },
+      ],
+    });
 
     // Assert
     expect(ui.selectAllCheckbox.get()).toHaveAttribute('disabled');
@@ -56,38 +58,37 @@ describe('Checkbox Group Component', () => {
 
   it('selectAll-Checkbox is set to Indeterminate when one or more but all child-Checkboxes are checked', () => {
     // Act
-    render(
-      <CheckboxGroup
-        defaultChecked={[]}
-        options={['Apple', 'Banana', 'Pear']}
-      />
-    );
+    renderComponent({
+      defaultChecked: [],
+    });
 
     fireEvent.click(ui.childCheckbox('Apple').get());
 
     // Assert
-    expect(ui.checkboxIndeterIcon.get()).toBeTruthy();
+    expect(ui.checkboxIndeterIcon.get()).toBeInTheDocument();
   });
+
   it('when selectAll is marked then it selects all children successfully', () => {
     // Act
-    render(<CheckboxGroup defaultChecked={[]} options={['Apple', 'Banana']} />);
+    renderComponent({
+      defaultChecked: [],
+    });
+
     fireEvent.click(ui.selectAllCheckbox.get());
     // Assert
-    expect(ui.checkboxIcon.getAll()).toHaveLength(3);
+    expect(ui.checkboxIcon.getAll()).toHaveLength(4);
   });
+
   it('onChange event wont be called when the checkbox is disabled ', () => {
     const onChange = jest.fn();
     // Act
-    render(
-      <CheckboxGroup
-        defaultChecked={['Apple', 'Banana']}
-        onChange={(defaultChecked) => defaultChecked}
-        options={[
-          { label: 'Apple', value: 'fruit1' },
-          { label: 'Banana', value: 'fruit2', disabled: true },
-        ]}
-      />
-    );
+    renderComponent({
+      onChange: (defaultChecked) => defaultChecked,
+      options: [
+        { label: 'Apple', value: 'fruit1' },
+        { label: 'Banana', value: 'fruit2', disabled: true },
+      ],
+    });
 
     fireEvent.click(ui.childCheckbox('Banana').get());
 
@@ -95,36 +96,33 @@ describe('Checkbox Group Component', () => {
     expect(onChange).not.toHaveBeenCalled();
   });
 
-  it('when selects a child checkbox the number of selected checkboxed decreases', () => {
+  it('when selects a child-checkbox the number of selected checkboxes decreases', () => {
     // Act
-    render(
-      <CheckboxGroup
-        defaultChecked={['Apple', 'Banana']}
-        options={[
-          { label: 'Apple', value: 'fruit1' },
-          { label: 'Banana', value: 'fruit2' },
-          { label: 'Pear', value: 'fruit3' },
-        ]}
-      />
-    );
-    expect(ui.checkboxIcon.getAll()).toHaveLength(2);
+    renderComponent({
+      options: [
+        { label: 'Apple', value: 'fruit1' },
+        { label: 'Banana', value: 'fruit2' },
+        { label: 'Pear', value: 'fruit3' },
+      ],
+    });
+
+    expect(ui.checkboxIcon.getAll()).toHaveLength(4);
     fireEvent.click(ui.childCheckbox('Banana').get());
 
     // Assert
-    expect(ui.checkboxIcon.getAll()).toHaveLength(1);
+    expect(ui.checkboxIcon.getAll()).toHaveLength(2);
   });
+
   it('when all Checkboxes are selected and click selectAll, all checkboxes will unselected', () => {
     // Act
-    render(
-      <CheckboxGroup
-        defaultChecked={['Apple', 'Banana', 'Pear']}
-        options={[
-          { label: 'Apple', value: 'fruit1' },
-          { label: 'Banana', value: 'fruit2' },
-          { label: 'Pear', value: 'fruit3' },
-        ]}
-      />
-    );
+    renderComponent({
+      options: [
+        { label: 'Apple', value: 'fruit1' },
+        { label: 'Banana', value: 'fruit2' },
+        { label: 'Pear', value: 'fruit3' },
+      ],
+    });
+
     expect(ui.checkboxIcon.getAll()).toHaveLength(4);
     fireEvent.click(ui.selectAllCheckbox.get());
 

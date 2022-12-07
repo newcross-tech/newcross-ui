@@ -46,13 +46,11 @@ export const VariantWithImage = () => {
       <Typography variant={TypographyVariant.heading4}>
         Active Variant
       </Typography>
-      <BottomSpacing />
       <Avatar source={person} />
       <BottomSpacing />
       <Typography variant={TypographyVariant.heading4}>
         Inactive Variant
       </Typography>
-      <BottomSpacing />
       <Avatar inactive source={person} />
     </Container>
   );
@@ -64,13 +62,13 @@ export const VariantWithText = () => {
       <Typography variant={TypographyVariant.heading4}>
         Active Variant
       </Typography>
-      <BottomSpacing />
+
       <Avatar name="John Doe" />
       <BottomSpacing />
       <Typography variant={TypographyVariant.heading4}>
         Inactive Variant
       </Typography>
-      <BottomSpacing />
+
       <Avatar inactive name="John Doe" />
     </Container>
   );
@@ -97,36 +95,32 @@ export const VariantWithIcon = () => {
       <Typography variant={TypographyVariant.heading4}>
         Active Variant
       </Typography>
-      <BottomSpacing />
+
       <Avatar />
       <BottomSpacing />
       <Typography variant={TypographyVariant.heading4}>
         Inactive Variant
       </Typography>
-      <BottomSpacing />
+
       <Avatar inactive />
       <BottomSpacing />
       <Typography variant={TypographyVariant.heading4}>
         Size Variants
       </Typography>
-      <BottomSpacing />
 
       <Container direction="row">
         <Container direction="column">
           <Typography variant={TypographyVariant.paragraph2}>Large</Typography>
-          <BottomSpacing />
           <Avatar size={AvatarSizes.large} />
         </Container>
-        <HorizontalSpacing />
+
         <Container direction="column">
           <Typography variant={TypographyVariant.paragraph2}>Medium</Typography>
-          <BottomSpacing />
           <Avatar size={AvatarSizes.medium} />
         </Container>
-        <HorizontalSpacing />
+
         <Container direction="column">
           <Typography variant={TypographyVariant.paragraph2}>Small</Typography>
-          <BottomSpacing />
           <Avatar size={AvatarSizes.small} />
         </Container>
       </Container>

@@ -1,4 +1,5 @@
 import { IconDefinition } from '@fortawesome/pro-regular-svg-icons';
+import { TestProp } from '../../types/TestProp';
 import * as Styled from './Avatar.style';
 import { AvatarSizes } from './Avatar.types';
 import AvatarContent from './AvatarContent';
@@ -13,10 +14,6 @@ export type AvatarProps = {
    */
   source?: string;
   /**
-   * Accepts a test ID to be used for the avatar.
-   */
-  testID?: string;
-  /**
    * Accepts a boolean to determine if the avatar is inactive or not.
    */
   inactive?: boolean;
@@ -28,7 +25,7 @@ export type AvatarProps = {
    * Accepts a icon to be used for the avatar.
    */
   icon?: IconDefinition;
-};
+} & TestProp;
 
 const Avatar = ({
   source,
@@ -41,11 +38,12 @@ const Avatar = ({
     inactive,
     source,
   };
+
   return (
     <Styled.AvatarContainer {...sharedProps}>
-      <div className="innerContainer">
+      <Styled.InnerContainer>
         <AvatarContent {...sharedProps} {...rest} />
-      </div>
+      </Styled.InnerContainer>
     </Styled.AvatarContainer>
   );
 };

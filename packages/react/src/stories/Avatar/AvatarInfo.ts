@@ -1,6 +1,6 @@
 const TITLE = 'Avatar';
 const DESCRIPTION =
-  'Avatar is a graphical representation of an object or entity, for example a person or an organisation. <br/>' +
+  'Avatar is a graphical representation of an object or entity, for example a person or an organisation. </br></br>' +
   'The avatar component supports an icon or image and is usually placed along side a name and descriptor. The icon can be used as a stand alone design element or as a fallback when an image is not available.';
 
 const DO = [

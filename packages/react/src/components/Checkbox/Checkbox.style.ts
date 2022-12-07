@@ -22,7 +22,7 @@ export const Label = styled.div<CheckboxProps>`
 `;
 
 const getHasErrorStyles = ({ theme, selected, type }: ExtendedTheme<hasErrorProps>) => css`
-  border-color: ${theme.CheckboxErrorBackgroundColor};
+  outline-color: ${theme.CheckboxErrorBackgroundColor};
   color: ${theme.CheckboxErrorCheckmarkColor};
   background-color: ${selected && theme.CheckboxErrorBackgroundColor};
   ${type === CheckboxType.INDETERMINATE &&
@@ -33,7 +33,7 @@ const getHasErrorStyles = ({ theme, selected, type }: ExtendedTheme<hasErrorProp
 `;
 
 const getDisabledStyles = (theme: ThemeDesignTokens) => css`
-  border-color: ${theme.CheckboxDisabledBorderColor};
+  outline-color: ${theme.CheckboxDisabledBorderColor};
   color: ${theme.CheckboxDisabledCheckmarkColor};
   background-color: ${theme.CheckboxDisabledBackgroundColor};
 `;
@@ -48,9 +48,9 @@ export const Box = styled.div<CheckboxPropsExtended>`
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: ${theme.CheckboxWidth};
     height: ${theme.CheckboxHeight};
-    border: solid ${theme.CheckboxBorderWidth};
+    min-width: ${theme.CheckboxWidth};
+    outline: solid ${theme.CheckboxBorderWidth};
     border-radius: ${theme.CheckboxBorderRadius};
     color: ${theme.CheckboxSelectedCheckmarkColor};
     background-color: ${theme.CheckboxBackgroundColor};

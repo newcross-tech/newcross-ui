@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { TestProp } from '../../types/TestProp';
 import Checkbox, { CheckboxType } from '../Checkbox';
 import * as Styled from './CheckboxGroup.style';
 import { OptionProps } from './CheckboxGroup.types';
@@ -27,11 +28,7 @@ export type CheckboxGroupProps = {
    * Accepts a List of checkboxes to be checked by default
    */
   defaultChecked: string[];
-  /**
-   * Accepts a test ID to be used for the checkbox.
-   */
-  testID?: string;
-};
+} & TestProp;
 
 const CheckboxGroup = ({
   options,

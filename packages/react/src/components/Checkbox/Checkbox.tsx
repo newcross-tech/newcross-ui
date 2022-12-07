@@ -2,6 +2,7 @@ import { faCheck } from '@fortawesome/pro-light-svg-icons/faCheck';
 import { faMinus } from '@fortawesome/pro-light-svg-icons/faMinus';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SyntheticEvent, useEffect, useState } from 'react';
+import { TestProp } from '../../types/TestProp';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import * as LabelStyled from '../Label/Label.style';
 import { TypographyVariant } from '../Typography';
@@ -34,14 +35,10 @@ export type CheckboxProps = {
    */
   checked?: boolean;
   /**
-   * Accepts a test ID to be used for the checkbox.
-   */
-  testID?: string;
-  /**
    * Flag to enable/disable accessibility
    */
   allowTab?: boolean;
-};
+} & TestProp;
 
 const Checkbox = ({
   onChange,
@@ -50,7 +47,7 @@ const Checkbox = ({
   label,
   disabled = false,
   hasError,
-  testID,
+  testID = '',
   allowTab = true,
   ...rest
 }: CheckboxProps) => {
@@ -104,7 +101,7 @@ const Checkbox = ({
           onSpacePressTrigger(event, handleChecked)
         }
         tabIndex={allowTab ? 0 : -1}
-        data-testid={'checkmark-label'}
+        data-testid={'checkbox-label'}
       >
         {label}
       </LabelStyled.Label>
