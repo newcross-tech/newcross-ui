@@ -1,0 +1,65 @@
+{
+  "fab": {
+    "size": {
+      "small": {
+        "value": "{spacing.base.32.value}"
+      },
+
+      "big": {
+        "value": "{spacing.base.48.value}"
+      }
+    },
+    "padding": {
+      "value": "{spacing.base.16.value}"
+    },
+    "color": {
+      "value": "{brand.color.primary.value}"
+    },
+    "border-radius": {
+      "value": "{border.base.radius.rounded.value}"
+    },
+    "shadow": {
+      "color": {
+        "value": "{color.neutral.black.value}"
+      },
+      "offset": {
+        "width": {
+          "value": "{shadow.base.offset.sm.value}"
+        },
+        "height": {
+          "value": "{shadow.base.offset.md.value}"
+        }
+      },
+      "opacity": {
+        "value": "{opacity.base.sm.value}"
+      },
+      "radius": {
+        "value": "{shadow.base.offset.md.value}"
+      },
+      "elevation": {
+        "value": "{shadow.base.elevation.md.value}"
+      }
+    },
+    "content": {
+      "color": {
+        "value": "{color.neutral.white.value}"
+      }
+    },
+    "text": {
+      "margin-left": {
+        "value": "{spacing.base.8.value}"
+      }
+    },
+    "icon": {
+      "selected-color": {
+        "value": "{brand.color.secondary.100.value}"
+      },
+      "size": {
+        "value": "{spacing.base.16.value}"
+      },
+      "margin-left": {
+        "value": "{spacing.base.8.value}"
+      }
+    }
+  }
+}

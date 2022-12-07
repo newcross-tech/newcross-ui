@@ -1,0 +1,29 @@
+{
+  "fab-group": {
+    "border": {
+      "rounded": {
+        "value": "{border.base.radius.rounded.value}"
+      }
+    },
+    "padding-horizontal": {
+      "value": "{spacing.base.16.value}"
+    },
+    "background-color": {
+      "value": "{brand.color.primary.value}"
+    },
+    "divider": {
+      "color": {
+        "value": "{color.neutral.grey.100.value}"
+      },
+      "width": {
+        "value": "{border.base.width.sm.value}"
+      },
+      "height": {
+        "value": "{spacing.base.16.value}"
+      },
+      "margin": {
+        "value": "{spacing.base.16.value}"
+      }
+    }
+  }
+}
