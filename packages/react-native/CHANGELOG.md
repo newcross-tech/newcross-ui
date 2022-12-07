@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.32.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.31.1...@newcross-ui/react-native@1.32.0) (2022-12-07)
+
+
+### Features
+
+* **HFGO-1376:** created fab & fab group component ([31264fc](https://bitbucket.org/newcrossdev/newcross-ui/commits/31264fc60261594d4bfe4d974db726c5ac001730))
+
+
+
+
+
 ## [1.31.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.31.0...@newcross-ui/react-native@1.31.1) (2022-12-01)
 
 **Note:** Version bump only for package @newcross-ui/react-native

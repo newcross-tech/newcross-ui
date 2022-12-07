@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.34.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.33.0...@newcross-ui/design-tokens@1.34.0) (2022-12-07)
+
+
+### Features
+
+* **HFGO-1376:** created fab & fab group component ([31264fc](https://bitbucket.org/newcrossdev/newcross-ui/commits/31264fc60261594d4bfe4d974db726c5ac001730))
+
+
+
+
+
 # [1.33.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.32.0...@newcross-ui/design-tokens@1.33.0) (2022-12-01)
 
 
