@@ -1,5 +1,6 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TestProp } from '../../types/TestProp';
+import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import { TypographyVariant } from '../Typography';
 import * as Styled from './Radio.style';
 
@@ -11,16 +12,18 @@ export type RadioProps = {
   /**
    * Identifier of each radio component
    */
-  label?: string;
+  label: string;
   /**
    * Called when a single tap gesture is detected.
    */
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (value: boolean) => void;
   /**
    * Specifies whether the radio is selected
    */
   selected?: boolean;
 } & TestProp;
+
+const baseTestId = 'radio';
 
 const Radio = ({
   selected = false,
@@ -35,16 +38,14 @@ const Radio = ({
     setIsSelected(selected);
   }, [selected]);
 
-  const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangeHandler = () => {
     if (disabled) return;
-    const checkedValue = event.target.checked;
-    setIsSelected(checkedValue);
-    if (onChange) {
-      onChange(event);
-    }
+    const newValue = !isSelected;
+    setIsSelected(newValue);
+    onChange && onChange(newValue);
   };
 
-  const id = `radio-input-${testID}`;
+  const id = `${baseTestId}-input-${testID}`;
 
   return (
     <Styled.Radio>
@@ -55,16 +56,18 @@ const Radio = ({
         checked={isSelected}
         onChange={onChangeHandler}
         disabled={disabled}
+        tabIndex={!disabled ? 0 : -1}
+        onKeyPress={(event) =>
+          onSpacePressTrigger(event, () => onChangeHandler())
+        }
       />
-      {label && (
-        <Styled.Label
-          variant={TypographyVariant.paragraph1}
-          testID="radio-label"
-          htmlFor={id}
-        >
-          {label}
-        </Styled.Label>
-      )}
+      <Styled.Label
+        variant={TypographyVariant.paragraph1}
+        testID={`${baseTestId}-label`}
+        htmlFor={id}
+      >
+        {label}
+      </Styled.Label>
     </Styled.Radio>
   );
 };

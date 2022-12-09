@@ -1,22 +1,28 @@
-import { render } from '@testing-library/react';
-import { renderHook } from '@testing-library/react-hooks';
+import { render, renderHook } from '@testing-library/react';
 import React from 'react';
-import { executeKeyPress } from '../utils';
+import { byTestId } from 'testing-library-selector';
+import { executeSpace, executeTab } from '../utils/test';
 import { useKeypressListener } from './useKeypressListener';
 
+const testID = 'element';
+
 describe('useKeypressListener', () => {
-  const testID = 'element';
+  const ui = {
+    element: byTestId(testID),
+  };
+
   beforeEach(() => render(<div data-testid={testID}></div>));
 
-  it('calls handler key code is detected', () => {
+  it('calls handler key code is detected', async () => {
     const handler = jest.fn();
     // Act
     renderHook(() => useKeypressListener('Space', handler));
 
-    executeKeyPress(document, undefined, false);
+    executeSpace('keyDown', ui.element.get());
+    executeSpace('keyUp', ui.element.get());
 
     // Assert
-    expect(handler).toBeCalledTimes(1);
+    expect(handler).toHaveBeenCalledTimes(1);
   });
 
   it('does not call handler for invalid key code', () => {
@@ -24,15 +30,8 @@ describe('useKeypressListener', () => {
     // Act
     renderHook(() => useKeypressListener('Space', handler));
 
-    executeKeyPress(
-      document,
-      {
-        key: 'Tab',
-        code: 'Tab',
-        charCode: 9,
-      },
-      false
-    );
+    executeTab('keyDown', ui.element.get());
+    executeTab('keyUp', ui.element.get());
 
     // Assert
     expect(handler).not.toHaveBeenCalled();

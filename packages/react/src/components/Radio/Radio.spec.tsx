@@ -1,33 +1,44 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
+import React from 'react';
 import Radio, { RadioProps } from './Radio';
 
+import { byTestId, byText } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
+import { executeKeyPress } from '../../utils/test/executeKeyPress';
 
-const renderComponent = (props: RadioProps) => render(<Radio {...props} />);
+const renderComponent = (customProps: Partial<RadioProps>) => {
+  const props = {
+    label: 'Hello',
+    ...customProps,
+  };
+
+  render(<Radio {...props} />);
+};
+
+const testID = '1';
+const baseTestId = 'radio';
 
 describe('Radio', () => {
+  const ui = {
+    text: (regex: RegExp) => byText(regex),
+    radio: (testID: string) => byTestId(`${baseTestId}-input-${testID}`),
+    radioLabel: byTestId(`${baseTestId}-label`),
+  };
+
   it('should not have any a11y errors', async () => {
     // Act
-    renderComponent({ label: 'Hello' });
+    renderComponent({});
 
     const results = await axe(document.body);
     expect(results).toHaveNoViolations();
   });
   it('renders with given label and default view', () => {
     // Act
-    renderComponent({ label: 'Hello' });
+    renderComponent({});
 
     // Assert
-    expect(screen.getByText(/hello/i)).toBeTruthy();
-    expect(screen.queryByTestId('radio-label')).toBeTruthy();
-  });
-
-  it("doesn't show label when label value is not provided", () => {
-    // Act
-    renderComponent({ label: undefined });
-
-    // Assert
-    expect(screen.queryByTestId(/radio-label/i)).toBeFalsy();
+    expect(ui.text(/hello/i).get()).toBeInTheDocument();
+    expect(ui.radioLabel.get()).toBeInTheDocument();
   });
 
   it(`calls onChange when radio component is not disabled`, () => {
@@ -35,11 +46,22 @@ describe('Radio', () => {
     const onChange = jest.fn();
 
     // Act
-    renderComponent({ disabled: false, onChange });
+    renderComponent({ testID, disabled: false, onChange });
 
-    const radio = screen.getByRole('radio');
+    fireEvent.click(ui.radio(testID).get());
 
-    fireEvent.click(radio);
+    // Assert
+    expect(onChange).toBeCalled();
+  });
+
+  it(`calls onChange when radio component is not disabled when Spacebar`, () => {
+    // Arrange
+    const onChange = jest.fn();
+
+    // Act
+    renderComponent({ testID, disabled: false, onChange });
+
+    executeKeyPress(ui.radio(testID).get());
 
     // Assert
     expect(onChange).toBeCalled();
@@ -50,11 +72,9 @@ describe('Radio', () => {
     const onChange = jest.fn();
 
     // Act
-    renderComponent({ disabled: true, onChange });
+    renderComponent({ testID, disabled: true, onChange });
 
-    const radio = screen.getByRole('radio');
-
-    fireEvent.click(radio);
+    fireEvent.click(ui.radio(testID).get());
 
     // Assert
     expect(onChange).not.toBeCalled();

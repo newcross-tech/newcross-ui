@@ -145,7 +145,7 @@ export const HeaderContainer = styled.div`
     background-color: ${theme.AccordionHeaderBackgroundColor};
     border: ${theme.TextInputBorderWidth} solid ${theme.TextInputBorderColor};
     border-radius: ${theme.TextInputBorderRadius};
-    ${getTabbedStateStyles(theme.SpacingBase4)}
+    ${getTabbedStateStyles()}
 
     ${disabled &&
     css`

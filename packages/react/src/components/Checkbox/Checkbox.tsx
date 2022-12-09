@@ -100,7 +100,7 @@ const Checkbox = ({
         onKeyPress={(event: React.KeyboardEvent<HTMLElement>) =>
           onSpacePressTrigger(event, handleChecked)
         }
-        tabIndex={allowTab ? 0 : -1}
+        tabIndex={!disabled && allowTab ? 0 : -1}
         data-testid={'checkbox-label'}
       >
         {label}

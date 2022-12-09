@@ -1,13 +1,11 @@
 import { css } from 'styled-components';
 import { Theme } from '../../types/Theme';
 
-export const getTabbedStateStyles = (optionalOffset?: string) => css`
+export const getTabbedStateStyles = () => css`
   ${({ theme }: Theme) => css`
     &:focus-visible {
       outline: ${theme.ColorBaseBlue400} auto ${theme.LabelOutline};
-      outline-offset: ${optionalOffset
-        ? optionalOffset
-        : theme.LabelOutlineOffset};
+      outline-offset: ${theme.LabelOutlineOffset};
     }
   `};
 `;

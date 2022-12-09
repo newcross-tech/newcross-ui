@@ -16,7 +16,6 @@ export const Label = styled.label<LabelProps>`
     color: ${disabled ? theme.CheckboxLabelDisabledColor : theme.CheckboxLabelColor};
     margin-left: ${theme.CheckboxLabelMarginHorizontal};
     margin-right: ${theme.CheckboxLabelMarginHorizontal};
-
-    ${getTabbedStateStyles()}
+    ${!disabled && getTabbedStateStyles()}
   `}
 `;

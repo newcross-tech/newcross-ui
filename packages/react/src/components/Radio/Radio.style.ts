@@ -1,11 +1,10 @@
 import styled, { css } from 'styled-components';
 import { Theme } from '../../types/Theme';
+import { getTabbedStateStyles } from '../../utils';
 import HaloLabel, { LabelProps } from '../Label';
 
 export const Label = styled(HaloLabel)<LabelProps>`
   ${({ theme }: Theme) => css`
-    padding-left: ${theme.RadioPaddingLeft};
-    padding-right: ${theme.RadioPaddingRight};
     color: ${theme.RadioColor};
   `}
 `;
@@ -19,20 +18,26 @@ export const Radio = styled.div`
 
     & input[type='radio'] {
       margin-top: 0;
+      margin-right: 0;
+      margin-left: 0;
+      flex-shrink: 0;
       -webkit-appearance: none;
       width: ${theme.RadioWidth};
       height: ${theme.RadioHeight};
       border: ${theme.RadioBorderWidth} solid ${theme.RadioBorderColor};
       border-radius: 50%;
-      outline: none;
       cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      ${getTabbedStateStyles()}
 
       &:before {
         content: '';
         display: block;
-        width: 70%;
-        height: 70%;
-        margin: 15% auto;
+        width: ${theme.RadioSelectedWidth};
+        height: ${theme.RadioSelectedHeight};
         border-radius: 50%;
       }
 
@@ -40,8 +45,14 @@ export const Radio = styled.div`
         background: ${theme.RadioSelectedBackgroundColor};
       }
 
-      &:active {
-        opacity: ${theme.OpacityBaseMd};
+      &:not(:disabled) {
+        &:active {
+          opacity: 0.5;
+        }
+
+        & + ${Label} {
+          cursor: pointer;
+        }
       }
 
       &:disabled {
@@ -51,10 +62,6 @@ export const Radio = styled.div`
 
         &:checked:before {
           background: ${theme.RadioSelectedDisabledBackgroundColor};
-        }
-
-        &:active {
-          opacity: 1;
         }
       }
     }
