@@ -1,6 +1,7 @@
 import { faCircleCheck } from '@fortawesome/pro-regular-svg-icons/faCircleCheck';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fireEvent, render } from '@testing-library/react';
+import React from 'react';
 import { byTestId, byText } from 'testing-library-selector';
 import { AlertVariant } from '../../types/AlertVariant';
 import { axe } from '../../utils/test/axeConfig';

@@ -5,9 +5,22 @@ import { byTestId, byText } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
 import { executeKeyPress } from '../../utils/test/executeKeyPress';
 import Pill, { PillProps } from './Pill';
+import React from 'react';
+
+const renderComponent = (customProps: Partial<PillProps>) => {
+  const props = {
+    label: 'Label',
+    disabled: false,
+    removable: false,
+    ...customProps,
+  };
+
+  render(<Pill {...props} />);
+};
+
+const baseTestId = 'pill';
 
 describe('Pill Component', () => {
-  const baseTestId = 'pill';
   const ui = {
     pillClickable: byTestId(`${baseTestId}-clickable`),
     pillIcon: byTestId(`${baseTestId}-icon`),
@@ -17,55 +30,26 @@ describe('Pill Component', () => {
   };
 
   it('should not have any a11y errors', async () => {
-    // Prepare
-    const props: PillProps = {
-      disabled: false,
-      removable: false,
-      label: 'Label',
-    };
-
     // Act
-    render(<Pill {...props} />);
+    renderComponent({});
 
     const results = await axe(document.body);
     expect(results).toHaveNoViolations();
   });
 
   it('renders successfully', () => {
-    // Arrange
-    const props: PillProps = {
-      disabled: false,
-      removable: false,
-      label: 'Label',
-    };
     // Act
-    render(<Pill {...props} />);
+    renderComponent({});
+
     // Assert
     expect(ui.pillComp.get()).toBeInTheDocument();
     expect(ui.pillByReg(/Label/i).get()).toBeInTheDocument();
   });
 
-  it('renders successfully when selected', () => {
-    // Arrange
-    const props: PillProps = {
-      disabled: false,
-      removable: false,
-      label: 'Label',
-    };
-    // Act
-    render(<Pill {...props} />);
-    fireEvent.click(ui.pillComp.get());
-    // Assert
-    expect(ui.pillCompSelected.get()).toBeInTheDocument();
-  });
-
   it('selects pill when Spacebar', () => {
-    // Arrange
-    const props: PillProps = {
-      label: 'Label',
-    };
     // Act
-    render(<Pill {...props} />);
+    renderComponent({});
+
     executeKeyPress(ui.pillComp.get());
     // Assert
     expect(ui.pillCompSelected.get()).toBeInTheDocument();
@@ -73,60 +57,43 @@ describe('Pill Component', () => {
 
   it('removes pill when pressing remove icon using Spacebar', () => {
     // Arrange
-    const props: PillProps = {
-      label: 'Label',
-      removable: true,
-    };
     // Act
-    render(<Pill {...props} />);
+    renderComponent({ removable: true });
     executeKeyPress(ui.pillClickable.get());
     // Assert
     expect(ui.pillComp.query()).not.toBeInTheDocument();
   });
 
   it('renders successfully when icon prop is given', () => {
-    // Arrange
-    const props: PillProps = {
-      label: 'Label',
-      icon: <FontAwesomeIcon icon={faDog} />,
-    };
     // Act
-    render(<Pill {...props} />);
+    renderComponent({ icon: <FontAwesomeIcon icon={faDog} /> });
     // Assert
     expect(ui.pillIcon.get()).toBeInTheDocument();
   });
 
   it('triggers onClick successfully', () => {
-    const onIconClick = jest.fn();
-    // Arrange
-    const props: PillProps = {
-      label: 'Label',
-      removable: true,
-      onClick: onIconClick,
-    };
+    const onClick = jest.fn();
+
     // Act
-    render(<Pill {...props} />);
+    renderComponent({ removable: true, onClick });
     fireEvent.click(ui.pillClickable.get());
+
     // Assert
-    expect(onIconClick).toHaveBeenCalled();
+    expect(onClick).toHaveBeenCalled();
   });
 
   it('does not triggers onClick when disabled prop is provided', () => {
-    const onIconClick = jest.fn();
-
-    // Arrange
-    const props: PillProps = {
-      label: 'Label',
-      removable: true,
-      disabled: true,
-      onClick: onIconClick,
-    };
+    const onClick = jest.fn();
 
     // Act
-    render(<Pill {...props} />);
+    renderComponent({
+      removable: true,
+      onClick,
+      disabled: true,
+    });
     fireEvent.click(ui.pillClickable.get());
 
     // Assert
-    expect(onIconClick).not.toHaveBeenCalled();
+    expect(onClick).not.toHaveBeenCalled();
   });
 });

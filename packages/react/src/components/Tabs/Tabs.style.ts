@@ -1,7 +1,8 @@
 import { animated } from '@react-spring/web';
 import styled, { css } from 'styled-components';
 import { ExtendedTheme, Theme } from '../../types/Theme';
-import { getRgba } from '../../utils';
+import { getRgba, getTabbedStateStyles } from '../../utils';
+import Typography from '../Typography';
 import { defaultSpringConfig } from './Tabs.constants';
 import { AnimatedTabArgs, DisabledType, TabsPropsDivider } from './Tabs.types';
 
@@ -37,6 +38,10 @@ export const InnerContainer = styled.div<DisabledType>`
   `};
 `;
 
+export const Text = styled(Typography)`
+  ${getTabbedStateStyles()}
+`;
+
 export const Content = styled.div<DisabledType>`
   ${({ theme, disabled }: ExtendedTheme<DisabledType>) => css`
     color: ${disabled ? theme.TabsLabelDisabledColor : theme.TabsLabelColor};
@@ -56,6 +61,7 @@ export const Tab = styled.div`
 export const ActiveTab = styled(animated.div)<DisabledType>`
   align-content: center;
   position: absolute;
+
   ${({ theme, disabled }: ExtendedTheme<DisabledType>) => css`
     background-color: ${theme.TabsActiveTabBackgroundColor};
     border-radius: ${theme.TabsActiveTabBorderRadius};

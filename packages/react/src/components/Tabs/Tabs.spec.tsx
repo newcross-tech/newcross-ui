@@ -4,77 +4,69 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fireEvent, render } from '@testing-library/react';
 import { byTestId, byText } from 'testing-library-selector';
 import Tabs, { TabsProps } from './Tabs';
-
 import { axe } from '../../utils/test/axeConfig';
+import { executeKeyPress } from '../../utils/test/executeKeyPress';
+import React from 'react';
+
+const renderComponent = (customProps: Partial<TabsProps>) => {
+  const props = {
+    tabs: ['Label A', 'Label B'],
+    currentIndex: 0,
+    onCurrentIndexChange: jest.fn(),
+    ...customProps,
+  };
+
+  render(<Tabs {...props} />);
+};
 
 describe('Tabs Component', () => {
-  const baseTestId = 'tab';
   const ui = {
-    tabText: byTestId(`${baseTestId}-with-text`),
-    tabIcon: (index: number) => byTestId(`${baseTestId}-view-${index}`),
-    tabComp: (index: number) => byTestId(`${baseTestId}-${index}`),
+    tabView: (index: number) => byTestId(`tab-view-${index}`),
+    tabComp: (index: number) => byTestId(`tab-${index}`),
     tabByReg: (reg: RegExp) => byText(reg),
   };
 
   it('should not have any a11y errors', async () => {
-    // Arrange
-    const props: TabsProps = {
-      tabs: ['Label A', 'Label B'],
-      currentIndex: 0,
-      onCurrentIndexChange: jest.fn(),
-    };
-
     // Act
-    render(<Tabs {...props} />);
+    renderComponent({});
 
     const results = await axe(document.body);
     expect(results).toHaveNoViolations();
   });
 
   it('renders successfully', () => {
-    // Arrange
-    const props: TabsProps = {
-      tabs: ['Label A', 'Label B'],
-      currentIndex: 0,
-      onCurrentIndexChange: jest.fn(),
-    };
     // Act
-    render(<Tabs {...props} />);
+    renderComponent({});
 
     // Assert
-    expect(ui.tabByReg(/label a/i).get()).toBeTruthy();
-    expect(ui.tabByReg(/label b/i).get()).toBeTruthy();
+    expect(ui.tabByReg(/label a/i).get()).toBeInTheDocument();
+    expect(ui.tabByReg(/label b/i).get()).toBeInTheDocument();
   });
 
   it('renders successfully with icons', () => {
-    // Arrange
-    const props: TabsProps = {
+    // Act
+    renderComponent({
       tabs: [
         <FontAwesomeIcon icon={faUser} />,
         <FontAwesomeIcon icon={faKitMedical} />,
       ],
-      currentIndex: 0,
-      onCurrentIndexChange: jest.fn(),
-    };
-    // Act
-    render(<Tabs {...props} />);
+    });
 
     // Assert
-    expect(ui.tabIcon(0).get()).toBeTruthy();
-    expect(ui.tabIcon(1).get()).toBeTruthy();
+    expect(ui.tabView(0).get()).toBeInTheDocument();
+    expect(ui.tabView(1).get()).toBeInTheDocument();
   });
 
   it('triggers onClick successfully', () => {
     // Arrange
     const onClick = jest.fn();
-    const props: TabsProps = {
-      tabs: ['Label A', 'Label B', 'Label C', 'Label D'],
-      currentIndex: 0,
-      onCurrentIndexChange: onClick,
-    };
 
     // Act
-    render(<Tabs {...props} />);
+    renderComponent({
+      onCurrentIndexChange: onClick,
+      tabs: ['Label A', 'Label B', 'Label C', 'Label D'],
+    });
+
     fireEvent.click(ui.tabComp(3).get());
 
     // Assert
@@ -82,21 +74,26 @@ describe('Tabs Component', () => {
     expect(onClick).toHaveBeenCalledWith(3);
   });
 
-  it('does not trigger onPress when disabled prop is passed', () => {
+  it('does not trigger onClick when disabled prop is passed', () => {
     // Arrange
     const onClick = jest.fn();
-    const props: TabsProps = {
-      tabs: ['Label A', 'Label B'],
-      currentIndex: 0,
-      onCurrentIndexChange: onClick,
-      disabled: true,
-    };
 
     // Act
-    render(<Tabs {...props} />);
+    renderComponent({ onCurrentIndexChange: onClick, disabled: true });
     fireEvent.click(ui.tabComp(1).get());
 
     // Assert
     expect(onClick).not.toBeCalled();
+  });
+
+  it('selects tab when pressing Spacebar', () => {
+    // Arrange
+    const onClick = jest.fn();
+    // Act
+    renderComponent({ onCurrentIndexChange: onClick });
+
+    executeKeyPress(ui.tabComp(1).get());
+    // Assert
+    expect(onClick).toHaveBeenCalledWith(1);
   });
 });

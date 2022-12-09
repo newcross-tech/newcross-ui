@@ -9,8 +9,10 @@ import {
   useState,
 } from 'react';
 import { TestProp } from '../../types/TestProp';
+import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import { TypographyVariant } from '../Typography';
 import * as Styled from './Pill.style';
+
 export type PillProps = {
   /**
    * Text element to describe the pill.
@@ -76,10 +78,9 @@ const Pill = ({
     event: React.KeyboardEvent<HTMLElement>,
     isSelectable: boolean
   ) => {
-    event.preventDefault();
-    if (event.code === 'Space') {
-      isSelectable ? handleSelect() : onRemoveHandler(event);
-    }
+    onSpacePressTrigger(event, () =>
+      isSelectable ? handleSelect() : onRemoveHandler(event)
+    );
   };
 
   if (isDeleted) return null;

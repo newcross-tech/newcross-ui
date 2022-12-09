@@ -4,6 +4,7 @@ import { axe } from '../../utils/test/axeConfig';
 import { executeKeyPress } from '../../utils/test/executeKeyPress';
 import Checkbox, { CheckboxProps } from './Checkbox';
 import { CheckboxType } from './Checkbox.types';
+import React from 'react';
 
 const defaultProps = {
   label: 'Label',

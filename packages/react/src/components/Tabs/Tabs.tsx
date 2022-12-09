@@ -1,8 +1,9 @@
-import { useSpring } from '@react-spring/web';
-import { Fragment, ReactNode, useEffect, useRef, useState } from 'react';
-import Typography, { TypographyVariant } from '../Typography';
 import * as Styled from './Tabs.style';
 import { getDividerPosition } from './utils';
+import { useSpring } from '@react-spring/web';
+import { TypographyVariant } from '../Typography';
+import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
+import { Fragment, ReactNode, useEffect, useRef, useState } from 'react';
 
 export type TabsProps = {
   /**
@@ -24,6 +25,8 @@ export type TabsProps = {
   disabled?: boolean;
 };
 
+const baseTestId = 'tab';
+
 const Tabs = ({
   tabs,
   currentIndex,
@@ -33,21 +36,20 @@ const Tabs = ({
   const [widthOfContainer, setWidthOfContainer] = useState(0);
   const [index, setIndex] = useState(currentIndex);
   const translateValue = widthOfContainer / tabs.length;
+  const ref = useRef<HTMLDivElement>(null);
 
   const springProps = useSpring(
     Styled.getAnimatedStyles({ translateValue, index })
   );
 
-  const ref = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
-    const getContentWidth = () => {
+    const setContentWidth = () => {
       ref && ref.current && setWidthOfContainer(ref.current.offsetWidth);
     };
     setIndex(currentIndex);
-    getContentWidth();
-    window.addEventListener('resize', () => getContentWidth());
-    return () => window.removeEventListener('resize', getContentWidth);
+    setContentWidth();
+    window.addEventListener('resize', () => setContentWidth());
+    return () => window.removeEventListener('resize', setContentWidth);
   }, [ref, widthOfContainer, currentIndex]);
 
   return (
@@ -57,14 +59,19 @@ const Tabs = ({
         {tabs.map((tab, index) => {
           const isString = typeof tab === 'string';
           const isSelectedTab = currentIndex === index;
+
           return (
             <Fragment key={index}>
               <Styled.Tab
-                data-testid={`tab-${index}`}
+                data-testid={`${baseTestId}-${index}`}
                 onClick={() => !disabled && onCurrentIndexChange(index)}
+                onKeyPress={(event) =>
+                  onSpacePressTrigger(event, () => onCurrentIndexChange(index))
+                }
               >
                 {isString ? (
-                  <Typography
+                  <Styled.Text
+                    tabIndex={!disabled ? 0 : -1}
                     variant={
                       isSelectedTab
                         ? TypographyVariant.heading3
@@ -73,11 +80,11 @@ const Tabs = ({
                     numberOfLines={1}
                   >
                     <Styled.Content disabled={disabled}>{tab}</Styled.Content>
-                  </Typography>
+                  </Styled.Text>
                 ) : (
                   <Styled.Content
                     disabled={disabled}
-                    data-testid={`tab-view-${index}`}
+                    data-testid={`${baseTestId}-view-${index}`}
                   >
                     {tab}
                   </Styled.Content>

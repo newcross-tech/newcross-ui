@@ -12,7 +12,7 @@ const getBackgroundColor = ({ theme, disabled, isSelected }: ExtendedTheme<BackG
     `;
   if (isSelected)
     return css`
-      ${theme.ColorBaseMint400}
+      ${theme.BrandColorSecondary400}
     `;
   return css`
     ${theme.PillBackgroundColor}

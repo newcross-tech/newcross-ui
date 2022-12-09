@@ -1,15 +1,12 @@
+import React from 'react';
 import Avatar, { AvatarProps } from './Avatar';
 import { axe } from '../../utils/test/axeConfig';
 import { fireEvent, render } from '@testing-library/react';
 import { byTestId, byText } from 'testing-library-selector';
 
-const defaultProps = {
-  name: 'John Doe',
-};
-
 const renderComponent = (customProps: Partial<AvatarProps>) => {
   const props = {
-    ...defaultProps,
+    name: 'John Doe',
     ...customProps,
   };
 

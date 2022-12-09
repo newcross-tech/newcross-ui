@@ -6,29 +6,25 @@ import { render, fireEvent } from '@testing-library/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDays } from '@fortawesome/pro-solid-svg-icons/faCalendarDays';
 
-describe('Toast component', () => {
-  const baseTestId = 'toast';
-  const ui = {
-    toastComp: byTestId(`${baseTestId}-component`),
-    toastIcon: byTestId(`custom-icon`),
-    alertCloseIconComp: byTestId(`alert-close-icon`),
-  };
+const ui = {
+  toastComp: byTestId(`toast-component`),
+  toastIcon: byTestId(`custom-icon`),
+  alertCloseIconComp: byTestId(`alert-close-icon`),
+};
 
-  const defaultProps = {
+const renderComponent = (customProps: Partial<ToastProps>) => {
+  const props = {
     message: 'this is a toast notification',
     show: true,
     variant: AlertVariant.success,
     onClose: jest.fn(),
+    ...customProps,
   };
 
-  const renderComponent = (customProps: Partial<ToastProps>) => {
-    const props = {
-      ...defaultProps,
-      ...customProps,
-    };
+  render(<Toast {...props} />);
+};
 
-    render(<Toast {...props} />);
-  };
+describe('Toast component', () => {
   it('renders successfully', () => {
     // Act
     renderComponent({});
