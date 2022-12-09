@@ -3,19 +3,21 @@ import { animated } from '@react-spring/web';
 import styled, { css } from 'styled-components';
 import { ExtendedTheme, Theme } from '../../types/Theme';
 import { getElipsisStyles, getTabbedStateStyles } from '../../utils/css';
-import { getAdjustedHaloValue } from '../../utils/getAdjustedHaloValue';
+import { getHaloValue } from '../../utils/getHaloValue';
 import Typography, { TypographyProps } from '../Typography';
 import { defaultAnimationSpeed, optionNumberOfLines } from './Dropdown.constants';
-import { DropdownAnimatedStyleArgs, HeaderContainerProps, HeaderValueProps, OptionProps } from './Dropdown.types';
+import {
+  DropdownAnimatedStyleArgs,
+  HeaderContainerProps,
+  ErrorProps,
+  HeaderValueProps,
+  OptionProps,
+} from './Dropdown.types';
 
 const getPaddingStyles = (isMulti: boolean) => css`
   ${({ theme }: Theme) => css`
     padding: ${!isMulti ? theme.SpacingBase8 : theme.SpacingBase4} ${theme.TextInputPaddingHorizontal};
   `};
-`;
-
-const getActiveMarginStyles = () => css`
-  margin: -1px; //consider writing SpacingBase1
 `;
 
 export const Label = styled(Typography)`
@@ -33,26 +35,18 @@ export const Option = styled(Typography)<OptionProps>`
     ${getPaddingStyles(isMulti)};
 
     :hover {
-      background-color: ${theme.ColorBaseMint400};
+      background-color: ${theme.BrandColorSecondary400};
     }
-
     :focus-visible {
       outline: none;
-      background: ${theme.ColorBaseMint400};
+      background: ${theme.BrandColorSecondary400};
     }
   `};
 `;
 
-export const getAnimatedStyles = ({ theme, isFocused, hasError }: DropdownAnimatedStyleArgs) => ({
+export const getAnimatedStyles = ({ isFocused }: DropdownAnimatedStyleArgs) => ({
   display: isFocused ? 'block' : 'none',
   opacity: isFocused ? 1 : 0,
-  borderRadius: theme.TextInputBorderRadius,
-  border: `${theme.TextInputSelectedBorderWidth} solid ${
-    !hasError ? theme.TextInputSelectedBorderColor : theme.TextInputErrorColor
-  }`,
-  borderTopLeftRadius: 0,
-  borderTopRightRadius: 0,
-  borderTop: 'none',
   config: { duration: defaultAnimationSpeed * 1000 },
 });
 
@@ -74,12 +68,19 @@ export const BodyContainer = styled.div`
   `};
 `;
 
-export const BodyContent = styled(animated.div)`
+export const BodyContent = styled(animated.div)<ErrorProps>`
   overflow-y: auto;
 
-  ${({ theme }: Theme) => css`
-    max-height: ${getAdjustedHaloValue(10, theme.SpacingBase16)};
+  ${({ theme, $hasError }: ExtendedTheme<ErrorProps>) => css`
+    max-height: ${+getHaloValue(theme.SpacingBase16) * 10}rem;
     background: ${theme.ColorNeutralWhite};
+
+    border-radius: ${theme.TextInputBorderRadius};
+    border: ${theme.TextInputSelectedBorderWidth} solid
+      ${!$hasError ? theme.TextInputSelectedBorderColor : theme.TextInputErrorColor};
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: none;
 
     ::-webkit-scrollbar {
       width: ${theme.SpacingBase4};
@@ -135,13 +136,13 @@ export const Icon = styled(FontAwesomeIcon)`
 export const CloseIcon = styled(FontAwesomeIcon)`
   ${({ theme }: Theme) => css`
     color: ${theme.TextInputSearchBarCloseIconColor};
-    height: ${theme.SpacingBase16};
-    width: ${theme.SpacingBase16};
+    height: ${+getHaloValue(theme.SpacingBase16) * 1.2}rem;
+    width: ${+getHaloValue(theme.SpacingBase16) * 1.2}rem;
   `}
 `;
 
-export const HeaderContainer = styled.div`
-  ${({ theme, isContentShown, hasError, disabled }: ExtendedTheme<HeaderContainerProps>) => css`
+export const HeaderContainer = styled.div<HeaderContainerProps>`
+  ${({ theme, isContentShown, $hasError, disabled }: ExtendedTheme<HeaderContainerProps>) => css`
     background-color: ${theme.AccordionHeaderBackgroundColor};
     border: ${theme.TextInputBorderWidth} solid ${theme.TextInputBorderColor};
     border-radius: ${theme.TextInputBorderRadius};
@@ -153,12 +154,12 @@ export const HeaderContainer = styled.div`
     `}
 
     ${!disabled &&
-    !hasError &&
+    !$hasError &&
     !isContentShown &&
     css`
       &:hover {
-        ${getActiveMarginStyles()};
         border: ${theme.TextInputSelectedBorderWidth} solid ${theme.TextInputSelectedBorderColor};
+        margin: -1px; //consider writing SpacingBase1
       }
     `}
 
@@ -178,10 +179,10 @@ export const HeaderContainer = styled.div`
       `}
     }
 
-    ${hasError &&
+    ${$hasError &&
     css`
       background-color: ${theme.ColorBaseRed400};
-      border: ${theme.TextInputSelectedBorderWidth} solid ${theme.TextInputErrorColor};
+      border: 1px solid ${theme.TextInputErrorColor};
     `}
   `}
 `;

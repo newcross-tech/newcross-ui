@@ -3,6 +3,7 @@ import { TestProp } from '../../types/TestProp';
 
 import { ToggleButtonProps } from '../ToggleButton';
 import { Container } from './ToggleButtonGroup.style';
+import { getMultipleSelectedValues } from './utils/getMultipleSelectedValues';
 
 export type ToggleButtonGroupProps = {
   /**
@@ -27,18 +28,6 @@ export type ToggleButtonGroupProps = {
    */
   direction?: 'row' | 'column';
 } & TestProp;
-
-export const getMultipleSelectedValues = (
-  value: string,
-  selectedValue: Array<string> | string
-) => {
-  if (Array.isArray(selectedValue)) {
-    return selectedValue.includes(value)
-      ? selectedValue.filter((selectedValue) => selectedValue !== value)
-      : [...selectedValue, value];
-  }
-  return [];
-};
 
 const ToggleButtonGroup = ({
   children,

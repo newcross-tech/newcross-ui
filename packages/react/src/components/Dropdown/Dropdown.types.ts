@@ -4,8 +4,8 @@ import { DropdownProps } from './Dropdown';
 
 export type DropdownValueType = undefined | string | string[];
 
-type ErrorProps = {
-  hasError: boolean;
+export type ErrorProps = {
+  $hasError: boolean;
 };
 
 export type HeaderContainerProps = {
@@ -23,8 +23,7 @@ export type OptionProps = TypographyProps & {
 
 export type DropdownAnimatedStyleArgs = {
   isFocused: boolean;
-} & ErrorProps &
-  Theme;
+} & Theme;
 
 export type DropdownValueProps = {
   value: DropdownValueType;

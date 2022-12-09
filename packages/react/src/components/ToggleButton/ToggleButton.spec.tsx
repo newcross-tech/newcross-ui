@@ -5,23 +5,30 @@ import { byTestId, byText } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
 import ToggleButton, { ToggleButtonProps } from './ToggleButton';
 
-describe('Toggle Button Component', () => {
-  const baseTestId = 'toggle-button';
-  const ui = {
-    toggleComp: byTestId(`${baseTestId}`),
-    toggleIcon: (side: string) => byTestId(`${baseTestId}-${side}-icon`),
-    toggleByReg: (reg: RegExp) => byText(reg),
+const defaultProps = {
+  onClick: jest.fn(),
+  children: 'Sort',
+  selected: false,
+};
+
+const renderComponent = (customProps: Partial<ToggleButtonProps>) => {
+  const props = {
+    ...defaultProps,
+    ...customProps,
   };
 
-  const defaultProps: ToggleButtonProps = {
-    onClick: jest.fn(),
-    children: 'Sort',
-    selected: false,
+  render(<ToggleButton {...props} />);
+};
+describe('Toggle Button Component', () => {
+  const ui = {
+    toggleComp: byTestId(`toggle-button`),
+    toggleIcon: (side: string) => byTestId(`toggle-button-${side}-icon`),
+    toggleByReg: (reg: RegExp) => byText(reg),
   };
 
   it('should not have any a11y errors', async () => {
     // Act
-    render(<ToggleButton {...defaultProps} />);
+    renderComponent({});
 
     const results = await axe(document.body);
     expect(results).toHaveNoViolations();
@@ -29,7 +36,7 @@ describe('Toggle Button Component', () => {
 
   it('renders sucessfully', () => {
     // Act
-    render(<ToggleButton {...defaultProps} />);
+    renderComponent({});
 
     // Assert
     expect(ui.toggleComp.get()).toBeInTheDocument();
@@ -50,25 +57,17 @@ describe('Toggle Button Component', () => {
 
   it(`renders successfully when left icon prop is given`, () => {
     // Arrange
-    const props: ToggleButtonProps = defaultProps && {
-      leftIcon: <FontAwesomeIcon icon={faCalendarDays} />,
-    };
 
     // Act
-    render(<ToggleButton {...props} />);
+    renderComponent({ leftIcon: <FontAwesomeIcon icon={faCalendarDays} /> });
 
     // Assert
     expect(ui.toggleIcon('left').get()).toBeInTheDocument();
   });
 
   it(`renders successfully when right icon prop is given`, () => {
-    // Arrange
-    const props: ToggleButtonProps = defaultProps && {
-      rightIcon: <FontAwesomeIcon icon={faCalendarDays} />,
-    };
-
     // Act
-    render(<ToggleButton {...props} />);
+    renderComponent({ rightIcon: <FontAwesomeIcon icon={faCalendarDays} /> });
 
     // Assert
     expect(ui.toggleIcon('right').get()).toBeInTheDocument();

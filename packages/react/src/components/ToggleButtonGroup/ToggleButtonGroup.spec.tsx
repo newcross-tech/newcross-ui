@@ -2,9 +2,8 @@ import { fireEvent, render } from '@testing-library/react';
 import { byTestId } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
 import ToggleButton from '../ToggleButton/ToggleButton';
-import ToggleButtonGroup, {
-  getMultipleSelectedValues,
-} from './ToggleButtonGroup';
+import ToggleButtonGroup from './ToggleButtonGroup';
+import { getMultipleSelectedValues } from './utils/getMultipleSelectedValues';
 
 describe('ToggleButtonGroup', () => {
   const baseTestId = 'toggle-button-group';

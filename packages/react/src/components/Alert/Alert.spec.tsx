@@ -9,27 +9,22 @@ import { executeKeyPress } from '../../utils/test/executeKeyPress';
 import Link from '../Link';
 import Alert, { AlertProps } from './Alert';
 
-const baseTestId = 'alert';
-describe('Alert component', () => {
-  const ui = {
-    alertComp: byTestId(`${baseTestId}-component`),
-    alertCloseIconComp: byTestId(`${baseTestId}-close-icon`),
-    alertByReg: (reg: RegExp) => byText(reg),
-    alertById: (id: string) => byTestId(id),
-  };
-
-  const defaultProps = {
+const renderComponent = (customProps: Partial<AlertProps>) => {
+  const props = {
     action: <Link>Click Here</Link>,
     children: 'This is success. This is success. This is success.',
+    ...customProps,
   };
 
-  const renderComponent = (customProps: Partial<AlertProps>) => {
-    const props = {
-      ...defaultProps,
-      ...customProps,
-    };
+  render(<Alert {...props} />);
+};
 
-    render(<Alert {...props} />);
+describe('Alert component', () => {
+  const ui = {
+    alertComp: byTestId(`alert-component`),
+    alertCloseIconComp: byTestId(`alert-close-icon`),
+    alertByReg: (reg: RegExp) => byText(reg),
+    alertById: (id: string) => byTestId(id),
   };
 
   it('should not have any a11y errors', async () => {

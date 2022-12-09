@@ -6,14 +6,10 @@ import Checkbox, { CheckboxProps } from './Checkbox';
 import { CheckboxType } from './Checkbox.types';
 import React from 'react';
 
-const defaultProps = {
-  label: 'Label',
-  testID: 'checkbox-component',
-};
-
 const renderComponent = (customProps: Partial<CheckboxProps>) => {
   const props = {
-    ...defaultProps,
+    label: 'Label',
+    testID: 'checkbox-component',
     ...customProps,
   };
 

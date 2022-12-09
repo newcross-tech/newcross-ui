@@ -1,8 +1,8 @@
 import { RotateProp } from '@fortawesome/fontawesome-svg-core';
 import { faChevronDown } from '@fortawesome/pro-solid-svg-icons/faChevronDown';
-import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
+import { faXmark } from '@fortawesome/pro-regular-svg-icons/faXmark';
 import { useSpring } from '@react-spring/web';
-import { SyntheticEvent, useEffect, useRef, useState } from 'react';
+import { SyntheticEvent, useRef, useState } from 'react';
 import { useKeypressListener } from '../../hooks/useKeypressListener';
 import { useOutsideDetector } from '../../hooks/useOutsideDetector';
 import useTheme from '../../hooks/useTheme';
@@ -12,7 +12,6 @@ import Checkbox from '../Checkbox';
 import * as TextStyled from '../TextInput/TextInput.style';
 import { TypographyVariant } from '../Typography';
 import * as Styled from './Dropdown.style';
-import { Icon } from './Dropdown.style';
 import { DropdownValueType } from './Dropdown.types';
 import DropdownValue from './DropdownValue';
 import { getHeaderValueId } from './utils/getHeaderValueId';
@@ -54,6 +53,13 @@ export type DropdownProps = {
 
 export const baseTestId = 'dropdown';
 
+const DropdownWrapper = (props: DropdownProps) => (
+  <Dropdown
+    {...props}
+    key={`${props.selectedValue || 'dropdown-no-selectedValue'}`}
+  />
+);
+
 const Dropdown = ({
   options,
   placeholder,
@@ -76,22 +82,19 @@ const Dropdown = ({
   const theme = useTheme();
   const hasError = !!errorText;
 
-  useEffect(() => {
-    setValue(selectedValue);
-  }, [selectedValue]);
-
-  useEffect(() => {
+  const onChangeHandler = (value: DropdownValueType) =>
     onChange && onChange(value);
-  }, [value]);
 
   const onClear = (event: SyntheticEvent) => {
     event.stopPropagation();
     setValue(undefined);
+    onChangeHandler(undefined);
     setIsFocused(false);
   };
 
   const onSingleSelect = (value?: string) => {
     setValue(value);
+    onChangeHandler(value);
     setIsFocused(false);
   };
 
@@ -100,14 +103,17 @@ const Dropdown = ({
 
     if (!value) {
       setValue([optionValue]);
+      onChangeHandler([optionValue]);
       return;
     }
 
     if (isChecked) {
       updatedList = (value as string[]).filter((i) => i !== optionValue);
       setValue(updatedList);
+      onChangeHandler(updatedList);
     } else {
       setValue([...value, optionValue]);
+      onChangeHandler([...value, optionValue]);
     }
   };
 
@@ -120,7 +126,6 @@ const Dropdown = ({
     ...Styled.getAnimatedStyles({
       theme,
       isFocused,
-      hasError,
     }),
   });
 
@@ -145,7 +150,7 @@ const Dropdown = ({
         onClick={toggleFocus}
         isContentShown={isFocused}
         disabled={!!disabled}
-        hasError={hasError}
+        $hasError={hasError}
       >
         <Styled.HeaderContent>
           <Styled.HeaderLabel>
@@ -174,7 +179,7 @@ const Dropdown = ({
                 <Styled.Divider />
               </>
             )}
-            <Icon
+            <Styled.Icon
               icon={faChevronDown}
               rotation={(isFocused ? 180 : 0) as RotateProp}
             />
@@ -183,8 +188,11 @@ const Dropdown = ({
       </Styled.HeaderContainer>
       <Styled.BodyContainer>
         <Styled.BodyContent
-          ref={ref}
           style={springProps}
+          ref={ref}
+          $hasError={hasError}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
           data-testid={
             isFocused
               ? `${baseTestId}-body-container-expanded-${testID}`
@@ -235,4 +243,4 @@ const Dropdown = ({
   );
 };
 
-export default Dropdown;
+export default DropdownWrapper;

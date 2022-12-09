@@ -3,16 +3,10 @@ import { byTestId, byText } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
 import CheckboxGroup, { CheckboxGroupProps } from './CheckboxGroup';
 
-const baseTestId = 'checkbox';
-
-const defaultProps = {
-  defaultChecked: ['Apple', 'Banana', 'Pear'],
-  options: ['Apple', 'Banana', 'Pear'],
-};
-
 const renderComponent = (customProps: Partial<CheckboxGroupProps>) => {
   const props = {
-    ...defaultProps,
+    defaultChecked: ['Apple', 'Banana', 'Pear'],
+    options: ['Apple', 'Banana', 'Pear'],
     ...customProps,
   };
 
@@ -20,8 +14,8 @@ const renderComponent = (customProps: Partial<CheckboxGroupProps>) => {
 };
 describe('Checkbox Group Component', () => {
   const ui = {
-    groupContainer: byTestId(`${baseTestId}-group`),
-    selectAllCheckbox: byTestId(`${baseTestId}-selectAll`),
+    groupContainer: byTestId(`checkbox-group`),
+    selectAllCheckbox: byTestId(`checkbox-selectAll`),
     checkboxIcon: byTestId(`checkmark-icon`),
     checkboxIndeterIcon: byTestId(`indeterminate-icon`),
     childCheckbox: (text: string) => byText(text),

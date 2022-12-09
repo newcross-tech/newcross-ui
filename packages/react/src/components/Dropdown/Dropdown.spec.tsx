@@ -3,20 +3,18 @@ import { byTestId, byText } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
 import { executeKeyPress } from '../../utils/test/executeKeyPress';
 import Dropdown, { DropdownProps } from './Dropdown';
+import React from 'react';
 
 const baseTestId = 'dropdown';
 const options = ['Option 1', 'Option 2', 'Option 3'];
 const testID = '1';
-const defaultProps: DropdownProps = {
-  options,
-  label: 'Dropdown',
-  placeholder: 'Click to open dropdown',
-  testID,
-};
 
 const renderComponent = (customProps: Partial<DropdownProps>) => {
   const props = {
-    ...defaultProps,
+    options,
+    label: 'Dropdown',
+    placeholder: 'Click to open dropdown',
+    testID,
     ...customProps,
   };
 
@@ -54,14 +52,6 @@ describe('Dropdown Component', () => {
     expect(results).toHaveNoViolations();
   });
 
-  it('renders successfully with placeholder', () => {
-    // Act
-    renderComponent({});
-
-    // Assert
-    expect(ui.dropdownPlaceholder(testID).get()).toBeInTheDocument();
-  });
-
   it('renders successfully with selected value', () => {
     // Act
     renderComponent({ selectedValue: 'Option 1' });
@@ -76,14 +66,6 @@ describe('Dropdown Component', () => {
 
     // Assert
     expect(ui.errorText(testID).get()).toBeInTheDocument();
-  });
-
-  it('renders successfully as disabled', () => {
-    // Act
-    renderComponent({ disabled: true });
-
-    // Assert
-    expect(ui.label.get()).toBeInTheDocument();
   });
 
   it('renders value as disabled', () => {
@@ -107,6 +89,18 @@ describe('Dropdown Component', () => {
 
     // Assert
     expect(ui.dropdownFocused(testID).get()).toBeInTheDocument();
+  });
+
+  it('is not focused when is blured', () => {
+    // Act
+    renderComponent({});
+
+    // Assert
+    fireEvent.click(ui.dropdownHeaderContainer(testID).get());
+    fireEvent.focus(ui.dropdownFocused(testID).get());
+    fireEvent.blur(ui.dropdownFocused(testID).get());
+
+    expect(ui.dropdownFocused(testID).query()).not.toBeInTheDocument();
   });
 
   it('when option selected value and clear icon appear', () => {
@@ -137,16 +131,6 @@ describe('Dropdown Component', () => {
 
     // Assert
     expect(ui.dropdownPlaceholder(testID).get()).toBeInTheDocument();
-  });
-
-  it('toggles menu options when Spacebar', () => {
-    // Act
-    renderComponent({});
-
-    // Assert
-    executeKeyPress(ui.dropdownHeaderContainer(testID).get());
-
-    expect(ui.dropdownFocused(testID).get()).toBeInTheDocument();
   });
 
   it('select menu option when Spacebar is chosen', () => {
