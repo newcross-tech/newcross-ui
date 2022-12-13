@@ -101,7 +101,11 @@ const Card = ({
 
   return (
     <Pressable
-      style={[styles.container, containerStyle]}
+      style={({ pressed }) => [
+        styles.container,
+        containerStyle,
+        { opacity: pressed ? theme.CardPressedOpacity : 1 },
+      ]}
       {...rest}
       testID={`${testID}`}
     >

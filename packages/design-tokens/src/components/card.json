@@ -4,15 +4,26 @@
       "color": {
         "value": "{color.neutral.black.value}"
       },
+      "offset": {
+        "width": {
+          "value": "{shadow.base.offset.sm.value}"
+        },
+        "height": {
+          "value": "{shadow.base.offset.md.value}"
+        }
+      },
       "opacity": {
         "value": "{opacity.base.sm.value}"
       },
       "radius": {
-        "value": "{border.base.radius.lg.value}"
+        "value": "{border.base.radius.sm.value}"
       },
       "elevation": {
         "value": "{shadow.base.elevation.sm.value}"
       }
+    },
+    "pressed": {
+      "opacity": { "value": "{opacity.base.md.value}" }
     },
     "padding": {
       "value": "{spacing.base.16.value}"

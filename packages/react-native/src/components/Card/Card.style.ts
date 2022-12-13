@@ -1,10 +1,22 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ViewStyle } from 'react-native';
+import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import {
   CardColors,
   getColorValues,
   getContentBorderRadiusValues,
   ThemedCardProps,
 } from './Card.types';
+
+const getShadowValues = (theme: ThemeDesignTokens): ViewStyle => ({
+  shadowColor: theme.CardShadowColor,
+  shadowOffset: {
+    width: theme.CardShadowOffsetWidth,
+    height: theme.CardShadowOffsetHeight,
+  },
+  elevation: theme.CardShadowElevation,
+  shadowOpacity: theme.CardShadowOpacity,
+  shadowRadius: theme.CardShadowRadius,
+});
 
 const cardStyle = ({
   thumbnailContent,
@@ -23,28 +35,22 @@ const cardStyle = ({
   );
 
   const colorValues = getColorValues(theme);
+  const shadowValues = hasShadow ? getShadowValues(theme) : {};
 
   const {
     CardPadding,
     CardBorderWidth,
     CardBorderRadius,
-    CardShadowColor,
-    CardShadowElevation,
-    CardShadowOpacity,
-    CardShadowRadius,
     ColorNeutralWhite,
     SpacingBase12,
   } = theme;
 
   return StyleSheet.create({
     container: {
-      alignSelf: fullWidth ? 'stretch' : 'flex-start',
-      shadowColor: CardShadowColor,
-      elevation: hasShadow ? CardShadowElevation : 0,
-      shadowOpacity: hasShadow ? CardShadowOpacity : 0,
-      shadowRadius: CardShadowRadius,
-      borderRadius: hasRoundedCorners ? CardBorderRadius : 0,
       flexDirection: 'row',
+      alignSelf: fullWidth ? 'stretch' : 'flex-start',
+      borderRadius: hasRoundedCorners ? CardBorderRadius : 0,
+      ...shadowValues,
     },
     thumbnail: {
       overflow: 'hidden',
