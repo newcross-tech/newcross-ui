@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.35.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.35.0...@newcross-stories/react-native@1.35.1) (2022-12-14)
+
+**Note:** Version bump only for package @newcross-stories/react-native
+
+
+
+
+
 # [1.35.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.34.1...@newcross-stories/react-native@1.35.0) (2022-12-07)
 
 

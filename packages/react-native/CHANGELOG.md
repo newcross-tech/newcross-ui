@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.32.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.32.0...@newcross-ui/react-native@1.32.1) (2022-12-14)
+
+
+### Bug Fixes
+
+* **HFGO-1214:** shadow and pressable styles for card ([22f66ee](https://bitbucket.org/newcrossdev/newcross-ui/commits/22f66ee4d249945c475d4dac2746350aeee3259e))
+
+
+
+
+
 # [1.32.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.31.1...@newcross-ui/react-native@1.32.0) (2022-12-07)
 
 
