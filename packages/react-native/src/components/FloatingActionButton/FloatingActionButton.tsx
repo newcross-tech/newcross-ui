@@ -1,5 +1,11 @@
 import React from 'react';
-import { View, ViewStyle, Pressable, StyleProp } from 'react-native';
+import {
+  View,
+  ViewStyle,
+  Pressable,
+  StyleProp,
+  PressableProps,
+} from 'react-native';
 import { IconDefinition } from '@fortawesome/pro-regular-svg-icons';
 import { faCheck } from '@fortawesome/pro-regular-svg-icons/faCheck';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -41,7 +47,7 @@ export type FloatingActionButtonProps = {
    * Whether the component is detected.
    */
   isSelected?: boolean;
-};
+} & PressableProps;
 
 const FloatingActionButton = ({
   icon,
@@ -52,6 +58,7 @@ const FloatingActionButton = ({
   onPress,
   hasShadow = true,
   isSelected = false,
+  ...rest
 }: FloatingActionButtonProps) => {
   const hasContentGreaterOne =
     [icon, text, isSelected].filter(
@@ -75,6 +82,7 @@ const FloatingActionButton = ({
       testID={testID}
       style={[styles.container, style]}
       onPress={onPress}
+      {...rest}
     >
       {icon && (
         <View testID="icon">
