@@ -31,7 +31,7 @@ export const Variants: Story<CardProps> = () => {
 
   return (
     <Container>
-      <Card hasRoundedCorners>
+      <Card hasRoundedCorners isPressable={false}>
         <FontAwesomeIcon icon={faUser} size={SpacingBase24} />
         <Typography
           variant={TypographyVariant.heading3}

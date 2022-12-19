@@ -69,6 +69,10 @@ export type CardProps = {
    * Whether the cards have a shadow.
    */
   hasShadow?: boolean;
+  /**
+   * Whether card is pressable.
+   */
+  isPressable?: boolean;
 };
 
 const Card = ({
@@ -84,6 +88,7 @@ const Card = ({
   rightIconContent,
   containerStyle,
   hasShadow = true,
+  isPressable = true,
   ...rest
 }: CardProps) => {
   const theme = useTheme();
@@ -104,7 +109,7 @@ const Card = ({
       style={({ pressed }) => [
         styles.container,
         containerStyle,
-        { opacity: pressed ? theme.CardPressedOpacity : 1 },
+        { opacity: pressed && isPressable ? theme.CardPressedOpacity : 1 },
       ]}
       {...rest}
       testID={`${testID}`}
