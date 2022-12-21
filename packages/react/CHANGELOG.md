@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.20.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.19.9...@newcross-ui/react@1.20.0) (2022-12-21)
+
+
+### Features
+
+* **ASK-298:** added leftContent + cardGroup + overview ([c2a64dc](https://bitbucket.org/newcrossdev/newcross-ui/commits/c2a64dc210fc992197943b28e44eae6708cb8d6b))
+
+
+
+
+
 ## [1.19.9](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.19.8...@newcross-ui/react@1.19.9) (2022-12-14)
 
 **Note:** Version bump only for package @newcross-ui/react
