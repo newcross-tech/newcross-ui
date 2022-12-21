@@ -14,6 +14,7 @@ export {
   default as Button,
 } from './components/Button';
 export { CardProps, default as Card } from './components/Card';
+export { default as CardGroup, CardGroupProps } from './components/CardGroup';
 export {
   CheckboxProps,
   CheckboxType,

@@ -23,6 +23,5 @@ export const Container = styled.div`
     > div:not(:last-child) {
       ${spacing && getSpacingValues(theme)[spacing]}
     }
-  }
   `}
 `;

@@ -96,4 +96,23 @@ describe('Tabs Component', () => {
     // Assert
     expect(onClick).toHaveBeenCalledWith(1);
   });
+
+  it('doesnt select tab when pressing Spacebar when disabled is passed', () => {
+    // Arrange
+    const onClick = jest.fn();
+    const tabsWithIcons = [
+      <FontAwesomeIcon icon={faUser} />,
+      <FontAwesomeIcon icon={faKitMedical} />,
+    ];
+    // Act
+    renderComponent({
+      onCurrentIndexChange: onClick,
+      tabs: tabsWithIcons,
+      disabled: true,
+    });
+
+    executeKeyPress(ui.tabComp(1).get());
+    // Assert
+    expect(onClick).not.toHaveBeenCalled();
+  });
 });

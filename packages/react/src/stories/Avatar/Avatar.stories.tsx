@@ -6,6 +6,7 @@ import Container from '../Container';
 import Spacing, { SpacingPositions } from '../Spacing';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './AvatarInfo';
+import React from 'react';
 
 export default {
   title: 'React/Components/Avatar',

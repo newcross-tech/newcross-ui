@@ -47,6 +47,7 @@ export const Content = styled.div<DisabledType>`
     color: ${disabled ? theme.TabsLabelDisabledColor : theme.TabsLabelColor};
     padding-left: ${theme.TabsPaddingHorizontal};
     padding-right: ${theme.TabsPaddingHorizontal};
+    ${getTabbedStateStyles()}
   `};
 `;
 

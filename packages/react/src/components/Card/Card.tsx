@@ -15,7 +15,7 @@ export type CardProps = {
    */
   onClick?: VoidFunction;
   /**
-   * Whether the press behavior is disabled.
+   * Whether the click behavior is disabled.
    */
   disabled?: boolean;
   /**
@@ -46,6 +46,10 @@ export type CardProps = {
    * Whether the cards have a shadow.
    */
   hasShadow?: boolean;
+  /**
+   * To show custom sectoin on the left side of card
+   */
+  thumbnailContent?: ReactNode;
 } & TestProp;
 
 const Card = ({
@@ -56,6 +60,7 @@ const Card = ({
   disabled,
   hasPadding = true,
   onClick,
+  thumbnailContent,
   variant = CardVariants.primary,
   hasRightIcon,
   hasShadow = true,
@@ -72,16 +77,29 @@ const Card = ({
       disabled={disabled}
       hasShadow={hasShadow}
       fullWidth={fullWidth}
+      variant={variant}
+      hasBorder={hasBorder}
       onClick={clickHandler}
       tabIndex={!disabled ? 0 : -1}
-      hasRoundedCorners={hasRoundedCorners}
       data-testid={`${testID}-component`}
+      thumbnailContent={thumbnailContent}
+      hasRoundedCorners={hasRoundedCorners}
       onKeyPress={(event) => onSpacePressTrigger(event, clickHandler)}
       {...rest}
     >
-      <Styled.Content
+      {thumbnailContent && (
+        <Styled.LeftContent
+          hasRoundedCorners={hasRoundedCorners}
+          variant={variant}
+          hasBorder={hasBorder}
+        >
+          {thumbnailContent}
+        </Styled.LeftContent>
+      )}
+      <Styled.MainContent
         variant={variant}
         hasBorder={hasBorder}
+        fullWidth={fullWidth}
         hasPadding={hasPadding}
         hasRightIcon={hasRightIcon}
         hasRoundedCorners={hasRoundedCorners}
@@ -93,7 +111,7 @@ const Card = ({
             data-testid={`${testID}-right-icon`}
           />
         )}
-      </Styled.Content>
+      </Styled.MainContent>
     </Styled.Card>
   );
 };

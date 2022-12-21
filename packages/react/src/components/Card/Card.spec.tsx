@@ -4,6 +4,7 @@ import Typography, { TypographyVariant } from '../../components/Typography';
 import { executeKeyPress } from '../../utils';
 import { axe } from '../../utils/test/axeConfig';
 import Card, { CardProps } from './Card';
+import React from 'react';
 
 jest.mock('@fortawesome/react-fontawesome', () => ({
   FontAwesomeIcon: 'chevron-icon',
@@ -13,9 +14,23 @@ jest.mock('@fortawesome/pro-light-svg-icons/faChevronRight', () => ({
   faChevronRight: 'bar',
 }));
 
-describe('Card Component', () => {
-  const baseTestId = 'card';
+const renderComponent = (customProps: Partial<CardProps>) => {
+  const props = {
+    hasRoundedCorners: true,
+    hasBorder: true,
+    fullWidth: true,
+    children: (
+      <Typography variant={TypographyVariant.paragraph1}>children</Typography>
+    ),
+    ...customProps,
+  };
 
+  render(<Card {...props} />);
+};
+
+const baseTestId = 'card';
+
+describe('Card Component', () => {
   const ui = {
     cardIcon: byTestId(`${baseTestId}-right-icon`),
     cardComp: byTestId(`${baseTestId}-component`),
@@ -23,89 +38,59 @@ describe('Card Component', () => {
   };
 
   it('should not have any a11y errors', async () => {
-    // Prepare
-    const props: CardProps = {
-      hasRoundedCorners: true,
-      hasBorder: true,
-      fullWidth: true,
-      children: (
-        <Typography variant={TypographyVariant.paragraph1}>children</Typography>
-      ),
-    };
-
     // Act
-    render(<Card {...props} />);
-
+    renderComponent({});
+    //Assert
     const results = await axe(document.body);
     expect(results).toHaveNoViolations();
   });
 
   it('renders successfully', () => {
-    //Arrange
-    const props: CardProps = {
-      hasRoundedCorners: true,
-      hasBorder: true,
-      fullWidth: true,
-      children: (
-        <Typography variant={TypographyVariant.paragraph1}>children</Typography>
-      ),
-    };
     // Act
-    render(<Card {...props} />);
+    renderComponent({});
 
     //Assert
-    expect(ui.cardByReg(/children/i).get()).toBeTruthy();
+    expect(ui.cardByReg(/children/i).get()).toBeInTheDocument();
   });
 
-  it('selects pill when Spacebar', () => {
-    // Arrange
+  it('renders a card with thumbnail', () => {
+    //Act
+    renderComponent({ thumbnailContent: <div>{'Text'}</div> });
+
+    //Assert
+    expect(ui.cardComp.get()).toBeInTheDocument();
+  });
+
+  it('selects card when Spacebar', () => {
     const onClick = jest.fn();
-    const props: CardProps = {
-      onClick: onClick,
-      children: (
-        <Typography variant={TypographyVariant.paragraph1}>children</Typography>
-      ),
-    };
     // Act
-    render(<Card {...props} />);
+    renderComponent({ onClick });
     executeKeyPress(ui.cardComp.get());
     // Assert
     expect(onClick).toBeCalled();
   });
 
   it(`doesn't renders right icon when hasRightIcon is false`, () => {
-    // Arrange
-    const props: CardProps = {
-      hasRightIcon: false,
-    };
-
     //Act
-    render(<Card {...props} />);
+    renderComponent({ hasRightIcon: false });
 
     //Assert
     expect(ui.cardIcon.query()).not.toBeInTheDocument();
   });
 
   it(`renders chevron right icon when hasRightIcon is true`, () => {
-    // Arrange
-    const props: CardProps = {
-      hasRightIcon: true,
-    };
-
     //Act
-    render(<Card {...props} />);
+    renderComponent({ hasRightIcon: true });
 
     //Assert
     expect(ui.cardIcon.get()).toBeInTheDocument();
   });
 
   it('triggers onClick successfully', () => {
-    // Arrange
     const onClick = jest.fn();
-    const props: CardProps = { onClick: onClick };
 
     // Act
-    render(<Card {...props} />);
+    renderComponent({ onClick });
     fireEvent.click(ui.cardComp.get());
 
     // Assert
@@ -115,10 +100,8 @@ describe('Card Component', () => {
   it(`doesn't triggers onClick when card is disabled`, () => {
     // Arrange
     const onClick = jest.fn();
-    const props: CardProps = { disabled: true, onClick: onClick };
-
     // Act
-    render(<Card {...props} />);
+    renderComponent({ disabled: true, onClick });
     fireEvent.click(ui.cardComp.get());
 
     // Assert

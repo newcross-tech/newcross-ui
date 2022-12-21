@@ -66,7 +66,10 @@ const Tabs = ({
                 data-testid={`${baseTestId}-${index}`}
                 onClick={() => !disabled && onCurrentIndexChange(index)}
                 onKeyPress={(event) =>
-                  onSpacePressTrigger(event, () => onCurrentIndexChange(index))
+                  onSpacePressTrigger(
+                    event,
+                    () => !disabled && onCurrentIndexChange(index)
+                  )
                 }
               >
                 {isString ? (
@@ -84,6 +87,7 @@ const Tabs = ({
                 ) : (
                   <Styled.Content
                     disabled={disabled}
+                    tabIndex={!disabled ? 0 : -1}
                     data-testid={`${baseTestId}-view-${index}`}
                   >
                     {tab}

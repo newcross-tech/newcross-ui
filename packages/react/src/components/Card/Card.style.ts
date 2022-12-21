@@ -16,9 +16,10 @@ export const getColorValues = (theme: ThemeDesignTokens) => ({
 });
 
 export const Card = styled.div<CardProps>`
-  ${({ theme, disabled, hasShadow, hasRoundedCorners, fullWidth }: ExtendedTheme<CardProps>) => css`
+  ${({ theme, disabled, hasShadow, hasRoundedCorners, fullWidth, thumbnailContent }: ExtendedTheme<CardProps>) => css`
     display: flex;
-    width: fit-content;
+    width: ${fullWidth && '100%'};
+
     border-radius: ${hasRoundedCorners && theme.CardBorderRadius};
     ${getTabbedStateStyles()}
 
@@ -27,24 +28,35 @@ export const Card = styled.div<CardProps>`
       cursor: pointer;
     `};
 
-    ${fullWidth &&
-    css`
-      width: 100%;
-    `};
-
     ${hasShadow &&
     css`
       box-shadow: ${theme.TabsActiveTabShadowOffsetWidth}px ${theme.TabsActiveTabShadowOffsetHeight}px
         ${theme.CardShadowRadius} ${getRgba(theme.CardShadowColor, theme.CardShadowOpacity)};
     `};
 
-    > ${Content} {
-      border-radius: ${hasRoundedCorners && theme.CardBorderRadius};
+    > ${MainContent} {
+      ${hasRoundedCorners &&
+      (thumbnailContent
+        ? css`
+            border-top-right-radius: ${theme.CardBorderRadius};
+            border-bottom-right-radius: ${theme.CardBorderRadius};
+          `
+        : css`
+            border-radius: ${theme.CardBorderRadius};
+          `)}
+    }
+
+    > ${LeftContent} {
+      ${hasRoundedCorners &&
+      css`
+        border-top-left-radius: ${theme.CardBorderRadius};
+        border-bottom-left-radius: ${theme.CardBorderRadius};
+      `};
     }
   `};
 `;
 
-export const Content = styled.div<CardProps>`
+export const MainContent = styled.div<CardProps>`
   ${({ theme, hasBorder, hasPadding, hasRightIcon, variant }: ExtendedTheme<CardProps>) => css`
     display: flex;
     flex: 1;
@@ -53,6 +65,16 @@ export const Content = styled.div<CardProps>`
     background-color: ${theme.ColorNeutralWhite};
     justify-content: ${hasRightIcon ? 'space-between' : 'flex-start'};
 
+    ${hasBorder &&
+    css`
+      border: ${theme.CardBorderWidth} solid ${getColorValues(theme)[variant as CardVariants]};
+    `};
+  `};
+`;
+
+export const LeftContent = styled.div<CardProps>`
+  ${({ theme, hasBorder, variant }: ExtendedTheme<CardProps>) => css`
+    overflow: hidden;
     ${hasBorder &&
     css`
       border: ${theme.CardBorderWidth} solid ${getColorValues(theme)[variant as CardVariants]};
