@@ -4,12 +4,13 @@ import styled, { css } from 'styled-components';
 import { ExtendedTheme, Theme } from '../../types/Theme';
 import { getElipsisStyles, getTabbedStateStyles } from '../../utils/css';
 import { getHaloValue } from '../../utils/getHaloValue';
+import HaloLabel, { LabelProps } from '../Label';
 import Typography, { TypographyProps } from '../Typography';
 import { defaultAnimationSpeed, optionNumberOfLines } from './Dropdown.constants';
 import {
   DropdownAnimatedStyleArgs,
-  HeaderContainerProps,
   ErrorProps,
+  HeaderContainerProps,
   HeaderValueProps,
   OptionProps,
 } from './Dropdown.types';
@@ -20,8 +21,9 @@ const getPaddingStyles = (isMulti: boolean) => css`
   `};
 `;
 
-export const Label = styled(Typography)`
+export const Label = styled(HaloLabel)<LabelProps>`
   ${({ theme }: ExtendedTheme<TypographyProps>) => css`
+    color: ${theme.RadioColor};
     margin-bottom: ${theme.TextInputMarginTop};
   `}
 `;

@@ -1,12 +1,12 @@
 import { Meta, Story } from '@storybook/react';
-import Container from '../Container';
 import CheckboxGroup, {
   CheckboxGroupProps,
 } from '../../components/CheckboxGroup';
 import Typography, { TypographyVariant } from '../../components/Typography';
-import Spacing, { SpacingSizes } from '../Spacing';
-import { TITLE, DESCRIPTION, DO, DONT } from './CheckboxGroupInfo';
+import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
+import Spacing, { SpacingSizes } from '../Spacing';
+import { DESCRIPTION, DO, DONT, TITLE } from './CheckboxGroupInfo';
 
 export default {
   title: 'React/Components/CheckboxGroup',

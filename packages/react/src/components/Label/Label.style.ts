@@ -13,9 +13,7 @@ export const Label = styled.label<LabelProps>`
       gutterBottom,
       numberOfLines,
     } as ExtendedTheme<TypographyProps>)};
-    color: ${disabled ? theme.CheckboxLabelDisabledColor : theme.CheckboxLabelColor};
-    margin-left: ${theme.CheckboxLabelMarginHorizontal};
-    margin-right: ${theme.CheckboxLabelMarginHorizontal};
+    color: ${theme.RadioColor};
     ${!disabled && getTabbedStateStyles()}
   `}
 `;

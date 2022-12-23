@@ -1,9 +1,11 @@
 import { RotateProp } from '@fortawesome/fontawesome-svg-core';
 import { faChevronDown } from '@fortawesome/pro-solid-svg-icons/faChevronDown';
 import { useSpring } from '@react-spring/web';
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { ReactNode, useRef, useState } from 'react';
 import { useFirstRender } from '../../hooks/useFirstRender';
+import { useResize } from '../../hooks/useResize';
 import useTheme from '../../hooks/useTheme';
+import { useToggle } from '../../hooks/useToggle';
 import { TestProp } from '../../types/TestProp';
 import { TypographyVariant } from '../Typography';
 import { defaultAnimationSpeed } from './Accordion.constants';
@@ -51,25 +53,17 @@ const Accordion = ({
   const ref = useRef<HTMLDivElement>(null);
   const { isFirstRender } = useFirstRender();
 
-  useEffect(() => {
-    setOpenAccordion(expanded);
-  }, [expanded]);
+  useToggle(expanded, () => setOpenAccordion(expanded));
 
   const toggleAccordion = () => {
     onClick ? onClick() : setOpenAccordion((prevState) => !prevState);
   };
 
-  useEffect(() => {
-    const getContentHeight = () => {
-      ref && ref.current && setContentMaxHeight(ref.current.scrollHeight);
-    };
-
-    getContentHeight();
-
-    window.addEventListener('resize', () => getContentHeight());
-
-    return () => window.removeEventListener('resize', getContentHeight);
-  }, [ref, contentMaxHeight]);
+  useResize({
+    ref,
+    containerSize: ref?.current?.scrollHeight || 0,
+    onResize: () => setContentMaxHeight(ref?.current?.scrollHeight || 0),
+  });
 
   const initialStyles = isFirstRender
     ? {}

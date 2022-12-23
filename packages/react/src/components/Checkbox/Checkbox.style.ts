@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ExtendedTheme } from '../../types/Theme';
+import * as LabelStyled from '../Label/Label.style';
 import { CheckboxProps } from './Checkbox';
 import { CheckboxPropsExtended, CheckboxType, hasErrorProps, isSelectedProps } from './Checkbox.types';
 
@@ -10,6 +11,12 @@ export const Checkbox = styled.div<CheckboxProps>`
     cursor: ${!disabled && 'pointer'};
     margin-top: ${theme.CheckboxMarginVertical};
     margin-bottom: ${theme.CheckboxMarginVertical};
+
+    > ${LabelStyled.Label} {
+      cursor: ${!disabled && 'pointer'};
+      color: ${disabled ? theme.CheckboxLabelDisabledColor : theme.CheckboxLabelColor};
+      margin-left: ${theme.CheckboxLabelMarginHorizontal};
+    }
   `};
 `;
 

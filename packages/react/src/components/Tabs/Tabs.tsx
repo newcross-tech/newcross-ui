@@ -1,9 +1,10 @@
+import { useSpring } from '@react-spring/web';
+import { Fragment, ReactNode, useRef, useState } from 'react';
+import { useResize } from '../../hooks/useResize';
+import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
+import { TypographyVariant } from '../Typography';
 import * as Styled from './Tabs.style';
 import { getDividerPosition } from './utils';
-import { useSpring } from '@react-spring/web';
-import { TypographyVariant } from '../Typography';
-import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
-import { Fragment, ReactNode, useEffect, useRef, useState } from 'react';
 
 export type TabsProps = {
   /**
@@ -36,21 +37,20 @@ const Tabs = ({
   const [widthOfContainer, setWidthOfContainer] = useState(0);
   const [index, setIndex] = useState(currentIndex);
   const translateValue = widthOfContainer / tabs.length;
+
+  if (index !== currentIndex) setIndex(currentIndex);
+
   const ref = useRef<HTMLDivElement>(null);
+
+  useResize({
+    ref,
+    containerSize: ref?.current?.offsetWidth || 0,
+    onResize: () => setWidthOfContainer(ref?.current?.offsetWidth || 0),
+  });
 
   const springProps = useSpring(
     Styled.getAnimatedStyles({ translateValue, index })
   );
-
-  useEffect(() => {
-    const setContentWidth = () => {
-      ref && ref.current && setWidthOfContainer(ref.current.offsetWidth);
-    };
-    setIndex(currentIndex);
-    setContentWidth();
-    window.addEventListener('resize', () => setContentWidth());
-    return () => window.removeEventListener('resize', setContentWidth);
-  }, [ref, widthOfContainer, currentIndex]);
 
   return (
     <Styled.Container>

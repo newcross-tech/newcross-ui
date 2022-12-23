@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { TestProp } from '../../types/TestProp';
 import Checkbox, { CheckboxType } from '../Checkbox';
 import * as Styled from './CheckboxGroup.style';
@@ -63,8 +63,12 @@ const CheckboxGroup = ({
   const isDefaultChecked = (label: string) =>
     selectedList.some((item) => item === getLabel(label));
 
+  const onChangeHandler = (newList: string[]) => onChange && onChange(newList);
+
   const handleCheckAll = () => {
-    setSelectedList(!isAnySelected() ? getOptionsList(options) : []);
+    const newList = !isAnySelected() ? getOptionsList(options) : [];
+    setSelectedList(newList);
+    onChangeHandler(newList);
   };
 
   const handleChecked = (label: string) => {
@@ -75,11 +79,8 @@ const CheckboxGroup = ({
     else updatedList = selectedList.concat(label);
 
     setSelectedList(updatedList);
+    onChangeHandler(updatedList);
   };
-
-  useEffect(() => {
-    onChange && onChange(selectedList);
-  }, [selectedList.length]);
 
   const renderCheckboxList = () =>
     options.map((item, index) => {

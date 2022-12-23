@@ -6,6 +6,7 @@ import HaloLabel, { LabelProps } from '../Label';
 export const Label = styled(HaloLabel)<LabelProps>`
   ${({ theme }: Theme) => css`
     color: ${theme.RadioColor};
+    margin-left: ${theme.CheckboxLabelMarginHorizontal};
   `}
 `;
 

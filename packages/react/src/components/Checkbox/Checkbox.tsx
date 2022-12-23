@@ -1,7 +1,8 @@
 import { faCheck } from '@fortawesome/pro-light-svg-icons/faCheck';
 import { faMinus } from '@fortawesome/pro-light-svg-icons/faMinus';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { SyntheticEvent, useEffect, useState } from 'react';
+import { SyntheticEvent, useState } from 'react';
+import { useToggle } from '../../hooks/useToggle';
 import { TestProp } from '../../types/TestProp';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import * as LabelStyled from '../Label/Label.style';
@@ -51,7 +52,10 @@ const Checkbox = ({
   allowTab = true,
   ...rest
 }: CheckboxProps) => {
-  const [selected, setSelected] = useState(checked);
+  const isChecked = !!checked;
+  const [selected, setSelected] = useState(isChecked);
+
+  useToggle(isChecked, () => setSelected(isChecked));
 
   const icon = type === CheckboxType.INDETERMINATE ? faMinus : faCheck;
 
@@ -66,10 +70,6 @@ const Checkbox = ({
     event.preventDefault();
     handleChecked();
   };
-
-  useEffect(() => {
-    setSelected(checked);
-  }, [checked]);
 
   return (
     <Styled.Checkbox
