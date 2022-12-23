@@ -1,24 +1,49 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled, { css } from 'styled-components';
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
+import { IconProps } from './Alert.types';
 import { AlertVariant } from '../../types/AlertVariant';
 import { ExtendedTheme, Theme } from '../../types/Theme';
 import { getTabbedStateStyles } from '../../utils';
 import Typography from '../Typography';
 import { AlertProps } from './Alert';
-import { getAccentColor, IconProps } from './Alert.types';
+import { faCheck } from '@fortawesome/pro-regular-svg-icons/faCheck';
+import { faCircleExclamation } from '@fortawesome/pro-regular-svg-icons/faCircleExclamation';
+import { faCircleInfo } from '@fortawesome/pro-regular-svg-icons/faCircleInfo';
+import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 
-const getBackgroundColor = (theme: ThemeDesignTokens) => ({
-  [AlertVariant.success]: css`
+export const getTitle = (): Record<AlertVariant, string> => ({
+  success: 'Success',
+  warning: 'Warning',
+  error: 'Error',
+  info: 'Info',
+});
+
+export const getIcon = (): Record<AlertVariant, IconDefinition> => ({
+  success: faCheck,
+  warning: faCircleExclamation,
+  error: faCircleExclamation,
+  info: faCircleInfo,
+});
+
+export const getAccentColor = (theme: ThemeDesignTokens): Record<AlertVariant, string> => ({
+  success: theme.AlertColorSuccessPrimary,
+  warning: theme.AlertColorWarningPrimary,
+  error: theme.AlertColorErrorPrimary,
+  info: theme.AlertColorInfoPrimary,
+});
+
+const getBackgroundColor = (theme: ThemeDesignTokens): Record<AlertVariant, FlattenSimpleInterpolation> => ({
+  success: css`
     background-color: ${theme.AlertColorSuccessSecondary};
   `,
-  [AlertVariant.warning]: css`
+  warning: css`
     background-color: ${theme.AlertColorWarningSecondary};
   `,
-  [AlertVariant.error]: css`
+  error: css`
     background-color: ${theme.AlertColorErrorSecondary};
   `,
-  [AlertVariant.info]: css`
+  info: css`
     background-color: ${theme.AlertColorInfoSecondary};
   `,
 });

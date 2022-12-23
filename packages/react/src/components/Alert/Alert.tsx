@@ -6,7 +6,6 @@ import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import Card from '../Card';
 import { TypographyVariant } from '../Typography';
 import * as Styled from './Alert.style';
-import { getIcon, getTitle } from './Alert.types';
 
 export type AlertProps = {
   /**
@@ -61,7 +60,7 @@ const Alert = ({
   hasTitle = true,
   hasBorder = true,
   fullWidth = true,
-  variant = AlertVariant.success,
+  variant = 'success',
   testID = 'alert',
 }: AlertProps) => (
   <Card
@@ -78,13 +77,13 @@ const Alert = ({
     >
       {icon || (
         <Styled.IconStyle position={'left'} variant={variant}>
-          <Styled.Icon icon={getIcon()[variant]} />
+          <Styled.Icon icon={Styled.getIcon()[variant]} />
         </Styled.IconStyle>
       )}
       <Styled.TextContainer>
         {hasTitle && (
           <Styled.Text variant={TypographyVariant.heading4}>
-            {title || getTitle()[variant]}
+            {title || Styled.getTitle()[variant]}
           </Styled.Text>
         )}
         {children && (

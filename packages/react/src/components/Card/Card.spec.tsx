@@ -4,7 +4,6 @@ import Typography, { TypographyVariant } from '../../components/Typography';
 import { executeKeyPress } from '../../utils';
 import { axe } from '../../utils/test/axeConfig';
 import Card, { CardProps } from './Card';
-import React from 'react';
 
 jest.mock('@fortawesome/react-fontawesome', () => ({
   FontAwesomeIcon: 'chevron-icon',

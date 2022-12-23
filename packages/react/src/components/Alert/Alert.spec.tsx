@@ -1,9 +1,7 @@
 import { faCircleCheck } from '@fortawesome/pro-regular-svg-icons/faCircleCheck';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fireEvent, render } from '@testing-library/react';
-import React from 'react';
 import { byTestId, byText } from 'testing-library-selector';
-import { AlertVariant } from '../../types/AlertVariant';
 import { axe } from '../../utils/test/axeConfig';
 import { executeKeyPress } from '../../utils/test/executeKeyPress';
 import Link from '../Link';
@@ -47,7 +45,7 @@ describe('Alert component', () => {
 
   it('renders successfully with custom title', () => {
     // Act
-    renderComponent({ variant: AlertVariant.info, title: 'Custom title' });
+    renderComponent({ variant: 'info', title: 'Custom title' });
 
     // Assert
     expect(ui.alertComp.get()).toBeInTheDocument();
@@ -92,48 +90,5 @@ describe('Alert component', () => {
 
     // Assert
     expect(ui.alertById('alert-icon').get()).toBeInTheDocument();
-  });
-});
-
-describe.each([
-  [
-    {
-      variant: AlertVariant.info,
-    },
-    'Info',
-  ],
-  [
-    {
-      variant: AlertVariant.success,
-    },
-    'Success',
-  ],
-  [
-    {
-      variant: AlertVariant.warning,
-    },
-    'Warning',
-  ],
-  [
-    {
-      variant: AlertVariant.error,
-    },
-    'Error',
-  ],
-])('Variant props', (alertProps, result) => {
-  const baseTestId = 'alert';
-
-  const ui = {
-    alertComp: byTestId(`${baseTestId}-component`),
-    text: (text: string) => byText(text),
-  };
-
-  it(`renders successfully with ${result}`, () => {
-    // Act
-    render(<Alert {...alertProps} />);
-
-    // Assert
-    expect(ui.alertComp.get()).toBeInTheDocument();
-    expect(ui.text(result).get()).toBeInTheDocument();
   });
 });

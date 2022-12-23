@@ -5,7 +5,6 @@ import { byTestId, byText } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
 import { executeKeyPress } from '../../utils/test/executeKeyPress';
 import Pill, { PillProps } from './Pill';
-import React from 'react';
 
 const renderComponent = (customProps: Partial<PillProps>) => {
   const props = {

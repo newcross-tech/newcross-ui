@@ -1,11 +1,11 @@
-import { TypographyVariant } from '../Typography';
+import { Theme } from '../../types/Theme';
 
-export enum LinkSizes {
-  small = 'small',
-  medium = 'medium',
-}
+export type LinkSizes = 'small' | 'medium';
 
-export const getTypographySizes = (): Record<LinkSizes, TypographyVariant> => ({
-  [LinkSizes.small]: TypographyVariant.paragraph2,
-  [LinkSizes.medium]: TypographyVariant.paragraph1,
-});
+export type LinkTextProp = {
+  leftIcon?: boolean;
+} & Theme;
+
+export type LinkCoreVariant = 'email' | 'internal' | 'external' | 'phone';
+export type LinkSectionVariant = 'section';
+export type LinkVariant = LinkCoreVariant | LinkSectionVariant;

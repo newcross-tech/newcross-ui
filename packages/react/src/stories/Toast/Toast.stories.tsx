@@ -2,10 +2,9 @@ import Container from '../Container';
 import Link from '../../components/Link';
 import useState from 'storybook-addon-state';
 import { Meta, Story } from '@storybook/react';
-import Spacing, { SpacingPositions, SpacingSizes } from '../Spacing';
-import { AlertVariant } from '../../types/AlertVariant';
 import Toast, { ToastProps } from '../../components/Toast';
 import Button, { ButtonSizes } from '../../components/Button';
+import Spacing, { SpacingPositions, SpacingSizes } from '../Spacing';
 import Typography, { TypographyVariant } from '../../components/Typography';
 
 export default {
@@ -50,28 +49,28 @@ export const Variants = () => {
     <Container direction="column">
       <Toast
         show={showSuccessToast}
-        variant={AlertVariant.success}
+        variant="success"
         message="This is a success toast!"
         onClose={() => setShowSuccessToast(false)}
         action={<Link>Click Here</Link>}
       />
       <Toast
         show={showWarningToast}
-        variant={AlertVariant.warning}
+        variant="warning"
         message="This is a warning toast!"
         onClose={() => setShowWarningToast(false)}
         action={<Link>Click Here</Link>}
       />
       <Toast
         show={showErrorToast}
-        variant={AlertVariant.error}
+        variant="error"
         message="This is an error toast!"
         onClose={() => setShowErrorToast(false)}
         action={<Link>Click Here</Link>}
       />
       <Toast
         show={showInfoToast}
-        variant={AlertVariant.info}
+        variant="info"
         message="This is an info toast!"
         onClose={() => setShowInfoToast(false)}
         action={<Link>Click Here</Link>}
@@ -79,35 +78,35 @@ export const Variants = () => {
 
       <Toast
         show={showMinimalSuccessToast}
-        variant={AlertVariant.success}
+        variant="success"
         message="This is a minimal success toast!"
         hasTitle={false}
         onClose={() => setShowMinimalSuccessToast(false)}
       />
       <Toast
         show={showMinimalWarningToast}
-        variant={AlertVariant.warning}
+        variant="warning"
         message="This is a minimal warning toast!"
         hasTitle={false}
         onClose={() => setShowMinimalWarningToast(false)}
       />
       <Toast
         show={showMinimalErrorToast}
-        variant={AlertVariant.error}
+        variant="error"
         message="This is a minimal error toast!"
         hasTitle={false}
         onClose={() => setShowMinimalErrorToast(false)}
       />
       <Toast
         show={showMinimalInfoToast}
-        variant={AlertVariant.info}
+        variant="info"
         message="This is a minimal info toast!"
         hasTitle={false}
         onClose={() => setShowMinimalInfoToast(false)}
       />
       <Toast
         show={showPersistentToast}
-        variant={AlertVariant.info}
+        variant="info"
         message="This is an info toast!"
         onClose={() => setShowPersistentToast(false)}
         action={<Link>Click Here</Link>}

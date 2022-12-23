@@ -3,7 +3,6 @@ import { byTestId } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
 import Pill from '../Pill/Pill';
 import PillGroup, { PillGroupProps } from './PillGroup';
-import React from 'react';
 
 const renderComponent = (customProps: Partial<PillGroupProps>) => {
   const props = {

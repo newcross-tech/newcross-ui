@@ -1,7 +1,6 @@
 import React from 'react';
 import Toast, { ToastProps } from './Toast';
 import { byTestId } from 'testing-library-selector';
-import { AlertVariant } from '../../types/AlertVariant';
 import { render, fireEvent } from '@testing-library/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDays } from '@fortawesome/pro-solid-svg-icons/faCalendarDays';
@@ -16,7 +15,6 @@ const renderComponent = (customProps: Partial<ToastProps>) => {
   const props = {
     message: 'this is a toast notification',
     show: true,
-    variant: AlertVariant.success,
     onClose: jest.fn(),
     ...customProps,
   };
