@@ -12,6 +12,7 @@ import React, {
 import { TestProp } from '../../types/TestProp';
 import Label from '../Label/Label';
 import { TypographyVariant } from '../Typography';
+import { TextArea } from './TextArea';
 import * as Styled from './TextInput.style';
 import { SearchIcon } from './TextInput.style';
 
@@ -60,6 +61,8 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
     disabled,
     helperText,
     errorText,
+    maxLength,
+    placeholder,
     isValid,
     search,
     onClose,
@@ -70,7 +73,9 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
 ) => {
   const [isFocused, setIsFocused] = useState(false);
   const [passwordVisibility, setPasswordVisibility] = useState(true);
-  const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeHandler = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     onChange && onChange(event.target.value);
   };
 
@@ -81,7 +86,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
   const hasError = !!errorText;
 
   const isPasswordType = type === 'password';
-
+  const isTextArea = type === 'textarea';
   const inputId = `${baseTestId}-component-${testID}`;
 
   return (
@@ -95,68 +100,83 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
           {label}
         </Label>
       )}
-      <Styled.Container
-        isFocused={isFocused}
-        hasError={hasError}
-        search={search}
-        disabled={disabled}
-        data-testid={
-          isFocused
-            ? `${baseTestId}-container-focused`
-            : `${baseTestId}-container`
-        }
-      >
-        {search && (
-          <Styled.LeftIconContainer data-testid={`${baseTestId}-search-icon`}>
-            <SearchIcon icon={faSearch} />
-          </Styled.LeftIconContainer>
-        )}
-        <input
-          id={inputId}
-          ref={ref}
-          type={passwordVisibility && isPasswordType ? 'password' : 'text'}
-          value={value}
-          onClick={() => triggerFocusState(true)}
-          onFocus={() => triggerFocusState(true)}
-          onBlur={() => triggerFocusState(false)}
-          onChange={onChangeHandler}
+
+      {isTextArea ? (
+        <TextArea
+          placeholder={placeholder}
           disabled={disabled}
-          data-testid={inputId}
-          {...otherProps}
+          hasError={hasError}
+          maxLength={maxLength}
+          value={value}
+          length={typeof value === 'string' ? value.length : 0}
+          onChangeHandler={onChangeHandler}
         />
-        {isPasswordType && (
-          <Styled.RightIconContainer
-            data-testid={`${baseTestId}-eye-icon`}
-            onClick={() =>
-              !disabled && setPasswordVisibility(!passwordVisibility)
-            }
-          >
-            <Styled.PasswordIcon
-              data-testid={
-                !passwordVisibility
-                  ? `${baseTestId}-eye-slash`
-                  : `${baseTestId}-eye`
+      ) : (
+        <Styled.Container
+          isFocused={isFocused}
+          hasError={hasError}
+          search={search}
+          disabled={disabled}
+          data-testid={
+            isFocused
+              ? `${baseTestId}-container-focused`
+              : `${baseTestId}-container`
+          }
+        >
+          {search && (
+            <Styled.LeftIconContainer data-testid={`${baseTestId}-search-icon`}>
+              <SearchIcon icon={faSearch} />
+            </Styled.LeftIconContainer>
+          )}
+          <input
+            id={inputId}
+            ref={ref}
+            type={passwordVisibility && isPasswordType ? 'password' : 'text'}
+            value={value}
+            onClick={() => triggerFocusState(true)}
+            onFocus={() => triggerFocusState(true)}
+            onBlur={() => triggerFocusState(false)}
+            onChange={onChangeHandler}
+            disabled={disabled}
+            data-testid={inputId}
+            placeholder={placeholder}
+            {...otherProps}
+          />
+          {isPasswordType && (
+            <Styled.RightIconContainer
+              data-testid={`${baseTestId}-eye-icon`}
+              onClick={() =>
+                !disabled && setPasswordVisibility(!passwordVisibility)
               }
-              icon={!passwordVisibility ? faEyeSlash : faEye}
-            />
-          </Styled.RightIconContainer>
-        )}
-        {isValid && (
-          <Styled.RightIconContainer
-            data-testid={`${baseTestId}-validation-check`}
-          >
-            <Styled.ValidIcon icon={faCheck} />
-          </Styled.RightIconContainer>
-        )}
-        {!!search && !!value && onClose && (
-          <Styled.RightIconContainer
-            onClick={onClose}
-            data-testid={`${baseTestId}-search-close-icon`}
-          >
-            <Styled.CloseIcon icon={faXmark} />
-          </Styled.RightIconContainer>
-        )}
-      </Styled.Container>
+            >
+              <Styled.PasswordIcon
+                data-testid={
+                  !passwordVisibility
+                    ? `${baseTestId}-eye-slash`
+                    : `${baseTestId}-eye`
+                }
+                icon={!passwordVisibility ? faEyeSlash : faEye}
+              />
+            </Styled.RightIconContainer>
+          )}
+          {isValid && (
+            <Styled.RightIconContainer
+              data-testid={`${baseTestId}-validation-check`}
+            >
+              <Styled.ValidIcon icon={faCheck} />
+            </Styled.RightIconContainer>
+          )}
+          {!!search && !!value && onClose && (
+            <Styled.RightIconContainer
+              onClick={onClose}
+              data-testid={`${baseTestId}-search-close-icon`}
+            >
+              <Styled.CloseIcon icon={faXmark} />
+            </Styled.RightIconContainer>
+          )}
+        </Styled.Container>
+      )}
+
       {(helperText || errorText) && (
         <Styled.MessageText
           variant={TypographyVariant.paragraph3}

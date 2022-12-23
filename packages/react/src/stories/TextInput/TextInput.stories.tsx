@@ -1,10 +1,10 @@
 import { Meta, Story } from '@storybook/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import TextInput, { TextInputProps } from '../../components/TextInput';
 import Typography, { TypographyVariant } from '../../components/Typography';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import Spacing from '../Spacing';
+import Spacing, { SpacingSizes } from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './TextInputInfo';
 
 export default {
@@ -127,6 +127,59 @@ export const Variants = () => {
   );
 };
 
+export const TextAreaVariants = () => {
+  const [, onChangeText1] = useState('text1');
+  const [text2, onChangeText2] = useState('');
+  const [text3, onChangeText3] = useState(
+    'This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar!This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar!  '
+  );
+  return (
+    <Container display="flex" direction="row">
+      <Container direction="column" display="block">
+        <Typography variant={TypographyVariant.heading3}>TextArea</Typography>
+        <Spacing />
+        <TextInput
+          type={'textarea'}
+          label={'Label'}
+          placeholder={'Please tell us more...'}
+          onChange={onChangeText1}
+        />
+      </Container>
+      <Spacing size={SpacingSizes.Large} />
+
+      <Container direction="column" display="block">
+        <Typography variant={TypographyVariant.heading3}>
+          TextArea with maxLength
+        </Typography>
+        <Spacing />
+        <TextInput
+          type={'textarea'}
+          label={'Label'}
+          value={text2}
+          placeholder={'Please tell us more...'}
+          onChange={onChangeText2}
+          maxLength={400}
+        />
+      </Container>
+
+      <Spacing size={SpacingSizes.Large} />
+      <Container direction="column" display="block">
+        <Typography variant={TypographyVariant.heading3}>
+          TextArea with long text
+        </Typography>
+        <Spacing />
+        <TextInput
+          value={text3}
+          type={'textarea'}
+          label={'Label'}
+          onChange={onChangeText3}
+          maxLength={500}
+        />
+      </Container>
+    </Container>
+  );
+};
+
 const Template: Story<TextInputProps> = ({ value, ...rest }) => {
   const [text, setText] = useState(value);
 
@@ -142,10 +195,11 @@ Interactive.args = {
   placeholder: 'this is placeholder text',
   label: 'Label',
   value: '',
-  helperText: 'This is the helper text content',
+  helperText: '',
   errorText: '',
   type: 'password',
   disabled: false,
   isValid: false,
   search: false,
+  maxLength: 400,
 };

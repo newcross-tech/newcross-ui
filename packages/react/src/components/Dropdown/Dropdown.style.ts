@@ -3,6 +3,7 @@ import { animated } from '@react-spring/web';
 import styled, { css } from 'styled-components';
 import { ExtendedTheme, Theme } from '../../types/Theme';
 import { getElipsisStyles, getTabbedStateStyles } from '../../utils/css';
+import { getScrollbarStyles } from '../../utils/css/getScrollbarStyles';
 import { getHaloValue } from '../../utils/getHaloValue';
 import HaloLabel, { LabelProps } from '../Label';
 import Typography, { TypographyProps } from '../Typography';
@@ -76,7 +77,6 @@ export const BodyContent = styled(animated.div)<ErrorProps>`
   ${({ theme, $hasError }: ExtendedTheme<ErrorProps>) => css`
     max-height: ${+getHaloValue(theme.SpacingBase16) * 10}rem;
     background: ${theme.ColorNeutralWhite};
-
     border-radius: ${theme.TextInputBorderRadius};
     border: ${theme.TextInputSelectedBorderWidth} solid
       ${!$hasError ? theme.TextInputSelectedBorderColor : theme.TextInputErrorColor};
@@ -84,14 +84,7 @@ export const BodyContent = styled(animated.div)<ErrorProps>`
     border-top-right-radius: 0;
     border-top: none;
 
-    ::-webkit-scrollbar {
-      width: ${theme.SpacingBase4};
-      margin-right: ${theme.SpacingBase4};
-    }
-    ::-webkit-scrollbar-thumb {
-      background: ${theme.ColorNeutralGrey300};
-      border-radius: ${theme.TextInputBorderRadius};
-    }
+    ${getScrollbarStyles()}
   `};
 `;
 

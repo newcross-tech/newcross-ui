@@ -1,52 +1,48 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled, { css } from 'styled-components';
-import { ThemeDesignTokens } from '../../theme/ThemeProvider';
-import { ExtendedTheme, Theme } from '../../types/Theme';
 import Typography from '../Typography';
-import { ContainerProps, MessageTextProps } from './TextInput.types';
-
-export const getActivePaddingStyles = (theme: ThemeDesignTokens) => css`
-  padding-top: calc(${theme.TextInputPaddingVertical} - 1px);
-  padding-bottom: calc(${theme.TextInputPaddingVertical} - 1px);
-`;
+import styled, { css } from 'styled-components';
+import { getHaloValue } from '../../utils/getHaloValue';
+import { ExtendedTheme, Theme } from '../../types/Theme';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { getScrollbarStyles } from '../../utils/css/getScrollbarStyles';
+import { ContainerProps, MessageTextProps, PropStylesTypes, StyledTextAreaProps } from './TextInput.types';
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-export const Label = styled(Typography)`
-  ${({ theme }: Theme) => css`
-    margin-bottom: ${theme.TextInputMarginTop};
-  `}
-`;
+const getCommonStateStyles = ({ theme, hasError, disabled }: PropStylesTypes) =>
+  css`
+    ${hasError &&
+    css`
+      outline: ${theme.TextInputSelectedBorderWidth} solid ${theme.TextInputErrorColor};
+    `}
+    ${disabled &&
+    css`
+      background-color: ${theme.TextInputDisabledBackgroundColor};
+    `}
+  `;
 
 export const Container = styled.div<ExtendedTheme<ContainerProps>>`
   ${({ theme, hasError, search, disabled, isFocused }) => css`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: ${theme.TextInputBorderWidth} solid ${theme.TextInputBorderColor};
+    outline: ${theme.TextInputBorderWidth} solid ${theme.TextInputBorderColor};
     border-radius: ${theme.TextInputBorderRadius};
     background-color: ${theme.TextInputBackgroundColor};
-
+    ${getCommonStateStyles({ theme, hasError, isFocused, disabled })}
     ${isFocused &&
     css`
-      border: ${theme.TextInputSelectedBorderWidth} solid ${theme.TextInputSelectedBorderColor};
-    `}
-    ${hasError &&
-    css`
-      border: ${theme.TextInputSelectedBorderWidth} solid ${theme.TextInputErrorColor};
-    `}
+      outline: ${theme.TextInputSelectedBorderWidth} solid ${theme.TextInputSelectedBorderColor};
+    `};
     ${search &&
     css`
       border-radius: ${theme.TextInputSearchBarBorderRadius};
     `}
-    ${disabled &&
-    css`
-      background-color: ${theme.TextInputDisabledBackgroundColor};
-    `}
-    & input {
+
+    &
+      input {
       width: 90%;
       border: none;
       background-color: transparent;
@@ -61,10 +57,7 @@ export const Container = styled.div<ExtendedTheme<ContainerProps>>`
         padding-right: ${theme.TextInputSearchBarPaddingHorizontal};
         padding-left: ${theme.TextInputSearchBarPaddingHorizontal};
       `}
-      ${(isFocused || hasError) &&
-      css`
-        ${getActivePaddingStyles(theme)};
-      `}
+
       + ${RightIconContainer} {
         ${!disabled &&
         css`
@@ -126,4 +119,43 @@ export const MessageText = styled(Typography)<MessageTextProps & Theme>`
       color: ${theme.TextInputErrorColor};
     `}
   `}
+`;
+
+export const TextAreaContainer = styled.div`
+  display: flex;
+  width: fit-content;
+  flex-direction: column;
+`;
+
+export const TextArea = styled.textarea<StyledTextAreaProps>`
+  ${({ theme, hasError, disabled }: ExtendedTheme<StyledTextAreaProps>) => css`
+    resize: none;
+    border: none;
+    cursor: auto;
+    overflow-y: auto;
+    border-radius: ${theme.CardBorderRadius};
+    margin-top: ${theme.SpacingBase4};
+    padding: ${theme.SpacingBase16};
+    height: ${+getHaloValue(theme.SpacingBase64) * 2}rem;
+    width: ${+getHaloValue(theme.SpacingBase8) * 32.25}rem;
+    font-family: ${theme.TextInputFontFamily};
+    outline: 1px solid ${theme.ColorBaseGrey200};
+
+    ${getScrollbarStyles()}
+    ${getCommonStateStyles({ theme, hasError, disabled })}
+
+    &:focus-visible {
+      outline: ${theme.TextInputSelectedBorderWidth} solid ${theme.TextInputSelectedBorderColor};
+    }
+  `};
+`;
+
+export const LengthInfo = styled(Typography)`
+  display: flex;
+  align-self: flex-end;
+  ${({ theme }: Theme) => css`
+    color: ${theme.ColorBaseGrey100};
+    margin-top: ${theme.SpacingBase4};
+    margin-right: ${theme.SpacingBase8};
+  `};
 `;
