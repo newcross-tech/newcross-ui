@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.21.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.20.1...@newcross-ui/react@1.21.0) (2022-12-23)
+
+
+### Features
+
+* **ASK-265:** textArea + tests ([24c8ad7](https://bitbucket.org/newcrossdev/newcross-ui/commits/24c8ad765435affa4441a26f051d359268abb644))
+
+
+
+
+
 ## [1.20.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.20.0...@newcross-ui/react@1.20.1) (2022-12-23)
 
 **Note:** Version bump only for package @newcross-ui/react
