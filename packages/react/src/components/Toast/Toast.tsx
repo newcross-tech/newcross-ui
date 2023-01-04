@@ -1,5 +1,6 @@
 import { useTransition } from '@react-spring/web';
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useState } from 'react';
+import { useTimeout } from '../../hooks/useTimeout';
 import { TestProp } from '../../types/TestProp';
 import Alert, { AlertProps } from '../Alert';
 import * as Styled from './Toast.style';
@@ -13,7 +14,7 @@ export type ToastProps = {
    * Called when close icon is clicked or
    * timeout has been reached
    */
-  onClose: VoidFunction;
+  onClose?: VoidFunction;
   /**
    * Pass the message for the toast notification
    */
@@ -47,15 +48,11 @@ const Toast = ({
   duration = 6000,
   ...rest
 }: ToastProps) => {
-  const transition = useTransition(show, Styled.getAnimatedStyles());
+  const [isShown, setShown] = useState(show);
 
-  useEffect(() => {
-    if (!show || !autoHide) return;
+  const transition = useTransition(isShown, Styled.getAnimatedStyles(onClose));
 
-    const interval = setInterval(() => onClose(), duration);
-
-    return () => clearInterval(interval);
-  }, [show, autoHide]);
+  useTimeout(duration, () => autoHide && setShown(false));
 
   return (
     <>
@@ -71,7 +68,7 @@ const Toast = ({
                 hasBorder={hasBorder}
                 hasButton={!autoHide && hasButton}
                 variant={variant}
-                onClose={onClose}
+                onClose={() => setShown(false)}
                 {...rest}
               >
                 {message}

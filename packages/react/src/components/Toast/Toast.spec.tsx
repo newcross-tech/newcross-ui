@@ -1,7 +1,7 @@
 import React from 'react';
 import Toast, { ToastProps } from './Toast';
 import { byTestId } from 'testing-library-selector';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDays } from '@fortawesome/pro-solid-svg-icons/faCalendarDays';
 
@@ -43,7 +43,7 @@ describe('Toast component', () => {
     expect(ui.toastIcon.get()).toBeInTheDocument();
   });
 
-  it('renders toast with a close icon successfully', () => {
+  it('renders toast with a close icon successfully', async () => {
     // Arrange
     const onClose = jest.fn();
 
@@ -59,6 +59,27 @@ describe('Toast component', () => {
 
     fireEvent.click(ui.alertCloseIconComp.get());
 
-    expect(onClose).toHaveBeenCalled();
+    await waitFor(() => expect(onClose).toHaveBeenCalled(), {
+      timeout: 1000,
+    });
+    await waitFor(() => expect(ui.toastComp.query()).not.toBeInTheDocument(), {
+      timeout: 1000,
+    });
+  });
+
+  it('renders toast and autohides it ', async () => {
+    // Act
+    renderComponent({
+      autoHide: true,
+      duration: 1000,
+    });
+
+    // Assert
+
+    expect(ui.toastComp.get()).toBeInTheDocument();
+
+    await waitFor(() => expect(ui.toastComp.query()).not.toBeInTheDocument(), {
+      timeout: 2000,
+    });
   });
 });

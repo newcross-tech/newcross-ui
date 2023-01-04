@@ -11,6 +11,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import * as tokens from '@newcross-ui/design-tokens';
 import { BottomSheet } from '@newcross-ui/react-native';
 import * as Native from '@newcross-ui/react-native';
+import { ToastProvider } from '../packages/react/src/context/toast/ToastProvider.tsx';
 
 const { ColorNeutralWhite, ColorNeutralGrey300 } = tokens.web.healthforce;
 
@@ -101,7 +102,9 @@ const withThemeProvider = (Story, context) => {
     ),
     [ComponentTypes.React]: (
       <Web.ThemeProvider brand={brand}>
-        <Story {...context} />
+        <ToastProvider>
+          <Story {...context} />
+        </ToastProvider>
       </Web.ThemeProvider>
     ),
   };

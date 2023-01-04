@@ -32,6 +32,7 @@ export { default as PillGroup, PillGroupProps } from './components/PillGroup';
 export { default as RadioButton, RadioProps } from './components/Radio';
 export { default as Tabs, TabsProps } from './components/Tabs';
 export { default as Toast, ToastProps } from './components/Toast';
+export { ToastProvider } from './context/toast/ToastProvider';
 export {
   default as ToggleButton,
   ToggleButtonProps,

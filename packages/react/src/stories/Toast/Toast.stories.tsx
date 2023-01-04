@@ -1,194 +1,46 @@
 import Container from '../Container';
+import styled from 'styled-components';
 import Link from '../../components/Link';
-import useState from 'storybook-addon-state';
+import Button from '../../components/Button';
 import { Meta, Story } from '@storybook/react';
+import { useToast } from '../../hooks/useToast';
+import { AlertVariant } from '../../types/AlertVariant';
 import Toast, { ToastProps } from '../../components/Toast';
-import Button, { ButtonSizes } from '../../components/Button';
-import Spacing, { SpacingPositions, SpacingSizes } from '../Spacing';
-import Typography, { TypographyVariant } from '../../components/Typography';
 
 export default {
   title: 'React/Components/Toast',
   component: Toast,
 } as Meta;
 
+const StyledContainer = styled(Container)`
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  left: 1rem;
+`;
+let i = 0;
 export const Variants = () => {
-  const [showPersistentToast, setShowPersistentToast] = useState(
-    'showPersistentToast',
-    false
-  );
-  const [showSuccessToast, setShowSuccessToast] = useState(
-    'showSuccessToast',
-    false
-  );
-  const [showWarningToast, setShowWarningToast] = useState(
-    'showWarningToast',
-    false
-  );
-  const [showErrorToast, setShowErrorToast] = useState('showErrorToast', false);
-  const [showInfoToast, setShowInfoToast] = useState('showInfoToast', false);
+  const variants: AlertVariant[] = ['success', 'warning', 'info', 'error'];
 
-  const [showMinimalSuccessToast, setShowMinimalSuccessToast] = useState(
-    'showMinimalSuccessToast',
-    false
-  );
-  const [showMinimalWarningToast, setShowMinimalWarningToast] = useState(
-    'showMinimalWarningToast',
-    false
-  );
-  const [showMinimalErrorToast, setShowMinimalErrorToast] = useState(
-    'showMinimalErrorToast',
-    false
-  );
-  const [showMinimalInfoToast, setShowMinimalInfoToast] = useState(
-    'showMinimalInfoToast',
-    false
-  );
+  const { enqueueToast } = useToast();
+  const triggerFunc = (autoHide = true) => {
+    if (i <= 3) {
+      enqueueToast({
+        variant: variants[i],
+        message: `This is ${variants[i]} Toast!`,
+        action: <Link>Click Here</Link>,
+        autoHide: autoHide,
+      });
+
+      i = i + 1;
+    } else i = 0;
+  };
 
   return (
-    <Container direction="column">
-      <Toast
-        show={showSuccessToast}
-        variant="success"
-        message="This is a success toast!"
-        onClose={() => setShowSuccessToast(false)}
-        action={<Link>Click Here</Link>}
-      />
-      <Toast
-        show={showWarningToast}
-        variant="warning"
-        message="This is a warning toast!"
-        onClose={() => setShowWarningToast(false)}
-        action={<Link>Click Here</Link>}
-      />
-      <Toast
-        show={showErrorToast}
-        variant="error"
-        message="This is an error toast!"
-        onClose={() => setShowErrorToast(false)}
-        action={<Link>Click Here</Link>}
-      />
-      <Toast
-        show={showInfoToast}
-        variant="info"
-        message="This is an info toast!"
-        onClose={() => setShowInfoToast(false)}
-        action={<Link>Click Here</Link>}
-      />
-
-      <Toast
-        show={showMinimalSuccessToast}
-        variant="success"
-        message="This is a minimal success toast!"
-        hasTitle={false}
-        onClose={() => setShowMinimalSuccessToast(false)}
-      />
-      <Toast
-        show={showMinimalWarningToast}
-        variant="warning"
-        message="This is a minimal warning toast!"
-        hasTitle={false}
-        onClose={() => setShowMinimalWarningToast(false)}
-      />
-      <Toast
-        show={showMinimalErrorToast}
-        variant="error"
-        message="This is a minimal error toast!"
-        hasTitle={false}
-        onClose={() => setShowMinimalErrorToast(false)}
-      />
-      <Toast
-        show={showMinimalInfoToast}
-        variant="info"
-        message="This is a minimal info toast!"
-        hasTitle={false}
-        onClose={() => setShowMinimalInfoToast(false)}
-      />
-      <Toast
-        show={showPersistentToast}
-        variant="info"
-        message="This is an info toast!"
-        onClose={() => setShowPersistentToast(false)}
-        action={<Link>Click Here</Link>}
-        autoHide={false}
-      />
-
-      <Spacing />
-      <Container direction="column" display="block">
-        <Typography variant={TypographyVariant.heading4}>
-          Default Toast
-        </Typography>
-        <Spacing position={SpacingPositions.Bottom} />
-        <Button
-          size={ButtonSizes.small}
-          onClick={() => setShowSuccessToast(true)}
-        >
-          Show Success Toast
-        </Button>
-        <Spacing />
-        <Button
-          size={ButtonSizes.small}
-          onClick={() => setShowErrorToast(true)}
-        >
-          Show Error Toast
-        </Button>
-        <Spacing />
-        <Button
-          size={ButtonSizes.small}
-          onClick={() => setShowWarningToast(true)}
-        >
-          Show Warning Toast
-        </Button>
-        <Spacing />
-        <Button size={ButtonSizes.small} onClick={() => setShowInfoToast(true)}>
-          Show Info Toast
-        </Button>
-        <Spacing size={SpacingSizes.Large} />
-        <Typography variant={TypographyVariant.heading4}>
-          Minimal Toast
-        </Typography>
-        <Spacing />
-        <Button
-          size={ButtonSizes.small}
-          onClick={() => setShowMinimalSuccessToast(true)}
-        >
-          Show Minimal Success Toast
-        </Button>
-        <Spacing />
-        <Button
-          size={ButtonSizes.small}
-          onClick={() => setShowMinimalErrorToast(true)}
-        >
-          Show Minimal Error Toast
-        </Button>
-        <Spacing position={SpacingPositions.Bottom} />
-        <Button
-          size={ButtonSizes.small}
-          onClick={() => setShowMinimalWarningToast(true)}
-        >
-          Show Minimal Warning Toast
-        </Button>
-        <Spacing />
-        <Button
-          size={ButtonSizes.small}
-          onClick={() => setShowMinimalInfoToast(true)}
-        >
-          Show Minimal Info Toast
-        </Button>
-        <Spacing size={SpacingSizes.Large} />
-        <Typography variant={TypographyVariant.heading4}>
-          Persistent Toast
-        </Typography>
-        <Spacing />
-        <Button
-          size={ButtonSizes.small}
-          onClick={() => setShowPersistentToast(true)}
-        >
-          Show Persistent Toast
-        </Button>
-        <Spacing />
-      </Container>
-    </Container>
+    <StyledContainer justifyContent="center" direction="column">
+      <Button onClick={() => triggerFunc()}>Show Toast</Button>
+      <Button onClick={() => triggerFunc(false)}>Show Persistent Toast</Button>
+    </StyledContainer>
   );
 };
 
