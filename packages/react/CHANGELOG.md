@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.22.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.21.1...@newcross-ui/react@1.22.0) (2023-01-04)
+
+
+### Features
+
+* **ASK-299:** toast provider, useToast + tests ([37dcdc0](https://bitbucket.org/newcrossdev/newcross-ui/commits/37dcdc0e30e07237be4daa5d6034ad87ee3023e1))
+
+
+
+
+
 ## [1.21.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.21.0...@newcross-ui/react@1.21.1) (2022-12-23)
 
 **Note:** Version bump only for package @newcross-ui/react
