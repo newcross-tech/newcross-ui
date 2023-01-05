@@ -5,20 +5,16 @@ import { byTestId, byText } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
 import ToggleButton, { ToggleButtonProps } from './ToggleButton';
 
-const defaultProps = {
-  onClick: jest.fn(),
-  children: 'Sort',
-  selected: false,
-};
-
 const renderComponent = (customProps: Partial<ToggleButtonProps>) => {
   const props = {
-    ...defaultProps,
+    onClick: jest.fn(),
+    children: 'Sort',
     ...customProps,
   };
 
   render(<ToggleButton {...props} />);
 };
+
 describe('Toggle Button Component', () => {
   const ui = {
     toggleComp: byTestId(`toggle-button`),
@@ -48,7 +44,7 @@ describe('Toggle Button Component', () => {
     const onClick = jest.fn();
 
     // Act
-    render(<ToggleButton {...defaultProps} onClick={onClick} />);
+    renderComponent({ onClick });
     fireEvent.click(ui.toggleComp.get());
 
     // Assert

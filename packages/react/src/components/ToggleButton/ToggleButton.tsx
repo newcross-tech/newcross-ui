@@ -1,4 +1,5 @@
-import { ReactElement, ReactNode, useEffect, useState } from 'react';
+import { ReactElement, ReactNode, useState } from 'react';
+import { useToggle } from '../../hooks/useToggle';
 import { TestProp } from '../../types/TestProp';
 import { TypographyVariant } from '../Typography';
 import * as Styled from './ToggleButton.style';
@@ -60,23 +61,22 @@ const ToggleButton = ({
   leftIcon,
   rightIcon,
   children,
-  selected,
+  selected = false,
   onClick,
   fullWidth,
-  value,
+  value = '',
   testID = '',
   ...rest
 }: ToggleButtonProps) => {
   const [isSelected, setSelected] = useState(selected);
 
-  useEffect(() => {
-    setSelected(selected);
-  }, [selected]);
+  useToggle(selected, () => setSelected(selected));
 
   const handleOnClick = () => {
-    onClick && onClick(value as string);
+    onClick && onClick(value);
     setSelected(!isSelected);
   };
+
   return (
     <Styled.Container
       onClick={handleOnClick}

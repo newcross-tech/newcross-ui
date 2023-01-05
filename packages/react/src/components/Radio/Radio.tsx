@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useToggle } from '../../hooks/useToggle';
 import { TestProp } from '../../types/TestProp';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import { TypographyVariant } from '../Typography';
@@ -34,9 +35,7 @@ const Radio = ({
 }: RadioProps) => {
   const [isSelected, setIsSelected] = useState(selected);
 
-  useEffect(() => {
-    setIsSelected(selected);
-  }, [selected]);
+  useToggle(selected, () => setIsSelected(selected));
 
   const onChangeHandler = () => {
     if (disabled) return;

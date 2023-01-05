@@ -5,9 +5,9 @@ import {
   isValidElement,
   ReactNode,
   SyntheticEvent,
-  useEffect,
   useState,
 } from 'react';
+import { useToggle } from '../../hooks/useToggle';
 import { TestProp } from '../../types/TestProp';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import { TypographyVariant } from '../Typography';
@@ -59,9 +59,7 @@ const Pill = ({
   const [isSelected, setSelected] = useState(selected);
   const [isDeleted, setIsDeleted] = useState(false);
 
-  useEffect(() => {
-    setSelected(selected);
-  }, [selected]);
+  useToggle(selected, () => setSelected(selected));
 
   const onRemoveHandler = (event: SyntheticEvent) => {
     if (disabled) return;

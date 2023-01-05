@@ -13,12 +13,10 @@ export type PillGroupProps = {
   children?: Array<ReactElement<PillProps>>;
 };
 
-const PillGroup = ({ direction, children }: PillGroupProps) => {
-  return (
-    <Container direction={direction} data-testid="pill-group-container">
-      {children}
-    </Container>
-  );
-};
+const PillGroup = ({ direction, children }: PillGroupProps) => (
+  <Container direction={direction} data-testid="pill-group-container">
+    {children}
+  </Container>
+);
 
 export default PillGroup;

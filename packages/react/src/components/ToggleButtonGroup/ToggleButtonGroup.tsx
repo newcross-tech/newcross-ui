@@ -1,6 +1,5 @@
 import { Children, cloneElement, ReactElement, useCallback } from 'react';
 import { TestProp } from '../../types/TestProp';
-
 import { ToggleButtonProps } from '../ToggleButton';
 import { Container } from './ToggleButtonGroup.style';
 import { getMultipleSelectedValues } from './utils/getMultipleSelectedValues';
@@ -37,10 +36,12 @@ const ToggleButtonGroup = ({
   isMultiSelect,
   ...rest
 }: ToggleButtonGroupProps) => {
-  const calculateSelectedValue = (value: string) =>
-    Array.isArray(selectedValue)
-      ? selectedValue.includes(value)
-      : selectedValue === value;
+  const calculateSelectedValue = (value?: string) => {
+    if (typeof value === 'string')
+      return Array.isArray(selectedValue)
+        ? selectedValue.includes(value)
+        : selectedValue === value;
+  };
 
   const handleOnClick = useCallback(
     (value: string) => {
@@ -65,7 +66,7 @@ const ToggleButtonGroup = ({
           key: value,
           fullWidth: fullWidth,
           onClick: handleOnClick,
-          selected: selected || calculateSelectedValue(value as string),
+          selected: selected || calculateSelectedValue(value),
         });
       })}
     </Container>

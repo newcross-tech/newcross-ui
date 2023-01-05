@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 import Pill from '../../components/Pill';
 import PillGroup, { PillGroupProps } from '../../components/PillGroup';

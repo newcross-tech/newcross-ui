@@ -1,4 +1,3 @@
-import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { byTestId } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';

@@ -1,5 +1,4 @@
 import { Meta, Story } from '@storybook/react';
-import React from 'react';
 import Typography, { TypographyVariant } from '../../components/Typography';
 import ToggleButton from '../../components/ToggleButton';
 import ToggleButtonGroup, {

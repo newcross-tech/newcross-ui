@@ -1,7 +1,5 @@
 import { fireEvent, render } from '@testing-library/react';
-import React from 'react';
 import Radio, { RadioProps } from './Radio';
-
 import { byTestId, byText } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
 import { executeKeyPress } from '../../utils/test/executeKeyPress';
