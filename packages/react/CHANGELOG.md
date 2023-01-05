@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.23.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.22.0...@newcross-ui/react@1.23.0) (2023-01-05)
+
+
+### Features
+
+* **ASK-351:** pill, radio, toggleButton useEffect decoupling ([0d52ddf](https://bitbucket.org/newcrossdev/newcross-ui/commits/0d52ddfa5901691c7f7ba3bb525d0cfdc7394b85))
+
+
+
+
+
 # [1.22.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.21.1...@newcross-ui/react@1.22.0) (2023-01-04)
 
 
