@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.32.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.32.3...@newcross-ui/react-native@1.32.4) (2023-01-06)
+
+
+### Bug Fixes
+
+* **HFGO-1539:** add additional props for slider and allow single line text for toggle button ([0ca76af](https://bitbucket.org/newcrossdev/newcross-ui/commits/0ca76af73fdaa79692e0f9179fd1f1855bb3197d))
+
+
+
+
+
 ## [1.32.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.32.2...@newcross-ui/react-native@1.32.3) (2022-12-21)
 
 
