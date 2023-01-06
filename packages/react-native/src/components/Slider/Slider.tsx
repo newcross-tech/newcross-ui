@@ -1,5 +1,9 @@
 import React from 'react';
-import CommunitySlider from '@react-native-community/slider';
+import CommunitySlider, {
+  SliderPropsAndroid,
+  SliderPropsIOS,
+  SliderProps as CommunitySliderProps,
+} from '@react-native-community/slider';
 import {
   SLIDER_DEFAULT_MIN_VALUE,
   SLIDER_DEFAULT_MAX_VALUE,
@@ -97,7 +101,9 @@ export type SliderProps = {
    * Should be a plural word, as singular units will be handled.
    */
   accessibilityIncrements?: Array<string>;
-};
+} & SliderPropsAndroid &
+  SliderPropsIOS &
+  CommunitySliderProps;
 
 const Slider = ({
   minimumValue = SLIDER_DEFAULT_MIN_VALUE,

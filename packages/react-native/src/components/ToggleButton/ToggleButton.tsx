@@ -100,7 +100,11 @@ const ToggleButton = ({
           testID: 'toggle-button-left-icon',
           children,
         })}
-      <Typography variant={TypographyVariant.paragraph2} style={styles.text}>
+      <Typography
+        numberOfLines={1}
+        variant={TypographyVariant.paragraph2}
+        style={styles.text}
+      >
         {children}
       </Typography>
       {rightIcon &&
