@@ -10,6 +10,7 @@ import {
   CalendarProps as NativeCalendarProps,
   LocaleConfig,
 } from 'react-native-calendars';
+import { flattenDeep } from 'lodash';
 import {
   SHORT_MONTH_NAME,
   SHORT_WEEK_DAYS,
@@ -139,6 +140,7 @@ const Calendar = ({
   const { CalendarDaysCurrentColor } = theme;
 
   const initialDate: Date = startDate || new Date();
+
   const [date, setDate] = useState(initialDate);
   const formattedDate = formatDate(date);
   const formattedInitialDate = formatDate(initialDate);
@@ -148,7 +150,6 @@ const Calendar = ({
   const [multipleDateRange, setMultipleDateRange] = useState<
     Array<Array<string>>
   >([]);
-
   const [selectedDateRange, setSelectedDateRange] = useState<StyleByDate>({});
 
   const datesToExclude = [
@@ -157,6 +158,13 @@ const Calendar = ({
     ...unavailableDates,
     ...inactiveDates,
   ];
+
+  const isInitialDateSelected = !!flattenDeep([
+    ...datesToExclude,
+    ...selectedDates,
+    ...singleDateRange,
+    ...multipleDateRange,
+  ]).find((date) => date === formattedInitialDate);
 
   const getDateRangeStyles = useCallback((range: Array<string>) => {
     const dateRange = createDateRange(range, datesToExclude);
@@ -307,13 +315,15 @@ const Calendar = ({
         ...inactiveDateStyle,
         ...selectedDateStyle,
         ...selectedDateRange,
-        [formattedInitialDate]: {
-          marked: true,
-          dotColor: CalendarDaysCurrentColor,
-          customContainerStyle: {
-            paddingBottom: theme.SpacingBase4,
+        ...(!isInitialDateSelected && {
+          [formattedInitialDate]: {
+            marked: true,
+            dotColor: CalendarDaysCurrentColor,
+            customContainerStyle: {
+              paddingBottom: theme.SpacingBase4,
+            },
           },
-        },
+        }),
       }}
       key={formattedDate}
       minDate={formattedInitialDate}
