@@ -6,7 +6,7 @@ import {
   TypographyVariant,
 } from '@newcross-ui/react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import moment from 'moment';
+import useState from 'storybook-addon-state';
 import Container from '../Container';
 import { isWebPlatform } from '../utils';
 import { getParameters } from '../utils';
@@ -38,13 +38,27 @@ export const Overview = () => {
   );
 };
 
-const addDaysToCurrentDate = (daysOffset: number) =>
-  moment().add(daysOffset, 'days').format('YYYY-MM-DD');
-
 export const Variants = () => {
   const containerStyle = isWebPlatform
     ? { minWidth: '300px', maxWidth: '350px' }
     : {};
+
+  const [noShiftsDates, setNoShiftsDates] = useState('noShiftsDates', [
+    '2023-01-15',
+    '2023-01-16',
+  ]);
+  const [bookedDates, setBookedDates] = useState('bookedDates', [
+    '2023-01-17',
+    '2023-01-18',
+  ]);
+  const [unavailableDates, setUnavailableDates] = useState('unavailableDates', [
+    '2023-01-19',
+    '2023-01-20',
+  ]);
+  const [inactiveDates, setInactiveDates] = useState('inactiveDates', [
+    '2023-01-21',
+    '2023-01-22',
+  ]);
 
   return (
     <ScrollView>
@@ -60,14 +74,10 @@ export const Variants = () => {
           </Typography>
           <Spacing />
           <Calendar
-            noShiftsDates={[addDaysToCurrentDate(2), addDaysToCurrentDate(3)]}
-            bookedDates={[addDaysToCurrentDate(5), addDaysToCurrentDate(6)]}
-            onMonthChange={(month) => console.log(month)}
-            unavailableDates={[
-              addDaysToCurrentDate(8),
-              addDaysToCurrentDate(9),
-            ]}
-            inactiveDates={[addDaysToCurrentDate(10), addDaysToCurrentDate(11)]}
+            noShiftsDates={noShiftsDates}
+            bookedDates={bookedDates}
+            unavailableDates={unavailableDates}
+            inactiveDates={inactiveDates}
           />
         </Container>
         <Container containerStyle={containerStyle}>
@@ -77,13 +87,10 @@ export const Variants = () => {
           <Spacing />
           <Calendar
             hasMultipleDateSelection
-            noShiftsDates={[addDaysToCurrentDate(2), addDaysToCurrentDate(3)]}
-            bookedDates={[addDaysToCurrentDate(5), addDaysToCurrentDate(6)]}
-            unavailableDates={[
-              addDaysToCurrentDate(8),
-              addDaysToCurrentDate(9),
-            ]}
-            inactiveDates={[addDaysToCurrentDate(10), addDaysToCurrentDate(11)]}
+            noShiftsDates={noShiftsDates}
+            bookedDates={bookedDates}
+            unavailableDates={unavailableDates}
+            inactiveDates={inactiveDates}
           />
         </Container>
         <Container containerStyle={containerStyle}>
@@ -93,13 +100,10 @@ export const Variants = () => {
           <Spacing />
           <Calendar
             hasSingleDateRange
-            noShiftsDates={[addDaysToCurrentDate(2), addDaysToCurrentDate(3)]}
-            bookedDates={[addDaysToCurrentDate(5), addDaysToCurrentDate(6)]}
-            unavailableDates={[
-              addDaysToCurrentDate(8),
-              addDaysToCurrentDate(9),
-            ]}
-            inactiveDates={[addDaysToCurrentDate(10), addDaysToCurrentDate(11)]}
+            noShiftsDates={noShiftsDates}
+            bookedDates={bookedDates}
+            unavailableDates={unavailableDates}
+            inactiveDates={inactiveDates}
           />
         </Container>
         <Container containerStyle={containerStyle}>
@@ -109,13 +113,10 @@ export const Variants = () => {
           <Spacing />
           <Calendar
             hasMultipleDateRange
-            noShiftsDates={[addDaysToCurrentDate(2), addDaysToCurrentDate(3)]}
-            bookedDates={[addDaysToCurrentDate(5), addDaysToCurrentDate(6)]}
-            unavailableDates={[
-              addDaysToCurrentDate(8),
-              addDaysToCurrentDate(9),
-            ]}
-            inactiveDates={[addDaysToCurrentDate(10), addDaysToCurrentDate(11)]}
+            noShiftsDates={noShiftsDates}
+            bookedDates={bookedDates}
+            unavailableDates={unavailableDates}
+            inactiveDates={inactiveDates}
           />
         </Container>
       </Container>

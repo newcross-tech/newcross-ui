@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useReducer, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useReducer,
+  useRef,
+  useState,
+} from 'react';
 import {
   Calendar as NativeCalendar,
   CalendarProps as NativeCalendarProps,
@@ -15,6 +21,7 @@ import { calendarStyles } from './Calendar.style';
 import useTheme from '../../hooks/useTheme';
 import calendarReducer, { initialState } from './reducer/calendarReducer';
 import CalendarHeader from './CalendarHeader';
+import { isEqual } from 'lodash';
 
 export type CalendarProps = {
   /**
@@ -95,6 +102,19 @@ const Calendar = ({
   onMonthChange,
   ...rest
 }: CalendarProps) => {
+  const usePrevious = (value: any) => {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = value;
+    }, [value]);
+    return ref.current;
+  };
+
+  const prevBookedDates = usePrevious(bookedDates);
+  const prevNoShiftsDates = usePrevious(noShiftsDates);
+  const prevUnavailableDates = usePrevious(unavailableDates);
+  const prevInactiveDates = usePrevious(inactiveDates);
+
   const styles = calendarStyles();
   const [
     {
@@ -238,16 +258,23 @@ const Calendar = ({
 
   useEffect(() => {
     noShiftsDates.length &&
+      !isEqual(noShiftsDates, prevNoShiftsDates) &&
       dispatch({ type: DateType.noShiftsDates, payload: noShiftsDates, theme });
+
     bookedDates.length &&
+      !isEqual(bookedDates, prevBookedDates) &&
       dispatch({ type: DateType.bookedDates, payload: bookedDates, theme });
+
     unavailableDates.length &&
+      !isEqual(unavailableDates, prevUnavailableDates) &&
       dispatch({
         type: DateType.unavailableDates,
         payload: unavailableDates,
         theme,
       });
+
     inactiveDates.length &&
+      !isEqual(inactiveDates, prevInactiveDates) &&
       dispatch({
         type: DateType.inactiveDates,
         payload: inactiveDates,
