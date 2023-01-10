@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.32.5](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.32.4...@newcross-ui/react-native@1.32.5) (2023-01-10)
+
+
+### Bug Fixes
+
+* **HFGO-1272:** pill group to conditionally wrap pills ([6c2aaf4](https://bitbucket.org/newcrossdev/newcross-ui/commits/6c2aaf4eb48d23abe2e84f037e9655f8302109c7))
+
+
+
+
+
 ## [1.32.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.32.3...@newcross-ui/react-native@1.32.4) (2023-01-06)
 
 
