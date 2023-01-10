@@ -57,6 +57,46 @@ describe('Calendar Component', () => {
     });
   });
 
+  it('calls onMonthChange when right arrow is pressed', async () => {
+    // Arrange
+    const onMonthChange = jest.fn();
+    const { getByTestId } = render(
+      <Calendar
+        startDate={new Date('2022-05-01')}
+        onMonthChange={onMonthChange}
+      />
+    );
+
+    // Act
+    const rightArrow = getByTestId('calendar-component-next');
+    fireEvent.press(rightArrow);
+
+    // Assert
+    await waitFor(() => {
+      expect(onMonthChange).toHaveBeenLastCalledWith(new Date('2022-06-01'));
+    });
+  });
+
+  it('calls onMonthChange when left arrow is pressed', async () => {
+    // Arrange
+    const onMonthChange = jest.fn();
+    const { getByTestId } = render(
+      <Calendar
+        startDate={new Date('2022-05-01')}
+        onMonthChange={onMonthChange}
+      />
+    );
+
+    // Act
+    const leftArrow = getByTestId('calendar-component-previous');
+    fireEvent.press(leftArrow);
+
+    // Assert
+    await waitFor(() => {
+      expect(onMonthChange).toHaveBeenLastCalledWith(new Date('2022-04-01'));
+    });
+  });
+
   describe('single data selection', () => {
     it('returns selected date in array when date is clicked once', async () => {
       // Arrange
