@@ -82,6 +82,9 @@ export type CalendarProps = {
    * onMultipleDateRange - provide multiple range dates
    */
   onMultipleDateRange?: (dates: Array<Array<string>>) => void;
+  /**
+   * triggers an action when month has changed after left and right arrow press
+   */
   onMonthChange?: (date: Date) => void;
 } & NativeCalendarProps;
 
