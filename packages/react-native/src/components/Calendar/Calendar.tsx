@@ -75,6 +75,7 @@ export type CalendarProps = {
    * onMultipleDateRange - provide multiple range dates
    */
   onMultipleDateRange?: (dates: Array<Array<string>>) => void;
+  onMonthChange?: (date: Date) => void;
 } & NativeCalendarProps;
 
 const Calendar = ({
@@ -91,6 +92,7 @@ const Calendar = ({
   onDateSelection,
   onSingleDateRange,
   onMultipleDateRange,
+  onMonthChange,
   ...rest
 }: CalendarProps) => {
   const styles = calendarStyles();
@@ -285,13 +287,16 @@ const Calendar = ({
       }}
       key={formattedDate}
       minDate={formattedInitialDate}
-      renderArrow={(direction) => (
-        <CalendarHeader
-          direction={direction}
-          date={date}
-          onDateChange={setDate}
-        />
-      )}
+      renderArrow={(direction) => {
+        return (
+          <CalendarHeader
+            direction={direction}
+            date={date}
+            onDateChange={setDate}
+            onMonthChange={onMonthChange}
+          />
+        );
+      }}
       hideExtraDays={hideExtraDays}
       theme={styles}
       onDayPress={(day) => {

@@ -62,6 +62,7 @@ export const Variants = () => {
           <Calendar
             noShiftsDates={[addDaysToCurrentDate(2), addDaysToCurrentDate(3)]}
             bookedDates={[addDaysToCurrentDate(5), addDaysToCurrentDate(6)]}
+            onMonthChange={(month) => console.log(month)}
             unavailableDates={[
               addDaysToCurrentDate(8),
               addDaysToCurrentDate(9),
