@@ -10,7 +10,7 @@ import {
   CalendarProps as NativeCalendarProps,
   LocaleConfig,
 } from 'react-native-calendars';
-import { flattenDeep } from 'lodash';
+import { flattenDeep, isEqual } from 'lodash';
 import {
   SHORT_MONTH_NAME,
   SHORT_WEEK_DAYS,
@@ -22,7 +22,6 @@ import { calendarStyles } from './Calendar.style';
 import useTheme from '../../hooks/useTheme';
 import calendarReducer, { initialState } from './reducer/calendarReducer';
 import CalendarHeader from './CalendarHeader';
-import { isEqual } from 'lodash';
 
 export type CalendarProps = {
   /**
