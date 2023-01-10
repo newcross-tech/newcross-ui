@@ -10,7 +10,6 @@ describe('FloatingActionButton Component', () => {
   it('renders successfully with all elements', async () => {
     // Arrange
     const props: FloatingActionButtonProps = {
-      variant: FABVariant.small,
       text: 'text',
       isSelected: true,
       icon: faCalendarDays,
