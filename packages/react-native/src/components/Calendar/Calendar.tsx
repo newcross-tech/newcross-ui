@@ -20,7 +20,6 @@ import { formatDate, getStylesByDate, createDateRange } from './utils';
 import { DateType, StyleByDate } from './Calendar.types';
 import { calendarStyles } from './Calendar.style';
 import useTheme from '../../hooks/useTheme';
-import calendarReducer, { initialState } from './reducer/calendarReducer';
 import CalendarHeader from './CalendarHeader';
 
 export type CalendarProps = {
@@ -105,30 +104,7 @@ const Calendar = ({
   onMonthChange,
   ...rest
 }: CalendarProps) => {
-  const usePrevious = (value: any) => {
-    const ref = useRef();
-    useEffect(() => {
-      ref.current = value;
-    }, [value]);
-    return ref.current;
-  };
-
-  const prevBookedDates = usePrevious(bookedDates);
-  const prevNoShiftsDates = usePrevious(noShiftsDates);
-  const prevUnavailableDates = usePrevious(unavailableDates);
-  const prevInactiveDates = usePrevious(inactiveDates);
-
   const styles = calendarStyles();
-  const [
-    {
-      noShiftsDateStyle,
-      bookedDateStyle,
-      unavailableDateStyle,
-      inactiveDateStyle,
-      selectedDateStyle,
-    },
-    dispatch,
-  ] = useReducer(calendarReducer, initialState);
 
   LocaleConfig.locales[LocaleConfig.defaultLocale].dayNamesShort =
     SHORT_WEEK_DAYS;
@@ -266,53 +242,23 @@ const Calendar = ({
     onSingleDateRange && onSingleDateRange(singleDateRange);
   }, [singleDateRange]);
 
-  useEffect(() => {
-    noShiftsDates.length &&
-      !isEqual(noShiftsDates, prevNoShiftsDates) &&
-      dispatch({ type: DateType.noShiftsDates, payload: noShiftsDates, theme });
-
-    bookedDates.length &&
-      !isEqual(bookedDates, prevBookedDates) &&
-      dispatch({ type: DateType.bookedDates, payload: bookedDates, theme });
-
-    unavailableDates.length &&
-      !isEqual(unavailableDates, prevUnavailableDates) &&
-      dispatch({
-        type: DateType.unavailableDates,
-        payload: unavailableDates,
-        theme,
-      });
-
-    inactiveDates.length &&
-      !isEqual(inactiveDates, prevInactiveDates) &&
-      dispatch({
-        type: DateType.inactiveDates,
-        payload: inactiveDates,
-        theme,
-      });
-  }, [dispatch, noShiftsDates, bookedDates, unavailableDates, inactiveDates]);
-
-  useEffect(() => {
-    selectedDates.length &&
-      dispatch({
-        type: DateType.selectedDates,
-        payload: selectedDates,
-        theme,
-      });
-    onDateSelection && onDateSelection(selectedDates);
-  }, [dispatch, selectedDates]);
-
   return (
     <NativeCalendar
       firstDay={firstDay}
       current={formattedDate}
       markingType={'period'}
       markedDates={{
-        ...noShiftsDateStyle,
-        ...bookedDateStyle,
-        ...unavailableDateStyle,
-        ...inactiveDateStyle,
-        ...selectedDateStyle,
+        ...(noShiftsDates?.length &&
+          getStylesByDate(DateType.noShiftsDates, noShiftsDates, theme)),
+        ...(bookedDates?.length &&
+          getStylesByDate(DateType.bookedDates, bookedDates, theme)),
+        ...(unavailableDates?.length &&
+          getStylesByDate(DateType.unavailableDates, unavailableDates, theme)),
+        ...(inactiveDates?.length &&
+          getStylesByDate(DateType.inactiveDates, inactiveDates, theme)),
+        ...(selectedDates?.length &&
+          getStylesByDate(DateType.selectedDates, selectedDates, theme)),
+
         ...selectedDateRange,
         ...(!isInitialDateSelected && {
           [formattedInitialDate]: {
