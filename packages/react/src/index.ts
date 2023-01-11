@@ -27,10 +27,12 @@ export {
 export { default as DashboardLayout } from './components/DashboardLayout';
 export { default as Dropdown, DropdownProps } from './components/Dropdown';
 export { default as Link, LinkProps, LinkSizes } from './components/Link';
+export { default as ProgressBar } from './components/ProgressBar';
 export { default as Pill, PillProps } from './components/Pill';
 export { default as PillGroup, PillGroupProps } from './components/PillGroup';
 export { default as RadioButton, RadioProps } from './components/Radio';
 export { default as Tabs, TabsProps } from './components/Tabs';
+export { TextInputProps, default as TextInput } from './components/TextInput';
 export { default as Toast, ToastProps } from './components/Toast';
 export { ToastProvider } from './context/toast/ToastProvider';
 export {

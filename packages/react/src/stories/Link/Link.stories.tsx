@@ -88,7 +88,7 @@ export const TypeVariants = () => {
       </Link>
       <Spacing />
       <Typography variant={TypographyVariant.heading3}>Section Link</Typography>
-      <Link size="medium" href={'#here'} onClick={handleClick}>
+      <Link size="medium" href="#here" onClick={handleClick}>
         Go below
       </Link>
 

@@ -1,11 +1,10 @@
-import { baseTestId } from '../Dropdown';
 import { DropdownValueType } from '../Dropdown.types';
 
 export function getHeaderValueId(value: DropdownValueType) {
-  if (!value) return `${baseTestId}-placeholder`;
+  if (!value) return `dropdown-placeholder`;
 
   const valueSuffix = `value`;
-  if (typeof value === 'string') return `${baseTestId}-${valueSuffix}`;
+  if (typeof value === 'string') return `dropdown-${valueSuffix}`;
 
-  return `${baseTestId}-multi-${value.length ? 'pill-' : ''}${valueSuffix}`;
+  return `dropdown-multi-${value.length ? 'pill-' : ''}${valueSuffix}`;
 }

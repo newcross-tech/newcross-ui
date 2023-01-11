@@ -25,7 +25,7 @@ export const ToastContext = createContext<{
   dispatch: Dispatch<ToastAction>;
 }>({
   toasts: initialState,
-  dispatch: () => console.warn('no ToastContextProvider is used'),
+  dispatch: () => console.warn('no ToastContextProvider is used!'),
 });
 
 const reducer = (toasts: ToastType[], action: ToastAction) =>

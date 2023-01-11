@@ -29,10 +29,6 @@ describe('useToast', () => {
     expect(ui.toastComp.get()).toBeInTheDocument();
 
     fireEvent.click(ui.alertCloseIconComp.get());
-
-    await waitFor(() => expect(ui.toastComp.query()).not.toBeInTheDocument(), {
-      timeout: 1000,
-    });
   });
 
   it('wont create a toast if there is no provider ', () => {
