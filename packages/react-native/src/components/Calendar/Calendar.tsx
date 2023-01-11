@@ -1,16 +1,10 @@
-import React, {
-  useCallback,
-  useEffect,
-  useReducer,
-  useRef,
-  useState,
-} from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   Calendar as NativeCalendar,
   CalendarProps as NativeCalendarProps,
   LocaleConfig,
 } from 'react-native-calendars';
-import { flattenDeep, isEqual } from 'lodash';
+import { flattenDeep } from 'lodash';
 import {
   SHORT_MONTH_NAME,
   SHORT_WEEK_DAYS,
@@ -241,6 +235,10 @@ const Calendar = ({
     setSelectedDateRange(dateRangeStyles);
     onSingleDateRange && onSingleDateRange(singleDateRange);
   }, [singleDateRange]);
+
+  useEffect(() => {
+    onDateSelection && onDateSelection(selectedDates);
+  }, [selectedDates]);
 
   return (
     <NativeCalendar
