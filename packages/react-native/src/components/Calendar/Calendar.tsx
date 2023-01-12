@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect, useReducer, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   Calendar as NativeCalendar,
   CalendarProps as NativeCalendarProps,
   LocaleConfig,
 } from 'react-native-calendars';
+import { flattenDeep } from 'lodash';
 import {
   SHORT_MONTH_NAME,
   SHORT_WEEK_DAYS,
@@ -13,7 +14,6 @@ import { formatDate, getStylesByDate, createDateRange } from './utils';
 import { DateType, StyleByDate } from './Calendar.types';
 import { calendarStyles } from './Calendar.style';
 import useTheme from '../../hooks/useTheme';
-import calendarReducer, { initialState } from './reducer/calendarReducer';
 import CalendarHeader from './CalendarHeader';
 
 export type CalendarProps = {
@@ -75,6 +75,10 @@ export type CalendarProps = {
    * onMultipleDateRange - provide multiple range dates
    */
   onMultipleDateRange?: (dates: Array<Array<string>>) => void;
+  /**
+   * triggers an action when month has changed after left and right arrow press
+   */
+  onMonthChange?: (date: Date) => void;
 } & NativeCalendarProps;
 
 const Calendar = ({
@@ -91,19 +95,10 @@ const Calendar = ({
   onDateSelection,
   onSingleDateRange,
   onMultipleDateRange,
+  onMonthChange,
   ...rest
 }: CalendarProps) => {
   const styles = calendarStyles();
-  const [
-    {
-      noShiftsDateStyle,
-      bookedDateStyle,
-      unavailableDateStyle,
-      inactiveDateStyle,
-      selectedDateStyle,
-    },
-    dispatch,
-  ] = useReducer(calendarReducer, initialState);
 
   LocaleConfig.locales[LocaleConfig.defaultLocale].dayNamesShort =
     SHORT_WEEK_DAYS;
@@ -114,6 +109,7 @@ const Calendar = ({
   const { CalendarDaysCurrentColor } = theme;
 
   const initialDate: Date = startDate || new Date();
+
   const [date, setDate] = useState(initialDate);
   const formattedDate = formatDate(date);
   const formattedInitialDate = formatDate(initialDate);
@@ -123,7 +119,6 @@ const Calendar = ({
   const [multipleDateRange, setMultipleDateRange] = useState<
     Array<Array<string>>
   >([]);
-
   const [selectedDateRange, setSelectedDateRange] = useState<StyleByDate>({});
 
   const datesToExclude = [
@@ -132,6 +127,13 @@ const Calendar = ({
     ...unavailableDates,
     ...inactiveDates,
   ];
+
+  const isInitialDateSelected = !!flattenDeep([
+    ...datesToExclude,
+    ...selectedDates,
+    ...singleDateRange,
+    ...multipleDateRange,
+  ]).find((date) => date === formattedInitialDate);
 
   const getDateRangeStyles = useCallback((range: Array<string>) => {
     const dateRange = createDateRange(range, datesToExclude);
@@ -235,33 +237,8 @@ const Calendar = ({
   }, [singleDateRange]);
 
   useEffect(() => {
-    noShiftsDates.length &&
-      dispatch({ type: DateType.noShiftsDates, payload: noShiftsDates, theme });
-    bookedDates.length &&
-      dispatch({ type: DateType.bookedDates, payload: bookedDates, theme });
-    unavailableDates.length &&
-      dispatch({
-        type: DateType.unavailableDates,
-        payload: unavailableDates,
-        theme,
-      });
-    inactiveDates.length &&
-      dispatch({
-        type: DateType.inactiveDates,
-        payload: inactiveDates,
-        theme,
-      });
-  }, [dispatch, noShiftsDates, bookedDates, unavailableDates, inactiveDates]);
-
-  useEffect(() => {
-    selectedDates.length &&
-      dispatch({
-        type: DateType.selectedDates,
-        payload: selectedDates,
-        theme,
-      });
     onDateSelection && onDateSelection(selectedDates);
-  }, [dispatch, selectedDates]);
+  }, [selectedDates]);
 
   return (
     <NativeCalendar
@@ -269,29 +246,40 @@ const Calendar = ({
       current={formattedDate}
       markingType={'period'}
       markedDates={{
-        ...noShiftsDateStyle,
-        ...bookedDateStyle,
-        ...unavailableDateStyle,
-        ...inactiveDateStyle,
-        ...selectedDateStyle,
+        ...(noShiftsDates?.length &&
+          getStylesByDate(DateType.noShiftsDates, noShiftsDates, theme)),
+        ...(bookedDates?.length &&
+          getStylesByDate(DateType.bookedDates, bookedDates, theme)),
+        ...(unavailableDates?.length &&
+          getStylesByDate(DateType.unavailableDates, unavailableDates, theme)),
+        ...(inactiveDates?.length &&
+          getStylesByDate(DateType.inactiveDates, inactiveDates, theme)),
+        ...(selectedDates?.length &&
+          getStylesByDate(DateType.selectedDates, selectedDates, theme)),
+
         ...selectedDateRange,
-        [formattedInitialDate]: {
-          marked: true,
-          dotColor: CalendarDaysCurrentColor,
-          customContainerStyle: {
-            paddingBottom: theme.SpacingBase4,
+        ...(!isInitialDateSelected && {
+          [formattedInitialDate]: {
+            marked: true,
+            dotColor: CalendarDaysCurrentColor,
+            customContainerStyle: {
+              paddingBottom: theme.SpacingBase4,
+            },
           },
-        },
+        }),
       }}
       key={formattedDate}
       minDate={formattedInitialDate}
-      renderArrow={(direction) => (
-        <CalendarHeader
-          direction={direction}
-          date={date}
-          onDateChange={setDate}
-        />
-      )}
+      renderArrow={(direction) => {
+        return (
+          <CalendarHeader
+            direction={direction}
+            date={date}
+            onDateChange={setDate}
+            onMonthChange={onMonthChange}
+          />
+        );
+      }}
       hideExtraDays={hideExtraDays}
       theme={styles}
       onDayPress={(day) => {

@@ -7,7 +7,6 @@ describe('Checkbox Component', () => {
   it('renders successfully', () => {
     // Arrange
     const props: CheckboxProps = {
-      type: CheckboxType.CHECK,
       label: 'Label',
     };
 
