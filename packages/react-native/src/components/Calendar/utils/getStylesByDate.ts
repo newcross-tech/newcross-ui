@@ -19,8 +19,6 @@ const getStylesByDateType = (
     },
   },
   [DateType.bookedDates]: {
-    disabled: true,
-    disableTouchEvent: true,
     customContainerStyle: {
       backgroundColor: theme.CalendarDaysBookedBackgroundColor,
     },
