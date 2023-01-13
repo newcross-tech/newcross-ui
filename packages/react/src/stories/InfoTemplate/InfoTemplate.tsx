@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
-import Spacing, { SpacingSizes } from '../Spacing';
-import Typography, { TypographyVariant } from '../../components/Typography';
+import Typography from '../../components/Typography';
+import Spacing from '../Spacing';
 import {
   StyledChildrenContainer,
   StyledContainer,
@@ -28,9 +28,9 @@ const TextRenderer = ({ data }: TextRendererProps) => {
 
 const Header = ({ title, description }: HeaderProps) => (
   <>
-    <Typography variant={TypographyVariant.heading1}>{title}</Typography>
+    <Typography variant={'heading1'}>{title}</Typography>
     <Spacing />
-    <Typography variant={TypographyVariant.paragraph2}>
+    <Typography variant={'paragraph2'}>
       <TextRenderer data={description} />
     </Typography>
   </>
@@ -44,22 +44,20 @@ type UsagesProps = {
 const Usages = ({ doInfo = [], dontInfo = [] }: UsagesProps) => {
   return (
     <>
-      <Typography variant={TypographyVariant.heading2}>
-        Usage guidelines
-      </Typography>
+      <Typography variant={'heading2'}>Usage guidelines</Typography>
       <Spacing hasBorder />
       <Spacing />
       <>
         {doInfo.map((doText, index) => (
-          <StyledUsagesText key={index} variant={TypographyVariant.paragraph2}>
-            <StyledDo variant={TypographyVariant.heading4}>DO:</StyledDo>
+          <StyledUsagesText key={index} variant={'paragraph2'}>
+            <StyledDo variant={'heading4'}>DO:</StyledDo>
             &nbsp;{doText}
           </StyledUsagesText>
         ))}
         <Spacing />
         {dontInfo.map((dontText, index) => (
-          <StyledUsagesText key={index} variant={TypographyVariant.paragraph2}>
-            <StyledDont variant={TypographyVariant.heading4}>DON'T:</StyledDont>
+          <StyledUsagesText key={index} variant={'paragraph2'}>
+            <StyledDont variant={'heading4'}>DON'T:</StyledDont>
             &nbsp;{dontText}
           </StyledUsagesText>
         ))}
@@ -73,7 +71,7 @@ type ExamplesProps = { children?: ReactNode; title?: string };
 const Examples = ({ children, title }: ExamplesProps) => {
   return (
     <>
-      <Typography variant={TypographyVariant.heading2}>Examples</Typography>
+      <Typography variant={'heading2'}>Examples</Typography>
       <Spacing hasBorder />
       <Spacing />
       {children &&
@@ -82,12 +80,12 @@ const Examples = ({ children, title }: ExamplesProps) => {
             <StyledExampleContainer>
               <StyledChildrenContainer>{index}</StyledChildrenContainer>
             </StyledExampleContainer>
-            <Spacing size={SpacingSizes.Medium} />
+            <Spacing size={'Medium'} />
           </>
         ))}
 
       <Spacing />
-      <Typography variant={TypographyVariant.paragraph2}>
+      <Typography variant={'paragraph2'}>
         Visit the Variants page to view all possible states and options for
         the&nbsp;
         {title} component.
@@ -114,9 +112,9 @@ const InfoContainer: FC<InfoContainerProps> = ({
     <StyledStorybookContainer>
       <StyledContainer>
         <Header title={title} description={description} />
-        <Spacing size={SpacingSizes.Medium} />
+        <Spacing size={'Medium'} />
         <Examples title={title}>{children}</Examples>
-        <Spacing size={SpacingSizes.Medium} />
+        <Spacing size={'Medium'} />
         <Usages doInfo={doInfo} dontInfo={dontInfo} />
         <Spacing />
       </StyledContainer>

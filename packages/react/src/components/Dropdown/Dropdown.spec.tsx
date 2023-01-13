@@ -3,7 +3,6 @@ import { byTestId, byText } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
 import { executeKeyPress } from '../../utils/test/executeKeyPress';
 import Dropdown, { DropdownProps } from './Dropdown';
-import React from 'react';
 
 const baseTestId = 'dropdown';
 const options = ['Option 1', 'Option 2', 'Option 3'];

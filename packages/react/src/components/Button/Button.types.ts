@@ -15,8 +15,8 @@ export const getTypographyValues = (): Record<
   ButtonSizes,
   TypographyVariant
 > => ({
-  [ButtonSizes.small]: TypographyVariant.heading4,
-  [ButtonSizes.large]: TypographyVariant.heading3,
+  [ButtonSizes.small]: 'heading4',
+  [ButtonSizes.large]: 'heading3',
 });
 
 export const getIconSize = (theme: ThemeDesignTokens) => ({

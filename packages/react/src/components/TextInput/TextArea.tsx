@@ -1,6 +1,5 @@
-import { TextAreaProps } from './TextInput.types';
 import * as Styled from './TextInput.style';
-import { TypographyVariant } from '../Typography';
+import { TextAreaProps } from './TextInput.types';
 
 export const TextArea = ({
   maxLength,
@@ -26,7 +25,7 @@ export const TextArea = ({
 
     {!!maxLength && maxLength > 0 && (
       <Styled.LengthInfo
-        variant={TypographyVariant.paragraph3}
+        variant={'paragraph3'}
         data-testid={`${testID}-max-length`}
       >
         {`${length}/${maxLength} characters`}

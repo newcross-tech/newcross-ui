@@ -3,16 +3,15 @@ import { faChevronRight } from '@fortawesome/pro-light-svg-icons/faChevronRight'
 import { faCircleChevronRight } from '@fortawesome/pro-solid-svg-icons/faCircleChevronRight';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Meta, Story } from '@storybook/react';
-import React from 'react';
 import Button, {
   ButtonProps,
   ButtonSizes,
   ButtonVariant,
 } from '../../components/Button';
-import Typography, { TypographyVariant } from '../../components/Typography';
+import Typography from '../../components/Typography';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import Spacing, { SpacingSizes } from '../Spacing';
+import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './ButtonInfo';
 export default {
   title: 'React/Components/Button',
@@ -41,10 +40,10 @@ export const Overview = () => {
 export const VariantsWithSizes = () => {
   return (
     <Container display={'block'} direction="column">
-      <Typography variant={TypographyVariant.heading4}>
+      <Typography variant={'heading4'}>
         Primary Button with Different Sizes
       </Typography>
-      <Spacing size={SpacingSizes.Large} />
+      <Spacing size={'Large'} />
       <Button size={ButtonSizes.small}>Small Button</Button>
       <Spacing />
       <Button size={ButtonSizes.large}>Large Button</Button>
@@ -63,37 +62,31 @@ export const VariantsWithSizes = () => {
 export const Variants = () => {
   return (
     <Container display={'block'} direction="column">
-      <Typography variant={TypographyVariant.heading4}>
-        Primary Button
-      </Typography>
-      <Spacing size={SpacingSizes.Large} />
+      <Typography variant={'heading4'}>Primary Button</Typography>
+      <Spacing size={'Large'} />
       <Button variant={ButtonVariant.primary}>Primary Button</Button>
       <Spacing />
       <Button disabled variant={ButtonVariant.primary}>
         Primary Disabled Button
       </Button>
-      <Spacing size={SpacingSizes.Large} />
-      <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading4}>
-        Secondary Button
-      </Typography>
-      <Spacing size={SpacingSizes.Large} />
+      <Spacing size={'Large'} />
+      <Spacing size={'Large'} />
+      <Typography variant={'heading4'}>Secondary Button</Typography>
+      <Spacing size={'Large'} />
       <Button variant={ButtonVariant.secondary}>Secondary Button</Button>
       <Spacing />
       <Button disabled variant={ButtonVariant.secondary}>
         Secondary Disabled Button
       </Button>
-      <Spacing size={SpacingSizes.Large} />
+      <Spacing size={'Large'} />
     </Container>
   );
 };
 export const VariantsWithIcons = () => {
   return (
     <Container display={'block'} direction="column">
-      <Typography variant={TypographyVariant.heading4}>
-        Primary Button with Icons
-      </Typography>
-      <Spacing size={SpacingSizes.Large} />
+      <Typography variant={'heading4'}>Primary Button with Icons</Typography>
+      <Spacing size={'Large'} />
       <Button
         size={ButtonSizes.small}
         rightIcon={<FontAwesomeIcon icon={faChevronRight} />}

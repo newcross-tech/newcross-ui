@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useToggle } from '../../hooks/useToggle';
 import { TestProp } from '../../types/TestProp';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
-import { TypographyVariant } from '../Typography';
 import * as Styled from './Radio.style';
 
 export type RadioProps = {
@@ -61,7 +60,7 @@ const Radio = ({
         }
       />
       <Styled.Label
-        variant={TypographyVariant.paragraph1}
+        variant={'paragraph1'}
         testID={`${baseTestId}-label`}
         htmlFor={id}
       >

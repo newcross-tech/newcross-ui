@@ -1,10 +1,10 @@
 import { Meta, Story } from '@storybook/react';
 import { useState } from 'react';
 import TextInput, { TextInputProps } from '../../components/TextInput';
-import Typography, { TypographyVariant } from '../../components/Typography';
+import Typography from '../../components/Typography';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import Spacing, { SpacingSizes } from '../Spacing';
+import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './TextInputInfo';
 
 export default {
@@ -47,15 +47,11 @@ export const Variants = () => {
 
   return (
     <Container direction="column" hasPadding={false}>
-      <Typography variant={TypographyVariant.heading4}>
-        Without placeholder
-      </Typography>
+      <Typography variant={'heading4'}>Without placeholder</Typography>
       <TextInput value={text1} type="text" onChange={onChangeText1} />
       <Spacing />
 
-      <Typography variant={TypographyVariant.heading4}>
-        With placeholder
-      </Typography>
+      <Typography variant={'heading4'}>With placeholder</Typography>
       <TextInput
         placeholder="This is placeholder text"
         value={text2}
@@ -64,7 +60,7 @@ export const Variants = () => {
       />
       <Spacing />
 
-      <Typography variant={TypographyVariant.heading4}>
+      <Typography variant={'heading4'}>
         With placeholder and disabled
       </Typography>
       <TextInput
@@ -76,7 +72,7 @@ export const Variants = () => {
       />
       <Spacing />
 
-      <Typography variant={TypographyVariant.heading4}>Password</Typography>
+      <Typography variant={'heading4'}>Password</Typography>
       <TextInput
         placeholder="Enter password"
         type="password"
@@ -85,13 +81,11 @@ export const Variants = () => {
       />
       <Spacing />
 
-      <Typography variant={TypographyVariant.heading4}>
-        With validation check
-      </Typography>
+      <Typography variant={'heading4'}>With validation check</Typography>
       <TextInput isValid value={text4} type="text" onChange={onChangeText4} />
       <Spacing />
 
-      <Typography variant={TypographyVariant.heading4}>With a label</Typography>
+      <Typography variant={'heading4'}>With a label</Typography>
       <TextInput
         value={text5}
         type="text"
@@ -100,9 +94,7 @@ export const Variants = () => {
       />
       <Spacing />
 
-      <Typography variant={TypographyVariant.heading4}>
-        With helper text
-      </Typography>
+      <Typography variant={'heading4'}>With helper text</Typography>
       <TextInput
         value={text6}
         type="text"
@@ -112,9 +104,7 @@ export const Variants = () => {
       />
       <Spacing />
 
-      <Typography variant={TypographyVariant.heading4}>
-        With error text
-      </Typography>
+      <Typography variant={'heading4'}>With error text</Typography>
       <TextInput
         value={text7}
         type="text"
@@ -136,7 +126,7 @@ export const TextAreaVariants = () => {
   return (
     <Container display="flex" direction="row">
       <Container direction="column" display="block">
-        <Typography variant={TypographyVariant.heading3}>TextArea</Typography>
+        <Typography variant={'heading3'}>TextArea</Typography>
         <Spacing />
         <TextInput
           type={'textarea'}
@@ -145,12 +135,10 @@ export const TextAreaVariants = () => {
           onChange={onChangeText1}
         />
       </Container>
-      <Spacing size={SpacingSizes.Large} />
+      <Spacing size={'Large'} />
 
       <Container direction="column" display="block">
-        <Typography variant={TypographyVariant.heading3}>
-          TextArea with maxLength
-        </Typography>
+        <Typography variant={'heading3'}>TextArea with maxLength</Typography>
         <Spacing />
         <TextInput
           type={'textarea'}
@@ -162,11 +150,9 @@ export const TextAreaVariants = () => {
         />
       </Container>
 
-      <Spacing size={SpacingSizes.Large} />
+      <Spacing size={'Large'} />
       <Container direction="column" display="block">
-        <Typography variant={TypographyVariant.heading3}>
-          TextArea with long text
-        </Typography>
+        <Typography variant={'heading3'}>TextArea with long text</Typography>
         <Spacing />
         <TextInput
           value={text3}

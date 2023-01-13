@@ -1,4 +1,3 @@
-import React from 'react';
 import Card from '../Card';
 import { render } from '@testing-library/react';
 import { axe } from '../../utils/test/axeConfig';

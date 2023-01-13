@@ -2,8 +2,6 @@ import { fireEvent, render } from '@testing-library/react';
 import { byPlaceholderText, byTestId, byText } from 'testing-library-selector';
 import TextInput, { TextInputProps } from './TextInput';
 import { axe } from '../../utils/test/axeConfig';
-import React from 'react';
-
 const renderComponent = (props: TextInputProps) => {
   const customProps = {
     type: 'text',

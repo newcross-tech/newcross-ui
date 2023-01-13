@@ -4,7 +4,6 @@ import { AlertVariant } from '../../types/AlertVariant';
 import { TestProp } from '../../types/TestProp';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import Card from '../Card';
-import { TypographyVariant } from '../Typography';
 import * as Styled from './Alert.style';
 
 export type AlertProps = {
@@ -82,14 +81,12 @@ const Alert = ({
       )}
       <Styled.TextContainer>
         {hasTitle && (
-          <Styled.Text variant={TypographyVariant.heading4}>
+          <Styled.Text variant={'heading4'}>
             {title || Styled.getTitle()[variant]}
           </Styled.Text>
         )}
         {children && (
-          <Styled.Text variant={TypographyVariant.paragraph3}>
-            {children}
-          </Styled.Text>
+          <Styled.Text variant={'paragraph3'}>{children}</Styled.Text>
         )}
         {action}
       </Styled.TextContainer>

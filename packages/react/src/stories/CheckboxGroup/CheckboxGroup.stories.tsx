@@ -2,10 +2,10 @@ import { Meta, Story } from '@storybook/react';
 import CheckboxGroup, {
   CheckboxGroupProps,
 } from '../../components/CheckboxGroup';
-import Typography, { TypographyVariant } from '../../components/Typography';
+import Typography from '../../components/Typography';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import Spacing, { SpacingSizes } from '../Spacing';
+import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './CheckboxGroupInfo';
 
 export default {
@@ -22,9 +22,7 @@ export const Overview = () => {
       dontInfo={DONT}
     >
       <Container direction="column">
-        <Typography variant={TypographyVariant.heading4}>
-          Checkbox Group
-        </Typography>
+        <Typography variant={'heading4'}>Checkbox Group</Typography>
         <CheckboxGroup
           defaultChecked={[]}
           options={[
@@ -41,27 +39,21 @@ export const Overview = () => {
 export const Variants = () => {
   return (
     <Container direction="column">
-      <Typography variant={TypographyVariant.heading4}>
-        Everything is Checked
-      </Typography>
+      <Typography variant={'heading4'}>Everything is Checked</Typography>
 
       <CheckboxGroup
         defaultChecked={['Apple', 'Banana', 'Pear']}
         options={['Apple', 'Banana', 'Pear']}
       />
-      <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading4}>
-        One or more is Checked
-      </Typography>
+      <Spacing size={'Large'} />
+      <Typography variant={'heading4'}>One or more is Checked</Typography>
 
       <CheckboxGroup
         defaultChecked={['Banana']}
         options={['Apple', 'Banana', 'Pear']}
       />
-      <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading4}>
-        One or more is Disabled
-      </Typography>
+      <Spacing size={'Large'} />
+      <Typography variant={'heading4'}>One or more is Disabled</Typography>
 
       <CheckboxGroup
         defaultChecked={['Apple']}
@@ -71,10 +63,8 @@ export const Variants = () => {
           { label: 'Pear', value: 'fruit3' },
         ]}
       />
-      <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading4}>
-        One or more has Error
-      </Typography>
+      <Spacing size={'Large'} />
+      <Typography variant={'heading4'}>One or more has Error</Typography>
 
       <CheckboxGroup
         defaultChecked={['Apple', 'Banana']}
@@ -89,7 +79,7 @@ export const Variants = () => {
 };
 const Template: Story<CheckboxGroupProps> = () => (
   <Container direction="column">
-    <Typography variant={TypographyVariant.heading4}>Checkbox Group</Typography>
+    <Typography variant={'heading4'}>Checkbox Group</Typography>
     <CheckboxGroup defaultChecked={[]} options={['Apple', 'Banana', 'Pear']} />
   </Container>
 );

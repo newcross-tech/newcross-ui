@@ -1,22 +1,22 @@
-import { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
+import { useState } from 'react';
+import Button from '../../components/Button';
 import Pill from '../../components/Pill';
 import PillGroup, { PillGroupProps } from '../../components/PillGroup';
-import Typography, { TypographyVariant } from '../../components/Typography';
-import Button from '../../components/Button';
+import Typography from '../../components/Typography';
 import Container from '../Container';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBird } from '@fortawesome/pro-solid-svg-icons/faBird';
-import { faDog } from '@fortawesome/pro-solid-svg-icons/faDog';
 import { faCat } from '@fortawesome/pro-solid-svg-icons/faCat';
-import { faSnake } from '@fortawesome/pro-solid-svg-icons/faSnake';
-import { faRabbit } from '@fortawesome/pro-solid-svg-icons/faRabbit';
-import { faPig } from '@fortawesome/pro-solid-svg-icons/faPig';
+import { faDog } from '@fortawesome/pro-solid-svg-icons/faDog';
 import { faOtter } from '@fortawesome/pro-solid-svg-icons/faOtter';
-import { faWhale } from '@fortawesome/pro-solid-svg-icons/faWhale';
+import { faPig } from '@fortawesome/pro-solid-svg-icons/faPig';
+import { faRabbit } from '@fortawesome/pro-solid-svg-icons/faRabbit';
 import { faSheep } from '@fortawesome/pro-solid-svg-icons/faSheep';
-import Spacing, { SpacingSizes } from '../Spacing';
+import { faSnake } from '@fortawesome/pro-solid-svg-icons/faSnake';
+import { faWhale } from '@fortawesome/pro-solid-svg-icons/faWhale';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Spacing from '../Spacing';
 
 export default {
   title: 'React/Components/PillGroup',
@@ -57,7 +57,7 @@ export const Variants = () => {
 
   return (
     <Container direction="column">
-      <Typography variant={TypographyVariant.heading4}>
+      <Typography variant={'heading4'}>
         Removable Pill Group (Interactive Section with Buttons)
       </Typography>
       <Container>
@@ -84,8 +84,8 @@ export const Variants = () => {
         })}
       </PillGroup>
 
-      <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading4}>
+      <Spacing size={'Large'} />
+      <Typography variant={'heading4'}>
         Pill Group with Pill Variants
       </Typography>
 
@@ -97,9 +97,9 @@ export const Variants = () => {
         <Pill disabled label="Five" />
         <Pill disabled label="Six" />
       </PillGroup>
-      <Spacing size={SpacingSizes.Large} />
+      <Spacing size={'Large'} />
 
-      <Typography variant={TypographyVariant.heading4}>
+      <Typography variant={'heading4'}>
         Pill Group with Vertical Orientation
       </Typography>
 

@@ -3,10 +3,9 @@ import DropDown, { DropdownProps } from '../../components/Dropdown';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './DropdownInfo';
 
-import React from 'react';
-import Typography, { TypographyVariant } from '../../components/Typography';
+import Typography from '../../components/Typography';
 import Container from '../Container';
-import Spacing, { SpacingSizes } from '../Spacing';
+import Spacing from '../Spacing';
 
 export default {
   title: 'React/Components/DropDown',
@@ -22,9 +21,7 @@ export const Overview = () => {
       dontInfo={DONT}
     >
       <Container direction="column" hasPadding={false}>
-        <Typography variant={TypographyVariant.heading4}>
-          Single Select
-        </Typography>
+        <Typography variant={'heading4'}>Single Select</Typography>
         <DropDown
           options={[
             'Dropdown Option 1',
@@ -34,10 +31,8 @@ export const Overview = () => {
           label="Label"
           placeholder="Select a 'label'"
         />
-        <Spacing size={SpacingSizes.Large} />
-        <Typography variant={TypographyVariant.heading4}>
-          Multi Select
-        </Typography>
+        <Spacing size={'Large'} />
+        <Typography variant={'heading4'}>Multi Select</Typography>
         <DropDown
           isMulti
           options={[
@@ -65,9 +60,7 @@ export const MultiSelectVariants = () => {
 
   return (
     <Container direction="column" hasPadding={false}>
-      <Typography variant={TypographyVariant.heading4}>
-        Default Multi Select
-      </Typography>
+      <Typography variant={'heading4'}>Default Multi Select</Typography>
       <DropDown
         isMulti
         label="Label"
@@ -76,10 +69,8 @@ export const MultiSelectVariants = () => {
         testID={'Drop1'}
       />
 
-      <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading4}>
-        Disabled Dropdown
-      </Typography>
+      <Spacing size={'Large'} />
+      <Typography variant={'heading4'}>Disabled Dropdown</Typography>
       <DropDown
         isMulti
         placeholder={'Disabled Dropdown'}
@@ -87,10 +78,8 @@ export const MultiSelectVariants = () => {
         options={options}
         testID={'Drop2'}
       />
-      <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading4}>
-        Error Dropdown
-      </Typography>
+      <Spacing size={'Large'} />
+      <Typography variant={'heading4'}>Error Dropdown</Typography>
       <DropDown
         isMulti
         placeholder={'Error Dropdown'}
@@ -114,9 +103,7 @@ export const SingleSelectVariants = () => {
 
   return (
     <Container direction="column" hasPadding={false}>
-      <Typography variant={TypographyVariant.heading4}>
-        Default Dropdown
-      </Typography>
+      <Typography variant={'heading4'}>Default Dropdown</Typography>
       <DropDown
         label="Label"
         placeholder="Select a 'label'"
@@ -124,20 +111,16 @@ export const SingleSelectVariants = () => {
         testID={'Drop1'}
       />
 
-      <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading4}>
-        Disabled Dropdown
-      </Typography>
+      <Spacing size={'Large'} />
+      <Typography variant={'heading4'}>Disabled Dropdown</Typography>
       <DropDown
         placeholder={'Disabled Dropdown'}
         disabled
         options={options}
         testID={'Drop2'}
       />
-      <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading4}>
-        Error Dropdown
-      </Typography>
+      <Spacing size={'Large'} />
+      <Typography variant={'heading4'}>Error Dropdown</Typography>
       <DropDown
         placeholder={'Error Dropdown'}
         errorText={'Please make a selection'}

@@ -1,10 +1,9 @@
 import { Meta, Story } from '@storybook/react';
-import React from 'react';
 import styled, { css } from 'styled-components';
 import DashboardLayout, {
   DashboardLayoutProps,
 } from '../../../components/DashboardLayout';
-import Typography, { TypographyVariant } from '../../../components/Typography';
+import Typography from '../../../components/Typography';
 export default {
   title: 'React/Components/Layouts/DashboardLayout',
   component: DashboardLayout,
@@ -40,17 +39,17 @@ export const Interactive: Story<DashboardLayoutProps> = Template.bind({});
 Interactive.args = {
   header: (
     <HeaderWrapper>
-      <Typography variant={TypographyVariant.heading1}>Header</Typography>
+      <Typography variant={'heading1'}>Header</Typography>
     </HeaderWrapper>
   ),
   main: (
     <MainWrapper>
-      <Typography variant={TypographyVariant.heading1}>Main</Typography>
+      <Typography variant={'heading1'}>Main</Typography>
     </MainWrapper>
   ),
   sidebar: (
     <SidebarWrapper>
-      <Typography variant={TypographyVariant.heading1}>Sidebar</Typography>
+      <Typography variant={'heading1'}>Sidebar</Typography>
     </SidebarWrapper>
   ),
 };

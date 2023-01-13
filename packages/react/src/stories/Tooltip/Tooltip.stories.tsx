@@ -1,15 +1,14 @@
 import { Meta, Story } from '@storybook/react';
-import React from 'react';
 import styled from 'styled-components';
 import Tooltip, { TooltipProps } from '../../components/Tooltip';
 import {
   TooltipPositions,
   TooltipVariant,
 } from '../../components/Tooltip/Tooltip.types';
-import Typography, { TypographyVariant } from '../../components/Typography';
+import Typography from '../../components/Typography';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import Spacing, { SpacingSizes } from '../Spacing';
+import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './Tooltip.info';
 
 export default {
@@ -26,19 +25,15 @@ const CenteredWrapper = styled.div`
 export const Variants = () => {
   return (
     <Container display={'block'} direction="column">
-      <Typography variant={TypographyVariant.heading4}>
-        Default Tooltip
-      </Typography>
-      <Spacing size={SpacingSizes.Large} />
+      <Typography variant={'heading4'}>Default Tooltip</Typography>
+      <Spacing size={'Large'} />
       <Tooltip position={TooltipPositions.Right}>
         This is an info message. This is an info message. This is an info
         message.
       </Tooltip>
-      <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading4}>
-        Question Tooltip
-      </Typography>
-      <Spacing size={SpacingSizes.Large} />
+      <Spacing size={'Large'} />
+      <Typography variant={'heading4'}>Question Tooltip</Typography>
+      <Spacing size={'Large'} />
       <Tooltip
         variant={TooltipVariant.question}
         position={TooltipPositions.Right}
@@ -53,22 +48,20 @@ export const Variants = () => {
 export const VariantsWithPosition = () => {
   return (
     <Container direction="column" display="flex">
-      <Typography variant={TypographyVariant.heading3}>
-        Variants with Position
-      </Typography>
-      <Spacing size={SpacingSizes.Large} />
+      <Typography variant={'heading3'}>Variants with Position</Typography>
+      <Spacing size={'Large'} />
       <Container display="inline-flex" justifyContent="space-around">
         <Tooltip position={TooltipPositions.Top}>Top</Tooltip>
-        <Typography variant={TypographyVariant.heading4}>Top</Typography>
+        <Typography variant={'heading4'}>Top</Typography>
 
         <Tooltip position={TooltipPositions.Right}>Right</Tooltip>
-        <Typography variant={TypographyVariant.heading4}>Right</Typography>
+        <Typography variant={'heading4'}>Right</Typography>
 
         <Tooltip position={TooltipPositions.Bottom}>Bottom</Tooltip>
-        <Typography variant={TypographyVariant.heading4}>Bottom</Typography>
+        <Typography variant={'heading4'}>Bottom</Typography>
 
         <Tooltip position={TooltipPositions.Left}>Left</Tooltip>
-        <Typography variant={TypographyVariant.heading4}>Left</Typography>
+        <Typography variant={'heading4'}>Left</Typography>
       </Container>
     </Container>
   );
@@ -91,9 +84,7 @@ export const Overview = () => {
 
 const Template: Story<TooltipProps> = (props) => (
   <>
-    <Typography variant={TypographyVariant.heading4}>
-      Interactive Tooltip
-    </Typography>
+    <Typography variant={'heading4'}>Interactive Tooltip</Typography>
     <CenteredWrapper>
       <Tooltip {...props} />
     </CenteredWrapper>

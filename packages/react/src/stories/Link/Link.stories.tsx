@@ -1,10 +1,10 @@
 import { Meta, Story } from '@storybook/react';
 import Link, { LinkProps } from '../../components/Link';
-import Typography, { TypographyVariant } from '../../components/Typography';
+import Typography from '../../components/Typography';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import Spacing from '../Spacing';
-import { TITLE, DESCRIPTION, DO, DONT } from './LinkInfo';
+import { DESCRIPTION, DO, DONT, TITLE } from './LinkInfo';
 
 export default {
   title: 'React/Components/Link',
@@ -29,10 +29,10 @@ export const Overview = () => {
 export const SizeVariants = () => {
   return (
     <Container direction="column">
-      <Typography variant={TypographyVariant.heading3}>Small Link</Typography>
+      <Typography variant={'heading3'}>Small Link</Typography>
       <Link size="small">This is a link</Link>
       <Spacing />
-      <Typography variant={TypographyVariant.heading3}>Medium Link</Typography>
+      <Typography variant={'heading3'}>Medium Link</Typography>
       <Link size="medium">This is a link</Link>
     </Container>
   );
@@ -46,7 +46,7 @@ export const TypeVariants = () => {
 
   return (
     <Container direction="column">
-      <Typography variant={TypographyVariant.heading3}>Email Link</Typography>
+      <Typography variant={'heading3'}>Email Link</Typography>
       <Link
         size="medium"
         href={'mailto:someone@newcrosshealthcare.com'}
@@ -55,15 +55,13 @@ export const TypeVariants = () => {
         contact me
       </Link>
       <Spacing />
-      <Typography variant={TypographyVariant.heading3}>Phone Link</Typography>
+      <Typography variant={'heading3'}>Phone Link</Typography>
       <Link size="medium" variant="phone" href={'tel:6012345678'}>
         6012345678
       </Link>
 
       <Spacing />
-      <Typography variant={TypographyVariant.heading3}>
-        External site Link
-      </Typography>
+      <Typography variant={'heading3'}>External site Link</Typography>
       <Link
         size="medium"
         target={'_blank'}
@@ -74,9 +72,7 @@ export const TypeVariants = () => {
       </Link>
 
       <Spacing />
-      <Typography variant={TypographyVariant.heading3}>
-        Internal site Link
-      </Typography>
+      <Typography variant={'heading3'}>Internal site Link</Typography>
       <Link
         size="medium"
         variant="internal"
@@ -87,14 +83,14 @@ export const TypeVariants = () => {
         Go to internal Website
       </Link>
       <Spacing />
-      <Typography variant={TypographyVariant.heading3}>Section Link</Typography>
+      <Typography variant={'heading3'}>Section Link</Typography>
       <Link size="medium" href="#here" onClick={handleClick}>
         Go below
       </Link>
 
       <Spacing />
 
-      <Typography variant={TypographyVariant.heading3}>
+      <Typography variant={'heading3'}>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur
         vitae nobis voluptates provident pariatur sequi quo tempore neque
         impedit sint quam deserunt possimus dolore quidem labore, praesentium
@@ -207,7 +203,7 @@ export const TypeVariants = () => {
         consectetur dolorum minima. Magni omnis sit minima pariatur, fugiat
         perspiciatis expedita eius unde earum reprehenderit ab voluptatum!
       </Typography>
-      <Typography id={'here'} variant={TypographyVariant.heading1}>
+      <Typography id={'here'} variant={'heading1'}>
         Welcome
       </Typography>
     </Container>

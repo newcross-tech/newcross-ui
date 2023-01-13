@@ -1,14 +1,14 @@
 import { Meta, Story } from '@storybook/react';
-import Typography, { TypographyVariant } from '../../components/Typography';
+import useState from 'storybook-addon-state';
 import ToggleButton from '../../components/ToggleButton';
 import ToggleButtonGroup, {
   ToggleButtonGroupProps,
 } from '../../components/ToggleButtonGroup';
-import useState from 'storybook-addon-state';
-import Spacing, { SpacingPositions, SpacingSizes } from '../Spacing';
+import Typography from '../../components/Typography';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import { TITLE, DESCRIPTION, DO, DONT } from './ToggleButtonGroupInfo';
+import Spacing from '../Spacing';
+import { DESCRIPTION, DO, DONT, TITLE } from './ToggleButtonGroupInfo';
 
 export default {
   title: 'React/Components/ToggleButtonGroup',
@@ -33,9 +33,7 @@ export const Variants = () => {
 
   return (
     <Container direction="column">
-      <Typography variant={TypographyVariant.heading4}>
-        Single Select Group
-      </Typography>
+      <Typography variant={'heading4'}>Single Select Group</Typography>
       <ToggleButtonGroup
         selectedValue={selectedSingleBtn}
         onSingleSelect={setSelectedSingleBtn}
@@ -44,8 +42,8 @@ export const Variants = () => {
         <ToggleButton value="2">Option B</ToggleButton>
         <ToggleButton value="3">Option C</ToggleButton>
       </ToggleButtonGroup>
-      <Spacing position={SpacingPositions.Bottom} />
-      <Typography variant={TypographyVariant.heading4}>
+      <Spacing position={'Bottom'} />
+      <Typography variant={'heading4'}>
         Multiple Select Group with horizontal orientation
       </Typography>
 
@@ -60,8 +58,8 @@ export const Variants = () => {
 
         <ToggleButton value="3">Option C</ToggleButton>
       </ToggleButtonGroup>
-      <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading4}>
+      <Spacing size={'Large'} />
+      <Typography variant={'heading4'}>
         Multiple Select Group with vertical orientation
       </Typography>
       <Container>
@@ -77,8 +75,8 @@ export const Variants = () => {
           <ToggleButton value="3">Aug</ToggleButton>
         </ToggleButtonGroup>
       </Container>
-      <Spacing position={SpacingPositions.Bottom} />
-      <Typography variant={TypographyVariant.heading4}>
+      <Spacing position={'Bottom'} />
+      <Typography variant={'heading4'}>
         Multiple Select Group with vertical / horizontal orientation
       </Typography>
 

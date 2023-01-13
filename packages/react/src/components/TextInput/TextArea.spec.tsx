@@ -1,6 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { byTestId } from 'testing-library-selector';
-import React from 'react';
 import TextInput, { TextInputProps } from './TextInput';
 
 const renderComponent = (customProps: Partial<TextInputProps>) => {

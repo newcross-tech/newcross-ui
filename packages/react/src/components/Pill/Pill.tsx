@@ -10,7 +10,6 @@ import {
 import { useToggle } from '../../hooks/useToggle';
 import { TestProp } from '../../types/TestProp';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
-import { TypographyVariant } from '../Typography';
 import * as Styled from './Pill.style';
 
 export type PillProps = {
@@ -108,7 +107,7 @@ const Pill = ({
         </Styled.Icon>
         <Styled.Text
           disabled={disabled}
-          variant={TypographyVariant.paragraph1}
+          variant={'paragraph1'}
           numberOfLines={2}
         >
           {label}

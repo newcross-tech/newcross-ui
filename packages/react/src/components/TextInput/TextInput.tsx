@@ -11,7 +11,6 @@ import React, {
 } from 'react';
 import { TestProp } from '../../types/TestProp';
 import Label from '../Label/Label';
-import { TypographyVariant } from '../Typography';
 import { TextArea } from './TextArea';
 import * as Styled from './TextInput.style';
 import { SearchIcon } from './TextInput.style';
@@ -94,7 +93,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
       {label && (
         <Label
           htmlFor={inputId}
-          variant={TypographyVariant.heading5}
+          variant={'heading5'}
           testID={`${baseTestId}-label`}
         >
           {label}
@@ -179,7 +178,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
 
       {(helperText || errorText) && (
         <Styled.MessageText
-          variant={TypographyVariant.paragraph3}
+          variant={'paragraph3'}
           testID={`${baseTestId}-message-text`}
           hasError={hasError}
         >

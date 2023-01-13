@@ -1,4 +1,3 @@
-import React from 'react';
 import { render } from '@testing-library/react';
 import Brand from './Brand';
 import ThemeProvider, { ThemeDesignTokens } from './ThemeProvider';

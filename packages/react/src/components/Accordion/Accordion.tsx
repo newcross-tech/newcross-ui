@@ -7,7 +7,6 @@ import { useResize } from '../../hooks/useResize';
 import useTheme from '../../hooks/useTheme';
 import { useToggle } from '../../hooks/useToggle';
 import { TestProp } from '../../types/TestProp';
-import { TypographyVariant } from '../Typography';
 import { defaultAnimationSpeed } from './Accordion.constants';
 import * as Styled from './Accordion.style';
 
@@ -90,7 +89,7 @@ const Accordion = ({
             {icon}
             <Styled.Text
               hasIcon={!!icon}
-              variant={TypographyVariant.paragraph1}
+              variant={'paragraph1'}
               numberOfLines={2}
             >
               {label}

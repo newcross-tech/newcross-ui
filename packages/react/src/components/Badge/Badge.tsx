@@ -1,5 +1,6 @@
 import { ReactElement, ReactNode } from 'react';
 import { TestProp } from '../../types/TestProp';
+import { TypographyVariant } from '../Typography';
 import * as Styled from './Badge.style';
 import { getTypographyVariant } from './Badge.style';
 import { BadgePositions, BadgeSizes } from './Badge.types';
@@ -61,7 +62,7 @@ const Badge = ({
         size={size}
         position={position}
       >
-        <Styled.Text variant={getTypographyVariant(size)}>
+        <Styled.Text variant={getTypographyVariant(size) as TypographyVariant}>
           {renderContent && displayNumber}
         </Styled.Text>
       </Styled.Content>

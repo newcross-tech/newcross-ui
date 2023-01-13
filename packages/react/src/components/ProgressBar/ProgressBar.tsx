@@ -1,4 +1,3 @@
-import { TypographyVariant } from '../Typography';
 import {
   defaultMaxProgress,
   defaultMinProgress,
@@ -6,6 +5,7 @@ import {
 } from './ProgressBar.constants';
 import * as Styled from './ProgressBar.style';
 import {
+  CommonTextProps,
   ProgressBarLabelPositions,
   ProgressBarVariant,
 } from './ProgressBar.types';
@@ -63,13 +63,13 @@ const ProgressBar = ({
 
   const normalisedProgress = normaliseValue(progress, minProgress, maxProgress);
 
-  const commonTextProps = {
+  const commonTextProps: CommonTextProps = {
     applyWidthStyles: applyWidthStyles({
       labelPosition,
       progressLabelPosition,
       forceWidthStyles: !hasProgressLabel || isIndeterminate,
     }),
-    variant: TypographyVariant.paragraph1,
+    variant: 'paragraph1',
   };
 
   const getSamePositionContent = () => (
@@ -99,7 +99,7 @@ const ProgressBar = ({
         <Styled.ProgressValue
           isEachLabelSamePosition={isEachLabelSamePosition}
           progressLabelPosition={progressLabelPosition}
-          variant={TypographyVariant.paragraph1}
+          variant={'paragraph1'}
           testID="progress-label-container"
         >
           {normalisedProgress}%

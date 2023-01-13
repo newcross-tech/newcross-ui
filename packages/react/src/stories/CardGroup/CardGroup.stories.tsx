@@ -1,14 +1,14 @@
-import Container from '../Container';
-import Card from '../../components/Card';
-import { Theme } from '../../types/Theme';
-import { CardShift } from '../Card/CardShift';
+import { faUser } from '@fortawesome/pro-light-svg-icons/faUser';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Meta, Story } from '@storybook/react';
 import styled, { css } from 'styled-components';
-import Spacing, { SpacingSizes } from '../Spacing';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/pro-light-svg-icons/faUser';
+import Card from '../../components/Card';
 import CardGroup, { CardGroupProps } from '../../components/CardGroup';
-import Typography, { TypographyVariant } from '../../components/Typography';
+import Typography from '../../components/Typography';
+import { Theme } from '../../types/Theme';
+import { CardShift } from '../Card/CardShift';
+import Container from '../Container';
+import Spacing from '../Spacing';
 
 export default {
   title: 'React/Components/CardGroup',
@@ -24,57 +24,47 @@ const StyledText = styled(Typography)`
 export const Variants = () => {
   return (
     <Container direction="column" hasPadding={false}>
-      <Typography variant={TypographyVariant.heading4}>CardGroup</Typography>
+      <Typography variant={'heading4'}>CardGroup</Typography>
       <Spacing />
       <CardGroup>
         <Card>
           <FontAwesomeIcon icon={faUser} size={'lg'} />
-          <StyledText variant={TypographyVariant.heading3}>My card</StyledText>
+          <StyledText variant={'heading3'}>My card</StyledText>
         </Card>
         <Card>
           <FontAwesomeIcon icon={faUser} size={'lg'} />
-          <StyledText variant={TypographyVariant.heading3}>My card</StyledText>
+          <StyledText variant={'heading3'}>My card</StyledText>
         </Card>
         <Card>
           <FontAwesomeIcon icon={faUser} size={'lg'} />
-          <StyledText variant={TypographyVariant.heading3}>My card</StyledText>
+          <StyledText variant={'heading3'}>My card</StyledText>
         </Card>
       </CardGroup>
-      <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading4}>
-        FullWidth CardGroup
-      </Typography>
+      <Spacing size={'Large'} />
+      <Typography variant={'heading4'}>FullWidth CardGroup</Typography>
       <Spacing />
       <CardGroup fullWidth>
         <Card hasRightIcon>
           <Container hasPadding={false}>
             <FontAwesomeIcon icon={faUser} size={'lg'} />
-            <StyledText variant={TypographyVariant.heading3}>
-              My card
-            </StyledText>
+            <StyledText variant={'heading3'}>My card</StyledText>
           </Container>
         </Card>
         <Card hasRightIcon>
           <Container hasPadding={false}>
             <FontAwesomeIcon icon={faUser} size={'lg'} />
-            <StyledText variant={TypographyVariant.heading3}>
-              My card
-            </StyledText>
+            <StyledText variant={'heading3'}>My card</StyledText>
           </Container>
         </Card>
         <Card hasRightIcon>
           <Container hasPadding={false}>
             <FontAwesomeIcon icon={faUser} size={'lg'} />
-            <StyledText variant={TypographyVariant.heading3}>
-              My card
-            </StyledText>
+            <StyledText variant={'heading3'}>My card</StyledText>
           </Container>
         </Card>
       </CardGroup>
-      <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading3}>
-        Day shift cards Group
-      </Typography>
+      <Spacing size={'Large'} />
+      <Typography variant={'heading3'}>Day shift cards Group</Typography>
       <CardGroup>
         <CardShift shiftCardStatus={'DAY'} />
         <CardShift shiftCardStatus={'DAY'} />
@@ -90,15 +80,15 @@ const Template: Story<CardGroupProps> = ({ ...rest }) => {
       <CardGroup {...rest}>
         <Card>
           <FontAwesomeIcon icon={faUser} size={'lg'} />
-          <StyledText variant={TypographyVariant.heading3}>My card</StyledText>
+          <StyledText variant={'heading3'}>My card</StyledText>
         </Card>
         <Card>
           <FontAwesomeIcon icon={faUser} size={'lg'} />
-          <StyledText variant={TypographyVariant.heading3}>My card</StyledText>
+          <StyledText variant={'heading3'}>My card</StyledText>
         </Card>
         <Card>
           <FontAwesomeIcon icon={faUser} size={'lg'} />
-          <StyledText variant={TypographyVariant.heading3}>My card</StyledText>
+          <StyledText variant={'heading3'}>My card</StyledText>
         </Card>
       </CardGroup>
     </Container>

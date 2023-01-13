@@ -1,9 +1,8 @@
+import { faUser } from '@fortawesome/pro-regular-svg-icons/faUser';
 import { useState } from 'react';
 import { AvatarProps } from './Avatar';
 import * as Styled from './Avatar.style';
 import { nameToAbbreviation } from './utils';
-import { TypographyVariant } from '../Typography';
-import { faUser } from '@fortawesome/pro-regular-svg-icons/faUser';
 
 const baseTestId = 'avatar';
 
@@ -32,7 +31,7 @@ const AvatarContent = ({
 
   if (abbreviation) {
     return (
-      <Styled.Text inactive={inactive} variant={TypographyVariant.heading3}>
+      <Styled.Text inactive={inactive} variant={'heading3'}>
         {abbreviation}
       </Styled.Text>
     );

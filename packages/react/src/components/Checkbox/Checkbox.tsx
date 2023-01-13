@@ -6,7 +6,6 @@ import { useToggle } from '../../hooks/useToggle';
 import { TestProp } from '../../types/TestProp';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import * as LabelStyled from '../Label/Label.style';
-import { TypographyVariant } from '../Typography';
 import * as Styled from './Checkbox.style';
 import { CheckboxType } from './Checkbox.types';
 
@@ -96,7 +95,7 @@ const Checkbox = ({
       </Styled.Box>
       <LabelStyled.Label
         disabled={disabled}
-        variant={TypographyVariant.paragraph1}
+        variant={'paragraph1'}
         onKeyPress={(event: React.KeyboardEvent<HTMLElement>) =>
           onSpacePressTrigger(event, handleChecked)
         }

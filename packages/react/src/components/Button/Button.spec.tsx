@@ -5,7 +5,6 @@ import { fireEvent, render } from '@testing-library/react';
 import { byRole, byTestId } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
 import Button, { ButtonProps } from './Button';
-import React from 'react';
 
 const renderComponent = (customProps: Partial<ButtonProps>) => {
   const props = {

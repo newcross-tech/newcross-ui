@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react';
 import { byText } from 'testing-library-selector';
-import { TypographyVariant } from '../Typography';
 import Label, { LabelProps } from './Label';
 
 import { axe } from '../../utils/test/axeConfig';
@@ -14,7 +13,7 @@ describe('Label', () => {
     // Prepare
     const props: LabelProps = {
       children: 'My Label',
-      variant: TypographyVariant.heading4,
+      variant: 'heading4',
     };
 
     // Act
@@ -28,7 +27,7 @@ describe('Label', () => {
     // Prepare
     const props: LabelProps = {
       children: 'My Label',
-      variant: TypographyVariant.heading4,
+      variant: 'heading4',
     };
 
     // Act

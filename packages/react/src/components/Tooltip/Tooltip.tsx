@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import Typography, { TypographyVariant } from '../Typography';
+import Typography from '../Typography';
 import * as Styled from './Tooltip.styles';
 import { TooltipPositions, TooltipVariant } from './Tooltip.types';
 
@@ -26,7 +26,7 @@ const Tooltip = ({
   <Styled.Container position={position}>
     <Styled.Icon icon={Styled.getVariantIcon()[variant]} />
     <Styled.TextWrapper>
-      <Typography variant={TypographyVariant.paragraph1}>{children}</Typography>
+      <Typography variant={'paragraph1'}>{children}</Typography>
     </Styled.TextWrapper>
   </Styled.Container>
 );

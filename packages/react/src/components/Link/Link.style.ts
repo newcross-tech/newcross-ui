@@ -19,8 +19,8 @@ export const getIcon = (): Record<LinkCoreVariant, IconDefinition> => ({
 });
 
 export const getTypographySizes = (): Record<string, TypographyVariant> => ({
-  small: TypographyVariant.paragraph2,
-  medium: TypographyVariant.paragraph1,
+  small: 'paragraph2',
+  medium: 'paragraph1',
 });
 
 export const LinkIcon = styled(FontAwesomeIcon)`

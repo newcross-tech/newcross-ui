@@ -1,16 +1,9 @@
 import { ThemeDesignTokens } from '../theme/ThemeProvider';
 import styled, { css } from 'styled-components';
 
-export enum SpacingPositions {
-  Bottom = 'Bottom',
-  Horizontal = 'Horizontal',
-}
+export type SpacingPositions = 'Bottom' | 'Horizontal';
 
-export enum SpacingSizes {
-  Small = 'Small',
-  Medium = 'Medium',
-  Large = 'Large',
-}
+export type SpacingSizes = 'Small' | 'Medium' | 'Large';
 
 type SpacingProps = {
   position?: SpacingPositions;
@@ -19,39 +12,39 @@ type SpacingProps = {
 };
 
 const getPositionValues = (theme: ThemeDesignTokens) => ({
-  [SpacingPositions.Bottom]: css`
+  Bottom: css`
     margin-bottom: ${theme.SpacingBase12};
   `,
-  [SpacingPositions.Horizontal]: css`
+  Horizontal: css`
     margin-right: ${theme.SpacingBase12};
     margin-left: ${theme.SpacingBase12};
   `,
 });
 
 const getSizeValues = (theme: ThemeDesignTokens) => ({
-  [SpacingSizes.Small]: {
-    [SpacingPositions.Bottom]: css`
+  Small: {
+    Bottom: css`
       margin-bottom: ${theme.SpacingBase12};
     `,
-    [SpacingPositions.Horizontal]: css`
+    Horizontal: css`
       margin-right: ${theme.SpacingBase12};
       margin-left: ${theme.SpacingBase12};
     `,
   },
-  [SpacingSizes.Medium]: {
-    [SpacingPositions.Bottom]: css`
+  Medium: {
+    Bottom: css`
       margin-bottom: ${theme.SpacingBase24};
     `,
-    [SpacingPositions.Horizontal]: css`
+    Horizontal: css`
       margin-right: ${theme.SpacingBase24};
       margin-left: ${theme.SpacingBase24};
     `,
   },
-  [SpacingSizes.Large]: {
-    [SpacingPositions.Bottom]: css`
+  Large: {
+    Bottom: css`
       margin-bottom: ${theme.SpacingBase32};
     `,
-    [SpacingPositions.Horizontal]: css`
+    Horizontal: css`
       margin-right: ${theme.SpacingBase32};
       margin-left: ${theme.SpacingBase32};
     `,
@@ -63,12 +56,7 @@ const getBorderValues = (theme: ThemeDesignTokens) => css`
 `;
 
 const SpacingStyle = styled.div<SpacingProps>`
-  ${({
-    theme,
-    position = SpacingPositions.Bottom,
-    hasBorder,
-    size = SpacingSizes.Small,
-  }) => css`
+  ${({ theme, position = 'Bottom', hasBorder, size = 'Small' }) => css`
     ${hasBorder && getBorderValues(theme)};
     ${position && getPositionValues(theme)[position]};
     ${position && size && getSizeValues(theme)[size][position]};

@@ -9,8 +9,6 @@ import { faUser } from '@fortawesome/pro-light-svg-icons/faUser';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './TabsInfo';
 import { useEffect } from 'react';
-import React from 'react';
-
 export default {
   title: 'React/Components/Tabs',
   component: Tabs,

@@ -1,7 +1,7 @@
-import React, { Children, cloneElement, ReactElement, useState } from 'react';
+import { Children, cloneElement, ReactElement, useState } from 'react';
 import { AccordionProps } from '../Accordion';
-import { AccordionGroupSpacing } from './AccordionGroup.types';
 import * as Styled from './AccordionGroup.style';
+import { AccordionGroupSpacing } from './AccordionGroup.types';
 
 export type AccordionGroupProps = {
   /**

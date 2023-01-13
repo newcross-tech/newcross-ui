@@ -1,6 +1,6 @@
 import { RotateProp } from '@fortawesome/fontawesome-svg-core';
-import { faChevronDown } from '@fortawesome/pro-solid-svg-icons/faChevronDown';
 import { faXmark } from '@fortawesome/pro-regular-svg-icons/faXmark';
+import { faChevronDown } from '@fortawesome/pro-solid-svg-icons/faChevronDown';
 import { useSpring } from '@react-spring/web';
 import { SyntheticEvent, useRef, useState } from 'react';
 import { useKeypressListener } from '../../hooks/useKeypressListener';
@@ -10,7 +10,6 @@ import { TestProp } from '../../types/TestProp';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import Checkbox from '../Checkbox';
 import * as TextStyled from '../TextInput/TextInput.style';
-import { TypographyVariant } from '../Typography';
 import * as Styled from './Dropdown.style';
 import { DropdownValueType } from './Dropdown.types';
 import DropdownValue from './DropdownValue';
@@ -134,10 +133,7 @@ const Dropdown = ({
   return (
     <Styled.Container ref={containerRef}>
       {label && (
-        <Styled.Label
-          variant={TypographyVariant.paragraph2}
-          testID={`${baseTestId}-label`}
-        >
+        <Styled.Label variant={'paragraph2'} testID={`${baseTestId}-label`}>
           {label}
         </Styled.Label>
       )}
@@ -156,7 +152,7 @@ const Dropdown = ({
           <Styled.HeaderLabel>
             <Styled.HeaderValue
               data-testid={`${getHeaderValueId(value)}-${testID}`}
-              variant={TypographyVariant.paragraph1}
+              variant={'paragraph1'}
               numberOfLines={1}
               hasChosen={!!value}
             >
@@ -207,7 +203,7 @@ const Dropdown = ({
               <div key={`${baseTestId}-option-${index}`}>
                 <Styled.Option
                   isMulti={!!isMulti}
-                  variant={TypographyVariant.paragraph1}
+                  variant={'paragraph1'}
                   onClick={onOptionSelect}
                   onKeyPress={(event: React.KeyboardEvent<HTMLElement>) =>
                     onSpacePressTrigger(event, onOptionSelect)
@@ -232,7 +228,7 @@ const Dropdown = ({
       </Styled.BodyContainer>
       {errorText && (
         <TextStyled.MessageText
-          variant={TypographyVariant.paragraph2}
+          variant={'paragraph2'}
           testID={`${baseTestId}-error-text-${testID}`}
           hasError={true}
         >

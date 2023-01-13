@@ -1,7 +1,6 @@
 import { ReactElement, ReactNode, useState } from 'react';
 import { useToggle } from '../../hooks/useToggle';
 import { TestProp } from '../../types/TestProp';
-import { TypographyVariant } from '../Typography';
 import * as Styled from './ToggleButton.style';
 import { ContentProps } from './ToggleButton.types';
 
@@ -95,9 +94,7 @@ const ToggleButton = ({
           {leftIcon}
         </ToggleIcon>
       )}
-      <Styled.Text variant={TypographyVariant.paragraph2}>
-        {children}
-      </Styled.Text>
+      <Styled.Text variant={'paragraph2'}>{children}</Styled.Text>
       {rightIcon && (
         <ToggleIcon
           hasRightContent={rightIcon && !!children}

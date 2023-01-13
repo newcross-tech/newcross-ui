@@ -1,4 +1,3 @@
-import React from 'react';
 import Avatar, { AvatarProps } from './Avatar';
 import { axe } from '../../utils/test/axeConfig';
 import { fireEvent, render } from '@testing-library/react';

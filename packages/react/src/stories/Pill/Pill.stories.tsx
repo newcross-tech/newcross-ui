@@ -1,12 +1,12 @@
-import { Meta, Story } from '@storybook/react';
-import Typography, { TypographyVariant } from '../../components/Typography';
-import Pill, { PillProps } from '../../components/Pill';
-import { TITLE, DESCRIPTION, DO, DONT } from './PillInfo';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBird } from '@fortawesome/pro-solid-svg-icons/faBird';
-import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import Container from '../Container';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Meta, Story } from '@storybook/react';
+import Pill, { PillProps } from '../../components/Pill';
 import PillGroup from '../../components/PillGroup';
+import Typography from '../../components/Typography';
+import Container from '../Container';
+import InfoTemplate from '../InfoTemplate/InfoTemplate';
+import { DESCRIPTION, DO, DONT, TITLE } from './PillInfo';
 
 export default {
   title: 'React/Components/Pill',
@@ -22,22 +22,16 @@ export const Overview = () => {
       dontInfo={DONT}
     >
       <Container direction="column">
-        <Typography variant={TypographyVariant.heading4}>
-          Pill with Label
-        </Typography>
+        <Typography variant={'heading4'}>Pill with Label</Typography>
         <Container>
           <Pill label="Label" removable={false} />
           <Pill label="Label" removable={false} selected />
         </Container>
 
-        <Typography variant={TypographyVariant.heading4}>
-          Disabled Pill with Label
-        </Typography>
+        <Typography variant={'heading4'}>Disabled Pill with Label</Typography>
         <Pill label="Label" removable={false} disabled />
 
-        <Typography variant={TypographyVariant.heading4}>
-          Removable Pill Group
-        </Typography>
+        <Typography variant={'heading4'}>Removable Pill Group</Typography>
 
         <PillGroup>
           <Pill removable label="One" />
@@ -51,37 +45,25 @@ export const Overview = () => {
 export const Variants = () => {
   return (
     <Container direction="column">
-      <Typography variant={TypographyVariant.heading4}>
-        Pill with Label
-      </Typography>
+      <Typography variant={'heading4'}>Pill with Label</Typography>
       <Pill label="Label" />
-      <Typography variant={TypographyVariant.heading4}>
-        Selected Pill with Label
-      </Typography>
+      <Typography variant={'heading4'}>Selected Pill with Label</Typography>
       <Pill label="Label" selected />
 
-      <Typography variant={TypographyVariant.heading4}>
-        Disabled Pill with Label
-      </Typography>
+      <Typography variant={'heading4'}>Disabled Pill with Label</Typography>
       <Pill label="Label" disabled />
 
-      <Typography variant={TypographyVariant.heading4}>
-        Pill with Icon
-      </Typography>
+      <Typography variant={'heading4'}>Pill with Icon</Typography>
       <Pill label="Label" icon={<FontAwesomeIcon icon={faBird} />} />
-      <Typography variant={TypographyVariant.heading4}>
-        Disabled Pill with Icon
-      </Typography>
+      <Typography variant={'heading4'}>Disabled Pill with Icon</Typography>
 
       <Pill label="Label" disabled icon={<FontAwesomeIcon icon={faBird} />} />
 
-      <Typography variant={TypographyVariant.heading4}>
-        Removable Pill with Icon
-      </Typography>
+      <Typography variant={'heading4'}>Removable Pill with Icon</Typography>
 
       <Pill removable label="Label" icon={<FontAwesomeIcon icon={faBird} />} />
 
-      <Typography variant={TypographyVariant.heading4}>
+      <Typography variant={'heading4'}>
         Disabled Removable Pill with Icon
       </Typography>
 

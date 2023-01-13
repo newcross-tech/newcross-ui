@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import { byTestId, byText } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
-import Typography, { TypographyVariant } from '../Typography';
+import Typography from '../Typography';
 import Badge, { BadgeProps } from './Badge';
 
 const baseTestId = 'badge';
@@ -16,9 +16,7 @@ describe('Badge Component', () => {
   it('should not have any a11y errors', async () => {
     const props: BadgeProps = {
       badgeContent: 7,
-      children: (
-        <Typography variant={TypographyVariant.paragraph1}>{'Text'}</Typography>
-      ),
+      children: <Typography variant={'paragraph1'}>{'Text'}</Typography>,
     };
 
     render(<Badge {...props} />);
@@ -30,9 +28,7 @@ describe('Badge Component', () => {
   it('should render successfully', () => {
     const props: BadgeProps = {
       badgeContent: 7,
-      children: (
-        <Typography variant={TypographyVariant.paragraph1}>{'Text'}</Typography>
-      ),
+      children: <Typography variant={'paragraph1'}>{'Text'}</Typography>,
     };
 
     render(<Badge {...props} />);
@@ -71,9 +67,7 @@ describe('Badge Component', () => {
     const props: BadgeProps = {
       testID,
       badgeContent: 7,
-      children: (
-        <Typography variant={TypographyVariant.paragraph1}>{'Text'}</Typography>
-      ),
+      children: <Typography variant={'paragraph1'}>{'Text'}</Typography>,
       onClick,
     };
 

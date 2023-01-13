@@ -9,7 +9,6 @@ import {
   FontAwesomeIconProps,
 } from '@fortawesome/react-fontawesome';
 import { web } from '@newcross-ui/design-tokens';
-import React from 'react';
 import styled, { css } from 'styled-components';
 import Badge, {
   BadgePositions,
@@ -17,7 +16,7 @@ import Badge, {
   BadgeSizes,
 } from '../../components/Badge';
 import Container from '../Container';
-import Spacing, { SpacingPositions, SpacingSizes } from '../Spacing';
+import Spacing from '../Spacing';
 
 const { SpacingBase24, SpacingBase48 } = web.healthforce;
 
@@ -52,16 +51,13 @@ const Icon = styled(FontAwesomeIcon)<IconProps>`
 export const VariantsWithIcons = () => {
   return (
     <Container display="inline-flex" justifyContent="space-around">
-      <Spacing position={SpacingPositions.Horizontal} />
+      <Spacing position={'Horizontal'} />
       <Badge size={BadgeSizes.small} position={BadgePositions.TopRight}>
         <StyledWrapper>
           <Icon icon={faBarsFilter} $size={SpacingBase24} />
         </StyledWrapper>
       </Badge>
-      <Spacing
-        size={SpacingSizes.Large}
-        position={SpacingPositions.Horizontal}
-      />
+      <Spacing size={'Large'} position={'Horizontal'} />
       <Badge
         size={BadgeSizes.medium}
         badgeContent={9}
@@ -69,10 +65,7 @@ export const VariantsWithIcons = () => {
       >
         <Icon icon={faUser} $size={SpacingBase24} />
       </Badge>
-      <Spacing
-        size={SpacingSizes.Large}
-        position={SpacingPositions.Horizontal}
-      />
+      <Spacing size={'Large'} position={'Horizontal'} />
       <Badge
         size={BadgeSizes.large}
         badgeContent={'!'}

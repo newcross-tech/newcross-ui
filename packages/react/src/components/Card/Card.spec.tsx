@@ -18,9 +18,7 @@ const renderComponent = (customProps: Partial<CardProps>) => {
     hasRoundedCorners: true,
     hasBorder: true,
     fullWidth: true,
-    children: (
-      <Typography variant={TypographyVariant.paragraph1}>children</Typography>
-    ),
+    children: <Typography variant={'paragraph1'}>children</Typography>,
     ...customProps,
   };
 

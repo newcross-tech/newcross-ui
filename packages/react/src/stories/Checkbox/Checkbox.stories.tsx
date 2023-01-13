@@ -3,7 +3,7 @@ import Checkbox, {
   CheckboxProps,
   CheckboxType,
 } from '../../components/Checkbox';
-import Typography, { TypographyVariant } from '../../components/Typography';
+import Typography from '../../components/Typography';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import Spacing from '../Spacing';
@@ -32,13 +32,13 @@ export const Overview = () => {
 export const Variants = () => {
   return (
     <Container display="block">
-      <Typography variant={TypographyVariant.heading4}>Enabled</Typography>
+      <Typography variant={'heading4'}>Enabled</Typography>
       <Spacing />
       <Checkbox label="Label" />
       <Checkbox label="Label" checked />
       <Checkbox type={CheckboxType.INDETERMINATE} checked label="Label" />
 
-      <Typography variant={TypographyVariant.heading4}>Disabled</Typography>
+      <Typography variant={'heading4'}>Disabled</Typography>
       <Spacing />
       <Checkbox label="Label" disabled />
       <Checkbox label="Label" checked disabled />
@@ -49,7 +49,7 @@ export const Variants = () => {
         disabled
       />
 
-      <Typography variant={TypographyVariant.heading4}>Error</Typography>
+      <Typography variant={'heading4'}>Error</Typography>
       <Spacing />
       <Checkbox label="Label" hasError />
       <Checkbox label="Label" hasError checked />
@@ -60,9 +60,7 @@ export const Variants = () => {
         hasError
       />
 
-      <Typography variant={TypographyVariant.heading4}>
-        With long text
-      </Typography>
+      <Typography variant={'heading4'}>With long text</Typography>
       <Spacing />
       <Checkbox label="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged." />
     </Container>

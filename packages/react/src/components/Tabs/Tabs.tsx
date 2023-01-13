@@ -2,7 +2,6 @@ import { useSpring } from '@react-spring/web';
 import { Fragment, ReactNode, useRef, useState } from 'react';
 import { useResize } from '../../hooks/useResize';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
-import { TypographyVariant } from '../Typography';
 import * as Styled from './Tabs.style';
 import { getDividerPosition } from './utils';
 
@@ -75,11 +74,7 @@ const Tabs = ({
                 {isString ? (
                   <Styled.Text
                     tabIndex={!disabled ? 0 : -1}
-                    variant={
-                      isSelectedTab
-                        ? TypographyVariant.heading3
-                        : TypographyVariant.paragraph1
-                    }
+                    variant={isSelectedTab ? 'heading3' : 'paragraph1'}
                     numberOfLines={1}
                   >
                     <Styled.Content disabled={disabled}>{tab}</Styled.Content>

@@ -21,9 +21,9 @@ export const getHeightWidthValues = (theme: ThemeDesignTokens) => ({
 
 export const getTypographyVariant = (size: BadgeSizes) =>
   ({
-    [BadgeSizes.large]: TypographyVariant.heading3,
-    [BadgeSizes.medium]: TypographyVariant.heading5,
-    [BadgeSizes.small]: TypographyVariant.heading5,
+    [BadgeSizes.large]: 'heading3',
+    [BadgeSizes.medium]: 'heading5',
+    [BadgeSizes.small]: 'heading5',
   }[size]);
 
 export const getPositionValues = ({

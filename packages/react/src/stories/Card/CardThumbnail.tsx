@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
+import Typography from '../../components/Typography';
 import { ExtendedTheme } from '../../types/Theme';
 import { ShiftCardDay, ShiftCardNight, ShiftCardSleeper } from './svg';
-import Typography, { TypographyVariant } from '../../components/Typography';
 
 const SHIFT_CARD_STATUS = {
   DAY: 'DAY',
@@ -49,16 +49,10 @@ export const CardThumbnail = ({ shiftCardStatus }: CardThumbnailProps) => {
   return (
     <ThumbnailContainer>
       <InnerText>
-        <StyledText
-          shiftCardStatus={shiftCardStatus}
-          variant={TypographyVariant.heading4}
-        >
+        <StyledText shiftCardStatus={shiftCardStatus} variant={'heading4'}>
           Tue
         </StyledText>
-        <StyledText
-          shiftCardStatus={shiftCardStatus}
-          variant={TypographyVariant.heading1}
-        >
+        <StyledText shiftCardStatus={shiftCardStatus} variant={'heading1'}>
           13
         </StyledText>
       </InnerText>

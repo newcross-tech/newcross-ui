@@ -1,5 +1,4 @@
 import { render, renderHook } from '@testing-library/react';
-import React from 'react';
 import { byTestId } from 'testing-library-selector';
 import { executeSpace, executeTab } from '../utils/test';
 import { useKeypressListener } from './useKeypressListener';

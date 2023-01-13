@@ -3,7 +3,6 @@ import { fireEvent, render } from '@testing-library/react';
 import { DropdownValueProps } from './Dropdown.types';
 import { axe } from '../../utils/test/axeConfig';
 import DropdownValue from './DropdownValue';
-import React from 'react';
 
 const renderComponent = (customProps: Partial<DropdownValueProps>) => {
   const props = {

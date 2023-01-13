@@ -1,5 +1,5 @@
 import { ProgressHTMLAttributes } from 'react';
-import { TypographyProps } from '../Typography';
+import { TypographyProps, TypographyVariant } from '../Typography';
 import { ProgressBarProps } from './ProgressBar';
 
 export type ProgressBarVariant = 'determinate' | 'indeterminate';
@@ -29,6 +29,11 @@ export type ProgressValueProps = Required<
 
 type CommonProps = {
   indeterminate: boolean;
+};
+
+export type CommonTextProps = {
+  applyWidthStyles: boolean;
+  variant: TypographyVariant;
 };
 
 export type DeterminateArgs = Pick<
