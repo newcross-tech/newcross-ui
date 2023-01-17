@@ -28,6 +28,7 @@ module.exports = {
       ...config.resolve.alias,
       // This is required to show props table in storybook.
       '@newcross-ui/react-native': '@newcross-ui/react-native/src/index',
+      'react-native-linear-gradient': 'react-native-web-linear-gradient',
     };
     config.resolve.extensions.push('.stories.tsx');
     return config;

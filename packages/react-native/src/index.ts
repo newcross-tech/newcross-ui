@@ -101,3 +101,5 @@ export { default as Carousel, CarouselProps } from './components/Carousel';
 export { Loader, LoaderProps } from './components/Loader';
 export { HealthforceIcon } from './icons/HealthforceIcon';
 export { NewcrossBrandIcon } from './icons/NewcrossBrandIcon';
+export { default as Skeleton, SkeletonProps } from './components/Skeleton';
+export { useLayout, LayoutSize } from './hooks/useLayout';
