@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.36.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.35.6...@newcross-stories/react-native@1.36.0) (2023-01-17)
+
+
+### Features
+
+* **HFGO-1531:** create skeleton component ([bb5b71f](https://bitbucket.org/newcrossdev/newcross-ui/commits/bb5b71fc2c4bad67b048319d90b8a9f819e52074))
+
+
+
+
+
 ## [1.35.6](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.35.5...@newcross-stories/react-native@1.35.6) (2023-01-12)
 
 
