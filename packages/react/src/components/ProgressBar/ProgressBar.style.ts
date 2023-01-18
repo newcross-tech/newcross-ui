@@ -1,3 +1,4 @@
+import { config } from '@react-spring/web';
 import styled, { css, FlattenSimpleInterpolation, keyframes } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ExtendedTheme, Theme } from '../../types/Theme';
@@ -5,14 +6,20 @@ import Typography from '../Typography';
 import { bottomLabelPositions, defaultAnimationSpeed } from './ProgressBar.constants';
 import {
   AllLabelProps,
+  AnimatedStyleArgs,
   ContainerProps,
-  DeterminateArgs,
   DifferentLabelProps,
   LabelPositionProps,
   ProgressBarLabelPositions,
   ProgressProps,
   ProgressValueProps,
 } from './ProgressBar.types';
+
+export const getAnimatedStyles = ({ isIndeterminate, normalisedProgress }: AnimatedStyleArgs) => ({
+  width: !isIndeterminate ? `${normalisedProgress}%` : '100%',
+  maxWidth: '100%',
+  config: config.slow,
+});
 
 const getAlignItemsContainerStyles = (): Record<ProgressBarLabelPositions, FlattenSimpleInterpolation> => ({
   topCenter: css`
@@ -125,9 +132,11 @@ export const ProgressValue = styled(CoreText)`
 const progressLoading = keyframes`
  0% {
   background-position: right; 
+  background-size: 225% 100%;
  }
  100% {
   background-position: left; 
+  background-size: 800% 100%;
  }
 `;
 
@@ -141,103 +150,28 @@ const getIndeterminateStyles = (theme: ThemeDesignTokens) => css`
     ${getTrackColorValue(theme)} 55%,
     ${theme.ProgressBarTrackBackgroundColor} 0%
   );
-  background-size: 225% 100%;
-  animation: ${progressLoading} ${defaultAnimationSpeed}s infinite ease;
+  animation: ${progressLoading} ${defaultAnimationSpeed}s infinite ease-in;
 `;
 
-const getDeterminateStyles = ({ theme, value }: ExtendedTheme<DeterminateArgs>) => {
-  const percent = typeof value === 'number' ? value : -1;
-  return css`
-    background: linear-gradient(
-      to right,
-      ${getTrackColorValue(theme)} ${percent}%,
-      ${theme.ProgressBarTrackBackgroundColor} 0%
-    );
-  `;
-};
-
-export const Progress = styled.progress<ProgressProps>`
-  ${({ theme, value, indeterminate }: ExtendedTheme<ProgressProps>) => css`
-    width: 100%;
-
-    /*  custom style  */
-    position: relative;
+export const Meter = styled.div`
+  ${({ theme, isIndeterminate }: ExtendedTheme<ProgressProps>) => css`
     height: ${theme.ProgressBarFillHeight};
+    background-color: ${theme.ProgressBarTrackBackgroundColor};
     border-radius: ${theme.ProgressBarTrackBorderRadius};
     margin-top: ${theme.ProgressBarTrackMarginTop};
     margin-bottom: ${theme.ProgressBarTrackMarginBottom};
-    overflow: hidden;
 
-    &[${value}] {
-      /*  Safari/Chromium  */
-      &::-webkit-progress-bar {
-        background-color: ${getTrackColorValue(theme)};
-      }
+    > span {
+      display: block;
+      height: 100%;
+      border-radius: ${theme.ProgressBarTrackBorderRadius};
+      background-color: ${theme.ProgressBarFillBackgroundColor};
+      overflow: hidden;
 
-      &::-webkit-progress-value {
-        background-color: ${getTrackColorValue(theme)};
-      }
-
-      /*  Firefox  */
-      &::-moz-progress-bar {
-        background-color: ${getTrackColorValue(theme)};
-      }
+      ${isIndeterminate &&
+      css`
+        ${getIndeterminateStyles(theme)}
+      `};
     }
-
-    ${!indeterminate
-      ? css`
-          &::after {
-            content: '';
-            inset: 0;
-            position: absolute;
-            background-position: left;
-            ${getDeterminateStyles({
-              theme,
-              value,
-            })}
-          }
-
-          /*  Safari  */
-          &::-webkit-progress-bar {
-            background-position: left;
-            ${getDeterminateStyles({
-              theme,
-              value,
-            })}
-          }
-
-          /*  Firefox  */
-          &::-moz-progress-bar {
-            background-position: left;
-            ${getDeterminateStyles({
-              theme,
-              value,
-            })}
-          }
-        `
-      : css`
-          &:indeterminate {
-            /*  indeterminate  */
-            &::after {
-              content: '';
-              inset: 0;
-              position: absolute;
-              background-position: left;
-              ${getIndeterminateStyles(theme)}
-            }
-
-            /*  indeterminate Safari  */
-            &::-webkit-progress-bar {
-              background-position: left;
-              ${getIndeterminateStyles(theme)}
-            }
-
-            /*  indeterminate Firefox  */
-            &::-moz-progress-bar {
-              background-position: left;
-              ${getIndeterminateStyles(theme)}
-            }
-          }
-        `}
   `};
 `;

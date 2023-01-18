@@ -28,18 +28,17 @@ export type ProgressValueProps = Required<
   SameLabelProps;
 
 type CommonProps = {
-  indeterminate: boolean;
+  isIndeterminate: boolean;
+};
+
+export type AnimatedStyleArgs = CommonProps & {
+  normalisedProgress: number;
 };
 
 export type CommonTextProps = {
   applyWidthStyles: boolean;
   variant: TypographyVariant;
 };
-
-export type DeterminateArgs = Pick<
-  ProgressHTMLAttributes<HTMLProgressElement>,
-  'value'
->;
 
 export type ProgressProps = CommonProps &
   ProgressHTMLAttributes<HTMLProgressElement>;

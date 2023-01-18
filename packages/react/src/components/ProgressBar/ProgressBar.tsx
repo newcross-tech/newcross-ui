@@ -1,3 +1,4 @@
+import { animated, useSpring } from '@react-spring/web';
 import {
   defaultMaxProgress,
   defaultMinProgress,
@@ -59,9 +60,20 @@ const ProgressBar = ({
   const isIndeterminate = variant === 'indeterminate';
 
   const isEachLabelSamePosition = labelPosition === progressLabelPosition;
+  const normalisedProgress = normaliseValue(progress, minProgress, maxProgress);
   const isDeterminateAndHasProgressLabel = !isIndeterminate && hasProgressLabel;
 
-  const normalisedProgress = normaliseValue(progress, minProgress, maxProgress);
+  //opt-in to pass 0-100 scaled value to child
+  const progressProps = {
+    value: progress ? normalisedProgress : undefined,
+  };
+
+  const springProps = useSpring(
+    Styled.getAnimatedStyles({
+      isIndeterminate,
+      normalisedProgress,
+    })
+  );
 
   const commonTextProps: CommonTextProps = {
     applyWidthStyles: applyWidthStyles({
@@ -108,11 +120,6 @@ const ProgressBar = ({
     </>
   );
 
-  //opt-in to pass 0-100 scaled value to child
-  const progressProps = {
-    value: progress ? normalisedProgress : undefined,
-  };
-
   return (
     <Styled.Container
       labelPosition={labelPosition}
@@ -128,16 +135,16 @@ const ProgressBar = ({
           ? getSamePositionContent()
           : getDifferentPositionContent()}
       </Styled.HeaderContent>
-      <Styled.Progress
-        indeterminate={isIndeterminate}
+      <Styled.Meter
+        isIndeterminate={isIndeterminate}
         data-testid={isIndeterminate ? 'indeterminate' : 'determinate'}
         role="progressbar"
         aria-describedby="loading-zone"
         aria-label={label || `${variant}-progressbar`}
         {...progressProps}
       >
-        unknown
-      </Styled.Progress>
+        <animated.span style={springProps} />
+      </Styled.Meter>
     </Styled.Container>
   );
 };
