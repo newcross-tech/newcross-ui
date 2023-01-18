@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.36.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.36.0...@newcross-stories/react-native@1.36.1) (2023-01-18)
+
+
+### Bug Fixes
+
+* **HFGO-1218:** fix calendar issues ([75df0eb](https://bitbucket.org/newcrossdev/newcross-ui/commits/75df0eb8c98352a18981115eb05d7aaf69402efe))
+
+
+
+
+
 # [1.36.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.35.6...@newcross-stories/react-native@1.36.0) (2023-01-17)
 
 
