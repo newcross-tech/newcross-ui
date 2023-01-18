@@ -43,10 +43,33 @@ export const Variants = () => {
     ? { minWidth: '300px', maxWidth: '350px' }
     : {};
 
+  const [initialSelectedDates, setInitialSelectedDates] = useState(
+    'initialSelectedDates',
+    ['2023-01-24']
+  );
+  const [multipleInitialSelectedDates, setMultipleInitialSelectedDates] =
+    useState('multipleInitialSelectedDates', [
+      '2023-01-24',
+      '2023-01-25',
+      '2023-01-26',
+    ]);
+
+  const [initialSingleSelectedRange, setInitialSingleSelectedRange] = useState(
+    'initialSingleSelectedRange',
+    ['2023-01-24', '2023-01-27']
+  );
+
+  const [initialMultipleSelectedRanges, setInitialMultipleSelectedRanges] =
+    useState('initialMultipleSelectedRanges', [
+      ['2023-01-24', '2023-01-27'],
+      ['2023-01-28', '2023-01-30'],
+    ]);
+
   const [noShiftsDates, setNoShiftsDates] = useState('noShiftsDates', [
     '2023-01-15',
     '2023-01-16',
   ]);
+
   const [bookedDates, setBookedDates] = useState('bookedDates', [
     '2023-01-17',
     '2023-01-18',
@@ -74,6 +97,7 @@ export const Variants = () => {
           </Typography>
           <Spacing />
           <Calendar
+            initialSelectedDates={initialSelectedDates}
             noShiftsDates={noShiftsDates}
             bookedDates={bookedDates}
             unavailableDates={unavailableDates}
@@ -87,6 +111,7 @@ export const Variants = () => {
           <Spacing />
           <Calendar
             hasMultipleDateSelection
+            initialSelectedDates={multipleInitialSelectedDates}
             noShiftsDates={noShiftsDates}
             bookedDates={bookedDates}
             unavailableDates={unavailableDates}
@@ -100,6 +125,7 @@ export const Variants = () => {
           <Spacing />
           <Calendar
             hasSingleDateRange
+            initialSingleDateRange={initialSingleSelectedRange}
             noShiftsDates={noShiftsDates}
             bookedDates={bookedDates}
             unavailableDates={unavailableDates}
@@ -113,6 +139,7 @@ export const Variants = () => {
           <Spacing />
           <Calendar
             hasMultipleDateRange
+            initialMultipleDateRange={initialMultipleSelectedRanges}
             noShiftsDates={noShiftsDates}
             bookedDates={bookedDates}
             unavailableDates={unavailableDates}
