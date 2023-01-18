@@ -135,6 +135,7 @@ const Calendar = ({
   const [singleDateRange, setSingleDateRange] = useState<Array<string>>(
     initialSingleDateRange
   );
+
   const [multipleDateRange, setMultipleDateRange] = useState<
     Array<Array<string>>
   >(initialMultipleDateRange);
@@ -243,9 +244,11 @@ const Calendar = ({
     }, {} as StyleByDate);
 
     setSelectedDateRange({ ...stylesByDate });
+
     if (multipleDateRange.length !== dateRange.length) {
       setMultipleDateRange(() => dateRange);
     }
+
     onMultipleDateRange && onMultipleDateRange(dateRange);
   }, [multipleDateRange]);
 
@@ -253,6 +256,7 @@ const Calendar = ({
     const dateRangeStyles = getDateRangeStyles(singleDateRange);
 
     setSelectedDateRange(dateRangeStyles);
+
     onSingleDateRange && onSingleDateRange(singleDateRange);
   }, [singleDateRange]);
 
