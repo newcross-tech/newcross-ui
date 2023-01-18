@@ -7,6 +7,16 @@ import Badge, { BadgeProps } from './Badge';
 const baseTestId = 'badge';
 
 describe('Badge Component', () => {
+  const renderComponent = (customProps: Partial<BadgeProps>) => {
+    const props = {
+      badgeContent: 7,
+      children: <Typography variant="paragraph1">{'Text'}</Typography>,
+      ...customProps,
+    };
+
+    render(<Badge {...props} />);
+  };
+
   const ui = {
     text: (regex: RegExp) => byText(regex),
     container: (testID: string) =>
@@ -14,49 +24,33 @@ describe('Badge Component', () => {
   };
 
   it('should not have any a11y errors', async () => {
-    const props: BadgeProps = {
-      badgeContent: 7,
-      children: <Typography variant={'paragraph1'}>{'Text'}</Typography>,
-    };
-
-    render(<Badge {...props} />);
+    renderComponent({});
 
     const results = await axe(document.body);
     expect(results).toHaveNoViolations();
   });
 
   it('should render successfully', () => {
-    const props: BadgeProps = {
-      badgeContent: 7,
-      children: <Typography variant={'paragraph1'}>{'Text'}</Typography>,
-    };
-
-    render(<Badge {...props} />);
+    renderComponent({});
 
     expect(ui.text(/text/i).get()).toBeInTheDocument();
     expect(ui.text(/7/i).get()).toBeInTheDocument();
   });
 
   it('should return the correct badgeContent with smaller maxNumber', () => {
-    const props: BadgeProps = { badgeContent: 1000, maxNumber: 999 };
-
-    render(<Badge {...props} />);
+    renderComponent({ badgeContent: 1000, maxNumber: 999 });
 
     expect(ui.text(/999+/i).get()).toBeInTheDocument();
   });
 
   it('should return the correct badgeContent with larger maxNumber', () => {
-    const props: BadgeProps = { badgeContent: 9, maxNumber: 999 };
-
-    render(<Badge {...props} />);
+    renderComponent({ badgeContent: 9, maxNumber: 999 });
 
     expect(ui.text(/9/i).get()).toBeInTheDocument();
   });
 
   it('should return text', () => {
-    const props: BadgeProps = { badgeContent: '!' };
-
-    render(<Badge {...props} />);
+    renderComponent({ badgeContent: '!' });
 
     expect(ui.text(/!/i).get()).toBeInTheDocument();
   });
@@ -64,14 +58,8 @@ describe('Badge Component', () => {
   it('triggers an onClick event when pressed', () => {
     const onClick = jest.fn();
     const testID = '1';
-    const props: BadgeProps = {
-      testID,
-      badgeContent: 7,
-      children: <Typography variant={'paragraph1'}>{'Text'}</Typography>,
-      onClick,
-    };
 
-    render(<Badge {...props} />);
+    renderComponent({ testID, onClick });
     fireEvent.click(ui.container(testID).get());
 
     expect(onClick).toBeCalled();

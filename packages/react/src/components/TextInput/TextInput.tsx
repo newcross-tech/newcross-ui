@@ -3,7 +3,7 @@ import { faCheck } from '@fortawesome/pro-solid-svg-icons/faCheck';
 import { faEye } from '@fortawesome/pro-solid-svg-icons/faEye';
 import { faEyeSlash } from '@fortawesome/pro-solid-svg-icons/faEyeSlash';
 import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
-import React, {
+import {
   forwardRef,
   ForwardRefRenderFunction,
   InputHTMLAttributes,

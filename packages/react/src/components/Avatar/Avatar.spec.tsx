@@ -52,11 +52,8 @@ describe('Avatar Component', () => {
   });
 
   it('renders successfully with icon', () => {
-    // Arrange
-    const props: AvatarProps = {};
-
     // Act
-    render(<Avatar {...props} />);
+    renderComponent({ name: '' });
 
     // Assert
     expect(ui.avatarIcon.get()).toBeInTheDocument();

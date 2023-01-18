@@ -1,5 +1,4 @@
 import { Meta, Story } from '@storybook/react';
-
 import { faBarsFilter } from '@fortawesome/pro-light-svg-icons/faBarsFilter';
 import { faKitMedical } from '@fortawesome/pro-light-svg-icons/faKitMedical';
 import { faTrainSubway } from '@fortawesome/pro-light-svg-icons/faTrainSubway';
@@ -10,11 +9,7 @@ import {
 } from '@fortawesome/react-fontawesome';
 import { web } from '@newcross-ui/design-tokens';
 import styled, { css } from 'styled-components';
-import Badge, {
-  BadgePositions,
-  BadgeProps,
-  BadgeSizes,
-} from '../../components/Badge';
+import Badge, { BadgeProps, BadgeSizes } from '../../components/Badge';
 import Container from '../Container';
 import Spacing from '../Spacing';
 
@@ -52,25 +47,17 @@ export const VariantsWithIcons = () => {
   return (
     <Container display="inline-flex" justifyContent="space-around">
       <Spacing position={'Horizontal'} />
-      <Badge size={BadgeSizes.small} position={BadgePositions.TopRight}>
+      <Badge size="small" position="topRight">
         <StyledWrapper>
           <Icon icon={faBarsFilter} $size={SpacingBase24} />
         </StyledWrapper>
       </Badge>
       <Spacing size={'Large'} position={'Horizontal'} />
-      <Badge
-        size={BadgeSizes.medium}
-        badgeContent={9}
-        position={BadgePositions.TopLeft}
-      >
+      <Badge size={'medium'} badgeContent={9} position={'topLeft'}>
         <Icon icon={faUser} $size={SpacingBase24} />
       </Badge>
       <Spacing size={'Large'} position={'Horizontal'} />
-      <Badge
-        size={BadgeSizes.large}
-        badgeContent={'!'}
-        position={BadgePositions.BottomRight}
-      >
+      <Badge size={'large'} badgeContent={'!'} position={'bottomRight'}>
         <Icon icon={faTrainSubway} $size={SpacingBase48} />
       </Badge>
     </Container>
@@ -80,11 +67,11 @@ export const VariantsWithIcons = () => {
 export const Variants = () => {
   return (
     <Container justifyContent="space-around" hasPadding>
-      <Badge size={BadgeSizes.small} />
-      <Badge size={BadgeSizes.medium} badgeContent={9} />
-      <Badge size={BadgeSizes.medium} badgeContent={'?'} />
-      <Badge size={BadgeSizes.large} badgeContent={1000} maxNumber={999} />
-      <Badge size={BadgeSizes.large} badgeContent={'!'} />
+      <Badge size={'small'} />
+      <Badge size={'medium'} badgeContent={9} />
+      <Badge size={'medium'} badgeContent={'?'} />
+      <Badge size={'large'} badgeContent={1000} maxNumber={999} />
+      <Badge size={'large'} badgeContent={'!'} />
     </Container>
   );
 };
@@ -100,6 +87,6 @@ const Template: Story<BadgeProps> = ({ size, ...rest }) => (
 export const Interactive = Template.bind({});
 Interactive.args = {
   badgeContent: 9,
-  size: BadgeSizes.large,
-  position: BadgePositions.TopRight,
+  size: 'large',
+  position: 'topRight',
 };

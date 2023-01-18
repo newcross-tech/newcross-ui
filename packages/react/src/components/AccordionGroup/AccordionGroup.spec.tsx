@@ -3,9 +3,11 @@ import { byTestId } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
 import Accordion from '../Accordion/Accordion';
 import AccordionGroup from './AccordionGroup';
-import { AccordionGroupSpacing } from './AccordionGroup.types';
 
 describe('Accordion Group Component', () => {
+  const testID1 = '1';
+  const testID2 = '2';
+
   const ui = {
     groupContainer: () => byTestId('accordion-group-container'),
     accordionPressable: (testID: string) =>
@@ -49,17 +51,13 @@ describe('Accordion Group Component', () => {
     // Assert
     expect(ui.groupContainer().get()).toBeVisible();
   });
+
   it('renders the children successfully', () => {
     // Arrange
-    const testID1 = '1';
-    const testID2 = '2';
-    const props = {
-      spacing: AccordionGroupSpacing.default,
-    };
 
     // Act
     render(
-      <AccordionGroup {...props}>
+      <AccordionGroup spacing="default">
         <Accordion testID={testID1} label="Section 1"></Accordion>
         <Accordion testID={testID2} label="Section 2"></Accordion>
       </AccordionGroup>
@@ -69,12 +67,11 @@ describe('Accordion Group Component', () => {
     expect(ui.accordionPressable(testID1).get()).toBeVisible();
     expect(ui.accordionPressable(testID2).get()).toBeVisible();
   });
+
   it('triggers onExclusivePress successfully and closes the unpressed children', () => {
     // Arrange
     const onExclusivePress = jest.fn();
     const props = { exclusiveSelection: true };
-    const testID1 = '1';
-    const testID2 = '2';
 
     // Act
     render(
@@ -98,12 +95,11 @@ describe('Accordion Group Component', () => {
     expect(ui.accordionContentExpanded(testID1).get()).toBeTruthy();
     expect(ui.accordionContentCollapsed(testID2).get()).toBeTruthy();
   });
+
   it('triggers onPress successfully and opens the pressed children with exclusiveSelection false', () => {
     // Arrange
     const onExclusivePress = jest.fn();
     const props = { exclusiveSelection: false };
-    const testID1 = '1';
-    const testID2 = '2';
 
     // Act
     render(

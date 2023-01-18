@@ -77,7 +77,7 @@ export const TypeVariants = () => {
         size="medium"
         variant="internal"
         href={
-          'http://localhost:6006/?path=/story/react-components-link--interactive'
+          'https://www.halodesignsystem.com/?path=/story/react-components-link--interactive'
         }
       >
         Go to internal Website

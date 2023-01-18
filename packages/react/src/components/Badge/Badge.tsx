@@ -1,6 +1,5 @@
 import { ReactElement, ReactNode } from 'react';
 import { TestProp } from '../../types/TestProp';
-import { TypographyVariant } from '../Typography';
 import * as Styled from './Badge.style';
 import { getTypographyVariant } from './Badge.style';
 import { BadgePositions, BadgeSizes } from './Badge.types';
@@ -35,7 +34,7 @@ export type BadgeProps = {
 } & TestProp;
 
 const Badge = ({
-  size = BadgeSizes.large,
+  size = 'large',
   badgeContent,
   maxNumber = 999,
   children,
@@ -43,7 +42,7 @@ const Badge = ({
   onClick,
   testID,
 }: BadgeProps) => {
-  const isSmallBadge = size === BadgeSizes.small;
+  const isSmallBadge = size === 'small';
   const isNumber = typeof badgeContent === 'number';
   const renderContent = !!badgeContent && !isSmallBadge;
 
@@ -62,7 +61,7 @@ const Badge = ({
         size={size}
         position={position}
       >
-        <Styled.Text variant={getTypographyVariant(size) as TypographyVariant}>
+        <Styled.Text variant={getTypographyVariant()[size]}>
           {renderContent && displayNumber}
         </Styled.Text>
       </Styled.Content>

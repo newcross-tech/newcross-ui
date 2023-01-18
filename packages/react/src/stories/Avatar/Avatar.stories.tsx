@@ -1,6 +1,6 @@
 import { Meta, Story } from '@storybook/react';
-import Avatar, { AvatarProps, AvatarSizes } from '../../components/Avatar';
-import Badge, { BadgePositions, BadgeSizes } from '../../components/Badge';
+import Avatar, { AvatarProps } from '../../components/Avatar';
+import Badge from '../../components/Badge';
 import Typography from '../../components/Typography';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
@@ -69,7 +69,7 @@ export const VariantWithBadge = () => {
       <Typography variant={'heading4'}>Variant with Badge</Typography>
 
       <Container direction="row">
-        <Badge size={BadgeSizes.medium} position={BadgePositions.TopRight}>
+        <Badge size="medium" position="topRight">
           <Avatar />
         </Badge>
       </Container>
@@ -93,17 +93,17 @@ export const VariantWithIcon = () => {
       <Container direction="row">
         <Container direction="column">
           <Typography variant={'paragraph2'}>Large</Typography>
-          <Avatar size={AvatarSizes.large} />
+          <Avatar size="large" />
         </Container>
 
         <Container direction="column">
           <Typography variant={'paragraph2'}>Medium</Typography>
-          <Avatar size={AvatarSizes.medium} />
+          <Avatar size="medium" />
         </Container>
 
         <Container direction="column">
           <Typography variant={'paragraph2'}>Small</Typography>
-          <Avatar size={AvatarSizes.small} />
+          <Avatar size="small" />
         </Container>
       </Container>
     </Container>

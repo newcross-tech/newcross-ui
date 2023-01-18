@@ -1,19 +1,21 @@
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { AccordionGroupContainerProps, AccordionGroupSpacing } from './AccordionGroup.types';
-import styled, { css } from 'styled-components';
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { ExtendedTheme } from '../../types/Theme';
 
-export const getSpacingValues = (theme: ThemeDesignTokens) => ({
-  [AccordionGroupSpacing.default]: css`
+export const getSpacingValues = (
+  theme: ThemeDesignTokens
+): Record<AccordionGroupSpacing, FlattenSimpleInterpolation> => ({
+  default: css`
     margin-bottom: ${theme.AccordionGroupMarginBottomDefault};
   `,
-  [AccordionGroupSpacing.small]: css`
+  small: css`
     margin-bottom: ${theme.AccordionGroupMarginBottomSmall};
   `,
-  [AccordionGroupSpacing.medium]: css`
+  medium: css`
     margin-bottom: ${theme.AccordionGroupMarginBottomMedium};
   `,
-  [AccordionGroupSpacing.large]: css`
+  large: css`
     margin-bottom: ${theme.AccordionGroupMarginBottomLarge};
   `,
 });

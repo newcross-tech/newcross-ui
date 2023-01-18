@@ -30,7 +30,7 @@ export type AvatarProps = {
 const Avatar = ({
   source,
   inactive = false,
-  size = AvatarSizes.large,
+  size = 'large',
   ...rest
 }: AvatarProps) => {
   const sharedProps = {

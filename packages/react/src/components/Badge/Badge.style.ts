@@ -1,86 +1,85 @@
-import styled, { css } from 'styled-components';
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ExtendedTheme, Theme } from '../../types/Theme';
 import Typography, { TypographyVariant } from '../Typography';
 import { BadgeContentProps, BadgePositions, BadgeSizes } from './Badge.types';
 
-export const getHeightWidthValues = (theme: ThemeDesignTokens) => ({
-  [BadgeSizes.large]: css`
+export const getHeightWidthValues = (theme: ThemeDesignTokens): Record<BadgeSizes, FlattenSimpleInterpolation> => ({
+  large: css`
     height: ${theme.BadgeLargeHeight};
     min-width: ${theme.BadgeLargeWidth};
   `,
-  [BadgeSizes.medium]: css`
+  medium: css`
     height: ${theme.BadgeMediumHeight};
     min-width: ${theme.BadgeMediumWidth};
   `,
-  [BadgeSizes.small]: css`
+  small: css`
     height: ${theme.BadgeSmallHeight};
     width: ${theme.BadgeSmallWidth};
   `,
 });
 
-export const getTypographyVariant = (size: BadgeSizes) =>
-  ({
-    [BadgeSizes.large]: 'heading3',
-    [BadgeSizes.medium]: 'heading5',
-    [BadgeSizes.small]: 'heading5',
-  }[size]);
+export const getTypographyVariant = (): Record<BadgeSizes, TypographyVariant> => ({
+  large: 'heading3',
+  medium: 'heading5',
+  small: 'heading5',
+});
 
 export const getPositionValues = ({
   BadgeLargePosition: largePosition,
   BadgeMediumPosition: mediumPosition,
   BadgeSmallPosition: smallPosition,
-}: ThemeDesignTokens) => ({
-  [BadgeSizes.large]: {
-    [BadgePositions.TopRight]: css`
+}: ThemeDesignTokens): Record<BadgeSizes, Record<BadgePositions, FlattenSimpleInterpolation>> => ({
+  large: {
+    topRight: css`
       top: -${largePosition};
       right: -${largePosition};
     `,
-    [BadgePositions.TopLeft]: css`
+    topLeft: css`
       top: -${largePosition};
       left: -${largePosition};
     `,
-    [BadgePositions.BottomRight]: css`
+    bottomRight: css`
       bottom: -${largePosition};
       right: -${largePosition};
     `,
-    [BadgePositions.BottomLeft]: css`
+    bottomLeft: css`
       bottom: -${largePosition};
       left: -${largePosition};
     `,
   },
-  [BadgeSizes.medium]: {
-    [BadgePositions.TopRight]: css`
+  medium: {
+    topRight: css`
       top: -${mediumPosition};
       right: -${mediumPosition};
     `,
-    [BadgePositions.TopLeft]: css`
+    topLeft: css`
       top: -${mediumPosition};
       left: -${mediumPosition};
     `,
-    [BadgePositions.BottomRight]: css`
+    bottomRight: css`
       bottom: -${mediumPosition};
       right: -${mediumPosition};
     `,
-    [BadgePositions.BottomLeft]: css`
+    bottomLeft: css`
       bottom: -${mediumPosition};
       left: -${mediumPosition};
     `,
   },
-  [BadgeSizes.small]: {
-    [BadgePositions.TopRight]: css`
+  small: {
+    topRight: css`
       top: ${smallPosition};
       right: ${smallPosition};
     `,
-    [BadgePositions.TopLeft]: css`
+    topLeft: css`
       top: ${smallPosition};
       left: ${smallPosition};
     `,
-    [BadgePositions.BottomRight]: css`
+    bottomRight: css`
       bottom: ${smallPosition};
       right: ${smallPosition};
     `,
-    [BadgePositions.BottomLeft]: css`
+    bottomLeft: css`
       bottom: ${smallPosition};
       left: ${smallPosition};
     `,
@@ -106,8 +105,8 @@ export const Content = styled.div`
       padding-left: ${theme.BadgePadding};
     `};
     position: ${position ? 'absolute' : 'relative'};
-    ${getPositionValues(theme)[size as BadgeSizes][position as BadgePositions]};
-    ${getHeightWidthValues(theme)[size as BadgeSizes]};
+    ${size && position && getPositionValues(theme)[size][position]};
+    ${size && getHeightWidthValues(theme)[size]};
     background-color: ${theme.BadgeBackgroundColor};
     border-radius: ${theme.BadgeBorderRadius};
   `}

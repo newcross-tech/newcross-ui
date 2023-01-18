@@ -19,7 +19,7 @@ export type AccordionGroupProps = {
 };
 
 const AccordionGroup = ({
-  spacing = AccordionGroupSpacing.default,
+  spacing = 'default',
   exclusiveSelection = true,
   children,
 }: AccordionGroupProps) => {

@@ -1,17 +1,12 @@
 import { BadgeProps } from './Badge';
 
-export enum BadgeSizes {
-  small = 'small',
-  medium = 'medium',
-  large = 'large',
-}
+export type BadgeSizes = 'small' | 'medium' | 'large';
 
-export enum BadgePositions {
-  TopRight = 'top-right',
-  TopLeft = 'top-left',
-  BottomRight = 'bottom-right',
-  BottomLeft = 'bottom-left',
-}
+export type BadgePositions =
+  | 'topRight'
+  | 'topLeft'
+  | 'bottomRight'
+  | 'bottomLeft';
 
 type RenderContentType = {
   renderContent: boolean;
