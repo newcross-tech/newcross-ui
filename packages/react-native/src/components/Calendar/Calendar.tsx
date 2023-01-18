@@ -79,6 +79,18 @@ export type CalendarProps = {
    * triggers an action when month has changed after left and right arrow press
    */
   onMonthChange?: (date: Date) => void;
+  /**
+   * Initial selected dates
+   */
+  initialSelectedDates?: Array<string>;
+  /**
+   * Initial selected date range
+   */
+  initialSingleDateRange?: Array<string>;
+  /**
+   * Initial selected multiple date range
+   */
+  initialMultipleDateRange?: Array<Array<string>>;
 } & NativeCalendarProps;
 
 const Calendar = ({
@@ -96,6 +108,9 @@ const Calendar = ({
   onSingleDateRange,
   onMultipleDateRange,
   onMonthChange,
+  initialSelectedDates = [],
+  initialSingleDateRange = [],
+  initialMultipleDateRange = [],
   ...rest
 }: CalendarProps) => {
   const styles = calendarStyles();
@@ -114,11 +129,16 @@ const Calendar = ({
   const formattedDate = formatDate(date);
   const formattedInitialDate = formatDate(initialDate);
 
-  const [selectedDates, setSelectedDates] = useState<Array<string>>([]);
-  const [singleDateRange, setSingleDateRange] = useState<Array<string>>([]);
+  const [selectedDates, setSelectedDates] =
+    useState<Array<string>>(initialSelectedDates);
+
+  const [singleDateRange, setSingleDateRange] = useState<Array<string>>(
+    initialSingleDateRange
+  );
   const [multipleDateRange, setMultipleDateRange] = useState<
     Array<Array<string>>
-  >([]);
+  >(initialMultipleDateRange);
+
   const [selectedDateRange, setSelectedDateRange] = useState<StyleByDate>({});
 
   const datesToExclude = [

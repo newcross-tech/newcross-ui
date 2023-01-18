@@ -43,6 +43,10 @@ export const Variants = () => {
     ? { minWidth: '300px', maxWidth: '350px' }
     : {};
 
+  const [initialSelectedDates, setInitialSelectedDates] = useState(
+    'initialSelectedDates',
+    ['2023-01-24']
+  );
   const [noShiftsDates, setNoShiftsDates] = useState('noShiftsDates', [
     '2023-01-15',
     '2023-01-16',
@@ -74,6 +78,7 @@ export const Variants = () => {
           </Typography>
           <Spacing />
           <Calendar
+            initialSelectedDates={initialSelectedDates}
             noShiftsDates={noShiftsDates}
             bookedDates={bookedDates}
             unavailableDates={unavailableDates}
