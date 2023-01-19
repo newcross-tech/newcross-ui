@@ -18,7 +18,6 @@ const baseTestId = 'link';
 describe('Link Component', () => {
   const ui = {
     linkComp: byTestId(`${baseTestId}-component`),
-    linkByReg: (reg: RegExp) => byText(reg),
   };
 
   it('should not have any a11y errors', async () => {

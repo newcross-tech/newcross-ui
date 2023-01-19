@@ -25,7 +25,6 @@ describe('Pill Component', () => {
     pillIcon: byTestId(`${baseTestId}-icon`),
     pillComp: byTestId(`${baseTestId}-component`),
     pillCompSelected: byTestId(`${baseTestId}-component-selected`),
-    pillByReg: (reg: RegExp) => byText(reg),
   };
 
   it('should not have any a11y errors', async () => {
@@ -42,7 +41,7 @@ describe('Pill Component', () => {
 
     // Assert
     expect(ui.pillComp.get()).toBeInTheDocument();
-    expect(ui.pillByReg(/Label/i).get()).toBeInTheDocument();
+    expect(byText(/Label/i).get()).toBeInTheDocument();
   });
 
   it('selects pill when Spacebar', () => {

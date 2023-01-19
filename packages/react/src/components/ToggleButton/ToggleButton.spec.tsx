@@ -19,7 +19,6 @@ describe('Toggle Button Component', () => {
   const ui = {
     toggleComp: byTestId(`toggle-button`),
     toggleIcon: (side: string) => byTestId(`toggle-button-${side}-icon`),
-    toggleByReg: (reg: RegExp) => byText(reg),
   };
 
   it('should not have any a11y errors', async () => {
@@ -36,7 +35,7 @@ describe('Toggle Button Component', () => {
 
     // Assert
     expect(ui.toggleComp.get()).toBeInTheDocument();
-    expect(ui.toggleByReg(/sort/i).get()).toBeInTheDocument();
+    expect(byText(/sort/i).get()).toBeInTheDocument();
   });
 
   it('triggers onClick successfully when selected is false', () => {

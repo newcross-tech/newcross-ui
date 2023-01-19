@@ -1,10 +1,6 @@
 import { Meta, Story } from '@storybook/react';
 import styled from 'styled-components';
 import Tooltip, { TooltipProps } from '../../components/Tooltip';
-import {
-  TooltipPositions,
-  TooltipVariant,
-} from '../../components/Tooltip/Tooltip.types';
 import Typography from '../../components/Typography';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
@@ -27,17 +23,14 @@ export const Variants = () => {
     <Container display={'block'} direction="column">
       <Typography variant={'heading4'}>Default Tooltip</Typography>
       <Spacing size={'Large'} />
-      <Tooltip position={TooltipPositions.Right}>
+      <Tooltip position="right">
         This is an info message. This is an info message. This is an info
         message.
       </Tooltip>
       <Spacing size={'Large'} />
       <Typography variant={'heading4'}>Question Tooltip</Typography>
       <Spacing size={'Large'} />
-      <Tooltip
-        variant={TooltipVariant.question}
-        position={TooltipPositions.Right}
-      >
+      <Tooltip variant="question" position="right">
         This is a question message. This is a question message. This is a
         question message.
       </Tooltip>
@@ -51,16 +44,16 @@ export const VariantsWithPosition = () => {
       <Typography variant={'heading3'}>Variants with Position</Typography>
       <Spacing size={'Large'} />
       <Container display="inline-flex" justifyContent="space-around">
-        <Tooltip position={TooltipPositions.Top}>Top</Tooltip>
+        <Tooltip position="top">Top</Tooltip>
         <Typography variant={'heading4'}>Top</Typography>
 
-        <Tooltip position={TooltipPositions.Right}>Right</Tooltip>
+        <Tooltip position="right">Right</Tooltip>
         <Typography variant={'heading4'}>Right</Typography>
 
-        <Tooltip position={TooltipPositions.Bottom}>Bottom</Tooltip>
+        <Tooltip position="bottom">Bottom</Tooltip>
         <Typography variant={'heading4'}>Bottom</Typography>
 
-        <Tooltip position={TooltipPositions.Left}>Left</Tooltip>
+        <Tooltip position="left">Left</Tooltip>
         <Typography variant={'heading4'}>Left</Typography>
       </Container>
     </Container>
@@ -76,7 +69,7 @@ export const Overview = () => {
       dontInfo={DONT}
     >
       <Container>
-        <Tooltip position={TooltipPositions.Top}>My Content</Tooltip>
+        <Tooltip position="top">My Content</Tooltip>
       </Container>
     </InfoTemplate>
   );
@@ -93,6 +86,6 @@ const Template: Story<TooltipProps> = (props) => (
 
 export const Interactive = Template.bind({});
 Interactive.args = {
-  position: TooltipPositions.Right,
+  position: 'right',
   children: <>My Content</>,
 };

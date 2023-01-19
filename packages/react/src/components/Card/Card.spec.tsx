@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
 import { byTestId, byText } from 'testing-library-selector';
-import Typography, { TypographyVariant } from '../../components/Typography';
+import Typography from '../../components/Typography';
 import { executeKeyPress } from '../../utils';
 import { axe } from '../../utils/test/axeConfig';
 import Card, { CardProps } from './Card';
@@ -31,7 +31,6 @@ describe('Card Component', () => {
   const ui = {
     cardIcon: byTestId(`${baseTestId}-right-icon`),
     cardComp: byTestId(`${baseTestId}-component`),
-    cardByReg: (reg: RegExp) => byText(reg),
   };
 
   it('should not have any a11y errors', async () => {
@@ -47,7 +46,7 @@ describe('Card Component', () => {
     renderComponent({});
 
     //Assert
-    expect(ui.cardByReg(/children/i).get()).toBeInTheDocument();
+    expect(byText(/children/i).get()).toBeInTheDocument();
   });
 
   it('renders a card with thumbnail', () => {

@@ -12,10 +12,6 @@ const renderComponent = (customProps: Partial<TooltipProps>) => {
 };
 
 describe('Tooltip Component', () => {
-  const ui = {
-    text: (reg: RegExp) => byText(reg),
-  };
-
   it('should not have any a11y errors', async () => {
     // Act
     renderComponent({});
@@ -29,6 +25,6 @@ describe('Tooltip Component', () => {
     renderComponent({});
 
     // Assert
-    expect(ui.text(/my content/i).get()).toBeInTheDocument();
+    expect(byText(/my content/i).get()).toBeInTheDocument();
   });
 });

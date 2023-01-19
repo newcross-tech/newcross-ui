@@ -19,7 +19,6 @@ describe('TextInput Component', () => {
     label: byTestId(`${baseTestId}-label`),
     textInput: (testID: string) =>
       byTestId(`${baseTestId}-component-${testID}`),
-    text: (regex: RegExp) => byText(regex),
     placeholder: (regex: RegExp) => byPlaceholderText(regex),
     container: byTestId(`${baseTestId}-container`),
     containerFocused: byTestId(`${baseTestId}-container-focused`),
@@ -207,7 +206,7 @@ describe('TextInput Component', () => {
 
     // Assert
     expect(ui.label.get()).toBeTruthy();
-    expect(ui.text(/This is the label/i).get()).toBeTruthy();
+    expect(byText(/This is the label/i).get()).toBeTruthy();
   });
 
   it('displays helper text successfully', () => {

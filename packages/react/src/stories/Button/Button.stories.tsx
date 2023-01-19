@@ -3,11 +3,7 @@ import { faChevronRight } from '@fortawesome/pro-light-svg-icons/faChevronRight'
 import { faCircleChevronRight } from '@fortawesome/pro-solid-svg-icons/faCircleChevronRight';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Meta, Story } from '@storybook/react';
-import Button, {
-  ButtonProps,
-  ButtonSizes,
-  ButtonVariant,
-} from '../../components/Button';
+import Button, { ButtonProps } from '../../components/Button';
 import Typography from '../../components/Typography';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
@@ -28,9 +24,9 @@ export const Overview = () => {
     >
       <Container display={'block'} direction={'column'} hasPadding={false}>
         <Spacing />
-        <Button variant={ButtonVariant.primary}>Primary Button</Button>
+        <Button variant="primary">Primary Button</Button>
         <Spacing />
-        <Button variant={ButtonVariant.secondary}>Secondary Button</Button>
+        <Button variant="secondary">Secondary Button</Button>
         <Spacing />
       </Container>
     </InfoTemplate>
@@ -44,15 +40,15 @@ export const VariantsWithSizes = () => {
         Primary Button with Different Sizes
       </Typography>
       <Spacing size={'Large'} />
-      <Button size={ButtonSizes.small}>Small Button</Button>
+      <Button size="small">Small Button</Button>
       <Spacing />
-      <Button size={ButtonSizes.large}>Large Button</Button>
+      <Button size="large">Large Button</Button>
       <Spacing />
-      <Button fullWidth size={ButtonSizes.small}>
+      <Button fullWidth size="small">
         Full Width Small Button
       </Button>
       <Spacing />
-      <Button fullWidth size={ButtonSizes.large}>
+      <Button fullWidth size="large">
         Full Width Large Button
       </Button>
     </Container>
@@ -64,18 +60,18 @@ export const Variants = () => {
     <Container display={'block'} direction="column">
       <Typography variant={'heading4'}>Primary Button</Typography>
       <Spacing size={'Large'} />
-      <Button variant={ButtonVariant.primary}>Primary Button</Button>
+      <Button variant="primary">Primary Button</Button>
       <Spacing />
-      <Button disabled variant={ButtonVariant.primary}>
+      <Button disabled variant="primary">
         Primary Disabled Button
       </Button>
       <Spacing size={'Large'} />
       <Spacing size={'Large'} />
       <Typography variant={'heading4'}>Secondary Button</Typography>
       <Spacing size={'Large'} />
-      <Button variant={ButtonVariant.secondary}>Secondary Button</Button>
+      <Button variant="secondary">Secondary Button</Button>
       <Spacing />
-      <Button disabled variant={ButtonVariant.secondary}>
+      <Button disabled variant="secondary">
         Secondary Disabled Button
       </Button>
       <Spacing size={'Large'} />
@@ -88,7 +84,7 @@ export const VariantsWithIcons = () => {
       <Typography variant={'heading4'}>Primary Button with Icons</Typography>
       <Spacing size={'Large'} />
       <Button
-        size={ButtonSizes.small}
+        size="small"
         rightIcon={<FontAwesomeIcon icon={faChevronRight} />}
       >
         Right Icon

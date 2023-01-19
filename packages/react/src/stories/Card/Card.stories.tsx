@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react';
 import useState from 'storybook-addon-state';
 import styled, { css } from 'styled-components';
 import Badge from '../../components/Badge';
-import Card, { CardProps, CardVariants } from '../../components/Card';
+import Card, { CardProps } from '../../components/Card';
 import CheckboxGroup from '../../components/CheckboxGroup';
 import ToggleButton from '../../components/ToggleButton';
 import ToggleButtonGroup from '../../components/ToggleButtonGroup';
@@ -68,12 +68,7 @@ export const Variants: Story<CardProps> = () => {
         <Card hasBorder fullWidth={false}>
           <Typography variant={'heading3'}>My card</Typography>
         </Card>
-        <Card
-          hasRoundedCorners
-          hasBorder
-          variant={CardVariants.secondary}
-          fullWidth={false}
-        >
+        <Card hasRoundedCorners hasBorder variant="secondary" fullWidth={false}>
           <Typography variant={'heading3'}>
             My card with rounded corners
           </Typography>

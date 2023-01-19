@@ -61,7 +61,7 @@ const Card = ({
   hasPadding = true,
   onClick,
   thumbnailContent,
-  variant = CardVariants.primary,
+  variant = 'primary',
   hasRightIcon,
   hasShadow = true,
   testID = 'card',

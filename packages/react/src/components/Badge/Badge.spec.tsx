@@ -18,7 +18,6 @@ describe('Badge Component', () => {
   };
 
   const ui = {
-    text: (regex: RegExp) => byText(regex),
     container: (testID: string) =>
       byTestId(`${baseTestId}-container-${testID}`),
   };
@@ -33,26 +32,26 @@ describe('Badge Component', () => {
   it('should render successfully', () => {
     renderComponent({});
 
-    expect(ui.text(/text/i).get()).toBeInTheDocument();
-    expect(ui.text(/7/i).get()).toBeInTheDocument();
+    expect(byText(/text/i).get()).toBeInTheDocument();
+    expect(byText(/7/i).get()).toBeInTheDocument();
   });
 
   it('should return the correct badgeContent with smaller maxNumber', () => {
     renderComponent({ badgeContent: 1000, maxNumber: 999 });
 
-    expect(ui.text(/999+/i).get()).toBeInTheDocument();
+    expect(byText(/999+/i).get()).toBeInTheDocument();
   });
 
   it('should return the correct badgeContent with larger maxNumber', () => {
     renderComponent({ badgeContent: 9, maxNumber: 999 });
 
-    expect(ui.text(/9/i).get()).toBeInTheDocument();
+    expect(byText(/9/i).get()).toBeInTheDocument();
   });
 
   it('should return text', () => {
     renderComponent({ badgeContent: '!' });
 
-    expect(ui.text(/!/i).get()).toBeInTheDocument();
+    expect(byText(/!/i).get()).toBeInTheDocument();
   });
 
   it('triggers an onClick event when pressed', () => {

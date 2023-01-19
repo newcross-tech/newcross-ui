@@ -1,8 +1,5 @@
 import { Meta, Story } from '@storybook/react';
-import Checkbox, {
-  CheckboxProps,
-  CheckboxType,
-} from '../../components/Checkbox';
+import Checkbox, { CheckboxProps } from '../../components/Checkbox';
 import Typography from '../../components/Typography';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
@@ -36,29 +33,19 @@ export const Variants = () => {
       <Spacing />
       <Checkbox label="Label" />
       <Checkbox label="Label" checked />
-      <Checkbox type={CheckboxType.INDETERMINATE} checked label="Label" />
+      <Checkbox type="indeterminate" checked label="Label" />
 
       <Typography variant={'heading4'}>Disabled</Typography>
       <Spacing />
       <Checkbox label="Label" disabled />
       <Checkbox label="Label" checked disabled />
-      <Checkbox
-        type={CheckboxType.INDETERMINATE}
-        checked
-        label="Label"
-        disabled
-      />
+      <Checkbox type="indeterminate" checked label="Label" disabled />
 
       <Typography variant={'heading4'}>Error</Typography>
       <Spacing />
       <Checkbox label="Label" hasError />
       <Checkbox label="Label" hasError checked />
-      <Checkbox
-        type={CheckboxType.INDETERMINATE}
-        label="Label"
-        checked
-        hasError
-      />
+      <Checkbox type="indeterminate" label="Label" checked hasError />
 
       <Typography variant={'heading4'}>With long text</Typography>
       <Spacing />

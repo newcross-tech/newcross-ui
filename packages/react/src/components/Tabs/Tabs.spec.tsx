@@ -21,7 +21,6 @@ describe('Tabs Component', () => {
   const ui = {
     tabView: (index: number) => byTestId(`tab-view-${index}`),
     tabComp: (index: number) => byTestId(`tab-${index}`),
-    tabByReg: (reg: RegExp) => byText(reg),
   };
 
   it('should not have any a11y errors', async () => {
@@ -37,8 +36,8 @@ describe('Tabs Component', () => {
     renderComponent({});
 
     // Assert
-    expect(ui.tabByReg(/label a/i).get()).toBeInTheDocument();
-    expect(ui.tabByReg(/label b/i).get()).toBeInTheDocument();
+    expect(byText(/label a/i).get()).toBeInTheDocument();
+    expect(byText(/label b/i).get()).toBeInTheDocument();
   });
 
   it('renders successfully with icons', () => {

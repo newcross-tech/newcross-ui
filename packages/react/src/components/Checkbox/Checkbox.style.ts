@@ -3,7 +3,7 @@ import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ExtendedTheme } from '../../types/Theme';
 import * as LabelStyled from '../Label/Label.style';
 import { CheckboxProps } from './Checkbox';
-import { CheckboxPropsExtended, CheckboxType, hasErrorProps, isSelectedProps } from './Checkbox.types';
+import { CheckboxPropsExtended, hasErrorProps, isSelectedProps } from './Checkbox.types';
 
 export const Checkbox = styled.div<CheckboxProps>`
   ${({ theme, disabled }: ExtendedTheme<CheckboxProps>) => css`
@@ -32,7 +32,7 @@ const getHasErrorStyles = ({ theme, selected, type }: ExtendedTheme<hasErrorProp
   outline-color: ${theme.CheckboxErrorBackgroundColor};
   color: ${theme.CheckboxErrorCheckmarkColor};
   background-color: ${selected && theme.CheckboxErrorBackgroundColor};
-  ${type === CheckboxType.INDETERMINATE &&
+  ${type === 'indeterminate' &&
   css`
     color: ${theme.CheckboxErrorBackgroundColor};
     background-color: ${theme.CheckboxBackgroundColor};
@@ -47,7 +47,7 @@ const getDisabledStyles = (theme: ThemeDesignTokens) => css`
 
 const getSelectedStyled = ({ theme, type }: ExtendedTheme<isSelectedProps>) => css`
   background-color: ${theme.CheckboxSelectedBackgroundColor};
-  background-color: ${type === CheckboxType.INDETERMINATE && theme.CheckboxBackgroundColor};
+  background-color: ${type === 'indeterminate' && theme.CheckboxBackgroundColor};
 `;
 
 export const Box = styled.div<CheckboxPropsExtended>`

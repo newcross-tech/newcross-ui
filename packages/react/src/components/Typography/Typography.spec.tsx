@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { byText } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
 import Typography, { TypographyProps } from './Typography';
 
@@ -28,6 +29,6 @@ describe('Typography', () => {
     render(<Typography {...props} />);
 
     // Assert
-    expect(screen.queryByText(/my text/i)).toBeTruthy();
+    expect(byText(/my text/i)).toBeTruthy();
   });
 });

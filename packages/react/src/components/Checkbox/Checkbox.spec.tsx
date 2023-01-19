@@ -3,7 +3,6 @@ import { byTestId } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
 import { executeKeyPress } from '../../utils/test/executeKeyPress';
 import Checkbox, { CheckboxProps } from './Checkbox';
-import { CheckboxType } from './Checkbox.types';
 
 const renderComponent = (customProps: Partial<CheckboxProps>) => {
   const props = {
@@ -43,7 +42,7 @@ describe('Checkbox Component', () => {
 
   it('renders indeterminate checkbox successfully', () => {
     // Act
-    renderComponent({ checked: true, type: CheckboxType.INDETERMINATE });
+    renderComponent({ checked: true, type: 'indeterminate' });
 
     // Assert
     expect(ui.checkboxIndeterIcon.get()).toBeInTheDocument();

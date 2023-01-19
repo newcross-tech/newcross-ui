@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { TestProp } from '../../types/TestProp';
-import Checkbox, { CheckboxType } from '../Checkbox';
+import Checkbox from '../Checkbox';
 import * as Styled from './CheckboxGroup.style';
 import { OptionProps } from './CheckboxGroup.types';
 import {
@@ -48,9 +48,7 @@ const CheckboxGroup = ({
     (item) => getIsOptionObject(item) && item.disabled === true
   );
   const isIndeterminate = () =>
-    options.length === selectedList.length
-      ? undefined
-      : CheckboxType.INDETERMINATE;
+    options.length === selectedList.length ? undefined : 'indeterminate';
 
   const isAnySelected = () => {
     if (selectedList.length === 0) return false;

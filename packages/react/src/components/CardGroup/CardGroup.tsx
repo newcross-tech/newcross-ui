@@ -1,4 +1,4 @@
-import React, { Children, cloneElement, ReactElement } from 'react';
+import { Children, cloneElement, ReactElement } from 'react';
 import { CardProps } from '../Card/Card';
 import * as Styled from './CardGroup.style';
 

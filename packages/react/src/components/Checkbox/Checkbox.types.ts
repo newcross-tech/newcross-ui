@@ -1,8 +1,7 @@
 import { CheckboxProps } from './Checkbox';
 
-export enum CheckboxType {
-  INDETERMINATE = 'indeterminate',
-}
+export type CheckboxType = 'indeterminate';
+
 export type CheckboxPropsExtended = CheckboxProps & {
   selected?: boolean;
 };

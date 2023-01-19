@@ -1,29 +1,44 @@
-import styled, { css } from 'styled-components';
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ExtendedTheme } from '../../types/Theme';
 import { getTabbedStateStyles } from '../../utils/css';
+import { TypographyVariant } from '../Typography';
 import { ButtonProps, IconProps } from './Button';
-import { ButtonSizes, ButtonVariant, getIconSize } from './Button.types';
+import { ButtonSizes, ButtonVariant } from './Button.types';
 
-const getVariantStyles = (theme: ThemeDesignTokens) => ({
-  [ButtonVariant.primary]: css`
+export const getTypographyValues = (): Record<ButtonSizes, TypographyVariant> => ({
+  small: 'heading4',
+  large: 'heading3',
+});
+
+export const getIconSize = (theme: ThemeDesignTokens): Record<ButtonSizes, FlattenSimpleInterpolation> => ({
+  small: css`
+    font-size: ${theme.ButtonSizeSmallIconSize};
+  `,
+  large: css`
+    font-size: ${theme.ButtonSizeLargeIconSize};
+  `,
+});
+
+const getVariantStyles = (theme: ThemeDesignTokens): Record<ButtonVariant, FlattenSimpleInterpolation> => ({
+  primary: css`
     color: ${theme.ButtonVariantPrimaryColor};
     background-color: ${theme.ButtonVariantPrimaryBackgroundColor};
   `,
-  [ButtonVariant.secondary]: css`
+  secondary: css`
     color: ${theme.ButtonVariantSecondaryColor};
     background-color: transparent;
     border: ${theme.ButtonVariantSecondaryBorderWidth} solid ${theme.ButtonVariantSecondaryBorderColor};
   `,
 });
 
-const getDisabledStyles = (theme: ThemeDesignTokens) => ({
-  [ButtonVariant.primary]: css`
+const getDisabledStyles = (theme: ThemeDesignTokens): Record<ButtonVariant, FlattenSimpleInterpolation> => ({
+  primary: css`
     cursor: default;
     color: ${theme.ButtonVariantPrimaryDisabledColor};
     background-color: ${theme.ButtonVariantPrimaryDisabledBackgroundColor};
   `,
-  [ButtonVariant.secondary]: css`
+  secondary: css`
     cursor: default;
     color: ${theme.ButtonVariantSecondaryDisabledColor};
     border: ${theme.ButtonVariantSecondaryBorderWidth} solid ${theme.ButtonVariantSecondaryDisabledBorderColor};
@@ -31,15 +46,15 @@ const getDisabledStyles = (theme: ThemeDesignTokens) => ({
   `,
 });
 
-const getSizeStyles = (theme: ThemeDesignTokens) => ({
-  [ButtonSizes.small]: css`
+const getSizeStyles = (theme: ThemeDesignTokens): Record<ButtonSizes, FlattenSimpleInterpolation> => ({
+  small: css`
     font-family: ${theme.TypographyHeading4FontFamily};
     font-weight: ${theme.TypographyHeading4FontWeight};
     font-size: ${theme.TypographyHeading4FontSize};
     line-height: ${theme.TypographyHeading4LineHeight};
     padding: ${theme.ButtonSizeSmallPadding};
   `,
-  [ButtonSizes.large]: css`
+  large: css`
     font-family: ${theme.TypographyHeading3FontFamily};
     font-weight: ${theme.TypographyHeading3FontWeight};
     font-size: ${theme.TypographyHeading3FontSize};
@@ -53,11 +68,11 @@ const getFullWidthStyles = () => css`
   width: 100%;
 `;
 
-const getHoverStyles = (theme: ThemeDesignTokens) => ({
-  [ButtonVariant.primary]: css`
+const getHoverStyles = (theme: ThemeDesignTokens): Record<ButtonVariant, FlattenSimpleInterpolation> => ({
+  primary: css`
     background-color: ${theme.ButtonVariantPrimaryPressedBackgroundColor};
   `,
-  [ButtonVariant.secondary]: css`
+  secondary: css`
     background-color: ${theme.ButtonVariantSecondaryPressedBackgroundColor};
   `,
 });

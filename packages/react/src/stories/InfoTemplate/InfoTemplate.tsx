@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import { Children, FC, ReactNode } from 'react';
 import Typography from '../../components/Typography';
 import Spacing from '../Spacing';
 import {
@@ -75,7 +75,7 @@ const Examples = ({ children, title }: ExamplesProps) => {
       <Spacing hasBorder />
       <Spacing />
       {children &&
-        React.Children.map(children, (index) => (
+        Children.map(children, (index) => (
           <>
             <StyledExampleContainer>
               <StyledChildrenContainer>{index}</StyledChildrenContainer>

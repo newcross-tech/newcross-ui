@@ -1,16 +1,8 @@
 import { TooltipProps } from './Tooltip';
 
-export enum TooltipVariant {
-  info = 'info',
-  question = 'question',
-}
+export type TooltipVariant = 'info' | 'question';
 
-export enum TooltipPositions {
-  Top = 'top',
-  Right = 'right',
-  Bottom = 'bottom',
-  Left = 'left',
-}
+export type TooltipPositions = 'top' | 'right' | 'bottom' | 'left';
 
 export type ContainerProps = Pick<TooltipProps, 'position'>;
 

@@ -18,7 +18,6 @@ describe('Avatar Component', () => {
   const ui = {
     avatarImage: byTestId(`${baseTestId}-with-image`),
     avatarIcon: byTestId(`${baseTestId}-with-icon`),
-    avatarByReg: (reg: RegExp) => byText(reg),
   };
 
   it('should not have any a11y errors', async () => {
@@ -34,7 +33,7 @@ describe('Avatar Component', () => {
     renderComponent({});
 
     // Assert
-    expect(ui.avatarByReg(/JD/i).get()).toBeInTheDocument();
+    expect(byText(/JD/i).get()).toBeInTheDocument();
   });
 
   it('renders successfully with image and source', () => {

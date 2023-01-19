@@ -18,11 +18,7 @@ export type TooltipProps = {
   children?: ReactNode;
 };
 
-const Tooltip = ({
-  children,
-  position,
-  variant = TooltipVariant.info,
-}: TooltipProps) => (
+const Tooltip = ({ children, position, variant = 'info' }: TooltipProps) => (
   <Styled.Container position={position}>
     <Styled.Icon icon={Styled.getVariantIcon()[variant]} />
     <Styled.TextWrapper>

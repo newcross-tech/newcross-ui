@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled, { css } from 'styled-components';
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { ExtendedTheme, Theme } from '../../types/Theme';
 import {
   ContainerProps,
@@ -7,16 +7,16 @@ import {
   TooltipPositions,
   TooltipVariant,
 } from './Tooltip.types';
-
+import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { faInfoCircle as outlineFaInfoCircle } from '@fortawesome/pro-regular-svg-icons/faInfoCircle';
 import { faQuestionCircle as outlineFaQuestionCircle } from '@fortawesome/pro-regular-svg-icons/faQuestionCircle';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { getHaloValue, getRgba } from '../../utils';
 import { defaultAnimationSpeed } from './Tooltip.constants';
 
-export const getVariantIcon = () => ({
-  [TooltipVariant.info]: outlineFaInfoCircle,
-  [TooltipVariant.question]: outlineFaQuestionCircle,
+export const getVariantIcon = (): Record<TooltipVariant, IconDefinition> => ({
+  info: outlineFaInfoCircle,
+  question: outlineFaQuestionCircle,
 });
 
 const calculateWidthOffset = (
@@ -41,25 +41,28 @@ export const getPositionValues = ({
   marginOffset,
   paddingOffset,
   widthOffset,
-}: PositionValuesArgs) => ({
-  [TooltipPositions.Top]: css`
+}: PositionValuesArgs): Record<
+  TooltipPositions,
+  FlattenSimpleInterpolation
+> => ({
+  top: css`
     bottom: 100%;
     left: 50%;
     margin-bottom: ${marginOffset};
     margin-left: ${widthOffset};
   `,
-  [TooltipPositions.Right]: css`
+  right: css`
     top: ${paddingOffset};
     left: 100%;
     margin-left: ${marginOffset};
   `,
-  [TooltipPositions.Bottom]: css`
+  bottom: css`
     top: 100%;
     left: 50%;
     margin-top: ${marginOffset};
     margin-left: ${widthOffset};
   `,
-  [TooltipPositions.Left]: css`
+  left: css`
     top: ${paddingOffset};
     right: 100%;
     margin-right: ${marginOffset};
@@ -97,6 +100,7 @@ export const Container = styled.div<ContainerProps>`
         ${getRgba(theme.CardShadowColor, theme.CardShadowOpacity)};
 
       position: absolute;
+
       ${position &&
       getPositionValues({
         marginOffset: theme.SpacingBase16,

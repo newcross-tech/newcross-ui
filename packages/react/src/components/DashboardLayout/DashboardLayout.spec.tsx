@@ -17,10 +17,6 @@ const renderComponent = () => {
 };
 
 describe('DashboardLayout', () => {
-  const ui = {
-    text: (regex: RegExp) => byText(regex),
-  };
-
   it('should not have any a11y errors', async () => {
     renderComponent();
     const results = await axe(document.body);
@@ -31,8 +27,8 @@ describe('DashboardLayout', () => {
     renderComponent();
 
     // Assert
-    expect(ui.text(/My Header/i).get()).toBeInTheDocument();
-    expect(ui.text(/My Main/i).get()).toBeInTheDocument();
-    expect(ui.text(/My Sidebar/i).get()).toBeInTheDocument();
+    expect(byText(/My Header/i).get()).toBeInTheDocument();
+    expect(byText(/My Main/i).get()).toBeInTheDocument();
+    expect(byText(/My Sidebar/i).get()).toBeInTheDocument();
   });
 });

@@ -27,7 +27,6 @@ describe('Dropdown Component', () => {
       byTestId(`${baseTestId}-header-container-${testID}`),
     dropdownFocused: (testID: string) =>
       byTestId(`${baseTestId}-body-container-expanded-${testID}`),
-    text: (regex: RegExp) => byText(regex),
     dropdownValue: (testID: string) =>
       byTestId(`${baseTestId}-value-${testID}`),
     dropdownMultiPillValue: (testID: string) =>
@@ -110,7 +109,7 @@ describe('Dropdown Component', () => {
     renderComponent({ onChange });
 
     // Assert
-    fireEvent.click(ui.text(/Option 1/i).get());
+    fireEvent.click(byText(/Option 1/i).get());
 
     // Assert
     expect(ui.dropdownValue(testID).get()).toBeInTheDocument();
@@ -124,7 +123,7 @@ describe('Dropdown Component', () => {
     renderComponent({});
 
     // Assert
-    fireEvent.click(ui.text(/Option 1/i).get());
+    fireEvent.click(byText(/Option 1/i).get());
 
     fireEvent.click(ui.clearIconContainer.get());
 
@@ -145,7 +144,7 @@ describe('Dropdown Component', () => {
       charCode: 9,
     });
 
-    executeKeyPress(ui.text(/Option 1/i).get());
+    executeKeyPress(byText(/Option 1/i).get());
 
     expect(ui.dropdownValue(testID).get()).toBeInTheDocument();
   });
@@ -154,7 +153,7 @@ describe('Dropdown Component', () => {
     //Act
     renderComponent({ isMulti: true });
 
-    fireEvent.click(ui.text(/Option 1/i).get());
+    fireEvent.click(byText(/Option 1/i).get());
 
     // Assert
     expect(ui.dropdownMultiPillValue(testID).get()).toBeInTheDocument();

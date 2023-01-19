@@ -1,4 +1,1 @@
-export enum CardVariants {
-  primary = 'primary',
-  secondary = 'secondary',
-}
+export type CardVariants = 'primary' | 'secondary';

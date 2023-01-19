@@ -5,10 +5,6 @@ import Label, { LabelProps } from './Label';
 import { axe } from '../../utils/test/axeConfig';
 
 describe('Label', () => {
-  const ui = {
-    text: (regex: RegExp) => byText(regex),
-  };
-
   it('should not have any a11y errors', async () => {
     // Prepare
     const props: LabelProps = {
@@ -34,6 +30,6 @@ describe('Label', () => {
     render(<Label {...props} />);
 
     // Assert
-    expect(ui.text(/my label/i).get()).toBeTruthy();
+    expect(byText(/my label/i).get()).toBeTruthy();
   });
 });

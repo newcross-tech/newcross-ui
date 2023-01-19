@@ -56,7 +56,7 @@ const Checkbox = ({
 
   useToggle(isChecked, () => setSelected(isChecked));
 
-  const icon = type === CheckboxType.INDETERMINATE ? faMinus : faCheck;
+  const icon = type === 'indeterminate' ? faMinus : faCheck;
 
   const handleChecked = () => {
     if (disabled) return;

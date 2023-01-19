@@ -1,16 +1,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled, { css } from 'styled-components';
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ExtendedTheme, Theme } from '../../types/Theme';
 import { getRgba, getTabbedStateStyles } from '../../utils';
 import { CardProps } from '../Card';
 import { CardVariants } from './Card.types';
 
-export const getColorValues = (theme: ThemeDesignTokens) => ({
-  [CardVariants.primary]: css`
+export const getColorValues = (theme: ThemeDesignTokens): Record<CardVariants, FlattenSimpleInterpolation> => ({
+  primary: css`
     ${theme.CardBorderColorPrimary}
   `,
-  [CardVariants.secondary]: css`
+  secondary: css`
     ${theme.CardBorderColorSecondary}
   `,
 });

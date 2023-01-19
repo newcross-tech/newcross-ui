@@ -2,11 +2,7 @@ import { ButtonHTMLAttributes, ReactElement, ReactNode } from 'react';
 import { TestProp } from '../../types/TestProp';
 import Typography from '../Typography';
 import * as Styled from './Button.style';
-import {
-  ButtonSizes,
-  ButtonVariant,
-  getTypographyValues,
-} from './Button.types';
+import { ButtonSizes, ButtonVariant } from './Button.types';
 
 export type ButtonProps = {
   /**
@@ -61,8 +57,8 @@ export const ButtonIcon = ({
 
 const Button = ({
   children,
-  variant = ButtonVariant.primary,
-  size = ButtonSizes.large,
+  variant = 'primary',
+  size = 'large',
   leftIcon,
   rightIcon,
   testID,
@@ -81,7 +77,9 @@ const Button = ({
           {leftIcon}
         </ButtonIcon>
       )}
-      <Typography variant={getTypographyValues()[size]}>{children}</Typography>
+      <Typography variant={Styled.getTypographyValues()[size]}>
+        {children}
+      </Typography>
       {rightIcon && (
         <ButtonIcon
           size={size}
