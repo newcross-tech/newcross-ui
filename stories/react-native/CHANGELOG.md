@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.37.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.36.1...@newcross-stories/react-native@1.37.0) (2023-01-23)
+
+
+### Features
+
+* **HFGO-1584:** create checkbox group component ([6667de0](https://bitbucket.org/newcrossdev/newcross-ui/commits/6667de087bfb7d1d4b6d818eeb123ce719472b2f))
+
+
+
+
+
 ## [1.36.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.36.0...@newcross-stories/react-native@1.36.1) (2023-01-18)
 
 
