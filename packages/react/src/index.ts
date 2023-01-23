@@ -31,6 +31,10 @@ export { default as ProgressBar } from './components/ProgressBar';
 export { default as Pill, PillProps } from './components/Pill';
 export { default as PillGroup, PillGroupProps } from './components/PillGroup';
 export { default as RadioButton, RadioProps } from './components/Radio';
+export {
+  default as RadioButtonGroup,
+  RadioGroupProps,
+} from './components/RadioGroup';
 export { default as Tabs, TabsProps } from './components/Tabs';
 export { TextInputProps, default as TextInput } from './components/TextInput';
 export { default as Toast, ToastProps } from './components/Toast';

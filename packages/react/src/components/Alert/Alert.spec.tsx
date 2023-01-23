@@ -21,8 +21,6 @@ describe('Alert component', () => {
   const ui = {
     alertComp: byTestId(`alert-component`),
     alertCloseIconComp: byTestId(`alert-close-icon`),
-    alertByReg: (reg: RegExp) => byText(reg),
-    alertById: (id: string) => byTestId(id),
   };
 
   it('should not have any a11y errors', async () => {
@@ -49,7 +47,7 @@ describe('Alert component', () => {
 
     // Assert
     expect(ui.alertComp.get()).toBeInTheDocument();
-    expect(ui.alertByReg(/Custom title/i).get()).toBeInTheDocument();
+    expect(byText(/Custom title/i).get()).toBeInTheDocument();
   });
 
   it('renders successfully with close icon', () => {
@@ -89,6 +87,6 @@ describe('Alert component', () => {
     });
 
     // Assert
-    expect(ui.alertById('alert-icon').get()).toBeInTheDocument();
+    expect(byTestId('alert-icon').get()).toBeInTheDocument();
   });
 });

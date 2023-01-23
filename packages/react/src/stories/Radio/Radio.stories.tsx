@@ -12,10 +12,10 @@ export default {
 export const Variants = () => {
   return (
     <>
-      <Radio selected={false} label="Primary" />
-      <Radio selected={true} label="Primary Selected" />
-      <Radio label="Disabled" disabled />
-      <Radio selected label="Disabled Selected" disabled />
+      <Radio value="1" label="Primary" />
+      <Radio selected value="2" label="Primary Selected" />
+      <Radio label="Disabled" value="3" disabled />
+      <Radio selected value="4" label="Disabled Selected" disabled />
     </>
   );
 };

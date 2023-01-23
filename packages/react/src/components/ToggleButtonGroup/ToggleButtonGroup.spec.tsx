@@ -6,9 +6,8 @@ import ToggleButtonGroup from './ToggleButtonGroup';
 import { getMultipleSelectedValues } from './utils/getMultipleSelectedValues';
 
 describe('ToggleButtonGroup', () => {
-  const baseTestId = 'toggle-button-group';
   const ui = {
-    toggleGroupComp: byTestId(`${baseTestId}`),
+    toggleGroupComp: byTestId(`toggle-button-group`),
     toggleGroupId: (id: string) => byTestId(`toggle-button${id}`),
     toggleGroupSelectedId: (id: string) =>
       byTestId(`toggle-button-selected${id}`),

@@ -14,9 +14,14 @@ export type RadioProps = {
    */
   label: string;
   /**
+   * The currently selected value within the group or an array of
+   * selected values
+   */
+  value?: string;
+  /**
    * Called when a single tap gesture is detected.
    */
-  onChange?: (value: boolean) => void;
+  onChange?: VoidFunction;
   /**
    * Specifies whether the radio is selected
    */
@@ -30,7 +35,8 @@ const Radio = ({
   disabled = false,
   label,
   onChange,
-  testID,
+  value = '',
+  testID = '',
 }: RadioProps) => {
   const [isSelected, setIsSelected] = useState(selected);
 
@@ -38,23 +44,23 @@ const Radio = ({
 
   const onChangeHandler = () => {
     if (disabled) return;
-    const newValue = !isSelected;
-    setIsSelected(newValue);
-    onChange && onChange(newValue);
+
+    setIsSelected(!isSelected);
+    onChange && onChange();
   };
 
-  const id = `${baseTestId}-input-${testID}`;
+  const id = `${baseTestId}-input-${value}`;
 
   return (
     <Styled.Radio>
       <input
         id={id}
         type="radio"
-        data-testid={id}
+        data-testid={`${baseTestId}-input-${testID}`}
+        name={id}
         checked={isSelected}
         onChange={onChangeHandler}
         disabled={disabled}
-        tabIndex={!disabled ? 0 : -1}
         onKeyPress={(event) =>
           onSpacePressTrigger(event, () => onChangeHandler())
         }

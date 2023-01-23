@@ -16,7 +16,6 @@ export const Radio = styled.div`
 
   ${({ theme }: Theme) => css`
     padding: ${theme.RadioPaddingRight};
-
     & input[type='radio'] {
       margin-top: 0;
       margin-right: 0;

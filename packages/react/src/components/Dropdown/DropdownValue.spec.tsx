@@ -17,7 +17,6 @@ const renderComponent = (customProps: Partial<DropdownValueProps>) => {
 
 describe('DropdownValue', () => {
   const ui = {
-    text: (regex: RegExp) => byText(regex),
     pill: (testID: string) => byTestId(`pill-component${testID}`),
     pillClickable: (testID: string) => byTestId(`pill-clickable${testID}`),
   };
@@ -35,7 +34,7 @@ describe('DropdownValue', () => {
     renderComponent({ value: 'Option 1' });
 
     // Assert
-    expect(ui.text(/Option 1/i).get()).toBeInTheDocument();
+    expect(byText(/Option 1/i).get()).toBeInTheDocument();
   });
 
   it('renders pill(s) successfully (multi-select)', () => {

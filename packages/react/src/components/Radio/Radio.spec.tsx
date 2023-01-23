@@ -10,7 +10,7 @@ const renderComponent = (customProps: Partial<RadioProps>) => {
     ...customProps,
   };
 
-  render(<Radio {...props} />);
+  render(<Radio value="1" {...props} />);
 };
 
 const testID = '1';
@@ -18,7 +18,6 @@ const baseTestId = 'radio';
 
 describe('Radio', () => {
   const ui = {
-    text: (regex: RegExp) => byText(regex),
     radio: (testID: string) => byTestId(`${baseTestId}-input-${testID}`),
     radioLabel: byTestId(`${baseTestId}-label`),
   };
@@ -35,8 +34,8 @@ describe('Radio', () => {
     renderComponent({});
 
     // Assert
-    expect(ui.text(/hello/i).get()).toBeInTheDocument();
-    expect(ui.radioLabel.get()).toBeInTheDocument();
+    expect(byText(/hello/i).get()).toBeVisible();
+    expect(ui.radioLabel.get()).toBeVisible();
   });
 
   it(`calls onChange when radio component is not disabled`, () => {

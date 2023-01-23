@@ -18,7 +18,6 @@ describe('Checkbox Group Component', () => {
     selectAllCheckbox: byTestId(`checkbox-selectAll`),
     checkboxIcon: byTestId(`checkmark-icon`),
     checkboxIndeterIcon: byTestId(`indeterminate-icon`),
-    childCheckbox: (text: string) => byText(text),
   };
 
   it('should not have any a11y errors', async () => {
@@ -56,7 +55,7 @@ describe('Checkbox Group Component', () => {
       defaultChecked: [],
     });
 
-    fireEvent.click(ui.childCheckbox('Apple').get());
+    fireEvent.click(byText('Apple').get());
 
     // Assert
     expect(ui.checkboxIndeterIcon.get()).toBeInTheDocument();
@@ -84,7 +83,7 @@ describe('Checkbox Group Component', () => {
       ],
     });
 
-    fireEvent.click(ui.childCheckbox('Banana').get());
+    fireEvent.click(byText('Banana').get());
 
     // Assert
     expect(onChange).not.toHaveBeenCalled();
@@ -101,7 +100,7 @@ describe('Checkbox Group Component', () => {
     });
 
     expect(ui.checkboxIcon.getAll()).toHaveLength(4);
-    fireEvent.click(ui.childCheckbox('Banana').get());
+    fireEvent.click(byText('Banana').get());
 
     // Assert
     expect(ui.checkboxIcon.getAll()).toHaveLength(2);

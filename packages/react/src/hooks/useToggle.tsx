@@ -6,7 +6,10 @@ import { useEffect } from 'react';
  * @param value
  * @param handler
  */
-export function useToggle(value: boolean, handler: (value: boolean) => void) {
+export function useToggle(
+  value: boolean | string,
+  handler: (value: boolean | string) => void
+) {
   useEffect(() => {
     handler(value);
   }, [value]);
