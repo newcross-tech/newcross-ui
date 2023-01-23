@@ -13,11 +13,31 @@ import { ANIMATION_DURATION } from './Skeleton.constants';
 import { SkeletonLinearGradient } from './SkeletonLinearGradient';
 
 export type SkeletonProps = {
+  /**
+   * Set width
+   */
   width: number;
+  /**
+   * Set height
+   */
   height: number;
+  /**
+   * Define circle shape
+   */
   circle?: boolean;
+  /**
+   * overwrite styles
+   */
   style?: ViewStyle;
+  /**
+   * Overwrite Linear Gradient to allow this component
+   * compatible with expo, by default its
+   * only compatible with react native cli projects
+   */
   LinearGradientComponent?: ComponentType;
+  /**
+   * TestID for testing
+   */
   testID?: string;
 };
 

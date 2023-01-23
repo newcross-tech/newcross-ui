@@ -61,7 +61,7 @@ const Checkbox = ({
   label,
   disabled,
   hasError,
-  testID,
+  testID = 'checkbox',
   style,
   ...rest
 }: CheckboxProps) => {
@@ -88,7 +88,7 @@ const Checkbox = ({
       testID={testID}
       {...rest}
     >
-      <View style={[styles.box, style]} testID="checkmark">
+      <View style={[styles.box, style]} testID={`${testID}-checkmark`}>
         {selected && <FontAwesomeIcon icon={icon} style={styles.checkmark} />}
       </View>
       <Typography variant={TypographyVariant.paragraph1} style={styles.label}>

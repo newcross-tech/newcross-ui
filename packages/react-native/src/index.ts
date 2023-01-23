@@ -103,3 +103,7 @@ export { HealthforceIcon } from './icons/HealthforceIcon';
 export { NewcrossBrandIcon } from './icons/NewcrossBrandIcon';
 export { default as Skeleton, SkeletonProps } from './components/Skeleton';
 export { useLayout, LayoutSize } from './hooks/useLayout';
+export {
+  default as CheckboxGroup,
+  CheckboxGroupProps,
+} from './components/CheckboxGroup';

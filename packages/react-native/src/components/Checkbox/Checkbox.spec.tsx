@@ -49,7 +49,7 @@ describe('Checkbox Component', () => {
     expect(checkbox).toBeTruthy();
   });
 
-  it('renders a checkkbox with a default checkmark successfully', () => {
+  it('renders a checkbox with a default checkmark successfully', () => {
     // Arrange
     const props: CheckboxProps = {
       type: CheckboxType.CHECK,
@@ -63,7 +63,7 @@ describe('Checkbox Component', () => {
 
     // Assert
     expect(checkbox).toBeTruthy();
-    expect(getByTestId('checkmark')).toBeTruthy();
+    expect(getByTestId('checkbox-checkmark')).toBeTruthy();
   });
 
   it('fires an onPress event to check the checkbox successfully', () => {
@@ -80,7 +80,7 @@ describe('Checkbox Component', () => {
     fireEvent.press(checkbox);
 
     // Assert
-    expect(getByTestId('checkmark')).toBeTruthy();
+    expect(getByTestId('checkbox-component-checkmark')).toBeTruthy();
   });
 
   it('renders successfully when control props are passed and act upon', () => {
@@ -100,6 +100,6 @@ describe('Checkbox Component', () => {
 
     // Assert
     expect(getByTestId('checkbox-component')).toBeTruthy();
-    expect(getByTestId('checkmark')).toBeTruthy();
+    expect(getByTestId('checkbox-component-checkmark')).toBeTruthy();
   });
 });
