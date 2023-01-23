@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.24.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.23.5...@newcross-ui/react@1.24.0) (2023-01-23)
+
+
+### Features
+
+* **ASK-295:** radioGroup + tests ([ecf99e6](https://bitbucket.org/newcrossdev/newcross-ui/commits/ecf99e642508b9f9fa98d5b3cd1ab8bef3a8a893))
+
+
+
+
+
 ## [1.23.5](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.23.4...@newcross-ui/react@1.23.5) (2023-01-19)
 
 **Note:** Version bump only for package @newcross-ui/react
