@@ -105,6 +105,7 @@ const textInputStyle = (
       ...(disabled && disabledStyles().inputContainer),
     },
     nativeInput: {
+      color: theme.ColorNeutralBlack,
       flex: 1,
       fontFamily: theme.TextInputFontFamily,
       fontSize: theme.TextInputFontSize,
