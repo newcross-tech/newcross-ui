@@ -8,6 +8,4 @@ export type ContainerProps = Pick<TooltipProps, 'position'>;
 
 export type PositionValuesArgs = {
   marginOffset: string;
-  paddingOffset: string;
-  widthOffset: string;
 };

@@ -19,28 +19,20 @@ export const getVariantIcon = (): Record<TooltipVariant, IconDefinition> => ({
   question: outlineFaQuestionCircle,
 });
 
-const calculateWidthOffset = (
-  width: number | 'NaN',
-  padding: number | 'NaN'
-) => {
-  if (width === 'NaN' || padding === 'NaN') return 'NaN';
-
-  const widthValue = (width + 2 * padding) / 2;
-
-  return `-${+widthValue}rem`;
-};
-
 const getTooltipWidth = (theme: ThemeDesignTokens) => {
-  const widthValue = getHaloValue(theme.SpacingBase12);
+  const widthValue = getHaloValue(theme.SpacingBase8);
   if (widthValue === 'NaN') return 'NaN';
 
-  return `${+(widthValue * 10)}rem`;
+  return `${+(widthValue * 23)}rem`;
 };
+
+const verticalAlignment = (): FlattenSimpleInterpolation => css`
+  top: 50%;
+  transform: translateY(-50%);
+`;
 
 export const getPositionValues = ({
   marginOffset,
-  paddingOffset,
-  widthOffset,
 }: PositionValuesArgs): Record<
   TooltipPositions,
   FlattenSimpleInterpolation
@@ -49,10 +41,10 @@ export const getPositionValues = ({
     bottom: 100%;
     left: 50%;
     margin-bottom: ${marginOffset};
-    margin-left: ${widthOffset};
+    transform: translateX(-50%);
   `,
   right: css`
-    top: ${paddingOffset};
+    ${verticalAlignment()}
     left: 100%;
     margin-left: ${marginOffset};
   `,
@@ -60,10 +52,10 @@ export const getPositionValues = ({
     top: 100%;
     left: 50%;
     margin-top: ${marginOffset};
-    margin-left: ${widthOffset};
+    transform: translateX(-50%);
   `,
   left: css`
-    top: ${paddingOffset};
+    ${verticalAlignment()}
     right: 100%;
     margin-right: ${marginOffset};
   `,
@@ -89,7 +81,9 @@ export const Container = styled.div<ContainerProps>`
   ${({ theme, position }: ExtendedTheme<ContainerProps>) => css`
     ${TextWrapper} {
       visibility: hidden;
-      width: ${getTooltipWidth(theme)};
+      width: max-content;
+      max-width: ${getTooltipWidth(theme)};
+      min-width: ${theme.SpacingBase24};
       text-align: center;
       padding: ${theme.SpacingBase16} ${theme.SpacingBase24};
       color: ${theme.ColorBaseBlack100};
@@ -104,11 +98,6 @@ export const Container = styled.div<ContainerProps>`
       ${position &&
       getPositionValues({
         marginOffset: theme.SpacingBase16,
-        widthOffset: calculateWidthOffset(
-          getHaloValue(getTooltipWidth(theme)),
-          getHaloValue(theme.SpacingBase24)
-        ),
-        paddingOffset: `-${theme.SpacingBase16}`,
       })[position]}
       z-index: 1;
     }
