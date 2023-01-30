@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.25.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.24.1...@newcross-ui/react@1.25.0) (2023-01-30)
+
+
+### Features
+
+* **ASK-388:** dropdown discriminated unions  ([fd3bd3d](https://bitbucket.org/newcrossdev/newcross-ui/commits/fd3bd3d81cd3c7f50b4c66e8b652829daa994fdf))
+
+
+
+
+
 ## [1.24.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.24.0...@newcross-ui/react@1.24.1) (2023-01-27)
 
 **Note:** Version bump only for package @newcross-ui/react
