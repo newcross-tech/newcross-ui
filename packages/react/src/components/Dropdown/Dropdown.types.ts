@@ -4,6 +4,18 @@ import { DropdownProps } from './Dropdown';
 
 export type DropdownValueType = undefined | string | string[];
 
+export type SingleProps = {
+  variant?: 'single';
+  selectedValue?: string;
+  onChange?: (value: string) => void;
+};
+
+export type MultiProps = {
+  variant?: 'multi';
+  selectedValue?: string[];
+  onChange?: (value: string[]) => void;
+};
+
 export type ErrorProps = {
   $hasError: boolean;
 };

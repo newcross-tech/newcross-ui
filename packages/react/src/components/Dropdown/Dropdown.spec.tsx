@@ -55,7 +55,7 @@ describe('Dropdown Component', () => {
     renderComponent({ selectedValue: 'Option 1' });
 
     // Assert
-    expect(ui.dropdownValue(testID).get()).toBeInTheDocument();
+    expect(ui.dropdownValue(testID).get()).toBeVisible();
   });
 
   it('renders successfully with error text', () => {
@@ -63,7 +63,7 @@ describe('Dropdown Component', () => {
     renderComponent({ errorText: 'Error' });
 
     // Assert
-    expect(ui.errorText(testID).get()).toBeInTheDocument();
+    expect(ui.errorText(testID).get()).toBeVisible();
   });
 
   it('renders value as disabled', () => {
@@ -71,7 +71,7 @@ describe('Dropdown Component', () => {
     renderComponent({ disabled: true });
 
     // Assert
-    expect(ui.label.get()).toBeInTheDocument();
+    expect(ui.label.get()).toBeVisible();
 
     fireEvent.click(ui.dropdownHeaderContainer(testID).get());
 
@@ -112,8 +112,8 @@ describe('Dropdown Component', () => {
     fireEvent.click(byText(/Option 1/i).get());
 
     // Assert
-    expect(ui.dropdownValue(testID).get()).toBeInTheDocument();
-    expect(ui.clearIconContainer.get()).toBeInTheDocument();
+    expect(ui.dropdownValue(testID).get()).toBeVisible();
+    expect(ui.clearIconContainer.get()).toBeVisible();
 
     expect(onChange).toHaveBeenCalled();
   });
@@ -128,7 +128,7 @@ describe('Dropdown Component', () => {
     fireEvent.click(ui.clearIconContainer.get());
 
     // Assert
-    expect(ui.dropdownPlaceholder(testID).get()).toBeInTheDocument();
+    expect(ui.dropdownPlaceholder(testID).get()).toBeVisible();
   });
 
   it('select menu option when Spacebar is chosen', () => {
@@ -146,17 +146,17 @@ describe('Dropdown Component', () => {
 
     executeKeyPress(byText(/Option 1/i).get());
 
-    expect(ui.dropdownValue(testID).get()).toBeInTheDocument();
+    expect(ui.dropdownValue(testID).get()).toBeVisible();
   });
 
   it('when option selected value for multi select header id changes', () => {
     //Act
-    renderComponent({ isMulti: true });
+    renderComponent({ variant: 'multi' });
 
     fireEvent.click(byText(/Option 1/i).get());
 
     // Assert
-    expect(ui.dropdownMultiPillValue(testID).get()).toBeInTheDocument();
+    expect(ui.dropdownMultiPillValue(testID).get()).toBeVisible();
   });
 
   it('when default value for multi select when option is selected no value id is toggled', () => {
@@ -164,18 +164,18 @@ describe('Dropdown Component', () => {
     const optionValue = 'Option 1';
 
     // Act
-    renderComponent({ selectedValue: [optionValue], isMulti: true });
+    renderComponent({ selectedValue: [optionValue], variant: 'multi' });
 
     const option = ui.dropdownCheckboxOption(optionValue).get();
 
     fireEvent.click(option);
 
     // Assert empty selection
-    expect(ui.dropdownMultiEmptyValue(testID).get()).toBeInTheDocument();
+    expect(ui.dropdownMultiEmptyValue(testID).get()).toBeVisible();
 
     fireEvent.click(option);
 
     // Assert multi select
-    expect(ui.dropdownMultiPillValue(testID).get()).toBeInTheDocument();
+    expect(ui.dropdownMultiPillValue(testID).get()).toBeVisible();
   });
 });

@@ -2,7 +2,6 @@ import { Meta, Story } from '@storybook/react';
 import DropDown, { DropdownProps } from '../../components/Dropdown';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './DropdownInfo';
-
 import Typography from '../../components/Typography';
 import Container from '../Container';
 import Spacing from '../Spacing';
@@ -34,7 +33,7 @@ export const Overview = () => {
         <Spacing size={'Large'} />
         <Typography variant={'heading4'}>Multi Select</Typography>
         <DropDown
-          isMulti
+          variant="multi"
           options={[
             'Dropdown Option 1',
             'Dropdown Option 2',
@@ -62,7 +61,7 @@ export const MultiSelectVariants = () => {
     <Container direction="column" hasPadding={false}>
       <Typography variant={'heading4'}>Default Multi Select</Typography>
       <DropDown
-        isMulti
+        variant="multi"
         label="Label"
         placeholder="Select some 'labels'"
         options={options}
@@ -72,7 +71,7 @@ export const MultiSelectVariants = () => {
       <Spacing size={'Large'} />
       <Typography variant={'heading4'}>Disabled Dropdown</Typography>
       <DropDown
-        isMulti
+        variant="multi"
         placeholder={'Disabled Dropdown'}
         disabled
         options={options}
@@ -81,7 +80,7 @@ export const MultiSelectVariants = () => {
       <Spacing size={'Large'} />
       <Typography variant={'heading4'}>Error Dropdown</Typography>
       <DropDown
-        isMulti
+        variant="multi"
         placeholder={'Error Dropdown'}
         errorText={'Please make a selection'}
         options={options}
@@ -139,6 +138,7 @@ const Template: Story<DropdownProps> = ({ ...rest }) => (
 
 export const Interactive = Template.bind({});
 Interactive.args = {
+  variant: 'single',
   options: [
     'Option 1',
     'Option 2',

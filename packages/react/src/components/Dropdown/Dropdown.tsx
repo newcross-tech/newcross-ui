@@ -11,19 +11,15 @@ import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import Checkbox from '../Checkbox';
 import * as TextStyled from '../TextInput/TextInput.style';
 import * as Styled from './Dropdown.style';
-import { DropdownValueType } from './Dropdown.types';
+import { MultiProps, SingleProps } from './Dropdown.types';
 import DropdownValue from './DropdownValue';
 import { getHeaderValueId } from './utils/getHeaderValueId';
 
-export type DropdownProps = {
+type CommonProps = {
   /**
    * Used to set the placeholder text in the dropdown.
    */
   placeholder?: string;
-  /**
-   * The value of the dropdown.
-   */
-  selectedValue?: DropdownValueType;
   /**
    * The selectable values
    */
@@ -40,17 +36,11 @@ export type DropdownProps = {
    * Detremines whether text input is disabled.
    */
   disabled?: boolean;
-  /**
-   * Detremines whether Multi or Single select dropdown
-   */
-  isMulti?: boolean;
-  /**
-   * Callback fired when the state is changed.
-   */
-  onChange?: (value: DropdownValueType) => void;
 } & TestProp;
 
 export const baseTestId = 'dropdown';
+
+export type DropdownProps = (SingleProps | MultiProps) & CommonProps;
 
 const DropdownWrapper = (props: DropdownProps) => (
   <Dropdown
@@ -64,14 +54,14 @@ const Dropdown = ({
   placeholder,
   selectedValue,
   disabled,
+  variant = 'single',
   errorText,
   label,
   testID,
-  isMulti = false,
-  onChange,
+  ...rest
 }: DropdownProps) => {
   const [isFocused, setIsFocused] = useState(false);
-  const [value, setValue] = useState<DropdownValueType>(selectedValue);
+  const [value, setValue] = useState(selectedValue);
   const containerRef = useRef<HTMLDivElement>(null);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -80,9 +70,18 @@ const Dropdown = ({
 
   const theme = useTheme();
   const hasError = !!errorText;
+  const isMulti = variant === 'multi';
+  const showClearIcon = !disabled && value;
 
-  const onChangeHandler = (value: DropdownValueType) =>
-    onChange && onChange(value);
+  const onChangeHandler = (value?: string | string[]) => {
+    if (isMulti) {
+      const multiProps = rest as MultiProps;
+      multiProps.onChange && multiProps.onChange(value as string[]);
+    } else {
+      const singleProps = rest as SingleProps;
+      singleProps.onChange && singleProps.onChange(value as string);
+    }
+  };
 
   const onClear = (event: SyntheticEvent) => {
     event.stopPropagation();
@@ -91,7 +90,7 @@ const Dropdown = ({
     setIsFocused(false);
   };
 
-  const onSingleSelect = (value?: string) => {
+  const onSingleSelect = (value: string) => {
     setValue(value);
     onChangeHandler(value);
     setIsFocused(false);
@@ -127,8 +126,6 @@ const Dropdown = ({
       isFocused,
     }),
   });
-
-  const showClearIcon = !disabled && value;
 
   return (
     <Styled.Container ref={containerRef}>
@@ -202,7 +199,7 @@ const Dropdown = ({
             return (
               <div key={`${baseTestId}-option-${index}`}>
                 <Styled.Option
-                  isMulti={!!isMulti}
+                  isMulti={isMulti}
                   variant={'paragraph1'}
                   onClick={onOptionSelect}
                   onKeyPress={(event: React.KeyboardEvent<HTMLElement>) =>

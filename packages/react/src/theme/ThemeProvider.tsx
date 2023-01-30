@@ -3,7 +3,7 @@ import * as theme from '@newcross-ui/design-tokens';
 import { ThemeProvider as SCThemeProvider } from 'styled-components';
 import Brand from './Brand';
 
-const defaultTheme = theme.web[Brand.healthforce];
+const defaultTheme = theme.web['healthforce'];
 
 export const ThemeContext = createContext(defaultTheme);
 export type ThemeDesignTokens = typeof defaultTheme;
@@ -14,7 +14,7 @@ export type ThemeProviderProps = {
 };
 
 const ThemeProvider = ({
-  brand = Brand.healthforce,
+  brand = 'healthforce',
   children,
 }: ThemeProviderProps) => (
   <SCThemeProvider theme={theme.web[brand]}>{children}</SCThemeProvider>

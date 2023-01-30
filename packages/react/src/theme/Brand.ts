@@ -1,8 +1,3 @@
-enum Brand {
-  healthforce = 'healthforce',
-  homeclinic = 'homeclinic',
-  yourcare = 'yourcare',
-  yourlife = 'yourlife',
-}
+type Brand = 'healthforce' | 'homeclinic' | 'yourcare' | 'yourlife';
 
 export default Brand;
