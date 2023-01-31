@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.25.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.25.0...@newcross-ui/react@1.25.1) (2023-01-31)
+
+
+### Bug Fixes
+
+* reverting Brand enum config ([f637792](https://bitbucket.org/newcrossdev/newcross-ui/commits/f637792583cba7deb790eb69ddab2db558014eac))
+
+
+
+
+
 # [1.25.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.24.1...@newcross-ui/react@1.25.0) (2023-01-30)
 
 
