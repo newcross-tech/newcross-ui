@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.35.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.34.1...@newcross-ui/react-native@1.35.0) (2023-01-31)
+
+
+### Features
+
+* **HFGO-1509:** create pressable icon ([2f35eba](https://bitbucket.org/newcrossdev/newcross-ui/commits/2f35eba38ce6168afaa5a3005eb406b178bef491))
+
+
+
+
+
 ## [1.34.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.34.0...@newcross-ui/react-native@1.34.1) (2023-01-24)
 
 **Note:** Version bump only for package @newcross-ui/react-native
