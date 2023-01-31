@@ -107,3 +107,7 @@ export {
   default as CheckboxGroup,
   CheckboxGroupProps,
 } from './components/CheckboxGroup';
+export {
+  default as PressableIcon,
+  PressableIconProps,
+} from './components/PressableIcon';
