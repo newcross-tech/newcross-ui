@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import Brand from './Brand';
 import ThemeProvider, { ThemeDesignTokens } from './ThemeProvider';
 import useTheme from '../hooks/useTheme';
 
@@ -27,7 +28,7 @@ describe('ThemeProvider', () => {
 
   it('renders children with given brand', () => {
     // Arrange
-    const brand = 'homeclinic';
+    const brand = Brand.homeclinic;
 
     // Act
     const { getByTestId } = render(
