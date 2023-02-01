@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.39.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.38.0...@newcross-stories/react-native@1.39.0) (2023-02-01)
+
+
+### Features
+
+* **hfgo-1616:** added selected dates as a prop for calendar ([5c79a10](https://bitbucket.org/newcrossdev/newcross-ui/commits/5c79a10f94efa394a0d3bde55d32e204130c28fb))
+
+
+
+
+
 # [1.38.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-stories/react-native@1.37.1...@newcross-stories/react-native@1.38.0) (2023-01-31)
 
 
