@@ -19,7 +19,7 @@ import CalendarHeader from './CalendarHeader';
 export type CalendarProps = {
   /**
    * hideExtraDays - hide days from previous and next month
-   * deafult is true
+   * default is true
    */
   hideExtraDays?: boolean;
   /**
@@ -36,19 +36,23 @@ export type CalendarProps = {
    */
   startDate?: Date;
   /**
-   * noShiftsDates - No shift dates available
+   * selected dates array
+   */
+  selectedDates?: string[];
+  /**
+   * no shift dates array
    */
   noShiftsDates?: string[];
   /**
-   * bookedDates - Booked dates array
+   * booked dates array
    */
   bookedDates?: string[];
   /**
-   * unavailableDates - Unavailable dates
+   * unavailable dates array
    */
   unavailableDates?: string[];
   /**
-   * inactiveDates - Inactive dates
+   * inactive dates array
    */
   inactiveDates?: string[];
   /**
@@ -80,10 +84,6 @@ export type CalendarProps = {
    */
   onMonthChange?: (date: Date) => void;
   /**
-   * Initial selected dates
-   */
-  initialSelectedDates?: Array<string>;
-  /**
    * Initial selected date range
    */
   initialSingleDateRange?: Array<string>;
@@ -104,11 +104,11 @@ const Calendar = ({
   bookedDates = [],
   unavailableDates = [],
   inactiveDates = [],
+  selectedDates = [],
   onDateSelection,
   onSingleDateRange,
   onMultipleDateRange,
   onMonthChange,
-  initialSelectedDates = [],
   initialSingleDateRange = [],
   initialMultipleDateRange = [],
   ...rest
@@ -128,9 +128,6 @@ const Calendar = ({
   const [date, setDate] = useState(initialDate);
   const formattedDate = formatDate(date);
   const formattedInitialDate = formatDate(initialDate);
-
-  const [selectedDates, setSelectedDates] =
-    useState<Array<string>>(initialSelectedDates);
 
   const [singleDateRange, setSingleDateRange] = useState<Array<string>>(
     initialSingleDateRange
@@ -166,12 +163,14 @@ const Calendar = ({
   const hasOneRecord = (strings: Array<string>) => strings.length === 1;
 
   const handleDayPress = (day: string) => {
-    if (selectedDates.includes(day)) {
-      setSelectedDates(
-        selectedDates.filter((selectedDate) => selectedDate !== day)
-      );
-    } else {
-      setSelectedDates(
+    if (onDateSelection) {
+      if (selectedDates.includes(day)) {
+        return onDateSelection(
+          selectedDates.filter((selectedDate) => selectedDate !== day)
+        );
+      }
+
+      onDateSelection(
         hasMultipleDateSelection ? [...selectedDates, day] : [day]
       );
     }
@@ -259,10 +258,6 @@ const Calendar = ({
 
     onSingleDateRange && onSingleDateRange(singleDateRange);
   }, [singleDateRange]);
-
-  useEffect(() => {
-    onDateSelection && onDateSelection(selectedDates);
-  }, [selectedDates]);
 
   return (
     <NativeCalendar

@@ -119,20 +119,18 @@ describe('Calendar Component', () => {
       });
     });
 
-    it('returns empty array when same date is clicked twice', async () => {
+    it('returns empty array when a selected day is clicked', async () => {
       // Arrange
       const onDateSelection = jest.fn();
       const { getByTestId } = render(
         <Calendar
           onDateSelection={onDateSelection}
           startDate={new Date('2022-05-01')}
+          selectedDates={['2022-05-01']}
         />
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-01')
-      );
       fireEvent.press(
         getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-01')
       );
@@ -153,13 +151,11 @@ describe('Calendar Component', () => {
           hasMultipleDateSelection
           onDateSelection={onDateSelection}
           startDate={new Date('2022-05-01')}
+          selectedDates={['2022-05-01']}
         />
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-01')
-      );
       fireEvent.press(
         getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-02')
       );

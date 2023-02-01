@@ -1,12 +1,13 @@
+import { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 import {
+  Button,
   Calendar,
   CalendarProps,
   Typography,
   TypographyVariant,
 } from '@newcross-ui/react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import useState from 'storybook-addon-state';
 import Container from '../Container';
 import { isWebPlatform } from '../utils';
 import { getParameters } from '../utils';
@@ -43,42 +44,38 @@ export const Variants = () => {
     ? { minWidth: '300px', maxWidth: '350px' }
     : {};
 
-  const [initialSelectedDates, setInitialSelectedDates] = useState(
-    'initialSelectedDates',
-    ['2023-01-24']
-  );
-  const [multipleInitialSelectedDates, setMultipleInitialSelectedDates] =
-    useState('multipleInitialSelectedDates', [
-      '2023-01-24',
-      '2023-01-25',
-      '2023-01-26',
-    ]);
+  const startDate = new Date('2023-01-01');
 
-  const [initialSingleSelectedRange, setInitialSingleSelectedRange] = useState(
-    'initialSingleSelectedRange',
-    ['2023-01-24', '2023-01-27']
+  const [singleSelectedDates, setSingleSelectedDates] = useState<Array<string>>(
+    ['2023-01-07']
   );
+
+  const [multipleSelectedDates, setMultipleSelectedDates] = useState<
+    Array<string>
+  >(['2023-01-07', '2023-01-08']);
+
+  const [initialSingleSelectedRange, setInitialSingleSelectedRange] = useState([
+    '2023-01-24',
+    '2023-01-27',
+  ]);
 
   const [initialMultipleSelectedRanges, setInitialMultipleSelectedRanges] =
-    useState('initialMultipleSelectedRanges', [
+    useState([
       ['2023-01-24', '2023-01-27'],
       ['2023-01-28', '2023-01-30'],
     ]);
 
-  const [noShiftsDates, setNoShiftsDates] = useState('noShiftsDates', [
+  const [noShiftsDates, setNoShiftsDates] = useState([
     '2023-01-15',
     '2023-01-16',
   ]);
 
-  const [bookedDates, setBookedDates] = useState('bookedDates', [
-    '2023-01-17',
-    '2023-01-18',
-  ]);
-  const [unavailableDates, setUnavailableDates] = useState('unavailableDates', [
+  const [bookedDates, setBookedDates] = useState(['2023-01-17', '2023-01-18']);
+  const [unavailableDates, setUnavailableDates] = useState([
     '2023-01-19',
     '2023-01-20',
   ]);
-  const [inactiveDates, setInactiveDates] = useState('inactiveDates', [
+  const [inactiveDates, setInactiveDates] = useState([
     '2023-01-21',
     '2023-01-22',
   ]);
@@ -97,11 +94,13 @@ export const Variants = () => {
           </Typography>
           <Spacing />
           <Calendar
-            initialSelectedDates={initialSelectedDates}
+            startDate={startDate}
+            selectedDates={singleSelectedDates}
             noShiftsDates={noShiftsDates}
             bookedDates={bookedDates}
             unavailableDates={unavailableDates}
             inactiveDates={inactiveDates}
+            onDateSelection={(dates) => setSingleSelectedDates(dates)}
           />
         </Container>
         <Container containerStyle={containerStyle}>
@@ -110,12 +109,14 @@ export const Variants = () => {
           </Typography>
           <Spacing />
           <Calendar
+            startDate={startDate}
+            selectedDates={multipleSelectedDates}
             hasMultipleDateSelection
-            initialSelectedDates={multipleInitialSelectedDates}
             noShiftsDates={noShiftsDates}
             bookedDates={bookedDates}
             unavailableDates={unavailableDates}
             inactiveDates={inactiveDates}
+            onDateSelection={(dates) => setMultipleSelectedDates(dates)}
           />
         </Container>
         <Container containerStyle={containerStyle}>
@@ -124,6 +125,7 @@ export const Variants = () => {
           </Typography>
           <Spacing />
           <Calendar
+            startDate={startDate}
             hasSingleDateRange
             initialSingleDateRange={initialSingleSelectedRange}
             noShiftsDates={noShiftsDates}
@@ -138,6 +140,7 @@ export const Variants = () => {
           </Typography>
           <Spacing />
           <Calendar
+            startDate={startDate}
             hasMultipleDateRange
             initialMultipleDateRange={initialMultipleSelectedRanges}
             noShiftsDates={noShiftsDates}
