@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.37.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.36.0...@newcross-ui/react-native@1.37.0) (2023-02-03)
+
+
+### Features
+
+* **HFGO-1216:** make no shift dates gravitas, strikethrough and clickable ([5fcae75](https://bitbucket.org/newcrossdev/newcross-ui/commits/5fcae753457149dd5ebcef3c92a202c3cf49c758))
+
+
+
+
+
 # [1.36.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.35.0...@newcross-ui/react-native@1.36.0) (2023-02-01)
 
 
