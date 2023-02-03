@@ -1,9 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled, { css } from 'styled-components';
-import { ExtendedTheme, Theme } from '../../types/Theme';
+import { Theme } from '../../types/Theme';
 import { getTabbedStateStyles } from '../../utils';
 import { TypographyVariant } from '../Typography';
-import { LinkProps } from './Link';
 import { LinkCoreVariant, LinkTextProp } from './Link.types';
 import { faCircleChevronRight } from '@fortawesome/pro-solid-svg-icons/faCircleChevronRight';
 import { faEnvelope } from '@fortawesome/pro-regular-svg-icons/faEnvelope';
@@ -34,6 +33,7 @@ export const LinkContent = styled.div`
   ${({ theme }: Theme) => css`
     display: flex;
     align-items: center;
+
     &:active {
       opacity: ${theme.LinkPressedOpacity};
     }
@@ -53,12 +53,19 @@ export const LinkText = styled.div<LinkTextProp>`
   `};
 `;
 
-export const Link = styled.a<LinkProps>`
+const getLinkStyles = () => css`
   cursor: pointer;
-
-  ${({ theme }: ExtendedTheme<LinkProps>) => css`
+  ${({ theme }: Theme) => css`
     color: ${theme.LinkColor};
     width: fit-content;
     ${getTabbedStateStyles()}
   `};
+`;
+
+export const LinkDiv = styled.div`
+  ${getLinkStyles()};
+`;
+
+export const LinkAnchor = styled.a`
+  ${getLinkStyles()};
 `;

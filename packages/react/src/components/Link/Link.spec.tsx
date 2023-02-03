@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { byTestId, byText } from 'testing-library-selector';
+import { byTestId } from 'testing-library-selector';
 import Link, { LinkProps } from './Link';
 import { axe } from '../../utils/test/axeConfig';
 import { executeKeyPress } from '../../utils/test/executeKeyPress';
@@ -13,11 +13,10 @@ const renderComponent = (props: LinkProps) => {
   render(<Link {...customProps} />);
 };
 
-const baseTestId = 'link';
-
 describe('Link Component', () => {
   const ui = {
-    linkComp: byTestId(`${baseTestId}-component`),
+    linkAnchorComp: byTestId(`link-anchor-component`),
+    linkDivComp: byTestId(`link-div-component`),
   };
 
   it('should not have any a11y errors', async () => {
@@ -30,18 +29,22 @@ describe('Link Component', () => {
 
   it('should render successfully', () => {
     // Act
-    renderComponent({ variant: 'email' });
-
+    renderComponent({
+      variant: 'email',
+      href: 'mailto:someone@newcrosshealthcare.com',
+    });
+    expect(ui.linkAnchorComp.get().nodeName.toLowerCase()).toBe('a');
     // Assert
-    expect(ui.linkComp.get()).toBeInTheDocument();
+    expect(ui.linkAnchorComp.get()).toBeVisible();
   });
 
   it('triggers onClick using Space successfully', () => {
     const onClick = jest.fn();
     // Act
-    renderComponent({ onClick: onClick, variant: 'external' });
+    renderComponent({ onClick, variant: 'external' });
+    expect(ui.linkDivComp.get().nodeName.toLowerCase()).toBe('div');
 
-    executeKeyPress(ui.linkComp.get());
+    executeKeyPress(ui.linkDivComp.get());
     // Assert
     expect(onClick).toHaveBeenCalled();
   });

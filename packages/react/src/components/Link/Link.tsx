@@ -23,7 +23,7 @@ export type LinkProps = {
    */
   onClick?: (href?: string) => void;
 } & TestProp &
-  AnchorHTMLAttributes<HTMLAnchorElement>;
+  AnchorHTMLAttributes<HTMLAnchorElement | HTMLDivElement>;
 
 const baseTestId = 'link';
 
@@ -32,33 +32,47 @@ const Link = ({
   children,
   variant = 'section',
   testID = '',
-  href,
   onClick,
+  href,
   ...rest
 }: LinkProps) => {
   const leftIcon = variant === 'email' || variant === 'phone';
 
   const rightIcon = variant === 'external' || variant === 'internal';
 
+  const getContent = () => (
+    <Styled.LinkContent>
+      {leftIcon && <Styled.LinkIcon icon={Styled.getIcon()[variant]} />}
+      <Styled.LinkText leftIcon={leftIcon}>
+        <Typography variant={Styled.getTypographySizes()[size]}>
+          {children}
+        </Typography>
+      </Styled.LinkText>
+      {rightIcon && <Styled.LinkIcon icon={Styled.getIcon()[variant]} />}
+    </Styled.LinkContent>
+  );
+
   return (
-    <Styled.Link
-      data-testid={`${baseTestId}-component${testID}`}
-      tabIndex={0}
-      variant={variant}
-      onKeyPress={(event) => onClick && onSpacePressTrigger(event, onClick)}
-      href={href}
-      {...rest}
-    >
-      <Styled.LinkContent>
-        {leftIcon && <Styled.LinkIcon icon={Styled.getIcon()[variant]} />}
-        <Styled.LinkText leftIcon={leftIcon}>
-          <Typography variant={Styled.getTypographySizes()[size]}>
-            {children}
-          </Typography>
-        </Styled.LinkText>
-        {rightIcon && <Styled.LinkIcon icon={Styled.getIcon()[variant]} />}
-      </Styled.LinkContent>
-    </Styled.Link>
+    <>
+      {href ? (
+        <Styled.LinkAnchor
+          data-testid={`${baseTestId}-anchor-component${testID}`}
+          href={href}
+          {...rest}
+        >
+          {getContent()}
+        </Styled.LinkAnchor>
+      ) : (
+        <Styled.LinkDiv
+          data-testid={`${baseTestId}-div-component${testID}`}
+          onKeyPress={(event) => onClick && onSpacePressTrigger(event, onClick)}
+          tabIndex={0}
+          {...rest}
+        >
+          {getContent()}
+        </Styled.LinkDiv>
+      )}
+    </>
   );
 };
 

@@ -62,3 +62,4 @@ export {
 export { default as Brand } from './theme/Brand';
 
 export { default as ThemeProvider } from './theme/ThemeProvider';
+export { Theme, ExtendedTheme } from './types/Theme';
