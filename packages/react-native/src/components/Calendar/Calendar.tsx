@@ -265,8 +265,6 @@ const Calendar = ({
       current={formattedDate}
       markingType={'period'}
       markedDates={{
-        ...(noShiftsDates?.length &&
-          getStylesByDate(DateType.noShiftsDates, noShiftsDates, theme)),
         ...(bookedDates?.length &&
           getStylesByDate(DateType.bookedDates, bookedDates, theme)),
         ...(unavailableDates?.length &&
@@ -275,6 +273,8 @@ const Calendar = ({
           getStylesByDate(DateType.inactiveDates, inactiveDates, theme)),
         ...(selectedDates?.length &&
           getStylesByDate(DateType.selectedDates, selectedDates, theme)),
+        ...(noShiftsDates?.length &&
+          getStylesByDate(DateType.noShiftsDates, noShiftsDates, theme)),
 
         ...selectedDateRange,
         ...(!isInitialDateSelected && {

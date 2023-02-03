@@ -19,6 +19,9 @@
       "booked": {
         "background-color": { "value": "{brand.color.secondary.300.value}" }
       },
+      "no-shifts": {
+        "color:": { "value": "{brand.color.primary.value}" }
+      },
       "unavailable": {
         "background-color": {
           "value": "{color.semantics.error.300.value}"
