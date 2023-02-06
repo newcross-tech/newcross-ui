@@ -36,7 +36,8 @@ export const Variants = () => {
       <Typography variant={'heading4'}>Single Select Group</Typography>
       <ToggleButtonGroup
         selectedValue={selectedSingleBtn}
-        onSingleSelect={setSelectedSingleBtn}
+        onToggle={setSelectedSingleBtn}
+        variant="single"
       >
         <ToggleButton value="1">Option A</ToggleButton>
         <ToggleButton value="2">Option B</ToggleButton>
@@ -49,7 +50,8 @@ export const Variants = () => {
 
       <ToggleButtonGroup
         selectedValue={selectedMultipleBtn}
-        isMultiSelect={setSelectedMultipleBtn}
+        onToggle={setSelectedMultipleBtn}
+        variant="multi"
         direction={'row'}
       >
         <ToggleButton value="1">Option A</ToggleButton>
@@ -65,7 +67,8 @@ export const Variants = () => {
       <Container>
         <ToggleButtonGroup
           selectedValue={selectedVerticalMultipleBtn}
-          isMultiSelect={setSelectedVerticalMultipleBtn}
+          onToggle={setSelectedVerticalMultipleBtn}
+          variant="multi"
           direction={'column'}
         >
           <ToggleButton value="1">Jun</ToggleButton>
@@ -83,7 +86,8 @@ export const Variants = () => {
       <Container direction="column" display={'block'}>
         <ToggleButtonGroup
           selectedValue={selectedHorizontalBtns}
-          isMultiSelect={setSelectedHorizonalBtns}
+          onToggle={setSelectedHorizonalBtns}
+          variant="multi"
         >
           <ToggleButton value="1" fullWidth>
             Jupiter Green
@@ -94,7 +98,8 @@ export const Variants = () => {
         </ToggleButtonGroup>
         <ToggleButtonGroup
           selectedValue={selectedHorizontalBtns}
-          isMultiSelect={setSelectedHorizonalBtns}
+          onToggle={setSelectedHorizonalBtns}
+          variant="multi"
         >
           <ToggleButton value="3" fullWidth>
             Jenny Gray care
@@ -105,7 +110,8 @@ export const Variants = () => {
         </ToggleButtonGroup>
         <ToggleButtonGroup
           selectedValue={selectedHorizontalBtns}
-          isMultiSelect={setSelectedHorizonalBtns}
+          onToggle={setSelectedHorizonalBtns}
+          variant="multi"
         >
           <ToggleButton value="5" fullWidth>
             Leaf
@@ -134,7 +140,8 @@ export const Overview = () => {
       <Container hasPadding={false}>
         <ToggleButtonGroup
           selectedValue={selectedBtns}
-          isMultiSelect={setSelectedBtns}
+          onToggle={setSelectedBtns}
+          variant="multi"
         >
           <ToggleButton value="1">Option A</ToggleButton>
           <ToggleButton value="2">Option B</ToggleButton>
@@ -155,7 +162,8 @@ const Template: Story<ToggleButtonGroupProps> = (props) => {
       <ToggleButtonGroup
         {...props}
         selectedValue={selectedBtns}
-        isMultiSelect={setSelectedBtns}
+        onToggle={setSelectedBtns}
+        variant="multi"
       >
         <ToggleButton value="1" fullWidth>
           Jan

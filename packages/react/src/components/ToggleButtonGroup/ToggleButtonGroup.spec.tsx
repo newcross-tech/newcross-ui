@@ -4,6 +4,8 @@ import { axe } from '../../utils/test/axeConfig';
 import ToggleButton from '../ToggleButton/ToggleButton';
 import ToggleButtonGroup from './ToggleButtonGroup';
 import { getMultipleSelectedValues } from './utils/getMultipleSelectedValues';
+import { calculateSelectedValue } from './utils/calculateSelectedValue';
+import { SingleSelect, MultiSelect } from './ToggleButtonGroup.types';
 
 describe('ToggleButtonGroup', () => {
   const ui = {
@@ -15,9 +17,11 @@ describe('ToggleButtonGroup', () => {
   it('should not have any a11y errors', async () => {
     // Arrange
     const props = {
-      onSingleSelect: jest.fn(),
-      selectedValue: ['1'],
-    };
+      onToggle: jest.fn(),
+      selectedValue: '1',
+      variant: 'single',
+    } as SingleSelect;
+
     // Act
     render(
       <ToggleButtonGroup {...props}>
@@ -33,9 +37,10 @@ describe('ToggleButtonGroup', () => {
     // Arrange
 
     const props = {
-      onSingleSelect: jest.fn(),
-      selectedValue: ['1'],
-    };
+      onToggle: jest.fn(),
+      selectedValue: '1',
+      variant: 'single',
+    } as SingleSelect;
 
     // Act
     render(
@@ -46,16 +51,19 @@ describe('ToggleButtonGroup', () => {
     );
 
     // Assert
-    expect(ui.toggleGroupComp.get()).toBeInTheDocument();
+    expect(ui.toggleGroupComp.get()).toBeVisible();
   });
 
-  it('selects multiple toggle buttons when selectMultiple prop is given', () => {
+  it('string[] onToggle gets called when the variant is multi and a button is clicked', () => {
     // Arrange
     const isMultiSelect = jest.fn();
+
     const props = {
       selectedValue: ['1', '2'],
-      isMultiSelect: isMultiSelect,
-    };
+      onToggle: isMultiSelect,
+      variant: 'multi',
+    } as MultiSelect;
+
     // Act
     render(
       <ToggleButtonGroup {...props}>
@@ -74,19 +82,21 @@ describe('ToggleButtonGroup', () => {
     fireEvent.click(ui.toggleGroupId('3').get());
 
     // Assert
-    expect(ui.toggleGroupSelectedId('1').get()).toBeInTheDocument();
-    expect(ui.toggleGroupSelectedId('2').get()).toBeInTheDocument();
-    expect(ui.toggleGroupId('3').get()).toBeInTheDocument();
+    expect(ui.toggleGroupSelectedId('1').get()).toBeVisible();
+    expect(ui.toggleGroupSelectedId('2').get()).toBeVisible();
+    expect(ui.toggleGroupId('3').get()).toBeVisible();
     expect(isMultiSelect).toHaveBeenCalled();
   });
 
-  it('selects a single toggle buttons when selectMultiple prop is false', () => {
+  it('string onToggle gets called when the variant is single and a button is clicked', () => {
     // Arrange
     const onSingleSelect = jest.fn();
+
     const props = {
-      onSingleSelect: onSingleSelect,
+      onToggle: onSingleSelect,
       selectedValue: '1',
-    };
+      variant: 'single',
+    } as SingleSelect;
     // Act
     render(
       <ToggleButtonGroup {...props}>
@@ -103,9 +113,9 @@ describe('ToggleButtonGroup', () => {
     );
     fireEvent.click(ui.toggleGroupId('2').get());
     // Assert
-    expect(ui.toggleGroupSelectedId('1').get()).toBeInTheDocument();
-    expect(ui.toggleGroupId('2').get()).toBeInTheDocument();
-    expect(ui.toggleGroupId('3').get()).toBeInTheDocument();
+    expect(ui.toggleGroupSelectedId('1').get()).toBeVisible();
+    expect(ui.toggleGroupId('2').get()).toBeVisible();
+    expect(ui.toggleGroupId('3').get()).toBeVisible();
     expect(onSingleSelect).toHaveBeenCalled();
   });
 
@@ -121,15 +131,15 @@ describe('ToggleButtonGroup', () => {
     expect(result).toEqual(['2']);
   });
 
-  it('returns an empty array when selected value is not an array of strings', () => {
+  it('returns false when calculateSelectedValue is called with undefined', () => {
     // Arrange
-    const value = '1';
-    const selectedValues = '1';
+    const value = undefined;
+    const selectedValue = ['1', '2'];
 
     // Act
-    const result = getMultipleSelectedValues(value, selectedValues);
+    const result = calculateSelectedValue(selectedValue, value);
 
     // Assert
-    expect(result).toEqual([]);
+    expect(result).toEqual(false);
   });
 });

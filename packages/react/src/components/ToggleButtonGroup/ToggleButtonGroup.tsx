@@ -3,60 +3,50 @@ import { TestProp } from '../../types/TestProp';
 import { ToggleButtonProps } from '../ToggleButton';
 import { Container } from './ToggleButtonGroup.style';
 import { getMultipleSelectedValues } from './utils/getMultipleSelectedValues';
+import { calculateSelectedValue } from './utils/calculateSelectedValue';
+import { SingleSelect, MultiSelect } from './ToggleButtonGroup.types';
 
-export type ToggleButtonGroupProps = {
+type ToggleButtonGroupGeneralProps = {
   /**
    * The content of the component.
    */
   children: Array<ReactElement<ToggleButtonProps>>;
-  /**
-   * The value to associate with the button when
-   * selected in a ToggleButtonGroup
-   */
-  selectedValue: Array<string> | string;
-  /**
-   * Callback fired when the value changes and used when we want single selection of the toggle button group.
-   */
-  onSingleSelect?: (arg: string) => void;
-  /**
-   * Callback fired when the value changes and used when we want multiple selection of the toggle button group.
-   */
-  isMultiSelect?: (arg: Array<string>) => void;
   /**
    * Used to display the group in either a row or a column.
    */
   direction?: 'row' | 'column';
 } & TestProp;
 
+export type ToggleButtonGroupProps = (SingleSelect | MultiSelect) &
+  ToggleButtonGroupGeneralProps;
+
 const ToggleButtonGroup = ({
   children,
   selectedValue,
   direction,
-  onSingleSelect,
-  isMultiSelect,
+  variant,
   ...rest
 }: ToggleButtonGroupProps) => {
-  const calculateSelectedValue = (value?: string) => {
-    if (typeof value === 'string')
-      return Array.isArray(selectedValue)
-        ? selectedValue.includes(value)
-        : selectedValue === value;
-  };
+  const isMulti = variant === 'multi';
 
   const handleOnClick = useCallback(
     (value: string) => {
-      onSingleSelect && onSingleSelect(value);
-      isMultiSelect &&
-        isMultiSelect(getMultipleSelectedValues(value, selectedValue));
+      if (variant === 'single') {
+        const singleProps = rest as SingleSelect;
+        singleProps.onToggle && singleProps.onToggle(value);
+      } else {
+        const multiProps = rest as MultiSelect;
+        multiProps.onToggle &&
+          multiProps.onToggle(getMultipleSelectedValues(value, selectedValue));
+      }
     },
     [selectedValue]
   );
 
   return (
     <Container
-      selectedValue={selectedValue}
       direction={direction}
-      isOnMultiSelect={!!isMultiSelect}
+      isMulti={isMulti}
       data-testid="toggle-button-group"
       {...rest}
     >
@@ -66,7 +56,7 @@ const ToggleButtonGroup = ({
           key: value,
           fullWidth: fullWidth,
           onClick: handleOnClick,
-          selected: selected || calculateSelectedValue(value),
+          selected: selected || calculateSelectedValue(selectedValue, value),
         });
       })}
     </Container>
