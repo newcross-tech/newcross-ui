@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.26.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.25.3...@newcross-ui/react@1.26.0) (2023-02-07)
+
+
+### Features
+
+* **ASK-369:** init web Skeleton + coverage ([4a2a911](https://bitbucket.org/newcrossdev/newcross-ui/commits/4a2a91197b7d2d319d99bf76190628ebcfc4a63e))
+
+
+
+
+
 ## [1.25.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.25.2...@newcross-ui/react@1.25.3) (2023-02-06)
 
 **Note:** Version bump only for package @newcross-ui/react
