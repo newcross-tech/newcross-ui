@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.38.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.37.0...@newcross-ui/react-native@1.38.0) (2023-03-02)
+
+
+### Features
+
+* add numberOfLines property to link and change type of label prop in Checkbox to ReactNode ([a28b424](https://bitbucket.org/newcrossdev/newcross-ui/commits/a28b42447ec7621dd055b48e1eff1fd80f63b9ae))
+
+
+
+
+
 # [1.37.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.36.0...@newcross-ui/react-native@1.37.0) (2023-02-03)
 
 
