@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import {
   Pressable,
   View,
@@ -26,7 +26,7 @@ export type CheckboxProps = {
   /**
    * Label for the checkbox
    */
-  label: string;
+  label: ReactNode;
   /**
    * Whether the press behavior is disabled.
    */

@@ -43,6 +43,10 @@ export type LinkProps = {
    * Used to locate end-to-end tests.
    */
   testID?: string;
+  /**
+   * Used when text is too long
+   */
+  numberOfLines?: number;
 } & PressableProps;
 
 const Link = ({
@@ -53,6 +57,7 @@ const Link = ({
   hasIcon = true,
   mode = Mode.light,
   testID,
+  numberOfLines = 0,
   ...rest
 }: LinkProps) => {
   const theme = useTheme();
@@ -72,6 +77,7 @@ const Link = ({
         <Typography
           variant={getTypographySizes()[size]}
           style={[styles.linkText, style]}
+          numberOfLines={numberOfLines}
         >
           {children}
         </Typography>
