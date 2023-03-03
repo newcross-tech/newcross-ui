@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.38.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.38.0...@newcross-ui/react-native@1.38.1) (2023-03-03)
+
+
+### Bug Fixes
+
+* add container style props to Link component ([f40f1f7](https://bitbucket.org/newcrossdev/newcross-ui/commits/f40f1f7aabe46b861cf211ac921061e31cf4ac69))
+
+
+
+
+
 # [1.38.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.37.0...@newcross-ui/react-native@1.38.0) (2023-03-02)
 
 
