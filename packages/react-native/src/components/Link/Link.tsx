@@ -5,6 +5,7 @@ import {
   TextStyle,
   Pressable,
   PressableProps,
+  ViewStyle,
 } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCircleChevronRight } from '@fortawesome/pro-solid-svg-icons/faCircleChevronRight';
@@ -32,6 +33,10 @@ export type LinkProps = {
    */
   style?: TextStyle;
   /**
+   * Used to add custom styles.
+   */
+  containerStyle?: ViewStyle;
+  /**
    * Show or hide icon
    */
   hasIcon?: boolean;
@@ -58,6 +63,7 @@ const Link = ({
   mode = Mode.light,
   testID,
   numberOfLines = 0,
+  containerStyle = {},
   ...rest
 }: LinkProps) => {
   const theme = useTheme();
@@ -68,7 +74,11 @@ const Link = ({
       testID={testID}
       accessibilityRole="link"
       style={({ pressed }) =>
-        pressedLinkStyle(pressed, styles.container, theme)
+        pressedLinkStyle(
+          pressed,
+          { ...styles.container, ...containerStyle },
+          theme
+        )
       }
       onPress={onPress}
       {...rest}
