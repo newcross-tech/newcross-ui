@@ -15,20 +15,23 @@ describe('getStylesByDate', () => {
 
     expect(result).toEqual({
       '2022-08-17': {
+        disabled: true,
+        disableTouchEvent: true,
         customTextStyle: {
-          textDecorationLine: 'line-through',
           color: theme.CalendarDaysNoShiftsColor,
         },
       },
       '2022-08-19': {
+        disabled: true,
+        disableTouchEvent: true,
         customTextStyle: {
-          textDecorationLine: 'line-through',
           color: theme.CalendarDaysNoShiftsColor,
         },
       },
       '2022-08-20': {
+        disabled: true,
+        disableTouchEvent: true,
         customTextStyle: {
-          textDecorationLine: 'line-through',
           color: theme.CalendarDaysNoShiftsColor,
         },
       },

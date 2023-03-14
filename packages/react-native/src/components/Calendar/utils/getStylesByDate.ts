@@ -11,8 +11,9 @@ const getStylesByDateType = (
   totalRecords: number
 ): StylesByDateType => ({
   [DateType.noShiftsDates]: {
+    disabled: true,
+    disableTouchEvent: true,
     customTextStyle: {
-      textDecorationLine: 'line-through',
       color: theme.CalendarDaysNoShiftsColor,
     },
   },
