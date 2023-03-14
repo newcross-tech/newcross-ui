@@ -20,7 +20,7 @@
         "background-color": { "value": "{brand.color.secondary.300.value}" }
       },
       "no-shifts": {
-        "color:": { "value": "{brand.color.primary.value}" }
+        "color:": { "value": "{color.base.grey.200.value}" }
       },
       "unavailable": {
         "background-color": {
