@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.38.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.38.1...@newcross-ui/react-native@1.38.3) (2023-03-16)
+
+
+### Bug Fixes
+
+* **HFGO-1699:** unnecessary rendering and duplicate expand and collapse ([f01a3a2](https://bitbucket.org/newcrossdev/newcross-ui/commits/f01a3a23ecd34649e9b08d0962fc1e3e6c95b9b2))
+
+
+
+
+
 ## [1.38.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.38.1...@newcross-ui/react-native@1.38.2) (2023-03-14)
 
 **Note:** Version bump only for package @newcross-ui/react-native
