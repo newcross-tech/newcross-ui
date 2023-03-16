@@ -5,6 +5,7 @@ import React, {
   useImperativeHandle,
   useState,
   useEffect,
+  memo,
 } from 'react';
 import {
   Pressable,
@@ -110,7 +111,6 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
 
     const { height: windowHeight } = useWindowDimensions();
 
-    const [active, setActive] = useState(false);
     const [contentHeight, setContentHeight] = useState(0);
 
     const topPosition = useSharedValue(windowHeight);
@@ -120,7 +120,11 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
     const styles = bottomSheetStyle(theme);
 
     useEffect(() => {
-      isOpen ? expand() : collapse();
+      if (isOpen && contentHeight) {
+        expand();
+      } else if (!isOpen && !contentHeight) {
+        collapse();
+      }
     }, [isOpen, contentHeight]);
 
     const snapPointValue = snapPoint
@@ -139,12 +143,10 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
 
     const collapse = useCallback(() => {
       scrollTo(windowHeight);
-      setActive(false);
     }, []);
 
     const expand = useCallback(() => {
       scrollTo(snapPointValue);
-      setActive(true);
     }, [snapPointValue]);
 
     useImperativeHandle(ref, () => ({ scrollTo, collapse, expand }));
@@ -159,7 +161,6 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
       .onEnd(() => {
         if (topPosition.value > snapPointValue + collapseThreshold) {
           scrollTo(windowHeight);
-          runOnJS(setActive)(false);
           onClose && runOnJS(onClose)();
         } else {
           scrollTo(snapPointValue);
@@ -191,7 +192,7 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
 
     return (
       <>
-        {active && hasBackdrop && (
+        {isOpen && hasBackdrop && (
           <AnimatedPressable
             testID="bottom-sheet-backdrop"
             style={[styles.backdrop, backdropAnimationStyle]}
@@ -201,7 +202,7 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
         <GestureDetector gesture={hasGestureIndicator ? gesture : undefined}>
           <Animated.View
             style={[styles.container, animationStyle, containerStyle]}
-            testID={active ? 'bottom-sheet-visible' : 'bottom-sheet-hidden'}
+            testID={isOpen ? 'bottom-sheet-visible' : 'bottom-sheet-hidden'}
           >
             <View
               style={[
@@ -230,4 +231,6 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
   }
 );
 
-export default BottomSheet;
+const BottomSheetMemo = memo(BottomSheet);
+
+export default BottomSheetMemo;
