@@ -231,6 +231,4 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
   }
 );
 
-const BottomSheetMemo = memo(BottomSheet);
-
-export default BottomSheetMemo;
+export default memo(BottomSheet);

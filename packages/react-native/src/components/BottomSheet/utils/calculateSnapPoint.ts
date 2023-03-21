@@ -15,7 +15,7 @@ export const calculateSnapPoint = ({
 
   const snapPoint = windowHeight - bottom - contentHeight - INDICATOR_HEIGHT;
 
-  if (snapPoint <= 0) {
+  if (snapPoint < maxSnapPoint) {
     return maxSnapPoint;
   }
   return snapPoint;
