@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.38.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.38.3...@newcross-ui/react-native@1.38.4) (2023-03-21)
+
+
+### Bug Fixes
+
+* **HFGO-1676:** snap point and memo bottom sheet ([a272ac8](https://bitbucket.org/newcrossdev/newcross-ui/commits/a272ac84039cd58d709b0339307b1b6186412571))
+
+
+
+
+
 ## [1.38.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.38.1...@newcross-ui/react-native@1.38.3) (2023-03-16)
 
 
