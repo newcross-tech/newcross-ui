@@ -131,6 +131,7 @@ const Alert = ({
       </View>
       {hasCloseButton && (
         <Pressable
+          hitSlop={theme.SpacingBase12}
           onPress={onCloseButtonPress}
           style={[styles.iconStyle, styles.closeIconStyle]}
           testID="alert-close-icon"

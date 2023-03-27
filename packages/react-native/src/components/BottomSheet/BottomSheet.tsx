@@ -136,18 +136,21 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
           contentHeight,
         });
 
-    const scrollTo = useCallback((destination: number) => {
-      'worklet';
-      topPosition.value = destination;
-    }, []);
+    const scrollTo = useCallback(
+      (destination: number) => {
+        'worklet';
+        topPosition.value = destination;
+      },
+      [topPosition]
+    );
 
     const collapse = useCallback(() => {
       scrollTo(windowHeight);
-    }, []);
+    }, [scrollTo, windowHeight]);
 
     const expand = useCallback(() => {
       scrollTo(snapPointValue);
-    }, [snapPointValue]);
+    }, [scrollTo, snapPointValue]);
 
     useImperativeHandle(ref, () => ({ scrollTo, collapse, expand }));
 

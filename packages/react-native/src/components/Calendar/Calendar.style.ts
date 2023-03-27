@@ -1,22 +1,18 @@
-import useTheme from '../../hooks/useTheme';
-import { FontWeight } from '../../types';
+import { StyleSheet } from 'react-native';
+import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 
-export const calendarStyles = () => {
-  const theme = useTheme();
-  return {
-    textMonthFontFamily: theme.CalendarFontFamily,
-    textMonthFontWeight: theme.CalendarHeaderFontWeight as FontWeight,
-    textMonthFontSize: theme.CalendarFontSize,
-    monthTextColor: theme.CalendarColor,
-    textDayHeaderFontFamily: theme.CalendarFontFamily,
-    textDayHeaderFontSize: theme.CalendarFontSize,
-    textDayHeaderFontWeight:
-      theme.CalendarHeaderWeekdaysFontWeight as FontWeight,
-    textDayFontFamily: theme.CalendarFontFamily,
-    textDayFontWeight: theme.CalendarHeaderWeekdaysFontWeight as FontWeight,
-    textDayFontSize: theme.CalendarDaysFontSize,
-    dayTextColor: theme.CalendarColor,
-    todayTextColor: theme.CalendarDaysCurrentColor,
-    textDisabledColor: theme.CalendarDaysDisabledColor,
-  };
-};
+export const calendarStyles = (theme: ThemeDesignTokens) =>
+  StyleSheet.create({
+    loaderContainer: {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      bottom: 0,
+      top: 0,
+      zIndex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: theme.ColorNeutralWhite,
+      opacity: theme.OpacityBaseLg,
+    },
+  });

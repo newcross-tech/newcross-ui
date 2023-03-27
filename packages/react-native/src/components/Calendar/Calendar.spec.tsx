@@ -1,17 +1,40 @@
 import React from 'react';
-import { fireEvent, render, waitFor } from '@testing-library/react-native';
+import {
+  fireEvent,
+  render,
+  waitFor,
+  screen,
+} from '@testing-library/react-native';
 import Calendar, { CalendarProps } from './Calendar';
 
 describe('Calendar Component', () => {
   it('renders successfully', () => {
     // Arrange
-    const props: CalendarProps = { testID: 'calendar-component' };
+    const props: CalendarProps = {
+      testID: 'calendar-component',
+    };
 
     // Act
     const { getByTestId } = render(<Calendar {...props} />);
 
     // Assert
     expect(getByTestId('calendar-component')).toBeTruthy();
+    expect(screen.queryByTestId('calendar-loader')).toBeNull();
+  });
+
+  it('renders loading component when displayLoader is true', () => {
+    // Arrange
+    const props: CalendarProps = {
+      testID: 'calendar-component',
+      displayLoader: true,
+    };
+
+    // Act
+    render(<Calendar {...props} />);
+
+    // Assert
+    expect(screen.getByTestId('calendar-loader')).toBeTruthy();
+    expect(screen.getByTestId('calendar-component')).toBeTruthy();
   });
 
   it('renders left and right arrow buttons successfully', () => {

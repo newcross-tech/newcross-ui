@@ -79,8 +79,13 @@ const FloatingActionButton = ({
 
   return (
     <Pressable
+      hitSlop={theme.SpacingBase16}
       testID={testID}
-      style={[styles.container, style]}
+      style={({ pressed }) => [
+        styles.container,
+        { opacity: pressed ? theme.CardPressedOpacity : 1 },
+        style,
+      ]}
       onPress={onPress}
       {...rest}
     >

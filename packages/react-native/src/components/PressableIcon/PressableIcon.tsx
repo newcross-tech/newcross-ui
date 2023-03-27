@@ -1,15 +1,21 @@
 import React from 'react';
-import { Pressable, PressableProps } from 'react-native';
+import { Pressable, PressableProps, StyleProp, ViewStyle } from 'react-native';
 import useTheme from '../../hooks/useTheme';
 
-export type PressableIconProps = PressableProps;
+export type PressableIconProps = {
+  style?: StyleProp<ViewStyle>;
+} & PressableProps;
 
-const PressableIcon = ({ children, ...rest }: PressableIconProps) => {
+const PressableIcon = ({ children, style, ...rest }: PressableIconProps) => {
   const theme = useTheme();
 
   return (
     <Pressable
-      style={({ pressed }) => ({ opacity: pressed ? theme.OpacityBaseMd : 1 })}
+      hitSlop={theme.SpacingBase12}
+      style={({ pressed }) => [
+        { opacity: pressed ? theme.OpacityBaseMd : 1 },
+        style,
+      ]}
       {...rest}
     >
       {children}

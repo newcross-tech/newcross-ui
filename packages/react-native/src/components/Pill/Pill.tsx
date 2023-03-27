@@ -4,6 +4,7 @@ import Typography, { TypographyVariant } from '../Typography';
 import pillStyle from './Pill.style';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
+import useTheme from '../../hooks/useTheme';
 
 export type PillProps = {
   /**
@@ -45,6 +46,7 @@ const Pill = ({
   testID,
   label,
 }: PillProps) => {
+  const theme = useTheme();
   const styles = pillStyle({ label, disabled, icon, removable });
 
   return (
@@ -63,6 +65,10 @@ const Pill = ({
         </Typography>
         {removable && (
           <Pressable
+            hitSlop={theme.SpacingBase8}
+            style={({ pressed }) => [
+              { opacity: pressed ? theme.CardPressedOpacity : 1 },
+            ]}
             onPress={onPress}
             disabled={disabled}
             testID={`pill-pressable-container-${testID}`}

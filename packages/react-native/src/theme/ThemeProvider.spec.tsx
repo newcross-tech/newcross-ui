@@ -8,7 +8,7 @@ import useTheme from '../hooks/useTheme';
 const tokens = { foo: 'bar' };
 
 jest.mock('@newcross-ui/design-tokens', () => ({
-  native: { healthforce: tokens },
+  native: { homeclinic: tokens, healthforce: tokens },
 }));
 
 describe('ThemeProvider', () => {
@@ -20,11 +20,22 @@ describe('ThemeProvider', () => {
 
   it('provides correct set of props to children element for the given brand', () => {
     // Arrange
-    const brand = Brand.healthforce;
+    const brand = Brand.homeclinic;
     const children = <Component />;
 
     // Act
     render(<ThemeProvider brand={brand} children={children} />);
+
+    // Assert
+    expect(theme).toEqual(tokens);
+  });
+
+  it('provides correct set of props to children element for healthforce when branch is not provided', () => {
+    // Arrange
+    const children = <Component />;
+
+    // Act
+    render(<ThemeProvider children={children} />);
 
     // Assert
     expect(theme).toEqual(tokens);

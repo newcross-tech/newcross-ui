@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import Button, { ButtonVariant, ButtonSizes, ButtonCorners } from '../Button';
 import { Direction } from './Calendar.types';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft } from '@fortawesome/pro-solid-svg-icons/faChevronLeft';
 import { faChevronRight } from '@fortawesome/pro-solid-svg-icons/faChevronRight';
-import { getShortMonth, getPreviousMonth, getNextMonth } from './utils/index';
+import { getShortMonth, getPreviousMonth, getNextMonth } from './utils';
 
 type CalendarHeaderProps = {
   direction: Direction;
@@ -63,4 +63,4 @@ const CalendarHeader = ({
   );
 };
 
-export default CalendarHeader;
+export default memo(CalendarHeader);

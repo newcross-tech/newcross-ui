@@ -1,7 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { View, ActivityIndicator } from 'react-native';
 import {
   Calendar as NativeCalendar,
   CalendarProps as NativeCalendarProps,
+  DateData,
   LocaleConfig,
 } from 'react-native-calendars';
 import { flattenDeep } from 'lodash';
@@ -15,6 +17,7 @@ import { DateType, StyleByDate } from './Calendar.types';
 import { calendarStyles } from './Calendar.style';
 import useTheme from '../../hooks/useTheme';
 import CalendarHeader from './CalendarHeader';
+import { FontWeight } from '../../types';
 
 export type CalendarProps = {
   /**
@@ -91,6 +94,10 @@ export type CalendarProps = {
    * Initial selected multiple date range
    */
   initialMultipleDateRange?: Array<Array<string>>;
+  /**
+   * Display loading state
+   */
+  displayLoader?: boolean;
 } & NativeCalendarProps;
 
 const Calendar = ({
@@ -100,28 +107,27 @@ const Calendar = ({
   hideExtraDays = true,
   firstDay = FIRST_DAY_OF_THE_WEEK,
   startDate,
-  noShiftsDates = [],
-  bookedDates = [],
-  unavailableDates = [],
-  inactiveDates = [],
-  selectedDates = [],
+  noShiftsDates,
+  bookedDates,
+  unavailableDates,
+  inactiveDates,
+  selectedDates,
   onDateSelection,
   onSingleDateRange,
   onMultipleDateRange,
   onMonthChange,
   initialSingleDateRange = [],
   initialMultipleDateRange = [],
+  displayLoader = false,
   ...rest
 }: CalendarProps) => {
-  const styles = calendarStyles();
+  const theme = useTheme();
+  const styles = calendarStyles(theme);
 
   LocaleConfig.locales[LocaleConfig.defaultLocale].dayNamesShort =
     SHORT_WEEK_DAYS;
   LocaleConfig.locales[LocaleConfig.defaultLocale].monthNames =
     SHORT_MONTH_NAME;
-
-  const theme = useTheme();
-  const { CalendarDaysCurrentColor } = theme;
 
   const initialDate: Date = startDate || new Date();
 
@@ -139,82 +145,81 @@ const Calendar = ({
 
   const [selectedDateRange, setSelectedDateRange] = useState<StyleByDate>({});
 
-  const datesToExclude = [
-    ...noShiftsDates,
-    ...bookedDates,
-    ...unavailableDates,
-    ...inactiveDates,
-  ];
+  const datesToExclude = useMemo(
+    () => [
+      ...(noShiftsDates ?? []),
+      ...(bookedDates ?? []),
+      ...(unavailableDates ?? []),
+      ...(inactiveDates ?? []),
+    ],
+    [bookedDates, inactiveDates, noShiftsDates, unavailableDates]
+  );
 
   const isInitialDateSelected = !!flattenDeep([
     ...datesToExclude,
-    ...selectedDates,
+    ...(selectedDates ?? []),
     ...singleDateRange,
     ...multipleDateRange,
   ]).find((date) => date === formattedInitialDate);
 
-  const getDateRangeStyles = useCallback((range: Array<string>) => {
-    const dateRange = createDateRange(range, datesToExclude);
+  const getDateRangeStyles = useCallback(
+    (range: Array<string>) => {
+      const dateRange = createDateRange(range, datesToExclude);
 
-    return getStylesByDate(DateType.multipleDates, dateRange, theme);
-  }, []);
+      return getStylesByDate(DateType.multipleDates, dateRange, theme);
+    },
+    [theme, datesToExclude]
+  );
 
   const hasTwoRecords = (strings: Array<string>) => strings.length === 2;
   const hasOneRecord = (strings: Array<string>) => strings.length === 1;
 
-  const handleDayPress = (day: string) => {
-    if (onDateSelection) {
-      if (selectedDates.includes(day)) {
-        return onDateSelection(
-          selectedDates.filter((selectedDate) => selectedDate !== day)
-        );
+  const handleDayPress = useCallback(
+    (day: string) => {
+      onDateSelection &&
+        (selectedDates?.includes(day)
+          ? onDateSelection(selectedDates.filter((date) => date !== day))
+          : onDateSelection(
+              hasMultipleDateSelection ? [...(selectedDates ?? []), day] : [day]
+            ));
+    },
+    [onDateSelection, hasMultipleDateSelection, selectedDates]
+  );
+
+  const handleMultipleDateRange = useCallback(
+    (day: string) => {
+      const dateRange: Array<Array<string>> = multipleDateRange.filter(
+        (range) => !createDateRange(range).includes(day)
+      );
+
+      if (!dateRange.length) {
+        return setMultipleDateRange([[day]]);
       }
 
-      onDateSelection(
-        hasMultipleDateSelection ? [...selectedDates, day] : [day]
-      );
-    }
-  };
-
-  const handleMultipleDateRange = (day: string) => {
-    const dateRange: Array<Array<string>> = multipleDateRange.filter(
-      (range) => !createDateRange(range).includes(day)
-    );
-
-    if (dateRange.length === 0) {
-      setMultipleDateRange([[day]]);
-    } else {
       dateRange.forEach((range) => {
-        if (dateRange.every((range) => hasTwoRecords(range))) {
+        if (dateRange.every(hasTwoRecords)) {
           dateRange.push([day]);
         } else if (hasOneRecord(range)) {
           const [firstDate] = range;
-          if (firstDate > day) {
-            range.splice(0, 1, day);
-          } else {
-            range.push(day);
-          }
+          firstDate > day ? range.splice(0, 1, day) : range.push(day);
         }
       });
 
       setMultipleDateRange(dateRange);
-    }
-  };
+    },
+    [multipleDateRange]
+  );
 
-  const handleSingleDateRange = (day: string) => {
-    const isResetRequired = singleDateRange.some(
-      (currentDate) =>
-        day < currentDate ||
-        day === currentDate ||
-        hasTwoRecords(singleDateRange)
-    );
+  const handleSingleDateRange = useCallback(
+    (day: string) => {
+      const isResetRequired = singleDateRange.some(
+        (currentDate) => day <= currentDate || hasTwoRecords(singleDateRange)
+      );
 
-    if (isResetRequired) {
-      setSingleDateRange([day]);
-    } else {
-      setSingleDateRange([...singleDateRange, day]);
-    }
-  };
+      setSingleDateRange(isResetRequired ? [day] : [...singleDateRange, day]);
+    },
+    [singleDateRange]
+  );
 
   const removeOverlappingDateRanges = useCallback(
     (multipleDateRange: Array<Array<string>>) =>
@@ -234,84 +239,156 @@ const Calendar = ({
   );
 
   useEffect(() => {
-    const dateRange = removeOverlappingDateRanges(multipleDateRange);
+    if (hasMultipleDateRange) {
+      const dateRange = removeOverlappingDateRanges(multipleDateRange);
 
-    const stylesByDate = dateRange.reduce((styles, range) => {
-      const dateRangeStyles = getDateRangeStyles(range);
+      const stylesByDate = dateRange.reduce(
+        (styles, range) => ({ ...styles, ...getDateRangeStyles(range) }),
+        {} as StyleByDate
+      );
 
-      return { ...styles, ...dateRangeStyles };
-    }, {} as StyleByDate);
+      setSelectedDateRange({ ...stylesByDate });
 
-    setSelectedDateRange({ ...stylesByDate });
+      if (multipleDateRange.length !== dateRange.length) {
+        setMultipleDateRange(dateRange);
+      }
 
-    if (multipleDateRange.length !== dateRange.length) {
-      setMultipleDateRange(() => dateRange);
+      onMultipleDateRange?.(dateRange);
     }
-
-    onMultipleDateRange && onMultipleDateRange(dateRange);
-  }, [multipleDateRange]);
+  }, [
+    multipleDateRange,
+    hasMultipleDateRange,
+    removeOverlappingDateRanges,
+    onMultipleDateRange,
+    getDateRangeStyles,
+  ]);
 
   useEffect(() => {
-    const dateRangeStyles = getDateRangeStyles(singleDateRange);
+    if (hasSingleDateRange) {
+      const dateRangeStyles = getDateRangeStyles(singleDateRange);
 
-    setSelectedDateRange(dateRangeStyles);
+      setSelectedDateRange(dateRangeStyles);
 
-    onSingleDateRange && onSingleDateRange(singleDateRange);
-  }, [singleDateRange]);
+      onSingleDateRange?.(singleDateRange);
+    }
+  }, [
+    singleDateRange,
+    hasSingleDateRange,
+    getDateRangeStyles,
+    onSingleDateRange,
+  ]);
+
+  const calendarTheme = useMemo(
+    () => ({
+      textMonthFontFamily: theme.CalendarFontFamily,
+      textMonthFontWeight: theme.CalendarHeaderFontWeight as FontWeight,
+      textMonthFontSize: theme.CalendarFontSize,
+      monthTextColor: theme.CalendarColor,
+      textDayHeaderFontFamily: theme.CalendarFontFamily,
+      textDayHeaderFontSize: theme.CalendarFontSize,
+      textDayHeaderFontWeight:
+        theme.CalendarHeaderWeekdaysFontWeight as FontWeight,
+      textDayFontFamily: theme.CalendarFontFamily,
+      textDayFontWeight: theme.CalendarHeaderWeekdaysFontWeight as FontWeight,
+      textDayFontSize: theme.CalendarDaysFontSize,
+      dayTextColor: theme.CalendarColor,
+      todayTextColor: theme.CalendarDaysCurrentColor,
+      textDisabledColor: theme.CalendarDaysDisabledColor,
+    }),
+    [theme]
+  );
+
+  const onDayPress = useCallback(
+    ({ dateString }: DateData) => {
+      if (hasSingleDateRange) {
+        handleSingleDateRange(dateString);
+      } else if (hasMultipleDateRange) {
+        handleMultipleDateRange(dateString);
+      } else {
+        handleDayPress(dateString);
+      }
+    },
+    [
+      hasSingleDateRange,
+      hasMultipleDateRange,
+      handleDayPress,
+      handleSingleDateRange,
+      handleMultipleDateRange,
+    ]
+  );
+
+  const markedDates = useMemo(() => {
+    const types = [
+      { type: DateType.bookedDates, dates: bookedDates },
+      { type: DateType.unavailableDates, dates: unavailableDates },
+      { type: DateType.inactiveDates, dates: inactiveDates },
+      { type: DateType.selectedDates, dates: selectedDates },
+      { type: DateType.noShiftsDates, dates: noShiftsDates },
+    ];
+
+    const stylesByDate = types.reduce(
+      (styles, { type, dates }) =>
+        dates?.length
+          ? { ...styles, ...getStylesByDate(type, dates, theme) }
+          : styles,
+      {} as StyleByDate
+    );
+
+    return {
+      ...stylesByDate,
+      ...selectedDateRange,
+      ...(!isInitialDateSelected && {
+        [formattedInitialDate]: {
+          marked: true,
+          dotColor: theme.CalendarDaysCurrentColor,
+          customContainerStyle: { paddingBottom: theme.SpacingBase4 },
+        },
+      }),
+    };
+  }, [
+    theme,
+    bookedDates,
+    inactiveDates,
+    noShiftsDates,
+    selectedDates,
+    unavailableDates,
+    selectedDateRange,
+    formattedInitialDate,
+    isInitialDateSelected,
+  ]);
 
   return (
-    <NativeCalendar
-      firstDay={firstDay}
-      current={formattedDate}
-      markingType={'period'}
-      markedDates={{
-        ...(bookedDates?.length &&
-          getStylesByDate(DateType.bookedDates, bookedDates, theme)),
-        ...(unavailableDates?.length &&
-          getStylesByDate(DateType.unavailableDates, unavailableDates, theme)),
-        ...(inactiveDates?.length &&
-          getStylesByDate(DateType.inactiveDates, inactiveDates, theme)),
-        ...(selectedDates?.length &&
-          getStylesByDate(DateType.selectedDates, selectedDates, theme)),
-        ...(noShiftsDates?.length &&
-          getStylesByDate(DateType.noShiftsDates, noShiftsDates, theme)),
-
-        ...selectedDateRange,
-        ...(!isInitialDateSelected && {
-          [formattedInitialDate]: {
-            marked: true,
-            dotColor: CalendarDaysCurrentColor,
-            customContainerStyle: {
-              paddingBottom: theme.SpacingBase4,
-            },
-          },
-        }),
-      }}
-      key={formattedDate}
-      minDate={formattedInitialDate}
-      renderArrow={(direction) => {
-        return (
-          <CalendarHeader
-            direction={direction}
-            date={date}
-            onDateChange={setDate}
-            onMonthChange={onMonthChange}
-          />
-        );
-      }}
-      hideExtraDays={hideExtraDays}
-      theme={styles}
-      onDayPress={(day) => {
-        if (hasSingleDateRange) {
-          handleSingleDateRange(day.dateString);
-        } else if (hasMultipleDateRange) {
-          handleMultipleDateRange(day.dateString);
-        } else {
-          handleDayPress(day.dateString);
-        }
-      }}
-      {...rest}
-    />
+    <View>
+      <NativeCalendar
+        firstDay={firstDay}
+        current={formattedDate}
+        markingType={'period'}
+        disableArrowLeft={true}
+        disableArrowRight={true}
+        markedDates={markedDates}
+        key={formattedDate}
+        minDate={formattedInitialDate}
+        renderArrow={(direction) => {
+          return (
+            <CalendarHeader
+              direction={direction}
+              date={date}
+              onDateChange={setDate}
+              onMonthChange={onMonthChange}
+            />
+          );
+        }}
+        hideExtraDays={hideExtraDays}
+        theme={calendarTheme}
+        onDayPress={onDayPress}
+        {...rest}
+      />
+      {displayLoader && (
+        <View testID="calendar-loader" style={styles.loaderContainer}>
+          <ActivityIndicator size="large" color={theme.ColorNeutralBlack} />
+        </View>
+      )}
+    </View>
   );
 };
 
