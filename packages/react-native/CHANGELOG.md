@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.38.5](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.38.4...@newcross-ui/react-native@1.38.5) (2023-03-27)
+
+
+### Bug Fixes
+
+* **HFGO-1727:** performance of calendar ([3e91783](https://bitbucket.org/newcrossdev/newcross-ui/commits/3e91783321457a8390007b905308c26626b43055))
+
+
+
+
+
 ## [1.38.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.38.3...@newcross-ui/react-native@1.38.4) (2023-03-21)
 
 
