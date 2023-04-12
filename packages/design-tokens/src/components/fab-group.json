@@ -24,6 +24,28 @@
       "margin": {
         "value": "{spacing.base.16.value}"
       }
+    },
+    "shadow": {
+      "color": {
+        "value": "{color.neutral.black.value}"
+      },
+      "offset": {
+        "width": {
+          "value": "{shadow.base.offset.sm.value}"
+        },
+        "height": {
+          "value": "{shadow.base.offset.md.value}"
+        }
+      },
+      "opacity": {
+        "value": "{opacity.base.md.value}"
+      },
+      "radius": {
+        "value": "{shadow.base.offset.md.value}"
+      },
+      "elevation": {
+        "value": "{shadow.base.elevation.md.value}"
+      }
     }
   }
 }

@@ -2,7 +2,7 @@ import { SnapPointPayload } from '../BottomSheet.types';
 import { calculateSnapPoint } from './calculateSnapPoint';
 
 describe.each([
-  [10, 12, 200, 70, 90],
+  [10, 12, 200, 70, 70],
   [10, 12, 200, 400, 32],
 ])(
   'calculateSnapPoint',

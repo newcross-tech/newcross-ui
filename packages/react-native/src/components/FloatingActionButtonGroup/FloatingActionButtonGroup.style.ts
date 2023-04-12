@@ -3,12 +3,12 @@ import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 
 const fabGroupStyle = (theme: ThemeDesignTokens) => {
   const {
-    FabShadowColor,
-    FabShadowOffsetWidth,
-    FabShadowOffsetHeight,
-    FabShadowRadius,
-    FabShadowElevation,
-    FabShadowOpacity,
+    FabGroupShadowColor,
+    FabGroupShadowOffsetWidth,
+    FabGroupShadowOffsetHeight,
+    FabGroupShadowRadius,
+    FabGroupShadowElevation,
+    FabGroupShadowOpacity,
     FabGroupBorderRounded,
     FabGroupDividerColor,
     FabGroupDividerWidth,
@@ -25,18 +25,17 @@ const fabGroupStyle = (theme: ThemeDesignTokens) => {
       alignItems: 'center',
       justifyContent: 'center',
       borderRadius: FabGroupBorderRounded,
-      overflow: 'hidden',
       paddingHorizontal: FabGroupPaddingHorizontal,
       backgroundColor: FabGroupBackgroundColor,
 
-      shadowColor: FabShadowColor,
+      shadowColor: FabGroupShadowColor,
       shadowOffset: {
-        width: FabShadowOffsetWidth,
-        height: FabShadowOffsetHeight,
+        width: FabGroupShadowOffsetWidth,
+        height: FabGroupShadowOffsetHeight,
       },
-      shadowRadius: FabShadowRadius,
-      shadowOpacity: FabShadowOpacity,
-      elevation: FabShadowElevation,
+      shadowRadius: FabGroupShadowRadius,
+      shadowOpacity: FabGroupShadowOpacity,
+      elevation: FabGroupShadowElevation,
     },
     childrenStyles: {
       borderRadius: 0,

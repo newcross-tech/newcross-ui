@@ -4,52 +4,73 @@ import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 const bottomSheetStyle = (theme: ThemeDesignTokens) => {
   const dimensions = useWindowDimensions();
 
+  const {
+    BottomSheetPosition,
+    BottomSheetBackgroundColor,
+    BottomSheetBorderRadius,
+    BottomSheetIndicatorContainerPaddingTop,
+    BottomSheetIndicatorContainerPaddingBottom,
+    BottomSheetIndicatorContainerScrollShadowOpacity,
+    BottomSheetIndicatorContainerScrollShadowColor,
+    BottomSheetIndicatorContainerScrollShadowOffsetHeight,
+    BottomSheetIndicatorContainerScrollShadowOffsetWidth,
+    BottomSheetIndicatorContainerScrollShadowRadius,
+    BottomSheetIndicatorContainerScrollShadowElevation,
+    BottomSheetIndicatorBackgroundColor,
+    BottomSheetIndicatorHeight,
+    BottomSheetIndicatorBorderRadius,
+    BottomSheetBackdropBackgroundColor,
+  } = theme;
+
+  const { height } = dimensions;
+
   return StyleSheet.create({
     container: {
       position: 'absolute',
-      left: theme.BottomSheetPosition,
-      right: theme.BottomSheetPosition,
-      bottom: theme.BottomSheetPosition,
-      backgroundColor: theme.BottomSheetBackgroundColor,
-      borderTopStartRadius: theme.BottomSheetBorderRadius,
-      borderTopEndRadius: theme.BottomSheetBorderRadius,
+      left: BottomSheetPosition,
+      right: BottomSheetPosition,
+      bottom: BottomSheetPosition,
+      backgroundColor: BottomSheetBackgroundColor,
+      borderTopStartRadius: BottomSheetBorderRadius,
+      borderTopEndRadius: BottomSheetBorderRadius,
       zIndex: 2,
     },
 
     indicatorContainer: {
       justifyContent: 'center',
       alignItems: 'center',
-      borderTopStartRadius: theme.BottomSheetBorderRadius,
-      borderTopEndRadius: theme.BottomSheetBorderRadius,
-      paddingVertical: theme.BottomSheetIndicatorContainerPaddingVertical,
+      borderTopStartRadius: BottomSheetBorderRadius,
+      borderTopEndRadius: BottomSheetBorderRadius,
+      paddingTop: BottomSheetIndicatorContainerPaddingTop,
+      paddingBottom: BottomSheetIndicatorContainerPaddingBottom,
     },
     indicatorContainerScroll: {
-      backgroundColor: theme.BottomSheetBackgroundColor,
-      shadowOpacity: theme.BottomSheetIndicatorContainerScrollShadowOpacity,
-      shadowColor: theme.BottomSheetIndicatorContainerScrollShadowColor,
+      backgroundColor: BottomSheetBackgroundColor,
+      shadowOpacity: BottomSheetIndicatorContainerScrollShadowOpacity,
+      shadowColor: BottomSheetIndicatorContainerScrollShadowColor,
       shadowOffset: {
-        height: theme.BottomSheetIndicatorContainerScrollShadowOffsetHeight,
-        width: theme.BottomSheetIndicatorContainerScrollShadowOffsetWidth,
+        height: BottomSheetIndicatorContainerScrollShadowOffsetHeight,
+        width: BottomSheetIndicatorContainerScrollShadowOffsetWidth,
       },
-      shadowRadius: theme.BottomSheetIndicatorContainerScrollShadowRadius,
+      shadowRadius: BottomSheetIndicatorContainerScrollShadowRadius,
       ...Platform.select({
         android: {
-          elevation: theme.BottomSheetIndicatorContainerScrollShadowElevation,
+          elevation: BottomSheetIndicatorContainerScrollShadowElevation,
         },
       }),
     },
     indicator: {
-      backgroundColor: theme.BottomSheetIndicatorBackgroundColor,
+      backgroundColor: BottomSheetIndicatorBackgroundColor,
       width: '30%',
-      height: theme.BottomSheetIndicatorHeight / 2,
-      borderRadius: theme.BottomSheetIndicatorBorderRadius,
+      height: BottomSheetIndicatorHeight / 2,
+      borderRadius: BottomSheetIndicatorBorderRadius,
     },
     backdrop: {
       position: 'absolute',
-      backgroundColor: theme.BottomSheetBackdropBackgroundColor,
-      height: dimensions.height,
-      left: theme.BottomSheetPosition,
-      right: theme.BottomSheetPosition,
+      backgroundColor: BottomSheetBackdropBackgroundColor,
+      height: height,
+      left: BottomSheetPosition,
+      right: BottomSheetPosition,
       zIndex: 1,
     },
   });

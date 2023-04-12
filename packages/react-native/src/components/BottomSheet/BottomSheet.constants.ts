@@ -9,4 +9,4 @@ export const SPRING_CONFIG: WithSpringConfig = {
 
 export const DEFAULT_MAX_SNAP_POINT = 0.9; // 90%
 export const DEFAULT_COLLAPSE_THRESHOLD = 50;
-export const INDICATOR_HEIGHT = 30;
+export const INDICATOR_HEIGHT = 50;

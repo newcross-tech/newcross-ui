@@ -31,7 +31,7 @@
         }
       },
       "opacity": {
-        "value": "{opacity.base.sm.value}"
+        "value": "{opacity.base.md.value}"
       },
       "radius": {
         "value": "{shadow.base.offset.md.value}"

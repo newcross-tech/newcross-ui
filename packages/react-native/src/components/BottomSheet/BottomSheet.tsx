@@ -117,6 +117,7 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
     const startTopPosition = useSharedValue(0);
 
     const theme = useTheme();
+    const { BottomSheetBackdropOpacity } = theme;
     const styles = bottomSheetStyle(theme);
 
     useEffect(() => {
@@ -178,7 +179,7 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
       const opacity = interpolate(
         topPosition.value,
         [windowHeight, topPosition.value],
-        [0, theme.BottomSheetBackdropOpacity]
+        [0, BottomSheetBackdropOpacity]
       );
 
       return { opacity: withSpring(opacity, SPRING_CONFIG) };

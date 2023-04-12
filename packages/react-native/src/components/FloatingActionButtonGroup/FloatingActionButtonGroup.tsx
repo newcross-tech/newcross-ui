@@ -26,6 +26,7 @@ const FloatingActionButtonGroup = ({
         return (
           <>
             {cloneElement(child, {
+              hasShadow: false,
               key: index,
               variant: FABVariant.small,
               style: styles.childrenStyles,
