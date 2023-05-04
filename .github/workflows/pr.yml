@@ -26,6 +26,6 @@ jobs:
           yarn lint:check
           yarn build
           git checkout main
-          git checkout ${GITHUB_REF_NAME}
+          git checkout ${GITHUB_HEAD_REF}
           npm run test --branch=main
           
