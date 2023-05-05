@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.39.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.38.6...@newcross-ui/react-native@1.39.0) (2023-05-05)
+
+
+### Features
+
+* **hfgo-1818:** added content container prop to allow overide of styles ([8859ad5](https://bitbucket.org/newcrossdev/newcross-ui/commits/8859ad598cb076044ca829a8f57da79ce2f8161a))
+
+
+
+
+
 ## [1.38.6](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.38.5...@newcross-ui/react-native@1.38.6) (2023-04-12)
 
 **Note:** Version bump only for package @newcross-ui/react-native
