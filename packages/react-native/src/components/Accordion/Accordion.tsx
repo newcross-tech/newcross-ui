@@ -25,6 +25,10 @@ export type AccordionProps = {
    */
   styleHeaderContent?: ViewStyle;
   /**
+   * Used to add custom content container styles.
+   */
+  styleContentContainer?: ViewStyle;
+  /**
    * Each accordion can opt to include an icon which will be displayed before the section label in the header.
    */
   icon?: ReactNode;
@@ -54,6 +58,7 @@ const Accordion = ({
   onPress,
   styleHeader,
   styleHeaderContent,
+  styleContentContainer,
   icon,
   expanded = false,
   children,
@@ -129,7 +134,7 @@ const Accordion = ({
       >
         <View
           onLayout={onLayoutBodyContent}
-          style={styles.bodyContent}
+          style={[styles.bodyContent, styleContentContainer]}
           testID={
             openAccordion
               ? `accordion-body-expanded-container-${testID}`
