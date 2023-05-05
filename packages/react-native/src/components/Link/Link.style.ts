@@ -9,14 +9,13 @@ export const pressedLinkStyle = (
 ) => [currentStyle, { opacity: pressed ? theme.LinkPressedOpacity : 1 }];
 
 const linkStyle = (theme: ThemeDesignTokens, mode: Mode) => {
-  const { LinkPadding, LinkMargin, LinkColor, LinkModeDarkColor } = theme;
+  const { LinkMargin, LinkColor, LinkModeDarkColor } = theme;
 
   return StyleSheet.create({
     container: {
       alignSelf: 'flex-start',
     },
     linkContent: {
-      paddingVertical: LinkPadding,
       flexDirection: 'row',
       alignItems: 'center',
     },
