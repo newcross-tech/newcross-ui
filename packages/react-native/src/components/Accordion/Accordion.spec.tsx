@@ -4,6 +4,7 @@ import { Text } from 'react-native';
 import Accordion, { AccordionProps } from './Accordion';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCircleInfo } from '@fortawesome/pro-solid-svg-icons/faCircleInfo';
+import { Header } from 'react-native/Libraries/NewAppScreen';
 
 describe('Accordion Component', () => {
   it('renders successfully', () => {
@@ -25,6 +26,28 @@ describe('Accordion Component', () => {
 
     expect(getByTestId('accordion-container-1')).toBeTruthy();
   });
+
+  it('renders successfully with custom header content', () => {
+    // Arrange
+    const props: AccordionProps = {
+      testID: '1',
+      headerContent: <Text>Header</Text>,
+      children: (
+        <Text>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </Text>
+      ),
+    };
+
+    // Act
+    const { getByText } = render(<Accordion {...props}></Accordion>);
+
+    // Assert
+
+    expect(getByText('Header')).toBeTruthy();
+  });
+
   it('renders successfully with an icon', () => {
     // Arrange
     const props: AccordionProps = {

@@ -120,7 +120,9 @@ const Accordion = ({
           <View style={[styles.headerContent, styleHeaderContent]}>
             <View style={styles.headerLabel}>
               {icon}
-              {label ? (
+              {headerContent ? (
+                <View style={styles.content}>{headerContent}</View>
+              ) : (
                 <Typography
                   variant={TypographyVariant.paragraph1}
                   style={styles.content}
@@ -128,8 +130,6 @@ const Accordion = ({
                 >
                   {label}
                 </Typography>
-              ) : (
-                <View style={styles.content}>{headerContent}</View>
               )}
             </View>
             <Animated.View style={iconAnimationStyle}>
