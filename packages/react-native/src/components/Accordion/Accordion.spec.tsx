@@ -4,7 +4,6 @@ import { Text } from 'react-native';
 import Accordion, { AccordionProps } from './Accordion';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCircleInfo } from '@fortawesome/pro-solid-svg-icons/faCircleInfo';
-import { Header } from 'react-native/Libraries/NewAppScreen';
 
 describe('Accordion Component', () => {
   it('renders successfully', () => {
