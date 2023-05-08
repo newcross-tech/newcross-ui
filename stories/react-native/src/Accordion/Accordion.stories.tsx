@@ -5,7 +5,9 @@ import {
   AccordionGroup,
   Typography,
   TypographyVariant,
+  Button,
 } from '@newcross-ui/react-native';
+import { View } from 'react-native';
 import Container from '../Container';
 import Spacing, { SpacingSizes } from '../Spacing';
 import { getParameters, isWebPlatform } from '../utils';
@@ -16,7 +18,7 @@ import { TITLE, DESCRIPTION, DO, DONT } from './AccordionInfo';
 import { ScrollView } from 'react-native-gesture-handler';
 import { native } from '@newcross-ui/design-tokens';
 
-const { BrandColorPrimary } = native.healthforce;
+const { BrandColorPrimary, SpacingBase12 } = native.healthforce;
 
 export default {
   title: 'ReactNative/Components/Accordion',
@@ -145,6 +147,42 @@ export const Variants = () => {
             <FontAwesomeIcon icon={faCircleInfo} color={BrandColorPrimary} />
           }
           expanded={true}
+        >
+          <Typography variant={TypographyVariant.paragraph2}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            consequat.
+          </Typography>
+        </Accordion>
+        <Spacing size={SpacingSizes.Large} />
+        <Typography variant={TypographyVariant.heading4}>
+          Accordion with custom header content
+        </Typography>
+        <Spacing size={SpacingSizes.Large} />
+        <Accordion
+          headerContent={
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}
+            >
+              <Typography
+                style={{
+                  paddingRight: SpacingBase12,
+                  color: BrandColorPrimary,
+                }}
+                variant={TypographyVariant.paragraph1}
+              >
+                Custom Header
+              </Typography>
+              <Button>
+                <Typography variant={TypographyVariant.paragraph2}>
+                  Content
+                </Typography>
+              </Button>
+            </View>
+          }
         >
           <Typography variant={TypographyVariant.paragraph2}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
