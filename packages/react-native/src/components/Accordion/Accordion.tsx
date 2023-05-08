@@ -43,7 +43,7 @@ export type AccordionProps = {
   /**
    * Text element to describe the accordion.
    */
-  label?: string;
+  label?: ReactNode;
   /**
    * Used to style the accordion group container.
    */
