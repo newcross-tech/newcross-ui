@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.39.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.39.0...@newcross-ui/react-native@1.39.1) (2023-05-09)
+
+
+### Bug Fixes
+
+* **HFGO-1819:** allow custom label for checkbox ([#5](https://bitbucket.org/newcrossdev/newcross-ui/issues/5)) ([485730b](https://bitbucket.org/newcrossdev/newcross-ui/commits/485730bb7ae0fdb216c5a97d43aa3a2283b9f048))
+
+
+
+
+
 # [1.39.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.38.6...@newcross-ui/react-native@1.39.0) (2023-05-05)
 
 
