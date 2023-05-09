@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import { render, fireEvent } from '@testing-library/react-native';
 import Checkbox, { CheckboxProps } from './Checkbox';
 import { CheckboxType } from './Checkbox.types';
@@ -101,5 +102,18 @@ describe('Checkbox Component', () => {
     // Assert
     expect(getByTestId('checkbox-component')).toBeTruthy();
     expect(getByTestId('checkbox-component-checkmark')).toBeTruthy();
+  });
+
+  it('renders custom label successfully', () => {
+    // Arrange
+    const props: CheckboxProps = {
+      label: <View testID="custom-label" />,
+    };
+
+    // Act
+    const { getByTestId } = render(<Checkbox {...props} />);
+
+    // Assert
+    expect(getByTestId('custom-label')).toBeDefined();
   });
 });

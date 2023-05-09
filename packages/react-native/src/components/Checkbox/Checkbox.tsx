@@ -91,9 +91,13 @@ const Checkbox = ({
       <View style={[styles.box, style]} testID={`${testID}-checkmark`}>
         {selected && <FontAwesomeIcon icon={icon} style={styles.checkmark} />}
       </View>
-      <Typography variant={TypographyVariant.paragraph1} style={styles.label}>
-        {label}
-      </Typography>
+      {typeof label === 'string' ? (
+        <Typography variant={TypographyVariant.paragraph1} style={styles.label}>
+          {label}
+        </Typography>
+      ) : (
+        label
+      )}
     </Pressable>
   );
 };

@@ -58,12 +58,13 @@ const checkboxStyle = (
       borderRadius: theme.CheckboxBorderRadius,
       justifyContent: 'center',
       alignItems: 'center',
+      marginRight: theme.CheckboxLabelMarginHorizontal,
     },
     label: {
       color: disabled
         ? theme.CheckboxLabelDisabledColor
         : theme.CheckboxLabelColor,
-      marginHorizontal: theme.CheckboxLabelMarginHorizontal,
+      flexShrink: 1,
     },
     checkmark: {
       ...checkmarkColorValues(),
