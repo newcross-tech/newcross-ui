@@ -160,7 +160,7 @@ export const Variants = () => {
         </Typography>
         <Spacing size={SpacingSizes.Large} />
         <Accordion
-          headerContent={
+          label={
             <View
               style={{
                 flexDirection: 'row',

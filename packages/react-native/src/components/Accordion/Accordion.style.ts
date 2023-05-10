@@ -36,7 +36,7 @@ const accordionStyle = ({ icon }: AccordionProps) => {
       paddingHorizontal: theme.AccordionBodyPaddingHorizontal,
       paddingVertical: theme.AccordionBodyPaddingVertical,
     },
-    content: {
+    label: {
       marginLeft: icon ? theme.AccordionTextMarginLeft : 0,
       color: theme.AccordionTextColor,
     },

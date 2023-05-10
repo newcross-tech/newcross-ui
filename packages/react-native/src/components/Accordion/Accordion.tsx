@@ -43,11 +43,7 @@ export type AccordionProps = {
   /**
    * Text element to describe the accordion.
    */
-  label?: string;
-  /**
-   * Alternative to label. Used to add custom header content.
-   */
-  headerContent?: ReactNode;
+  label?: string | ReactNode;
   /**
    * Used to style the accordion group container.
    */
@@ -63,11 +59,10 @@ const Accordion = ({
   styleHeader,
   styleHeaderContent,
   styleContentContainer,
-  headerContent,
   icon,
   expanded = false,
   children,
-  label,
+  label = 'Label',
   styleAccordionContainer,
   testID,
 }: AccordionProps) => {
@@ -120,16 +115,16 @@ const Accordion = ({
           <View style={[styles.headerContent, styleHeaderContent]}>
             <View style={styles.headerLabel}>
               {icon}
-              {headerContent ? (
-                <View style={styles.content}>{headerContent}</View>
-              ) : (
+              {typeof label === 'string' ? (
                 <Typography
                   variant={TypographyVariant.paragraph1}
-                  style={styles.content}
+                  style={styles.label}
                   numberOfLines={2}
                 >
                   {label}
                 </Typography>
+              ) : (
+                label
               )}
             </View>
             <Animated.View style={iconAnimationStyle}>

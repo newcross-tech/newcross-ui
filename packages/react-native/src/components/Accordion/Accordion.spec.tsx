@@ -9,6 +9,7 @@ describe('Accordion Component', () => {
   it('renders successfully', () => {
     // Arrange
     const props: AccordionProps = {
+      label: 'Label',
       testID: '1',
       children: (
         <Text>
@@ -26,11 +27,11 @@ describe('Accordion Component', () => {
     expect(getByTestId('accordion-container-1')).toBeTruthy();
   });
 
-  it('renders successfully with custom header content', () => {
+  it('renders successfully with custom label', () => {
     // Arrange
     const props: AccordionProps = {
       testID: '1',
-      headerContent: <Text>Header</Text>,
+      label: <Text>Header</Text>,
       children: (
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
