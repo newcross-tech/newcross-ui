@@ -43,7 +43,7 @@ export type AccordionProps = {
   /**
    * Text element to describe the accordion.
    */
-  label?: string;
+  label?: ReactNode;
   /**
    * Used to style the accordion group container.
    */
@@ -115,13 +115,17 @@ const Accordion = ({
           <View style={[styles.headerContent, styleHeaderContent]}>
             <View style={styles.headerLabel}>
               {icon}
-              <Typography
-                variant={TypographyVariant.paragraph1}
-                style={styles.text}
-                numberOfLines={2}
-              >
-                {label}
-              </Typography>
+              {typeof label === 'string' ? (
+                <Typography
+                  variant={TypographyVariant.paragraph1}
+                  style={styles.label}
+                  numberOfLines={2}
+                >
+                  {label}
+                </Typography>
+              ) : (
+                label
+              )}
             </View>
             <Animated.View style={iconAnimationStyle}>
               <FontAwesomeIcon icon={faChevronDown} style={styles.icon} />

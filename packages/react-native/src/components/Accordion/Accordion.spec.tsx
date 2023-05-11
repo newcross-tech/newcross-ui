@@ -9,6 +9,7 @@ describe('Accordion Component', () => {
   it('renders successfully', () => {
     // Arrange
     const props: AccordionProps = {
+      label: 'Label',
       testID: '1',
       children: (
         <Text>
@@ -25,6 +26,28 @@ describe('Accordion Component', () => {
 
     expect(getByTestId('accordion-container-1')).toBeTruthy();
   });
+
+  it('renders successfully with custom label', () => {
+    // Arrange
+    const props: AccordionProps = {
+      testID: '1',
+      label: <Text>Header</Text>,
+      children: (
+        <Text>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </Text>
+      ),
+    };
+
+    // Act
+    const { getByText } = render(<Accordion {...props}></Accordion>);
+
+    // Assert
+
+    expect(getByText('Header')).toBeTruthy();
+  });
+
   it('renders successfully with an icon', () => {
     // Arrange
     const props: AccordionProps = {
