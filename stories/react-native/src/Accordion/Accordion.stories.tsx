@@ -5,7 +5,6 @@ import {
   AccordionGroup,
   Typography,
   TypographyVariant,
-  Button,
 } from '@newcross-ui/react-native';
 import { View } from 'react-native';
 import Container from '../Container';
@@ -174,13 +173,12 @@ export const Variants = () => {
                 }}
                 variant={TypographyVariant.paragraph1}
               >
-                Custom Header
+                Custom{' '}
+                <Typography variant={TypographyVariant.heading3}>
+                  label
+                </Typography>{' '}
+                text
               </Typography>
-              <Button>
-                <Typography variant={TypographyVariant.paragraph2}>
-                  Content
-                </Typography>
-              </Button>
             </View>
           }
         >
