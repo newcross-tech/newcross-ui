@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.39.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.39.1...@newcross-ui/react-native@1.39.2) (2023-05-11)
+
+
+### Bug Fixes
+
+* **hfgo-1808:** allow custom label in accordion component ([#6](https://bitbucket.org/newcrossdev/newcross-ui/issues/6)) ([14f33ca](https://bitbucket.org/newcrossdev/newcross-ui/commits/14f33ca5af1574cadfc6ea3676d0dd93663dc679))
+
+
+
+
+
 ## [1.39.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.39.0...@newcross-ui/react-native@1.39.1) (2023-05-09)
 
 
