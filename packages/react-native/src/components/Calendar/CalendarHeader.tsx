@@ -20,8 +20,8 @@ const CalendarHeader = ({
   date,
   onDateChange,
   onMonthChange,
-  disableLeftArrow,
-  disableRightArrow,
+  disableLeftArrow = false,
+  disableRightArrow = false,
 }: CalendarHeaderProps) => {
   const [previousMonth, setPreviousMonth] = useState(getPreviousMonth(date, 1));
   const [nextMonth, setNextMonth] = useState(getNextMonth(date, 1));

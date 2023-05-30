@@ -12,8 +12,6 @@ describe('Calendar Component', () => {
     // Arrange
     const props: CalendarProps = {
       testID: 'calendar-component',
-      disableArrowLeft: false,
-      disableArrowRight: false,
     };
 
     // Act

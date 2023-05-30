@@ -127,8 +127,8 @@ const Calendar = ({
   initialSingleDateRange = [],
   initialMultipleDateRange = [],
   displayLoader = false,
-  disableLeftArrow = false,
-  disableRightArrow = false,
+  disableLeftArrow,
+  disableRightArrow,
   ...rest
 }: CalendarProps) => {
   const theme = useTheme();
