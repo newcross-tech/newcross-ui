@@ -20,6 +20,8 @@ describe('Calendar Component', () => {
     // Assert
     expect(getByTestId('calendar-component')).toBeTruthy();
     expect(screen.queryByTestId('calendar-loader')).toBeNull();
+    expect(screen.getByTestId('calendar-component-next')).toBeEnabled();
+    expect(screen.getByTestId('calendar-component-previous')).toBeEnabled();
   });
 
   it('renders loading component when displayLoader is true', () => {
@@ -118,6 +120,36 @@ describe('Calendar Component', () => {
     await waitFor(() => {
       expect(onMonthChange).toHaveBeenLastCalledWith(new Date('2022-04-01'));
     });
+  });
+
+  it('disables left arrow when disableLeftArrow is true', async () => {
+    // Arrange
+    const onMonthChange = jest.fn();
+    render(
+      <Calendar
+        startDate={new Date('2022-05-01')}
+        onMonthChange={onMonthChange}
+        disableLeftArrow={true}
+      />
+    );
+
+    // Assert
+    expect(screen.getByTestId('calendar-component-previous')).toBeDisabled();
+  });
+
+  it('disables right arrow when disableRightArrow is true', async () => {
+    // Arrange
+    const onMonthChange = jest.fn();
+    render(
+      <Calendar
+        startDate={new Date('2022-05-01')}
+        onMonthChange={onMonthChange}
+        disableRightArrow={true}
+      />
+    );
+
+    // Assert
+    expect(screen.getByTestId('calendar-component-next')).toBeDisabled();
   });
 
   describe('single data selection', () => {

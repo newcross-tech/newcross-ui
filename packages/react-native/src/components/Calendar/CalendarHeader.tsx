@@ -11,6 +11,8 @@ type CalendarHeaderProps = {
   date: Date;
   onDateChange: (date: Date) => void;
   onMonthChange?: (date: Date) => void;
+  disableLeftArrow?: boolean;
+  disableRightArrow?: boolean;
 };
 
 const CalendarHeader = ({
@@ -18,6 +20,8 @@ const CalendarHeader = ({
   date,
   onDateChange,
   onMonthChange,
+  disableLeftArrow,
+  disableRightArrow,
 }: CalendarHeaderProps) => {
   const [previousMonth, setPreviousMonth] = useState(getPreviousMonth(date, 1));
   const [nextMonth, setNextMonth] = useState(getNextMonth(date, 1));
@@ -48,11 +52,13 @@ const CalendarHeader = ({
       leftIcon={<FontAwesomeIcon icon={faChevronLeft} />}
       onPress={onPreviousMonthPress}
       {...buttonProps}
+      disabled={disableLeftArrow}
     >
       {getShortMonth(previousMonth)}
     </Button>
   ) : (
     <Button
+      disabled={disableRightArrow}
       testID={`calendar-component-next`}
       rightIcon={<FontAwesomeIcon icon={faChevronRight} />}
       onPress={onNextMonthPress}
