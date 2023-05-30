@@ -151,6 +151,4 @@ const Template: Story<CalendarProps> = ({ ...rest }) => {
 };
 
 export const Interactive = Template.bind({});
-Interactive.args = {
-  disableArrowLeft: true,
-};
+Interactive.args = {};
