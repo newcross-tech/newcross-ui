@@ -137,6 +137,7 @@ describe('Calendar Component', () => {
 
     // Assert
     expect(screen.getByTestId('calendar-component-previous')).toBeDisabled();
+    expect(screen.getByTestId('calendar-component-next')).toBeEnabled();
   });
 
   it('disables right arrow when disableRightArrow is true', async () => {
@@ -152,6 +153,7 @@ describe('Calendar Component', () => {
 
     // Assert
     expect(screen.getByTestId('calendar-component-next')).toBeDisabled();
+    expect(screen.getByTestId('calendar-component-previous')).toBeEnabled();
   });
 
   describe('single data selection', () => {
