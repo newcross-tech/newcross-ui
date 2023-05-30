@@ -20,8 +20,14 @@ describe('Calendar Component', () => {
     // Assert
     expect(screen.getByTestId('calendar-component')).toBeTruthy();
     expect(screen.queryByTestId('calendar-loader')).toBeNull();
-    expect(screen.getByTestId('calendar-component-next')).toBeEnabled();
-    expect(screen.getByTestId('calendar-component-previous')).toBeEnabled();
+    expect(
+      screen.getByTestId('calendar-component-next').props.accessibilityState
+        .disabled
+    ).toBeFalsy();
+    expect(
+      screen.getByTestId('calendar-component-previous').props.accessibilityState
+        .disabled
+    ).toBeFalsy();
   });
 
   it('renders loading component when displayLoader is true', () => {
@@ -122,36 +128,42 @@ describe('Calendar Component', () => {
     });
   });
 
-  it('disables left arrow when disableLeftArrow is true', async () => {
+  it('disables left arrow when disablePreviousMonth is true', async () => {
     // Arrange
     const onMonthChange = jest.fn();
     render(
       <Calendar
         startDate={new Date('2022-05-01')}
         onMonthChange={onMonthChange}
-        disableLeftArrow={true}
+        disablePreviousMonth={true}
       />
     );
 
     // Assert
     expect(screen.getByTestId('calendar-component-previous')).toBeDisabled();
-    expect(screen.getByTestId('calendar-component-next')).toBeEnabled();
+    expect(
+      screen.getByTestId('calendar-component-next').props.accessibilityState
+        .disabled
+    ).toBeFalsy();
   });
 
-  it('disables right arrow when disableRightArrow is true', async () => {
+  it('disables right arrow when disableNextMonth is true', async () => {
     // Arrange
     const onMonthChange = jest.fn();
     render(
       <Calendar
         startDate={new Date('2022-05-01')}
         onMonthChange={onMonthChange}
-        disableRightArrow={true}
+        disableNextMonth={true}
       />
     );
 
     // Assert
     expect(screen.getByTestId('calendar-component-next')).toBeDisabled();
-    expect(screen.getByTestId('calendar-component-previous')).toBeEnabled();
+    expect(
+      screen.getByTestId('calendar-component-previous').props.accessibilityState
+        .disabled
+    ).toBeFalsy();
   });
 
   describe('single data selection', () => {
