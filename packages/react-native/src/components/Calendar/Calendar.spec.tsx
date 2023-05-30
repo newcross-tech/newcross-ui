@@ -12,13 +12,15 @@ describe('Calendar Component', () => {
     // Arrange
     const props: CalendarProps = {
       testID: 'calendar-component',
+      disableArrowLeft: false,
+      disableArrowRight: false,
     };
 
     // Act
-    const { getByTestId } = render(<Calendar {...props} />);
+    render(<Calendar {...props} />);
 
     // Assert
-    expect(getByTestId('calendar-component')).toBeTruthy();
+    expect(screen.getByTestId('calendar-component')).toBeTruthy();
     expect(screen.queryByTestId('calendar-loader')).toBeNull();
     expect(screen.getByTestId('calendar-component-next')).toBeEnabled();
     expect(screen.getByTestId('calendar-component-previous')).toBeEnabled();
