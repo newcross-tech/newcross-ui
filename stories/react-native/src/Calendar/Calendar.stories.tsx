@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 import {
-  Button,
   Calendar,
   CalendarProps,
   Typography,
@@ -54,31 +53,18 @@ export const Variants = () => {
     Array<string>
   >(['2023-01-07', '2023-01-08']);
 
-  const [initialSingleSelectedRange, setInitialSingleSelectedRange] = useState([
-    '2023-01-24',
-    '2023-01-27',
+  const [initialSingleSelectedRange] = useState(['2023-01-24', '2023-01-27']);
+
+  const [initialMultipleSelectedRanges] = useState([
+    ['2023-01-24', '2023-01-27'],
+    ['2023-01-28', '2023-01-30'],
   ]);
 
-  const [initialMultipleSelectedRanges, setInitialMultipleSelectedRanges] =
-    useState([
-      ['2023-01-24', '2023-01-27'],
-      ['2023-01-28', '2023-01-30'],
-    ]);
+  const [noShiftsDates] = useState(['2023-01-15', '2023-01-16']);
 
-  const [noShiftsDates, setNoShiftsDates] = useState([
-    '2023-01-15',
-    '2023-01-16',
-  ]);
-
-  const [bookedDates, setBookedDates] = useState(['2023-01-17', '2023-01-18']);
-  const [unavailableDates, setUnavailableDates] = useState([
-    '2023-01-19',
-    '2023-01-20',
-  ]);
-  const [inactiveDates, setInactiveDates] = useState([
-    '2023-01-21',
-    '2023-01-22',
-  ]);
+  const [bookedDates] = useState(['2023-01-17', '2023-01-18']);
+  const [unavailableDates] = useState(['2023-01-19', '2023-01-20']);
+  const [inactiveDates] = useState(['2023-01-21', '2023-01-22']);
 
   return (
     <ScrollView>

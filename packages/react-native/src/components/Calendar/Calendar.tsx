@@ -98,6 +98,14 @@ export type CalendarProps = {
    * Display loading state
    */
   displayLoader?: boolean;
+  /**
+   * Disable left arrow button
+   */
+  disablePreviousMonth?: boolean;
+  /**
+   * Disable right arrow button
+   */
+  disableNextMonth?: boolean;
 } & NativeCalendarProps;
 
 const Calendar = ({
@@ -119,6 +127,8 @@ const Calendar = ({
   initialSingleDateRange = [],
   initialMultipleDateRange = [],
   displayLoader = false,
+  disablePreviousMonth = false,
+  disableNextMonth = false,
   ...rest
 }: CalendarProps) => {
   const theme = useTheme();
@@ -375,6 +385,8 @@ const Calendar = ({
               date={date}
               onDateChange={setDate}
               onMonthChange={onMonthChange}
+              disablePreviousMonth={disablePreviousMonth}
+              disableNextMonth={disableNextMonth}
             />
           );
         }}

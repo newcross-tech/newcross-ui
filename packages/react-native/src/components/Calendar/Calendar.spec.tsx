@@ -15,11 +15,19 @@ describe('Calendar Component', () => {
     };
 
     // Act
-    const { getByTestId } = render(<Calendar {...props} />);
+    render(<Calendar {...props} />);
 
     // Assert
-    expect(getByTestId('calendar-component')).toBeTruthy();
+    expect(screen.getByTestId('calendar-component')).toBeTruthy();
     expect(screen.queryByTestId('calendar-loader')).toBeNull();
+    expect(
+      screen.getByTestId('calendar-component-next').props.accessibilityState
+        .disabled
+    ).toBeFalsy();
+    expect(
+      screen.getByTestId('calendar-component-previous').props.accessibilityState
+        .disabled
+    ).toBeFalsy();
   });
 
   it('renders loading component when displayLoader is true', () => {
@@ -118,6 +126,44 @@ describe('Calendar Component', () => {
     await waitFor(() => {
       expect(onMonthChange).toHaveBeenLastCalledWith(new Date('2022-04-01'));
     });
+  });
+
+  it('disables left arrow when disablePreviousMonth is true', async () => {
+    // Arrange
+    const onMonthChange = jest.fn();
+    render(
+      <Calendar
+        startDate={new Date('2022-05-01')}
+        onMonthChange={onMonthChange}
+        disablePreviousMonth={true}
+      />
+    );
+
+    // Assert
+    expect(screen.getByTestId('calendar-component-previous')).toBeDisabled();
+    expect(
+      screen.getByTestId('calendar-component-next').props.accessibilityState
+        .disabled
+    ).toBeFalsy();
+  });
+
+  it('disables right arrow when disableNextMonth is true', async () => {
+    // Arrange
+    const onMonthChange = jest.fn();
+    render(
+      <Calendar
+        startDate={new Date('2022-05-01')}
+        onMonthChange={onMonthChange}
+        disableNextMonth={true}
+      />
+    );
+
+    // Assert
+    expect(screen.getByTestId('calendar-component-next')).toBeDisabled();
+    expect(
+      screen.getByTestId('calendar-component-previous').props.accessibilityState
+        .disabled
+    ).toBeFalsy();
   });
 
   describe('single data selection', () => {
