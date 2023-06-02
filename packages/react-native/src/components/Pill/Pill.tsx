@@ -1,10 +1,11 @@
 import React, { cloneElement, isValidElement, ReactNode } from 'react';
 import { View, Pressable, ViewStyle } from 'react-native';
-import Typography, { TypographyVariant } from '../Typography';
+import Typography from '../Typography';
 import pillStyle from './Pill.style';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
 import useTheme from '../../hooks/useTheme';
+import {PillSizes, getTypographySizes} from "./Pill.types";
 
 export type PillProps = {
   /**
@@ -35,6 +36,14 @@ export type PillProps = {
    * Used to locate this view in end-to-end tests.
    */
   testID?: string;
+  /**
+   * Whether the pill has border
+  */
+  hasBorder?: boolean;
+  /**
+   * Used to define size of the Pills.
+   */
+  size?: PillSizes;
 };
 
 const Pill = ({
@@ -45,9 +54,11 @@ const Pill = ({
   onPress,
   testID,
   label,
+  hasBorder = true,
+  size = PillSizes.medium
 }: PillProps) => {
   const theme = useTheme();
-  const styles = pillStyle({ label, disabled, icon, removable });
+  const styles = pillStyle({ label, disabled, icon, removable, hasBorder });
 
   return (
     <View
@@ -57,7 +68,7 @@ const Pill = ({
       <View style={styles.pillContent} testID={`pill-content-${testID}`}>
         {isValidElement(icon) && cloneElement(icon, { style: styles.pillIcon })}
         <Typography
-          variant={TypographyVariant.paragraph1}
+          variant={getTypographySizes()[size]}
           style={styles.pillText}
           testID={`pill-typography-${testID}`}
         >

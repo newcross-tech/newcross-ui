@@ -2,7 +2,7 @@ import useTheme from '../../hooks/useTheme';
 import { StyleSheet } from 'react-native';
 import { PillProps } from './Pill';
 
-const pillStyle = ({ disabled, icon, removable, label }: PillProps) => {
+const pillStyle = ({ disabled, icon, removable, label, hasBorder }: PillProps) => {
   const theme = useTheme();
 
   return StyleSheet.create({
@@ -10,7 +10,7 @@ const pillStyle = ({ disabled, icon, removable, label }: PillProps) => {
       alignSelf: 'flex-start',
       margin: theme.PillMargin,
       borderRadius: theme.PillBorderRadius,
-      borderWidth: theme.PillBorderWidth,
+      borderWidth: hasBorder ? theme.PillBorderWidth : 0,
       borderColor: disabled
         ? theme.PillDisabledBorderColor
         : theme.PillBorderColor,
