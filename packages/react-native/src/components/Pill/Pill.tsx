@@ -5,7 +5,7 @@ import pillStyle from './Pill.style';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
 import useTheme from '../../hooks/useTheme';
-import {PillSizes, getTypographySizes} from "./Pill.types";
+import { PillSizes, getTypographySizes } from './Pill.types';
 
 export type PillProps = {
   /**
@@ -29,6 +29,18 @@ export type PillProps = {
    */
   style?: ViewStyle;
   /**
+   * Used to add custom style to the pill container.
+   */
+  containerStyle?: ViewStyle;
+  /**
+   * Used to add custom style to the icon container.
+   */
+  iconStyle?: ViewStyle;
+  /**
+   * Used to add custom style to the text container.
+   */
+  textStyle?: ViewStyle;
+  /**
    * Called when a single tap gesture is detected.
    */
   onPress?: VoidFunction;
@@ -38,7 +50,7 @@ export type PillProps = {
   testID?: string;
   /**
    * Whether the pill has border
-  */
+   */
   hasBorder?: boolean;
   /**
    * Used to define size of the Pills.
@@ -50,26 +62,29 @@ const Pill = ({
   disabled = false,
   icon,
   removable = true,
-  style,
+  containerStyle,
+  iconStyle,
+  textStyle,
   onPress,
   testID,
   label,
   hasBorder = true,
-  size = PillSizes.medium
+  size = PillSizes.medium,
 }: PillProps) => {
   const theme = useTheme();
   const styles = pillStyle({ label, disabled, icon, removable, hasBorder });
 
   return (
     <View
-      style={[styles.pillContainer, style]}
+      style={[styles.pillContainer, containerStyle]}
       testID={`pill-container-${testID}`}
     >
       <View style={styles.pillContent} testID={`pill-content-${testID}`}>
-        {isValidElement(icon) && cloneElement(icon, { style: styles.pillIcon })}
+        {isValidElement(icon) &&
+          cloneElement(icon, { style: { ...styles.pillIcon, ...iconStyle } })}
         <Typography
           variant={getTypographySizes()[size]}
-          style={styles.pillText}
+          style={[styles.pillText, textStyle]}
           testID={`pill-typography-${testID}`}
         >
           {label}

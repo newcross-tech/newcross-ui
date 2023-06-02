@@ -1,18 +1,22 @@
 import { Meta, Story } from '@storybook/react';
 import {
   Pill,
-  PillProps,
   PillGroup,
+  PillProps,
   Typography,
   TypographyVariant,
+  PillSizes,
 } from '@newcross-ui/react-native';
+import { native } from '@newcross-ui/design-tokens';
 import Container from '../Container';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faBird } from '@fortawesome/pro-solid-svg-icons/faBird';
 import Spacing, { SpacingSizes } from '../Spacing';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import { TITLE, DESCRIPTION, DO, DONT } from './PillInfo';
+import { DESCRIPTION, DO, DONT, TITLE } from './PillInfo';
 import { getParameters } from '../utils';
+
+const { ColorBaseOrange300, ColorBaseOrange100 } = native.healthforce;
 
 export default {
   title: 'ReactNative/Components/Pill',
@@ -54,6 +58,24 @@ export const Overview = () => {
   );
 };
 
+export const VariantsWithColor = () => {
+  return (
+    <Container>
+      <Typography variant={TypographyVariant.heading4}>
+        Pill Color - Warning
+      </Typography>
+
+      <Spacing size={SpacingSizes.Large} />
+      <Pill
+        label="Label"
+        containerStyle={{ backgroundColor: ColorBaseOrange300 }}
+        iconStyle={{ color: ColorBaseOrange100 }}
+        textStyle={{ color: ColorBaseOrange100 }}
+        icon={<FontAwesomeIcon icon={faBird} />}
+      />
+    </Container>
+  );
+};
 export const Variants = () => {
   return (
     <Container>
@@ -101,6 +123,17 @@ export const Variants = () => {
       </Typography>
       <Spacing size={SpacingSizes.Large} />
       <Pill label="Label" disabled icon={<FontAwesomeIcon icon={faBird} />} />
+      <Spacing size={SpacingSizes.Large} />
+      <Typography variant={TypographyVariant.heading4}>
+        Small Pill with No Border
+      </Typography>
+      <Spacing size={SpacingSizes.Large} />
+      <Pill
+        label="Label"
+        hasBorder={false}
+        size={PillSizes.small}
+        icon={<FontAwesomeIcon icon={faBird} />}
+      />
       <Spacing size={SpacingSizes.Large} />
     </Container>
   );
