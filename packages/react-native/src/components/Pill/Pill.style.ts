@@ -1,8 +1,22 @@
 import useTheme from '../../hooks/useTheme';
 import { StyleSheet } from 'react-native';
 import { PillProps } from './Pill';
+import {
+  getPillBorderColor,
+  getPillBackgroundColor,
+  getPillTextColor,
+  getPillIconColor,
+  PillStatus,
+} from './Pill.types';
 
-const pillStyle = ({ disabled, icon, removable, label, hasBorder }: PillProps) => {
+const pillStyle = ({
+  disabled,
+  icon,
+  removable,
+  label,
+  hasBorder,
+  status,
+}: PillProps) => {
   const theme = useTheme();
 
   return StyleSheet.create({
@@ -13,10 +27,10 @@ const pillStyle = ({ disabled, icon, removable, label, hasBorder }: PillProps) =
       borderWidth: hasBorder ? theme.PillBorderWidth : 0,
       borderColor: disabled
         ? theme.PillDisabledBorderColor
-        : theme.PillBorderColor,
+        : getPillBorderColor(theme)[status as PillStatus],
       backgroundColor: disabled
         ? theme.PillDisabledBackgroundColor
-        : theme.PillBackgroundColor,
+        : getPillBackgroundColor(theme)[status as PillStatus],
     },
     pillContent: {
       alignItems: 'center',
@@ -26,15 +40,19 @@ const pillStyle = ({ disabled, icon, removable, label, hasBorder }: PillProps) =
       paddingHorizontal: theme.PillPaddingHorizontal,
     },
     pillText: {
-      color: disabled ? theme.PillTextDisabledColor : theme.PillTextColor,
+      color: disabled
+        ? theme.PillDisabledColor
+        : getPillTextColor(theme)[status as PillStatus],
     },
     pillIcon: {
       marginRight: label || removable ? theme.PillIconMarginLeft : 0,
-      color: disabled ? theme.PillIconDisabledColor : theme.PillIconColor,
+      color: disabled
+        ? theme.PillDisabledColor
+        : getPillIconColor(theme)[status as PillStatus],
     },
     pillRemoveIcon: {
       marginLeft: label || icon ? theme.PillIconMarginRight : 0,
-      color: theme.PillIconDisabledColor,
+      color: theme.PillDisabledColor,
     },
   });
 };

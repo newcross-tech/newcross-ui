@@ -1,2 +1,2 @@
-export { default, PillProps, } from './Pill';
-export { PillSizes, } from './Pill.types';
+export { default, PillProps } from './Pill';
+export { PillSizes, PillStatus } from './Pill.types';
