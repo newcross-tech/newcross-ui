@@ -14,7 +14,7 @@ export {
   default as Pill,
   PillProps,
   PillSizes,
-  PillStatus,
+  PillVariant,
 } from './components/Pill';
 export {
   default as PillGroup,

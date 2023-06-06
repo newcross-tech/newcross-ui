@@ -3,7 +3,7 @@ import { fireEvent, render } from '@testing-library/react-native';
 import Pill, { PillProps } from './Pill';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faDog } from '@fortawesome/pro-solid-svg-icons/faDog';
-import { PillSizes, PillStatus } from './Pill.types';
+import { PillSizes, PillVariant } from './Pill.types';
 
 describe('Pill Component', () => {
   it('renders successfully', () => {
@@ -13,7 +13,7 @@ describe('Pill Component', () => {
       disabled: false,
       removable: false,
       label: 'Label',
-      status: PillStatus.success,
+      variant: PillVariant.success,
     };
 
     // Act
@@ -44,7 +44,7 @@ describe('Pill Component', () => {
     const props: PillProps = {
       label: 'Label',
       testID: 'label',
-      status: PillStatus.info,
+      variant: PillVariant.info,
       size: PillSizes.small,
     };
 
@@ -84,7 +84,7 @@ describe('Pill Component', () => {
       removable: true,
       disabled: true,
       onPress: onIconPress,
-      status: PillStatus.warning,
+      variant: PillVariant.warning,
     };
 
     // Act

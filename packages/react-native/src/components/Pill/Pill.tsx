@@ -5,7 +5,7 @@ import pillStyle from './Pill.style';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
 import useTheme from '../../hooks/useTheme';
-import { PillSizes, getTypographySizes, PillStatus } from './Pill.types';
+import { PillSizes, getTypographySizes, PillVariant } from './Pill.types';
 
 export type PillProps = {
   /**
@@ -29,10 +29,6 @@ export type PillProps = {
    */
 
   style?: ViewStyle;
-  /**
-   * Used to add custom style to the pill container.
-   */
-  containerStyle?: ViewStyle;
   /**
    * Used to add custom style to the icon container.
    */
@@ -60,14 +56,14 @@ export type PillProps = {
   /**
    * Used to define color palette of the Pills.
    */
-  status?: PillStatus;
+  variant?: PillVariant;
 };
 
 const Pill = ({
   disabled = false,
   icon,
   removable = true,
-  containerStyle,
+  style,
   iconStyle,
   textStyle,
   onPress,
@@ -75,7 +71,7 @@ const Pill = ({
   label,
   hasBorder = true,
   size = PillSizes.medium,
-  status = PillStatus.default,
+  variant = PillVariant.default,
 }: PillProps) => {
   const theme = useTheme();
   const styles = pillStyle({
@@ -84,11 +80,11 @@ const Pill = ({
     icon,
     removable,
     hasBorder,
-    status,
+    variant,
   });
   return (
     <View
-      style={[styles.pillContainer, containerStyle]}
+      style={[styles.pillContainer, style]}
       testID={`pill-container-${testID}`}
     >
       <View style={styles.pillContent} testID={`pill-content-${testID}`}>

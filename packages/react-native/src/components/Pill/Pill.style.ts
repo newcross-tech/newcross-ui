@@ -6,7 +6,7 @@ import {
   getPillBackgroundColor,
   getPillTextColor,
   getPillIconColor,
-  PillStatus,
+  PillVariant,
 } from './Pill.types';
 
 const pillStyle = ({
@@ -15,7 +15,7 @@ const pillStyle = ({
   removable,
   label,
   hasBorder,
-  status,
+  variant,
 }: PillProps) => {
   const theme = useTheme();
 
@@ -27,10 +27,10 @@ const pillStyle = ({
       borderWidth: hasBorder ? theme.PillBorderWidth : 0,
       borderColor: disabled
         ? theme.PillDisabledBorderColor
-        : getPillBorderColor(theme)[status as PillStatus],
+        : getPillBorderColor(theme)[variant as PillVariant],
       backgroundColor: disabled
         ? theme.PillDisabledBackgroundColor
-        : getPillBackgroundColor(theme)[status as PillStatus],
+        : getPillBackgroundColor(theme)[variant as PillVariant],
     },
     pillContent: {
       alignItems: 'center',
@@ -42,13 +42,13 @@ const pillStyle = ({
     pillText: {
       color: disabled
         ? theme.PillDisabledColor
-        : getPillTextColor(theme)[status as PillStatus],
+        : getPillTextColor(theme)[variant as PillVariant],
     },
     pillIcon: {
       marginRight: label || removable ? theme.PillIconMarginLeft : 0,
       color: disabled
         ? theme.PillDisabledColor
-        : getPillIconColor(theme)[status as PillStatus],
+        : getPillIconColor(theme)[variant as PillVariant],
     },
     pillRemoveIcon: {
       marginLeft: label || icon ? theme.PillIconMarginRight : 0,

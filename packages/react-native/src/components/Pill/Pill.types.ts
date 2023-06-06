@@ -6,7 +6,7 @@ export enum PillSizes {
   medium = 'medium',
 }
 
-export enum PillStatus {
+export enum PillVariant {
   default = 'default',
   info = 'info',
   success = 'success',
@@ -21,40 +21,40 @@ export const getTypographySizes = (): Record<PillSizes, TypographyVariant> => ({
 
 export const getPillBackgroundColor = (
   theme: ThemeDesignTokens
-): Record<PillStatus, string> => ({
-  [PillStatus.default]: theme.PillStatusDefaultBackgroundColor,
-  [PillStatus.info]: theme.PillStatusInfoBackgroundColor,
-  [PillStatus.success]: theme.PillStatusSuccessBackgroundColor,
-  [PillStatus.warning]: theme.PillStatusWarningBackgroundColor,
-  [PillStatus.error]: theme.PillStatusErrorBackgroundColor,
+): Record<PillVariant, string> => ({
+  [PillVariant.default]: theme.PillVariantDefaultBackgroundColor,
+  [PillVariant.info]: theme.PillVariantInfoBackgroundColor,
+  [PillVariant.success]: theme.PillVariantSuccessBackgroundColor,
+  [PillVariant.warning]: theme.PillVariantWarningBackgroundColor,
+  [PillVariant.error]: theme.PillVariantErrorBackgroundColor,
 });
 
 export const getPillTextColor = (
   theme: ThemeDesignTokens
-): Record<PillStatus, string> => ({
-  [PillStatus.default]: theme.PillStatusDefaultTextColor,
-  [PillStatus.info]: theme.PillStatusInfoTextColor,
-  [PillStatus.success]: theme.PillStatusSuccessTextColor,
-  [PillStatus.warning]: theme.PillStatusWarningTextColor,
-  [PillStatus.error]: theme.PillStatusErrorTextColor,
+): Record<PillVariant, string> => ({
+  [PillVariant.default]: theme.PillVariantDefaultTextColor,
+  [PillVariant.info]: theme.PillVariantInfoTextColor,
+  [PillVariant.success]: theme.PillVariantSuccessTextColor,
+  [PillVariant.warning]: theme.PillVariantWarningTextColor,
+  [PillVariant.error]: theme.PillVariantErrorTextColor,
 });
 
 export const getPillBorderColor = (
   theme: ThemeDesignTokens
-): Record<PillStatus, string> => ({
-  [PillStatus.default]: theme.PillStatusDefaultBorderColor,
-  [PillStatus.info]: theme.PillStatusInfoBorderColor,
-  [PillStatus.success]: theme.PillStatusSuccessBorderColor,
-  [PillStatus.warning]: theme.PillStatusWarningBorderColor,
-  [PillStatus.error]: theme.PillStatusErrorBorderColor,
+): Record<PillVariant, string> => ({
+  [PillVariant.default]: theme.PillVariantDefaultBorderColor,
+  [PillVariant.info]: theme.PillVariantInfoBorderColor,
+  [PillVariant.success]: theme.PillVariantSuccessBorderColor,
+  [PillVariant.warning]: theme.PillVariantWarningBorderColor,
+  [PillVariant.error]: theme.PillVariantErrorBorderColor,
 });
 
 export const getPillIconColor = (
   theme: ThemeDesignTokens
-): Record<PillStatus, string> => ({
-  [PillStatus.default]: theme.PillStatusDefaultIconColor,
-  [PillStatus.info]: theme.PillStatusInfoIconColor,
-  [PillStatus.success]: theme.PillStatusSuccessIconColor,
-  [PillStatus.warning]: theme.PillStatusWarningIconColor,
-  [PillStatus.error]: theme.PillStatusErrorIconColor,
+): Record<PillVariant, string> => ({
+  [PillVariant.default]: theme.PillVariantDefaultIconColor,
+  [PillVariant.info]: theme.PillVariantInfoIconColor,
+  [PillVariant.success]: theme.PillVariantSuccessIconColor,
+  [PillVariant.warning]: theme.PillVariantWarningIconColor,
+  [PillVariant.error]: theme.PillVariantErrorIconColor,
 });
