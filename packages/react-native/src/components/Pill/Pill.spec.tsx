@@ -52,7 +52,6 @@ describe('Pill Component', () => {
     const { getByTestId } = render(<Pill {...props} />);
 
     // Assert
-
     expect(getByTestId('pill-pressable-container-label')).toBeTruthy();
   });
   it('triggers onPress successfully', () => {

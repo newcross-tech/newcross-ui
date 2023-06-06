@@ -27,7 +27,6 @@ export type PillProps = {
   /**
    * Used to add custom style to the pill container.
    */
-
   style?: ViewStyle;
   /**
    * Used to add custom style to the icon container.

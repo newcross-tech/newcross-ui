@@ -11,6 +11,7 @@
         "background-color": {
           "value": "{brand.color.secondary.100.value}"
         },
+
         "icon": {
           "color": { "value": "{brand.color.primary.value}" }
         }
