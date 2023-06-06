@@ -19,10 +19,16 @@ import { DESCRIPTION, DO, DONT, TITLE } from './PillInfo';
 import { getParameters } from '../utils';
 
 const {
-  ColorBaseOrange300,
-  ColorBaseOrange100,
-  ColorBaseBlack100,
-  ColorBaseWhite100,
+  ColorSemanticsWarning300,
+  ColorBaseGrey100,
+  ColorBaseMagenta400,
+  ColorBaseMagenta100,
+  ColorBaseCyan400,
+  ColorBaseCyan100,
+  ColorBaseMint400,
+  ColorBaseMint100,
+  ColorPrimaryWarmth,
+  BrandColorSecondary200,
 } = native.healthforce;
 
 export default {
@@ -66,7 +72,22 @@ export const Overview = () => {
 };
 
 export const VariantsWithColor = () => {
-  console.log(-1);
+  const statusPills = [
+    { label: 'Success', status: PillStatus.success },
+    { label: 'Info', status: PillStatus.info },
+    { label: 'Warning', status: PillStatus.warning },
+    { label: 'Error', status: PillStatus.error },
+    { label: 'Default', status: PillStatus.default },
+  ];
+
+  const complimentaryExampleColors = [
+    { primary: ColorPrimaryWarmth, secondary: BrandColorSecondary200 },
+    { primary: ColorSemanticsWarning300, secondary: ColorBaseGrey100 },
+    { primary: ColorBaseMagenta400, secondary: ColorBaseMagenta100 },
+    { primary: ColorBaseCyan400, secondary: ColorBaseCyan100 },
+    { primary: ColorBaseMint400, secondary: ColorBaseMint100 },
+  ];
+
   return (
     <Container>
       <Spacing size={SpacingSizes.Large} />
@@ -74,208 +95,128 @@ export const VariantsWithColor = () => {
         Small Status Pills
       </Typography>
       <Spacing size={SpacingSizes.Large} />
-      <PillGroup orientation={PillGroupOrientation.horizontal}>
-        <Pill
-          label="Success"
-          removable={false}
-          hasBorder={false}
-          size={PillSizes.small}
-          status={PillStatus.success}
-        />
-        <Pill
-          label="Info"
-          removable={false}
-          hasBorder={false}
-          size={PillSizes.small}
-          status={PillStatus.info}
-        />
-        <Pill
-          label="Warning"
-          removable={false}
-          hasBorder={false}
-          size={PillSizes.small}
-          status={PillStatus.warning}
-        />
-        <Pill
-          label="Error"
-          removable={false}
-          hasBorder={false}
-          size={PillSizes.small}
-          status={PillStatus.error}
-        />
-        <Pill
-          label="Default"
-          removable={false}
-          hasBorder={false}
-          size={PillSizes.small}
-          status={PillStatus.default}
-        />
-      </PillGroup>
+      <PillGroup
+        orientation={PillGroupOrientation.horizontal}
+        children={statusPills.map((pill) => (
+          <Pill
+            label={pill.label}
+            status={pill.status}
+            removable={false}
+            hasBorder={false}
+            size={PillSizes.small}
+          />
+        ))}
+      />
 
       <Spacing size={SpacingSizes.Large} />
       <Typography variant={TypographyVariant.heading4}>
         Medium Status Pills
       </Typography>
       <Spacing size={SpacingSizes.Large} />
-      <PillGroup orientation={PillGroupOrientation.horizontal}>
-        <Pill
-          label="Success"
-          removable={false}
-          hasBorder={false}
-          size={PillSizes.medium}
-          status={PillStatus.success}
-        />
-        <Pill
-          label="Info"
-          removable={false}
-          hasBorder={false}
-          size={PillSizes.medium}
-          status={PillStatus.info}
-        />
-        <Pill
-          label="Warning"
-          removable={false}
-          hasBorder={false}
-          size={PillSizes.medium}
-          status={PillStatus.warning}
-        />
-        <Pill
-          label="Error"
-          removable={false}
-          hasBorder={false}
-          size={PillSizes.medium}
-          status={PillStatus.error}
-        />
-        <Pill
-          label="Default"
-          removable={false}
-          hasBorder={false}
-          size={PillSizes.medium}
-          status={PillStatus.default}
-        />
-      </PillGroup>
-
+      <PillGroup
+        orientation={PillGroupOrientation.horizontal}
+        children={statusPills.map((pill) => (
+          <Pill
+            label={pill.label}
+            status={pill.status}
+            removable={false}
+            hasBorder={false}
+            size={PillSizes.medium}
+          />
+        ))}
+      />
       <Spacing size={SpacingSizes.Large} />
       <Typography variant={TypographyVariant.heading4}>
         Small Status Pills with Icon and Border
       </Typography>
       <Spacing size={SpacingSizes.Large} />
-      <PillGroup orientation={PillGroupOrientation.horizontal}>
-        <Pill
-          label="Success"
-          removable={false}
-          hasBorder={true}
-          size={PillSizes.small}
-          status={PillStatus.success}
-          icon={<FontAwesomeIcon icon={faBird} />}
-        />
-        <Pill
-          label="Info"
-          removable={false}
-          hasBorder={true}
-          size={PillSizes.small}
-          status={PillStatus.info}
-          icon={<FontAwesomeIcon icon={faBird} />}
-        />
-        <Pill
-          label="Warning"
-          removable={false}
-          hasBorder={true}
-          size={PillSizes.small}
-          status={PillStatus.warning}
-          icon={<FontAwesomeIcon icon={faBird} />}
-        />
-        <Pill
-          label="Error"
-          removable={false}
-          hasBorder={true}
-          size={PillSizes.small}
-          status={PillStatus.error}
-          icon={<FontAwesomeIcon icon={faBird} />}
-        />
-        <Pill
-          label="Default"
-          removable={false}
-          hasBorder={true}
-          size={PillSizes.small}
-          status={PillStatus.default}
-          icon={<FontAwesomeIcon icon={faBird} />}
-        />
-      </PillGroup>
-
+      <PillGroup
+        orientation={PillGroupOrientation.horizontal}
+        children={statusPills.map((pill) => (
+          <Pill
+            label={pill.label}
+            status={pill.status}
+            removable={false}
+            hasBorder={true}
+            size={PillSizes.small}
+            icon={<FontAwesomeIcon icon={faBird} />}
+          />
+        ))}
+      />
       <Spacing size={SpacingSizes.Large} />
       <Typography variant={TypographyVariant.heading4}>
         Medium Status Pills with Icon and Border
       </Typography>
       <Spacing size={SpacingSizes.Large} />
-      <PillGroup orientation={PillGroupOrientation.horizontal}>
-        <Pill
-          label="Success"
-          removable={false}
-          hasBorder={true}
-          size={PillSizes.medium}
-          status={PillStatus.success}
-          icon={<FontAwesomeIcon icon={faBird} />}
-        />
-        <Pill
-          label="Info"
-          removable={false}
-          hasBorder={true}
-          size={PillSizes.medium}
-          status={PillStatus.info}
-          icon={<FontAwesomeIcon icon={faBird} />}
-        />
-        <Pill
-          label="Warning"
-          removable={false}
-          hasBorder={true}
-          size={PillSizes.medium}
-          status={PillStatus.warning}
-          icon={<FontAwesomeIcon icon={faBird} />}
-        />
-        <Pill
-          label="Error"
-          removable={false}
-          hasBorder={true}
-          size={PillSizes.medium}
-          status={PillStatus.error}
-          icon={<FontAwesomeIcon icon={faBird} />}
-        />
-        <Pill
-          label="Default"
-          removable={false}
-          hasBorder={true}
-          size={PillSizes.medium}
-          status={PillStatus.default}
-          icon={<FontAwesomeIcon icon={faBird} />}
-        />
-      </PillGroup>
+      <PillGroup
+        orientation={PillGroupOrientation.horizontal}
+        children={statusPills.map((pill) => (
+          <Pill
+            label={pill.label}
+            status={pill.status}
+            removable={false}
+            hasBorder={true}
+            size={PillSizes.medium}
+            icon={<FontAwesomeIcon icon={faBird} />}
+          />
+        ))}
+      />
 
       <Spacing size={SpacingSizes.Large} />
       <Typography variant={TypographyVariant.heading4}>
-        Custimizable Pills
+        Small Status Pills with Icon and No Border
       </Typography>
       <Spacing size={SpacingSizes.Large} />
-      <PillGroup orientation={PillGroupOrientation.horizontal}>
-        <Pill
-          label="Label"
-          removable={false}
-          hasBorder={false}
-          containerStyle={{ backgroundColor: ColorBaseOrange300 }}
-          iconStyle={{ color: ColorBaseOrange100 }}
-          textStyle={{ color: ColorBaseOrange100 }}
-          icon={<FontAwesomeIcon icon={faBird} />}
-        />
-        <Pill
-          label="Label"
-          removable={false}
-          hasBorder={false}
-          containerStyle={{ backgroundColor: ColorBaseBlack100 }}
-          iconStyle={{ color: ColorBaseWhite100 }}
-          textStyle={{ color: ColorBaseWhite100 }}
-          icon={<FontAwesomeIcon icon={faBird} />}
-        />
-      </PillGroup>
+      <PillGroup
+        orientation={PillGroupOrientation.horizontal}
+        children={statusPills.map((pill) => (
+          <Pill
+            label={pill.label}
+            status={pill.status}
+            removable={false}
+            hasBorder={false}
+            size={PillSizes.small}
+            icon={<FontAwesomeIcon icon={faBird} />}
+          />
+        ))}
+      />
+      <Spacing size={SpacingSizes.Large} />
+      <Typography variant={TypographyVariant.heading4}>
+        Medium Status Pills with Icon and No Border
+      </Typography>
+      <Spacing size={SpacingSizes.Large} />
+      <PillGroup
+        orientation={PillGroupOrientation.horizontal}
+        children={statusPills.map((pill) => (
+          <Pill
+            label={pill.label}
+            status={pill.status}
+            removable={false}
+            hasBorder={false}
+            size={PillSizes.medium}
+            icon={<FontAwesomeIcon icon={faBird} />}
+          />
+        ))}
+      />
+      <Spacing size={SpacingSizes.Large} />
+      <Typography variant={TypographyVariant.heading4}>
+        Customizable Pills
+      </Typography>
+      <Spacing size={SpacingSizes.Large} />
+      <PillGroup
+        orientation={PillGroupOrientation.horizontal}
+        children={complimentaryExampleColors.map((colors) => (
+          <Pill
+            label="Label"
+            removable={false}
+            hasBorder={false}
+            containerStyle={{ backgroundColor: colors.primary }}
+            iconStyle={{ color: colors.secondary }}
+            textStyle={{ color: colors.secondary }}
+            icon={<FontAwesomeIcon icon={faBird} />}
+          />
+        ))}
+      />
     </Container>
   );
 };
