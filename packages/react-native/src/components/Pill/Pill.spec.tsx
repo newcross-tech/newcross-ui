@@ -1,8 +1,9 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
+import { fireEvent, render } from '@testing-library/react-native';
 import Pill, { PillProps } from './Pill';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faDog } from '@fortawesome/pro-solid-svg-icons/faDog';
+import { PillSizes, PillStatus } from './Pill.types';
 
 describe('Pill Component', () => {
   it('renders successfully', () => {
@@ -12,6 +13,7 @@ describe('Pill Component', () => {
       disabled: false,
       removable: false,
       label: 'Label',
+      status: PillStatus.success,
     };
 
     // Act
@@ -28,6 +30,22 @@ describe('Pill Component', () => {
       label: 'Label',
       testID: 'label',
       icon: <FontAwesomeIcon icon={faDog} />,
+    };
+
+    // Act
+    const { getByTestId } = render(<Pill {...props} />);
+
+    // Assert
+
+    expect(getByTestId('pill-pressable-container-label')).toBeTruthy();
+  });
+  it('renders successfully when status and size props are given', () => {
+    // Arrange
+    const props: PillProps = {
+      label: 'Label',
+      testID: 'label',
+      status: PillStatus.info,
+      size: PillSizes.small,
     };
 
     // Act
@@ -66,6 +84,7 @@ describe('Pill Component', () => {
       removable: true,
       disabled: true,
       onPress: onIconPress,
+      status: PillStatus.warning,
     };
 
     // Act
