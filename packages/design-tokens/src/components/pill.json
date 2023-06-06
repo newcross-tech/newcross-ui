@@ -58,12 +58,12 @@
           "value": "{color.semantics.warning.300.value}"
         },
         "icon": {
-          "color": { "value": "{color.semantics.warning.100.value}" }
+          "color": { "value": "{color.semantics.warning.200.value}" }
         },
         "text": {
           "color": { "value": "{color.neutral.grey.100.value}" }
         },
-        "border-color": { "value": "{color.semantics.warning.100.value}" }
+        "border-color": { "value": "{color.semantics.warning.200.value}" }
       },
 
       "error": {

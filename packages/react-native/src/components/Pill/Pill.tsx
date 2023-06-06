@@ -57,6 +57,9 @@ export type PillProps = {
    * Used to define size of the Pills.
    */
   size?: PillSizes;
+  /**
+   * Used to define color palette of the Pills.
+   */
   status?: PillStatus;
 };
 
