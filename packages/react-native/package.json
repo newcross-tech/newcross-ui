@@ -1,6 +1,6 @@
 {
   "name": "@newcross-ui/react-native",
-  "version": "1.39.3",
+  "version": "1.39.4",
   "description": "Components for react native apps",
   "author": "itdev@newcrosshealthcare.com",
   "license": "MIT",
@@ -41,7 +41,7 @@
     "@fortawesome/pro-regular-svg-icons": "^6.1.1",
     "@fortawesome/pro-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-native-fontawesome": "^0.2.7",
-    "@newcross-ui/design-tokens": "^1.35.3",
+    "@newcross-ui/design-tokens": "^1.35.4",
     "@react-native-community/slider": "^4.2.2",
     "react-native-calendars": "^1.1282.0",
     "react-native-linear-gradient": "^2.6.2"
