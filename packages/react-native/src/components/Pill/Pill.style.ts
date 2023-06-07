@@ -10,12 +10,12 @@ import {
 } from './Pill.types';
 
 const pillStyle = ({
-  disabled,
+  label,
   icon,
   removable,
-  label,
   hasBorder,
-  variant,
+  variant = PillVariant.default,
+  disabled = true,
 }: PillProps) => {
   const theme = useTheme();
 
@@ -25,12 +25,10 @@ const pillStyle = ({
       margin: theme.PillMargin,
       borderRadius: theme.PillBorderRadius,
       borderWidth: hasBorder ? theme.PillBorderWidth : 0,
-      borderColor: disabled
-        ? theme.PillDisabledBorderColor
-        : getPillBorderColor(theme)[variant as PillVariant],
-      backgroundColor: disabled
-        ? theme.PillDisabledBackgroundColor
-        : getPillBackgroundColor(theme)[variant as PillVariant],
+      borderColor: getPillBorderColor(theme, disabled)[variant as PillVariant],
+      backgroundColor: getPillBackgroundColor(theme, disabled)[
+        variant as PillVariant
+      ],
     },
     pillContent: {
       alignItems: 'center',
@@ -40,15 +38,11 @@ const pillStyle = ({
       paddingHorizontal: theme.PillPaddingHorizontal,
     },
     pillText: {
-      color: disabled
-        ? theme.PillDisabledColor
-        : getPillTextColor(theme)[variant as PillVariant],
+      color: getPillTextColor(theme, disabled)[variant as PillVariant],
     },
     pillIcon: {
       marginRight: label || removable ? theme.PillIconMarginLeft : 0,
-      color: disabled
-        ? theme.PillDisabledColor
-        : getPillIconColor(theme)[variant as PillVariant],
+      color: getPillIconColor(theme, disabled)[variant as PillVariant],
     },
     pillRemoveIcon: {
       marginLeft: label || icon ? theme.PillIconMarginRight : 0,

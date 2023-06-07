@@ -20,41 +20,85 @@ export const getTypographySizes = (): Record<PillSizes, TypographyVariant> => ({
 });
 
 export const getPillBackgroundColor = (
-  theme: ThemeDesignTokens
+  theme: ThemeDesignTokens,
+  disabled: boolean
 ): Record<PillVariant, string> => ({
-  [PillVariant.default]: theme.PillVariantDefaultBackgroundColor,
-  [PillVariant.info]: theme.PillVariantInfoBackgroundColor,
-  [PillVariant.success]: theme.PillVariantSuccessBackgroundColor,
-  [PillVariant.warning]: theme.PillVariantWarningBackgroundColor,
-  [PillVariant.error]: theme.PillVariantErrorBackgroundColor,
+  [PillVariant.default]: disabled
+    ? theme.PillDisabledBackgroundColor
+    : theme.PillVariantDefaultBackgroundColor,
+  [PillVariant.info]: disabled
+    ? theme.PillDisabledBackgroundColor
+    : theme.PillVariantInfoBackgroundColor,
+  [PillVariant.success]: disabled
+    ? theme.PillDisabledBackgroundColor
+    : theme.PillVariantSuccessBackgroundColor,
+  [PillVariant.warning]: disabled
+    ? theme.PillDisabledBackgroundColor
+    : theme.PillVariantWarningBackgroundColor,
+  [PillVariant.error]: disabled
+    ? theme.PillDisabledBackgroundColor
+    : theme.PillVariantErrorBackgroundColor,
 });
 
 export const getPillTextColor = (
-  theme: ThemeDesignTokens
+  theme: ThemeDesignTokens,
+  disabled: boolean
 ): Record<PillVariant, string> => ({
-  [PillVariant.default]: theme.PillVariantDefaultTextColor,
-  [PillVariant.info]: theme.PillVariantInfoTextColor,
-  [PillVariant.success]: theme.PillVariantSuccessTextColor,
-  [PillVariant.warning]: theme.PillVariantWarningTextColor,
-  [PillVariant.error]: theme.PillVariantErrorTextColor,
+  [PillVariant.default]: disabled
+    ? theme.PillDisabledColor
+    : theme.PillVariantDefaultTextColor,
+  [PillVariant.info]: disabled
+    ? theme.PillDisabledColor
+    : theme.PillVariantInfoTextColor,
+  [PillVariant.success]: disabled
+    ? theme.PillDisabledColor
+    : theme.PillVariantSuccessTextColor,
+  [PillVariant.warning]: disabled
+    ? theme.PillDisabledColor
+    : theme.PillVariantWarningTextColor,
+  [PillVariant.error]: disabled
+    ? theme.PillDisabledColor
+    : theme.PillVariantErrorTextColor,
 });
 
 export const getPillBorderColor = (
-  theme: ThemeDesignTokens
+  theme: ThemeDesignTokens,
+  disabled: boolean
 ): Record<PillVariant, string> => ({
-  [PillVariant.default]: theme.PillVariantDefaultBorderColor,
-  [PillVariant.info]: theme.PillVariantInfoBorderColor,
-  [PillVariant.success]: theme.PillVariantSuccessBorderColor,
-  [PillVariant.warning]: theme.PillVariantWarningBorderColor,
-  [PillVariant.error]: theme.PillVariantErrorBorderColor,
+  [PillVariant.default]: disabled
+    ? theme.PillDisabledBorderColor
+    : theme.PillVariantDefaultBorderColor,
+  [PillVariant.info]: disabled
+    ? theme.PillDisabledBorderColor
+    : theme.PillVariantInfoBorderColor,
+  [PillVariant.success]: disabled
+    ? theme.PillDisabledBorderColor
+    : theme.PillVariantSuccessBorderColor,
+  [PillVariant.warning]: disabled
+    ? theme.PillDisabledBorderColor
+    : theme.PillVariantWarningBorderColor,
+  [PillVariant.error]: disabled
+    ? theme.PillDisabledBorderColor
+    : theme.PillVariantErrorBorderColor,
 });
 
 export const getPillIconColor = (
-  theme: ThemeDesignTokens
+  theme: ThemeDesignTokens,
+  disabled: boolean
 ): Record<PillVariant, string> => ({
-  [PillVariant.default]: theme.PillVariantDefaultIconColor,
-  [PillVariant.info]: theme.PillVariantInfoIconColor,
-  [PillVariant.success]: theme.PillVariantSuccessIconColor,
-  [PillVariant.warning]: theme.PillVariantWarningIconColor,
-  [PillVariant.error]: theme.PillVariantErrorIconColor,
+  [PillVariant.default]: disabled
+    ? theme.PillDisabledColor
+    : theme.PillVariantDefaultIconColor,
+  [PillVariant.info]: disabled
+    ? theme.PillDisabledColor
+    : theme.PillVariantInfoIconColor,
+  [PillVariant.success]: disabled
+    ? theme.PillDisabledColor
+    : theme.PillVariantSuccessIconColor,
+  [PillVariant.warning]: disabled
+    ? theme.PillDisabledColor
+    : theme.PillVariantWarningIconColor,
+  [PillVariant.error]: disabled
+    ? theme.PillDisabledColor
+    : theme.PillVariantErrorIconColor,
 });

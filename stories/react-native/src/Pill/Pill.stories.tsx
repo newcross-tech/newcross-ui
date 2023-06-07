@@ -108,6 +108,13 @@ export const VariantsWithColor = () => {
       hasBorder: true,
       size: PillSizes.small,
     },
+    {
+      label: 'Disabled Info',
+      variant: PillVariant.info,
+      disabled: true,
+      hasBorder: true,
+      size: PillSizes.small,
+    },
   ];
 
   const complimentaryExampleColors = [
