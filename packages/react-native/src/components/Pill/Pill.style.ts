@@ -25,10 +25,8 @@ const pillStyle = ({
       margin: theme.PillMargin,
       borderRadius: theme.PillBorderRadius,
       borderWidth: hasBorder ? theme.PillBorderWidth : 0,
-      borderColor: getPillBorderColor(theme, disabled)[variant as PillVariant],
-      backgroundColor: getPillBackgroundColor(theme, disabled)[
-        variant as PillVariant
-      ],
+      borderColor: getPillBorderColor(theme, disabled)[variant],
+      backgroundColor: getPillBackgroundColor(theme, disabled)[variant],
     },
     pillContent: {
       alignItems: 'center',
@@ -38,11 +36,11 @@ const pillStyle = ({
       paddingHorizontal: theme.PillPaddingHorizontal,
     },
     pillText: {
-      color: getPillTextColor(theme, disabled)[variant as PillVariant],
+      color: getPillTextColor(theme, disabled)[variant],
     },
     pillIcon: {
       marginRight: label || removable ? theme.PillIconMarginLeft : 0,
-      color: getPillIconColor(theme, disabled)[variant as PillVariant],
+      color: getPillIconColor(theme, disabled)[variant],
     },
     pillRemoveIcon: {
       marginLeft: label || icon ? theme.PillIconMarginRight : 0,
