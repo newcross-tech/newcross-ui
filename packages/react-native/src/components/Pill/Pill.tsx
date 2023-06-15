@@ -1,5 +1,5 @@
 import React, { cloneElement, isValidElement, ReactNode } from 'react';
-import { View, Pressable, ViewStyle } from 'react-native';
+import { View, Pressable, ViewStyle, TextStyle } from 'react-native';
 import Typography from '../Typography';
 import pillStyle from './Pill.style';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -31,11 +31,11 @@ export type PillProps = {
   /**
    * Used to add custom style to the icon container.
    */
-  iconStyle?: ViewStyle;
+  iconStyle?: TextStyle;
   /**
    * Used to add custom style to the text container.
    */
-  textStyle?: ViewStyle;
+  textStyle?: TextStyle;
   /**
    * Called when a single tap gesture is detected.
    */
