@@ -134,7 +134,7 @@ describe('CheckboxGroup Component', () => {
         { label: 'B', value: 'b' },
         { label: 'C', value: 'c' },
       ],
-      hideAllOption: true,
+      shouldHideAllOption: true,
     };
 
     // Act
@@ -152,7 +152,7 @@ describe('CheckboxGroup Component', () => {
         { label: 'B', value: 'b' },
         { label: 'C', value: 'c' },
       ],
-      hideAllOption: false,
+      shouldHideAllOption: false,
     };
 
     // Act
