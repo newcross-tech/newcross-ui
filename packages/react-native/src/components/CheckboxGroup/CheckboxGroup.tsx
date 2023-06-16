@@ -30,7 +30,6 @@ export type CheckboxGroupProps = {
    * TestID for testing
    */
   testID?: string;
-
 };
 
 const hasChildError = (options: Array<OptionObjectType>) =>
