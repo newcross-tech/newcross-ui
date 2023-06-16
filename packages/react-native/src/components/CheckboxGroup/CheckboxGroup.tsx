@@ -21,7 +21,7 @@ export type CheckboxGroupProps = {
   /**
    * Boolean to hide the select all option
    */
-  shouldHideAllOption?: boolean;
+  hideAllOption?: boolean;
   /**
    * Accepts a List of checkboxes values to be checked by default
    */
@@ -55,7 +55,7 @@ const CheckboxGroup = ({
   defaultChecked = [],
   label = 'Select All',
   testID = 'checkbox-group',
-  shouldHideAllOption = false,
+  hideAllOption = false,
 }: CheckboxGroupProps) => {
   const [selectedValues, setSelectedValues] =
     useState<Array<string>>(defaultChecked);
@@ -83,7 +83,7 @@ const CheckboxGroup = ({
 
   return (
     <View testID={testID}>
-      {!shouldHideAllOption && (
+      {!hideAllOption && (
         <Checkbox
           testID={`${testID}-all`}
           label={label}
@@ -93,7 +93,7 @@ const CheckboxGroup = ({
           type={getCheckboxType(selectedValues, options)}
         />
       )}
-      <View style={!shouldHideAllOption && styles.optionsContainer}>
+      <View style={!hideAllOption && styles.optionsContainer}>
         {options.map((option, index) => (
           <Checkbox
             key={option.label}
