@@ -1,8 +1,11 @@
 import React, { cloneElement, isValidElement, ReactNode } from 'react';
-import { View, Pressable, ViewStyle } from 'react-native';
+import { View, Pressable, ViewStyle, TextStyle } from 'react-native';
 import Typography from '../Typography';
 import pillStyle from './Pill.style';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import {
+  FontAwesomeIcon,
+  FontAwesomeIconStyle,
+} from '@fortawesome/react-native-fontawesome';
 import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
 import useTheme from '../../hooks/useTheme';
 import { PillSizes, getTypographySizes, PillVariant } from './Pill.types';
@@ -29,13 +32,13 @@ export type PillProps = {
    */
   style?: ViewStyle;
   /**
-   * Used to add custom style to the icon container.
+   * Used to add custom style to the icon.
    */
-  iconStyle?: ViewStyle;
+  iconStyle?: FontAwesomeIconStyle;
   /**
-   * Used to add custom style to the text container.
+   * Used to add custom style to the text.
    */
-  textStyle?: ViewStyle;
+  textStyle?: TextStyle;
   /**
    * Called when a single tap gesture is detected.
    */
@@ -63,7 +66,7 @@ const Pill = ({
   icon,
   removable = true,
   style,
-  iconStyle,
+  iconStyle = {},
   textStyle,
   onPress,
   testID,
@@ -88,7 +91,7 @@ const Pill = ({
     >
       <View style={styles.pillContent} testID={`pill-content-${testID}`}>
         {isValidElement(icon) &&
-          cloneElement(icon, { style: { ...styles.pillIcon, ...iconStyle } })}
+          cloneElement(icon, { style: [styles.pillIcon, iconStyle] })}
         <Typography
           variant={getTypographySizes()[size]}
           style={[styles.pillText, textStyle]}
