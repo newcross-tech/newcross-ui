@@ -125,4 +125,40 @@ describe('CheckboxGroup Component', () => {
     // Assert
     expect(onChange).toHaveBeenCalledWith(['a', 'b', 'c']);
   });
+
+  it("Hides the 'All' option when shouldHideAllOption is true", () => {
+    // Arrange
+    const props: CheckboxGroupProps = {
+      options: [
+        { label: 'A', value: 'a' },
+        { label: 'B', value: 'b' },
+        { label: 'C', value: 'c' },
+      ],
+      shouldHideAllOption: true,
+    };
+
+    // Act
+    render(<CheckboxGroup {...props} />);
+
+    // Assert
+    expect(screen.queryByTestId('checkbox-group-all')).toBe(null);
+  });
+
+  it("Shows the 'All' option when shouldHideAllOption is false", () => {
+    // Arrange
+    const props: CheckboxGroupProps = {
+      options: [
+        { label: 'A', value: 'a' },
+        { label: 'B', value: 'b' },
+        { label: 'C', value: 'c' },
+      ],
+      shouldHideAllOption: false,
+    };
+
+    // Act
+    render(<CheckboxGroup {...props} />);
+
+    // Assert
+    expect(screen.queryByTestId('checkbox-group-all')).not.toBe(null);
+  });
 });
