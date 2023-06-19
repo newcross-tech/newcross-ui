@@ -114,6 +114,7 @@ export const IndicatorsContainer = styled.div`
   align-items: center;
 
   ${({ theme }: Theme) => css`
+    margin-left: ${theme.SpacingBase16};
     > div:not(:last-child) {
       margin-right: ${theme.SpacingBase16};
     }

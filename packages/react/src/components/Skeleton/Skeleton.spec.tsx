@@ -11,7 +11,7 @@ const renderComponent = (customProps: Partial<SkeletonProps>) => {
 
 describe('Skeleton', () => {
   const ui = {
-    skeletonWrapper: byTestId('skeleton'),
+    skeletonWrapper: byTestId('skeleton-'),
   };
 
   it('should not have any a11y errors', async () => {

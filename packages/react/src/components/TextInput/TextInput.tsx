@@ -34,7 +34,7 @@ export type TextInputProps = Omit<
   /**
    * Updates text in input box
    */
-  onChange: (newState: string) => void;
+  onChange?: (newState: string) => void;
   /**
    * Shows check mark when validation is met
    */
@@ -75,7 +75,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
   const onChangeHandler = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    onChange && onChange(event.target.value);
+    onChange?.(event.target.value);
   };
 
   const triggerFocusState = (isFocus: boolean) => {

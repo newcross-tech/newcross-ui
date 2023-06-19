@@ -56,7 +56,7 @@ const RadioGroup = ({
 
         return cloneElement(child, {
           key: value,
-          onChange: () => value && handleOnChange(value),
+          onChange: () => value && handleOnChange(value as string),
           selected: value === selectedOption,
           disabled,
         });

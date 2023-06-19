@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { useToggle } from '../../hooks/useToggle';
 import { TestProp } from '../../types/TestProp';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import * as Styled from './Radio.style';
@@ -17,11 +15,11 @@ export type RadioProps = {
    * The currently selected value within the group or an array of
    * selected values
    */
-  value?: string;
+  value: string | number;
   /**
    * Called when a single tap gesture is detected.
    */
-  onChange?: VoidFunction;
+  onChange?: (isSelected: string | number) => void;
   /**
    * Specifies whether the radio is selected
    */
@@ -35,18 +33,12 @@ const Radio = ({
   disabled = false,
   label,
   onChange,
-  value = '',
+  value,
   testID = '',
 }: RadioProps) => {
-  const [isSelected, setIsSelected] = useState(selected);
-
-  useToggle(selected, () => setIsSelected(selected));
-
   const onChangeHandler = () => {
     if (disabled) return;
-
-    setIsSelected(!isSelected);
-    onChange && onChange();
+    onChange?.(value);
   };
 
   const id = `${baseTestId}-input-${value}`;
@@ -58,12 +50,10 @@ const Radio = ({
         type="radio"
         data-testid={`${baseTestId}-input-${testID}`}
         name={id}
-        checked={isSelected}
+        checked={selected}
         onChange={onChangeHandler}
         disabled={disabled}
-        onKeyPress={(event) =>
-          onSpacePressTrigger(event, () => onChangeHandler())
-        }
+        onKeyPress={(event) => onSpacePressTrigger(event, onChangeHandler)}
       />
       <Styled.Label
         variant={'paragraph1'}

@@ -2,7 +2,7 @@ import { RotateProp } from '@fortawesome/fontawesome-svg-core';
 import { faXmark } from '@fortawesome/pro-regular-svg-icons/faXmark';
 import { faChevronDown } from '@fortawesome/pro-solid-svg-icons/faChevronDown';
 import { useSpring } from '@react-spring/web';
-import { SyntheticEvent, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useKeypressListener } from '../../hooks/useKeypressListener';
 import { useOutsideDetector } from '../../hooks/useOutsideDetector';
 import useTheme from '../../hooks/useTheme';
@@ -33,6 +33,10 @@ type CommonProps = {
    */
   label?: string;
   /**
+   * Detremines whether text is clearable.
+   */
+  isClearable?: boolean;
+  /**
    * Detremines whether text input is disabled.
    */
   disabled?: boolean;
@@ -55,6 +59,7 @@ const Dropdown = ({
   selectedValue,
   disabled,
   variant = 'single',
+  isClearable = true,
   errorText,
   label,
   testID,
@@ -71,7 +76,7 @@ const Dropdown = ({
   const theme = useTheme();
   const hasError = !!errorText;
   const isMulti = variant === 'multi';
-  const showClearIcon = !disabled && value;
+  const showClearIcon = isClearable && !disabled && value;
 
   const onChangeHandler = (value?: string | string[]) => {
     if (isMulti) {
@@ -83,8 +88,7 @@ const Dropdown = ({
     }
   };
 
-  const onClear = (event: SyntheticEvent) => {
-    event.stopPropagation();
+  const onClear = () => {
     setValue(undefined);
     onChangeHandler(undefined);
     setIsFocused(false);

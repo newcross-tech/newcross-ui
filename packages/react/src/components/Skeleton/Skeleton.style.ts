@@ -1,39 +1,41 @@
 import styled, { css, keyframes } from 'styled-components';
 import { ExtendedTheme } from '../../types/Theme';
 import { defaultAnimationSpeed } from './Skeleton.constants';
-import { AnimatedContentProps } from './Skeleton.types';
+import { SkeletonProps } from './Skeleton';
 
-const getSkeletonKeyframe = (widthValue: string) => keyframes`
-  0% {
-    background-position: -${widthValue} 0;
-  }
+export const shimmer = keyframes`
   100% {
-    background-position: calc(${widthValue} + 100%) 0;
+    transform: translateX(100%);
   }
 `;
 
-const getWidthRelatedStyles = (hasWidthOverride: boolean, width: string) => {
-  const widthAdjustment = hasWidthOverride ? width : `${width}px`;
-  return css`
-    width: ${hasWidthOverride ? width : '100%'};
-    background-size: ${widthAdjustment} 100%;
-    animation: ${getSkeletonKeyframe(widthAdjustment)} ${defaultAnimationSpeed}s ease-in-out infinite;
-  `;
-};
-
-export const AnimatedContent = styled.div`
+export const AnimatedContent = styled.span`
   display: inline-block;
-  ${({ theme, width, height, hasWidthOverride, hasRoundedCorners = false }: ExtendedTheme<AnimatedContentProps>) => css`
+  position: relative;
+  overflow: hidden;
+
+  ${({ theme, width, height, hasRoundedCorners }: ExtendedTheme<SkeletonProps>) => css`
+    width: ${width || '100%'};
     height: ${height || '100%'};
-    ${getWidthRelatedStyles(hasWidthOverride, width)};
-    background: ${theme.ColorBaseGrey300};
-    background-image: linear-gradient(
-      90deg,
-      ${theme.ColorBaseGrey300},
-      ${theme.ColorBaseGrey500},
-      ${theme.ColorBaseGrey300}
-    );
-    background-repeat: no-repeat;
     border-radius: ${hasRoundedCorners && theme.CardBorderRadius};
+    background: ${theme.ColorBaseGrey300};
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transform: translateX(-100%);
+      background-image: linear-gradient(
+        90deg,
+        ${theme.ColorBaseGrey300},
+        ${theme.ColorBaseGrey500},
+        ${theme.ColorBaseGrey300}
+      );
+      background-repeat: no-repeat;
+
+      animation: ${shimmer} ${defaultAnimationSpeed}s ease-in-out infinite;
+      content: '';
+    }
   `};
 `;

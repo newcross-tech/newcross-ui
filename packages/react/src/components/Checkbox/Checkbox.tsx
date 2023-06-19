@@ -1,13 +1,11 @@
 import { faCheck } from '@fortawesome/pro-light-svg-icons/faCheck';
 import { faMinus } from '@fortawesome/pro-light-svg-icons/faMinus';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { SyntheticEvent, useState } from 'react';
-import { useToggle } from '../../hooks/useToggle';
 import { TestProp } from '../../types/TestProp';
-import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import * as LabelStyled from '../Label/Label.style';
 import * as Styled from './Checkbox.style';
 import { CheckboxType } from './Checkbox.types';
+import { onSpacePressTrigger } from '../../utils';
 
 export type CheckboxProps = {
   /**
@@ -17,7 +15,7 @@ export type CheckboxProps = {
   /**
    * Label for the checkbox
    */
-  label: string;
+  label?: string;
   /**
    * Whether the press behavior is disabled.
    */
@@ -52,20 +50,15 @@ const Checkbox = ({
   ...rest
 }: CheckboxProps) => {
   const isChecked = !!checked;
-  const [selected, setSelected] = useState(isChecked);
-
-  useToggle(isChecked, () => setSelected(isChecked));
 
   const icon = type === 'indeterminate' ? faMinus : faCheck;
 
   const handleChecked = () => {
     if (disabled) return;
-    const currentValue = !selected;
-    onChange && onChange(currentValue);
-    setSelected(currentValue);
+    onChange?.(!isChecked);
   };
 
-  const onChangeHandler = (event: SyntheticEvent) => {
+  const onChangeHandler = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
     handleChecked();
   };
@@ -83,27 +76,29 @@ const Checkbox = ({
         disabled={disabled}
         hasError={hasError}
         label={label}
-        selected={selected}
+        selected={isChecked}
         type={type}
       >
-        {selected && (
+        {isChecked && (
           <FontAwesomeIcon
             data-testid={type ? 'indeterminate-icon' : 'checkmark-icon'}
             icon={icon}
           />
         )}
       </Styled.Box>
-      <LabelStyled.Label
-        disabled={disabled}
-        variant={'paragraph1'}
-        onKeyPress={(event: React.KeyboardEvent<HTMLElement>) =>
-          onSpacePressTrigger(event, handleChecked)
-        }
-        tabIndex={!disabled && allowTab ? 0 : -1}
-        data-testid={'checkbox-label'}
-      >
-        {label}
-      </LabelStyled.Label>
+      {label && (
+        <LabelStyled.Label
+          disabled={disabled}
+          variant={'paragraph1'}
+          onKeyPress={(event: React.KeyboardEvent<HTMLElement>) =>
+            onSpacePressTrigger(event, handleChecked)
+          }
+          tabIndex={!disabled && allowTab ? 0 : -1}
+          data-testid={'checkbox-label'}
+        >
+          {label}
+        </LabelStyled.Label>
+      )}
     </Styled.Checkbox>
   );
 };
