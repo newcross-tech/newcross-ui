@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.40.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.39.4...@newcross-ui/react-native@1.40.0) (2023-06-19)
+
+
+### Features
+
+* **hfgo-1935:** change textStyle and iconStyle types to be TextStyle… ([#9](https://bitbucket.org/newcrossdev/newcross-ui/issues/9)) ([543698f](https://bitbucket.org/newcrossdev/newcross-ui/commits/543698feaa3965ea889879c33b5acf6c168cf458))
+
+
+
+
+
 ## [1.39.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.39.3...@newcross-ui/react-native@1.39.4) (2023-06-07)
 
 **Note:** Version bump only for package @newcross-ui/react-native
