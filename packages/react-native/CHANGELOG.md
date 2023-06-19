@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.41.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.40.0...@newcross-ui/react-native@1.41.0) (2023-06-19)
+
+
+### Features
+
+* **HFGO-1943:** add option on checkboxGroup to hide the 'All' option ([#10](https://bitbucket.org/newcrossdev/newcross-ui/issues/10)) ([3fb2968](https://bitbucket.org/newcrossdev/newcross-ui/commits/3fb2968badb964514c3b34f8ab1aa309418c998d))
+
+
+
+
+
 # [1.40.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.39.4...@newcross-ui/react-native@1.40.0) (2023-06-19)
 
 
