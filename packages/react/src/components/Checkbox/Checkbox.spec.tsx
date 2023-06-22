@@ -57,13 +57,16 @@ describe('Checkbox Component', () => {
   });
 
   it('fires an onClick event to check the checkbox successfully', () => {
+    // Arrange
+    const onChange = jest.fn();
     // Act
-    renderComponent({ checked: false });
+    renderComponent({ checked: false, onChange });
 
     fireEvent.click(ui.checkbox.get());
 
     // Assert
-    expect(ui.checkboxIcon.get()).toBeInTheDocument();
+    expect(onChange).toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalledWith(true);
   });
 
   it('onClick event wont be called when the checkbox is disabled ', () => {
@@ -77,13 +80,23 @@ describe('Checkbox Component', () => {
     expect(onClick).not.toHaveBeenCalled();
   });
 
+  it('renders successfully without label', () => {
+    // Act
+    renderComponent({ label: undefined });
+
+    // Assert
+    expect(ui.checkboxLabel.query()).not.toBeInTheDocument();
+  });
+
   it('when Spacebar pressed the checkbox checked successfully', () => {
     // Act
-    renderComponent({ checked: false });
+    const onChange = jest.fn();
+    renderComponent({ checked: false, onChange });
 
     executeKeyPress(ui.checkboxLabel.get());
 
     // Assert
-    expect(ui.checkboxIcon.get()).toBeInTheDocument();
+    expect(onChange).toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalledWith(true);
   });
 });

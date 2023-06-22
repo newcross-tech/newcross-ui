@@ -31,7 +31,7 @@ export const ToastContext = createContext<{
 const reducer = (toasts: ToastType[], action: ToastAction) =>
   toastReducer(toasts, action);
 
-export const ToastProvider: React.FC = ({ children }) => {
+export const ToastProvider = ({ children }: ToastProviderProps) => {
   const [toasts, dispatch] = useReducer(reducer, initialState);
 
   const renderToast = () => (

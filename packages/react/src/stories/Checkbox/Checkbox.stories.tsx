@@ -5,6 +5,7 @@ import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './CheckboxInfo';
+import useState from 'storybook-addon-state';
 
 export default {
   title: 'React/Components/Checkbox',
@@ -60,23 +61,28 @@ const Template: Story<CheckboxProps> = ({
   disabled,
   hasError,
   ...rest
-}) => (
-  <Container display="block">
-    <Checkbox
-      type={type}
-      label={label}
-      disabled={disabled}
-      hasError={hasError}
-      {...rest}
-    />
-  </Container>
-);
+}) => {
+  const [isChecked, setIsChecked] = useState('interactiveCheckbox', false);
+
+  return (
+    <Container display="block">
+      <Checkbox
+        type={type}
+        label={label}
+        hasError={hasError}
+        checked={isChecked}
+        onChange={setIsChecked}
+        disabled={disabled}
+        {...rest}
+      />
+    </Container>
+  );
+};
 
 export const Interactive = Template.bind({});
 Interactive.args = {
   label: 'Label',
   disabled: false,
   hasError: false,
-  checked: true,
   testID: '',
 };

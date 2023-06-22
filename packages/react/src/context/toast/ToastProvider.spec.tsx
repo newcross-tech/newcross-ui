@@ -1,4 +1,4 @@
-import { fireEvent, renderHook, waitFor } from '@testing-library/react';
+import { fireEvent, renderHook } from '@testing-library/react';
 import { byTestId } from 'testing-library-selector';
 import { useToast } from '../../hooks/useToast';
 import { act } from 'react-dom/test-utils';

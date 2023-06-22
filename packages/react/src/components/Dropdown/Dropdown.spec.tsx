@@ -3,6 +3,7 @@ import { byTestId, byText } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
 import { executeKeyPress } from '../../utils/test/executeKeyPress';
 import Dropdown, { DropdownProps } from './Dropdown';
+import { within } from '@storybook/testing-library';
 
 const baseTestId = 'dropdown';
 const options = ['Option 1', 'Option 2', 'Option 3'];
@@ -50,12 +51,22 @@ describe('Dropdown Component', () => {
     expect(results).toHaveNoViolations();
   });
 
-  it('renders successfully with selected value', () => {
+  it('renders successfully with selected value and triggers onChange', () => {
+    // Arrange
+    const optionValue = 'Option 1';
+    const onChange = jest.fn();
     // Act
-    renderComponent({ selectedValue: 'Option 1' });
+    renderComponent({ onChange, selectedValue: optionValue });
 
     // Assert
     expect(ui.dropdownValue(testID).get()).toBeVisible();
+
+    fireEvent.click(ui.dropdownHeaderContainer(testID).get());
+
+    const bodyContainer = ui.dropdownFocused(testID).get();
+    const menuOption = within(bodyContainer).getByText(optionValue);
+    fireEvent.click(menuOption);
+    expect(onChange).toHaveBeenCalledWith(optionValue);
   });
 
   it('renders successfully with error text', () => {
@@ -162,9 +173,14 @@ describe('Dropdown Component', () => {
   it('when default value for multi select when option is selected no value id is toggled', () => {
     // Arrange
     const optionValue = 'Option 1';
+    const onChange = jest.fn();
 
     // Act
-    renderComponent({ selectedValue: [optionValue], variant: 'multi' });
+    renderComponent({
+      selectedValue: [optionValue],
+      variant: 'multi',
+      onChange,
+    });
 
     const option = ui.dropdownCheckboxOption(optionValue).get();
 
@@ -177,5 +193,6 @@ describe('Dropdown Component', () => {
 
     // Assert multi select
     expect(ui.dropdownMultiPillValue(testID).get()).toBeVisible();
+    expect(onChange).toHaveBeenCalledWith([optionValue]);
   });
 });
