@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.27.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.26.4...@newcross-ui/react@1.27.0) (2023-06-22)
+
+
+### Features
+
+* **ASK-0000:** multiple perf updates, expose ToastProvider, hooks ([a2ec7be](https://bitbucket.org/newcrossdev/newcross-ui/commits/a2ec7bee55ace0ed23f75759eef2888bc6328490))
+
+
+
+
+
 ## [1.26.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.26.3...@newcross-ui/react@1.26.4) (2023-06-07)
 
 **Note:** Version bump only for package @newcross-ui/react
