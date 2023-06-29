@@ -3,7 +3,7 @@ import { View, ImageSourcePropType, ViewStyle, TextStyle } from 'react-native';
 import avatarStyles from './Avatar.style';
 import AvatarContent from './AvatarContent';
 import { AvatarSizes } from './Avatar.types';
-import { IconDefinition } from '@fortawesome/pro-regular-svg-icons';
+import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 
 export type AvatarProps = {
   /**
