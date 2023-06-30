@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.40.0](https://github.com/newcross-tech/newcross-ui/compare/@newcross-stories/react-native@1.39.15...@newcross-stories/react-native@1.40.0) (2023-06-30)
+
+
+### Features
+
+* **HFGO-1971:** update eslint config ([#12](https://github.com/newcross-tech/newcross-ui/issues/12)) ([c28be85](https://github.com/newcross-tech/newcross-ui/commit/c28be85d53f4692321af2dd247063b58c10a563b))
+
+
+
+
+
 ## [1.39.15](https://github.com/newcross-tech/newcross-ui/compare/@newcross-stories/react-native@1.39.14...@newcross-stories/react-native@1.39.15) (2023-06-19)
 
 **Note:** Version bump only for package @newcross-stories/react-native

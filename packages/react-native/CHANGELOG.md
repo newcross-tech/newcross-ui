@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.42.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.41.0...@newcross-ui/react-native@1.42.0) (2023-06-30)
+
+
+### Features
+
+* **HFGO-1971:** update eslint config ([#12](https://bitbucket.org/newcrossdev/newcross-ui/issues/12)) ([c28be85](https://bitbucket.org/newcrossdev/newcross-ui/commits/c28be85d53f4692321af2dd247063b58c10a563b))
+
+
+
+
+
 # [1.41.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.40.0...@newcross-ui/react-native@1.41.0) (2023-06-19)
 
 
