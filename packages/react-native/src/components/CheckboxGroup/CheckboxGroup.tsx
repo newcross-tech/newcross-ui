@@ -13,7 +13,7 @@ export type CheckboxGroupProps = {
   /**
    * Callback fired when the state is changed.
    */
-  onChange?: (array: Array<string>) => void;
+  onChange?: (array: Array<string | number>) => void;
   /**
    * Accepts a List of checkboxes to display
    */
@@ -25,7 +25,7 @@ export type CheckboxGroupProps = {
   /**
    * Accepts a List of checkboxes values to be checked by default
    */
-  defaultChecked?: Array<string>;
+  defaultChecked?: Array<string | number>;
   /**
    * TestID for testing
    */
@@ -35,11 +35,13 @@ export type CheckboxGroupProps = {
 const hasChildError = (options: Array<OptionObjectType>) =>
   options.some(({ hasError }) => hasError);
 
-const isChildSelected = (selectedValues: Array<string>, value: string) =>
-  selectedValues.includes(value);
+const isChildSelected = (
+  selectedValues: Array<string | number>,
+  value: string
+) => selectedValues.includes(value);
 
 const getCheckboxType = (
-  selectedValues: Array<string>,
+  selectedValues: Array<string | number>,
   options: Array<OptionObjectType>
 ) => {
   const enabledCheckboxes = options.filter(({ disabled }) => !disabled);
@@ -58,7 +60,7 @@ const CheckboxGroup = ({
   shouldHideAllOption = false,
 }: CheckboxGroupProps) => {
   const [selectedValues, setSelectedValues] =
-    useState<Array<string>>(defaultChecked);
+    useState<Array<string | number>>(defaultChecked);
 
   const styles = checkboxGroupStyle();
 
