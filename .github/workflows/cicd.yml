@@ -14,7 +14,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: org-runners
     steps:
       - uses: actions/checkout@v3
         with:
@@ -40,7 +40,7 @@ jobs:
 
   deploy_acceptance:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: org-runners
     steps:
       - uses: actions/checkout@v3
         with:
@@ -60,7 +60,7 @@ jobs:
 
   deploy_production:
     needs: deploy_acceptance
-    runs-on: ubuntu-latest
+    runs-on: org-runners
     steps:
       - uses: actions/checkout@v3
         with:

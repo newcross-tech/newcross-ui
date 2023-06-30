@@ -10,7 +10,7 @@ env:
 
 jobs:
   pull_request:
-    runs-on: ubuntu-latest
+    runs-on: org-runners
     steps:
       - uses: actions/checkout@v3
         with:
