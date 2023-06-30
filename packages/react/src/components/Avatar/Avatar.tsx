@@ -1,4 +1,4 @@
-import { IconDefinition } from '@fortawesome/pro-regular-svg-icons';
+import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { TestProp } from '../../types/TestProp';
 import * as Styled from './Avatar.style';
 import { AvatarSizes } from './Avatar.types';

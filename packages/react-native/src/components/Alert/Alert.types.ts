@@ -1,7 +1,7 @@
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ViewStyle, TextStyle, ColorValue } from 'react-native';
 import { FontAwesomeIconStyle } from '@fortawesome/react-native-fontawesome';
-import { IconDefinition } from '@fortawesome/pro-regular-svg-icons';
+import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { faCheck } from '@fortawesome/pro-regular-svg-icons/faCheck';
 import { faCircleExclamation } from '@fortawesome/pro-regular-svg-icons/faCircleExclamation';
 import { faCircleInfo } from '@fortawesome/pro-regular-svg-icons/faCircleInfo';

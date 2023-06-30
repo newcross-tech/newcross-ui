@@ -6,7 +6,7 @@ import {
   StyleProp,
   PressableProps,
 } from 'react-native';
-import { IconDefinition } from '@fortawesome/pro-regular-svg-icons';
+import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { faCheck } from '@fortawesome/pro-regular-svg-icons/faCheck';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { FABVariant } from './FloatingActionButton.types';

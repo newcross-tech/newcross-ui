@@ -3,7 +3,7 @@ import ToggleButton, { ToggleButtonProps } from '../../components/ToggleButton';
 import Container from '../Container';
 import Spacing from '../Spacing';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilter } from '@fortawesome/pro-regular-svg-icons';
+import { faFilter } from '@fortawesome/pro-regular-svg-icons/faFilter';
 import { faCalendarDays } from '@fortawesome/pro-solid-svg-icons/faCalendarDays';
 import useState from 'storybook-addon-state';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
