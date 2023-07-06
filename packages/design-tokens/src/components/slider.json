@@ -1,6 +1,12 @@
 {
   "slider": {
-    "background-color": { "value": "{brand.color.secondary.100.value}" },
-    "interactive-color": { "value": "{brand.color.primary.value}" }
+    "thumb-color": { "value": "{brand.color.primary.value}" },
+    "min-track-color": { "value": "{brand.color.primary.value}" },
+    "max-track-color": { "value": "{brand.color.secondary.100.value}" },
+    "disabled": {
+      "thumb-color": { "value": "{color.base.grey.200.value}" },
+      "min-track-color": { "value": "{color.base.grey.200.value}" },
+      "max-track-color": { "value": "{color.base.grey.500.value}" }
+    }
   }
 }

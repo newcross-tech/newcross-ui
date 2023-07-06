@@ -78,7 +78,6 @@ export {
   ToggleSwitchProps,
 } from './components/ToggleSwitch';
 export { default as Slider, SliderProps } from './components/Slider';
-export { default as SliderTwo, SliderTwoProps } from './components/SliderTwo';
 export { default as Toast, ToastProps, ToastVariant } from './components/Toast';
 export { default as Calendar, CalendarProps } from './components/Calendar';
 export { default as Tabs, TabsProps } from './components/Tabs';
