@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react-native';
 import Slider from './Slider';
 
-describe('SliderTwo Component', () => {
+describe('Slider Component', () => {
   it('renders successfully', () => {
     // Arrange
     const props = {
