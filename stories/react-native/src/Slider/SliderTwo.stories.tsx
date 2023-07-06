@@ -4,6 +4,7 @@ import { Meta, Story } from '@storybook/react';
 import useState from 'storybook-addon-state';
 import {
   Slider,
+  SliderProps,
   Typography,
   TypographyVariant,
 } from '@newcross-ui/react-native';
@@ -12,7 +13,6 @@ import Spacing from '../Spacing';
 import { isWebPlatform } from '../utils';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './SliderInfo';
-import { SliderProps } from '@newcross-ui/react-native';
 
 export default {
   title: 'ReactNative/Components/Slider',
