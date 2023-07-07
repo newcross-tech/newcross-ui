@@ -17,6 +17,11 @@ import { DESCRIPTION, DO, DONT, TITLE } from './SliderInfo';
 export default {
   title: 'ReactNative/Components/Slider',
   component: Slider,
+  parameters: {
+    backgrounds: {
+      default: 'white',
+    },
+  },
 } as Meta;
 
 export const Overview = () => {
