@@ -8,6 +8,7 @@ import {
   Typography,
   TypographyVariant,
 } from '@newcross-ui/react-native';
+import { native } from '@newcross-ui/design-tokens';
 import Container from '../Container';
 import Spacing from '../Spacing';
 import { isWebPlatform } from '../utils';
@@ -63,22 +64,30 @@ export const Overview = () => {
 };
 
 export const Variants = () => {
+  const { ColorPrimaryGravitas, ColorBaseMint100 } = native.healthforce;
+
   const [doubleSliderValue, setDoubleSliderValue] = useState(
     'doubleSliderValue',
     [0, 100]
   );
   const [singleSliderValue, setSingleSliderValue] = useState(
     'singleSliderValue',
-    [0]
+    0
   );
+  const [
+    singleSliderThumbColorChangeValue,
+    setSingleSliderThumbColorChangeValue,
+  ] = useState('singleSliderThumbColorChangeValue', 0);
   const [singleSliderStepValue, setSingleSliderStepValue] = useState(
     'singleSliderStepValue',
-    [0]
+    0
   );
   const [disabledSliderValue, setDisabledSliderValue] = useState(
     'disabledSliderValue',
-    [50]
+    50
   );
+  const [isPressed, setIsPressed] = useState('isPressed', false);
+
   return (
     <Container>
       <Typography variant={TypographyVariant.heading3}>
@@ -111,13 +120,41 @@ export const Variants = () => {
           Single Slider Label
         </Typography>
         <Typography variant={TypographyVariant.heading5}>
-          {Math.trunc(singleSliderValue[0])}
+          {Math.trunc(singleSliderValue)}
         </Typography>
       </View>
       <Slider
         testID="single-slider"
         sliderValue={singleSliderValue}
-        onChangeValue={(value: Array<number>) => setSingleSliderValue(value)}
+        onChangeValue={(value: number) => setSingleSliderValue(value)}
+        maximumValue={100}
+        minimumValue={0}
+      />
+      <Typography variant={TypographyVariant.heading3}>
+        Single slider - thumb that changes colour & size on slide
+      </Typography>
+      <Spacing />
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+        <Typography variant={TypographyVariant.heading5}>
+          Single Slider Label 2
+        </Typography>
+        <Typography variant={TypographyVariant.heading5}>
+          {Math.trunc(singleSliderThumbColorChangeValue)}
+        </Typography>
+      </View>
+      <Slider
+        sliderValue={singleSliderThumbColorChangeValue}
+        onChangeValue={(value: number) => {
+          setSingleSliderThumbColorChangeValue(value);
+          setIsPressed(value !== 0);
+        }}
+        thumbTintColor={isPressed ? ColorBaseMint100 : ColorPrimaryGravitas}
+        thumbStyle={{
+          height: isPressed ? 28 : 20,
+          width: isPressed ? 28 : 20,
+          borderRadius: isPressed ? 14 : 10,
+        }}
+        onSlidingComplete={() => setIsPressed(false)}
         maximumValue={100}
         minimumValue={0}
       />
@@ -131,15 +168,13 @@ export const Variants = () => {
           Step Slider Label
         </Typography>
         <Typography variant={TypographyVariant.heading5}>
-          {Math.trunc(singleSliderStepValue[0])}
+          {Math.trunc(singleSliderStepValue)}
         </Typography>
       </View>
       <Slider
         testID="single-step-slider"
         sliderValue={singleSliderStepValue}
-        onChangeValue={(value: Array<number>) =>
-          setSingleSliderStepValue(value)
-        }
+        onChangeValue={(value: number) => setSingleSliderStepValue(value)}
         maximumValue={100}
         minimumValue={0}
         step={5}
@@ -151,13 +186,13 @@ export const Variants = () => {
           Disabled Slider Label
         </Typography>
         <Typography variant={TypographyVariant.heading5}>
-          {Math.trunc(disabledSliderValue[0])}
+          {Math.trunc(disabledSliderValue)}
         </Typography>
       </View>
       <Slider
         testID="disabled-slider"
         sliderValue={disabledSliderValue}
-        onChangeValue={(value: Array<number>) => setDisabledSliderValue(value)}
+        onChangeValue={(value: number) => setDisabledSliderValue(value)}
         maximumValue={100}
         minimumValue={0}
         disabled
