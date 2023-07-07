@@ -20,9 +20,9 @@ export default {
 } as Meta;
 
 export const Overview = () => {
-  const [doubleSliderValue, setDoubleSliderValue] = useState(
-    'doubleSliderValue',
-    [0, 100]
+  const [overviewSliderValue, setOverviewSliderValue] = useState(
+    'overviewSliderValue',
+    [50, 300]
   );
   return (
     <InfoTemplate
@@ -35,19 +35,22 @@ export const Overview = () => {
         containerStyle={{ maxWidth: isWebPlatform ? '350px' : undefined }}
       >
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-          <Typography variant={TypographyVariant.heading5}>Label</Typography>
+          <Typography variant={TypographyVariant.heading5}>Range</Typography>
           <Typography variant={TypographyVariant.heading5}>
-            {`${Math.trunc(doubleSliderValue[0])} - ${Math.trunc(
-              doubleSliderValue[1]
+            {`${Math.trunc(overviewSliderValue[0])} to ${Math.trunc(
+              overviewSliderValue[1]
             )}`}
           </Typography>
         </View>
         <Slider
-          testID="slider-two"
-          sliderValue={doubleSliderValue}
-          onChangeValue={(value: Array<number>) => setDoubleSliderValue(value)}
-          maximumValue={100}
+          testID="overview-slider"
+          sliderValue={overviewSliderValue}
+          onChangeValue={(value: Array<number>) =>
+            setOverviewSliderValue(value)
+          }
+          maximumValue={500}
           minimumValue={0}
+          disabled={false}
         />
       </Container>
     </InfoTemplate>
@@ -78,7 +81,9 @@ export const Variants = () => {
       </Typography>
       <Spacing />
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-        <Typography variant={TypographyVariant.heading5}>Label</Typography>
+        <Typography variant={TypographyVariant.heading5}>
+          Double Slider Label
+        </Typography>
         <Typography variant={TypographyVariant.heading5}>
           {`${Math.trunc(doubleSliderValue[0])} - ${Math.trunc(
             doubleSliderValue[1]
@@ -86,7 +91,7 @@ export const Variants = () => {
         </Typography>
       </View>
       <Slider
-        testID="slider-two"
+        testID="double-slider"
         sliderValue={doubleSliderValue}
         onChangeValue={(value: Array<number>) => setDoubleSliderValue(value)}
         maximumValue={100}
@@ -97,13 +102,15 @@ export const Variants = () => {
       </Typography>
       <Spacing />
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-        <Typography variant={TypographyVariant.heading5}>Label</Typography>
+        <Typography variant={TypographyVariant.heading5}>
+          Single Slider Label
+        </Typography>
         <Typography variant={TypographyVariant.heading5}>
           {Math.trunc(singleSliderValue[0])}
         </Typography>
       </View>
       <Slider
-        testID="slider-two"
+        testID="single-slider"
         sliderValue={singleSliderValue}
         onChangeValue={(value: Array<number>) => setSingleSliderValue(value)}
         maximumValue={100}
@@ -114,13 +121,16 @@ export const Variants = () => {
       </Typography>
       <Spacing />
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-        <Typography variant={TypographyVariant.heading5}>Label</Typography>
+        <Typography variant={TypographyVariant.heading5}>
+          {' '}
+          Step Slider Label
+        </Typography>
         <Typography variant={TypographyVariant.heading5}>
           {Math.trunc(singleSliderStepValue[0])}
         </Typography>
       </View>
       <Slider
-        testID="slider-two"
+        testID="single-step-slider"
         sliderValue={singleSliderStepValue}
         onChangeValue={(value: Array<number>) =>
           setSingleSliderStepValue(value)
@@ -132,13 +142,15 @@ export const Variants = () => {
       <Typography variant={TypographyVariant.heading3}>Disabled</Typography>
       <Spacing />
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-        <Typography variant={TypographyVariant.heading5}>Label</Typography>
+        <Typography variant={TypographyVariant.heading5}>
+          Disabled Slider Label
+        </Typography>
         <Typography variant={TypographyVariant.heading5}>
           {Math.trunc(disabledSliderValue[0])}
         </Typography>
       </View>
       <Slider
-        testID="slider-two"
+        testID="disabled-slider"
         sliderValue={disabledSliderValue}
         onChangeValue={(value: Array<number>) => setDisabledSliderValue(value)}
         maximumValue={100}
@@ -149,27 +161,22 @@ export const Variants = () => {
   );
 };
 
-const Template: Story<SliderProps> = ({ disabled }) => {
-  const [doubleSliderValue, setDoubleSliderValue] = useState(
-    'doubleSliderValue',
-    [0, 100]
-  );
+const Template: Story<SliderProps> = ({
+  sliderValue,
+  maximumValue,
+  minimumValue,
+  disabled,
+  onChangeValue,
+  testID,
+}) => {
   return (
     <Container>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-        <Typography variant={TypographyVariant.heading5}>Label</Typography>
-        <Typography variant={TypographyVariant.heading5}>
-          {`${Math.trunc(doubleSliderValue[0])} - ${Math.trunc(
-            doubleSliderValue[1]
-          )}`}
-        </Typography>
-      </View>
       <Slider
-        testID="slider-two"
-        sliderValue={doubleSliderValue}
-        onChangeValue={(value: Array<number>) => setDoubleSliderValue(value)}
-        maximumValue={100}
-        minimumValue={0}
+        testID={testID}
+        sliderValue={sliderValue}
+        onChangeValue={onChangeValue}
+        maximumValue={maximumValue}
+        minimumValue={minimumValue}
         disabled={disabled}
       />
     </Container>
@@ -182,6 +189,7 @@ Interactive.args = {
   maximumValue: 100,
   minimumValue: 0,
   step: 1,
-  sliderValue: [0, 100],
+  sliderValue: [0],
   onChangeValue: (value: Array<number>) => console.log(value),
+  testID: 'interactive-slider',
 };
