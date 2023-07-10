@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, ViewStyle } from 'react-native';
 import { Slider as RNSLider } from '@miblanchard/react-native-slider';
 import useTheme from '../../hooks/useTheme';
 
@@ -30,6 +30,10 @@ export type SliderProps = {
    */
   disabled?: boolean;
   /**
+   * Overwrite the slider styles.
+   */
+  style?: ViewStyle;
+  /**
    * Used to locate this view in end-to-end tests.
    */
   testID?: string;
@@ -43,6 +47,7 @@ const Slider = ({
   step,
   disabled,
   testID,
+  style,
   ...rest
 }: SliderProps) => {
   const theme = useTheme();
@@ -57,7 +62,7 @@ const Slider = ({
   } = theme;
 
   return (
-    <View testID={testID}>
+    <View testID={testID} style={style}>
       <RNSLider
         value={sliderValue}
         onValueChange={onChangeValue}
@@ -73,6 +78,7 @@ const Slider = ({
         thumbTintColor={disabled ? SliderDisabledThumbColor : SliderThumbColor}
         step={step}
         disabled={disabled}
+        trackStyle={style}
         {...rest}
       />
     </View>
