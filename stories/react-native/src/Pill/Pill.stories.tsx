@@ -17,7 +17,6 @@ import Spacing, { SpacingSizes } from '../Spacing';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './PillInfo';
 import { getParameters } from '../utils';
-import { View, StyleSheet } from 'react-native';
 
 const {
   ColorSemanticsWarning300,
@@ -39,7 +38,6 @@ export default {
     layout: 'fullscreen',
     ...getParameters(true, false),
   },
-  // parameters: getParameters(),
 } as Meta;
 
 export const Overview = () => {
@@ -178,20 +176,8 @@ export const VariantsWithColor = () => {
     </Container>
   );
 };
+
 export const Variants = () => {
-  const reallyLongLabel =
-    'Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in lobortis urna. Morbi consequat mi in nisl congue, sed euismod enim interdum consectetur adipiscing elit. Maecenas in lobortis urna. Morbi consequat mi in nisl congue, sed euismod enim interdum';
-  const pillIcon = <FontAwesomeIcon icon={faBird} />;
-  const longTextPills = [
-    {
-      icon: pillIcon,
-      label: reallyLongLabel,
-      removable: false,
-      numberOfLines: 1,
-      size: PillSizes.small,
-    },
-    { icon: false, label: reallyLongLabel, removable: false },
-  ];
   return (
     <Container>
       <Typography variant={TypographyVariant.heading4}>
@@ -249,28 +235,9 @@ export const Variants = () => {
         size={PillSizes.small}
         icon={<FontAwesomeIcon icon={faBird} />}
       />
-      <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading4}>
-        Pills with super long label
-      </Typography>
-      <Spacing size={SpacingSizes.Large} />
-
-      <View style={styles.container}>
-        {longTextPills.map((props) => (
-          <Pill {...props} />
-        ))}
-      </View>
     </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-    maxWidth: 300, // Adjust the value as per your needs
-    borderWidth: 1,
-  },
-});
 
 const Template: Story<PillProps> = ({ ...rest }) => {
   return (

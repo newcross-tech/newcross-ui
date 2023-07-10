@@ -9,7 +9,6 @@ import {
 import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
 import useTheme from '../../hooks/useTheme';
 import { PillSizes, getTypographySizes, PillVariant } from './Pill.types';
-import { DEFAULT_NUMBER_OF_LINES } from './Pill.constants';
 
 export type PillProps = {
   /**
@@ -60,10 +59,6 @@ export type PillProps = {
    * Used to define color palette of the Pills.
    */
   variant?: PillVariant;
-  /**
-   * Used when text is too long
-   */
-  numberOfLines?: number;
 };
 
 const Pill = ({
@@ -79,7 +74,6 @@ const Pill = ({
   hasBorder = true,
   size = PillSizes.medium,
   variant = PillVariant.default,
-  numberOfLines = DEFAULT_NUMBER_OF_LINES,
 }: PillProps) => {
   const theme = useTheme();
   const styles = pillStyle({
@@ -90,22 +84,20 @@ const Pill = ({
     hasBorder,
     variant,
   });
+
   return (
     <View
       style={[styles.pillContainer, style]}
       testID={`pill-container-${testID}`}
     >
       <View style={styles.pillContent} testID={`pill-content-${testID}`}>
-        {isValidElement(icon) && (
-          <View style={styles.pillIconWrapper}>
-            {cloneElement(icon, { style: [styles.pillIcon, iconStyle] })}
-          </View>
-        )}
+        {isValidElement(icon) &&
+          cloneElement(icon, { style: [styles.pillIcon, iconStyle] })}
         <Typography
           variant={getTypographySizes()[size]}
           style={[styles.pillText, textStyle]}
           testID={`pill-typography-${testID}`}
-          numberOfLines={numberOfLines}
+          numberOfLines={1}
         >
           {label}
         </Typography>
@@ -115,7 +107,6 @@ const Pill = ({
             style={({ pressed }) => [
               {
                 opacity: pressed ? theme.CardPressedOpacity : 1,
-                ...styles.pillRemoveIconWrapper,
               },
             ]}
             onPress={onPress}

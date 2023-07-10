@@ -21,6 +21,7 @@ const pillStyle = ({
 
   return StyleSheet.create({
     pillContainer: {
+      alignSelf: 'flex-start',
       margin: theme.PillMargin,
       borderRadius: theme.PillBorderRadius,
       borderWidth: hasBorder ? theme.PillBorderWidth : 0,
@@ -30,25 +31,20 @@ const pillStyle = ({
     pillContent: {
       alignItems: 'center',
       flexDirection: 'row',
+      justifyContent: 'center',
       paddingVertical: theme.PillPaddingVertical,
       paddingHorizontal: theme.PillPaddingHorizontal,
     },
     pillText: {
-      flex: 1,
-      alignItems: 'center',
-      textOverflow: 'ellipsis', // Add ellipsis for long label
+      maxWidth: icon ? '85%' : '100%',
       color: getPillTextColor(theme, disabled)[variant],
     },
-    pillIconWrapper: {
-      marginRight: label || removable ? theme.PillIconMarginRight : 0,
-    },
     pillIcon: {
+      marginRight: label || removable ? theme.PillIconMarginLeft : 0,
       color: getPillIconColor(theme, disabled)[variant],
     },
-    pillRemoveIconWrapper: {
-      marginLeft: label || icon ? theme.PillIconMarginLeft : 0, // Add fixed left margin to separate icons
-    },
     pillRemoveIcon: {
+      marginLeft: label || icon ? theme.PillIconMarginRight : 0,
       color: theme.PillDisabledColor,
     },
   });
