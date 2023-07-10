@@ -36,6 +36,7 @@ const pillStyle = ({
       paddingHorizontal: theme.PillPaddingHorizontal,
     },
     pillText: {
+      maxWidth: icon ? '85%' : '100%',
       color: getPillTextColor(theme, disabled)[variant],
     },
     pillIcon: {

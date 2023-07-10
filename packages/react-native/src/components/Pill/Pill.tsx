@@ -84,6 +84,7 @@ const Pill = ({
     hasBorder,
     variant,
   });
+
   return (
     <View
       style={[styles.pillContainer, style]}
@@ -96,6 +97,7 @@ const Pill = ({
           variant={getTypographySizes()[size]}
           style={[styles.pillText, textStyle]}
           testID={`pill-typography-${testID}`}
+          numberOfLines={1}
         >
           {label}
         </Typography>
@@ -103,7 +105,9 @@ const Pill = ({
           <Pressable
             hitSlop={theme.SpacingBase8}
             style={({ pressed }) => [
-              { opacity: pressed ? theme.CardPressedOpacity : 1 },
+              {
+                opacity: pressed ? theme.CardPressedOpacity : 1,
+              },
             ]}
             onPress={onPress}
             disabled={disabled}
