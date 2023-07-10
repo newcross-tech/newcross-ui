@@ -176,7 +176,6 @@ export const VariantsWithColor = () => {
     </Container>
   );
 };
-
 export const Variants = () => {
   return (
     <Container>
@@ -235,6 +234,7 @@ export const Variants = () => {
         size={PillSizes.small}
         icon={<FontAwesomeIcon icon={faBird} />}
       />
+      <Spacing size={SpacingSizes.Large} />
     </Container>
   );
 };
