@@ -1,6 +1,8 @@
 import * as Styled from './TextInput.style';
 import { TextAreaProps } from './TextInput.types';
 
+const baseTestId = 'textarea';
+
 export const TextArea = ({
   maxLength,
   placeholder,
@@ -8,25 +10,29 @@ export const TextArea = ({
   length,
   value,
   hasError,
+  fullWidth,
   onChangeHandler,
-  testID = 'TextArea',
+  testID,
 }: TextAreaProps) => (
-  <Styled.TextAreaContainer data-testid={`${testID}-container-component`}>
+  <Styled.TextAreaContainer
+    data-testid={`${baseTestId}-container-component-${testID}`}
+    fullWidth={fullWidth}
+  >
     <Styled.TextArea
       maxLength={maxLength}
+      fullWidth={fullWidth}
       disabled={disabled}
       placeholder={placeholder}
       hasError={hasError}
-      data-testid={`${testID}-component`}
+      data-testid={`${baseTestId}-component-${testID}`}
       onChange={(event) => onChangeHandler(event)}
-    >
-      {value}
-    </Styled.TextArea>
+      value={value}
+    />
 
     {!!maxLength && maxLength > 0 && (
       <Styled.LengthInfo
         variant={'paragraph3'}
-        data-testid={`${testID}-max-length`}
+        data-testid={`${baseTestId}-max-length-${testID}`}
       >
         {`${length}/${maxLength} characters`}
       </Styled.LengthInfo>

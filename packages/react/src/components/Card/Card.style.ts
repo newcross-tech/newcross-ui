@@ -4,7 +4,7 @@ import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ExtendedTheme, Theme } from '../../types/Theme';
 import { getRgba, getTabbedStateStyles } from '../../utils';
 import { CardProps } from '../Card';
-import { CardVariants } from './Card.types';
+import { CardVariants, StyledCardProps } from './Card.types';
 
 export const getColorValues = (theme: ThemeDesignTokens): Record<CardVariants, FlattenSimpleInterpolation> => ({
   primary: css`
@@ -15,15 +15,24 @@ export const getColorValues = (theme: ThemeDesignTokens): Record<CardVariants, F
   `,
 });
 
-export const Card = styled.div<CardProps>`
-  ${({ theme, disabled, hasShadow, hasRoundedCorners, fullWidth, thumbnailContent }: ExtendedTheme<CardProps>) => css`
+export const Card = styled.div<StyledCardProps>`
+  ${({
+    theme,
+    disabled,
+    isClickable,
+    hasShadow,
+    hasRoundedCorners,
+    fullWidth,
+    thumbnailContent,
+  }: ExtendedTheme<StyledCardProps>) => css`
     display: flex;
     width: ${fullWidth && '100%'};
 
     border-radius: ${hasRoundedCorners && theme.CardBorderRadius};
     ${getTabbedStateStyles()}
 
-    ${!disabled &&
+    ${!!isClickable &&
+    !disabled &&
     css`
       cursor: pointer;
     `};

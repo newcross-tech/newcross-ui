@@ -13,12 +13,17 @@ export type PropStylesTypes = {
 } & Theme &
   ErrorType;
 
-export type ContainerProps = Pick<TextInputProps, 'search' | 'disabled'> &
+export type ContainerProps = Pick<
+  TextInputProps,
+  'search' | 'disabled' | 'fullWidth'
+> &
   ErrorType & {
     isFocused: boolean;
   };
 
 export type MessageTextProps = TypographyProps & ErrorType;
+
+export type TextAreaContainerProps = Pick<TextInputProps, 'fullWidth'>;
 
 export type TextAreaProps = {
   maxLength?: number;
@@ -26,7 +31,8 @@ export type TextAreaProps = {
   onChangeHandler: (
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => void;
-} & TextareaHTMLAttributes<HTMLTextAreaElement> &
+} & TextAreaContainerProps &
+  TextareaHTMLAttributes<HTMLTextAreaElement> &
   ErrorType &
   TestProp;
 

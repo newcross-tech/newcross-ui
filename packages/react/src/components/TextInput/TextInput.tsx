@@ -40,6 +40,10 @@ export type TextInputProps = Omit<
    */
   isValid?: boolean;
   /**
+   * if true, the text input will take up the full width of its container
+   */
+  fullWidth?: boolean;
+  /**
    * If true alters text input to search bar styles
    */
   search?: boolean;
@@ -65,12 +69,14 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
     isValid,
     search,
     onClose,
+    fullWidth,
     testID,
     ...otherProps
   },
   ref
 ) => {
   const [isFocused, setIsFocused] = useState(false);
+
   const [passwordVisibility, setPasswordVisibility] = useState(true);
   const onChangeHandler = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -94,7 +100,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
         <Label
           htmlFor={inputId}
           variant={'heading5'}
-          testID={`${baseTestId}-label`}
+          testID={`${inputId}-label`}
         >
           {label}
         </Label>
@@ -107,8 +113,10 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
           hasError={hasError}
           maxLength={maxLength}
           value={value}
+          fullWidth={fullWidth}
           length={typeof value === 'string' ? value.length : 0}
           onChangeHandler={onChangeHandler}
+          testID={testID}
         />
       ) : (
         <Styled.Container
@@ -116,14 +124,13 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
           hasError={hasError}
           search={search}
           disabled={disabled}
+          fullWidth={fullWidth}
           data-testid={
-            isFocused
-              ? `${baseTestId}-container-focused`
-              : `${baseTestId}-container`
+            isFocused ? `${inputId}-container-focused` : `${inputId}-container`
           }
         >
           {search && (
-            <Styled.LeftIconContainer data-testid={`${baseTestId}-search-icon`}>
+            <Styled.LeftIconContainer data-testid={`${inputId}-search-icon`}>
               <SearchIcon icon={faSearch} />
             </Styled.LeftIconContainer>
           )}
@@ -143,7 +150,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
           />
           {isPasswordType && (
             <Styled.RightIconContainer
-              data-testid={`${baseTestId}-eye-icon`}
+              data-testid={`${inputId}-eye-icon`}
               onClick={() =>
                 !disabled && setPasswordVisibility(!passwordVisibility)
               }
@@ -151,8 +158,8 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
               <Styled.PasswordIcon
                 data-testid={
                   !passwordVisibility
-                    ? `${baseTestId}-eye-slash`
-                    : `${baseTestId}-eye`
+                    ? `${inputId}-eye-slash`
+                    : `${inputId}-eye`
                 }
                 icon={!passwordVisibility ? faEyeSlash : faEye}
               />
@@ -160,7 +167,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
           )}
           {isValid && (
             <Styled.RightIconContainer
-              data-testid={`${baseTestId}-validation-check`}
+              data-testid={`${inputId}-validation-check`}
             >
               <Styled.ValidIcon icon={faCheck} />
             </Styled.RightIconContainer>
@@ -168,7 +175,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
           {!!search && !!value && onClose && (
             <Styled.RightIconContainer
               onClick={onClose}
-              data-testid={`${baseTestId}-search-close-icon`}
+              data-testid={`${inputId}-search-close-icon`}
             >
               <Styled.CloseIcon icon={faXmark} />
             </Styled.RightIconContainer>
@@ -179,7 +186,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
       {(helperText || errorText) && (
         <Styled.MessageText
           variant={'paragraph3'}
-          testID={`${baseTestId}-message-text`}
+          testID={`${inputId}-message-text`}
           hasError={hasError}
         >
           {errorText || helperText}

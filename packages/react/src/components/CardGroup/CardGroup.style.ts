@@ -25,7 +25,7 @@ export const Container = styled.div<CardGroupProps>`
       flex: 1;
 
       &:focus-visible {
-        outline: ${theme.ColorBaseBlue400} auto ${theme.LabelOutline};
+        border: ${theme.ColorBaseBlue400} auto ${theme.LabelOutline};
         outline-offset: -${+getHaloValue(theme.SpacingBase4) / 2}rem;
       }
     }

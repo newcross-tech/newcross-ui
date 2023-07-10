@@ -4,7 +4,13 @@ import { getHaloValue } from '../../utils/getHaloValue';
 import { ExtendedTheme, Theme } from '../../types/Theme';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getScrollbarStyles } from '../../utils/css/getScrollbarStyles';
-import { ContainerProps, MessageTextProps, PropStylesTypes, StyledTextAreaProps } from './TextInput.types';
+import {
+  ContainerProps,
+  MessageTextProps,
+  PropStylesTypes,
+  StyledTextAreaProps,
+  TextAreaContainerProps,
+} from './TextInput.types';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -15,7 +21,7 @@ const getCommonStateStyles = ({ theme, hasError, disabled }: PropStylesTypes) =>
   css`
     ${hasError &&
     css`
-      outline: ${theme.TextInputSelectedBorderWidth} solid ${theme.TextInputErrorColor};
+      border: ${theme.TextInputSelectedBorderWidth} solid ${theme.TextInputErrorColor};
     `}
     ${disabled &&
     css`
@@ -24,17 +30,17 @@ const getCommonStateStyles = ({ theme, hasError, disabled }: PropStylesTypes) =>
   `;
 
 export const Container = styled.div<ExtendedTheme<ContainerProps>>`
-  ${({ theme, hasError, search, disabled, isFocused }) => css`
+  ${({ theme, hasError, fullWidth, search, disabled, isFocused }: ExtendedTheme<ContainerProps>) => css`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    outline: ${theme.TextInputBorderWidth} solid ${theme.TextInputBorderColor};
+    border: ${theme.TextInputBorderWidth} solid ${theme.TextInputBorderColor};
     border-radius: ${theme.TextInputBorderRadius};
     background-color: ${theme.TextInputBackgroundColor};
     ${getCommonStateStyles({ theme, hasError, isFocused, disabled })}
     ${isFocused &&
     css`
-      outline: ${theme.TextInputSelectedBorderWidth} solid ${theme.TextInputSelectedBorderColor};
+      border: ${theme.TextInputSelectedBorderWidth} solid ${theme.TextInputSelectedBorderColor};
     `};
     ${search &&
     css`
@@ -43,7 +49,7 @@ export const Container = styled.div<ExtendedTheme<ContainerProps>>`
 
     &
       input {
-      width: 90%;
+      width: ${fullWidth ? '100%' : '90%'};
       border: none;
       background-color: transparent;
       outline-width: 0;
@@ -121,31 +127,40 @@ export const MessageText = styled(Typography)<MessageTextProps & Theme>`
   `}
 `;
 
-export const TextAreaContainer = styled.div`
+export const TextAreaContainer = styled.div<TextAreaContainerProps>`
   display: flex;
-  width: fit-content;
   flex-direction: column;
+  ${({ fullWidth }) =>
+    !fullWidth &&
+    css`
+      width: fit-content;
+    `};
 `;
 
 export const TextArea = styled.textarea<StyledTextAreaProps>`
-  ${({ theme, hasError, disabled }: ExtendedTheme<StyledTextAreaProps>) => css`
+  ${({ theme, hasError, disabled, fullWidth }: ExtendedTheme<StyledTextAreaProps>) => css`
     resize: none;
     border: none;
+    outline: none;
     cursor: auto;
     overflow-y: auto;
     border-radius: ${theme.CardBorderRadius};
     margin-top: ${theme.SpacingBase4};
     padding: ${theme.SpacingBase16};
     height: ${+getHaloValue(theme.SpacingBase64) * 2}rem;
-    width: ${+getHaloValue(theme.SpacingBase8) * 32.25}rem;
+    ${!fullWidth &&
+    css`
+      width: ${+getHaloValue(theme.SpacingBase8) * 32.25}rem;
+    `}
     font-family: ${theme.TextInputFontFamily};
-    outline: 1px solid ${theme.ColorBaseGrey200};
+    border: 1px solid ${theme.TextInputBorderColor};
 
     ${getScrollbarStyles()}
     ${getCommonStateStyles({ theme, hasError, disabled })}
 
+    &:focus,
     &:focus-visible {
-      outline: ${theme.TextInputSelectedBorderWidth} solid ${theme.TextInputSelectedBorderColor};
+      border: ${theme.TextInputSelectedBorderWidth} solid ${theme.TextInputSelectedBorderColor};
     }
   `};
 `;

@@ -2,8 +2,11 @@ import { fireEvent, render } from '@testing-library/react';
 import { byPlaceholderText, byTestId, byText } from 'testing-library-selector';
 import TextInput, { TextInputProps } from './TextInput';
 import { axe } from '../../utils/test/axeConfig';
+
+const testID = '1';
 const renderComponent = (props: TextInputProps) => {
   const customProps = {
+    testID,
     type: 'text',
     placeholder: 'this is placeholder text',
     ...props,
@@ -14,27 +17,29 @@ const renderComponent = (props: TextInputProps) => {
 
 const baseTestId = 'text-input';
 
+const getCoreTestId = () => `${baseTestId}-component-${testID}`;
+
+const getAdjustedByTestId = (suffix: string) =>
+  byTestId(`${getCoreTestId()}-${suffix}`);
+
 describe('TextInput Component', () => {
   const ui = {
-    label: byTestId(`${baseTestId}-label`),
-    textInput: (testID: string) =>
-      byTestId(`${baseTestId}-component-${testID}`),
+    label: getAdjustedByTestId('label'),
+    textInput: byTestId(getCoreTestId()),
     placeholder: (regex: RegExp) => byPlaceholderText(regex),
-    container: byTestId(`${baseTestId}-container`),
-    containerFocused: byTestId(`${baseTestId}-container-focused`),
-    eyeIcon: byTestId(`${baseTestId}-eye-icon`),
-    eyeSlash: byTestId(`${baseTestId}-eye-slash`),
-    eye: byTestId(`${baseTestId}-eye`),
-    validationCheck: byTestId(`${baseTestId}-validation-check`),
-    messageText: byTestId(`${baseTestId}-message-text`),
+    container: getAdjustedByTestId('container'),
+    containerFocused: getAdjustedByTestId('container-focused'),
+    eyeIcon: getAdjustedByTestId('eye-icon'),
+    eyeSlash: getAdjustedByTestId('eye-slash'),
+    eye: getAdjustedByTestId('eye'),
+    validationCheck: getAdjustedByTestId('validation-check'),
+    messageText: getAdjustedByTestId('message-text'),
   };
 
   it('should not have any a11y errors', async () => {
     // Arrange
-    const testID = '1';
     const onChange = jest.fn();
     const props: TextInputProps = {
-      testID,
       label: 'TextField',
       value: 'test',
       type: 'text',
@@ -50,10 +55,8 @@ describe('TextInput Component', () => {
 
   it('renders successfully', () => {
     // Arrange
-    const testID = '1';
     const onChange = jest.fn();
     const props: TextInputProps = {
-      testID,
       value: 'test',
       type: 'text',
       onChange,
@@ -63,15 +66,13 @@ describe('TextInput Component', () => {
     renderComponent({ ...props });
 
     // Assert
-    expect(ui.textInput(testID).get()).toBeTruthy();
+    expect(ui.textInput.get()).toBeTruthy();
   });
 
   it('displays the placeholder successfully', () => {
     // Arrange
-    const testID = '1';
     const onChange = jest.fn();
     const props: TextInputProps = {
-      testID,
       value: 'test',
       type: 'text',
       onChange,
@@ -86,10 +87,8 @@ describe('TextInput Component', () => {
 
   it('calls onChange when input value changes', () => {
     // Arrange
-    const testID = '1';
     const onChange = jest.fn();
     const props: TextInputProps = {
-      testID,
       value: 'test',
       type: 'text',
       onChange,
@@ -98,7 +97,7 @@ describe('TextInput Component', () => {
     // Act
     renderComponent({ ...props });
 
-    fireEvent.change(ui.textInput(testID).get(), { target: { value: 't' } });
+    fireEvent.change(ui.textInput.get(), { target: { value: 't' } });
 
     // Assert
     expect(onChange).toHaveBeenCalledTimes(1);
@@ -106,10 +105,8 @@ describe('TextInput Component', () => {
 
   it('show/hide password eye icon successfully when `password` type is selected and pressed', () => {
     // Arrange
-    const testID = '1';
     const onChange = jest.fn();
     const props: TextInputProps = {
-      testID,
       value: 'test',
       type: 'password',
       onChange,
@@ -128,10 +125,8 @@ describe('TextInput Component', () => {
 
   it('cannot toggle show/hide password eye icon successfully when `password` type and disabled', () => {
     // Arrange
-    const testID = '1';
     const onChange = jest.fn();
     const props: TextInputProps = {
-      testID,
       value: 'test',
       type: 'password',
       disabled: true,
@@ -150,10 +145,8 @@ describe('TextInput Component', () => {
 
   it('similar to previous test but with a different textContentType - `newPassword` type is selected and eye icon is pressed', () => {
     // Arrange
-    const testID = '1';
     const onChange = jest.fn();
     const props: TextInputProps = {
-      testID,
       value: 'test',
       type: 'password',
       onChange,
@@ -172,10 +165,8 @@ describe('TextInput Component', () => {
 
   it('shows the validation check mark when isValid is true', () => {
     // Arrange
-    const testID = '1';
     const onChange = jest.fn();
     const props: TextInputProps = {
-      testID,
       value: 'test',
       type: 'password',
       isValid: true,
@@ -191,10 +182,8 @@ describe('TextInput Component', () => {
 
   it('displays label successfully', () => {
     // Arrange
-    const testID = '1';
     const onChange = jest.fn();
     const props: TextInputProps = {
-      testID,
       value: 'test',
       type: 'text',
       label: 'This is the label',
@@ -211,10 +200,8 @@ describe('TextInput Component', () => {
 
   it('displays helper text successfully', () => {
     // Arrange
-    const testID = '1';
     const onChange = jest.fn();
     const props: TextInputProps = {
-      testID,
       value: 'test',
       type: 'text',
       helperText: 'this is helper text',
@@ -230,10 +217,8 @@ describe('TextInput Component', () => {
 
   it('displays error text successfully - errorText is true', () => {
     // Arrange
-    const testID = '1';
     const onChange = jest.fn();
     const props: TextInputProps = {
-      testID,
       value: 'test',
       type: 'text',
       errorText: 'this is helper text',
@@ -249,10 +234,8 @@ describe('TextInput Component', () => {
 
   it('renders a text input that is disabled when the disabled prop is passed', () => {
     // Arrange
-    const testID = '1';
     const onChange = jest.fn();
     const props: TextInputProps = {
-      testID,
       value: 'test',
       type: 'text',
       disabled: true,
@@ -263,15 +246,13 @@ describe('TextInput Component', () => {
     renderComponent({ ...props });
 
     // Assert
-    expect(ui.textInput(testID).get()).toBeTruthy();
+    expect(ui.textInput.get()).toBeTruthy();
   });
 
   it('focuses the text input and testing for id existence', () => {
     // Arrange
-    const testID = '1';
     const onChange = jest.fn();
     const props: TextInputProps = {
-      testID,
       value: 'test',
       type: 'text',
       onChange,
@@ -280,7 +261,7 @@ describe('TextInput Component', () => {
     // Act
     renderComponent({ ...props });
 
-    const input = ui.textInput(testID).get();
+    const input = ui.textInput.get();
     fireEvent.click(input);
 
     // Assert
@@ -297,8 +278,8 @@ describe('TextInput Component', () => {
 
 describe('SearchBar Component', () => {
   const ui = {
-    searchIcon: byTestId(`${baseTestId}-search-icon`),
-    searchCloseIcon: byTestId(`${baseTestId}-search-close-icon`),
+    searchIcon: getAdjustedByTestId('search-icon'),
+    searchCloseIcon: getAdjustedByTestId('search-close-icon'),
   };
 
   it('should not have any a11y errors', async () => {
@@ -312,7 +293,7 @@ describe('SearchBar Component', () => {
     };
 
     // Act
-    render(<TextInput {...props} />);
+    renderComponent({ ...props });
 
     const results = await axe(document.body);
     expect(results).toHaveNoViolations();
@@ -328,7 +309,7 @@ describe('SearchBar Component', () => {
     };
 
     // Act
-    render(<TextInput {...props} />);
+    renderComponent({ ...props });
 
     // Assert
     expect(ui.searchIcon.get()).toBeTruthy();
@@ -344,7 +325,7 @@ describe('SearchBar Component', () => {
     };
 
     // Act
-    render(<TextInput {...props} />);
+    renderComponent({ ...props });
 
     // Assert
     expect(ui.searchCloseIcon.get()).toBeTruthy();
@@ -354,7 +335,6 @@ describe('SearchBar Component', () => {
     // Arrange
     const onClose = jest.fn();
     const props: TextInputProps = {
-      testID: `${baseTestId}-component`,
       value: 'I am search for ...',
       onChange: jest.fn(),
       search: true,
@@ -362,7 +342,7 @@ describe('SearchBar Component', () => {
     };
 
     // Act
-    render(<TextInput {...props} />);
+    renderComponent({ ...props });
     fireEvent.click(ui.searchCloseIcon.get());
 
     // Assert
