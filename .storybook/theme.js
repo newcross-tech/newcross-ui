@@ -11,7 +11,7 @@ export default create({
   barSelectedColor: ColorPrimaryVigour,
   barBg: ColorPrimaryGravitas,
   brandTitle: 'Halo Design System',
-  brandUrl: 'https://bitbucket.org/newcrossdev/newcross-ui/src/main/',
+  brandUrl: 'https://github.com/newcross-tech/newcross-ui/tree/main',
   fontBase: 'poppins',
   brandImage: require('../assets/images/logo.svg'),
 });
