@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react-native';
+import { render, screen } from '@testing-library/react-native';
 import Slider from './Slider';
 
 describe('Slider Component', () => {
@@ -15,10 +15,10 @@ describe('Slider Component', () => {
     };
 
     // Act
-    const { getByTestId } = render(<Slider {...props} />);
+    render(<Slider {...props} />);
 
     // Assert
-    expect(getByTestId('slider')).toBeTruthy();
+    expect(screen.getByTestId('slider')).toBeTruthy();
   });
 
   it('renders successfully with disabled slider', () => {
@@ -34,9 +34,9 @@ describe('Slider Component', () => {
     };
 
     // Act
-    const { getByTestId } = render(<Slider {...props} />);
+    render(<Slider {...props} />);
 
     // Assert
-    expect(getByTestId('slider')).toBeTruthy();
+    expect(screen.getByTestId('slider')).toBeTruthy();
   });
 });
