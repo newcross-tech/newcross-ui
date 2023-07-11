@@ -62,7 +62,7 @@ const Slider = ({
   } = theme;
 
   return (
-    <View testID={testID} style={style}>
+    <View testID={testID}>
       <RNSLider
         value={sliderValue}
         onValueChange={onChangeValue}

@@ -164,7 +164,6 @@ export const Variants = () => {
       <Spacing />
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
         <Typography variant={TypographyVariant.heading5}>
-          {' '}
           Step Slider Label
         </Typography>
         <Typography variant={TypographyVariant.heading5}>
