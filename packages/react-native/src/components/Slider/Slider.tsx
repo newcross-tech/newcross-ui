@@ -1,6 +1,9 @@
 import React from 'react';
 import { View, ViewStyle } from 'react-native';
-import { Slider as RNSLider } from '@miblanchard/react-native-slider';
+import {
+  Slider as RNSLider,
+  SliderProps as RNSliderProps,
+} from '@miblanchard/react-native-slider';
 import useTheme from '../../hooks/useTheme';
 
 export type SliderProps = {
@@ -37,7 +40,7 @@ export type SliderProps = {
    * Used to locate this view in end-to-end tests.
    */
   testID?: string;
-};
+} & RNSliderProps;
 
 const Slider = ({
   sliderValue,
