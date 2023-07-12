@@ -34,7 +34,10 @@ const {
 export default {
   title: 'ReactNative/Components/Pill',
   component: Pill,
-  parameters: getParameters(),
+  parameters: {
+    layout: 'fullscreen',
+    ...getParameters(true, false),
+  },
 } as Meta;
 
 export const Overview = () => {
