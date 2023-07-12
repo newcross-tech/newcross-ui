@@ -1,6 +1,6 @@
 {
   "name": "@newcross-ui/react",
-  "version": "1.28.0",
+  "version": "1.28.1",
   "description": "Components for react apps",
   "author": "itdev@newcrosshealthcare.com",
   "license": "MIT",
@@ -35,6 +35,6 @@
     "styled-components": ">=5.0.0"
   },
   "dependencies": {
-    "@newcross-ui/design-tokens": "^1.35.4"
+    "@newcross-ui/design-tokens": "^1.36.0"
   }
 }

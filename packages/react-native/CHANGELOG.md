@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.43.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.42.1...@newcross-ui/react-native@1.43.0) (2023-07-12)
+
+
+### Features
+
+* **hfgo-1973:** double slider component ([#16](https://bitbucket.org/newcrossdev/newcross-ui/issues/16)) ([b3770a8](https://bitbucket.org/newcrossdev/newcross-ui/commits/b3770a857a8ab211a382b99624aa95defc5e70c5))
+
+
+
+
+
 ## [1.42.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.42.0...@newcross-ui/react-native@1.42.1) (2023-07-10)
 
 **Note:** Version bump only for package @newcross-ui/react-native

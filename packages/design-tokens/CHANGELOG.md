@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.36.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.35.4...@newcross-ui/design-tokens@1.36.0) (2023-07-12)
+
+
+### Features
+
+* **hfgo-1973:** double slider component ([#16](https://bitbucket.org/newcrossdev/newcross-ui/issues/16)) ([b3770a8](https://bitbucket.org/newcrossdev/newcross-ui/commits/b3770a857a8ab211a382b99624aa95defc5e70c5))
+
+
+
+
+
 ## [1.35.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.35.3...@newcross-ui/design-tokens@1.35.4) (2023-06-07)
 
 **Note:** Version bump only for package @newcross-ui/design-tokens
