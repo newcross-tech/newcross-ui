@@ -1,131 +1,97 @@
 import React from 'react';
-import CommunitySlider, {
+import {
   SliderPropsAndroid,
   SliderPropsIOS,
-  SliderProps as CommunitySliderProps,
-} from '@react-native-community/slider';
+  View,
+  ViewStyle,
+} from 'react-native';
 import {
-  SLIDER_DEFAULT_MIN_VALUE,
-  SLIDER_DEFAULT_MAX_VALUE,
-  SLIDER_DEFAULT_STEP_VALUE,
-} from './Slider.constants';
+  Slider as RNSLider,
+  SliderProps as RNSliderProps,
+} from '@miblanchard/react-native-slider';
 import useTheme from '../../hooks/useTheme';
-import { ViewStyle } from 'react-native';
 
 export type SliderProps = {
   /**
-   * If true the user won't be able to move the slider.
-   * Default value is false.
+   * The value of the slider. The value should be between minimumValue and maximumValue.
    */
-  disabled?: boolean;
-
+  value: number | Array<number>;
   /**
-   * The color used for the track to the right of the button.
-   * Overrides the default blue gradient image.
+   * Callback continuously called while the user is dragging the slider.
+   * @param value The current value of the slider.
    */
-  maximumTrackTintColor?: string;
-
+  onChangeValue: (value: number | Array<number>) => void;
   /**
    * Initial maximum value of the slider. Default value is 1.
    */
   maximumValue?: number;
-
-  /**
-   * The color used for the track to the left of the button.
-   * Overrides the default blue gradient image.
-   */
-  minimumTrackTintColor?: string;
-
   /**
    * Initial minimum value of the slider. Default value is 0.
    */
   minimumValue?: number;
-
-  /**
-   * Callback that is called when the user picks up the slider.
-   * The initial value is passed as an argument to the callback handler.
-   */
-  onSlidingStart?: (value: number) => void;
-
-  /**
-   * Callback called when the user finishes changing the value (e.g. when the slider is released).
-   */
-  onSlidingComplete?: (value: number) => void;
-
-  /**
-   * Callback continuously called while the user is dragging the slider.
-   */
-  onValueChange?: (value: number) => void;
-
   /**
    * Step value of the slider. The value should be between 0 and (maximumValue - minimumValue). Default value is 0.
    */
   step?: number;
-
   /**
-   * Used to style and layout the Slider. See StyleSheet.js and ViewStylePropTypes.js for more info.
+   * If true the user won't be able to move the slider. Default value is false.
+   */
+  disabled?: boolean;
+  /**
+   * Overwrite the slider styles.
    */
   style?: ViewStyle;
-
   /**
-   * Used to locate this view in UI automation tests.
+   * Used to locate this view in end-to-end tests.
    */
   testID?: string;
-
-  /**
-   * Initial value of the slider. The value should be between minimumValue
-   * and maximumValue, which default to 0 and 1 respectively.
-   * Default value is 0.
-   * This is not a controlled component, you don't need to update
-   * the value during dragging.
-   */
-  value?: number;
-
-  /**
-   * Reverses the direction of the slider.
-   */
-  inverted?: boolean;
-
-  /**
-   * A string of one or more words to be announced by the screen reader.
-   * Otherwise, it will announce the value as a percentage.
-   * Requires passing a value to `accessibilityIncrements` to work correctly.
-   * Should be a plural word, as singular units will be handled.
-   */
-  accessibilityUnits?: string;
-
-  /**
-   * A string of one or more words to be announced by the screen reader.
-   * Otherwise, it will announce the value as a percentage.
-   * Requires passing a value to `accessibilityIncrements` to work correctly.
-   * Should be a plural word, as singular units will be handled.
-   */
-  accessibilityIncrements?: Array<string>;
 } & SliderPropsAndroid &
   SliderPropsIOS &
-  CommunitySliderProps;
+  RNSliderProps;
 
 const Slider = ({
-  minimumValue = SLIDER_DEFAULT_MIN_VALUE,
-  maximumValue = SLIDER_DEFAULT_MAX_VALUE,
-  step = SLIDER_DEFAULT_STEP_VALUE,
-  testID = 'slider',
+  value,
+  onChangeValue,
+  maximumValue,
+  minimumValue,
+  step,
+  disabled,
+  testID,
+  style,
   ...rest
 }: SliderProps) => {
   const theme = useTheme();
-  const { SliderBackgroundColor, SliderInteractiveColor } = theme;
+
+  const {
+    SliderThumbColor,
+    SliderMaxTrackColor,
+    SliderMinTrackColor,
+    SliderDisabledThumbColor,
+    SliderDisabledMaxTrackColor,
+    SliderDisabledMinTrackColor,
+  } = theme;
 
   return (
-    <CommunitySlider
-      testID={testID}
-      minimumValue={minimumValue}
-      maximumValue={maximumValue}
-      minimumTrackTintColor={SliderInteractiveColor}
-      maximumTrackTintColor={SliderBackgroundColor}
-      thumbTintColor={SliderInteractiveColor}
-      step={step}
-      {...rest}
-    />
+    <View testID={testID}>
+      <RNSLider
+        value={value}
+        onValueChange={onChangeValue}
+        animateTransitions
+        maximumTrackTintColor={
+          disabled ? SliderDisabledMaxTrackColor : SliderMaxTrackColor
+        }
+        maximumValue={maximumValue}
+        minimumTrackTintColor={
+          disabled ? SliderDisabledMinTrackColor : SliderMinTrackColor
+        }
+        minimumValue={minimumValue}
+        thumbTintColor={disabled ? SliderDisabledThumbColor : SliderThumbColor}
+        step={step}
+        disabled={disabled}
+        trackStyle={style}
+        {...rest}
+      />
+    </View>
   );
 };
 
