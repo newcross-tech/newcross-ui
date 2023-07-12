@@ -10,7 +10,7 @@ export type SliderProps = {
   /**
    * The value of the slider. The value should be between minimumValue and maximumValue.
    */
-  sliderValue: number | Array<number>;
+  value: number | Array<number>;
   /**
    * Callback continuously called while the user is dragging the slider.
    * @param value The current value of the slider.
@@ -43,7 +43,7 @@ export type SliderProps = {
 } & RNSliderProps;
 
 const Slider = ({
-  sliderValue,
+  value,
   onChangeValue,
   maximumValue,
   minimumValue,
@@ -67,7 +67,7 @@ const Slider = ({
   return (
     <View testID={testID}>
       <RNSLider
-        value={sliderValue}
+        value={value}
         onValueChange={onChangeValue}
         animateTransitions
         maximumTrackTintColor={

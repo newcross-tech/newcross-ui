@@ -50,7 +50,7 @@ export const Overview = () => {
         </View>
         <Slider
           testID="overview-slider"
-          sliderValue={overviewSliderValue}
+          value={overviewSliderValue}
           onChangeValue={(value: Array<number>) =>
             setOverviewSliderValue(value)
           }
@@ -106,7 +106,7 @@ export const Variants = () => {
       </View>
       <Slider
         testID="double-slider"
-        sliderValue={doubleSliderValue}
+        value={doubleSliderValue}
         onChangeValue={(value: Array<number>) => setDoubleSliderValue(value)}
         maximumValue={100}
         minimumValue={0}
@@ -125,7 +125,7 @@ export const Variants = () => {
       </View>
       <Slider
         testID="single-slider"
-        sliderValue={singleSliderValue}
+        value={singleSliderValue}
         onChangeValue={(value: number) => setSingleSliderValue(value)}
         maximumValue={100}
         minimumValue={0}
@@ -143,7 +143,7 @@ export const Variants = () => {
         </Typography>
       </View>
       <Slider
-        sliderValue={singleSliderThumbColorChangeValue}
+        value={singleSliderThumbColorChangeValue}
         onChangeValue={(value: number) => {
           setSingleSliderThumbColorChangeValue(value);
           setIsPressed(value !== 0);
@@ -172,7 +172,7 @@ export const Variants = () => {
       </View>
       <Slider
         testID="single-step-slider"
-        sliderValue={singleSliderStepValue}
+        value={singleSliderStepValue}
         onChangeValue={(value: number) => setSingleSliderStepValue(value)}
         maximumValue={100}
         minimumValue={0}
@@ -190,7 +190,7 @@ export const Variants = () => {
       </View>
       <Slider
         testID="disabled-slider"
-        sliderValue={disabledSliderValue}
+        value={disabledSliderValue}
         onChangeValue={(value: number) => setDisabledSliderValue(value)}
         maximumValue={100}
         minimumValue={0}
@@ -201,7 +201,7 @@ export const Variants = () => {
 };
 
 const Template: Story<SliderProps> = ({
-  sliderValue,
+  value,
   maximumValue,
   minimumValue,
   disabled,
@@ -212,7 +212,7 @@ const Template: Story<SliderProps> = ({
     <Container>
       <Slider
         testID={testID}
-        sliderValue={sliderValue}
+        value={value}
         onChangeValue={onChangeValue}
         maximumValue={maximumValue}
         minimumValue={minimumValue}
@@ -228,7 +228,7 @@ Interactive.args = {
   maximumValue: 100,
   minimumValue: 0,
   step: 1,
-  sliderValue: [0],
+  value: [0],
   onChangeValue: (value: Array<number>) => console.log(value),
   testID: 'interactive-slider',
 };

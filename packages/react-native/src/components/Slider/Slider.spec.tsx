@@ -6,7 +6,7 @@ describe('Slider Component', () => {
   it('renders successfully', () => {
     // Arrange
     const props = {
-      sliderValue: 50,
+      value: 50,
       onChangeValue: jest.fn(),
       maximumValue: 100,
       minimumValue: 0,
@@ -24,7 +24,7 @@ describe('Slider Component', () => {
   it('renders successfully with disabled slider', () => {
     // Arrange
     const props = {
-      sliderValue: 50,
+      value: 50,
       onChangeValue: jest.fn(),
       maximumValue: 100,
       minimumValue: 0,
