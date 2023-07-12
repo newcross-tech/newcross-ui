@@ -1,5 +1,10 @@
 import React from 'react';
-import { View, ViewStyle } from 'react-native';
+import {
+  SliderPropsAndroid,
+  SliderPropsIOS,
+  View,
+  ViewStyle,
+} from 'react-native';
 import {
   Slider as RNSLider,
   SliderProps as RNSliderProps,
@@ -40,7 +45,9 @@ export type SliderProps = {
    * Used to locate this view in end-to-end tests.
    */
   testID?: string;
-} & RNSliderProps;
+} & SliderPropsAndroid &
+  SliderPropsIOS &
+  RNSliderProps;
 
 const Slider = ({
   value,
