@@ -188,4 +188,5 @@ Interactive.args = {
   isValid: false,
   search: false,
   maxLength: 400,
+  fullWidth: false,
 };

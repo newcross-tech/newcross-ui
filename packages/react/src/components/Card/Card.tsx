@@ -79,11 +79,12 @@ const Card = ({
       fullWidth={fullWidth}
       variant={variant}
       hasBorder={hasBorder}
-      onClick={clickHandler}
+      isClickable={!!onClick}
       tabIndex={!disabled ? 0 : -1}
       data-testid={`${testID}-component`}
       thumbnailContent={thumbnailContent}
       hasRoundedCorners={hasRoundedCorners}
+      onClick={clickHandler}
       onKeyPress={(event) => onSpacePressTrigger(event, clickHandler)}
       {...rest}
     >

@@ -13,7 +13,7 @@ jest.mock('@fortawesome/pro-light-svg-icons/faChevronRight', () => ({
   faChevronRight: 'bar',
 }));
 
-const renderComponent = (customProps: Partial<CardProps>) => {
+const renderComponent = (customProps?: Partial<CardProps>) => {
   const props = {
     hasRoundedCorners: true,
     hasBorder: true,
@@ -35,7 +35,7 @@ describe('Card Component', () => {
 
   it('should not have any a11y errors', async () => {
     // Act
-    renderComponent({});
+    renderComponent();
     //Assert
     const results = await axe(document.body);
     expect(results).toHaveNoViolations();
@@ -43,7 +43,7 @@ describe('Card Component', () => {
 
   it('renders successfully', () => {
     // Act
-    renderComponent({});
+    renderComponent();
 
     //Assert
     expect(byText(/children/i).get()).toBeInTheDocument();

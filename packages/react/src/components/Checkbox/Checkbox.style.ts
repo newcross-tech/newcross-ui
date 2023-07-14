@@ -57,7 +57,7 @@ export const Box = styled.div<CheckboxPropsExtended>`
     align-items: center;
     height: ${theme.CheckboxHeight};
     min-width: ${theme.CheckboxWidth};
-    outline: solid ${theme.CheckboxBorderWidth};
+    border: solid ${theme.CheckboxBorderWidth};
     border-radius: ${theme.CheckboxBorderRadius};
     color: ${theme.CheckboxSelectedCheckmarkColor};
     background-color: ${theme.CheckboxBackgroundColor};
