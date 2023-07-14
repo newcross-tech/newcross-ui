@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.29.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.28.1...@newcross-ui/react@1.29.0) (2023-07-14)
+
+
+### Features
+
+* **ASK-0000:** outline deprecation (no Safari support), textinput changes  ([c381e1d](https://bitbucket.org/newcrossdev/newcross-ui/commits/c381e1d5c01ec1b076283b45328e7eda9de6fadd))
+
+
+
+
+
 ## [1.28.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.28.0...@newcross-ui/react@1.28.1) (2023-07-12)
 
 **Note:** Version bump only for package @newcross-ui/react
