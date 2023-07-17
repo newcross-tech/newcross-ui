@@ -116,3 +116,4 @@ export {
   default as PressableIcon,
   PressableIconProps,
 } from './components/PressableIcon';
+export { ExpandableCalendar } from './components/Calendar/ExpandableCalendar';
