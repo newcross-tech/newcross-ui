@@ -7,7 +7,7 @@ describe('Slider Component', () => {
     // Arrange
     const props = {
       value: 50,
-      onChangeValue: jest.fn(),
+      onValueChange: jest.fn(),
       maximumValue: 100,
       minimumValue: 0,
       disabled: false,
@@ -15,7 +15,7 @@ describe('Slider Component', () => {
     };
 
     // Act
-    render(<Slider {...props} />);
+    render(<Slider {...props} animationType="spring" />);
 
     // Assert
     expect(screen.getByTestId('slider')).toBeTruthy();
@@ -24,8 +24,9 @@ describe('Slider Component', () => {
   it('renders successfully with disabled slider', () => {
     // Arrange
     const props = {
+      animationType: 'spring',
       value: 50,
-      onChangeValue: jest.fn(),
+      onValueChange: jest.fn(),
       maximumValue: 100,
       minimumValue: 0,
       step: 5,
@@ -34,7 +35,7 @@ describe('Slider Component', () => {
     };
 
     // Act
-    render(<Slider {...props} />);
+    render(<Slider {...props} animationType="spring" />);
 
     // Assert
     expect(screen.getByTestId('slider')).toBeTruthy();

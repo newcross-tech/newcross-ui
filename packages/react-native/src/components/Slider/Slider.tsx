@@ -5,10 +5,12 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+import { native } from '@newcross-ui/design-tokens';
 import {
   Slider as RNSLider,
   SliderProps as RNSliderProps,
 } from '@miblanchard/react-native-slider';
+import sliderStyle from './Slider.style';
 import useTheme from '../../hooks/useTheme';
 
 export type SliderProps = {
@@ -20,7 +22,7 @@ export type SliderProps = {
    * Callback continuously called while the user is dragging the slider.
    * @param value The current value of the slider.
    */
-  onChangeValue: (value: number | Array<number>) => void;
+  onValueChange?: (value: number | Array<number>) => void;
   /**
    * Initial maximum value of the slider. Default value is 1.
    */
@@ -49,9 +51,16 @@ export type SliderProps = {
   SliderPropsIOS &
   RNSliderProps;
 
+const {
+  SliderTrackColorMin,
+  SliderTrackColorMax,
+  SliderTrackDisabledColorMax,
+  SliderTrackDisabledColorMin,
+} = native.healthforce;
+
 const Slider = ({
   value,
-  onChangeValue,
+  onValueChange,
   maximumValue,
   minimumValue,
   step,
@@ -60,35 +69,33 @@ const Slider = ({
   style,
   ...rest
 }: SliderProps) => {
-  const theme = useTheme();
+  const [isPressed, setIsPressed] = React.useState(false);
 
-  const {
-    SliderThumbColor,
-    SliderMaxTrackColor,
-    SliderMinTrackColor,
-    SliderDisabledThumbColor,
-    SliderDisabledMaxTrackColor,
-    SliderDisabledMinTrackColor,
-  } = theme;
+  const theme = useTheme();
+  const styles = sliderStyle({ isPressed, disabled });
 
   return (
     <View testID={testID}>
       <RNSLider
+        onSlidingStart={() => setIsPressed(true)}
+        onSlidingComplete={() => {
+          setIsPressed(false);
+        }}
+        step={step}
+        thumbStyle={styles.thumb}
+        trackStyle={style}
+        disabled={disabled}
         value={value}
-        onValueChange={onChangeValue}
+        onValueChange={onValueChange}
         animateTransitions
         maximumTrackTintColor={
-          disabled ? SliderDisabledMaxTrackColor : SliderMaxTrackColor
+          disabled ? SliderTrackDisabledColorMax : SliderTrackColorMax
         }
         maximumValue={maximumValue}
         minimumTrackTintColor={
-          disabled ? SliderDisabledMinTrackColor : SliderMinTrackColor
+          disabled ? SliderTrackDisabledColorMin : SliderTrackColorMin
         }
         minimumValue={minimumValue}
-        thumbTintColor={disabled ? SliderDisabledThumbColor : SliderThumbColor}
-        step={step}
-        disabled={disabled}
-        trackStyle={style}
         {...rest}
       />
     </View>

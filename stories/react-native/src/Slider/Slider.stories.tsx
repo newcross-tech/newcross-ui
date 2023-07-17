@@ -8,7 +8,6 @@ import {
   Typography,
   TypographyVariant,
 } from '@newcross-ui/react-native';
-import { native } from '@newcross-ui/design-tokens';
 import Container from '../Container';
 import Spacing from '../Spacing';
 import { isWebPlatform } from '../utils';
@@ -49,11 +48,10 @@ export const Overview = () => {
           </Typography>
         </View>
         <Slider
+          animationType="spring"
           testID="overview-slider"
           value={overviewSliderValue}
-          onChangeValue={(value: Array<number>) =>
-            setOverviewSliderValue(value)
-          }
+          onValueChange={(value) => setOverviewSliderValue(value as [number])}
           maximumValue={500}
           minimumValue={0}
           disabled={false}
@@ -64,8 +62,6 @@ export const Overview = () => {
 };
 
 export const Variants = () => {
-  const { ColorPrimaryGravitas, ColorBaseMint100 } = native.healthforce;
-
   const [doubleSliderValue, setDoubleSliderValue] = useState(
     'doubleSliderValue',
     [0, 100]
@@ -74,10 +70,6 @@ export const Variants = () => {
     'singleSliderValue',
     0
   );
-  const [
-    singleSliderThumbColorChangeValue,
-    setSingleSliderThumbColorChangeValue,
-  ] = useState('singleSliderThumbColorChangeValue', 0);
   const [singleSliderStepValue, setSingleSliderStepValue] = useState(
     'singleSliderStepValue',
     0
@@ -86,7 +78,6 @@ export const Variants = () => {
     'disabledSliderValue',
     50
   );
-  const [isPressed, setIsPressed] = useState('isPressed', false);
 
   return (
     <Container>
@@ -106,8 +97,9 @@ export const Variants = () => {
       </View>
       <Slider
         testID="double-slider"
+        animationType="spring"
         value={doubleSliderValue}
-        onChangeValue={(value: Array<number>) => setDoubleSliderValue(value)}
+        onValueChange={(value) => setDoubleSliderValue(value as [number])}
         maximumValue={100}
         minimumValue={0}
       />
@@ -126,35 +118,8 @@ export const Variants = () => {
       <Slider
         testID="single-slider"
         value={singleSliderValue}
-        onChangeValue={(value: number) => setSingleSliderValue(value)}
-        maximumValue={100}
-        minimumValue={0}
-      />
-      <Typography variant={TypographyVariant.heading3}>
-        Single slider - thumb that changes colour & size on slide
-      </Typography>
-      <Spacing />
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-        <Typography variant={TypographyVariant.heading5}>
-          Single Slider Label 2
-        </Typography>
-        <Typography variant={TypographyVariant.heading5}>
-          {Math.trunc(singleSliderThumbColorChangeValue)}
-        </Typography>
-      </View>
-      <Slider
-        value={singleSliderThumbColorChangeValue}
-        onChangeValue={(value: number) => {
-          setSingleSliderThumbColorChangeValue(value);
-          setIsPressed(value !== 0);
-        }}
-        thumbTintColor={isPressed ? ColorBaseMint100 : ColorPrimaryGravitas}
-        thumbStyle={{
-          height: isPressed ? 28 : 20,
-          width: isPressed ? 28 : 20,
-          borderRadius: isPressed ? 14 : 10,
-        }}
-        onSlidingComplete={() => setIsPressed(false)}
+        animationType="spring"
+        onValueChange={(value) => setSingleSliderValue(value as number)}
         maximumValue={100}
         minimumValue={0}
       />
@@ -172,8 +137,9 @@ export const Variants = () => {
       </View>
       <Slider
         testID="single-step-slider"
+        animationType="spring"
         value={singleSliderStepValue}
-        onChangeValue={(value: number) => setSingleSliderStepValue(value)}
+        onValueChange={(value) => setSingleSliderStepValue(value as number)}
         maximumValue={100}
         minimumValue={0}
         step={5}
@@ -189,9 +155,10 @@ export const Variants = () => {
         </Typography>
       </View>
       <Slider
+        animationType="spring"
         testID="disabled-slider"
         value={disabledSliderValue}
-        onChangeValue={(value: number) => setDisabledSliderValue(value)}
+        onValueChange={(value) => setDisabledSliderValue(value as number)}
         maximumValue={100}
         minimumValue={0}
         disabled
@@ -205,15 +172,16 @@ const Template: Story<SliderProps> = ({
   maximumValue,
   minimumValue,
   disabled,
-  onChangeValue,
+  onValueChange,
   testID,
 }) => {
   return (
     <Container>
       <Slider
+        animationType="spring"
         testID={testID}
         value={value}
-        onChangeValue={onChangeValue}
+        onValueChange={onValueChange}
         maximumValue={maximumValue}
         minimumValue={minimumValue}
         disabled={disabled}
@@ -229,6 +197,6 @@ Interactive.args = {
   minimumValue: 0,
   step: 1,
   value: [0],
-  onChangeValue: (value: Array<number>) => console.log(value),
+  onValueChange: (value) => console.log(value),
   testID: 'interactive-slider',
 };
