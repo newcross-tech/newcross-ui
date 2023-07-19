@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 import {
+  ExpandableCalendar,
   Calendar,
   CalendarProps,
   Typography,
@@ -65,10 +66,10 @@ export const Variants = () => {
   const [bookedDates] = useState(['2023-01-17', '2023-01-18']);
   const [unavailableDates] = useState(['2023-01-19', '2023-01-20']);
   const [inactiveDates] = useState(['2023-01-21', '2023-01-22']);
+  const [availabileDates] = useState(['2023-01-23', '2023-01-24']);
 
   return (
     <ScrollView>
-      {/* <ExpandableCalendar /> */}
       <Container
         containerStyle={{
           flexDirection: isWebPlatform ? 'row' : 'column',
@@ -76,18 +77,31 @@ export const Variants = () => {
         }}
       >
         <Container containerStyle={containerStyle}>
+          <ExpandableCalendar
+            startDate={startDate}
+            selectedDates={singleSelectedDates}
+            noShiftsDates={noShiftsDates}
+            bookedDates={[...bookedDates, '2023-01-25']}
+            // unavailableDates={unavailableDates}
+            inactiveDates={inactiveDates}
+            onDateSelection={(dates) => setSingleSelectedDates(dates)}
+            availableDates={[...availabileDates, '2023-01-25']}
+            unavailableDates={[...unavailableDates, '2023-01-25']}
+          />
+        </Container>
+        <Container containerStyle={containerStyle}>
           <Typography variant={TypographyVariant.heading4}>
             Single Date selection
           </Typography>
           <Spacing />
           <Calendar
-            startDate={startDate}
-            selectedDates={singleSelectedDates}
-            noShiftsDates={noShiftsDates}
-            bookedDates={bookedDates}
-            unavailableDates={unavailableDates}
-            inactiveDates={inactiveDates}
-            onDateSelection={(dates) => setSingleSelectedDates(dates)}
+          // startDate={startDate}
+          // selectedDates={singleSelectedDates}
+          // noShiftsDates={noShiftsDates}
+          // bookedDates={bookedDates}
+          // unavailableDates={unavailableDates}
+          // inactiveDates={inactiveDates}
+          // onDateSelection={(dates) => setSingleSelectedDates(dates)}
           />
         </Container>
         <Container containerStyle={containerStyle}>
