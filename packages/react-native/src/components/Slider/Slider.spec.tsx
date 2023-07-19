@@ -24,7 +24,6 @@ describe('Slider Component', () => {
   it('renders successfully with disabled slider', () => {
     // Arrange
     const props = {
-      animationType: 'spring',
       value: 50,
       onValueChange: jest.fn(),
       maximumValue: 100,

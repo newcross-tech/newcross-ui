@@ -49,7 +49,6 @@ export const Overview = () => {
         </View>
         <Slider
           animationType="spring"
-          testID="overview-slider"
           value={overviewSliderValue}
           onValueChange={(value) => setOverviewSliderValue(value as [number])}
           maximumValue={500}
@@ -64,6 +63,10 @@ export const Overview = () => {
 export const Variants = () => {
   const [doubleSliderValue, setDoubleSliderValue] = useState(
     'doubleSliderValue',
+    [0, 100]
+  );
+  const [disabledDoubleSliderValue, setDisabledDoubleSliderValue] = useState(
+    'disabledDoubleSliderValue',
     [0, 100]
   );
   const [singleSliderValue, setSingleSliderValue] = useState(
@@ -96,10 +99,27 @@ export const Variants = () => {
         </Typography>
       </View>
       <Slider
-        testID="double-slider"
         animationType="spring"
         value={doubleSliderValue}
         onValueChange={(value) => setDoubleSliderValue(value as [number])}
+        maximumValue={100}
+        minimumValue={0}
+      />
+      <Spacing />
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+        <Typography variant={TypographyVariant.heading5}>
+          Disabled Double Slider Label
+        </Typography>
+        <Typography variant={TypographyVariant.heading5}>
+          {`${Math.trunc(doubleSliderValue[0])} - ${Math.trunc(
+            doubleSliderValue[1]
+          )}`}
+        </Typography>
+      </View>
+      <Slider
+        disabled
+        animationType="spring"
+        value={disabledDoubleSliderValue}
         maximumValue={100}
         minimumValue={0}
       />
@@ -116,7 +136,6 @@ export const Variants = () => {
         </Typography>
       </View>
       <Slider
-        testID="single-slider"
         value={singleSliderValue}
         animationType="spring"
         onValueChange={(value) => setSingleSliderValue(value as number)}
@@ -136,7 +155,6 @@ export const Variants = () => {
         </Typography>
       </View>
       <Slider
-        testID="single-step-slider"
         animationType="spring"
         value={singleSliderStepValue}
         onValueChange={(value) => setSingleSliderStepValue(value as number)}
@@ -156,7 +174,6 @@ export const Variants = () => {
       </View>
       <Slider
         animationType="spring"
-        testID="disabled-slider"
         value={disabledSliderValue}
         onValueChange={(value) => setDisabledSliderValue(value as number)}
         maximumValue={100}
@@ -173,13 +190,11 @@ const Template: Story<SliderProps> = ({
   minimumValue,
   disabled,
   onValueChange,
-  testID,
 }) => {
   return (
     <Container>
       <Slider
         animationType="spring"
-        testID={testID}
         value={value}
         onValueChange={onValueChange}
         maximumValue={maximumValue}
@@ -198,5 +213,4 @@ Interactive.args = {
   step: 1,
   value: [0],
   onValueChange: (value) => console.log(value),
-  testID: 'interactive-slider',
 };

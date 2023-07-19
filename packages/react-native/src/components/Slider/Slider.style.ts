@@ -1,14 +1,18 @@
-import useTheme from '../../hooks/useTheme';
 import { StyleSheet } from 'react-native';
-import { getThumbStyle } from './Slider.types';
+import useTheme from '../../hooks/useTheme';
+import { SliderStyleProps } from './Slider.types';
 
-const sliderStyle = ({ isPressed, disabled }: any) => {
+const sliderStyle = ({ disabled }: SliderStyleProps) => {
   const theme = useTheme();
-  const thumbValues = getThumbStyle(theme, { disabled, isPressed });
+
   return StyleSheet.create({
     thumb: {
-      ...thumbValues,
       borderRadius: theme.SliderThumbBorderRadius,
+      height: theme.SliderThumbHeight,
+      width: theme.SliderThumbWidth,
+      backgroundColor: disabled
+        ? theme.SliderThumbDisabledColor
+        : theme.SliderThumbColor,
     },
   });
 };

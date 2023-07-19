@@ -7,11 +7,6 @@
       "border": {
         "radius": { "value": "{border.base.radius.rounded.value}" }
       },
-      "pressed": {
-        "color": { "value": "{brand.color.secondary.100.value}" },
-        "height": { "value": "{spacing.base.32.value}" },
-        "width": { "value": "{spacing.base.32.value}" }
-      },
       "disabled": {
         "color": { "value": "{color.base.grey.200.value}" }
       }

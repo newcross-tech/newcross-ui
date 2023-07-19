@@ -7,11 +7,10 @@ import {
 } from 'react-native';
 import { native } from '@newcross-ui/design-tokens';
 import {
-  Slider as RNSLider,
+  Slider as RNSlider,
   SliderProps as RNSliderProps,
 } from '@miblanchard/react-native-slider';
 import sliderStyle from './Slider.style';
-import useTheme from '../../hooks/useTheme';
 
 export type SliderProps = {
   /**
@@ -40,9 +39,9 @@ export type SliderProps = {
    */
   disabled?: boolean;
   /**
-   * Overwrite the slider styles.
+   * Overwrite the slider's track styles.
    */
-  style?: ViewStyle;
+  trackStyle?: ViewStyle;
   /**
    * Used to locate this view in end-to-end tests.
    */
@@ -66,28 +65,15 @@ const Slider = ({
   step,
   disabled,
   testID,
-  style,
+  trackStyle,
   ...rest
 }: SliderProps) => {
-  const [isPressed, setIsPressed] = React.useState(false);
-
-  const theme = useTheme();
-  const styles = sliderStyle({ isPressed, disabled });
-
+  const styles = sliderStyle({ disabled });
   return (
     <View testID={testID}>
-      <RNSLider
-        onSlidingStart={() => setIsPressed(true)}
-        onSlidingComplete={() => {
-          setIsPressed(false);
-        }}
-        step={step}
-        thumbStyle={styles.thumb}
-        trackStyle={style}
-        disabled={disabled}
-        value={value}
-        onValueChange={onValueChange}
+      <RNSlider
         animateTransitions
+        disabled={disabled}
         maximumTrackTintColor={
           disabled ? SliderTrackDisabledColorMax : SliderTrackColorMax
         }
@@ -96,6 +82,11 @@ const Slider = ({
           disabled ? SliderTrackDisabledColorMin : SliderTrackColorMin
         }
         minimumValue={minimumValue}
+        onValueChange={onValueChange}
+        step={step}
+        thumbStyle={styles.thumb}
+        trackStyle={trackStyle}
+        value={value}
         {...rest}
       />
     </View>
