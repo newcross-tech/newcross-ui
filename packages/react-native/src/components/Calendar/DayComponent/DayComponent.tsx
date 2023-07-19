@@ -85,10 +85,11 @@ export const DayComponent = ({
         : customTextStyle?.color || dayTextColor,
     };
   };
+  const uniqueTestID = `${testID}-${date?.year}-${date?.month}-${date?.day}`;
 
   return (
     <Pressable
-      testID={testID}
+      testID={uniqueTestID}
       onPress={handlePress}
       style={[styles.dayStyle, customContainerStyle]}
       disabled={isDisabled}

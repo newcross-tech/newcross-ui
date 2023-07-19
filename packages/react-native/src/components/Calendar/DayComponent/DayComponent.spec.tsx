@@ -2,13 +2,10 @@ import React from 'react';
 import moment from 'moment';
 import { render, fireEvent, screen } from '@testing-library/react-native';
 import { DateData } from 'react-native-calendars';
-// import { native } from '@newcross-ui/design-tokens';
-import useTheme from '../../../hooks/useTheme';
 import { DayComponent, DayComponentProps } from './DayComponent';
+import { native } from '@newcross-ui/design-tokens';
 
 const CALENDAR_DATE_TIME_FORMAT = 'YYYY-MM-DD';
-
-const { ColorBaseBlue400, ColorPrimaryGravitas, ColorBaseGrey300 } = useTheme();
 
 describe('DayComponent', () => {
   const defaultProps = {
@@ -16,7 +13,6 @@ describe('DayComponent', () => {
     date: { dateString: '2022-05-01', day: 1 } as DateData,
     onPress: jest.fn(),
     staffBookedDates: ['2022-05-01'],
-    theme: { dayTextColor: ColorPrimaryGravitas },
   } as DayComponentProps;
 
   it('should render the correct day number', () => {
@@ -26,7 +22,7 @@ describe('DayComponent', () => {
 
   it('should call the onPress function when pressed', () => {
     const { getByTestId } = render(<DayComponent {...defaultProps} />);
-    fireEvent.press(getByTestId('day-component'));
+    fireEvent.press(getByTestId('day-component-2022-5-1'));
     expect(defaultProps.onPress).toHaveBeenCalled();
   });
 
@@ -92,6 +88,7 @@ describe('DayComponent', () => {
   });
 
   it('should show the current day icon', () => {
+    const { ColorBaseBlue400 } = native.healthforce;
     // Act
     render(
       <DayComponent
@@ -113,6 +110,7 @@ describe('DayComponent', () => {
   it('should not show the current day icon when its selected', () => {
     // Arrange
     const date = moment().format(CALENDAR_DATE_TIME_FORMAT);
+    const { ColorNeutralWhite } = native.healthforce;
 
     // Act
     render(
@@ -125,11 +123,13 @@ describe('DayComponent', () => {
 
     expect(screen.queryByTestId('current-day-icon')).toBeNull();
     expect(screen.getByTestId('day-component-text')).toHaveStyle({
-      color: ColorPrimaryGravitas,
+      color: ColorNeutralWhite,
     });
   });
 
   it('should show the current day icon with correct style when its disabled', () => {
+    const { ColorBaseGrey300 } = native.healthforce;
+
     // Arrange
     const date = moment().format(CALENDAR_DATE_TIME_FORMAT);
 

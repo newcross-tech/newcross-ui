@@ -79,7 +79,11 @@ export {
 } from './components/ToggleSwitch';
 export { default as Slider, SliderProps } from './components/Slider';
 export { default as Toast, ToastProps, ToastVariant } from './components/Toast';
-export { default as Calendar, CalendarProps } from './components/Calendar';
+export {
+  default as Calendar,
+  ExpandableCalendar,
+  CalendarProps,
+} from './components/Calendar';
 export { default as Tabs, TabsProps } from './components/Tabs';
 export { default as TextInput, TextInputProps } from './components/TextInput';
 export {
@@ -116,4 +120,3 @@ export {
   default as PressableIcon,
   PressableIconProps,
 } from './components/PressableIcon';
-export { default as ExpandableCalendar } from './components/Calendar/ExpandableCalendar';
