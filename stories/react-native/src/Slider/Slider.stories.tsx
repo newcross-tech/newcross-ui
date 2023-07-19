@@ -65,7 +65,7 @@ export const Variants = () => {
     'doubleSliderValue',
     [0, 100]
   );
-  const [disabledDoubleSliderValue, setDisabledDoubleSliderValue] = useState(
+  const [disabledDoubleSliderValue] = useState(
     'disabledDoubleSliderValue',
     [0, 100]
   );
@@ -111,8 +111,8 @@ export const Variants = () => {
           Disabled Double Slider Label
         </Typography>
         <Typography variant={TypographyVariant.heading5}>
-          {`${Math.trunc(doubleSliderValue[0])} - ${Math.trunc(
-            doubleSliderValue[1]
+          {`${Math.trunc(disabledDoubleSliderValue[0])} - ${Math.trunc(
+            disabledDoubleSliderValue[1]
           )}`}
         </Typography>
       </View>
