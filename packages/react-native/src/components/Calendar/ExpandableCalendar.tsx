@@ -44,10 +44,6 @@ export type ExpandableCalendarProps = {
    */
   selectedDates?: string[];
   /**
-   * no shift dates array
-   */
-  noShiftsDates?: string[];
-  /**
    * booked dates array
    */
   bookedDates?: string[];
@@ -56,10 +52,6 @@ export type ExpandableCalendarProps = {
    * unavailable dates array
    */
   unavailableDates?: string[];
-  /**
-   * inactive dates array
-   */
-  inactiveDates?: string[];
   /**
    * hasMultipleDateSelection - Boolean to enable multiple date selection
    */
@@ -79,15 +71,14 @@ export type ExpandableCalendarProps = {
 } & NativeExpandableCalendarProps;
 
 const ExpandableCalendar = ({
+  testID = 'expandable-calendar-component',
   hasMultipleDateSelection = false,
   hideExtraDays = false,
   firstDay = FIRST_DAY_OF_THE_WEEK,
   startDate,
-  noShiftsDates,
   bookedDates,
   unavailableDates,
   availableDates,
-  inactiveDates,
   selectedDates,
   onDateSelection,
   onMonthChange,
@@ -96,33 +87,9 @@ const ExpandableCalendar = ({
   const theme = useTheme();
   const styles = calendarStyles(theme);
 
-  const leftArrowImageSource = require('./previous.png');
-  const rightArrowImageSource = require('./next.png');
-
-  LocaleConfig.locales[LocaleConfig.defaultLocale].dayNamesShort =
-    SHORT_WEEK_DAYS;
-  LocaleConfig.locales[LocaleConfig.defaultLocale].monthNames =
-    SHORT_MONTH_NAME;
-
   const initialDate: Date = startDate || new Date();
 
   const formattedDate = formatDate(initialDate);
-  const formattedInitialDate = formatDate(initialDate);
-
-  const datesToExclude = useMemo(
-    () => [
-      ...(noShiftsDates ?? []),
-      ...(bookedDates ?? []),
-      ...(unavailableDates ?? []),
-      ...(inactiveDates ?? []),
-    ],
-    [bookedDates, inactiveDates, noShiftsDates, unavailableDates]
-  );
-
-  const isInitialDateSelected = !!flattenDeep([
-    ...datesToExclude,
-    ...(selectedDates ?? []),
-  ]).find((date) => date === formattedInitialDate);
 
   const handleDayPress = useCallback(
     (day: string) => {
@@ -163,66 +130,29 @@ const ExpandableCalendar = ({
     [handleDayPress]
   );
 
-  const markedDates = useMemo(() => {
-    const types = [
-      { type: DateType.bookedDates, dates: bookedDates },
-      { type: DateType.availableDates, dates: availableDates },
-      { type: DateType.unavailableDates, dates: unavailableDates },
-      { type: DateType.selectedDates, dates: selectedDates },
-    ];
-
-    const stylesByDate = types.reduce(
-      (styles, { type, dates }) =>
-        dates?.length
-          ? { ...styles, ...getStylesByDate(type, dates, theme) }
-          : styles,
-      {} as StyleByDate
-    );
-
-    return {
-      ...stylesByDate,
-      ...(!isInitialDateSelected && {
-        [formattedInitialDate]: {
-          marked: true,
-          dotColor: theme.CalendarDaysCurrentColor,
-          customContainerStyle: { paddingBottom: theme.SpacingBase4 },
-        },
-      }),
-    };
-  }, [
-    theme,
-    bookedDates,
-    selectedDates,
-    availableDates,
-    unavailableDates,
-    formattedInitialDate,
-    isInitialDateSelected,
-  ]);
-
   return (
     <CalendarProvider date={formattedDate}>
       <NativeExpandableCalendar
-        // leftArrowImageSource={leftArrowImageSource}
-        // rightArrowImageSource={rightArrowImageSource}
+        testID={testID}
         firstDay={firstDay}
         current={formattedDate}
-        markedDates={markedDates}
         key={formattedDate}
-        minDate={formattedInitialDate}
+        minDate={formattedDate}
         hideExtraDays={hideExtraDays}
         theme={calendarTheme}
-        dayComponent={({ date, onPress, theme, marking, state, testID }) =>
+        onMonthChange={onMonthChange}
+        dayComponent={({ date, onPress, theme, marking, state }) =>
           DayComponent({
             date,
             onPress,
             theme,
             marking,
             state,
-            testID,
             staffBookedDates: bookedDates,
             availabileDates: availableDates,
             unavailableDates,
             selectedDates,
+            testID: `day-${date?.dateString}`, // Added unique testID here
           })
         }
         onDayPress={onDayPress}
