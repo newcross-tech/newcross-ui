@@ -1,20 +1,16 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { ReactNode, useCallback, useMemo } from 'react';
 import { View, ActivityIndicator } from 'react-native';
 import {
   ExpandableCalendar as NativeExpandableCalendar,
   ExpandableCalendarProps as NativeExpandableCalendarProps,
   CalendarProvider,
   DateData,
-  LocaleConfig,
+  CalendarContextProviderProps,
 } from 'react-native-calendars';
-import { flattenDeep } from 'lodash';
 import {
-  SHORT_MONTH_NAME,
-  SHORT_WEEK_DAYS,
   FIRST_DAY_OF_THE_WEEK,
 } from './Calendar.constants';
-import { formatDate, getStylesByDate } from './utils';
-import { DateType, StyleByDate } from './Calendar.types';
+import { formatDate } from './utils';
 import { calendarStyles } from './Calendar.style';
 import useTheme from '../../hooks/useTheme';
 import { FontWeight } from '../../types';
@@ -68,6 +64,18 @@ export type ExpandableCalendarProps = {
    * Display loading state
    */
   displayLoader?: boolean;
+
+  /**
+   * ListComponent - custom component to render list of dates
+   * default is FlatList
+   */
+  listComponent?: ReactNode;
+
+  /**
+   *  CalendarProvider props
+   *
+   */
+  calendarProviderProps?: CalendarContextProviderProps;
 } & NativeExpandableCalendarProps;
 
 const ExpandableCalendar = ({
@@ -83,7 +91,10 @@ const ExpandableCalendar = ({
   onDateSelection,
   onMonthChange,
   displayLoader = false,
-}: ExpandableCalendarProps) => {
+  listComponent,
+  calendarProviderProps,
+  ...rest
+}: ExpandableCalendarProps & CalendarContextProviderProps) => {
   const theme = useTheme();
   const styles = calendarStyles(theme);
 
@@ -131,7 +142,7 @@ const ExpandableCalendar = ({
   );
 
   return (
-    <CalendarProvider date={formattedDate}>
+    <CalendarProvider date={formattedDate} {...calendarProviderProps}>
       <NativeExpandableCalendar
         testID={testID}
         firstDay={firstDay}
@@ -156,12 +167,14 @@ const ExpandableCalendar = ({
           })
         }
         onDayPress={onDayPress}
+        {...rest}
       />
       {displayLoader && (
         <View testID="calendar-loader" style={styles.loaderContainer}>
           <ActivityIndicator size="large" color={theme.ColorNeutralBlack} />
         </View>
       )}
+      {listComponent && { listComponent }}
     </CalendarProvider>
   );
 };
