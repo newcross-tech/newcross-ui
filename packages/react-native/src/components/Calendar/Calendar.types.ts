@@ -7,6 +7,7 @@ export enum DateType {
   selectedDates = 'selectedDates',
   noShiftsDates = 'noShiftsDates',
   bookedDates = 'bookedDates',
+  availableDates = 'availableDates',
   unavailableDates = 'unavailableDates',
   inactiveDates = 'inactiveDates',
   multipleDates = 'multipleDates',

@@ -8,16 +8,8 @@ import useTheme from '../../../hooks/useTheme';
 import { CalendarProps } from '../Calendar';
 import Typography, { TypographyVariant } from '../../Typography';
 import { DateData } from 'react-native-calendars';
-import styles from './DayComponent.style';
+import dayComponentStyles from './DayComponent.style';
 // import { native } from '@newcross-ui/design-tokens';
-
-const {
-  SpacingBase12,
-  SpacingBase8,
-  ColorBaseGreen200,
-  ColorBaseBlue400,
-  CalendarDaysSelectedBackgroundColor,
-} = useTheme();
 
 export type DayComponentProps = {
   date?: DateData;
@@ -26,6 +18,8 @@ export type DayComponentProps = {
   marking?: any;
   state?: string;
   testID?: string;
+  availabileDates?: string[];
+  unavailableDates?: string[];
   staffBookedDates?: string[];
   selectedDates?: string[] | null;
 };
@@ -40,19 +34,31 @@ export const DayComponent = ({
   marking,
   state,
   testID,
+  availabileDates,
+  unavailableDates,
   staffBookedDates,
   selectedDates,
 }: DayComponentProps) => {
+  const {
+    SpacingBase12,
+    SpacingBase8,
+    ColorBaseGreen200,
+    ColorBaseBlue400,
+    ColorSemanticsWarning100,
+    CalendarDaysSelectedColor,
+  } = useTheme();
+
   const { dayTextColor, textDisabledColor } = theme || {};
   const { customContainerStyle, disabled, customTextStyle } = marking || {};
 
   const isDisabled = disabled || state === 'disabled';
-  const isSelected =
-    customContainerStyle?.backgroundColor ===
-    CalendarDaysSelectedBackgroundColor;
   const isBooked = staffBookedDates?.includes(date?.dateString as string);
   const isCurrentDate = date?.dateString === currentDate;
   const isCurrentDateSelected = selectedDates?.includes(currentDate);
+  const isSelected = selectedDates?.includes(date?.dateString as string);
+  const isAvailable = availabileDates?.includes(date?.dateString as string);
+  const isUnavailable = unavailableDates?.includes(date?.dateString as string);
+  const styles = dayComponentStyles(useTheme(), isAvailable, isSelected);
 
   const handlePress = () => onPress?.(date);
 
@@ -60,6 +66,16 @@ export const DayComponent = ({
     if (isCurrentDate && !isCurrentDateSelected && !isDisabled) {
       return {
         color: ColorBaseBlue400,
+      };
+    }
+    if (isUnavailable) {
+      return {
+        color: ColorSemanticsWarning100,
+      };
+    }
+    if (isSelected) {
+      return {
+        color: CalendarDaysSelectedColor,
       };
     }
 
@@ -70,10 +86,6 @@ export const DayComponent = ({
     };
   };
 
-  const dayVariant = isSelected
-    ? TypographyVariant.heading4
-    : TypographyVariant.paragraph2;
-
   return (
     <Pressable
       testID={testID}
@@ -82,7 +94,7 @@ export const DayComponent = ({
       disabled={isDisabled}
     >
       <Typography
-        variant={dayVariant}
+        variant={TypographyVariant.paragraph2}
         style={textStyle()}
         testID={`${testID}-text`}
       >
