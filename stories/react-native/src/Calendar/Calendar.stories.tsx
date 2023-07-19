@@ -82,11 +82,12 @@ export const Variants = () => {
             selectedDates={singleSelectedDates}
             noShiftsDates={noShiftsDates}
             bookedDates={[...bookedDates, '2023-01-25']}
-            // unavailableDates={unavailableDates}
             inactiveDates={inactiveDates}
             onDateSelection={(dates) => setSingleSelectedDates(dates)}
             availableDates={[...availabileDates, '2023-01-25']}
             unavailableDates={[...unavailableDates, '2023-01-25']}
+            leftArrowImageSource={require('./img/previous.png')}
+            rightArrowImageSource={require('./img/next.png')}
           />
         </Container>
         <Container containerStyle={containerStyle}>
