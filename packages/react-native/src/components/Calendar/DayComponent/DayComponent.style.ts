@@ -1,9 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { ThemeDesignTokens } from '../../../theme/ThemeProvider';
-import {
-  BrandColorPrimary,
-  ColorNeutralBlack,
-} from '@newcross-ui/design-tokens/build/js/native/healthforce';
+import { BrandColorPrimary } from '@newcross-ui/design-tokens/build/js/native/healthforce';
 
 const dayComponentStyles = (
   theme: ThemeDesignTokens,

@@ -12,7 +12,7 @@ describe('DayComponent', () => {
     testID: 'day-component',
     date: { dateString: '2022-05-01', day: 1 } as DateData,
     onPress: jest.fn(),
-    staffBookedDates: ['2022-05-01'],
+    bookedDates: ['2022-05-01'],
   } as DayComponentProps;
 
   it('should render the correct day number', () => {

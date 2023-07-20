@@ -14,6 +14,7 @@ import { getParameters } from '../utils';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './CalendarInfo';
 import Spacing from '../Spacing';
+import moment from 'moment';
 
 export default {
   title: 'ReactNative/Components/Calendar',
@@ -66,7 +67,15 @@ export const Variants = () => {
   const [bookedDates] = useState(['2023-01-17', '2023-01-18']);
   const [unavailableDates] = useState(['2023-01-19', '2023-01-20']);
   const [inactiveDates] = useState(['2023-01-21', '2023-01-22']);
-  const [availabileDates] = useState(['2023-01-23', '2023-01-24']);
+
+  const [availableDates] = useState(['2023-01-23', '2023-01-24']);
+
+  const [selectedExpandableDates, setSelectedExpandableDates] = useState<
+    string[]
+  >([]);
+  const handleDayPress = (date: string) => {
+    setSelectedExpandableDates(() => [date]);
+  };
 
   return (
     <ScrollView>
@@ -78,16 +87,15 @@ export const Variants = () => {
       >
         <Container containerStyle={containerStyle}>
           <ExpandableCalendar
+            date={moment(startDate).format('YYYY-MM-DD')}
             startDate={startDate}
-            selectedDates={singleSelectedDates}
-            noShiftsDates={noShiftsDates}
+            selectedDates={selectedExpandableDates}
             bookedDates={[...bookedDates, '2023-01-25']}
-            inactiveDates={inactiveDates}
-            onDateSelection={(dates) => setSingleSelectedDates(dates)}
-            availableDates={[...availabileDates, '2023-01-25']}
+            onDayPress={(day) =>
+              handleDayPress(moment(day.dateString).format('YYYY-MM-DD'))
+            }
+            availableDates={[...availableDates, '2023-01-25']}
             unavailableDates={[...unavailableDates, '2023-01-25']}
-            leftArrowImageSource={require('./img/previous.png')}
-            rightArrowImageSource={require('./img/next.png')}
           />
         </Container>
         <Container containerStyle={containerStyle}>

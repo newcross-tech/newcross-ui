@@ -7,9 +7,7 @@ import {
   DateData,
   CalendarContextProviderProps,
 } from 'react-native-calendars';
-import {
-  FIRST_DAY_OF_THE_WEEK,
-} from './Calendar.constants';
+import { FIRST_DAY_OF_THE_WEEK } from './Calendar.constants';
 import { formatDate } from './utils';
 import { calendarStyles } from './Calendar.style';
 import useTheme from '../../hooks/useTheme';
@@ -55,7 +53,7 @@ export type ExpandableCalendarProps = {
   /**
    * onDateSelection - provide single or multiple dates selected
    */
-  onDateSelection?: (dates: Array<string>) => void;
+  onDayPress?: (dates: Array<string>) => void;
   /**
    * triggers an action when month has changed after left and right arrow press
    */
@@ -64,13 +62,11 @@ export type ExpandableCalendarProps = {
    * Display loading state
    */
   displayLoader?: boolean;
-
   /**
    * ListComponent - custom component to render list of dates
    * default is FlatList
    */
   listComponent?: ReactNode;
-
   /**
    *  CalendarProvider props
    *
@@ -80,7 +76,6 @@ export type ExpandableCalendarProps = {
 
 const ExpandableCalendar = ({
   testID = 'expandable-calendar-component',
-  hasMultipleDateSelection = false,
   hideExtraDays = false,
   firstDay = FIRST_DAY_OF_THE_WEEK,
   startDate,
@@ -88,11 +83,11 @@ const ExpandableCalendar = ({
   unavailableDates,
   availableDates,
   selectedDates,
-  onDateSelection,
   onMonthChange,
   displayLoader = false,
   listComponent,
   calendarProviderProps,
+  onDayPress,
   ...rest
 }: ExpandableCalendarProps & CalendarContextProviderProps) => {
   const theme = useTheme();
@@ -101,18 +96,6 @@ const ExpandableCalendar = ({
   const initialDate: Date = startDate || new Date();
 
   const formattedDate = formatDate(initialDate);
-
-  const handleDayPress = useCallback(
-    (day: string) => {
-      onDateSelection &&
-        (selectedDates?.includes(day)
-          ? onDateSelection(selectedDates.filter((date) => date !== day))
-          : onDateSelection(
-              hasMultipleDateSelection ? [...(selectedDates ?? []), day] : [day]
-            ));
-    },
-    [onDateSelection, hasMultipleDateSelection, selectedDates]
-  );
 
   const calendarTheme = useMemo(
     () => ({
@@ -134,13 +117,6 @@ const ExpandableCalendar = ({
     [theme]
   );
 
-  const onDayPress = useCallback(
-    ({ dateString }: DateData) => {
-      handleDayPress(dateString);
-    },
-    [handleDayPress]
-  );
-
   return (
     <CalendarProvider date={formattedDate} {...calendarProviderProps}>
       <NativeExpandableCalendar
@@ -152,21 +128,20 @@ const ExpandableCalendar = ({
         hideExtraDays={hideExtraDays}
         theme={calendarTheme}
         onMonthChange={onMonthChange}
-        dayComponent={({ date, onPress, theme, marking, state }) =>
+        dayComponent={({ date, theme, marking, state }) =>
           DayComponent({
             date,
-            onPress,
+            onDayPress,
             theme,
             marking,
             state,
-            staffBookedDates: bookedDates,
-            availabileDates: availableDates,
-            unavailableDates,
             selectedDates,
+            unavailableDates,
+            availableDates,
+            bookedDates,
             testID: `day-${date?.dateString}`, // Added unique testID here
           })
         }
-        onDayPress={onDayPress}
         {...rest}
       />
       {displayLoader && (
@@ -174,7 +149,7 @@ const ExpandableCalendar = ({
           <ActivityIndicator size="large" color={theme.ColorNeutralBlack} />
         </View>
       )}
-      {listComponent && { listComponent }}
+      {listComponent && listComponent}
     </CalendarProvider>
   );
 };
