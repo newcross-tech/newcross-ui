@@ -80,7 +80,6 @@ const ExpandableCalendar = ({
   availableDates,
   selectedDates,
   onMonthChange,
-
   displayLoader = false,
   listComponent,
   calendarProviderProps,
@@ -136,7 +135,7 @@ const ExpandableCalendar = ({
             unavailableDates,
             availableDates,
             bookedDates,
-            testID: `day-${date?.dateString}`, // Added unique testID here
+            testID: `day-${date?.dateString}`,
           })
         }
         {...rest}
