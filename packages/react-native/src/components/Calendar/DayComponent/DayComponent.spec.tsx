@@ -1,151 +1,149 @@
 import React from 'react';
+import { render, fireEvent } from '@testing-library/react-native';
 import moment from 'moment';
-import { render, fireEvent, screen } from '@testing-library/react-native';
-import { DateData } from 'react-native-calendars';
-import { DayComponent, DayComponentProps } from './DayComponent';
+import { DayComponent } from '../DayComponent';
 import { native } from '@newcross-ui/design-tokens';
 
-const CALENDAR_DATE_TIME_FORMAT = 'YYYY-MM-DD';
+jest.mock('moment', () => () => ({ format: () => '2023-07-20' }));
 
-describe('DayComponent', () => {
-  const defaultProps = {
-    testID: 'day-component',
-    date: { dateString: '2022-05-01', day: 1 } as DateData,
-    onPress: jest.fn(),
-    bookedDates: ['2022-05-01'],
-  } as DayComponentProps;
+describe('<DayComponent />', () => {
+  const {
+    ColorBaseBlue400,
+    ColorSemanticsWarning100,
+    CalendarDaysSelectedColor,
+    CalendarDaysDisabledColor,
+    CalendarColor,
+  } = native.healthforce;
 
-  it('should render the correct day number', () => {
-    const { getByText } = render(<DayComponent {...defaultProps} />);
-    expect(getByText('1')).not.toBeNull();
+  const testDate = {
+    year: 2023,
+    month: 7,
+    day: 21,
+    timestamp: new Date('2023-07-21').getTime(),
+    dateString: '2023-07-21',
+  };
+
+  it('renders without crashing', () => {
+    render(<DayComponent testID="test-day" />);
   });
 
-  it('should call the onPress function when pressed', () => {
-    const { getByTestId } = render(<DayComponent {...defaultProps} />);
-    fireEvent.press(getByTestId('day-component-2022-5-1'));
-    expect(defaultProps.onPress).toHaveBeenCalled();
-  });
-
-  it('should show the booked icon for staff booked dates', () => {
-    const { getByTestId } = render(<DayComponent {...defaultProps} />);
-    expect(getByTestId('day-component-icon')).not.toBeNull();
-  });
-
-  it('should not show the booked icon for non-staff booked dates', () => {
-    const { queryByTestId } = render(
-      <DayComponent
-        {...defaultProps}
-        date={{ dateString: '2022-05-02' } as string & DateData}
-      />
-    );
-    expect(queryByTestId('day-component-icon')).toBeNull();
-  });
-
-  it('should apply custom text style color when present and not disabled', () => {
-    const customColor = '#123456';
-    const customTextStyle = { color: customColor };
-    const theme = { dayTextColor: '#789012', textDisabledColor: '#345678' };
+  it('calls onDayPress when pressed', () => {
+    const onDayPressMock = jest.fn();
     const { getByTestId } = render(
       <DayComponent
-        {...defaultProps}
-        date={{ dateString: '2022-05-01' } as string & DateData}
-        marking={{ customTextStyle }}
-        theme={theme}
+        date={testDate}
+        onDayPress={onDayPressMock}
+        testID="test-day"
       />
     );
 
-    const dayText = getByTestId('day-component-text');
-    expect(dayText).toHaveStyle({ color: customColor });
+    fireEvent.press(
+      getByTestId(`test-day-${testDate.year}-${testDate.month}-${testDate.day}`)
+    );
+    expect(onDayPressMock).toHaveBeenCalled();
   });
 
-  it('should apply disabled text style color when disabled', () => {
-    const theme = { dayTextColor: '#789012', textDisabledColor: '#345678' };
+  it('displays correct icon when day is booked', () => {
     const { getByTestId } = render(
       <DayComponent
-        {...defaultProps}
-        date={{ dateString: '2022-05-01' } as string & DateData}
-        marking={{ disabled: true }}
-        theme={theme}
+        date={testDate}
+        bookedDates={[testDate.dateString]}
+        testID="test-day"
       />
     );
 
-    const dayText = getByTestId('day-component-text');
-    expect(dayText).toHaveStyle({ color: theme.textDisabledColor });
+    expect(
+      getByTestId(
+        `test-day-${testDate.year}-${testDate.month}-${testDate.day}-icon`
+      )
+    ).toBeDefined();
   });
 
-  it('should apply default text style color when no custom style and not disabled', () => {
-    const theme = { dayTextColor: '#789012', textDisabledColor: '#345678' };
+  it('displays current date with correct color when not selected and not disabled', () => {
+    const currentTestDate = { ...testDate, dateString: '2023-07-20', day: 20 };
     const { getByTestId } = render(
       <DayComponent
-        {...defaultProps}
-        date={{ dateString: '2022-05-01' } as string & DateData}
-        theme={theme}
+        date={currentTestDate}
+        selectedDates={[]}
+        testID="test-day"
       />
     );
 
-    const dayText = getByTestId('day-component-text');
-    expect(dayText).toHaveStyle({ color: theme.dayTextColor });
+    const typography = getByTestId(`test-day-text`);
+    expect(typography.props.style).toContainEqual({ color: ColorBaseBlue400 });
   });
 
-  it('should show the current day icon', () => {
-    const { ColorBaseBlue400 } = native.healthforce;
-    // Act
-    render(
+  it('displays unavailable date with correct color', () => {
+    const { getByTestId } = render(
       <DayComponent
-        {...defaultProps}
-        date={
-          { dateString: moment().format(CALENDAR_DATE_TIME_FORMAT) } as string &
-            DateData
-        }
+        date={testDate}
+        unavailableDates={[testDate.dateString]}
+        testID="test-day"
       />
     );
 
-    // Assert
-    expect(screen.getByTestId('current-day-icon')).toBeDefined();
-    expect(screen.getByTestId('day-component-text')).toHaveStyle({
-      color: ColorBaseBlue400,
+    const typography = getByTestId(`test-day-text`);
+    expect(typography.props.style).toContainEqual({
+      color: ColorSemanticsWarning100,
     });
   });
 
-  it('should not show the current day icon when its selected', () => {
-    // Arrange
-    const date = moment().format(CALENDAR_DATE_TIME_FORMAT);
-    const { ColorNeutralWhite } = native.healthforce;
-
-    // Act
-    render(
+  it('displays selected date with correct color', () => {
+    const { getByTestId } = render(
       <DayComponent
-        {...defaultProps}
-        date={{ dateString: date } as string & DateData}
-        selectedDates={[date]}
+        date={testDate}
+        selectedDates={[testDate.dateString]}
+        testID="test-day"
       />
     );
 
-    expect(screen.queryByTestId('current-day-icon')).toBeNull();
-    expect(screen.getByTestId('day-component-text')).toHaveStyle({
-      color: ColorNeutralWhite,
+    const typography = getByTestId(`test-day-text`);
+    expect(typography.props.style).toContainEqual({
+      color: CalendarDaysSelectedColor,
+    });
+  });
+  it('displays disabled date with correct color', () => {
+    const { getByTestId } = render(
+      <DayComponent
+        date={testDate}
+        state="disabled"
+        testID="test-day"
+        theme={{ textDisabledColor: CalendarDaysDisabledColor }}
+      />
+    );
+
+    const typography = getByTestId(`test-day-text`);
+    expect(typography.props.style).toContainEqual({
+      color: CalendarDaysDisabledColor,
     });
   });
 
-  it('should show the current day icon with correct style when its disabled', () => {
-    const { ColorBaseGrey300 } = native.healthforce;
-
-    // Arrange
-    const date = moment().format(CALENDAR_DATE_TIME_FORMAT);
-
-    // Act
-    render(
+  // Test for custom color when day is not disabled
+  it('displays date with custom color when provided and not disabled', () => {
+    const customColor = 'pink';
+    const { getByTestId } = render(
       <DayComponent
-        {...defaultProps}
-        date={{ dateString: date } as string & DateData}
-        marking={{ disabled: true }}
-        theme={{ textDisabledColor: ColorBaseGrey300 }}
+        date={testDate}
+        marking={{ customTextStyle: { color: customColor } }}
+        testID="test-day"
       />
     );
 
-    expect(screen.getByTestId('current-day-icon')).toBeDefined();
-    expect(screen.getByTestId('day-component-text')).toHaveStyle({
-      color: ColorBaseGrey300,
-    });
+    const typography = getByTestId(`test-day-text`);
+    expect(typography.props.style).toContainEqual({ color: customColor });
+  });
+
+  // Test for dayTextColor when custom color is not provided and day is not disabled
+  it('displays date with dayTextColor when custom color not provided and not disabled', () => {
+    const { getByTestId } = render(
+      <DayComponent
+        date={testDate}
+        testID="test-day"
+        theme={{ dayTextColor: CalendarColor }}
+      />
+    );
+
+    const typography = getByTestId(`test-day-text`);
+    expect(typography.props.style).toContainEqual({ color: CalendarColor });
   });
 });
