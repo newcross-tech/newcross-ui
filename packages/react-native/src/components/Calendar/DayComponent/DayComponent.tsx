@@ -13,14 +13,14 @@ import dayComponentStyles from './DayComponent.style';
 
 export type DayComponentProps = {
   date?: DateData;
-  onPress?: (date?: DateData | undefined) => void;
+  onDayPress: (date: DateData) => void;
   theme?: CalendarProps['theme'];
   marking?: any;
   state?: string;
   testID?: string;
-  availabileDates?: string[];
+  availableDates?: string[];
   unavailableDates?: string[];
-  staffBookedDates?: string[];
+  bookedDates?: string[];
   selectedDates?: string[] | null;
 };
 
@@ -29,14 +29,14 @@ const currentDate = moment().format(CALENDAR_DATE_TIME_FORMAT);
 
 export const DayComponent = ({
   date,
-  onPress,
+  onDayPress,
   theme,
   marking,
   state,
   testID,
-  availabileDates,
+  availableDates,
   unavailableDates,
-  staffBookedDates,
+  bookedDates,
   selectedDates,
 }: DayComponentProps) => {
   const {
@@ -52,15 +52,15 @@ export const DayComponent = ({
   const { customContainerStyle, disabled, customTextStyle } = marking || {};
 
   const isDisabled = disabled || state === 'disabled';
-  const isBooked = staffBookedDates?.includes(date?.dateString as string);
+  const isBooked = bookedDates?.includes(date?.dateString as string);
   const isCurrentDate = date?.dateString === currentDate;
   const isCurrentDateSelected = selectedDates?.includes(currentDate);
   const isSelected = selectedDates?.includes(date?.dateString as string);
-  const isAvailable = availabileDates?.includes(date?.dateString as string);
+  const isAvailable = availableDates?.includes(date?.dateString as string);
   const isUnavailable = unavailableDates?.includes(date?.dateString as string);
   const styles = dayComponentStyles(useTheme(), isAvailable, isSelected);
 
-  const handlePress = () => onPress?.(date);
+  const handlePress = () => onDayPress?.(date as DateData);
 
   const textStyle = () => {
     if (isCurrentDate && !isCurrentDateSelected && !isDisabled) {
