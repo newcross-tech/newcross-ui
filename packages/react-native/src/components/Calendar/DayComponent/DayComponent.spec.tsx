@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
-import moment from 'moment';
-import { DayComponent } from '../DayComponent';
+import { DayComponent } from './DayComponent';
 import { native } from '@newcross-ui/design-tokens';
 
 jest.mock('moment', () => () => ({ format: () => '2023-07-20' }));

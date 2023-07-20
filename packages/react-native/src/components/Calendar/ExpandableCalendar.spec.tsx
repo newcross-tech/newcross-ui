@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
+import { render } from '@testing-library/react-native';
 import ExpandableCalendar from './ExpandableCalendar';
 import { Text } from 'react-native';
 import moment from 'moment';

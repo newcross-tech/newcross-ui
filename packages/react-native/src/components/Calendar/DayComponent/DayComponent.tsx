@@ -57,6 +57,7 @@ export const DayComponent = ({
   const isSelected = selectedDates?.includes(date?.dateString as string);
   const isAvailable = availableDates?.includes(date?.dateString as string);
   const isUnavailable = unavailableDates?.includes(date?.dateString as string);
+
   const styles = dayComponentStyles(useTheme(), isAvailable, isSelected);
 
   const handlePress = () => onDayPress?.(date as DateData);

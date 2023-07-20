@@ -104,13 +104,13 @@ export const Variants = () => {
           </Typography>
           <Spacing />
           <Calendar
-          // startDate={startDate}
-          // selectedDates={singleSelectedDates}
-          // noShiftsDates={noShiftsDates}
-          // bookedDates={bookedDates}
-          // unavailableDates={unavailableDates}
-          // inactiveDates={inactiveDates}
-          // onDateSelection={(dates) => setSingleSelectedDates(dates)}
+            startDate={startDate}
+            selectedDates={singleSelectedDates}
+            noShiftsDates={noShiftsDates}
+            bookedDates={bookedDates}
+            unavailableDates={unavailableDates}
+            inactiveDates={inactiveDates}
+            onDateSelection={(dates) => setSingleSelectedDates(dates)}
           />
         </Container>
         <Container containerStyle={containerStyle}>

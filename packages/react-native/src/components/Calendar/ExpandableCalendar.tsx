@@ -1,10 +1,9 @@
-import React, { ReactNode, useCallback, useMemo } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 import { View, ActivityIndicator } from 'react-native';
 import {
   ExpandableCalendar as NativeExpandableCalendar,
   ExpandableCalendarProps as NativeExpandableCalendarProps,
   CalendarProvider,
-  DateData,
   CalendarContextProviderProps,
 } from 'react-native-calendars';
 import { FIRST_DAY_OF_THE_WEEK } from './Calendar.constants';
@@ -145,7 +144,7 @@ const ExpandableCalendar = ({
           <ActivityIndicator size="large" color={theme.ColorNeutralBlack} />
         </View>
       )}
-      {listComponent && listComponent}
+      {!!listComponent && listComponent}
     </CalendarProvider>
   );
 };
