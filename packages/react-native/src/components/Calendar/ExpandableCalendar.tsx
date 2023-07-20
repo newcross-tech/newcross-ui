@@ -51,10 +51,6 @@ export type ExpandableCalendarProps = {
    */
   hasMultipleDateSelection?: boolean;
   /**
-   * onDateSelection - provide single or multiple dates selected
-   */
-  onDayPress?: (dates: Array<string>) => void;
-  /**
    * triggers an action when month has changed after left and right arrow press
    */
   onMonthChange?: (date: Date) => void;
@@ -84,6 +80,7 @@ const ExpandableCalendar = ({
   availableDates,
   selectedDates,
   onMonthChange,
+
   displayLoader = false,
   listComponent,
   calendarProviderProps,

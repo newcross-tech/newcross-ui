@@ -9,11 +9,10 @@ import { CalendarProps } from '../Calendar';
 import Typography, { TypographyVariant } from '../../Typography';
 import { DateData } from 'react-native-calendars';
 import dayComponentStyles from './DayComponent.style';
-// import { native } from '@newcross-ui/design-tokens';
 
 export type DayComponentProps = {
   date?: DateData;
-  onDayPress: (date: DateData) => void;
+  onDayPress?: (date: DateData) => void;
   theme?: CalendarProps['theme'];
   marking?: any;
   state?: string;
@@ -102,7 +101,7 @@ export const DayComponent = ({
         {date?.day}
       </Typography>
       {isBooked && (
-        <View style={styles.dayIcon} testID={`${testID}-icon`}>
+        <View style={styles.dayIcon} testID={`${uniqueTestID}-icon`}>
           <FontAwesomeIcon
             icon={faCircleCheck}
             size={SpacingBase12}
