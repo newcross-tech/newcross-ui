@@ -11,13 +11,13 @@ import {
   SHORT_MONTH_NAME,
   SHORT_WEEK_DAYS,
   FIRST_DAY_OF_THE_WEEK,
+  calendarThemeFactory,
 } from './Calendar.constants';
 import { formatDate, getStylesByDate, createDateRange } from './utils';
 import { DateType, StyleByDate } from './Calendar.types';
 import { calendarStyles } from './Calendar.style';
 import useTheme from '../../hooks/useTheme';
 import CalendarHeader from './CalendarHeader';
-import { calendarThemeFactory } from './constants';
 
 export type CalendarProps = {
   /**

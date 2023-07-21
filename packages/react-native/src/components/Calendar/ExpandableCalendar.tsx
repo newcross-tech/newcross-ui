@@ -5,13 +5,18 @@ import {
   ExpandableCalendarProps as NativeExpandableCalendarProps,
   CalendarProvider,
   CalendarContextProviderProps,
+  LocaleConfig,
 } from 'react-native-calendars';
-import { FIRST_DAY_OF_THE_WEEK } from './Calendar.constants';
 import { formatDate } from './utils';
 import { calendarStyles } from './Calendar.style';
 import useTheme from '../../hooks/useTheme';
 import { DayComponent } from './DayComponent';
-import { calendarThemeFactory } from './constants';
+import {
+  SHORT_MONTH_NAME,
+  SHORT_WEEK_DAYS,
+  FIRST_DAY_OF_THE_WEEK,
+  calendarThemeFactory,
+} from './Calendar.constants';
 
 export type ExpandableCalendarProps = {
   /**
@@ -87,6 +92,11 @@ const ExpandableCalendar = ({
 }: ExpandableCalendarProps & CalendarContextProviderProps) => {
   const theme = useTheme();
   const styles = calendarStyles(theme);
+
+  LocaleConfig.locales[LocaleConfig.defaultLocale].dayNamesShort =
+    SHORT_WEEK_DAYS;
+  LocaleConfig.locales[LocaleConfig.defaultLocale].monthNames =
+    SHORT_MONTH_NAME;
 
   const initialDate: Date = startDate || new Date();
 

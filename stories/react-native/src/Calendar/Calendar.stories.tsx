@@ -64,11 +64,15 @@ export const Variants = () => {
 
   const [noShiftsDates] = useState(['2023-01-15', '2023-01-16']);
 
-  const [bookedDates] = useState(['2023-01-17', '2023-01-18']);
-  const [unavailableDates] = useState(['2023-01-19', '2023-01-20']);
-  const [inactiveDates] = useState(['2023-01-21', '2023-01-22']);
+  const [bookedDates] = useState(['2023-01-17', '2023-01-18', '2023-01-25']);
+  const [unavailableDates] = useState([
+    '2023-01-19',
+    '2023-01-20',
+    '2023-01-25',
+  ]);
+  const [availableDates] = useState(['2023-01-23', '2023-01-24', '2023-01-25']);
 
-  const [availableDates] = useState(['2023-01-23', '2023-01-24']);
+  const [inactiveDates] = useState(['2023-01-21', '2023-01-22']);
 
   const [selectedExpandableDates, setSelectedExpandableDates] = useState<
     string[]
@@ -94,12 +98,14 @@ export const Variants = () => {
             date={moment(startDate).format('YYYY-MM-DD')}
             startDate={startDate}
             selectedDates={selectedExpandableDates}
-            bookedDates={[...bookedDates, '2023-01-25']}
+            bookedDates={bookedDates}
             onDayPress={(day) =>
               handleDayPress(moment(day.dateString).format('YYYY-MM-DD'))
             }
-            availableDates={[...availableDates, '2023-01-25']}
-            unavailableDates={[...unavailableDates, '2023-01-25']}
+            availableDates={availableDates}
+            unavailableDates={unavailableDates}
+            leftArrowImageSource={require('./img/previous.png')}
+            rightArrowImageSource={require('./img/next.png')}
           />
         </Container>
         <Container containerStyle={containerStyle}>
