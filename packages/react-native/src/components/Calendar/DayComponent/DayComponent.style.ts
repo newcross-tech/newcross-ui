@@ -8,22 +8,26 @@ const dayComponentStyles = (
   isSelected?: boolean
 ) => {
   const {
-    SpacingBase4,
-    SpacingBase32,
-    BorderBaseRadiusRounded,
-    ColorBaseWhite100,
+    DayIconPosition,
+    DayContainerSize,
+    DayContainerBorderRadius,
+    DayIconBackgroundColor,
     ColorSemanticsSuccess200,
+    DayContainerBackgroundColorDefault,
+    DayContainerBackgroundColorSelected,
   } = theme;
   return StyleSheet.create({
     dayStyle: {
       position: 'relative',
-      height: SpacingBase32,
-      width: SpacingBase32,
+      height: DayContainerSize,
+      width: DayContainerSize,
       alignSelf: 'center',
       justifyContent: 'center',
       alignItems: 'center',
-      borderRadius: BorderBaseRadiusRounded,
-      backgroundColor: isSelected ? BrandColorPrimary : ColorBaseWhite100,
+      borderRadius: DayContainerBorderRadius,
+      backgroundColor: isSelected
+        ? DayContainerBackgroundColorSelected
+        : DayContainerBackgroundColorDefault,
       ...(isAvailable && {
         borderColor: ColorSemanticsSuccess200,
         borderWidth: 1,
@@ -31,15 +35,15 @@ const dayComponentStyles = (
       }),
     },
     dayIcon: {
-      backgroundColor: ColorBaseWhite100,
-      borderRadius: BorderBaseRadiusRounded,
+      backgroundColor: DayIconBackgroundColor,
+      borderRadius: DayContainerBorderRadius,
       position: 'absolute',
-      top: -SpacingBase4,
-      right: -SpacingBase4,
+      top: -DayIconPosition,
+      right: -DayIconPosition,
     },
     currentDayIcon: {
       position: 'absolute',
-      bottom: -SpacingBase4,
+      bottom: -DayIconPosition,
     },
   });
 };

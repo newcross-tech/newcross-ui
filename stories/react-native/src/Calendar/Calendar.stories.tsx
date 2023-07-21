@@ -86,6 +86,10 @@ export const Variants = () => {
         }}
       >
         <Container containerStyle={containerStyle}>
+          <Typography variant={TypographyVariant.heading4}>
+            Expandable Calendar
+          </Typography>
+          <Spacing />
           <ExpandableCalendar
             date={moment(startDate).format('YYYY-MM-DD')}
             startDate={startDate}

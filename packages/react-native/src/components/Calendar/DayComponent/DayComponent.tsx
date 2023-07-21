@@ -39,12 +39,12 @@ export const DayComponent = ({
   selectedDates,
 }: DayComponentProps) => {
   const {
-    SpacingBase12,
-    SpacingBase8,
-    ColorBaseGreen200,
-    ColorBaseBlue400,
-    ColorSemanticsWarning100,
-    CalendarDaysSelectedColor,
+    DayComponentBookedIconSize,
+    DayComponentCurrentDateIconSize,
+    DayComponentBookedIconColor,
+    DayComponentCurrentDateIconColor,
+    DayComponentTextColorUnavailable,
+    DayComponentTextColorSelected,
   } = useTheme();
 
   const { dayTextColor, textDisabledColor } = theme || {};
@@ -65,17 +65,17 @@ export const DayComponent = ({
   const textStyle = () => {
     if (isCurrentDate && !isCurrentDateSelected && !isDisabled) {
       return {
-        color: ColorBaseBlue400,
+        color: DayComponentCurrentDateIconColor,
       };
     }
     if (isUnavailable) {
       return {
-        color: ColorSemanticsWarning100,
+        color: DayComponentTextColorUnavailable,
       };
     }
     if (isSelected) {
       return {
-        color: CalendarDaysSelectedColor,
+        color: DayComponentTextColorSelected,
       };
     }
 
@@ -105,8 +105,8 @@ export const DayComponent = ({
         <View style={styles.dayIcon} testID={`${uniqueTestID}-icon`}>
           <FontAwesomeIcon
             icon={faCircleCheck}
-            size={SpacingBase12}
-            color={ColorBaseGreen200}
+            size={DayComponentBookedIconSize}
+            color={DayComponentBookedIconColor}
           />
         </View>
       )}
@@ -114,8 +114,8 @@ export const DayComponent = ({
         <View style={styles.currentDayIcon} testID={'current-day-icon'}>
           <FontAwesomeIcon
             icon={faCircleSmall}
-            size={SpacingBase8}
-            color={ColorBaseBlue400}
+            size={DayComponentCurrentDateIconSize}
+            color={DayComponentCurrentDateIconColor}
           />
         </View>
       )}

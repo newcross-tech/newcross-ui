@@ -1,0 +1,63 @@
+{
+  "day-component": {
+    "booked-icon": {
+      "color": {
+        "value": "{color.semantics.success.200}"
+      },
+      "size": {
+        "value": "{spacing.base.12}"
+      }
+    },
+    "current-date-icon": {
+      "color": {
+        "value": "{color.semantics.info.200}"
+      },
+      "size": {
+        "value": "{spacing.base.8}"
+      }
+    },
+    "text-color": {
+      "unavailable": {
+        "value": "{color.semantics.warning.100}"
+      },
+      "selected": {
+        "value": "{color.neutral.white}"
+      }
+    }
+  },
+  "day-container": {
+    "size": {
+      "value": "{spacing.base.32}"
+    },
+    "border-radius": {
+      "value": "{border.base.radius.rounded}"
+    },
+    "background-color": {
+      "selected": {
+        "value": "{brand.color.primary}"
+      },
+      "default": {
+        "value": "{color.neutral.white}"
+      }
+    },
+    "border": {
+      "color": {
+        "value": "{color.semantics.success.200}"
+      },
+      "width": {
+        "value": "{border.base.width.sm}"
+      }
+    }
+  },
+  "day-icon": {
+    "background-color": {
+      "value": "{color.neutral.white}"
+    },
+    "border-radius": {
+      "value": "{border.base.radius.rounded}"
+    },
+    "position": {
+      "value": "{spacing.base.4}"
+    }
+  }
+}
