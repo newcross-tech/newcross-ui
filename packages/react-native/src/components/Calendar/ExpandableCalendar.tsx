@@ -45,6 +45,9 @@ export type ExpandableCalendarProps = {
    * booked dates array
    */
   bookedDates?: string[];
+  /**
+   * availableDates dates array
+   */
   availableDates?: string[];
   /**
    * unavailable dates array
@@ -63,13 +66,11 @@ export type ExpandableCalendarProps = {
    */
   displayLoader?: boolean;
   /**
-   * ListComponent - custom component to render list of dates
-   * default is FlatList
+   * ListComponent - custom component to render list of elements
    */
   listComponent?: ReactNode;
   /**
    *  CalendarProvider props
-   *
    */
   calendarProviderProps?: CalendarContextProviderProps;
 } & NativeExpandableCalendarProps;
