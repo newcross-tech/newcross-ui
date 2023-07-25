@@ -116,10 +116,13 @@ const ExpandableCalendar = ({
         hideExtraDays={hideExtraDays}
         theme={calendarTheme}
         onMonthChange={onMonthChange}
-        dayComponent={({ date, theme, marking, state }) =>
+        dayComponent={({ date, theme, marking, state, onPress }) =>
           DayComponent({
             date,
-            onDayPress,
+            onDayPress: () => {
+              onDayPress && onDayPress(date);
+              onPress && onPress(date);
+            },
             theme,
             marking,
             state,
