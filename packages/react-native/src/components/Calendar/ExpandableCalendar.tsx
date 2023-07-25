@@ -121,8 +121,8 @@ const ExpandableCalendar = ({
           DayComponent({
             date,
             onDayPress: () => {
-              onDayPress && onDayPress(date as DateData);
-              onPress && onPress(date);
+              onDayPress?.(date as DateData);
+              onPress?.(date);
             },
             theme,
             marking,
