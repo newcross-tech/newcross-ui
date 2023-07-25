@@ -6,6 +6,7 @@ import {
   CalendarProvider,
   CalendarContextProviderProps,
   LocaleConfig,
+  DateData,
 } from 'react-native-calendars';
 import { formatDate } from './utils';
 import { calendarStyles } from './Calendar.style';
@@ -120,7 +121,7 @@ const ExpandableCalendar = ({
           DayComponent({
             date,
             onDayPress: () => {
-              onDayPress && onDayPress(date);
+              onDayPress && onDayPress(date as DateData);
               onPress && onPress(date);
             },
             theme,
