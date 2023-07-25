@@ -63,28 +63,30 @@ export const DayComponent = ({
   const handlePress = () => onDayPress?.(date as DateData);
 
   const textStyle = () => {
-    if (isCurrentDate && !isCurrentDateSelected && !isDisabled) {
-      return {
-        color: DayComponentCurrentDateIconColor,
-      };
+    switch (true) {
+      case isCurrentDate && !isCurrentDateSelected && !isDisabled:
+        return {
+          color: DayComponentCurrentDateIconColor,
+        };
+      case isUnavailable:
+        return {
+          color: DayComponentTextColorUnavailable,
+        };
+      case isSelected:
+        return {
+          color: DayComponentTextColorSelected,
+        };
+      case isDisabled:
+        return {
+          color: textDisabledColor,
+        };
+      default:
+        return {
+          color: customTextStyle?.color || dayTextColor,
+        };
     }
-    if (isUnavailable) {
-      return {
-        color: DayComponentTextColorUnavailable,
-      };
-    }
-    if (isSelected) {
-      return {
-        color: DayComponentTextColorSelected,
-      };
-    }
-
-    return {
-      color: isDisabled
-        ? textDisabledColor
-        : customTextStyle?.color || dayTextColor,
-    };
   };
+
   const uniqueTestID = `${testID}-${date?.year}-${date?.month}-${date?.day}`;
 
   return (
