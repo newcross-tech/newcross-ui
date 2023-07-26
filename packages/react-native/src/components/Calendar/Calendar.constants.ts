@@ -1,5 +1,5 @@
 import { FontWeight } from '../../types';
-
+import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 export const FIRST_DAY_OF_THE_WEEK = 1;
 export const SHORT_WEEK_DAYS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 export const SHORT_MONTH_NAME = [
@@ -17,7 +17,7 @@ export const SHORT_MONTH_NAME = [
   'Dec',
 ];
 
-export const calendarThemeFactory = (theme: any) => ({
+export const calendarThemeFactory = (theme: ThemeDesignTokens) => ({
   textMonthFontFamily: theme.CalendarFontFamily,
   textMonthFontWeight: theme.CalendarHeaderFontWeight as FontWeight,
   textMonthFontSize: theme.CalendarFontSize,

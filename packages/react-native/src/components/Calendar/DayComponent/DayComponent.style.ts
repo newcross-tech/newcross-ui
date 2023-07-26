@@ -14,7 +14,9 @@ const dayComponentStyles = (
     ColorSemanticsSuccess200,
     DayContainerBackgroundColorDefault,
     DayContainerBackgroundColorSelected,
+    DayContainerBorderWidth,
   } = theme;
+
   return StyleSheet.create({
     dayStyle: {
       position: 'relative',
@@ -29,7 +31,7 @@ const dayComponentStyles = (
         : DayContainerBackgroundColorDefault,
       ...(isAvailable && {
         borderColor: ColorSemanticsSuccess200,
-        borderWidth: 1,
+        borderWidth: DayContainerBorderWidth,
         borderStyle: 'dashed',
       }),
     },

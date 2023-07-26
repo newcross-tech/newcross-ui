@@ -117,7 +117,6 @@ describe('<DayComponent />', () => {
     });
   });
 
-  // Test for custom color when day is not disabled
   it('displays date with custom color when provided and not disabled', () => {
     const customColor = 'pink';
     const { getByTestId } = render(
@@ -132,7 +131,6 @@ describe('<DayComponent />', () => {
     expect(typography.props.style).toContainEqual({ color: customColor });
   });
 
-  // Test for dayTextColor when custom color is not provided and day is not disabled
   it('displays date with dayTextColor when custom color not provided and not disabled', () => {
     const { getByTestId } = render(
       <DayComponent
