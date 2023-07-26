@@ -11,13 +11,13 @@ import {
   SHORT_MONTH_NAME,
   SHORT_WEEK_DAYS,
   FIRST_DAY_OF_THE_WEEK,
+  calendarThemeFactory,
 } from './Calendar.constants';
 import { formatDate, getStylesByDate, createDateRange } from './utils';
 import { DateType, StyleByDate } from './Calendar.types';
 import { calendarStyles } from './Calendar.style';
 import useTheme from '../../hooks/useTheme';
 import CalendarHeader from './CalendarHeader';
-import { FontWeight } from '../../types';
 
 export type CalendarProps = {
   /**
@@ -288,25 +288,7 @@ const Calendar = ({
     onSingleDateRange,
   ]);
 
-  const calendarTheme = useMemo(
-    () => ({
-      textMonthFontFamily: theme.CalendarFontFamily,
-      textMonthFontWeight: theme.CalendarHeaderFontWeight as FontWeight,
-      textMonthFontSize: theme.CalendarFontSize,
-      monthTextColor: theme.CalendarColor,
-      textDayHeaderFontFamily: theme.CalendarFontFamily,
-      textDayHeaderFontSize: theme.CalendarFontSize,
-      textDayHeaderFontWeight:
-        theme.CalendarHeaderWeekdaysFontWeight as FontWeight,
-      textDayFontFamily: theme.CalendarFontFamily,
-      textDayFontWeight: theme.CalendarHeaderWeekdaysFontWeight as FontWeight,
-      textDayFontSize: theme.CalendarDaysFontSize,
-      dayTextColor: theme.CalendarColor,
-      todayTextColor: theme.CalendarDaysCurrentColor,
-      textDisabledColor: theme.CalendarDaysDisabledColor,
-    }),
-    [theme]
-  );
+  const calendarTheme = useMemo(() => calendarThemeFactory(theme), [theme]);
 
   const onDayPress = useCallback(
     ({ dateString }: DateData) => {

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 import {
+  ExpandableCalendar,
   Calendar,
   CalendarProps,
   Typography,
@@ -13,6 +14,7 @@ import { getParameters } from '../utils';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './CalendarInfo';
 import Spacing from '../Spacing';
+import moment from 'moment';
 
 export default {
   title: 'ReactNative/Components/Calendar',
@@ -35,6 +37,56 @@ export const Overview = () => {
         <Calendar />
       </Container>
     </InfoTemplate>
+  );
+};
+
+export const Expandable = () => {
+  const startDate = new Date('2023-01-01');
+
+  const [availableDates] = useState(['2023-01-23', '2023-01-24', '2023-01-25']);
+
+  const [selectedExpandableDates, setSelectedExpandableDates] = useState<
+    string[]
+  >([]);
+
+  const [bookedDates] = useState(['2023-01-17', '2023-01-18', '2023-01-25']);
+  const [unavailableDates] = useState([
+    '2023-01-19',
+    '2023-01-20',
+    '2023-01-25',
+  ]);
+
+  const handleDayPress = (date: string) => {
+    setSelectedExpandableDates(() => [date]);
+  };
+
+  return (
+    <>
+      <Spacing />
+
+      <Typography
+        variant={TypographyVariant.heading4}
+        style={{
+          paddingLeft: 16,
+        }}
+      >
+        Expandable Calendar
+      </Typography>
+      <Spacing />
+      <ExpandableCalendar
+        date={moment(startDate).format('YYYY-MM-DD')}
+        startDate={startDate}
+        selectedDates={selectedExpandableDates}
+        bookedDates={bookedDates}
+        onDayPress={(day) =>
+          handleDayPress(moment(day.dateString).format('YYYY-MM-DD'))
+        }
+        availableDates={availableDates}
+        unavailableDates={unavailableDates}
+        leftArrowImageSource={require('./img/previous.png')}
+        rightArrowImageSource={require('./img/next.png')}
+      />
+    </>
   );
 };
 
@@ -62,8 +114,13 @@ export const Variants = () => {
 
   const [noShiftsDates] = useState(['2023-01-15', '2023-01-16']);
 
-  const [bookedDates] = useState(['2023-01-17', '2023-01-18']);
-  const [unavailableDates] = useState(['2023-01-19', '2023-01-20']);
+  const [bookedDates] = useState(['2023-01-17', '2023-01-18', '2023-01-25']);
+  const [unavailableDates] = useState([
+    '2023-01-19',
+    '2023-01-20',
+    '2023-01-25',
+  ]);
+
   const [inactiveDates] = useState(['2023-01-21', '2023-01-22']);
 
   return (
