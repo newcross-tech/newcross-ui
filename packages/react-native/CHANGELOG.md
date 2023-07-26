@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.44.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.43.1...@newcross-ui/react-native@1.44.0) (2023-07-26)
+
+
+### Features
+
+* **hfgo-1965:** added expandable calendar ([ef267a4](https://bitbucket.org/newcrossdev/newcross-ui/commits/ef267a488e91793550bba3b7337cf0f5bdbb2a7c))
+
+
+
+
+
 ## [1.43.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.43.0...@newcross-ui/react-native@1.43.1) (2023-07-20)
 
 **Note:** Version bump only for package @newcross-ui/react-native
