@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import moment from 'moment';
 import { Pressable, View } from 'react-native';
 import { faCircleCheck } from '@fortawesome/pro-solid-svg-icons/faCircleCheck';
@@ -9,6 +9,7 @@ import { CalendarProps } from '../Calendar';
 import Typography, { TypographyVariant } from '../../Typography';
 import { DateData } from 'react-native-calendars';
 import dayComponentStyles from './DayComponent.style';
+import { FontWeight } from '../../../types';
 
 export type DayComponentProps = {
   date?: DateData;
@@ -45,6 +46,7 @@ export const DayComponent = ({
     DayComponentCurrentDateIconColor,
     DayComponentTextColorUnavailable,
     DayComponentTextColorSelected,
+    DayComponentTextColorUnavailableSelected,
   } = useTheme();
 
   const { dayTextColor, textDisabledColor } = theme || {};
@@ -57,6 +59,7 @@ export const DayComponent = ({
   const isSelected = selectedDates?.includes(date?.dateString as string);
   const isAvailable = availableDates?.includes(date?.dateString as string);
   const isUnavailable = unavailableDates?.includes(date?.dateString as string);
+  const isUnavaleableAndSelected = isUnavailable && isSelected;
 
   const styles = dayComponentStyles(useTheme(), isAvailable, isSelected);
 
@@ -67,6 +70,10 @@ export const DayComponent = ({
       case isCurrentDate && !isCurrentDateSelected && !isDisabled:
         return {
           color: DayComponentCurrentDateIconColor,
+        };
+      case isUnavaleableAndSelected:
+        return {
+          color: DayComponentTextColorUnavailableSelected,
         };
       case isUnavailable:
         return {
@@ -97,7 +104,9 @@ export const DayComponent = ({
       disabled={isDisabled}
     >
       <Typography
-        variant={TypographyVariant.paragraph2}
+        variant={
+          isSelected ? TypographyVariant.heading4 : TypographyVariant.paragraph2
+        }
         style={textStyle()}
         testID={`${testID}-text`}
       >

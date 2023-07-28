@@ -16,11 +16,14 @@ export const SHORT_MONTH_NAME = [
   'Nov',
   'Dec',
 ];
+const KNOB_WIDTH = 80;
+const KNOB_HEIGHT = 4;
+const KNOB_BORDER_RADIUS = 3;
 
 export const calendarThemeFactory = (theme: ThemeDesignTokens) => ({
-  textMonthFontFamily: theme.CalendarFontFamily,
-  textMonthFontWeight: theme.CalendarHeaderFontWeight as FontWeight,
+  textSectionTitleColor: theme.CalendarColor,
   textMonthFontSize: theme.CalendarFontSize,
+  textMonthFontWeight: theme.CalendarHeaderFontWeight as FontWeight,
   monthTextColor: theme.CalendarColor,
   textDayHeaderFontFamily: theme.CalendarFontFamily,
   textDayHeaderFontSize: theme.CalendarFontSize,
@@ -31,4 +34,21 @@ export const calendarThemeFactory = (theme: ThemeDesignTokens) => ({
   dayTextColor: theme.CalendarColor,
   todayTextColor: theme.CalendarDaysCurrentColor,
   textDisabledColor: theme.CalendarDaysDisabledColor,
+});
+
+export const expandableCalendarThemeFactory = (theme: ThemeDesignTokens) => ({
+  ...calendarThemeFactory(theme),
+  arrowColor: theme.CalendarColor,
+  stylesheet: {
+    expandable: {
+      main: {
+        knob: {
+          width: KNOB_WIDTH,
+          height: KNOB_HEIGHT,
+          borderRadius: KNOB_BORDER_RADIUS,
+          backgroundColor: theme.ColorNeutralGrey200,
+        },
+      },
+    },
+  },
 });

@@ -18,10 +18,13 @@
     },
     "text-color": {
       "unavailable": {
-        "value": "{color.semantics.warning.100}"
+        "value": "{color.semantics.error.100}"
       },
       "selected": {
         "value": "{color.neutral.white}"
+      },
+      "unavailable-selected": {
+        "value": "{color.semantics.warning.100}"
       }
     }
   },
