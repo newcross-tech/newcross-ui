@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import moment from 'moment';
 import { Pressable, View } from 'react-native';
 import { faCircleCheck } from '@fortawesome/pro-solid-svg-icons/faCircleCheck';
@@ -9,7 +9,6 @@ import { CalendarProps } from '../Calendar';
 import Typography, { TypographyVariant } from '../../Typography';
 import { DateData } from 'react-native-calendars';
 import dayComponentStyles from './DayComponent.style';
-import { FontWeight } from '../../../types';
 
 export type DayComponentProps = {
   date?: DateData;
