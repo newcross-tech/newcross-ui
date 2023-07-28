@@ -21,7 +21,7 @@ const KNOB_HEIGHT = 4;
 const KNOB_BORDER_RADIUS = 3;
 
 export const calendarThemeFactory = (theme: ThemeDesignTokens) => ({
-  textSectionTitleColor: theme.CalendarColor,
+  textSectionTitleColor: theme.ColorNeutralGrey100,
   textMonthFontSize: theme.CalendarFontSize,
   textMonthFontWeight: theme.CalendarHeaderFontWeight as FontWeight,
   monthTextColor: theme.CalendarColor,
