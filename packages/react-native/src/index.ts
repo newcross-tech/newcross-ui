@@ -83,6 +83,7 @@ export {
   default as Calendar,
   ExpandableCalendar,
   CalendarProps,
+  ExpandableCalendarProps,
 } from './components/Calendar';
 export { default as Tabs, TabsProps } from './components/Tabs';
 export { default as TextInput, TextInputProps } from './components/TextInput';

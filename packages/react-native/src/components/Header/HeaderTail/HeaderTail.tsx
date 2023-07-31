@@ -2,20 +2,24 @@ import { Svg, Path } from 'react-native-svg';
 import headerTailStyle from './HeaderTail.style';
 import React from 'react';
 import { HeaderColors } from '../Header.types';
-import { View } from 'react-native';
+import { View, ViewStyle } from 'react-native';
 
 export type HeaderTailProps = {
   /**
    * Used to change the background color of the header tail
    */
   color: HeaderColors;
+  /**
+   * Used to add custom styles to the header tail container
+   */
+  headerTailCustomStyle?: ViewStyle;
 };
 
-const HeaderTail = ({ color }: HeaderTailProps) => {
+const HeaderTail = ({ color, headerTailCustomStyle }: HeaderTailProps) => {
   const styles = headerTailStyle(color);
 
   return (
-    <View style={styles.headerTailContainer}>
+    <View style={[styles.headerTailContainer, headerTailCustomStyle]}>
       <Svg
         style={{ position: 'absolute' }}
         viewBox="18 4 300 24"
