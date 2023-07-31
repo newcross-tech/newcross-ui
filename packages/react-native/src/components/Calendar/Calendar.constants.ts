@@ -1,5 +1,6 @@
 import { FontWeight } from '../../types';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
+
 export const FIRST_DAY_OF_THE_WEEK = 1;
 export const SHORT_WEEK_DAYS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 export const SHORT_MONTH_NAME = [
@@ -16,9 +17,6 @@ export const SHORT_MONTH_NAME = [
   'Nov',
   'Dec',
 ];
-const KNOB_WIDTH = 80;
-const KNOB_HEIGHT = 4;
-const KNOB_BORDER_RADIUS = 3;
 
 export const calendarThemeFactory = (theme: ThemeDesignTokens) => ({
   textSectionTitleColor: theme.ColorNeutralGrey100,
@@ -43,9 +41,9 @@ export const expandableCalendarThemeFactory = (theme: ThemeDesignTokens) => ({
     expandable: {
       main: {
         knob: {
-          width: KNOB_WIDTH,
-          height: KNOB_HEIGHT,
-          borderRadius: KNOB_BORDER_RADIUS,
+          width: theme.SpacingBase80,
+          height: theme.SpacingBase4,
+          borderRadius: theme.BorderBaseRadiusRounded,
           backgroundColor: theme.ColorNeutralGrey200,
         },
       },
