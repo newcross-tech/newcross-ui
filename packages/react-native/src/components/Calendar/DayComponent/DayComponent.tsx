@@ -45,6 +45,7 @@ export const DayComponent = ({
     DayComponentCurrentDateIconColor,
     DayComponentTextColorUnavailable,
     DayComponentTextColorSelected,
+    DayComponentTextColorUnavailableSelected,
   } = useTheme();
 
   const { dayTextColor, textDisabledColor } = theme || {};
@@ -57,6 +58,7 @@ export const DayComponent = ({
   const isSelected = selectedDates?.includes(date?.dateString as string);
   const isAvailable = availableDates?.includes(date?.dateString as string);
   const isUnavailable = unavailableDates?.includes(date?.dateString as string);
+  const isUnavaleableAndSelected = isUnavailable && isSelected;
 
   const styles = dayComponentStyles(useTheme(), isAvailable, isSelected);
 
@@ -67,6 +69,10 @@ export const DayComponent = ({
       case isCurrentDate && !isCurrentDateSelected && !isDisabled:
         return {
           color: DayComponentCurrentDateIconColor,
+        };
+      case isUnavaleableAndSelected:
+        return {
+          color: DayComponentTextColorUnavailableSelected,
         };
       case isUnavailable:
         return {
@@ -97,7 +103,9 @@ export const DayComponent = ({
       disabled={isDisabled}
     >
       <Typography
-        variant={TypographyVariant.paragraph2}
+        variant={
+          isSelected ? TypographyVariant.heading4 : TypographyVariant.paragraph2
+        }
         style={textStyle()}
         testID={`${testID}-text`}
       >

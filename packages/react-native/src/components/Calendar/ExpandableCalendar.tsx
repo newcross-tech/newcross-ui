@@ -16,7 +16,7 @@ import {
   SHORT_MONTH_NAME,
   SHORT_WEEK_DAYS,
   FIRST_DAY_OF_THE_WEEK,
-  calendarThemeFactory,
+  expandableCalendarThemeFactory,
 } from './Calendar.constants';
 
 export type ExpandableCalendarProps = {
@@ -104,7 +104,10 @@ const ExpandableCalendar = ({
 
   const formattedDate = formatDate(initialDate);
 
-  const calendarTheme = useMemo(() => calendarThemeFactory(theme), [theme]);
+  const calendarTheme = useMemo(
+    () => expandableCalendarThemeFactory(theme),
+    [theme]
+  );
 
   return (
     <CalendarProvider date={formattedDate} {...calendarProviderProps}>

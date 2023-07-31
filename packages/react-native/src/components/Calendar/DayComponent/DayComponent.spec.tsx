@@ -9,6 +9,7 @@ describe('<DayComponent />', () => {
   const {
     ColorBaseBlue400,
     ColorSemanticsWarning100,
+    ColorSemanticsError100,
     CalendarDaysSelectedColor,
     CalendarDaysDisabledColor,
     CalendarColor,
@@ -76,6 +77,22 @@ describe('<DayComponent />', () => {
     const { getByTestId } = render(
       <DayComponent
         date={testDate}
+        unavailableDates={[testDate.dateString]}
+        testID="test-day"
+      />
+    );
+
+    const typography = getByTestId(`test-day-text`);
+    expect(typography.props.style).toContainEqual({
+      color: ColorSemanticsError100,
+    });
+  });
+
+  it('displays unavailable selected date with correct color', () => {
+    const { getByTestId } = render(
+      <DayComponent
+        date={testDate}
+        selectedDates={[testDate.dateString]}
         unavailableDates={[testDate.dateString]}
         testID="test-day"
       />
