@@ -18,6 +18,10 @@ export type HeaderProps = {
    */
   headerTailContent?: ReactNode;
   /**
+   * Used to add custom styles to the header tail container
+   */
+  headerTailStyle?: ViewStyle;
+  /**
    * Used to add custom styles
    */
   style?: ViewStyle;
@@ -35,6 +39,7 @@ const Header = ({
   color = HeaderColors.primary,
   hasHeaderTail = true,
   headerTailContent,
+  headerTailStyle,
   style,
   children,
   testID,
@@ -47,7 +52,9 @@ const Header = ({
       <View style={[styles.headerContainer, style]}>{children}</View>
       {hasHeaderTail && (
         <View testID="header-tail-content">
-          {headerTailContent ?? <HeaderTail color={color} />}
+          {headerTailContent ?? (
+            <HeaderTail headerTailCustomStyle={headerTailStyle} color={color} />
+          )}
         </View>
       )}
     </View>
