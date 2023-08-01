@@ -41,6 +41,10 @@ export type ListOptionProps = {
    */
   style?: ViewStyle | TextStyle;
   /**
+   * Overwrites or extends the styles applied to the components inner text.
+   */
+  textStyle?: TextStyle;
+  /**
    * Used to locate this view in end-to-end tests.
    */
   testID?: string;
@@ -55,6 +59,7 @@ const ListOption = ({
   selected,
   isMultipleSelect,
   style,
+  textStyle,
   testID,
   ...rest
 }: ListOptionProps) => {
@@ -79,7 +84,7 @@ const ListOption = ({
         )}
         <View style={styles.textContainer}>
           <Typography
-            style={styles.optionText}
+            style={[styles.optionText, textStyle]}
             variant={TypographyVariant.paragraph2}
           >
             {value}

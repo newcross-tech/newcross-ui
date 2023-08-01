@@ -21,11 +21,14 @@ import { faCircle } from '@fortawesome/pro-solid-svg-icons/faCircle';
 import { faUser } from '@fortawesome/pro-solid-svg-icons/faUser';
 import { faClose } from '@fortawesome/pro-solid-svg-icons/faClose';
 import useState from 'storybook-addon-state';
+import { native } from '@newcross-ui/design-tokens';
 
 export default {
   title: 'ReactNative/Components/ListOption',
   component: ListOption,
 } as Meta;
+
+const { ColorBaseRed200 } = native.healthforce;
 
 export const Overview = () => {
   const [selected, setIsSelected] = useState('selected', false);
@@ -89,6 +92,7 @@ export const Variants = () => {
           value={option.label}
           onSelect={() => setIsSelected1(!selected1)}
           selected={selected1}
+          textStyle={{ color: ColorBaseRed200 }}
         />
       ))}
       <Spacing />
