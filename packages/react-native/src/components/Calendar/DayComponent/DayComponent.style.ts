@@ -4,7 +4,8 @@ import { ThemeDesignTokens } from '../../../theme/ThemeProvider';
 const dayComponentStyles = (
   theme: ThemeDesignTokens,
   isAvailable?: boolean,
-  isSelected?: boolean
+  isSelected?: boolean,
+  isDisabled?: boolean
 ) => {
   const {
     DayIconPosition,
@@ -29,11 +30,12 @@ const dayComponentStyles = (
       backgroundColor: isSelected
         ? DayContainerBackgroundColorSelected
         : DayContainerBackgroundColorDefault,
-      ...(isAvailable && {
-        borderColor: ColorSemanticsSuccess200,
-        borderWidth: DayContainerBorderWidth,
-        borderStyle: 'dashed',
-      }),
+      ...(isAvailable &&
+        !isDisabled && {
+          borderColor: ColorSemanticsSuccess200,
+          borderWidth: DayContainerBorderWidth,
+          borderStyle: 'dashed',
+        }),
     },
     dayIcon: {
       backgroundColor: DayIconBackgroundColor,
