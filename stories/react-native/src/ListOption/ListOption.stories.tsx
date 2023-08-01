@@ -92,7 +92,7 @@ export const Variants = () => {
           value={option.label}
           onSelect={() => setIsSelected1(!selected1)}
           selected={selected1}
-          innerTextStyle={{ color: ColorBaseRed200 }}
+          textStyle={{ color: ColorBaseRed200 }}
         />
       ))}
       <Spacing />
