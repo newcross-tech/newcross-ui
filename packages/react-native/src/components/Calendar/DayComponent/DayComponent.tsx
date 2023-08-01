@@ -60,12 +60,21 @@ export const DayComponent = ({
   const isUnavailable = unavailableDates?.includes(date?.dateString as string);
   const isUnavaleableAndSelected = isUnavailable && isSelected;
 
-  const styles = dayComponentStyles(useTheme(), isAvailable, isSelected);
+  const styles = dayComponentStyles(
+    useTheme(),
+    isAvailable,
+    isSelected,
+    isDisabled
+  );
 
   const handlePress = () => onDayPress?.(date as DateData);
 
   const textStyle = () => {
     switch (true) {
+      case isDisabled:
+        return {
+          color: textDisabledColor,
+        };
       case isCurrentDate && !isCurrentDateSelected && !isDisabled:
         return {
           color: DayComponentCurrentDateIconColor,
@@ -81,10 +90,6 @@ export const DayComponent = ({
       case isSelected:
         return {
           color: DayComponentTextColorSelected,
-        };
-      case isDisabled:
-        return {
-          color: textDisabledColor,
         };
       default:
         return {
@@ -111,7 +116,7 @@ export const DayComponent = ({
       >
         {date?.day}
       </Typography>
-      {isBooked && (
+      {isBooked && !isDisabled && (
         <View style={styles.dayIcon} testID={`${uniqueTestID}-icon`}>
           <FontAwesomeIcon
             icon={faCircleCheck}
