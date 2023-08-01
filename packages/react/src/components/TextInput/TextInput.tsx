@@ -93,6 +93,27 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
   const isPasswordType = type === 'password';
   const isTextArea = type === 'textarea';
   const inputId = `${baseTestId}-component-${testID}`;
+  const {
+    onBlur: _onBlur,
+    onFocus: _onFocus,
+    onClick: _onClick,
+    ...other
+  } = otherProps;
+
+  const onClick = (e: React.MouseEvent<HTMLInputElement>) => {
+    otherProps.onClick?.(e);
+    triggerFocusState(true);
+  };
+
+  const onBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    otherProps.onBlur?.(e);
+    triggerFocusState(false);
+  };
+
+  const onFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    otherProps.onFocus?.(e);
+    triggerFocusState(true);
+  };
 
   return (
     <Styled.Wrapper>
@@ -139,14 +160,14 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
             ref={ref}
             type={passwordVisibility && isPasswordType ? 'password' : 'text'}
             value={value}
-            onClick={() => triggerFocusState(true)}
-            onFocus={() => triggerFocusState(true)}
-            onBlur={() => triggerFocusState(false)}
+            onClick={onClick}
+            onFocus={onFocus}
+            onBlur={onBlur}
             onChange={onChangeHandler}
             disabled={disabled}
             data-testid={inputId}
             placeholder={placeholder}
-            {...otherProps}
+            {...other}
           />
           {isPasswordType && (
             <Styled.RightIconContainer
