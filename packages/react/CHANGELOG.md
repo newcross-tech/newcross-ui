@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.29.3...@newcross-ui/react@1.29.4) (2023-08-03)
+
+
+### Bug Fixes
+
+* **ask-000:** fixed the fn overrides on textinput component (web) ([#25](https://bitbucket.org/newcrossdev/newcross-ui/issues/25)) ([9f6beb2](https://bitbucket.org/newcrossdev/newcross-ui/commits/9f6beb28ed271463d8b58e92eea1ab4634d74162))
+
+
+
+
+
 ## [1.29.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.29.2...@newcross-ui/react@1.29.3) (2023-07-31)
 
 **Note:** Version bump only for package @newcross-ui/react
