@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.5](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.29.4...@newcross-ui/react@1.29.5) (2023-08-17)
+
+
+### Bug Fixes
+
+* update rollup to stop bundling stories and test utils ([#27](https://bitbucket.org/newcrossdev/newcross-ui/issues/27)) ([6247882](https://bitbucket.org/newcrossdev/newcross-ui/commits/6247882fc23eaa6d68d6c63a0a0ede21a29dcc6f))
+
+
+
+
+
 ## [1.29.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.29.3...@newcross-ui/react@1.29.4) (2023-08-03)
 
 
