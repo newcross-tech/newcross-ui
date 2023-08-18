@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.6](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.29.5...@newcross-ui/react@1.29.6) (2023-08-18)
+
+
+### Bug Fixes
+
+* **ask-895:** fixed toast container position to avoid scrolling ([#28](https://bitbucket.org/newcrossdev/newcross-ui/issues/28)) ([dbf65e9](https://bitbucket.org/newcrossdev/newcross-ui/commits/dbf65e981859dca37eb7d1ae518129c2f7feed39))
+
+
+
+
+
 ## [1.29.5](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.29.4...@newcross-ui/react@1.29.5) (2023-08-17)
 
 
