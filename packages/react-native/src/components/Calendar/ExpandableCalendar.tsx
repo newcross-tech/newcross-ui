@@ -131,7 +131,6 @@ const ExpandableCalendar = ({
         minDate={formattedDate}
         hideExtraDays={hideExtraDays}
         theme={calendarTheme}
-        // onMonthChange={onMonthChange}
         dayComponent={({ date, theme, marking, state, onPress }) =>
           DayComponent({
             date,
