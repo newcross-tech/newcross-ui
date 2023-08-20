@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo } from 'react';
+import React, { ReactNode, useMemo, useState } from 'react';
 import { View, ActivityIndicator } from 'react-native';
 import {
   ExpandableCalendar as NativeExpandableCalendar,
@@ -18,6 +18,7 @@ import {
   FIRST_DAY_OF_THE_WEEK,
   expandableCalendarThemeFactory,
 } from './Calendar.constants';
+import CalendarHeader from './CalendarHeader';
 
 export type ExpandableCalendarProps = {
   /**
@@ -74,6 +75,14 @@ export type ExpandableCalendarProps = {
    *  CalendarProvider props
    */
   calendarProviderProps?: CalendarContextProviderProps;
+  /**
+   * Disable left arrow button
+   */
+  disablePreviousMonth?: boolean;
+  /**
+   * Disable right arrow button
+   */
+  disableNextMonth?: boolean;
 } & NativeExpandableCalendarProps;
 
 const ExpandableCalendar = ({
@@ -90,6 +99,8 @@ const ExpandableCalendar = ({
   listComponent,
   calendarProviderProps,
   onDayPress,
+  disablePreviousMonth = false,
+  disableNextMonth = false,
   ...rest
 }: ExpandableCalendarProps & CalendarContextProviderProps) => {
   const theme = useTheme();
@@ -101,6 +112,7 @@ const ExpandableCalendar = ({
     SHORT_MONTH_NAME;
 
   const initialDate: Date = startDate || new Date();
+  const [date, setDate] = useState(initialDate);
 
   const formattedDate = formatDate(initialDate);
 
@@ -119,7 +131,7 @@ const ExpandableCalendar = ({
         minDate={formattedDate}
         hideExtraDays={hideExtraDays}
         theme={calendarTheme}
-        onMonthChange={onMonthChange}
+        // onMonthChange={onMonthChange}
         dayComponent={({ date, theme, marking, state, onPress }) =>
           DayComponent({
             date,
@@ -137,6 +149,18 @@ const ExpandableCalendar = ({
             testID: `day-${date?.dateString}`,
           })
         }
+        renderArrow={(direction) => {
+          return (
+            <CalendarHeader
+              direction={direction}
+              date={date}
+              onDateChange={setDate}
+              onMonthChange={onMonthChange}
+              disablePreviousMonth={disablePreviousMonth}
+              disableNextMonth={disableNextMonth}
+            />
+          );
+        }}
         {...rest}
       />
       {displayLoader && (

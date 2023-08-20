@@ -83,8 +83,6 @@ export const Expandable = () => {
         }
         availableDates={availableDates}
         unavailableDates={unavailableDates}
-        leftArrowImageSource={require('./img/previous.png')}
-        rightArrowImageSource={require('./img/next.png')}
       />
     </>
   );
