@@ -27,7 +27,10 @@ export type CheckboxProps = {
   /**
    * Callback fired when the state is changed.
    */
-  onChange?: (selected: boolean) => void;
+  onChange?: (
+    selected: boolean,
+    event?: React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLElement>
+  ) => void;
   /**
    * Determines selected/checked state
    */
@@ -53,14 +56,16 @@ const Checkbox = ({
 
   const icon = type === 'indeterminate' ? faMinus : faCheck;
 
-  const handleChecked = () => {
+  const handleChecked = (
+    event?: React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLElement>
+  ) => {
     if (disabled) return;
-    onChange?.(!isChecked);
+    onChange?.(!checked, event);
   };
 
   const onChangeHandler = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
-    handleChecked();
+    handleChecked(event);
   };
 
   return (

@@ -5,10 +5,12 @@
  */
 export function onSpacePressTrigger(
   event: React.KeyboardEvent<HTMLElement>,
-  onPressCallback: VoidFunction
+  onPressCallback:
+    | VoidFunction
+    | ((event: React.KeyboardEvent<HTMLElement>) => void)
 ) {
   event.preventDefault();
   if (event.code === 'Space') {
-    onPressCallback();
+    onPressCallback(event);
   }
 }

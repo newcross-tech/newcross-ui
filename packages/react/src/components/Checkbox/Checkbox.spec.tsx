@@ -66,7 +66,10 @@ describe('Checkbox Component', () => {
 
     // Assert
     expect(onChange).toHaveBeenCalled();
-    expect(onChange).toHaveBeenCalledWith(true);
+    expect(onChange).toHaveBeenCalledWith(
+      true,
+      expect.objectContaining({ type: 'click' })
+    );
   });
 
   it('onClick event wont be called when the checkbox is disabled ', () => {
@@ -97,6 +100,9 @@ describe('Checkbox Component', () => {
 
     // Assert
     expect(onChange).toHaveBeenCalled();
-    expect(onChange).toHaveBeenCalledWith(true);
+    expect(onChange).toHaveBeenCalledWith(
+      true,
+      expect.objectContaining({ type: 'keypress' })
+    );
   });
 });
