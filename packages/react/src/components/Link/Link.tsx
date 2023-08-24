@@ -58,6 +58,7 @@ const Link = ({
         <Styled.LinkAnchor
           data-testid={`${baseTestId}-anchor-component${testID}`}
           href={href}
+          onClick={onClick}
           {...rest}
         >
           {getContent()}
@@ -67,6 +68,7 @@ const Link = ({
           data-testid={`${baseTestId}-div-component${testID}`}
           onKeyPress={(event) => onClick && onSpacePressTrigger(event, onClick)}
           tabIndex={0}
+          onClick={onClick}
           {...rest}
         >
           {getContent()}
