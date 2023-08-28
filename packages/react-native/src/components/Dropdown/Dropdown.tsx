@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronDown } from '@fortawesome/pro-solid-svg-icons/faChevronDown';
 import dropdownStyle from './Dropdown.style';
 import { Mode } from '../../types';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 export type DropdownProps = {
   /**
@@ -27,6 +28,10 @@ export type DropdownProps = {
    * Used to add custom styles.
    */
   iconStyle?: ViewStyle;
+  /**
+   * Used to add custom icon.
+   */
+  icon?: IconProp;
   /**
    * Adds error text.
    */
@@ -67,6 +72,7 @@ const Dropdown = ({
   style,
   contentStyle,
   iconStyle,
+  icon = faChevronDown,
   onPress,
   testID,
   mode,
@@ -113,10 +119,7 @@ const Dropdown = ({
             {placeholder}
           </Typography>
         )}
-        <FontAwesomeIcon
-          style={[styles.icon, iconStyle]}
-          icon={faChevronDown}
-        />
+        <FontAwesomeIcon style={[styles.icon, iconStyle]} icon={icon} />
       </Pressable>
       {errorText && (
         <Typography
