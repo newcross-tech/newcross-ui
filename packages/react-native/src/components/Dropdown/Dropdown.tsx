@@ -31,7 +31,7 @@ export type DropdownProps = {
   /**
    * Used to add custom icon.
    */
-  customIcon?: IconProp;
+  icon?: IconProp;
   /**
    * Adds error text.
    */
@@ -72,7 +72,7 @@ const Dropdown = ({
   style,
   contentStyle,
   iconStyle,
-  customIcon,
+  icon = faChevronDown,
   onPress,
   testID,
   mode,
@@ -119,10 +119,7 @@ const Dropdown = ({
             {placeholder}
           </Typography>
         )}
-        <FontAwesomeIcon
-          style={[styles.icon, iconStyle]}
-          icon={customIcon ?? faChevronDown}
-        />
+        <FontAwesomeIcon style={[styles.icon, iconStyle]} icon={icon} />
       </Pressable>
       {errorText && (
         <Typography
