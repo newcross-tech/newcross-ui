@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.30.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.29.7...@newcross-ui/react@1.30.0) (2023-08-28)
+
+
+### Features
+
+* **ASK-0000:** link onClick added ([#31](https://bitbucket.org/newcrossdev/newcross-ui/issues/31)) ([5c38eac](https://bitbucket.org/newcrossdev/newcross-ui/commits/5c38eac902e3fe209957ada47d986616db2600bb))
+
+
+
+
+
 ## [1.29.7](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.29.6...@newcross-ui/react@1.29.7) (2023-08-22)
 
 **Note:** Version bump only for package @newcross-ui/react
