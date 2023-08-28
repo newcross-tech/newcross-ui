@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.45.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.44.4...@newcross-ui/react-native@1.45.0) (2023-08-28)
+
+
+### Features
+
+* **hfgo-2098:** added custom icon prop ([91b8a8f](https://bitbucket.org/newcrossdev/newcross-ui/commits/91b8a8ff5353405e66bef1672cddef7277dd59e8))
+
+
+
+
+
 ## [1.44.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.44.3...@newcross-ui/react-native@1.44.4) (2023-08-01)
 
 **Note:** Version bump only for package @newcross-ui/react-native
