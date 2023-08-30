@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.46.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.45.0...@newcross-ui/react-native@1.46.0) (2023-08-30)
+
+
+### Features
+
+* **HFGO-2040:** add native id ([b0b3cdb](https://bitbucket.org/newcrossdev/newcross-ui/commits/b0b3cdb94a59ec2ca2272a0a68dba53281144f9b))
+
+
+
+
+
 # [1.45.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.44.4...@newcross-ui/react-native@1.45.0) (2023-08-28)
 
 
