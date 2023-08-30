@@ -19,7 +19,11 @@ const FloatingActionButtonGroup = ({
   const styles = fabGroupStyle(theme);
 
   return (
-    <View testID={testID} style={[styles.containerStyle, style]}>
+    <View
+      nativeID="floating-action-button-group"
+      testID={testID}
+      style={[styles.containerStyle, style]}
+    >
       {Children.map(children, (child, index) => {
         const isLastChild = children.length - 1 === index;
 
