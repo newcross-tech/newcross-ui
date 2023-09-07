@@ -64,6 +64,7 @@ const Link = ({
   children,
   onPress,
   style,
+  hasIcon = true,
   icon = faCircleChevronRight,
   mode = Mode.light,
   testID,
@@ -96,13 +97,15 @@ const Link = ({
         >
           {children}
         </Typography>
-        <View testID="link-icon">
-          <FontAwesomeIcon
-            style={styles.linkIcon}
-            size={getIconSizeValues(theme)[size]}
-            icon={icon}
-          />
-        </View>
+        {hasIcon && (
+          <View testID="link-icon">
+            <FontAwesomeIcon
+              style={styles.linkIcon}
+              size={getIconSizeValues(theme)[size]}
+              icon={icon}
+            />
+          </View>
+        )}
       </View>
     </Pressable>
   );
