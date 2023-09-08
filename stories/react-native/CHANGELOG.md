@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.43.0](https://github.com/newcross-tech/newcross-ui/compare/@newcross-stories/react-native@1.42.6...@newcross-stories/react-native@1.43.0) (2023-09-08)
+
+
+### Features
+
+* **HFGO-2119:** adds custom icon prop to link ([#34](https://github.com/newcross-tech/newcross-ui/issues/34)) ([1af2934](https://github.com/newcross-tech/newcross-ui/commit/1af2934acf317150aa83a76c4a8a77af04c70d0e))
+
+
+
+
+
 ## [1.42.6](https://github.com/newcross-tech/newcross-ui/compare/@newcross-stories/react-native@1.42.5...@newcross-stories/react-native@1.42.6) (2023-08-30)
 
 **Note:** Version bump only for package @newcross-stories/react-native
