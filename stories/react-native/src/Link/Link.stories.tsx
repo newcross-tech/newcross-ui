@@ -1,6 +1,7 @@
 import { Link, LinkProps, LinkSizes, Mode } from '@newcross-ui/react-native';
 import { Meta, Story } from '@storybook/react';
 import { native } from '@newcross-ui/design-tokens';
+import { faCircleChevronLeft } from '@fortawesome/pro-solid-svg-icons/faCircleChevronLeft';
 import { View } from 'react-native';
 import Container from '../Container';
 import Spacing from '../Spacing';
@@ -18,6 +19,10 @@ export const Variants = () => {
       <Link size={LinkSizes.small}>My Link</Link>
       <Spacing />
       <Link size={LinkSizes.medium}>My Link</Link>
+      <Spacing />
+      <Link size={LinkSizes.medium} icon={faCircleChevronLeft}>
+        My Link with custom icon
+      </Link>
       <Spacing />
       <View style={{ backgroundColor: ColorPrimaryGravitas }}>
         <Link size={LinkSizes.medium} mode={Mode.dark}>

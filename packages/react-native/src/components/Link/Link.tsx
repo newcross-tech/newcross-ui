@@ -14,6 +14,7 @@ import { getIconSizeValues, LinkSizes, getTypographySizes } from './Link.types';
 import linkStyle, { pressedLinkStyle } from './Link.style';
 import useTheme from '../../hooks/useTheme';
 import Typography from '../Typography';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 export type LinkProps = {
   /**
@@ -41,6 +42,10 @@ export type LinkProps = {
    */
   hasIcon?: boolean;
   /**
+   * Used to add custom icon.
+   */
+  icon?: IconProp;
+  /**
    * Used to set dark or light mode
    */
   mode?: Mode;
@@ -60,6 +65,7 @@ const Link = ({
   onPress,
   style,
   hasIcon = true,
+  icon = faCircleChevronRight,
   mode = Mode.light,
   testID,
   numberOfLines = 0,
@@ -96,7 +102,7 @@ const Link = ({
             <FontAwesomeIcon
               style={styles.linkIcon}
               size={getIconSizeValues(theme)[size]}
-              icon={faCircleChevronRight}
+              icon={icon}
             />
           </View>
         )}
