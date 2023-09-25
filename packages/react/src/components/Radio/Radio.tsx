@@ -1,6 +1,7 @@
 import { TestProp } from '../../types/TestProp';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import * as Styled from './Radio.style';
+import { RadioVariant } from './Radio.types';
 
 export type RadioProps = {
   /**
@@ -24,6 +25,18 @@ export type RadioProps = {
    * Specifies whether the radio is selected
    */
   selected?: boolean;
+  /**
+   * Specifies the name of the radio; if no such is provided, the id of the radio is used
+   */
+  name?: string;
+  /**
+   * Used to define background and border variant
+   */
+  variant?: RadioVariant;
+  /**
+   * Specifies radio button and label margin
+   */
+  margin?: string;
 } & TestProp;
 
 const baseTestId = 'radio';
@@ -35,6 +48,9 @@ const Radio = ({
   onChange,
   value,
   testID = '',
+  name,
+  variant = 'primary',
+  margin,
 }: RadioProps) => {
   const onChangeHandler = () => {
     if (disabled) return;
@@ -44,12 +60,17 @@ const Radio = ({
   const id = `${baseTestId}-input-${value}`;
 
   return (
-    <Styled.Radio>
+    <Styled.Radio
+      variant={variant}
+      selected={selected}
+      disabled={disabled}
+      margin={margin}
+    >
       <input
         id={id}
         type="radio"
         data-testid={`${baseTestId}-input-${testID}`}
-        name={id}
+        name={name ?? id}
         checked={selected}
         onChange={onChangeHandler}
         disabled={disabled}

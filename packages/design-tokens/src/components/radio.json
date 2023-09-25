@@ -22,6 +22,20 @@
         "border-color": { "value": "{color.neutral.grey.200.value}" },
         "background-color": { "value": "{color.neutral.grey.200.value}" }
       }
+    },
+
+    "variant": {
+      "secondary": {
+        "padding": { "value": "{spacing.base.16.value}" },
+        "border-width": { "value": "{size.base.border-width.sm.value}" },
+        "border-radius": { "value": "{border.base.radius.md.value}" },
+        "border-color": { "value": "{color.neutral.grey.200.value}" },
+
+        "background": {
+          "color": { "value": "{brand.color.secondary.400.value}" },
+          "border-color": { "value": "{brand.color.secondary.100.value}" }
+        }
+      }
     }
   }
 }

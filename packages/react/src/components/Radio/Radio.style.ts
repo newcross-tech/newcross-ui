@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
-import { Theme } from '../../types/Theme';
+import { ExtendedTheme, Theme } from '../../types/Theme';
 import { getTabbedStateStyles } from '../../utils';
 import HaloLabel, { LabelProps } from '../Label';
+import { SelectedProps } from './Radio.types';
 
 export const Label = styled(HaloLabel)<LabelProps>`
   ${({ theme }: Theme) => css`
@@ -10,7 +11,7 @@ export const Label = styled(HaloLabel)<LabelProps>`
   `}
 `;
 
-export const Radio = styled.div`
+export const Radio = styled.div<SelectedProps>`
   display: flex;
   align-items: center;
 
@@ -66,4 +67,38 @@ export const Radio = styled.div`
       }
     }
   `}
+
+  ${({ margin }) =>
+    margin &&
+    css`
+      margin: ${margin};
+    `}
+
+  ${({ theme, variant }: ExtendedTheme<SelectedProps>) =>
+    variant === 'secondary' &&
+    css`
+      border: ${theme.RadioVariantSecondaryBorderWidth} solid ${theme.RadioVariantSecondaryBorderColor};
+      border-radius: ${theme.RadioVariantSecondaryBorderRadius};
+      padding: ${theme.RadioVariantSecondaryPadding};
+    `};
+
+  ${({ theme, variant, selected }: ExtendedTheme<SelectedProps>) =>
+    variant === 'secondary' &&
+    selected &&
+    css`
+      border: ${theme.RadioVariantSecondaryBorderWidth} solid ${theme.RadioVariantSecondaryBackgroundBorderColor};
+      border-radius: ${theme.RadioVariantSecondaryBorderRadius};
+      padding: ${theme.RadioVariantSecondaryPadding};
+      background: ${theme.RadioVariantSecondaryBackgroundColor};
+    `};
+
+  ${({ theme, variant, disabled }: ExtendedTheme<SelectedProps>) =>
+    variant === 'secondary' &&
+    disabled &&
+    css`
+      border: ${theme.RadioVariantSecondaryBorderWidth} solid ${theme.RadioDisabledBorderColor};
+      border-radius: ${theme.RadioVariantSecondaryBorderRadius};
+      padding: ${theme.RadioVariantSecondaryPadding};
+      background: none;
+    `};
 `;
