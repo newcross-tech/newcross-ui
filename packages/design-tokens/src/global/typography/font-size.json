@@ -5,8 +5,11 @@
       "12": { "value": 12, "type": "size" },
       "14": { "value": 14, "type": "size" },
       "16": { "value": 16, "type": "size" },
+      "18": { "value": 18, "type": "size" },
       "20": { "value": 20, "type": "size" },
-      "28": { "value": 28, "type": "size" }
+      "24": { "value": 24, "type": "size" },
+      "28": { "value": 28, "type": "size" },
+      "32": { "value": 32, "type": "size" }
     }
   }
 }
