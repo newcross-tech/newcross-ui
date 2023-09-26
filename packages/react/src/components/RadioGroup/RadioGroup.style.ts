@@ -15,11 +15,15 @@ export const RadioItem = styled.div`
     css`
       ${direction === 'column' &&
       css`
-        margin-bottom: ${theme.SpacingBase8};
+        &:not(:last-child) {
+          margin-bottom: ${theme.SpacingBase8};
+        }
       `}
       ${direction === 'row' &&
       css`
-        margin-right: ${theme.SpacingBase8};
+        &:not(:last-child) {
+          margin-right: ${theme.SpacingBase8};
+        }
       `}
     `}
 `;
