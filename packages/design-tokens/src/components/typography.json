@@ -1,6 +1,6 @@
 {
   "typography": {
-    "web":{
+    "web": {
       "heading-1": {
         "font-size": { "value": "{typography.font-size.32.value}" },
         "line-height": { "value": "{typography.line-height.40.value}" }
