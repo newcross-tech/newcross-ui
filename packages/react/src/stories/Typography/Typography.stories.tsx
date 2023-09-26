@@ -19,8 +19,6 @@ const variants: { variant: TypographyVariant; text: string }[] = [
   { variant: 'heading4', text: 'h4 Heading 20px' },
   { variant: 'heading5', text: 'h5 Heading 18px' },
   { variant: 'heading6', text: 'h6 Heading 16px' },
-  { variant: 'heading7', text: 'h7 Heading 14px' },
-  { variant: 'heading8', text: 'h8 Heading 12px' },
   { variant: 'paragraph1', text: 'p1 Paragraph 16px' },
   { variant: 'paragraph2', text: 'p2 Paragraph 14px' },
   { variant: 'paragraph3', text: 'p3 Paragraph 12px' },

@@ -45,18 +45,6 @@ export const getTypographyStyles = (
     line-height: ${theme.TypographyWebHeading6LineHeight};
     font-weight: ${theme.TypographyWebHeading6FontWeight as FontWeight};
   `,
-  heading7: css`
-    font-family: ${theme.TypographyWebHeading7FontFamily};
-    font-size: ${theme.TypographyWebHeading7FontSize};
-    line-height: ${theme.TypographyWebHeading7LineHeight};
-    font-weight: ${theme.TypographyWebHeading7FontWeight as FontWeight};
-  `,
-  heading8: css`
-    font-family: ${theme.TypographyWebHeading8FontFamily};
-    font-size: ${theme.TypographyWebHeading8FontSize};
-    line-height: ${theme.TypographyWebHeading8LineHeight};
-    font-weight: ${theme.TypographyWebHeading8FontWeight as FontWeight};
-  `,
   paragraph1: css`
     font-family: ${theme.TypographyParagraph1FontFamily};
     font-size: ${theme.TypographyParagraph1FontSize};

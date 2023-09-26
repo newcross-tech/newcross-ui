@@ -5,8 +5,6 @@ export type TypographyVariant =
   | 'heading4'
   | 'heading5'
   | 'heading6'
-  | 'heading7'
-  | 'heading8'
   | 'paragraph1'
   | 'paragraph2'
   | 'paragraph3'
