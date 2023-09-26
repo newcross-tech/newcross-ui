@@ -45,6 +45,18 @@ export const getTypographyStyles = (
     line-height: ${theme.TypographyWebHeading6LineHeight};
     font-weight: ${theme.TypographyWebHeading6FontWeight as FontWeight};
   `,
+  subtitle1: css`
+    font-family: ${theme.TypographyWebSubtitle1FontFamily};
+    font-size: ${theme.TypographyWebSubtitle1FontSize};
+    line-height: ${theme.TypographyWebSubtitle1LineHeight};
+    font-weight: ${theme.TypographyWebSubtitle1FontWeight as FontWeight};
+  `,
+  subtitle2: css`
+    font-family: ${theme.TypographyWebSubtitle2FontFamily};
+    font-size: ${theme.TypographyWebSubtitle2FontSize};
+    line-height: ${theme.TypographyWebSubtitle2LineHeight};
+    font-weight: ${theme.TypographyWebSubtitle2FontWeight as FontWeight};
+  `,
   paragraph1: css`
     font-family: ${theme.TypographyParagraph1FontFamily};
     font-size: ${theme.TypographyParagraph1FontSize};
