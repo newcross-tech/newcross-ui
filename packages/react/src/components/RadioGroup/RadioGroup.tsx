@@ -3,7 +3,7 @@ import { useToggle } from '../../hooks/useToggle';
 import { TestProp } from '../../types/TestProp';
 import { RadioProps } from '../Radio/Radio';
 import { RadioVariant } from '../Radio/Radio.types';
-import { Container } from './RadioGroup.style';
+import { Container, RadioItem } from './RadioGroup.style';
 
 export type RadioGroupProps = {
   /**
@@ -60,13 +60,17 @@ const RadioGroup = ({
       {Children.map(children, (child) => {
         const { value } = child.props;
 
-        return cloneElement(child, {
-          key: value,
-          onChange: () => value && handleOnChange(value as string),
-          selected: value === selectedOption,
-          disabled,
-          variant,
-        });
+        return (
+          <RadioItem direction={direction} variant={variant}>
+            {cloneElement(child, {
+              key: value,
+              onChange: () => value && handleOnChange(value as string),
+              selected: value === selectedOption,
+              disabled,
+              variant,
+            })}
+          </RadioItem>
+        );
       })}
     </Container>
   );

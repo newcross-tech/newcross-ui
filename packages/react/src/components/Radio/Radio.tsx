@@ -55,7 +55,13 @@ const Radio = ({
   const id = `${baseTestId}-input-${value}`;
 
   return (
-    <Styled.Radio variant={variant} selected={selected} disabled={disabled}>
+    <Styled.Radio
+      variant={variant}
+      selected={selected}
+      disabled={disabled}
+      onChange={onChangeHandler}
+      as={variant === 'primary' ? 'div' : 'label'}
+    >
       <input
         id={id}
         type="radio"

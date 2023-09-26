@@ -75,6 +75,11 @@ export const Radio = styled.div<SelectedProps>`
       border-radius: ${theme.RadioVariantSecondaryBorderRadius};
       padding: ${theme.RadioVariantSecondaryPadding};
 
+      ${!disabled &&
+      css`
+        cursor: pointer;
+      `}
+
       ${selected &&
       css`
         border: ${theme.RadioVariantSecondaryBorderWidth} solid ${theme.RadioVariantSecondaryBackgroundBorderColor};

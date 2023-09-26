@@ -44,12 +44,24 @@ export const Variants = () => {
 
       <Spacing />
       <Typography variant={'heading4'}>
-        Radio Group with Secondary Radio Buttons Variant
+        Radio Group with Horizontal Orientation and Secondary Radio Buttons
+        Variant
       </Typography>
       <RadioGroup defaultSelected="10" variant="secondary">
         <Radio value="10" label="A" />
         <Radio value="11" label="B" />
         <Radio value="12" label="C" />
+      </RadioGroup>
+
+      <Spacing />
+      <Typography variant={'heading4'}>
+        Radio Group with Vertical Orientation and Secondary Radio Buttons
+        Variant
+      </Typography>
+      <RadioGroup direction="column" defaultSelected="14" variant="secondary">
+        <Radio value="13" label="A" />
+        <Radio value="14" label="B" />
+        <Radio value="15" label="C" />
       </RadioGroup>
     </Container>
   );
