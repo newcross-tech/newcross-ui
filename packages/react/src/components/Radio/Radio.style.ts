@@ -68,37 +68,23 @@ export const Radio = styled.div<SelectedProps>`
     }
   `}
 
-  ${({ margin }) =>
-    margin &&
-    css`
-      margin: ${margin};
-    `}
-
-  ${({ theme, variant }: ExtendedTheme<SelectedProps>) =>
+  ${({ theme, variant, selected, disabled }: ExtendedTheme<SelectedProps>) =>
     variant === 'secondary' &&
     css`
       border: ${theme.RadioVariantSecondaryBorderWidth} solid ${theme.RadioVariantSecondaryBorderColor};
       border-radius: ${theme.RadioVariantSecondaryBorderRadius};
       padding: ${theme.RadioVariantSecondaryPadding};
-    `};
 
-  ${({ theme, variant, selected }: ExtendedTheme<SelectedProps>) =>
-    variant === 'secondary' &&
-    selected &&
-    css`
-      border: ${theme.RadioVariantSecondaryBorderWidth} solid ${theme.RadioVariantSecondaryBackgroundBorderColor};
-      border-radius: ${theme.RadioVariantSecondaryBorderRadius};
-      padding: ${theme.RadioVariantSecondaryPadding};
-      background: ${theme.RadioVariantSecondaryBackgroundColor};
-    `};
+      ${selected &&
+      css`
+        border: ${theme.RadioVariantSecondaryBorderWidth} solid ${theme.RadioVariantSecondaryBackgroundBorderColor};
+        background: ${theme.RadioVariantSecondaryBackgroundColor};
+      `}
 
-  ${({ theme, variant, disabled }: ExtendedTheme<SelectedProps>) =>
-    variant === 'secondary' &&
-    disabled &&
-    css`
-      border: ${theme.RadioVariantSecondaryBorderWidth} solid ${theme.RadioDisabledBorderColor};
-      border-radius: ${theme.RadioVariantSecondaryBorderRadius};
-      padding: ${theme.RadioVariantSecondaryPadding};
-      background: none;
+      ${disabled &&
+      css`
+        border: ${theme.RadioVariantSecondaryBorderWidth} solid ${theme.RadioDisabledBorderColor};
+        background: none;
+      `}
     `};
 `;
