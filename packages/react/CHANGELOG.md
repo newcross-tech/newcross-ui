@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.32.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.31.0...@newcross-ui/react@1.32.0) (2023-09-27)
+
+
+### Features
+
+* **OAE-1344:** web typography variation added ([#36](https://bitbucket.org/newcrossdev/newcross-ui/issues/36)) ([9627f9f](https://bitbucket.org/newcrossdev/newcross-ui/commits/9627f9f705cc205aaed40d8a69347ffd7051b062))
+
+
+
+
+
 # [1.31.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.30.0...@newcross-ui/react@1.31.0) (2023-09-27)
 
 

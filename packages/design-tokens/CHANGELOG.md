@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.39.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.38.0...@newcross-ui/design-tokens@1.39.0) (2023-09-27)
+
+
+### Features
+
+* **OAE-1344:** web typography variation added ([#36](https://bitbucket.org/newcrossdev/newcross-ui/issues/36)) ([9627f9f](https://bitbucket.org/newcrossdev/newcross-ui/commits/9627f9f705cc205aaed40d8a69347ffd7051b062))
+
+
+
+
+
 # [1.38.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.37.1...@newcross-ui/design-tokens@1.38.0) (2023-09-27)
 
 
