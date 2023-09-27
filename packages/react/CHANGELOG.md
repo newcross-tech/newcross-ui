@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.31.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.30.0...@newcross-ui/react@1.31.0) (2023-09-27)
+
+
+### Features
+
+* **OAE-1343:** add radio button secondary variant and additional properties ([#35](https://bitbucket.org/newcrossdev/newcross-ui/issues/35)) ([09b797d](https://bitbucket.org/newcrossdev/newcross-ui/commits/09b797dc2664ef3dc49e3b5e11421f117be73ef3))
+
+
+
+
+
 # [1.30.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.29.7...@newcross-ui/react@1.30.0) (2023-08-28)
 
 
