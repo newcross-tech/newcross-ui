@@ -16,6 +16,26 @@ export const Variants = () => {
       <Radio selected value="2" label="Primary Selected" />
       <Radio label="Disabled" value="3" disabled />
       <Radio selected value="4" label="Disabled Selected" disabled />
+      <Radio variant="secondary" value="5" label="Secondary" />
+      <Radio
+        selected
+        variant="secondary"
+        value="6"
+        label="Secondary Selected"
+      />
+      <Radio
+        disabled
+        variant="secondary"
+        value="7"
+        label="Secondary Disabled"
+      />
+      <Radio
+        selected
+        disabled
+        variant="secondary"
+        value="8"
+        label="Secondary Disabled Selected"
+      />
     </>
   );
 };

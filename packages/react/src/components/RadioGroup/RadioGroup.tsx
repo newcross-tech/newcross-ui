@@ -2,7 +2,8 @@ import { Children, cloneElement, ReactElement, useState } from 'react';
 import { useToggle } from '../../hooks/useToggle';
 import { TestProp } from '../../types/TestProp';
 import { RadioProps } from '../Radio/Radio';
-import { Container } from './RadioGroup.style';
+import { RadioVariant } from '../Radio/Radio.types';
+import { Container, RadioItem } from './RadioGroup.style';
 
 export type RadioGroupProps = {
   /**
@@ -25,6 +26,10 @@ export type RadioGroupProps = {
    * disables all radio buttons
    */
   disabled?: boolean;
+  /**
+   * Used to define background and border variant of all radio buttons
+   */
+  variant?: RadioVariant;
 } & TestProp;
 
 const RadioGroup = ({
@@ -33,6 +38,7 @@ const RadioGroup = ({
   onChange,
   disabled = false,
   defaultSelected = '',
+  variant = 'primary',
   ...rest
 }: RadioGroupProps) => {
   const [selectedOption, setSelectedOption] = useState(defaultSelected);
@@ -54,12 +60,17 @@ const RadioGroup = ({
       {Children.map(children, (child) => {
         const { value } = child.props;
 
-        return cloneElement(child, {
-          key: value,
-          onChange: () => value && handleOnChange(value as string),
-          selected: value === selectedOption,
-          disabled,
-        });
+        return (
+          <RadioItem direction={direction} variant={variant}>
+            {cloneElement(child, {
+              key: value,
+              onChange: () => value && handleOnChange(value as string),
+              selected: value === selectedOption,
+              disabled,
+              variant,
+            })}
+          </RadioItem>
+        );
       })}
     </Container>
   );
