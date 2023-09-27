@@ -11,33 +11,51 @@ export const getTypographyStyles = (
 ): Record<TypographyVariant, FlattenSimpleInterpolation> => ({
   heading1: css`
     font-family: ${theme.TypographyHeading1FontFamily};
-    font-size: ${theme.TypographyHeading1FontSize};
-    line-height: ${theme.TypographyHeading1LineHeight};
+    font-size: ${theme.TypographyWebHeading1FontSize};
+    line-height: ${theme.TypographyWebHeading1LineHeight};
     font-weight: ${theme.TypographyHeading1FontWeight as FontWeight};
   `,
   heading2: css`
     font-family: ${theme.TypographyHeading2FontFamily};
-    font-size: ${theme.TypographyHeading2FontSize};
-    line-height: ${theme.TypographyHeading2LineHeight};
+    font-size: ${theme.TypographyWebHeading2FontSize};
+    line-height: ${theme.TypographyWebHeading2LineHeight};
     font-weight: ${theme.TypographyHeading2FontWeight as FontWeight};
   `,
   heading3: css`
     font-family: ${theme.TypographyHeading3FontFamily};
-    font-size: ${theme.TypographyHeading3FontSize};
-    line-height: ${theme.TypographyHeading3LineHeight};
+    font-size: ${theme.TypographyWebHeading3FontSize};
+    line-height: ${theme.TypographyWebHeading3LineHeight};
     font-weight: ${theme.TypographyHeading3FontWeight as FontWeight};
   `,
   heading4: css`
     font-family: ${theme.TypographyHeading4FontFamily};
-    font-size: ${theme.TypographyHeading4FontSize};
-    line-height: ${theme.TypographyHeading4LineHeight};
+    font-size: ${theme.TypographyWebHeading4FontSize};
+    line-height: ${theme.TypographyWebHeading4LineHeight};
     font-weight: ${theme.TypographyHeading4FontWeight as FontWeight};
   `,
   heading5: css`
     font-family: ${theme.TypographyHeading5FontFamily};
-    font-size: ${theme.TypographyHeading5FontSize};
-    line-height: ${theme.TypographyHeading5LineHeight};
+    font-size: ${theme.TypographyWebHeading5FontSize};
+    line-height: ${theme.TypographyWebHeading5LineHeight};
     font-weight: ${theme.TypographyHeading5FontWeight as FontWeight};
+  `,
+  heading6: css`
+    font-family: ${theme.TypographyWebHeading6FontFamily};
+    font-size: ${theme.TypographyWebHeading6FontSize};
+    line-height: ${theme.TypographyWebHeading6LineHeight};
+    font-weight: ${theme.TypographyWebHeading6FontWeight as FontWeight};
+  `,
+  subtitle1: css`
+    font-family: ${theme.TypographyWebSubtitle1FontFamily};
+    font-size: ${theme.TypographyWebSubtitle1FontSize};
+    line-height: ${theme.TypographyWebSubtitle1LineHeight};
+    font-weight: ${theme.TypographyWebSubtitle1FontWeight as FontWeight};
+  `,
+  subtitle2: css`
+    font-family: ${theme.TypographyWebSubtitle2FontFamily};
+    font-size: ${theme.TypographyWebSubtitle2FontSize};
+    line-height: ${theme.TypographyWebSubtitle2LineHeight};
+    font-weight: ${theme.TypographyWebSubtitle2FontWeight as FontWeight};
   `,
   paragraph1: css`
     font-family: ${theme.TypographyParagraph1FontFamily};
