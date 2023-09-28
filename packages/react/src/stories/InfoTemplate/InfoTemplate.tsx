@@ -28,7 +28,7 @@ const TextRenderer = ({ data }: TextRendererProps) => {
 
 const Header = ({ title, description }: HeaderProps) => (
   <>
-    <Typography variant={'heading1'}>{title}</Typography>
+    <Typography variant={'heading2'}>{title}</Typography>
     <Spacing />
     <Typography variant={'paragraph2'}>
       <TextRenderer data={description} />
@@ -44,20 +44,20 @@ type UsagesProps = {
 const Usages = ({ doInfo = [], dontInfo = [] }: UsagesProps) => {
   return (
     <>
-      <Typography variant={'heading2'}>Usage guidelines</Typography>
+      <Typography variant={'heading4'}>Usage guidelines</Typography>
       <Spacing hasBorder />
       <Spacing />
       <>
         {doInfo.map((doText, index) => (
           <StyledUsagesText key={index} variant={'paragraph2'}>
-            <StyledDo variant={'heading4'}>DO:</StyledDo>
+            <StyledDo variant={'subtitle1'}>DO:</StyledDo>
             &nbsp;{doText}
           </StyledUsagesText>
         ))}
         <Spacing />
         {dontInfo.map((dontText, index) => (
           <StyledUsagesText key={index} variant={'paragraph2'}>
-            <StyledDont variant={'heading4'}>DON'T:</StyledDont>
+            <StyledDont variant={'subtitle1'}>DON'T:</StyledDont>
             &nbsp;{dontText}
           </StyledUsagesText>
         ))}
@@ -71,7 +71,7 @@ type ExamplesProps = { children?: ReactNode; title?: string };
 const Examples = ({ children, title }: ExamplesProps) => {
   return (
     <>
-      <Typography variant={'heading2'}>Examples</Typography>
+      <Typography variant={'heading4'}>Examples</Typography>
       <Spacing hasBorder />
       <Spacing />
       {children &&

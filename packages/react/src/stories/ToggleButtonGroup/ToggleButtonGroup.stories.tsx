@@ -4,11 +4,11 @@ import ToggleButton from '../../components/ToggleButton';
 import ToggleButtonGroup, {
   ToggleButtonGroupProps,
 } from '../../components/ToggleButtonGroup';
-import Typography from '../../components/Typography';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './ToggleButtonGroupInfo';
+import * as StoryTitle from '../StoryTitle';
 
 export default {
   title: 'React/Components/ToggleButtonGroup',
@@ -33,7 +33,7 @@ export const Variants = () => {
 
   return (
     <Container direction="column">
-      <Typography variant={'heading4'}>Single Select Group</Typography>
+      <StoryTitle.Regular>Single Select Group</StoryTitle.Regular>
       <ToggleButtonGroup
         selectedValue={selectedSingleBtn}
         onToggle={setSelectedSingleBtn}
@@ -44,9 +44,9 @@ export const Variants = () => {
         <ToggleButton value="3">Option C</ToggleButton>
       </ToggleButtonGroup>
       <Spacing position={'Bottom'} />
-      <Typography variant={'heading4'}>
+      <StoryTitle.Regular>
         Multiple Select Group with horizontal orientation
-      </Typography>
+      </StoryTitle.Regular>
 
       <ToggleButtonGroup
         selectedValue={selectedMultipleBtn}
@@ -61,9 +61,9 @@ export const Variants = () => {
         <ToggleButton value="3">Option C</ToggleButton>
       </ToggleButtonGroup>
       <Spacing size={'Large'} />
-      <Typography variant={'heading4'}>
+      <StoryTitle.Regular>
         Multiple Select Group with vertical orientation
-      </Typography>
+      </StoryTitle.Regular>
       <Container>
         <ToggleButtonGroup
           selectedValue={selectedVerticalMultipleBtn}
@@ -79,9 +79,9 @@ export const Variants = () => {
         </ToggleButtonGroup>
       </Container>
       <Spacing position={'Bottom'} />
-      <Typography variant={'heading4'}>
+      <StoryTitle.Regular>
         Multiple Select Group with vertical / horizontal orientation
-      </Typography>
+      </StoryTitle.Regular>
 
       <Container direction="column" display={'block'}>
         <ToggleButtonGroup

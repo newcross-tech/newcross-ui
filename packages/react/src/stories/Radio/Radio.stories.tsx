@@ -3,6 +3,8 @@ import Radio, { RadioProps } from '../../components/Radio';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './Radio.info';
+import Spacing from '../Spacing';
+import * as StoryTitle from '../StoryTitle';
 
 export default {
   title: 'React/Components/Radio',
@@ -12,10 +14,15 @@ export default {
 export const Variants = () => {
   return (
     <>
+      <StoryTitle.Regular>Primary Radio Variants</StoryTitle.Regular>
+      <Spacing />
       <Radio value="1" label="Primary" />
       <Radio selected value="2" label="Primary Selected" />
       <Radio label="Disabled" value="3" disabled />
       <Radio selected value="4" label="Disabled Selected" disabled />
+      <Spacing />
+      <StoryTitle.Regular>Secondary Radio Variants</StoryTitle.Regular>
+      <Spacing />
       <Radio variant="secondary" value="5" label="Secondary" />
       <Radio
         selected

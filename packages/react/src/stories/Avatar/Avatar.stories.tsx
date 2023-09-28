@@ -6,6 +6,7 @@ import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './AvatarInfo';
+import * as StoryTitle from '../StoryTitle';
 
 export default {
   title: 'React/Components/Avatar',
@@ -41,10 +42,10 @@ export const Overview = () => {
 export const VariantWithImage = () => {
   return (
     <Container direction="column">
-      <Typography variant={'heading4'}>Active Variant</Typography>
+      <StoryTitle.Regular>Active Variant</StoryTitle.Regular>
       <Avatar source={person} />
       <BottomSpacing />
-      <Typography variant={'heading4'}>Inactive Variant</Typography>
+      <StoryTitle.Regular>Inactive Variant</StoryTitle.Regular>
       <Avatar inactive source={person} />
     </Container>
   );
@@ -53,11 +54,11 @@ export const VariantWithImage = () => {
 export const VariantWithText = () => {
   return (
     <Container direction="column">
-      <Typography variant={'heading4'}>Active Variant</Typography>
+      <StoryTitle.Regular>Active Variant</StoryTitle.Regular>
 
       <Avatar name="John Doe" />
       <BottomSpacing />
-      <Typography variant={'heading4'}>Inactive Variant</Typography>
+      <StoryTitle.Regular>Inactive Variant</StoryTitle.Regular>
 
       <Avatar inactive name="John Doe" />
     </Container>
@@ -66,7 +67,7 @@ export const VariantWithText = () => {
 export const VariantWithBadge = () => {
   return (
     <Container direction="column">
-      <Typography variant={'heading4'}>Variant with Badge</Typography>
+      <StoryTitle.Regular>Variant with Badge</StoryTitle.Regular>
 
       <Container direction="row">
         <Badge size="medium" position="topRight">
@@ -80,15 +81,15 @@ export const VariantWithBadge = () => {
 export const VariantWithIcon = () => {
   return (
     <Container direction="column">
-      <Typography variant={'heading4'}>Active Variant</Typography>
+      <StoryTitle.Regular>Active Variant</StoryTitle.Regular>
 
       <Avatar />
       <BottomSpacing />
-      <Typography variant={'heading4'}>Inactive Variant</Typography>
+      <StoryTitle.Regular>Inactive Variant</StoryTitle.Regular>
 
       <Avatar inactive />
       <BottomSpacing />
-      <Typography variant={'heading4'}>Size Variants</Typography>
+      <StoryTitle.Regular>Size Variants</StoryTitle.Regular>
 
       <Container direction="row">
         <Container direction="column">

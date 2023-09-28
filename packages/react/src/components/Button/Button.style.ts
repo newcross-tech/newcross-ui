@@ -7,8 +7,8 @@ import { ButtonProps, IconProps } from './Button';
 import { ButtonSizes, ButtonVariant } from './Button.types';
 
 export const getTypographyValues = (): Record<ButtonSizes, TypographyVariant> => ({
-  small: 'heading4',
-  large: 'heading3',
+  small: 'heading6',
+  large: 'heading5',
 });
 
 export const getIconSize = (theme: ThemeDesignTokens): Record<ButtonSizes, FlattenSimpleInterpolation> => ({

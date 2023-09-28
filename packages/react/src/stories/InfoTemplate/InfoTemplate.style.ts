@@ -3,7 +3,7 @@ import Typography from '../../components/Typography';
 
 export const StyledUsagesText = styled(Typography)`
   ${({ theme }) => css`
-    line-height: ${theme.TypographyLineHeight24};
+    line-height: ${theme.TypographyLineHeight20};
   `}
 `;
 

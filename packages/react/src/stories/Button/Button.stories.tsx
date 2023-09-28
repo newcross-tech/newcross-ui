@@ -4,11 +4,12 @@ import { faCircleChevronRight } from '@fortawesome/pro-solid-svg-icons/faCircleC
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Meta, Story } from '@storybook/react';
 import Button, { ButtonProps } from '../../components/Button';
-import Typography from '../../components/Typography';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './ButtonInfo';
+import * as StoryTitle from '../StoryTitle';
+
 export default {
   title: 'React/Components/Button',
   component: Button,
@@ -36,9 +37,9 @@ export const Overview = () => {
 export const VariantsWithSizes = () => {
   return (
     <Container display={'block'} direction="column">
-      <Typography variant={'heading4'}>
+      <StoryTitle.Regular>
         Primary Button with Different Sizes
-      </Typography>
+      </StoryTitle.Regular>
       <Spacing size={'Large'} />
       <Button size="small">Small Button</Button>
       <Spacing />
@@ -58,7 +59,7 @@ export const VariantsWithSizes = () => {
 export const Variants = () => {
   return (
     <Container display={'block'} direction="column">
-      <Typography variant={'heading4'}>Primary Button</Typography>
+      <StoryTitle.Regular>Primary Button</StoryTitle.Regular>
       <Spacing size={'Large'} />
       <Button variant="primary">Primary Button</Button>
       <Spacing />
@@ -67,7 +68,7 @@ export const Variants = () => {
       </Button>
       <Spacing size={'Large'} />
       <Spacing size={'Large'} />
-      <Typography variant={'heading4'}>Secondary Button</Typography>
+      <StoryTitle.Regular>Secondary Button</StoryTitle.Regular>
       <Spacing size={'Large'} />
       <Button variant="secondary">Secondary Button</Button>
       <Spacing />
@@ -81,7 +82,7 @@ export const Variants = () => {
 export const VariantsWithIcons = () => {
   return (
     <Container display={'block'} direction="column">
-      <Typography variant={'heading4'}>Primary Button with Icons</Typography>
+      <StoryTitle.Regular>Primary Button with Icons</StoryTitle.Regular>
       <Spacing size={'Large'} />
       <Button
         size="small"

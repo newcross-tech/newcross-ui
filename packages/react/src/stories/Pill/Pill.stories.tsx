@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Meta, Story } from '@storybook/react';
 import Pill, { PillProps } from '../../components/Pill';
 import PillGroup from '../../components/PillGroup';
-import Typography from '../../components/Typography';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './PillInfo';
+import * as StoryTitle from '../StoryTitle';
 
 export default {
   title: 'React/Components/Pill',
@@ -22,16 +22,16 @@ export const Overview = () => {
       dontInfo={DONT}
     >
       <Container direction="column">
-        <Typography variant={'heading4'}>Pill with Label</Typography>
+        <StoryTitle.Overview>Pill with Label</StoryTitle.Overview>
         <Container>
           <Pill label="Label" removable={false} />
           <Pill label="Label" removable={false} selected />
         </Container>
 
-        <Typography variant={'heading4'}>Disabled Pill with Label</Typography>
+        <StoryTitle.Overview>Disabled Pill with Label</StoryTitle.Overview>
         <Pill label="Label" removable={false} disabled />
 
-        <Typography variant={'heading4'}>Removable Pill Group</Typography>
+        <StoryTitle.Overview>Removable Pill Group</StoryTitle.Overview>
 
         <PillGroup>
           <Pill removable label="One" />
@@ -45,27 +45,25 @@ export const Overview = () => {
 export const Variants = () => {
   return (
     <Container direction="column">
-      <Typography variant={'heading4'}>Pill with Label</Typography>
+      <StoryTitle.Regular>Pill with Label</StoryTitle.Regular>
       <Pill label="Label" />
-      <Typography variant={'heading4'}>Selected Pill with Label</Typography>
+      <StoryTitle.Regular>Selected Pill with Label</StoryTitle.Regular>
       <Pill label="Label" selected />
 
-      <Typography variant={'heading4'}>Disabled Pill with Label</Typography>
+      <StoryTitle.Regular>Disabled Pill with Label</StoryTitle.Regular>
       <Pill label="Label" disabled />
 
-      <Typography variant={'heading4'}>Pill with Icon</Typography>
+      <StoryTitle.Regular>Pill with Icon</StoryTitle.Regular>
       <Pill label="Label" icon={<FontAwesomeIcon icon={faBird} />} />
-      <Typography variant={'heading4'}>Disabled Pill with Icon</Typography>
+      <StoryTitle.Regular>Disabled Pill with Icon</StoryTitle.Regular>
 
       <Pill label="Label" disabled icon={<FontAwesomeIcon icon={faBird} />} />
 
-      <Typography variant={'heading4'}>Removable Pill with Icon</Typography>
+      <StoryTitle.Regular>Removable Pill with Icon</StoryTitle.Regular>
 
       <Pill removable label="Label" icon={<FontAwesomeIcon icon={faBird} />} />
 
-      <Typography variant={'heading4'}>
-        Disabled Removable Pill with Icon
-      </Typography>
+      <StoryTitle.Regular>Disabled Removable Pill with Icon</StoryTitle.Regular>
 
       <Pill
         removable

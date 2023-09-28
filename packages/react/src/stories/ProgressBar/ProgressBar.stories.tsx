@@ -1,4 +1,3 @@
-import { Typography } from '@newcross-ui/react';
 import { Meta, Story } from '@storybook/react';
 import styled from 'styled-components';
 import ProgressBar, { ProgressBarProps } from '../../components/ProgressBar';
@@ -6,6 +5,7 @@ import BasicContainer from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './ProgressBarInfo';
+import * as StoryTitle from '../StoryTitle';
 
 export default {
   title: 'React/Components/ProgressBar',
@@ -30,7 +30,7 @@ export const Overview = () => {
       dontInfo={DONT}
     >
       <Container direction="column" hasPadding={false}>
-        <Typography variant={'heading4'}>Determinate Progress Bar</Typography>
+        <StoryTitle.Overview>Determinate Progress Bar</StoryTitle.Overview>
         <Spacing size={'Large'} />
         <ProgressBar
           label={'Label'}
@@ -39,7 +39,7 @@ export const Overview = () => {
           progress={50}
         />
         <Spacing size={'Large'} />
-        <Typography variant={'heading4'}>Indeterminate Progress Bar</Typography>
+        <StoryTitle.Overview>Indeterminate Progress Bar</StoryTitle.Overview>
         <Spacing size={'Large'} />
         <ProgressBar label={'Label'} variant={'indeterminate'} />
       </Container>
@@ -50,7 +50,7 @@ export const Overview = () => {
 export const Variants = () => {
   return (
     <Container direction="column">
-      <Typography variant={'heading4'}>Determinate Progress Bar</Typography>
+      <StoryTitle.Regular>Determinate Progress Bar</StoryTitle.Regular>
       <Spacing size={'Large'} />
       <ProgressBar
         label={'Label'}
@@ -60,9 +60,9 @@ export const Variants = () => {
       />
       <Spacing size={'Large'} />
 
-      <Typography variant={'heading4'}>
+      <StoryTitle.Regular>
         Determinate Centered Positioned Label Progress Bar
-      </Typography>
+      </StoryTitle.Regular>
       <Spacing size={'Large'} />
       <ProgressBar
         label={'Label'}
@@ -71,9 +71,9 @@ export const Variants = () => {
         progress={25}
       />
       <Spacing size={'Large'} />
-      <Typography variant={'heading4'}>
+      <StoryTitle.Regular>
         Determinate Two Line Label Progress Bar
-      </Typography>
+      </StoryTitle.Regular>
       <Spacing size={'Large'} />
       <ProgressBar
         label={
@@ -85,7 +85,7 @@ export const Variants = () => {
       />
       <Spacing size={'Large'} />
 
-      <Typography variant={'heading4'}>Indeterminate Progress Bar</Typography>
+      <StoryTitle.Regular>Indeterminate Progress Bar</StoryTitle.Regular>
       <Spacing size={'Large'} />
       <ProgressBar label={'Label'} variant={'indeterminate'} />
     </Container>
@@ -95,7 +95,7 @@ export const Variants = () => {
 const Template: Story<ProgressBarProps> = ({ ...rest }) => {
   return (
     <Container direction="column">
-      <Typography variant={'heading4'}>Interactive Progress Bar</Typography>
+      <StoryTitle.Regular>Interactive Progress Bar</StoryTitle.Regular>
       <Spacing size={'Large'} />
       <ProgressBar {...rest} />
     </Container>

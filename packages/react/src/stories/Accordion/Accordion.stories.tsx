@@ -8,6 +8,7 @@ import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './AccordionInfo';
+import * as StoryTitle from '../StoryTitle';
 
 export default {
   title: 'React/Components/Accordion',
@@ -23,7 +24,7 @@ export const Overview = () => {
       dontInfo={DONT}
     >
       <Container direction="column" hasPadding={false}>
-        <Typography variant={'heading4'}>Default Accordion</Typography>
+        <StoryTitle.Overview>Default Accordion</StoryTitle.Overview>
         <Spacing size={'Large'} />
         <Accordion label={'Label'}>
           <Typography variant={'paragraph2'}>
@@ -33,9 +34,9 @@ export const Overview = () => {
           </Typography>
         </Accordion>
         <Spacing size={'Large'} />
-        <Typography variant={'heading4'}>
+        <StoryTitle.Overview>
           Default Accordion Group (Exclusive Selection)
-        </Typography>
+        </StoryTitle.Overview>
         <Spacing size={'Large'} />
         <AccordionGroup>
           <Accordion label={'Section 1'}>
@@ -54,9 +55,9 @@ export const Overview = () => {
           </Accordion>
         </AccordionGroup>
         <Spacing size={'Large'} />
-        <Typography variant={'heading4'}>
+        <StoryTitle.Overview>
           Default Accordion Group (Multiple Selection)
-        </Typography>
+        </StoryTitle.Overview>
         <Spacing size={'Large'} />
         <AccordionGroup exclusiveSelection={false}>
           <Accordion label={'Section 1'}>
@@ -82,7 +83,7 @@ export const Overview = () => {
 export const Variants = () => {
   return (
     <Container direction="column" hasPadding={false}>
-      <Typography variant={'heading4'}>Default Accordion</Typography>
+      <StoryTitle.Regular>Default Accordion</StoryTitle.Regular>
       <Spacing size={'Large'} />
       <Accordion label={'Label'}>
         <Typography variant={'paragraph2'}>
@@ -91,7 +92,7 @@ export const Variants = () => {
         </Typography>
       </Accordion>
       <Spacing size={'Large'} />
-      <Typography variant={'heading4'}>Two Line Label Accordion</Typography>
+      <StoryTitle.Regular>Two Line Label Accordion</StoryTitle.Regular>
       <Spacing size={'Large'} />
       <Accordion
         label={
@@ -104,7 +105,7 @@ export const Variants = () => {
         </Typography>
       </Accordion>
       <Spacing size={'Large'} />
-      <Typography variant={'heading4'}>Expanded Accordion with Icon</Typography>
+      <StoryTitle.Regular>Expanded Accordion with Icon</StoryTitle.Regular>
       <Spacing size={'Large'} />
       <Accordion
         label={'Information'}

@@ -1,11 +1,11 @@
 import { Meta, Story } from '@storybook/react';
 import styled from 'styled-components';
 import Tooltip, { TooltipProps } from '../../components/Tooltip';
-import Typography from '../../components/Typography';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './Tooltip.info';
+import * as StoryTitle from '../StoryTitle';
 
 export default {
   title: 'React/Components/Tooltip',
@@ -21,14 +21,14 @@ const CenteredWrapper = styled.div`
 export const Variants = () => {
   return (
     <Container display={'block'} direction="column">
-      <Typography variant={'heading4'}>Default Tooltip</Typography>
+      <StoryTitle.Regular>Default Tooltip</StoryTitle.Regular>
       <Spacing size={'Large'} />
       <Tooltip position="right">
         This is an info message. This is an info message. This is an info
         message.
       </Tooltip>
       <Spacing size={'Large'} />
-      <Typography variant={'heading4'}>Question Tooltip</Typography>
+      <StoryTitle.Regular>Question Tooltip</StoryTitle.Regular>
       <Spacing size={'Large'} />
       <Tooltip variant="question" position="right">
         This is a question message. This is a question message. This is a
@@ -41,20 +41,20 @@ export const Variants = () => {
 export const VariantsWithPosition = () => {
   return (
     <Container direction="column" display="flex">
-      <Typography variant={'heading3'}>Variants with Position</Typography>
+      <StoryTitle.Regular>Variants with Position</StoryTitle.Regular>
       <Spacing size={'Large'} />
       <Container display="inline-flex" justifyContent="space-around">
         <Tooltip position="top">Top</Tooltip>
-        <Typography variant={'heading4'}>Top</Typography>
+        <StoryTitle.Regular>Top</StoryTitle.Regular>
 
         <Tooltip position="right">Right</Tooltip>
-        <Typography variant={'heading4'}>Right</Typography>
+        <StoryTitle.Regular>Right</StoryTitle.Regular>
 
         <Tooltip position="bottom">Bottom</Tooltip>
-        <Typography variant={'heading4'}>Bottom</Typography>
+        <StoryTitle.Regular>Bottom</StoryTitle.Regular>
 
         <Tooltip position="left">Left</Tooltip>
-        <Typography variant={'heading4'}>Left</Typography>
+        <StoryTitle.Regular>Left</StoryTitle.Regular>
       </Container>
     </Container>
   );
@@ -77,7 +77,7 @@ export const Overview = () => {
 
 const Template: Story<TooltipProps> = (props) => (
   <>
-    <Typography variant={'heading4'}>Interactive Tooltip</Typography>
+    <StoryTitle.Regular>Interactive Tooltip</StoryTitle.Regular>
     <CenteredWrapper>
       <Tooltip {...props} />
     </CenteredWrapper>

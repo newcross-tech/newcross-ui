@@ -1,11 +1,11 @@
 import { Meta, Story } from '@storybook/react';
 import Alert, { AlertProps } from '../../components/Alert';
 import Link from '../../components/Link';
-import Typography from '../../components/Typography';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './AlertInfo';
+import * as StoryTitle from '../StoryTitle';
 
 export default {
   title: 'React/Components/Alert',
@@ -30,37 +30,35 @@ export const Overview = () => {
 export const Variants = () => {
   return (
     <Container direction="column">
-      <Typography variant={'heading4'}>Success Variant</Typography>
+      <StoryTitle.Regular>Success Variant</StoryTitle.Regular>
       <Alert variant="success" action={<Link>Click Here</Link>}>
         This is a success message. This is a success message. This is a success.
       </Alert>
       <Spacing />
-      <Typography variant={'heading4'}>Warning Variant</Typography>
+      <StoryTitle.Regular>Warning Variant</StoryTitle.Regular>
       <Alert variant="warning" action={<Link>Click Here</Link>}>
         This is a warning message. This is a warning message. This is a warning.
       </Alert>
       <Spacing />
-      <Typography variant={'heading4'}>Error Variant</Typography>
+      <StoryTitle.Regular>Error Variant</StoryTitle.Regular>
       <Alert variant="error" action={<Link>Click Here</Link>}>
         This is an error message. This is an error message. This is an error
         message.
       </Alert>
       <Spacing />
-      <Typography variant={'heading4'}>Info Variant</Typography>
+      <StoryTitle.Regular>Info Variant</StoryTitle.Regular>
       <Alert variant="info" action={<Link>Click Here</Link>}>
         This is an info message. This is an info message. This is an info
         message.
       </Alert>
       <Spacing />
-      <Typography variant={'heading4'}>Variant without link</Typography>
+      <StoryTitle.Regular>Variant without link</StoryTitle.Regular>
       <Alert variant="info">
         This is an info message. This is an info message. This is an info
         message.
       </Alert>
       <Spacing />
-      <Typography variant={'heading4'}>
-        Variant without children and link
-      </Typography>
+      <StoryTitle.Regular>Variant without children and link</StoryTitle.Regular>
       <Alert variant="success" />
     </Container>
   );

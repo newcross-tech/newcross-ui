@@ -74,7 +74,7 @@ const Tabs = ({
                 {isString ? (
                   <Styled.Text
                     tabIndex={!disabled ? 0 : -1}
-                    variant={isSelectedTab ? 'heading3' : 'paragraph1'}
+                    variant={isSelectedTab ? 'heading6' : 'paragraph1'}
                     numberOfLines={1}
                   >
                     <Styled.Content disabled={disabled}>{tab}</Styled.Content>
