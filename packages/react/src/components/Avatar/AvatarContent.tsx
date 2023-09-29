@@ -31,7 +31,7 @@ const AvatarContent = ({
 
   if (abbreviation) {
     return (
-      <Styled.Text inactive={inactive} variant={'heading3'}>
+      <Styled.Text inactive={inactive} variant={'heading6'}>
         {abbreviation}
       </Styled.Text>
     );
