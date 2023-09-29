@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.33.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.32.0...@newcross-ui/react@1.33.0) (2023-09-29)
+
+
+### Features
+
+* **ASK-959:** typography comp adjustments, story consistency changes ([#37](https://bitbucket.org/newcrossdev/newcross-ui/issues/37)) ([d23b0ad](https://bitbucket.org/newcrossdev/newcross-ui/commits/d23b0ad0dec9266e3adf44884946b5e9899d4c05))
+
+
+
+
+
 # [1.32.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.31.0...@newcross-ui/react@1.32.0) (2023-09-27)
 
 
