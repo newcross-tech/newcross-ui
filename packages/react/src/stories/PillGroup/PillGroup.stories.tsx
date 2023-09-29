@@ -3,9 +3,7 @@ import { useState } from 'react';
 import Button from '../../components/Button';
 import Pill from '../../components/Pill';
 import PillGroup, { PillGroupProps } from '../../components/PillGroup';
-import Typography from '../../components/Typography';
 import Container from '../Container';
-
 import { faBird } from '@fortawesome/pro-solid-svg-icons/faBird';
 import { faCat } from '@fortawesome/pro-solid-svg-icons/faCat';
 import { faDog } from '@fortawesome/pro-solid-svg-icons/faDog';
@@ -17,6 +15,7 @@ import { faSnake } from '@fortawesome/pro-solid-svg-icons/faSnake';
 import { faWhale } from '@fortawesome/pro-solid-svg-icons/faWhale';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Spacing from '../Spacing';
+import * as StoryTitle from '../StoryTitle';
 
 export default {
   title: 'React/Components/PillGroup',
@@ -57,9 +56,9 @@ export const Variants = () => {
 
   return (
     <Container direction="column">
-      <Typography variant={'heading4'}>
+      <StoryTitle.Regular>
         Removable Pill Group (Interactive Section with Buttons)
-      </Typography>
+      </StoryTitle.Regular>
       <Container>
         {items.map(({ label, id }) => {
           return (
@@ -85,9 +84,7 @@ export const Variants = () => {
       </PillGroup>
 
       <Spacing size={'Large'} />
-      <Typography variant={'heading4'}>
-        Pill Group with Pill Variants
-      </Typography>
+      <StoryTitle.Regular>Pill Group with Pill Variants</StoryTitle.Regular>
 
       <PillGroup>
         <Pill disabled label="One" />
@@ -99,9 +96,9 @@ export const Variants = () => {
       </PillGroup>
       <Spacing size={'Large'} />
 
-      <Typography variant={'heading4'}>
+      <StoryTitle.Regular>
         Pill Group with Vertical Orientation
-      </Typography>
+      </StoryTitle.Regular>
 
       <PillGroup direction={'column'}>
         <Pill label="One" />

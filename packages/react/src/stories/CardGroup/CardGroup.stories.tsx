@@ -9,6 +9,7 @@ import { Theme } from '../../types/Theme';
 import { CardShift } from '../Card/CardShift';
 import Container from '../Container';
 import Spacing from '../Spacing';
+import * as StoryTitle from '../StoryTitle';
 
 export default {
   title: 'React/Components/CardGroup',
@@ -24,47 +25,48 @@ const StyledText = styled(Typography)`
 export const Variants = () => {
   return (
     <Container direction="column" hasPadding={false}>
-      <Typography variant={'heading4'}>CardGroup</Typography>
+      <StoryTitle.Regular>CardGroup</StoryTitle.Regular>
       <Spacing />
       <CardGroup>
         <Card>
           <FontAwesomeIcon icon={faUser} size={'lg'} />
-          <StyledText variant={'heading3'}>My card</StyledText>
+          <StyledText variant={'heading6'}>My card</StyledText>
         </Card>
         <Card>
           <FontAwesomeIcon icon={faUser} size={'lg'} />
-          <StyledText variant={'heading3'}>My card</StyledText>
+          <StyledText variant={'heading6'}>My card</StyledText>
         </Card>
         <Card>
           <FontAwesomeIcon icon={faUser} size={'lg'} />
-          <StyledText variant={'heading3'}>My card</StyledText>
+          <StyledText variant={'heading6'}>My card</StyledText>
         </Card>
       </CardGroup>
       <Spacing size={'Large'} />
-      <Typography variant={'heading4'}>FullWidth CardGroup</Typography>
+      <StoryTitle.Regular>FullWidth CardGroup</StoryTitle.Regular>
       <Spacing />
       <CardGroup fullWidth>
         <Card hasRightIcon>
           <Container hasPadding={false}>
             <FontAwesomeIcon icon={faUser} size={'lg'} />
-            <StyledText variant={'heading3'}>My card</StyledText>
+            <StyledText variant={'heading6'}>My card</StyledText>
           </Container>
         </Card>
         <Card hasRightIcon>
           <Container hasPadding={false}>
             <FontAwesomeIcon icon={faUser} size={'lg'} />
-            <StyledText variant={'heading3'}>My card</StyledText>
+            <StyledText variant={'heading6'}>My card</StyledText>
           </Container>
         </Card>
         <Card hasRightIcon>
           <Container hasPadding={false}>
             <FontAwesomeIcon icon={faUser} size={'lg'} />
-            <StyledText variant={'heading3'}>My card</StyledText>
+            <StyledText variant={'heading6'}>My card</StyledText>
           </Container>
         </Card>
       </CardGroup>
       <Spacing size={'Large'} />
-      <Typography variant={'heading3'}>Day shift cards Group</Typography>
+      <StoryTitle.Regular>Day shift cards Group</StoryTitle.Regular>
+      <Spacing />
       <CardGroup>
         <CardShift shiftCardStatus={'DAY'} />
         <CardShift shiftCardStatus={'DAY'} />
@@ -80,15 +82,15 @@ const Template: Story<CardGroupProps> = ({ ...rest }) => {
       <CardGroup {...rest}>
         <Card>
           <FontAwesomeIcon icon={faUser} size={'lg'} />
-          <StyledText variant={'heading3'}>My card</StyledText>
+          <StyledText variant={'heading6'}>My card</StyledText>
         </Card>
         <Card>
           <FontAwesomeIcon icon={faUser} size={'lg'} />
-          <StyledText variant={'heading3'}>My card</StyledText>
+          <StyledText variant={'heading6'}>My card</StyledText>
         </Card>
         <Card>
           <FontAwesomeIcon icon={faUser} size={'lg'} />
-          <StyledText variant={'heading3'}>My card</StyledText>
+          <StyledText variant={'heading6'}>My card</StyledText>
         </Card>
       </CardGroup>
     </Container>

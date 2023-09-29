@@ -134,7 +134,7 @@ const Dropdown = ({
   return (
     <Styled.Container ref={containerRef}>
       {label && (
-        <Styled.Label variant={'paragraph2'} testID={`${baseTestId}-label`}>
+        <Styled.Label variant={'subtitle1'} testID={`${baseTestId}-label`}>
           {label}
         </Styled.Label>
       )}

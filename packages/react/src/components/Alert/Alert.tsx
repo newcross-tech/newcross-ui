@@ -81,12 +81,12 @@ const Alert = ({
       )}
       <Styled.TextContainer>
         {hasTitle && (
-          <Styled.Text variant={'heading4'}>
+          <Styled.Text variant={'heading6'}>
             {title || Styled.getTitle()[variant]}
           </Styled.Text>
         )}
         {children && (
-          <Styled.Text variant={'paragraph3'}>{children}</Styled.Text>
+          <Styled.Text variant={'paragraph1'}>{children}</Styled.Text>
         )}
         {action}
       </Styled.TextContainer>

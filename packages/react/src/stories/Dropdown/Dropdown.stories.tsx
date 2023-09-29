@@ -2,9 +2,9 @@ import { Meta, Story } from '@storybook/react';
 import DropDown, { DropdownProps } from '../../components/Dropdown';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './DropdownInfo';
-import Typography from '../../components/Typography';
 import Container from '../Container';
 import Spacing from '../Spacing';
+import * as StoryTitle from '../StoryTitle';
 
 export default {
   title: 'React/Components/DropDown',
@@ -20,7 +20,8 @@ export const Overview = () => {
       dontInfo={DONT}
     >
       <Container direction="column" hasPadding={false}>
-        <Typography variant={'heading4'}>Single Select</Typography>
+        <StoryTitle.Overview>Single Select</StoryTitle.Overview>
+        <Spacing />
         <DropDown
           options={[
             'Dropdown Option 1',
@@ -31,7 +32,8 @@ export const Overview = () => {
           placeholder="Select a 'label'"
         />
         <Spacing size={'Large'} />
-        <Typography variant={'heading4'}>Multi Select</Typography>
+        <StoryTitle.Overview>Multi Select</StoryTitle.Overview>
+        <Spacing />
         <DropDown
           variant="multi"
           options={[
@@ -59,7 +61,8 @@ export const MultiSelectVariants = () => {
 
   return (
     <Container direction="column" hasPadding={false}>
-      <Typography variant={'heading4'}>Default Multi Select</Typography>
+      <StoryTitle.Regular>Default Multi Select</StoryTitle.Regular>
+      <Spacing />
       <DropDown
         variant="multi"
         label="Label"
@@ -69,7 +72,8 @@ export const MultiSelectVariants = () => {
       />
 
       <Spacing size={'Large'} />
-      <Typography variant={'heading4'}>Disabled Dropdown</Typography>
+      <StoryTitle.Regular>Disabled Dropdown</StoryTitle.Regular>
+      <Spacing />
       <DropDown
         variant="multi"
         placeholder={'Disabled Dropdown'}
@@ -78,7 +82,8 @@ export const MultiSelectVariants = () => {
         testID={'Drop2'}
       />
       <Spacing size={'Large'} />
-      <Typography variant={'heading4'}>Error Dropdown</Typography>
+      <StoryTitle.Regular>Error Dropdown</StoryTitle.Regular>
+      <Spacing />
       <DropDown
         variant="multi"
         placeholder={'Error Dropdown'}
@@ -102,7 +107,8 @@ export const SingleSelectVariants = () => {
 
   return (
     <Container direction="column" hasPadding={false}>
-      <Typography variant={'heading4'}>Default Dropdown</Typography>
+      <StoryTitle.Regular>Default Dropdown</StoryTitle.Regular>
+      <Spacing />
       <DropDown
         label="Label"
         placeholder="Select a 'label'"
@@ -111,7 +117,8 @@ export const SingleSelectVariants = () => {
       />
 
       <Spacing size={'Large'} />
-      <Typography variant={'heading4'}>Disabled Dropdown</Typography>
+      <StoryTitle.Regular>Disabled Dropdown</StoryTitle.Regular>
+      <Spacing />
       <DropDown
         placeholder={'Disabled Dropdown'}
         disabled
@@ -119,7 +126,8 @@ export const SingleSelectVariants = () => {
         testID={'Drop2'}
       />
       <Spacing size={'Large'} />
-      <Typography variant={'heading4'}>Error Dropdown</Typography>
+      <StoryTitle.Regular>Error Dropdown</StoryTitle.Regular>
+      <Spacing />
       <DropDown
         placeholder={'Error Dropdown'}
         errorText={'Please make a selection'}

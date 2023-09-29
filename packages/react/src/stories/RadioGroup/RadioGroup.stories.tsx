@@ -3,9 +3,9 @@ import Radio from '../../components/Radio/Radio';
 import RadioGroup, {
   RadioGroupProps,
 } from '../../components/RadioGroup/RadioGroup';
-import Typography from '../../components/Typography';
 import Container from '../Container';
 import Spacing from '../Spacing';
+import * as StoryTitle from '../StoryTitle';
 
 export default {
   title: 'React/Components/RadioGroup',
@@ -15,9 +15,9 @@ export default {
 export const Variants = () => {
   return (
     <Container direction="column">
-      <Typography variant={'heading4'}>
+      <StoryTitle.Regular>
         Radio Group with Horizontal Orientation
-      </Typography>
+      </StoryTitle.Regular>
       <RadioGroup defaultSelected="1">
         <Radio value="1" label="A" />
         <Radio value="2" label="B" />
@@ -25,9 +25,9 @@ export const Variants = () => {
       </RadioGroup>
 
       <Spacing />
-      <Typography variant={'heading4'}>
+      <StoryTitle.Regular>
         Radio Group with Vertical Orientation
-      </Typography>
+      </StoryTitle.Regular>
       <RadioGroup direction="column" defaultSelected="5">
         <Radio value="4" label="A" />
         <Radio value="5" label="B" />
@@ -35,7 +35,7 @@ export const Variants = () => {
       </RadioGroup>
 
       <Spacing />
-      <Typography variant={'heading4'}>Disabled Radio Group</Typography>
+      <StoryTitle.Regular>Disabled Radio Group</StoryTitle.Regular>
       <RadioGroup disabled defaultSelected="7">
         <Radio value="7" label="A" />
         <Radio value="8" label="B" />
@@ -43,10 +43,9 @@ export const Variants = () => {
       </RadioGroup>
 
       <Spacing />
-      <Typography variant={'heading4'}>
+      <StoryTitle.Regular>
         Radio Group with Horizontal Orientation and Secondary Radio Buttons
-        Variant
-      </Typography>
+      </StoryTitle.Regular>
       <RadioGroup defaultSelected="10" variant="secondary">
         <Radio value="10" label="A" />
         <Radio value="11" label="B" />
@@ -54,10 +53,9 @@ export const Variants = () => {
       </RadioGroup>
 
       <Spacing />
-      <Typography variant={'heading4'}>
+      <StoryTitle.Regular>
         Radio Group with Vertical Orientation and Secondary Radio Buttons
-        Variant
-      </Typography>
+      </StoryTitle.Regular>
       <RadioGroup direction="column" defaultSelected="14" variant="secondary">
         <Radio value="13" label="A" />
         <Radio value="14" label="B" />

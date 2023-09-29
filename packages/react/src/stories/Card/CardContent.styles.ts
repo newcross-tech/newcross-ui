@@ -29,7 +29,7 @@ export const Time = styled(Typography)`
     css`
       color: ${theme.TextInputLabelColor};
       align-self: flex-start;
-      margin-bottom: ${theme.SpacingBase24};
+      margin-bottom: ${theme.SpacingBase16};
     `};
 `;
 

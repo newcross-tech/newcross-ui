@@ -4,6 +4,7 @@ import AccordionGroup from '../../components/AccordionGroup';
 import Typography from '../../components/Typography';
 import Container from '../Container';
 import Spacing from '../Spacing';
+import * as StoryTitle from '../StoryTitle';
 
 export default {
   title: 'React/Components/AccordionGroup',
@@ -13,9 +14,9 @@ export default {
 export const Variants = () => {
   return (
     <Container direction="column" hasPadding={false}>
-      <Typography variant={'heading4'}>
+      <StoryTitle.Regular>
         Accordion Group (Exclusive Selection)
-      </Typography>
+      </StoryTitle.Regular>
       <Spacing size={'Large'} />
       <AccordionGroup>
         <Accordion label={'Section 1'}>
@@ -51,9 +52,9 @@ export const Variants = () => {
       </AccordionGroup>
       <Spacing size={'Large'} />
       <Spacing size={'Large'} />
-      <Typography variant={'heading4'}>
+      <StoryTitle.Regular>
         Accordion Group (Multiple Selection)
-      </Typography>
+      </StoryTitle.Regular>
       <Spacing size={'Large'} />
       <AccordionGroup exclusiveSelection={false}>
         <Accordion label={'Section 1'}>

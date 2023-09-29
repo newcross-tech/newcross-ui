@@ -123,7 +123,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
       {label && (
         <Label
           htmlFor={inputId}
-          variant={'heading5'}
+          variant={'subtitle1'}
           testID={`${inputId}-label`}
         >
           {label}

@@ -1,11 +1,11 @@
 import { Meta, Story } from '@storybook/react';
 import Checkbox, { CheckboxProps } from '../../components/Checkbox';
-import Typography from '../../components/Typography';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './CheckboxInfo';
 import useState from 'storybook-addon-state';
+import * as StoryTitle from '../StoryTitle';
 
 export default {
   title: 'React/Components/Checkbox',
@@ -30,25 +30,25 @@ export const Overview = () => {
 export const Variants = () => {
   return (
     <Container display="block">
-      <Typography variant={'heading4'}>Enabled</Typography>
+      <StoryTitle.Regular>Enabled</StoryTitle.Regular>
       <Spacing />
       <Checkbox label="Label" />
       <Checkbox label="Label" checked />
       <Checkbox type="indeterminate" checked label="Label" />
 
-      <Typography variant={'heading4'}>Disabled</Typography>
+      <StoryTitle.Regular>Disabled</StoryTitle.Regular>
       <Spacing />
       <Checkbox label="Label" disabled />
       <Checkbox label="Label" checked disabled />
       <Checkbox type="indeterminate" checked label="Label" disabled />
 
-      <Typography variant={'heading4'}>Error</Typography>
+      <StoryTitle.Regular>Error</StoryTitle.Regular>
       <Spacing />
       <Checkbox label="Label" hasError />
       <Checkbox label="Label" hasError checked />
       <Checkbox type="indeterminate" label="Label" checked hasError />
 
-      <Typography variant={'heading4'}>With long text</Typography>
+      <StoryTitle.Regular>With long text</StoryTitle.Regular>
       <Spacing />
       <Checkbox label="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged." />
     </Container>

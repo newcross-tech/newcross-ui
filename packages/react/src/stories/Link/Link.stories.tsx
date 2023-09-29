@@ -5,6 +5,7 @@ import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './LinkInfo';
+import * as StoryTitle from '../StoryTitle';
 
 export default {
   title: 'React/Components/Link',
@@ -29,10 +30,10 @@ export const Overview = () => {
 export const SizeVariants = () => {
   return (
     <Container direction="column">
-      <Typography variant={'heading3'}>Small Link</Typography>
+      <StoryTitle.Regular>Small Link</StoryTitle.Regular>
       <Link size="small">This is a link</Link>
       <Spacing />
-      <Typography variant={'heading3'}>Medium Link</Typography>
+      <StoryTitle.Regular>Medium Link</StoryTitle.Regular>
       <Link size="medium">This is a link</Link>
     </Container>
   );
@@ -46,7 +47,7 @@ export const TypeVariants = () => {
 
   return (
     <Container direction="column">
-      <Typography variant={'heading3'}>Email Link</Typography>
+      <StoryTitle.Regular>Email Link</StoryTitle.Regular>
       <Link
         size="medium"
         href={'mailto:someone@newcrosshealthcare.com'}
@@ -55,13 +56,13 @@ export const TypeVariants = () => {
         contact me
       </Link>
       <Spacing />
-      <Typography variant={'heading3'}>Phone Link</Typography>
+      <StoryTitle.Regular>Phone Link</StoryTitle.Regular>
       <Link size="medium" variant="phone" href={'tel:6012345678'}>
         6012345678
       </Link>
 
       <Spacing />
-      <Typography variant={'heading3'}>External site Link</Typography>
+      <StoryTitle.Regular>External site Link</StoryTitle.Regular>
       <Link
         size="medium"
         target={'_blank'}
@@ -72,7 +73,7 @@ export const TypeVariants = () => {
       </Link>
 
       <Spacing />
-      <Typography variant={'heading3'}>Internal site Link</Typography>
+      <StoryTitle.Regular>Internal site Link</StoryTitle.Regular>
       <Link
         size="medium"
         variant="internal"
@@ -83,14 +84,14 @@ export const TypeVariants = () => {
         Go to internal Website
       </Link>
       <Spacing />
-      <Typography variant={'heading3'}>Section Link</Typography>
+      <StoryTitle.Regular>Section Link</StoryTitle.Regular>
       <Link size="medium" href="#here" onClick={handleClick}>
         Go below
       </Link>
 
       <Spacing />
 
-      <Typography variant={'heading3'}>
+      <Typography variant={'heading6'}>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur
         vitae nobis voluptates provident pariatur sequi quo tempore neque
         impedit sint quam deserunt possimus dolore quidem labore, praesentium
@@ -203,7 +204,7 @@ export const TypeVariants = () => {
         consectetur dolorum minima. Magni omnis sit minima pariatur, fugiat
         perspiciatis expedita eius unde earum reprehenderit ab voluptatum!
       </Typography>
-      <Typography id={'here'} variant={'heading1'}>
+      <Typography id={'here'} variant={'heading3'}>
         Welcome
       </Typography>
     </Container>

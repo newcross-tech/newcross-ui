@@ -1,11 +1,11 @@
 import { Meta, Story } from '@storybook/react';
 import { useState } from 'react';
 import TextInput, { TextInputProps } from '../../components/TextInput';
-import Typography from '../../components/Typography';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './TextInputInfo';
+import * as StoryTitle from '../StoryTitle';
 
 export default {
   title: 'React/Components/TextInput',
@@ -47,11 +47,11 @@ export const Variants = () => {
 
   return (
     <Container direction="column" hasPadding={false}>
-      <Typography variant={'heading4'}>Without placeholder</Typography>
+      <StoryTitle.Regular>Without placeholder</StoryTitle.Regular>
       <TextInput value={text1} type="text" onChange={onChangeText1} />
       <Spacing />
 
-      <Typography variant={'heading4'}>With placeholder</Typography>
+      <StoryTitle.Regular>With placeholder</StoryTitle.Regular>
       <TextInput
         placeholder="This is placeholder text"
         value={text2}
@@ -60,9 +60,7 @@ export const Variants = () => {
       />
       <Spacing />
 
-      <Typography variant={'heading4'}>
-        With placeholder and disabled
-      </Typography>
+      <StoryTitle.Regular>With placeholder and disabled</StoryTitle.Regular>
       <TextInput
         value={text3}
         type="text"
@@ -72,7 +70,7 @@ export const Variants = () => {
       />
       <Spacing />
 
-      <Typography variant={'heading4'}>Password</Typography>
+      <StoryTitle.Regular>Password</StoryTitle.Regular>
       <TextInput
         placeholder="Enter password"
         type="password"
@@ -81,11 +79,11 @@ export const Variants = () => {
       />
       <Spacing />
 
-      <Typography variant={'heading4'}>With validation check</Typography>
+      <StoryTitle.Regular>With validation check</StoryTitle.Regular>
       <TextInput isValid value={text4} type="text" onChange={onChangeText4} />
       <Spacing />
 
-      <Typography variant={'heading4'}>With a label</Typography>
+      <StoryTitle.Regular>With a label</StoryTitle.Regular>
       <TextInput
         value={text5}
         type="text"
@@ -94,7 +92,7 @@ export const Variants = () => {
       />
       <Spacing />
 
-      <Typography variant={'heading4'}>With helper text</Typography>
+      <StoryTitle.Regular>With helper text</StoryTitle.Regular>
       <TextInput
         value={text6}
         type="text"
@@ -104,7 +102,7 @@ export const Variants = () => {
       />
       <Spacing />
 
-      <Typography variant={'heading4'}>With error text</Typography>
+      <StoryTitle.Regular>With error text</StoryTitle.Regular>
       <TextInput
         value={text7}
         type="text"
@@ -126,7 +124,7 @@ export const TextAreaVariants = () => {
   return (
     <Container display="flex" direction="row">
       <Container direction="column" display="block">
-        <Typography variant={'heading3'}>TextArea</Typography>
+        <StoryTitle.Regular>TextArea</StoryTitle.Regular>
         <Spacing />
         <TextInput
           type={'textarea'}
@@ -138,7 +136,7 @@ export const TextAreaVariants = () => {
       <Spacing size={'Large'} />
 
       <Container direction="column" display="block">
-        <Typography variant={'heading3'}>TextArea with maxLength</Typography>
+        <StoryTitle.Regular>TextArea with maxLength</StoryTitle.Regular>
         <Spacing />
         <TextInput
           type={'textarea'}
@@ -152,7 +150,7 @@ export const TextAreaVariants = () => {
 
       <Spacing size={'Large'} />
       <Container direction="column" display="block">
-        <Typography variant={'heading3'}>TextArea with long text</Typography>
+        <StoryTitle.Regular>TextArea with long text</StoryTitle.Regular>
         <Spacing />
         <TextInput
           value={text3}

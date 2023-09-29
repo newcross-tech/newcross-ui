@@ -15,6 +15,7 @@ import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './CardInfo';
 import { CardShift } from './CardShift';
+import * as StoryTitle from '../StoryTitle';
 
 export default {
   title: 'React/Components/Card',
@@ -35,11 +36,11 @@ export const Overview = () => {
       dontInfo={DONT}
     >
       <Container display={'block'} direction={'column'} hasPadding={false}>
-        <Typography variant={'heading3'}>Card with icon</Typography>
+        <StoryTitle.Overview>Card with icon</StoryTitle.Overview>
         <Spacing />
         <Card hasRoundedCorners fullWidth={false}>
           <FontAwesomeIcon icon={faUser} size={'lg'} />
-          <StyledText variant={'heading3'}>My Profile</StyledText>
+          <StyledText variant={'heading6'}>My Profile</StyledText>
         </Card>
       </Container>
     </InfoTemplate>
@@ -54,47 +55,47 @@ export const Variants: Story<CardProps> = () => {
 
   return (
     <Container direction="column" display="flex">
-      <Typography variant={'heading3'}>Card with icon and badge</Typography>
+      <StoryTitle.Regular>Card with icon and badge</StoryTitle.Regular>
 
       <Card hasRoundedCorners fullWidth={false}>
         <FontAwesomeIcon icon={faUser} size={'lg'} />
-        <StyledText variant={'heading3'}>My Profile</StyledText>
+        <StyledText variant={'heading6'}>My Profile</StyledText>
         <Badge badgeContent={7} />
       </Card>
 
       <Spacing />
-      <Typography variant={'heading3'}>Card with border</Typography>
+      <StoryTitle.Regular>Card with border</StoryTitle.Regular>
       <Container>
         <Card hasBorder fullWidth={false}>
-          <Typography variant={'heading3'}>My card</Typography>
+          <Typography variant={'heading6'}>My card</Typography>
         </Card>
         <Card hasRoundedCorners hasBorder variant="secondary" fullWidth={false}>
-          <Typography variant={'heading3'}>
+          <Typography variant={'heading6'}>
             My card with rounded corners
           </Typography>
         </Card>
       </Container>
 
       <Spacing />
-      <Typography variant={'heading3'}>Card with right icon</Typography>
+      <StoryTitle.Regular>Card with right icon</StoryTitle.Regular>
 
       <Card hasRoundedCorners hasRightIcon fullWidth>
-        <Typography variant={'heading3'}>My card</Typography>
+        <Typography variant={'heading6'}>My card</Typography>
       </Card>
 
       <Spacing />
-      <Typography variant={'heading3'}>Full Width Card</Typography>
+      <StoryTitle.Regular>Full Width Card</StoryTitle.Regular>
 
       <Card hasRoundedCorners fullWidth>
-        <Typography variant={'heading3'}>My card</Typography>
+        <Typography variant={'heading6'}>My card</Typography>
       </Card>
 
       <Spacing />
-      <Typography variant={'heading3'}>Card with Long text</Typography>
+      <StoryTitle.Regular>Card with Long text</StoryTitle.Regular>
 
       <Card hasRoundedCorners fullWidth>
         <Container direction="column">
-          <StyledText variant={'heading3'}>
+          <StyledText variant={'heading6'}>
             This is a Card Component with a long text!
           </StyledText>
           <StyledText variant={'paragraph1'}>
@@ -107,11 +108,11 @@ export const Variants: Story<CardProps> = () => {
       </Card>
 
       <Spacing />
-      <Typography variant={'heading3'}>Card with children</Typography>
+      <StoryTitle.Regular>Card with children</StoryTitle.Regular>
 
       <Card hasRoundedCorners fullWidth disabled>
         <Container direction="column">
-          <Typography variant={'heading3'}>My card with children</Typography>
+          <Typography variant={'heading6'}>My card with children</Typography>
           <CheckboxGroup
             defaultChecked={['Apple', 'Pear']}
             options={['Apple', 'Banana', 'Pear']}
@@ -133,19 +134,19 @@ export const Variants: Story<CardProps> = () => {
 export const ShiftVariants: Story<CardProps> = () => {
   return (
     <Container direction="column">
-      <Typography variant={'heading3'}>Day shift</Typography>
+      <StoryTitle.Regular>Day shift</StoryTitle.Regular>
       <Container>
         <CardShift shiftCardStatus="DAY" hasRoundedCorners />
       </Container>
 
       <Spacing />
-      <Typography variant={'heading3'}>Night shift</Typography>
+      <StoryTitle.Regular>Night shift</StoryTitle.Regular>
       <Container>
         <CardShift shiftCardStatus="NIGHT" hasRoundedCorners />
       </Container>
 
       <Spacing />
-      <Typography variant={'heading3'}>Sleeper shift</Typography>
+      <StoryTitle.Regular>Sleeper shift</StoryTitle.Regular>
       <Container>
         <CardShift shiftCardStatus="SLEEPER" hasRoundedCorners />
       </Container>
@@ -156,7 +157,7 @@ export const ShiftVariants: Story<CardProps> = () => {
 const Template: Story<CardProps> = ({ fullWidth, ...rest }) => (
   <Container display="flex">
     <Card fullWidth={fullWidth} {...rest}>
-      <Typography variant={'heading3'}>My Card</Typography>
+      <Typography variant={'heading6'}>My Card</Typography>
     </Card>
   </Container>
 );
