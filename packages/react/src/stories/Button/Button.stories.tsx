@@ -29,6 +29,8 @@ export const Overview = () => {
         <Spacing />
         <Button variant="secondary">Secondary Button</Button>
         <Spacing />
+        <Button variant="danger">Danger Button</Button>
+        <Spacing />
       </Container>
     </InfoTemplate>
   );
@@ -74,6 +76,15 @@ export const Variants = () => {
       <Spacing />
       <Button disabled variant="secondary">
         Secondary Disabled Button
+      </Button>
+      <Spacing size={'Large'} />
+      <Spacing size={'Large'} />
+      <StoryTitle.Regular>Danger Button</StoryTitle.Regular>
+      <Spacing size={'Large'} />
+      <Button variant="danger">Danger Button</Button>
+      <Spacing />
+      <Button disabled variant="danger">
+        Danger Disabled Button
       </Button>
       <Spacing size={'Large'} />
     </Container>

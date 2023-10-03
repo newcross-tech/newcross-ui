@@ -30,6 +30,10 @@ const getVariantStyles = (theme: ThemeDesignTokens): Record<ButtonVariant, Flatt
     background-color: transparent;
     border: ${theme.ButtonVariantSecondaryBorderWidth} solid ${theme.ButtonVariantSecondaryBorderColor};
   `,
+  danger: css`
+    color: ${theme.ButtonVariantDangerColor};
+    background-color: ${theme.ButtonVariantDangerBackgroundColor};
+  `,
 });
 
 const getDisabledStyles = (theme: ThemeDesignTokens): Record<ButtonVariant, FlattenSimpleInterpolation> => ({
@@ -43,6 +47,11 @@ const getDisabledStyles = (theme: ThemeDesignTokens): Record<ButtonVariant, Flat
     color: ${theme.ButtonVariantSecondaryDisabledColor};
     border: ${theme.ButtonVariantSecondaryBorderWidth} solid ${theme.ButtonVariantSecondaryDisabledBorderColor};
     background-color: transparent;
+  `,
+  danger: css`
+    cursor: default;
+    color: ${theme.ButtonVariantDangerDisabledColor};
+    background-color: ${theme.ButtonVariantDangerDisabledBackgroundColor};
   `,
 });
 
@@ -74,6 +83,9 @@ const getHoverStyles = (theme: ThemeDesignTokens): Record<ButtonVariant, Flatten
   `,
   secondary: css`
     background-color: ${theme.ButtonVariantSecondaryPressedBackgroundColor};
+  `,
+  danger: css`
+    background-color: ${theme.ButtonVariantDangerPressedBackgroundColor};
   `,
 });
 export const IconWrapper = styled.div<ExtendedTheme<IconProps>>`
