@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.34.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.33.0...@newcross-ui/react@1.34.0) (2023-10-04)
+
+
+### Features
+
+* **OAE-1352:** add button danger variant ([#38](https://bitbucket.org/newcrossdev/newcross-ui/issues/38)) ([4bf2d99](https://bitbucket.org/newcrossdev/newcross-ui/commits/4bf2d99be7dcf6e0b49e8ebb0e6b9adbcff55824))
+
+
+
+
+
 # [1.33.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.32.0...@newcross-ui/react@1.33.0) (2023-09-29)
 
 
