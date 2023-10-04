@@ -55,6 +55,19 @@
           },
           "color": { "value": "{color.neutral.grey.200.value}" }
         }
+      },
+      "danger": {
+        "background-color": { "value": "{color.semantics.error.100.value}" },
+        "color": { "value": "{color.neutral.white.value}" },
+        "pressed": {
+          "background-color": {
+            "value": "{color.semantics.error.200.value}"
+          }
+        },
+        "disabled": {
+          "background-color": { "value": "{color.neutral.grey.200.value}" },
+          "color": { "value": "{color.neutral.grey.100.value}" }
+        }
       }
     },
     "mode": {
