@@ -22,7 +22,7 @@ const getCommonStateStyles = ({ theme, hasError, disabled }: PropStylesTypes) =>
   css`
     ${hasError &&
     css`
-      border: 1px solid ${theme.TextInputErrorColor};
+      border: ${theme.TextInputWebSelectedBorderWidth} solid ${theme.TextInputErrorColor};
     `}
     ${disabled &&
     css`
@@ -32,7 +32,7 @@ const getCommonStateStyles = ({ theme, hasError, disabled }: PropStylesTypes) =>
 
 const getFocusedStyles = (theme: ThemeDesignTokens) =>
   css`
-    border: 1px solid ${theme.TextInputSelectedBorderColor};
+    border: ${theme.TextInputWebSelectedBorderWidth} solid ${theme.TextInputSelectedBorderColor};
   `;
 
 export const Container = styled.div<ExtendedTheme<ContainerProps>>`
@@ -156,7 +156,7 @@ export const TextArea = styled.textarea<StyledTextAreaProps>`
       width: ${+getHaloValue(theme.SpacingBase8) * 32.25}rem;
     `}
     font-family: ${theme.TextInputFontFamily};
-    border: 1px solid ${theme.TextInputBorderColor};
+    border: ${theme.TextInputWebSelectedBorderWidth} solid ${theme.TextInputBorderColor};
 
     ${getScrollbarStyles()}
     ${getCommonStateStyles({ theme, hasError, disabled })}

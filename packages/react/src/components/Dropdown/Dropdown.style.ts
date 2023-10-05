@@ -78,7 +78,8 @@ export const BodyContent = styled(animated.div)<ErrorProps>`
     max-height: ${+getHaloValue(theme.SpacingBase16) * 10}rem;
     background: ${theme.ColorNeutralWhite};
     border-radius: ${theme.TextInputBorderRadius};
-    border: 1px solid ${!$hasError ? theme.TextInputSelectedBorderColor : theme.TextInputErrorColor};
+    border: ${theme.TextInputWebSelectedBorderWidth} solid
+      ${!$hasError ? theme.TextInputSelectedBorderColor : theme.TextInputErrorColor};
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-top: none;
@@ -153,13 +154,13 @@ export const HeaderContainer = styled.div<HeaderContainerProps>`
     !isContentShown &&
     css`
       &:hover {
-        border: 1px solid ${theme.TextInputSelectedBorderColor};
+        border: ${theme.TextInputWebSelectedBorderWidth} solid ${theme.TextInputSelectedBorderColor};
       }
     `}
 
     ${isContentShown &&
     css`
-      border: 1px solid ${theme.TextInputSelectedBorderColor};
+      border: ${theme.TextInputWebSelectedBorderWidth} solid ${theme.TextInputSelectedBorderColor};
       border-bottom: ${theme.AccordionHeaderBorderBottomWidth} solid ${theme.AccordionHeaderBorderBottomColor};
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
@@ -176,7 +177,7 @@ export const HeaderContainer = styled.div<HeaderContainerProps>`
     ${$hasError &&
     css`
       background-color: ${theme.ColorBaseRed400};
-      border: 1px solid ${theme.TextInputErrorColor};
+      border: ${theme.TextInputWebSelectedBorderWidth} solid ${theme.TextInputErrorColor};
     `}
   `}
 `;
