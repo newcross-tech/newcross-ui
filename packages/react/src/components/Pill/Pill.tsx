@@ -11,6 +11,7 @@ import { useToggle } from '../../hooks/useToggle';
 import { TestProp } from '../../types/TestProp';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import * as Styled from './Pill.style';
+import { PillVariant } from './Pill.types';
 
 export type PillProps = {
   /**
@@ -41,6 +42,10 @@ export type PillProps = {
    * Checks if the Component is selected
    */
   selected?: boolean;
+  /**
+   * Used to define color palette of the Pills.
+   */
+  statusVariant?: PillVariant;
 } & TestProp;
 
 const baseTestId = 'pill';
@@ -53,6 +58,7 @@ const Pill = ({
   selected = false,
   label,
   hasPadding = true,
+  statusVariant = 'default',
   testID = '',
 }: PillProps) => {
   const [isSelected, setSelected] = useState(selected);
@@ -96,12 +102,14 @@ const Pill = ({
       tabIndex={!disabled && !removable ? 0 : -1}
       onKeyPress={(event) => onKeyPressHandler(event, true)}
       hasPadding={hasPadding}
+      statusVariant={statusVariant}
     >
       <Styled.Content>
         <Styled.Icon
           data-testid={`${baseTestId}-icon`}
           disabled={disabled}
           hasIcon={!!icon}
+          statusVariant={statusVariant}
         >
           {isValidElement(icon) && cloneElement(icon)}
         </Styled.Icon>
@@ -109,6 +117,7 @@ const Pill = ({
           disabled={disabled}
           variant={'paragraph1'}
           numberOfLines={2}
+          statusVariant={statusVariant}
         >
           {label}
         </Styled.Text>
