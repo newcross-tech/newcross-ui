@@ -78,7 +78,7 @@ export const BodyContent = styled(animated.div)<ErrorProps>`
     max-height: ${+getHaloValue(theme.SpacingBase16) * 10}rem;
     background: ${theme.ColorNeutralWhite};
     border-radius: ${theme.TextInputBorderRadius};
-    border: ${theme.TextInputSelectedBorderWidth} solid
+    border: ${theme.TextInputWebSelectedBorderWidth} solid
       ${!$hasError ? theme.TextInputSelectedBorderColor : theme.TextInputErrorColor};
     border-top-left-radius: 0;
     border-top-right-radius: 0;
@@ -154,14 +154,13 @@ export const HeaderContainer = styled.div<HeaderContainerProps>`
     !isContentShown &&
     css`
       &:hover {
-        border: ${theme.TextInputSelectedBorderWidth} solid ${theme.TextInputSelectedBorderColor};
-        margin: -1px; //consider writing SpacingBase1
+        border: ${theme.TextInputWebSelectedBorderWidth} solid ${theme.TextInputSelectedBorderColor};
       }
     `}
 
     ${isContentShown &&
     css`
-      border: ${theme.TextInputSelectedBorderWidth} solid ${theme.TextInputSelectedBorderColor};
+      border: ${theme.TextInputWebSelectedBorderWidth} solid ${theme.TextInputSelectedBorderColor};
       border-bottom: ${theme.AccordionHeaderBorderBottomWidth} solid ${theme.AccordionHeaderBorderBottomColor};
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
@@ -178,7 +177,7 @@ export const HeaderContainer = styled.div<HeaderContainerProps>`
     ${$hasError &&
     css`
       background-color: ${theme.ColorBaseRed400};
-      border: 1px solid ${theme.TextInputErrorColor};
+      border: ${theme.TextInputWebSelectedBorderWidth} solid ${theme.TextInputErrorColor};
     `}
   `}
 `;
