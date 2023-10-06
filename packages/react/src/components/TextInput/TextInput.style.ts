@@ -11,6 +11,7 @@ import {
   StyledTextAreaProps,
   TextAreaContainerProps,
 } from './TextInput.types';
+import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -21,12 +22,17 @@ const getCommonStateStyles = ({ theme, hasError, disabled }: PropStylesTypes) =>
   css`
     ${hasError &&
     css`
-      border: ${theme.TextInputSelectedBorderWidth} solid ${theme.TextInputErrorColor};
+      border: ${theme.TextInputWebSelectedBorderWidth} solid ${theme.TextInputErrorColor};
     `}
     ${disabled &&
     css`
       background-color: ${theme.TextInputDisabledBackgroundColor};
     `}
+  `;
+
+const getFocusedStyles = (theme: ThemeDesignTokens) =>
+  css`
+    border: ${theme.TextInputWebSelectedBorderWidth} solid ${theme.TextInputSelectedBorderColor};
   `;
 
 export const Container = styled.div<ExtendedTheme<ContainerProps>>`
@@ -38,10 +44,7 @@ export const Container = styled.div<ExtendedTheme<ContainerProps>>`
     border-radius: ${theme.TextInputBorderRadius};
     background-color: ${theme.TextInputBackgroundColor};
     ${getCommonStateStyles({ theme, hasError, isFocused, disabled })}
-    ${isFocused &&
-    css`
-      border: ${theme.TextInputSelectedBorderWidth} solid ${theme.TextInputSelectedBorderColor};
-    `};
+    ${isFocused && getFocusedStyles(theme)};
     ${search &&
     css`
       border-radius: ${theme.TextInputSearchBarBorderRadius};
@@ -153,15 +156,18 @@ export const TextArea = styled.textarea<StyledTextAreaProps>`
       width: ${+getHaloValue(theme.SpacingBase8) * 32.25}rem;
     `}
     font-family: ${theme.TextInputFontFamily};
-    border: 1px solid ${theme.TextInputBorderColor};
+    border: ${theme.TextInputWebSelectedBorderWidth} solid ${theme.TextInputBorderColor};
 
     ${getScrollbarStyles()}
     ${getCommonStateStyles({ theme, hasError, disabled })}
 
-    &:focus,
-    &:focus-visible {
-      border: ${theme.TextInputSelectedBorderWidth} solid ${theme.TextInputSelectedBorderColor};
-    }
+    ${!disabled &&
+    css`
+      &:focus,
+      &:focus-visible {
+        ${getFocusedStyles(theme)}
+      }
+    `}
   `};
 `;
 

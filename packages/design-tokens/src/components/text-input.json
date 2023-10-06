@@ -1,5 +1,11 @@
 {
   "text-input": {
+    "web": {
+      "selected": {
+        "border-width": { "value": "{border.base.width.sm.value}" }
+      }
+    },
+
     "margin-top": { "value": "{spacing.base.4.value}" },
     "margin-bottom": { "value": "{spacing.base.8.value}" },
     "padding-vertical": { "value": "{spacing.base.12.value}" },
