@@ -68,11 +68,11 @@ export const Content = styled.div`
 
 export const Text = styled(Typography)<TextProp>`
   ${({ theme, disabled, statusVariant }: ExtendedTheme<TextProp>) => css`
-    color: ${disabled
-      ? theme.PillDisabledColor
-      : statusVariant === 'warning'
+    color: ${statusVariant === 'warning'
       ? theme.PillVariantWarningTextColor
       : statusVariant && getVariantColor(theme)[statusVariant]};
+
+    color: ${disabled && theme.PillDisabledColor};
   `}
 `;
 
