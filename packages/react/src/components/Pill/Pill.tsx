@@ -11,7 +11,7 @@ import { useToggle } from '../../hooks/useToggle';
 import { TestProp } from '../../types/TestProp';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import * as Styled from './Pill.style';
-import { PillVariant } from './Pill.types';
+import { CustomStyle, PillVariant } from './Pill.types';
 
 export type PillProps = {
   /**
@@ -46,6 +46,10 @@ export type PillProps = {
    * Used to define color palette of the Pills.
    */
   statusVariant?: PillVariant;
+  /**
+   * Used to add custom style to the pill container.
+   */
+  style?: CustomStyle;
 } & TestProp;
 
 const baseTestId = 'pill';
@@ -57,6 +61,11 @@ const Pill = ({
   onClick,
   selected = false,
   label,
+  style = {
+    iconStyles: {},
+    textStyles: {},
+    coreStyles: {},
+  },
   hasPadding = true,
   statusVariant = 'default',
   testID = '',
@@ -65,6 +74,7 @@ const Pill = ({
   const [isDeleted, setIsDeleted] = useState(false);
 
   useToggle(selected, () => setSelected(selected));
+  const { iconStyles, textStyles, coreStyles } = style;
 
   const onRemoveHandler = (event: SyntheticEvent) => {
     if (disabled) return;
@@ -73,7 +83,7 @@ const Pill = ({
   };
 
   const handleSelect = () => {
-    if (disabled || removable) return;
+    if (disabled || removable || statusVariant !== 'default') return;
     setSelected(!isSelected);
   };
 
@@ -103,12 +113,14 @@ const Pill = ({
       onKeyPress={(event) => onKeyPressHandler(event, true)}
       hasPadding={hasPadding}
       statusVariant={statusVariant}
+      style={coreStyles}
     >
       <Styled.Content>
         <Styled.Icon
           data-testid={`${baseTestId}-icon`}
           disabled={disabled}
           hasIcon={!!icon}
+          style={iconStyles}
           statusVariant={statusVariant}
         >
           {isValidElement(icon) && cloneElement(icon)}
@@ -118,6 +130,7 @@ const Pill = ({
           variant={'paragraph1'}
           numberOfLines={2}
           statusVariant={statusVariant}
+          style={textStyles}
         >
           {label}
         </Styled.Text>

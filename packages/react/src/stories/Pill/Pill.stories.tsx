@@ -7,6 +7,7 @@ import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './PillInfo';
 import * as StoryTitle from '../StoryTitle';
+import useTheme from '../../hooks/useTheme';
 
 export default {
   title: 'React/Components/Pill',
@@ -43,6 +44,7 @@ export const Overview = () => {
 };
 
 export const Variants = () => {
+  const theme = useTheme();
   return (
     <Container direction="column">
       <StoryTitle.Regular>Pill with Label</StoryTitle.Regular>
@@ -69,6 +71,43 @@ export const Variants = () => {
         removable
         label="Label"
         disabled
+        icon={<FontAwesomeIcon icon={faBird} />}
+      />
+      <StoryTitle.Regular>Status Pill Variants</StoryTitle.Regular>
+      <Container direction="row">
+        <Pill label="Default" icon={<FontAwesomeIcon icon={faBird} />} />
+        <Pill
+          label="Success"
+          statusVariant="success"
+          icon={<FontAwesomeIcon icon={faBird} />}
+        />
+        <Pill
+          label="Info"
+          statusVariant="info"
+          icon={<FontAwesomeIcon icon={faBird} />}
+        />
+        <Pill
+          label="Warning"
+          statusVariant="warning"
+          icon={<FontAwesomeIcon icon={faBird} />}
+        />
+        <Pill
+          label="Error"
+          statusVariant="error"
+          icon={<FontAwesomeIcon icon={faBird} />}
+        />
+      </Container>
+      <StoryTitle.Regular>Custom styled Pill</StoryTitle.Regular>
+      <Pill
+        label="Custom"
+        style={{
+          iconStyles: { color: theme.ColorBaseRed100 },
+          textStyles: { color: theme.ColorBaseBlue100 },
+          coreStyles: {
+            backgroundColor: theme.ColorBaseCyan200,
+            borderColor: theme.ColorBaseGreen100,
+          },
+        }}
         icon={<FontAwesomeIcon icon={faBird} />}
       />
     </Container>

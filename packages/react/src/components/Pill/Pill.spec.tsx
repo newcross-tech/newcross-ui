@@ -94,4 +94,16 @@ describe('Pill Component', () => {
     // Assert
     expect(onClick).not.toHaveBeenCalled();
   });
+
+  it('does not triggers onClick when a variant other than default is provided', () => {
+    // Act
+    renderComponent({
+      statusVariant: 'error',
+    });
+
+    fireEvent.click(ui.pillComp.get());
+
+    // Assert
+    expect(ui.pillCompSelected.query()).not.toBeInTheDocument();
+  });
 });
