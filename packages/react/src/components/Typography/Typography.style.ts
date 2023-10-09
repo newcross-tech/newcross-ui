@@ -143,7 +143,7 @@ export const getCoreStyles = ({
   theme,
   variant,
   color,
-  mode,
+  mode = 'light',
   align,
   gutterBottom,
   numberOfLines,
@@ -151,7 +151,7 @@ export const getCoreStyles = ({
   ${variant && getTypographyStyles(theme)[variant]};
   ${numberOfLines && getElipsisStyles(numberOfLines)};
   margin-bottom: ${gutterBottom ? theme.SpacingBase8 : theme.SpacingBase0};
-  ${color ? getColorStyles(theme)?.[mode || 'light']?.[color] : { color: theme.TypographyColorPrimary }};
+  ${color ? getColorStyles(theme)?.[mode]?.[color] : { color: theme.TypographyColorPrimary }};
   ${align ? { textAlign: align } : { textAlign: 'left' }}
 `;
 
