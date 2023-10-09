@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
-import { ExtendedTheme, Theme } from '../../types/Theme';
+import { ExtendedTheme, Theme } from '../../types';
 import { getRgba, getTabbedStateStyles } from '../../utils';
 import { CardProps } from '../Card';
 import { CardVariants, StyledCardProps } from './Card.types';

@@ -1,6 +1,6 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
-import { ExtendedTheme, Theme } from '../../types/Theme';
+import { ExtendedTheme, Theme } from '../../types';
 import Typography, { TypographyVariant } from '../Typography';
 import { BadgeContentProps, BadgePositions, BadgeSizes } from './Badge.types';
 

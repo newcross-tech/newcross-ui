@@ -4,7 +4,7 @@ import Link from '../../components/Link';
 import Button from '../../components/Button';
 import { Meta, Story } from '@storybook/react';
 import { useToast } from '../../hooks/useToast';
-import { AlertVariant } from '../../types/AlertVariant';
+import { AlertVariant } from '../../types';
 import Toast, { ToastProps } from '../../components/Toast';
 
 export default {

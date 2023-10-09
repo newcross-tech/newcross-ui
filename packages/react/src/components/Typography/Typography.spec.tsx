@@ -1,3 +1,4 @@
+import React from 'react';
 import { render } from '@testing-library/react';
 import { byText } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
@@ -9,6 +10,9 @@ describe('Typography', () => {
     const props: TypographyProps = {
       children: 'My Text',
       variant: 'heading4',
+      color: 'primary',
+      mode: 'light',
+      align: 'left',
     };
 
     // Act
@@ -23,6 +27,9 @@ describe('Typography', () => {
     const props: TypographyProps = {
       children: 'My Text',
       variant: 'heading4',
+      color: 'primary',
+      mode: 'light',
+      align: 'left',
     };
 
     // Act

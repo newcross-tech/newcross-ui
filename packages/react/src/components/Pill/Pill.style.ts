@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
-import { ExtendedTheme, Theme } from '../../types/Theme';
 import { getTabbedStateStyles } from '../../utils';
 import Typography from '../Typography';
 import { BackGroundProps, IconProps, PillVariant, RemoveIconProps, SelectedProps, TextProp } from './Pill.types';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
+import { ExtendedTheme, Theme } from '../../types';
 
 export const getVariantBackgroundColor = (theme: ThemeDesignTokens): Record<PillVariant, string> => ({
   default: theme.PillVariantDefaultBackgroundColor,

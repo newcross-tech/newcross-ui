@@ -1,6 +1,6 @@
 import { animated } from '@react-spring/web';
 import styled, { css } from 'styled-components';
-import { Theme } from '../../types/Theme';
+import { Theme } from '../../types';
 import { getRgba } from '../../utils';
 
 export const getAnimatedStyles = (onClose?: VoidFunction) => {

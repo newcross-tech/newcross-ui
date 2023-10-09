@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.41.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.40.1...@newcross-ui/design-tokens@1.41.0) (2023-10-09)
+
+
+### Features
+
+* **HDS-40:** update web typography ([#41](https://bitbucket.org/newcrossdev/newcross-ui/issues/41)) ([70aaac6](https://bitbucket.org/newcrossdev/newcross-ui/commits/70aaac60c35e8f40306fcc94519ddfb10c2df251))
+
+
+
+
+
 ## [1.40.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.40.0...@newcross-ui/design-tokens@1.40.1) (2023-10-05)
 
 **Note:** Version bump only for package @newcross-ui/design-tokens

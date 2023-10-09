@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
-import { ExtendedTheme } from '../../types/Theme';
+import { ExtendedTheme } from '../../types';
 import * as LabelStyled from '../Label/Label.style';
 import { CheckboxProps } from './Checkbox';
 import { CheckboxPropsExtended, hasErrorProps, isSelectedProps } from './Checkbox.types';

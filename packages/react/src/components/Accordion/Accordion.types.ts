@@ -1,5 +1,5 @@
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
-import { Theme } from '../../types/Theme';
+import { Theme } from '../../types';
 import { AccordionProps } from './Accordion';
 
 export type AccordionContentProps = {

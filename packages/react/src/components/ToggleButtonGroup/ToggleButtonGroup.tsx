@@ -1,5 +1,5 @@
 import { Children, cloneElement, ReactElement, useCallback } from 'react';
-import { TestProp } from '../../types/TestProp';
+import { TestProp } from '../../types';
 import { ToggleButtonProps } from '../ToggleButton';
 import { Container } from './ToggleButtonGroup.style';
 import { getMultipleSelectedValues } from './utils/getMultipleSelectedValues';

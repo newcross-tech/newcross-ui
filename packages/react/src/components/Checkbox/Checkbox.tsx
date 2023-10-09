@@ -1,7 +1,7 @@
 import { faCheck } from '@fortawesome/pro-light-svg-icons/faCheck';
 import { faMinus } from '@fortawesome/pro-light-svg-icons/faMinus';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { TestProp } from '../../types/TestProp';
+import { TestProp } from '../../types';
 import * as LabelStyled from '../Label/Label.style';
 import * as Styled from './Checkbox.style';
 import { CheckboxType } from './Checkbox.types';

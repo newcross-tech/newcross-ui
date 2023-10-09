@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import Typography from '../../components/Typography';
-import { ExtendedTheme } from '../../types/Theme';
+import { ExtendedTheme } from '../../types';
 import { ShiftCardDay, ShiftCardNight, ShiftCardSleeper } from './svg';
 
 const SHIFT_CARD_STATUS = {

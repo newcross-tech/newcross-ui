@@ -1,6 +1,6 @@
 import { animated } from '@react-spring/web';
 import styled, { css } from 'styled-components';
-import { ExtendedTheme, Theme } from '../../types/Theme';
+import { ExtendedTheme, Theme } from '../../types';
 import { getRgba, getTabbedStateStyles } from '../../utils';
 import Typography from '../Typography';
 import { defaultSpringConfig } from './Tabs.constants';

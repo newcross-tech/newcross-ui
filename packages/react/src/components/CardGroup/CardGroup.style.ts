@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { ExtendedTheme } from '../../types/Theme';
+import { ExtendedTheme } from '../../types';
 import { getHaloValue } from '../../utils/getHaloValue';
 import { getRgba } from '../../utils/getRgba';
 import * as CardStyled from '../Card/Card.style';

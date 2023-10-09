@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TestProp } from '../../types/TestProp';
+import { TestProp } from '../../types';
 import Checkbox from '../Checkbox';
 import * as Styled from './CheckboxGroup.style';
 import { OptionProps } from './CheckboxGroup.types';

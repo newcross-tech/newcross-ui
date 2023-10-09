@@ -1,6 +1,6 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
-import { ExtendedTheme } from '../../types/Theme';
+import { ExtendedTheme } from '../../types';
 import { getTabbedStateStyles } from '../../utils/css';
 import { TypographyVariant } from '../Typography';
 import { ButtonProps, IconProps } from './Button';

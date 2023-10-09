@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import Card from '../../components/Card';
-import { Theme } from '../../types/Theme';
+import { Theme } from '../../types';
 import { CardContent } from './CardContent';
 import { CardThumbnail, CardThumbnailProps } from './CardThumbnail';
 import { SvgBadge } from './svg';

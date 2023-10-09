@@ -16,6 +16,11 @@
           "value": "{color.base.cyan.400.value}"
         }
       }
+    },
+    "dark": {
+      "color": {
+        "primary": { "value": "{color.neutral.white.value}" }
+      }
     }
   }
 }

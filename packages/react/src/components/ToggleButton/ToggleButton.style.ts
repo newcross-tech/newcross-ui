@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { ExtendedTheme } from '../../types/Theme';
+import { ExtendedTheme } from '../../types';
 import { getTabbedStateStyles } from '../../utils';
 import Typography from '../Typography';
 import { ToggleButtonProps } from './ToggleButton';

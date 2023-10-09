@@ -63,6 +63,6 @@ export {
 export { default as Brand } from './theme/Brand';
 
 export { default as ThemeProvider } from './theme/ThemeProvider';
-export { Theme, ExtendedTheme } from './types/Theme';
+export { Theme, ExtendedTheme } from './types';
 export { default as useTheme } from './hooks/useTheme';
 export { useToast } from './hooks/useToast';
