@@ -16,6 +16,11 @@
           "value": "{color.base.mint.400.value}"
         }
       }
+    },
+    "dark": {
+      "color": {
+        "primary": { "value": "{color.neutral.white.value}" }
+      }
     }
   }
 }

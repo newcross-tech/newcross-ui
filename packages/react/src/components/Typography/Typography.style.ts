@@ -87,54 +87,55 @@ const getColorStyles = (
 ): Record<string, Record<TypographyColors, FlattenSimpleInterpolation>> => ({
   dark: {
     primary: css`
-      color: ${theme.ColorNeutralWhite};
+      margin-bottom: 100px;
+      color: ${theme.TypographyDarkColorPrimary};
     `,
     secondary: css`
-      color: ${theme.ColorNeutralGrey200};
+      color: ${theme.TypographyDarkColorSecondary};
     `,
     white: css`
-      color: ${theme.ColorNeutralWhite};
+      color: ${theme.TypographyColorWhite};
     `,
     black: css`
-      color: ${theme.ColorNeutralBlack};
+      color: ${theme.TypographyColorBlack};
     `,
     success: css`
-      color: ${theme.ColorSemanticsSuccess100};
+      color: ${theme.TypographyColorSuccess};
     `,
     error: css`
-      color: ${theme.ColorSemanticsError100};
+      color: ${theme.TypographyColorError};
     `,
     warning: css`
-      color: ${theme.ColorBaseGrey100};
+      color: ${theme.TypographyColorWarning};
     `,
     info: css`
-      color: ${theme.ColorSemanticsInfo100};
+      color: ${theme.TypographyColorInfo};
     `,
   },
   light: {
     primary: css`
-      color: ${theme.ColorPrimaryGravitas};
+      color: ${theme.TypographyColorPrimary};
     `,
     secondary: css`
-      color: ${theme.ColorNeutralGrey100};
+      color: ${theme.TypographyColorSecondary};
     `,
     white: css`
-      color: ${theme.ColorNeutralWhite};
+      color: ${theme.TypographyColorWhite};
     `,
     black: css`
-      color: ${theme.ColorNeutralBlack};
+      color: ${theme.TypographyColorBlack};
     `,
     success: css`
-      color: ${theme.ColorSemanticsSuccess100};
+      color: ${theme.TypographyColorSuccess};
     `,
     error: css`
-      color: ${theme.ColorSemanticsError100};
+      color: ${theme.TypographyColorError};
     `,
     warning: css`
-      color: ${theme.ColorNeutralGrey100};
+      color: ${theme.TypographyColorWarning};
     `,
     info: css`
-      color: ${theme.ColorSemanticsInfo100};
+      color: ${theme.TypographyColorInfo};
     `,
   },
 });
@@ -151,7 +152,7 @@ export const getCoreStyles = ({
   ${variant && getTypographyStyles(theme)[variant]};
   ${numberOfLines && getElipsisStyles(numberOfLines)};
   margin-bottom: ${gutterBottom ? theme.SpacingBase8 : theme.SpacingBase0};
-  ${color ? getColorStyles(theme)[mode || 'light'][color] : { color: theme.ColorPrimaryGravitas }};
+  ${color ? getColorStyles(theme)?.[mode || 'light']?.[color] : { color: theme.TypographyColorPrimary }};
   ${align ? { textAlign: align } : { textAlign: 'left' }}
 `;
 
