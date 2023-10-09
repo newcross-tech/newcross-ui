@@ -87,7 +87,6 @@ const getColorStyles = (
 ): Record<string, Record<TypographyColors, FlattenSimpleInterpolation>> => ({
   dark: {
     primary: css`
-      margin-bottom: 100px;
       color: ${theme.TypographyDarkColorPrimary};
     `,
     secondary: css`
