@@ -4,7 +4,7 @@ import { FontWeight } from '../../types/FontWeight';
 import { ExtendedTheme } from '../../types/Theme';
 import { getElipsisStyles } from '../../utils';
 import { TypographyProps } from './Typography';
-import { TypographyVariant } from './Typography.types';
+import { TypographyColors, TypographyVariant } from './Typography.types';
 
 export const getTypographyStyles = (
   theme: ThemeDesignTokens
@@ -83,14 +83,89 @@ export const getTypographyStyles = (
   `,
 });
 
-export const getCoreStyles = ({ theme, variant, gutterBottom, numberOfLines }: ExtendedTheme<TypographyProps>) => css`
+const getColorStyles = (
+  theme: ThemeDesignTokens
+): Record<string, Record<TypographyColors, FlattenSimpleInterpolation>> => ({
+  dark: {
+    primary: css`
+      color: ${theme.ColorNeutralWhite};
+    `,
+    secondary: css`
+      color: ${theme.ColorNeutralGrey200};
+    `,
+    white: css`
+      color: ${theme.ColorNeutralWhite};
+    `,
+    black: css`
+      color: ${theme.ColorNeutralBlack};
+    `,
+    success: css`
+      color: ${theme.ColorSemanticsSuccess100};
+    `,
+    error: css`
+      color: ${theme.ColorSemanticsError100};
+    `,
+    warning: css`
+      color: ${theme.ColorBaseGrey100};
+    `,
+    info: css`
+      color: ${theme.ColorSemanticsInfo100};
+    `,
+  },
+  light: {
+    primary: css`
+      color: ${theme.ColorPrimaryGravitas};
+    `,
+    secondary: css`
+      color: ${theme.ColorNeutralGrey100};
+    `,
+    white: css`
+      color: ${theme.ColorNeutralWhite};
+    `,
+    black: css`
+      color: ${theme.ColorNeutralBlack};
+    `,
+    success: css`
+      color: ${theme.ColorSemanticsSuccess100};
+    `,
+    error: css`
+      color: ${theme.ColorSemanticsError100};
+    `,
+    warning: css`
+      color: ${theme.ColorNeutralGrey100};
+    `,
+    info: css`
+      color: ${theme.ColorSemanticsInfo100};
+    `,
+  },
+});
+
+export const getCoreStyles = ({
+  theme,
+  variant,
+  color,
+  mode,
+  align,
+  gutterBottom,
+  numberOfLines,
+}: ExtendedTheme<TypographyProps>) => css`
   ${variant && getTypographyStyles(theme)[variant]};
   ${numberOfLines && getElipsisStyles(numberOfLines)};
   margin-bottom: ${gutterBottom ? theme.SpacingBase8 : theme.SpacingBase0};
+  ${color ? getColorStyles(theme)[mode || 'light'][color] : { color: theme.ColorPrimaryGravitas }};
+  ${align ? { textAlign: align } : { textAlign: 'left' }}
 `;
 
 export const Typography = styled.div<TypographyProps>`
-  ${({ theme, variant, gutterBottom, numberOfLines }: ExtendedTheme<TypographyProps>) => css`
-    ${getCoreStyles({ theme, variant, gutterBottom, numberOfLines } as ExtendedTheme<TypographyProps>)};
+  ${({ theme, variant, color, mode, align, gutterBottom, numberOfLines }: ExtendedTheme<TypographyProps>) => css`
+    ${getCoreStyles({
+      theme,
+      variant,
+      color,
+      mode,
+      align,
+      gutterBottom,
+      numberOfLines,
+    } as ExtendedTheme<TypographyProps>)};
   `}
 `;

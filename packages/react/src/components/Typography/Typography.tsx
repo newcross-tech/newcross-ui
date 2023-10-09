@@ -1,13 +1,30 @@
 import { HTMLAttributes, ReactNode } from 'react';
 import { TestProp } from '../../types/TestProp';
 import * as Styled from './Typography.style';
-import { TypographyVariant } from './Typography.types';
+import {
+  TypographyVariant,
+  TypographyColors,
+  TypographyMode,
+  TypographyAlignment,
+} from './Typography.types';
 
 export type TypographyProps = {
   /**
    * Applies the theme typography styles.
    */
   variant: TypographyVariant;
+  /**
+   * The color of the component.
+   */
+  color?: TypographyColors;
+  /**
+   * The mode of the component.
+   */
+  mode?: TypographyMode;
+  /**
+   * The text alignment of the component text.
+   */
+  align?: TypographyAlignment;
   /**
    * The content of the component.
    */
@@ -23,9 +40,14 @@ export type TypographyProps = {
 } & TestProp &
   HTMLAttributes<HTMLDivElement>;
 
-const Typography = ({ children, testID, ...rest }: TypographyProps) => {
+const Typography = ({
+  children,
+  testID,
+  mode = 'light',
+  ...rest
+}: TypographyProps) => {
   return (
-    <Styled.Typography data-testid={testID} {...rest}>
+    <Styled.Typography data-testid={testID} mode={mode} {...rest}>
       {children}
     </Styled.Typography>
   );
