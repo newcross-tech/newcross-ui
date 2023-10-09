@@ -43,6 +43,10 @@ export type PillProps = {
    */
   selected?: boolean;
   /**
+   * Whether the pill has border
+   */
+  hasBorder?: boolean;
+  /**
    * Used to define color palette of the Pills.
    */
   statusVariant?: PillVariant;
@@ -59,6 +63,7 @@ const Pill = ({
   removable = false,
   icon,
   onClick,
+  hasBorder = true,
   selected = false,
   label,
   style = {
@@ -100,6 +105,7 @@ const Pill = ({
 
   return (
     <Styled.Pill
+      hasBorder={hasBorder}
       isSelected={isSelected}
       data-testid={
         isSelected

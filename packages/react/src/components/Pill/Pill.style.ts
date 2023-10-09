@@ -13,8 +13,13 @@ export const getVariantBackgroundColor = (theme: ThemeDesignTokens): Record<Pill
   warning: theme.PillVariantWarningBackgroundColor,
 });
 
-const getBackgroundColor = ({ theme, disabled, isSelected, statusVariant }: ExtendedTheme<BackGroundProps>) => {
-  if (statusVariant && statusVariant !== 'default') return getVariantBackgroundColor(theme)[statusVariant];
+const getBackgroundColor = ({
+  theme,
+  disabled,
+  isSelected,
+  statusVariant = 'default',
+}: ExtendedTheme<BackGroundProps>) => {
+  if (statusVariant !== 'default') return getVariantBackgroundColor(theme)[statusVariant];
   if (disabled)
     return css`
       ${theme.PillDisabledBackgroundColor}
@@ -38,21 +43,33 @@ export const getVariantColor = (theme: ThemeDesignTokens): Record<PillVariant, s
 });
 
 export const Pill = styled.div<SelectedProps>`
-  ${({ theme, disabled, isRemovable, isSelected, hasPadding, statusVariant }: ExtendedTheme<SelectedProps>) => css`
+  ${({
+    theme,
+    disabled,
+    isRemovable,
+    isSelected,
+    hasPadding,
+    statusVariant,
+    hasBorder,
+  }: ExtendedTheme<SelectedProps>) => css`
     width: fit-content;
     height: fit-content;
-    cursor: ${!disabled && !isRemovable && statusVariant === 'default' && 'pointer'};
-    border: solid ${theme.PillBorderWidth};
     margin: ${hasPadding && theme.PillMargin};
     border-radius: ${theme.PillBorderRadius};
-    border-color: ${disabled ? theme.PillDisabledBorderColor : statusVariant && getVariantColor(theme)[statusVariant]};
-
     background-color: ${getBackgroundColor({ theme, disabled, isSelected, statusVariant })};
+
+    ${hasBorder &&
+    css`
+      border: solid ${theme.PillBorderWidth};
+      border-color: ${statusVariant && getVariantColor(theme)[statusVariant]};
+    `}
 
     ${statusVariant === 'default' &&
     css`
-      border-color: ${theme.PillVariantDefaultBorderColor};
+      border-color: ${disabled ? theme.PillDisabledBorderColor : theme.PillVariantDefaultBorderColor};
+      cursor: ${!disabled && !isRemovable && 'pointer'};
     `};
+
     ${getTabbedStateStyles()}
   `};
 `;
@@ -67,19 +84,17 @@ export const Content = styled.div`
 `;
 
 export const Text = styled(Typography)<TextProp>`
-  ${({ theme, disabled, statusVariant }: ExtendedTheme<TextProp>) => css`
-    color: ${statusVariant === 'warning'
-      ? theme.PillVariantWarningTextColor
-      : statusVariant && getVariantColor(theme)[statusVariant]};
-
-    color: ${disabled && theme.PillDisabledColor};
+  ${({ theme, disabled, statusVariant = 'default' }: ExtendedTheme<TextProp>) => css`
+    color: ${statusVariant === 'warning' ? theme.PillVariantWarningTextColor : getVariantColor(theme)[statusVariant]};
+    color: ${statusVariant === 'default' && disabled && theme.PillDisabledColor};
   `}
 `;
 
 export const Icon = styled.div<IconProps>`
-  ${({ theme, hasIcon, disabled, statusVariant }: ExtendedTheme<IconProps>) => css`
+  ${({ theme, hasIcon, disabled, statusVariant = 'default' }: ExtendedTheme<IconProps>) => css`
     margin-right: ${hasIcon && theme.PillIconMarginLeft};
-    color: ${disabled ? theme.PillDisabledColor : statusVariant && getVariantColor(theme)[statusVariant]};
+    color: ${getVariantColor(theme)[statusVariant]};
+    color: ${statusVariant === 'default' && disabled && theme.PillDisabledColor};
   `}
 `;
 
