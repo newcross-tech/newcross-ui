@@ -49,6 +49,26 @@ const Template: Story<TypographyProps> = (props) => (
 export const Interactive: Story<TypographyProps> = Template.bind({});
 
 Interactive.args = {
-  children: 'My Text',
+  children: 'My Text 2',
   variant: 'heading1',
+  color: 'primary',
+  mode: 'light',
+  align: 'left',
+};
+
+Interactive.argTypes = {
+  color: {
+    options: [
+      'primary',
+      'secondary',
+      'white',
+      'black',
+      'error',
+      'warning',
+      'success',
+      'info',
+    ],
+  },
+  mode: { options: ['dark', 'light'] },
+  align: { control: 'select', options: ['left', 'right', 'center', 'justify'] },
 };

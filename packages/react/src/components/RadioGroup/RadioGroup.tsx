@@ -1,6 +1,6 @@
 import { Children, cloneElement, ReactElement, useState } from 'react';
 import { useToggle } from '../../hooks/useToggle';
-import { TestProp } from '../../types/TestProp';
+import { TestProp } from '../../types';
 import { RadioProps } from '../Radio/Radio';
 import { RadioVariant } from '../Radio/Radio.types';
 import { Container, RadioItem } from './RadioGroup.style';

@@ -1,3 +1,4 @@
+import React from 'react';
 import { faUser } from '@fortawesome/pro-light-svg-icons/faUser';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Meta, Story } from '@storybook/react';
@@ -5,7 +6,7 @@ import styled, { css } from 'styled-components';
 import Card from '../../components/Card';
 import CardGroup, { CardGroupProps } from '../../components/CardGroup';
 import Typography from '../../components/Typography';
-import { Theme } from '../../types/Theme';
+import { Theme } from '../../types';
 import { CardShift } from '../Card/CardShift';
 import Container from '../Container';
 import Spacing from '../Spacing';

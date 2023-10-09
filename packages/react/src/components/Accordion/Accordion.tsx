@@ -6,7 +6,7 @@ import { useFirstRender } from '../../hooks/useFirstRender';
 import { useResize } from '../../hooks/useResize';
 import useTheme from '../../hooks/useTheme';
 import { useToggle } from '../../hooks/useToggle';
-import { TestProp } from '../../types/TestProp';
+import { TestProp } from '../../types';
 import { defaultAnimationSpeed } from './Accordion.constants';
 import * as Styled from './Accordion.style';
 

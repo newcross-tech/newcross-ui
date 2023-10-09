@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
-import { ExtendedTheme } from '../../types/Theme';
+import { ExtendedTheme } from '../../types';
 import { defaultAnimationSpeed } from './Skeleton.constants';
 import { SkeletonProps } from './Skeleton';
 

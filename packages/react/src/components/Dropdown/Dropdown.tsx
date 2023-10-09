@@ -6,7 +6,7 @@ import { useRef, useState } from 'react';
 import { useKeypressListener } from '../../hooks/useKeypressListener';
 import { useOutsideDetector } from '../../hooks/useOutsideDetector';
 import useTheme from '../../hooks/useTheme';
-import { TestProp } from '../../types/TestProp';
+import { TestProp } from '../../types';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import Checkbox from '../Checkbox';
 import * as TextStyled from '../TextInput/TextInput.style';

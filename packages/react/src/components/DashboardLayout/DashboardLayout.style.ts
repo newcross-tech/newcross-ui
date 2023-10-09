@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Theme } from '../../types/Theme';
+import { Theme } from '../../types';
 
 export const DashboardLayout = styled.div`
   min-height: 100vh;

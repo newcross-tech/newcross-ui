@@ -1,5 +1,5 @@
 import { ReactElement, ReactNode } from 'react';
-import { TestProp } from '../../types/TestProp';
+import { TestProp } from '../../types';
 import * as Styled from './Badge.style';
 import { getTypographyVariant } from './Badge.style';
 import { BadgePositions, BadgeSizes } from './Badge.types';

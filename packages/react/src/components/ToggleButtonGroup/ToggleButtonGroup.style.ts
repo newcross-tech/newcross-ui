@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { ExtendedTheme } from '../../types/Theme';
+import { ExtendedTheme } from '../../types';
 import { ToggleButtonGroupExtended } from './ToggleButtonGroup.types';
 import * as ToggleButtonStyled from '../ToggleButton/ToggleButton.style';
 

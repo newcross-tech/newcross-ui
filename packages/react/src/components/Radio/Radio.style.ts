@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { ExtendedTheme, Theme } from '../../types/Theme';
+import { ExtendedTheme, Theme } from '../../types';
 import { getTabbedStateStyles } from '../../utils';
 import HaloLabel, { LabelProps } from '../Label';
 import { SelectedProps } from './Radio.types';

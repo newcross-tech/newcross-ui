@@ -1,5 +1,5 @@
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
-import { TestProp } from '../../types/TestProp';
+import { TestProp } from '../../types';
 import * as Styled from './Avatar.style';
 import { AvatarSizes } from './Avatar.types';
 import AvatarContent from './AvatarContent';

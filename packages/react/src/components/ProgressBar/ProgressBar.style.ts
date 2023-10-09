@@ -1,7 +1,7 @@
 import { config } from '@react-spring/web';
 import styled, { css, FlattenSimpleInterpolation, keyframes } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
-import { ExtendedTheme, Theme } from '../../types/Theme';
+import { ExtendedTheme, Theme } from '../../types';
 import Typography from '../Typography';
 import { bottomLabelPositions, defaultAnimationSpeed } from './ProgressBar.constants';
 import {

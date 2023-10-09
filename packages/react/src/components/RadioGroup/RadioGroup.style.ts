@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { RadioGroupProps } from './RadioGroup';
-import { ExtendedTheme } from '../../types/Theme';
+import { ExtendedTheme } from '../../types';
 
 export const Container = styled.div<RadioGroupProps>`
   ${({ direction }: RadioGroupProps) => css`

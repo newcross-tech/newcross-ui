@@ -9,7 +9,7 @@ import CheckboxGroup from '../../components/CheckboxGroup';
 import ToggleButton from '../../components/ToggleButton';
 import ToggleButtonGroup from '../../components/ToggleButtonGroup';
 import Typography from '../../components/Typography';
-import { Theme } from '../../types/Theme';
+import { Theme } from '../../types';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import Spacing from '../Spacing';

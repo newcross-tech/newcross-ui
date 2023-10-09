@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react';
-import { TestProp } from '../../types/TestProp';
+import { TestProp } from '../../types';
 import * as Styled from './Skeleton.style';
 
 export type SkeletonProps = {

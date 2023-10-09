@@ -1,7 +1,6 @@
 import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
 import { ReactNode } from 'react';
-import { AlertVariant } from '../../types/AlertVariant';
-import { TestProp } from '../../types/TestProp';
+import { AlertVariant, TestProp } from '../../types';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import Card from '../Card';
 import * as Styled from './Alert.style';

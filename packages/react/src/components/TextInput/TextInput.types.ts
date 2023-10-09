@@ -1,6 +1,5 @@
 import { TextareaHTMLAttributes } from 'react';
-import { TestProp } from '../../types/TestProp';
-import { Theme } from '../../types/Theme';
+import { TestProp, Theme } from '../../types';
 import { TypographyProps } from '../Typography';
 import { TextInputProps } from './TextInput';
 

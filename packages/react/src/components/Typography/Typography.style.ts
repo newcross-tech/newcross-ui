@@ -1,10 +1,9 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
-import { FontWeight } from '../../types/FontWeight';
-import { ExtendedTheme } from '../../types/Theme';
+import { ExtendedTheme, FontWeight } from '../../types';
 import { getElipsisStyles } from '../../utils';
 import { TypographyProps } from './Typography';
-import { TypographyVariant } from './Typography.types';
+import { TypographyColors, TypographyVariant } from './Typography.types';
 
 export const getTypographyStyles = (
   theme: ThemeDesignTokens
@@ -83,14 +82,89 @@ export const getTypographyStyles = (
   `,
 });
 
-export const getCoreStyles = ({ theme, variant, gutterBottom, numberOfLines }: ExtendedTheme<TypographyProps>) => css`
+const getColorStyles = (
+  theme: ThemeDesignTokens
+): Record<string, Record<TypographyColors, FlattenSimpleInterpolation>> => ({
+  dark: {
+    primary: css`
+      color: ${theme.TypographyDarkColorPrimary};
+    `,
+    secondary: css`
+      color: ${theme.TypographyDarkColorSecondary};
+    `,
+    white: css`
+      color: ${theme.TypographyColorWhite};
+    `,
+    black: css`
+      color: ${theme.TypographyColorBlack};
+    `,
+    success: css`
+      color: ${theme.TypographyColorSuccess};
+    `,
+    error: css`
+      color: ${theme.TypographyColorError};
+    `,
+    warning: css`
+      color: ${theme.TypographyColorWarning};
+    `,
+    info: css`
+      color: ${theme.TypographyColorInfo};
+    `,
+  },
+  light: {
+    primary: css`
+      color: ${theme.TypographyColorPrimary};
+    `,
+    secondary: css`
+      color: ${theme.TypographyColorSecondary};
+    `,
+    white: css`
+      color: ${theme.TypographyColorWhite};
+    `,
+    black: css`
+      color: ${theme.TypographyColorBlack};
+    `,
+    success: css`
+      color: ${theme.TypographyColorSuccess};
+    `,
+    error: css`
+      color: ${theme.TypographyColorError};
+    `,
+    warning: css`
+      color: ${theme.TypographyColorWarning};
+    `,
+    info: css`
+      color: ${theme.TypographyColorInfo};
+    `,
+  },
+});
+
+export const getCoreStyles = ({
+  theme,
+  variant,
+  color,
+  mode = 'light',
+  align,
+  gutterBottom,
+  numberOfLines,
+}: ExtendedTheme<TypographyProps>) => css`
   ${variant && getTypographyStyles(theme)[variant]};
   ${numberOfLines && getElipsisStyles(numberOfLines)};
   margin-bottom: ${gutterBottom ? theme.SpacingBase8 : theme.SpacingBase0};
+  ${color ? getColorStyles(theme)?.[mode]?.[color] : { color: theme.TypographyColorPrimary }};
+  ${align ? { textAlign: align } : { textAlign: 'left' }}
 `;
 
 export const Typography = styled.div<TypographyProps>`
-  ${({ theme, variant, gutterBottom, numberOfLines }: ExtendedTheme<TypographyProps>) => css`
-    ${getCoreStyles({ theme, variant, gutterBottom, numberOfLines } as ExtendedTheme<TypographyProps>)};
+  ${({ theme, variant, color, mode, align, gutterBottom, numberOfLines }: ExtendedTheme<TypographyProps>) => css`
+    ${getCoreStyles({
+      theme,
+      variant,
+      color,
+      mode,
+      align,
+      gutterBottom,
+      numberOfLines,
+    } as ExtendedTheme<TypographyProps>)};
   `}
 `;
