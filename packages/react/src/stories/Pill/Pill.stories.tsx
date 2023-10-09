@@ -99,6 +99,7 @@ export const VariantsWithColor = () => {
           { label: 'Error', statusVariant: 'error' as PillVariant },
         ].map(({ label, statusVariant }) => (
           <Pill
+            key={label}
             label={label}
             statusVariant={statusVariant}
             icon={<FontAwesomeIcon icon={faBird} />}
@@ -155,6 +156,7 @@ export const VariantsWithColor = () => {
           },
         ].map(({ style }) => (
           <Pill
+            key={style.coreStyles.backgroundColor}
             label="Custom"
             hasBorder={false}
             style={style}
