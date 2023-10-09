@@ -1,7 +1,7 @@
 import { useTransition } from '@react-spring/web';
 import { ReactNode, useState } from 'react';
 import { useTimeout } from '../../hooks/useTimeout';
-import { TestProp } from '../../types/TestProp';
+import { TestProp } from '../../types';
 import Alert, { AlertProps } from '../Alert';
 import * as Styled from './Toast.style';
 

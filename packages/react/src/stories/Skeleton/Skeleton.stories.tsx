@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/react';
 import styled, { css } from 'styled-components';
 import Skeleton, { SkeletonProps } from '../../components/Skeleton';
-import { ExtendedTheme, Theme } from '../../types/Theme';
+import { ExtendedTheme, Theme } from '../../types';
 import useTheme from '../../hooks/useTheme';
 import { getHaloValue } from '../../utils';
 import Container from '../Container';

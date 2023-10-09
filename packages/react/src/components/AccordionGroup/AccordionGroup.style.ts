@@ -1,7 +1,7 @@
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { AccordionGroupContainerProps, AccordionGroupSpacing } from './AccordionGroup.types';
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
-import { ExtendedTheme } from '../../types/Theme';
+import { ExtendedTheme } from '../../types';
 
 export const getSpacingValues = (
   theme: ThemeDesignTokens

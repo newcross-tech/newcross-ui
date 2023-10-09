@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Theme } from '../../types/Theme';
+import { Theme } from '../../types';
 
 export const CheckboxList = styled.div`
   ${({ theme }: Theme) => css`

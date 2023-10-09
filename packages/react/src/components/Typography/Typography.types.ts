@@ -22,6 +22,4 @@ export type TypographyColors =
   | 'success'
   | 'info';
 
-export type TypographyMode = 'dark' | 'light';
-
 export type TypographyAlignment = 'center' | 'left' | 'right' | 'justify';

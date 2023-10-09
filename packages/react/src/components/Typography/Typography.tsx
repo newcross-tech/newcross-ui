@@ -1,10 +1,9 @@
 import { HTMLAttributes, ReactNode } from 'react';
-import { TestProp } from '../../types/TestProp';
+import { TestProp, Mode } from '../../types';
 import * as Styled from './Typography.style';
 import {
   TypographyVariant,
   TypographyColors,
-  TypographyMode,
   TypographyAlignment,
 } from './Typography.types';
 
@@ -20,7 +19,7 @@ export type TypographyProps = {
   /**
    * The mode of the component.
    */
-  mode?: TypographyMode;
+  mode?: Mode;
   /**
    * The text alignment of the component text.
    */

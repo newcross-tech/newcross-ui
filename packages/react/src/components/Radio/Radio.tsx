@@ -1,4 +1,4 @@
-import { TestProp } from '../../types/TestProp';
+import { TestProp } from '../../types';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import * as Styled from './Radio.style';
 import { RadioVariant } from './Radio.types';

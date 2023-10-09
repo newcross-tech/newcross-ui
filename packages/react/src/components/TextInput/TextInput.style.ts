@@ -1,7 +1,7 @@
 import Typography from '../Typography';
 import styled, { css } from 'styled-components';
 import { getHaloValue } from '../../utils/getHaloValue';
-import { ExtendedTheme, Theme } from '../../types/Theme';
+import { ExtendedTheme, Theme } from '../../types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getScrollbarStyles } from '../../utils/css/getScrollbarStyles';
 import {

@@ -1,5 +1,5 @@
 import { AnchorHTMLAttributes, ReactNode } from 'react';
-import { TestProp } from '../../types/TestProp';
+import { TestProp } from '../../types';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import Typography from '../Typography';
 import * as Styled from './Link.style';

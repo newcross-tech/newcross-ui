@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled, { css } from 'styled-components';
-import { Theme } from '../../types/Theme';
+import { Theme } from '../../types';
 import { getTabbedStateStyles } from '../../utils';
 import { TypographyVariant } from '../Typography';
 import { LinkCoreVariant, LinkTextProp } from './Link.types';

@@ -1,7 +1,6 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
-import { FontWeight } from '../../types/FontWeight';
-import { ExtendedTheme } from '../../types/Theme';
+import { ExtendedTheme, FontWeight } from '../../types';
 import { getElipsisStyles } from '../../utils';
 import { TypographyProps } from './Typography';
 import { TypographyColors, TypographyVariant } from './Typography.types';

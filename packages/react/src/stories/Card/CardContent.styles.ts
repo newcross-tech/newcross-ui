@@ -1,4 +1,4 @@
-import { Theme } from '../../types/Theme';
+import { Theme } from '../../types';
 import styled, { css } from 'styled-components';
 import Typography from '../../components/Typography';
 

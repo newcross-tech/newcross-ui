@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
-import { ExtendedTheme, Theme } from '../../types/Theme';
+import { ExtendedTheme, Theme } from '../../types';
 import {
   ContainerProps,
   PositionValuesArgs,

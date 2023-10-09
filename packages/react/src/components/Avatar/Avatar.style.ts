@@ -1,7 +1,7 @@
 import Typography from '../Typography';
 import { AvatarProps } from './Avatar';
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
-import { ExtendedTheme } from '../../types/Theme';
+import { ExtendedTheme } from '../../types';
 import { getHaloValue } from '../../utils/getHaloValue';
 import { AvatarSizes, StyledFontType } from './Avatar.types';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';

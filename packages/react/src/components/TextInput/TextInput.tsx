@@ -9,7 +9,7 @@ import {
   InputHTMLAttributes,
   useState,
 } from 'react';
-import { TestProp } from '../../types/TestProp';
+import { TestProp } from '../../types';
 import Label from '../Label/Label';
 import { TextArea } from './TextArea';
 import * as Styled from './TextInput.style';
