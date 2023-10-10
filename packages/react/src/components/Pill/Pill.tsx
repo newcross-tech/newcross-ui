@@ -11,6 +11,7 @@ import { useToggle } from '../../hooks/useToggle';
 import { TestProp } from '../../types';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import * as Styled from './Pill.style';
+import { CustomStyle, PillVariant } from './Pill.types';
 
 export type PillProps = {
   /**
@@ -41,6 +42,18 @@ export type PillProps = {
    * Checks if the Component is selected
    */
   selected?: boolean;
+  /**
+   * Whether the pill has border
+   */
+  hasBorder?: boolean;
+  /**
+   * Used to define color palette of the Pills.
+   */
+  statusVariant?: PillVariant;
+  /**
+   * Used to add custom style to the pill container.
+   */
+  style?: CustomStyle;
 } & TestProp;
 
 const baseTestId = 'pill';
@@ -50,15 +63,23 @@ const Pill = ({
   removable = false,
   icon,
   onClick,
+  hasBorder = true,
   selected = false,
   label,
+  style = {
+    iconStyles: {},
+    textStyles: {},
+    coreStyles: {},
+  },
   hasPadding = true,
+  statusVariant = 'default',
   testID = '',
 }: PillProps) => {
   const [isSelected, setSelected] = useState(selected);
   const [isDeleted, setIsDeleted] = useState(false);
 
   useToggle(selected, () => setSelected(selected));
+  const { iconStyles, textStyles, coreStyles } = style;
 
   const onRemoveHandler = (event: SyntheticEvent) => {
     if (disabled) return;
@@ -67,7 +88,7 @@ const Pill = ({
   };
 
   const handleSelect = () => {
-    if (disabled || removable) return;
+    if (disabled || removable || statusVariant !== 'default') return;
     setSelected(!isSelected);
   };
 
@@ -84,6 +105,7 @@ const Pill = ({
 
   return (
     <Styled.Pill
+      hasBorder={hasBorder}
       isSelected={isSelected}
       data-testid={
         isSelected
@@ -96,12 +118,16 @@ const Pill = ({
       tabIndex={!disabled && !removable ? 0 : -1}
       onKeyPress={(event) => onKeyPressHandler(event, true)}
       hasPadding={hasPadding}
+      statusVariant={statusVariant}
+      style={coreStyles}
     >
       <Styled.Content>
         <Styled.Icon
           data-testid={`${baseTestId}-icon`}
           disabled={disabled}
           hasIcon={!!icon}
+          style={iconStyles}
+          statusVariant={statusVariant}
         >
           {isValidElement(icon) && cloneElement(icon)}
         </Styled.Icon>
@@ -109,6 +135,8 @@ const Pill = ({
           disabled={disabled}
           variant={'paragraph1'}
           numberOfLines={2}
+          statusVariant={statusVariant}
+          style={textStyles}
         >
           {label}
         </Styled.Text>
