@@ -36,8 +36,7 @@ describe('Pill Component', () => {
     const { getByTestId } = render(<Pill {...props} />);
 
     // Assert
-
-    expect(getByTestId('pill-pressable-container-label')).toBeTruthy();
+    expect(getByTestId('pill-container-label')).toBeTruthy();
   });
   it('renders successfully when status and size props are given', () => {
     // Arrange
@@ -52,29 +51,70 @@ describe('Pill Component', () => {
     const { getByTestId } = render(<Pill {...props} />);
 
     // Assert
-    expect(getByTestId('pill-pressable-container-label')).toBeTruthy();
+    expect(getByTestId('pill-close-icon-container-label')).toBeTruthy();
   });
-  it('triggers onPress successfully', () => {
-    const onIconPress = jest.fn;
+  it('triggers the onClose handler successfully', () => {
+    const onCloseIconPress = jest.fn();
 
     // Arrange
     const props: PillProps = {
       label: 'Label',
       testID: 'label',
       removable: true,
-      onPress: onIconPress,
+      onClose: onCloseIconPress,
     };
 
     // Act
     const { getByTestId } = render(<Pill {...props} />);
-    fireEvent.press(getByTestId('pill-pressable-container-label'));
+    fireEvent.press(getByTestId('pill-close-icon-container-label'));
 
     // Assert
 
-    expect(onIconPress).toHaveBeenCalled;
+    expect(onCloseIconPress).toHaveBeenCalled();
+  });
+  it('triggers ONLY the onClose when close button is clicked WITHOUT the onPress prop if it is provided', () => {
+    const onCloseIconPress = jest.fn();
+    const onPress = jest.fn();
+
+    // Arrange
+    const props: PillProps = {
+      label: 'Label',
+      testID: 'label',
+      removable: true,
+      onPress: onPress,
+      onClose: onCloseIconPress,
+    };
+
+    // Act
+    const { getByTestId } = render(<Pill {...props} />);
+    fireEvent.press(getByTestId('pill-close-icon-container-label'));
+
+    // Assert
+    expect(onPress).not.toHaveBeenCalled();
+    expect(onCloseIconPress).toHaveBeenCalled();
   });
   it('does not triggers onPress when disabled prop is provided', () => {
-    const onIconPress = jest.fn;
+    const onPress = jest.fn();
+
+    // Arrange
+    const props: PillProps = {
+      label: 'Label',
+      testID: 'label',
+      removable: false,
+      disabled: true,
+      onPress: onPress,
+      variant: PillVariant.warning,
+    };
+
+    // Act
+    const { getByTestId } = render(<Pill {...props} />);
+    fireEvent.press(getByTestId('pill-container-label'));
+
+    // Assert
+    expect(onPress).not.toHaveBeenCalled();
+  });
+  it('does not triggers onClose when disabled prop is provided', () => {
+    const onClose = jest.fn();
 
     // Arrange
     const props: PillProps = {
@@ -82,16 +122,15 @@ describe('Pill Component', () => {
       testID: 'label',
       removable: true,
       disabled: true,
-      onPress: onIconPress,
+      onClose: onClose,
       variant: PillVariant.warning,
     };
 
     // Act
     const { getByTestId } = render(<Pill {...props} />);
-    fireEvent.press(getByTestId('pill-pressable-container-label'));
+    fireEvent.press(getByTestId('pill-close-icon-container-label'));
 
     // Assert
-
-    expect(onIconPress).toBeFalsy;
+    expect(onClose).not.toHaveBeenCalled();
   });
 });

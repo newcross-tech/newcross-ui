@@ -97,7 +97,7 @@ const Pill = ({
   });
 
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity disabled={disabled} onPress={onPress}>
       <View
         style={[styles.pillContainer, style]}
         testID={`pill-container-${testID}`}
@@ -123,7 +123,7 @@ const Pill = ({
               ]}
               onPress={onClose}
               disabled={disabled}
-              testID={`pill-pressable-container-${testID}`}
+              testID={`pill-close-icon-container-${testID}`}
             >
               <FontAwesomeIcon style={styles.pillRemoveIcon} icon={faXmark} />
             </Pressable>
