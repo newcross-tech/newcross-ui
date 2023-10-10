@@ -1,5 +1,11 @@
 import React, { cloneElement, isValidElement, ReactNode } from 'react';
-import { View, Pressable, ViewStyle, TextStyle } from 'react-native';
+import {
+  View,
+  Pressable,
+  ViewStyle,
+  TextStyle,
+  TouchableOpacity,
+} from 'react-native';
 import Typography from '../Typography';
 import pillStyle from './Pill.style';
 import {
@@ -40,6 +46,10 @@ export type PillProps = {
    */
   textStyle?: TextStyle;
   /**
+   * Called when the pill CAN be removed and the delete icon is pressed.
+   */
+  onClose?: VoidFunction;
+  /**
    * Called when a single tap gesture is detected.
    */
   onPress?: VoidFunction;
@@ -69,6 +79,7 @@ const Pill = ({
   iconStyle = {},
   textStyle,
   onPress,
+  onClose,
   testID,
   label,
   hasBorder = true,
@@ -86,38 +97,40 @@ const Pill = ({
   });
 
   return (
-    <View
-      style={[styles.pillContainer, style]}
-      testID={`pill-container-${testID}`}
-    >
-      <View style={styles.pillContent} testID={`pill-content-${testID}`}>
-        {isValidElement(icon) &&
-          cloneElement(icon, { style: [styles.pillIcon, iconStyle] })}
-        <Typography
-          variant={getTypographySizes()[size]}
-          style={[styles.pillText, textStyle]}
-          testID={`pill-typography-${testID}`}
-          numberOfLines={1}
-        >
-          {label}
-        </Typography>
-        {removable && (
-          <Pressable
-            hitSlop={theme.SpacingBase8}
-            style={({ pressed }) => [
-              {
-                opacity: pressed ? theme.CardPressedOpacity : 1,
-              },
-            ]}
-            onPress={onPress}
-            disabled={disabled}
-            testID={`pill-pressable-container-${testID}`}
+    <TouchableOpacity onPress={onPress}>
+      <View
+        style={[styles.pillContainer, style]}
+        testID={`pill-container-${testID}`}
+      >
+        <View style={styles.pillContent} testID={`pill-content-${testID}`}>
+          {isValidElement(icon) &&
+            cloneElement(icon, { style: [styles.pillIcon, iconStyle] })}
+          <Typography
+            variant={getTypographySizes()[size]}
+            style={[styles.pillText, textStyle]}
+            testID={`pill-typography-${testID}`}
+            numberOfLines={1}
           >
-            <FontAwesomeIcon style={styles.pillRemoveIcon} icon={faXmark} />
-          </Pressable>
-        )}
+            {label}
+          </Typography>
+          {removable && (
+            <Pressable
+              hitSlop={theme.SpacingBase8}
+              style={({ pressed }) => [
+                {
+                  opacity: pressed ? theme.CardPressedOpacity : 1,
+                },
+              ]}
+              onPress={onClose}
+              disabled={disabled}
+              testID={`pill-pressable-container-${testID}`}
+            >
+              <FontAwesomeIcon style={styles.pillRemoveIcon} icon={faXmark} />
+            </Pressable>
+          )}
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
