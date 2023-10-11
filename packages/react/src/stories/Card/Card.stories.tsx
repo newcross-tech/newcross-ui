@@ -16,6 +16,7 @@ import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './CardInfo';
 import { CardShift } from './CardShift';
 import * as StoryTitle from '../StoryTitle';
+import TextInput from '../../components/TextInput';
 
 export default {
   title: 'React/Components/Card',
@@ -126,6 +127,12 @@ export const Variants: Story<CardProps> = () => {
             <ToggleButton value="3">Option C</ToggleButton>
           </ToggleButtonGroup>
         </Container>
+      </Card>
+
+      <Spacing />
+      <StoryTitle.Regular>Card with input field</StoryTitle.Regular>
+      <Card hasRoundedCorners fullWidth>
+        <TextInput label="First name" />
       </Card>
     </Container>
   );
