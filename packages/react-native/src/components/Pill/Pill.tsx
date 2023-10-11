@@ -1,11 +1,5 @@
 import React, { cloneElement, isValidElement, ReactNode } from 'react';
-import {
-  View,
-  Pressable,
-  ViewStyle,
-  TextStyle,
-  TouchableOpacity,
-} from 'react-native';
+import { TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native';
 import Typography from '../Typography';
 import pillStyle from './Pill.style';
 import {
@@ -13,8 +7,7 @@ import {
   FontAwesomeIconStyle,
 } from '@fortawesome/react-native-fontawesome';
 import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
-import useTheme from '../../hooks/useTheme';
-import { PillSizes, getTypographySizes, PillVariant } from './Pill.types';
+import { getTypographySizes, PillSizes, PillVariant } from './Pill.types';
 
 export type PillProps = {
   /**
@@ -81,7 +74,6 @@ const Pill = ({
   size = PillSizes.medium,
   variant = PillVariant.default,
 }: PillProps) => {
-  const theme = useTheme();
   const styles = pillStyle({
     label,
     disabled,
@@ -109,18 +101,7 @@ const Pill = ({
             {label}
           </Typography>
           {removable && (
-            <Pressable
-              hitSlop={theme.SpacingBase8}
-              style={({ pressed }) => [
-                {
-                  opacity: pressed ? theme.CardPressedOpacity : 1,
-                },
-              ]}
-              disabled={disabled}
-              testID={`pill-close-icon-container-${testID}`}
-            >
-              <FontAwesomeIcon style={styles.pillRemoveIcon} icon={faXmark} />
-            </Pressable>
+            <FontAwesomeIcon style={styles.pillRemoveIcon} icon={faXmark} />
           )}
         </View>
       </View>
