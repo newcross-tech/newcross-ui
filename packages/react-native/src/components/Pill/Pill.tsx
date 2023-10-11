@@ -46,10 +46,6 @@ export type PillProps = {
    */
   textStyle?: TextStyle;
   /**
-   * Called when the pill CAN be removed and the delete icon is pressed.
-   */
-  onClose?: VoidFunction;
-  /**
    * Called when a single tap gesture is detected.
    */
   onPress?: VoidFunction;
@@ -79,7 +75,6 @@ const Pill = ({
   iconStyle = {},
   textStyle,
   onPress,
-  onClose,
   testID,
   label,
   hasBorder = true,
@@ -121,7 +116,6 @@ const Pill = ({
                   opacity: pressed ? theme.CardPressedOpacity : 1,
                 },
               ]}
-              onPress={onClose}
               disabled={disabled}
               testID={`pill-close-icon-container-${testID}`}
             >
