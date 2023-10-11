@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.35.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.35.1...@newcross-ui/react@1.35.2) (2023-10-11)
+
+
+### Bug Fixes
+
+* **HDS-44:** inherit typography color ([#43](https://bitbucket.org/newcrossdev/newcross-ui/issues/43)) ([cad091f](https://bitbucket.org/newcrossdev/newcross-ui/commits/cad091f6cc99d3f86848a6aeef7e76362d97230b))
+
+
+
+
+
 ## [1.35.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.35.0...@newcross-ui/react@1.35.1) (2023-10-10)
 
 **Note:** Version bump only for package @newcross-ui/react
