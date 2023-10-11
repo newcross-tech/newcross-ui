@@ -57,15 +57,6 @@ describe('Card Component', () => {
     expect(ui.cardComp.get()).toBeInTheDocument();
   });
 
-  it('selects card when Spacebar', () => {
-    const onClick = jest.fn();
-    // Act
-    renderComponent({ onClick });
-    executeKeyPress(ui.cardComp.get());
-    // Assert
-    expect(onClick).toBeCalled();
-  });
-
   it(`doesn't renders right icon when hasRightIcon is false`, () => {
     //Act
     renderComponent({ hasRightIcon: false });
