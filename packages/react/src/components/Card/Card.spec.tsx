@@ -1,7 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
 import { byTestId, byText } from 'testing-library-selector';
 import Typography from '../../components/Typography';
-import { executeKeyPress } from '../../utils/test/executeKeyPress';
 import { axe } from '../../utils/test/axeConfig';
 import Card, { CardProps } from './Card';
 
