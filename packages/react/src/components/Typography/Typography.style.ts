@@ -151,8 +151,8 @@ export const getCoreStyles = ({
   ${variant && getTypographyStyles(theme)[variant]};
   ${numberOfLines && getElipsisStyles(numberOfLines)};
   margin-bottom: ${gutterBottom ? theme.SpacingBase8 : theme.SpacingBase0};
-  ${color ? getColorStyles(theme)?.[mode]?.[color] : { color: theme.TypographyColorPrimary }};
-  ${align ? { textAlign: align } : { textAlign: 'left' }}
+  ${color ? getColorStyles(theme)?.[mode]?.[color] : { color: 'inherit' }};
+  ${align ? { textAlign: align } : { textAlign: 'inherit' }}
 `;
 
 export const Typography = styled.div<TypographyProps>`
