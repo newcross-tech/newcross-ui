@@ -23,25 +23,29 @@ export const getPillBackgroundColor = (
   theme: ThemeDesignTokens,
   disabled: boolean,
   selected: boolean
-): Record<PillVariant, string> => ({
-  [PillVariant.default]: disabled
-    ? theme.PillDisabledBackgroundColor
-    : selected
+): Record<PillVariant, string> => {
+  const defaultPillBackgroundColor = selected
     ? theme.PillSelectedBackgroundColor
-    : theme.PillVariantDefaultBackgroundColor,
-  [PillVariant.info]: disabled
-    ? theme.PillDisabledBackgroundColor
-    : theme.PillVariantInfoBackgroundColor,
-  [PillVariant.success]: disabled
-    ? theme.PillDisabledBackgroundColor
-    : theme.PillVariantSuccessBackgroundColor,
-  [PillVariant.warning]: disabled
-    ? theme.PillDisabledBackgroundColor
-    : theme.PillVariantWarningBackgroundColor,
-  [PillVariant.error]: disabled
-    ? theme.PillDisabledBackgroundColor
-    : theme.PillVariantErrorBackgroundColor,
-});
+    : theme.PillVariantDefaultBackgroundColor;
+
+  return {
+    [PillVariant.default]: disabled
+      ? theme.PillDisabledBackgroundColor
+      : defaultPillBackgroundColor,
+    [PillVariant.info]: disabled
+      ? theme.PillDisabledBackgroundColor
+      : theme.PillVariantInfoBackgroundColor,
+    [PillVariant.success]: disabled
+      ? theme.PillDisabledBackgroundColor
+      : theme.PillVariantSuccessBackgroundColor,
+    [PillVariant.warning]: disabled
+      ? theme.PillDisabledBackgroundColor
+      : theme.PillVariantWarningBackgroundColor,
+    [PillVariant.error]: disabled
+      ? theme.PillDisabledBackgroundColor
+      : theme.PillVariantErrorBackgroundColor,
+  };
+};
 
 export const getPillTextColor = (
   theme: ThemeDesignTokens,
