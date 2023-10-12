@@ -36,62 +36,42 @@ describe('Pill Component', () => {
     const { getByTestId } = render(<Pill {...props} />);
 
     // Assert
-
-    expect(getByTestId('pill-pressable-container-label')).toBeTruthy();
+    expect(getByTestId('pill-container-label')).toBeTruthy();
   });
-  it('renders successfully when status and size props are given', () => {
+  it('renders successfully when status, size  and closable props are given', () => {
     // Arrange
     const props: PillProps = {
       label: 'Label',
       testID: 'label',
       variant: PillVariant.info,
       size: PillSizes.small,
-    };
-
-    // Act
-    const { getByTestId } = render(<Pill {...props} />);
-
-    // Assert
-    expect(getByTestId('pill-pressable-container-label')).toBeTruthy();
-  });
-  it('triggers onPress successfully', () => {
-    const onIconPress = jest.fn;
-
-    // Arrange
-    const props: PillProps = {
-      label: 'Label',
-      testID: 'label',
       removable: true,
-      onPress: onIconPress,
     };
 
     // Act
     const { getByTestId } = render(<Pill {...props} />);
-    fireEvent.press(getByTestId('pill-pressable-container-label'));
 
     // Assert
-
-    expect(onIconPress).toHaveBeenCalled;
+    expect(getByTestId('pill-close-icon-container-label')).toBeTruthy();
   });
   it('does not triggers onPress when disabled prop is provided', () => {
-    const onIconPress = jest.fn;
+    const onPress = jest.fn();
 
     // Arrange
     const props: PillProps = {
       label: 'Label',
       testID: 'label',
-      removable: true,
+      removable: false,
       disabled: true,
-      onPress: onIconPress,
+      onPress: onPress,
       variant: PillVariant.warning,
     };
 
     // Act
     const { getByTestId } = render(<Pill {...props} />);
-    fireEvent.press(getByTestId('pill-pressable-container-label'));
+    fireEvent.press(getByTestId('pill-container-label'));
 
     // Assert
-
-    expect(onIconPress).toBeFalsy;
+    expect(onPress).not.toHaveBeenCalled();
   });
 });

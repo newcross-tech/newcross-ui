@@ -16,6 +16,7 @@ const pillStyle = ({
   hasBorder,
   variant = PillVariant.default,
   disabled = true,
+  selected = false,
 }: PillProps) => {
   const theme = useTheme();
 
@@ -26,7 +27,9 @@ const pillStyle = ({
       borderRadius: theme.PillBorderRadius,
       borderWidth: hasBorder ? theme.PillBorderWidth : 0,
       borderColor: getPillBorderColor(theme, disabled)[variant],
-      backgroundColor: getPillBackgroundColor(theme, disabled)[variant],
+      backgroundColor: getPillBackgroundColor(theme, disabled, selected)[
+        variant
+      ],
     },
     pillContent: {
       alignItems: 'center',

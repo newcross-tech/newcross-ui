@@ -1,5 +1,5 @@
 import React, { cloneElement, isValidElement, ReactNode } from 'react';
-import { View, Pressable, ViewStyle, TextStyle } from 'react-native';
+import { TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native';
 import Typography from '../Typography';
 import pillStyle from './Pill.style';
 import {
@@ -7,8 +7,7 @@ import {
   FontAwesomeIconStyle,
 } from '@fortawesome/react-native-fontawesome';
 import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
-import useTheme from '../../hooks/useTheme';
-import { PillSizes, getTypographySizes, PillVariant } from './Pill.types';
+import { getTypographySizes, PillSizes, PillVariant } from './Pill.types';
 
 export type PillProps = {
   /**
@@ -31,6 +30,10 @@ export type PillProps = {
    * Used to add custom style to the pill container.
    */
   style?: ViewStyle;
+  /**
+   * Adds a selected state background color to the pill
+   */
+  selected?: boolean;
   /**
    * Used to add custom style to the icon.
    */
@@ -65,6 +68,7 @@ const Pill = ({
   disabled = false,
   icon,
   removable = true,
+  selected = false,
   style,
   iconStyle = {},
   textStyle,
@@ -75,7 +79,6 @@ const Pill = ({
   size = PillSizes.medium,
   variant = PillVariant.default,
 }: PillProps) => {
-  const theme = useTheme();
   const styles = pillStyle({
     label,
     disabled,
@@ -83,41 +86,34 @@ const Pill = ({
     removable,
     hasBorder,
     variant,
+    selected,
   });
 
   return (
-    <View
-      style={[styles.pillContainer, style]}
-      testID={`pill-container-${testID}`}
-    >
-      <View style={styles.pillContent} testID={`pill-content-${testID}`}>
-        {isValidElement(icon) &&
-          cloneElement(icon, { style: [styles.pillIcon, iconStyle] })}
-        <Typography
-          variant={getTypographySizes()[size]}
-          style={[styles.pillText, textStyle]}
-          testID={`pill-typography-${testID}`}
-          numberOfLines={1}
-        >
-          {label}
-        </Typography>
-        {removable && (
-          <Pressable
-            hitSlop={theme.SpacingBase8}
-            style={({ pressed }) => [
-              {
-                opacity: pressed ? theme.CardPressedOpacity : 1,
-              },
-            ]}
-            onPress={onPress}
-            disabled={disabled}
-            testID={`pill-pressable-container-${testID}`}
+    <TouchableOpacity disabled={disabled} onPress={onPress}>
+      <View
+        style={[styles.pillContainer, style]}
+        testID={`pill-container-${testID}`}
+      >
+        <View style={styles.pillContent} testID={`pill-content-${testID}`}>
+          {isValidElement(icon) &&
+            cloneElement(icon, { style: [styles.pillIcon, iconStyle] })}
+          <Typography
+            variant={getTypographySizes()[size]}
+            style={[styles.pillText, textStyle]}
+            testID={`pill-typography-${testID}`}
+            numberOfLines={1}
           >
-            <FontAwesomeIcon style={styles.pillRemoveIcon} icon={faXmark} />
-          </Pressable>
-        )}
+            {label}
+          </Typography>
+          {removable && (
+            <TouchableOpacity testID="pill-close-icon-container-label">
+              <FontAwesomeIcon style={styles.pillRemoveIcon} icon={faXmark} />
+            </TouchableOpacity>
+          )}
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
