@@ -38,13 +38,14 @@ describe('Pill Component', () => {
     // Assert
     expect(getByTestId('pill-container-label')).toBeTruthy();
   });
-  it('renders successfully when status and size props are given', () => {
+  it('renders successfully when status, size  and closable props are given', () => {
     // Arrange
     const props: PillProps = {
       label: 'Label',
       testID: 'label',
       variant: PillVariant.info,
       size: PillSizes.small,
+      removable: true,
     };
 
     // Act
