@@ -10,6 +10,16 @@
       "border-color": { "value": "{color.neutral.grey.200.value}" },
       "color": { "value": "{color.neutral.grey.100.value}" }
     },
+    "selected": {
+      "border-color": { "value": "{brand.color.secondary.100.value}" },
+      "background-color": { "value": "{color.base.mint.400.value}" },
+      "icon": {
+          "color": { "value": "{brand.color.primary.value}" }
+        },
+        "text": {
+          "color": { "value": "{brand.color.primary.value}" }
+        }
+    },
     "icon": {
       "margin-right": { "value": "{spacing.base.8.value}" },
       "margin-left": { "value": "{spacing.base.8.value}" }

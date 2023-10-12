@@ -31,6 +31,10 @@ export type PillProps = {
    */
   style?: ViewStyle;
   /**
+   * Adds a selected state background color to the pill
+   */
+  selected?: boolean;
+  /**
    * Used to add custom style to the icon.
    */
   iconStyle?: FontAwesomeIconStyle;
@@ -64,6 +68,7 @@ const Pill = ({
   disabled = false,
   icon,
   removable = true,
+  selected = false,
   style,
   iconStyle = {},
   textStyle,
@@ -81,6 +86,7 @@ const Pill = ({
     removable,
     hasBorder,
     variant,
+    selected,
   });
 
   return (

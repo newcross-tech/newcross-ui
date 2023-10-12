@@ -21,10 +21,13 @@ export const getTypographySizes = (): Record<PillSizes, TypographyVariant> => ({
 
 export const getPillBackgroundColor = (
   theme: ThemeDesignTokens,
-  disabled: boolean
+  disabled: boolean,
+  selected: boolean
 ): Record<PillVariant, string> => ({
   [PillVariant.default]: disabled
     ? theme.PillDisabledBackgroundColor
+    : selected
+    ? theme.PillSelectedBackgroundColor
     : theme.PillVariantDefaultBackgroundColor,
   [PillVariant.info]: disabled
     ? theme.PillDisabledBackgroundColor
