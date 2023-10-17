@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.47.7](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.47.6...@newcross-ui/react-native@1.47.7) (2023-10-17)
+
+
+### Bug Fixes
+
+* **HFGO-2225:** change the Link component type ([4c697d8](https://bitbucket.org/newcrossdev/newcross-ui/commits/4c697d89c8f270a749e789967f25c85b3e5d021f))
+
+
+
+
+
 ## [1.47.6](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.47.5...@newcross-ui/react-native@1.47.6) (2023-10-12)
 
 **Note:** Version bump only for package @newcross-ui/react-native
