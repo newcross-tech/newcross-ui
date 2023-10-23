@@ -112,6 +112,10 @@ export const getCustomStyles = <
       cursor: isDisabled ? 'not-allowed' : 'pointer',
       ...getOptionStyles({ theme }, { isDisabled, isSelected, isFocused, ...rest }),
 
+      ':active': {
+        ...styles[':active'],
+        backgroundColor: theme.ColorBaseMint400,
+      },
       ':hover': {
         ...styles[':hover'],
         color: theme.ColorPrimaryGravitas,
@@ -155,7 +159,6 @@ export const getCustomStyles = <
     }),
     multiValue: (styles) => ({
       ...styles,
-      textTransform: 'capitalize',
       backgroundColor: 'transparent',
       border: `1px solid ${theme.ColorBaseMint100}`,
 
