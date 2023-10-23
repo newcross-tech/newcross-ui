@@ -57,7 +57,7 @@ export type LinkProps = {
    * Used when text is too long
    */
   numberOfLines?: number;
-} & PressableProps;
+} & Omit<PressableProps, 'style'>;
 
 const Link = ({
   size = LinkSizes.small,
