@@ -119,7 +119,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
   };
 
   return (
-    <Styled.Wrapper>
+    <Styled.Wrapper fullWidth={fullWidth}>
       {label && (
         <Label
           htmlFor={inputId}
