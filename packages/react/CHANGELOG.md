@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.36.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.35.3...@newcross-ui/react@1.36.0) (2023-10-24)
+
+
+### Features
+
+* **OAE-1346:** remove onKeyPress method from card component ([#44](https://bitbucket.org/newcrossdev/newcross-ui/issues/44)) ([73f4716](https://bitbucket.org/newcrossdev/newcross-ui/commits/73f4716c29eda3e96c4c4292ad75cb1a25f876a1))
+
+
+
+
+
 ## [1.35.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.35.2...@newcross-ui/react@1.35.3) (2023-10-12)
 
 **Note:** Version bump only for package @newcross-ui/react
