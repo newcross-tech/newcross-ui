@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.37.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.36.0...@newcross-ui/react@1.37.0) (2023-10-24)
+
+
+### Features
+
+* **OAE-1364:** text input not displayed at full width ([#45](https://bitbucket.org/newcrossdev/newcross-ui/issues/45)) ([94565cb](https://bitbucket.org/newcrossdev/newcross-ui/commits/94565cb183ac71c5b025d30c686ad0bacd2a36ee))
+
+
+
+
+
 # [1.36.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.35.3...@newcross-ui/react@1.36.0) (2023-10-24)
 
 
