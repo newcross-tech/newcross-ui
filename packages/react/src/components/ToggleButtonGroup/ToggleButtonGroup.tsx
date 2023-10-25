@@ -57,6 +57,7 @@ const ToggleButtonGroup = ({
           fullWidth: fullWidth,
           onClick: handleOnClick,
           selected: selected || calculateSelectedValue(selectedValue, value),
+          variant: variant,
         });
       })}
     </Container>
