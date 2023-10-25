@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { TestProp } from '../../types';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import * as Styled from './Radio.style';
@@ -11,7 +12,7 @@ export type RadioProps = {
   /**
    * Identifier of each radio component
    */
-  label: string;
+  label: ReactNode;
   /**
    * The currently selected value within the group or an array of
    * selected values

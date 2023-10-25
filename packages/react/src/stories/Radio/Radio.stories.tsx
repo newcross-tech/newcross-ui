@@ -20,6 +20,14 @@ export const Variants = () => {
       <Radio selected value="2" label="Primary Selected" />
       <Radio label="Disabled" value="3" disabled />
       <Radio selected value="4" label="Disabled Selected" disabled />
+      <Radio
+        value="9"
+        label={
+          <span>
+            <b>custom</b> react label
+          </span>
+        }
+      />
       <Spacing />
       <StoryTitle.Regular>Secondary Radio Variants</StoryTitle.Regular>
       <Spacing />
@@ -42,6 +50,15 @@ export const Variants = () => {
         variant="secondary"
         value="8"
         label="Secondary Disabled Selected"
+      />
+      <Radio
+        variant="secondary"
+        value="10"
+        label={
+          <span>
+            <b>custom</b> react label
+          </span>
+        }
       />
     </>
   );

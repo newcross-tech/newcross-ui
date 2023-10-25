@@ -91,6 +91,17 @@ describe('Checkbox Component', () => {
     expect(ui.checkboxLabel.query()).not.toBeInTheDocument();
   });
 
+  it('renders succesfully with a ReactNode passed as a label', () => {
+    //Arrange
+    const Label = () => <div data-testid="custom-label-item">Label</div>;
+
+    //Act
+    renderComponent({ label: <Label /> });
+
+    //Assert
+    expect(byTestId('custom-label-item').get()).toBeVisible();
+  });
+
   it('when Spacebar pressed the checkbox checked successfully', () => {
     // Act
     const onChange = jest.fn();
