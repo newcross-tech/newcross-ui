@@ -15,5 +15,9 @@ export const Label = styled.label<LabelProps>`
     } as ExtendedTheme<TypographyProps>)};
     color: ${theme.RadioColor};
     ${!disabled && getTabbedStateStyles()}
+
+    b,strong,em {
+      font-family: ${theme.BrandFontFamilySemiBold};
+    } ;
   `}
 `;
