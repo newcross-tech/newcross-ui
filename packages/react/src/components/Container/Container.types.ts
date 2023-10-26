@@ -1,6 +1,6 @@
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 
-export type ThemeSpacing = Pick<
+export type ThemeSpacing = keyof Pick<
   ThemeDesignTokens,
   | 'SpacingBase0'
   | 'SpacingBase4'
