@@ -32,7 +32,9 @@ Interactive.args = {
   children: (
     <>
       {[...new Array(4)].map((_, i) => (
-        <Typography variant="paragraph1">Paragraph {i + 1}</Typography>
+        <Typography variant="paragraph1" key={i}>
+          Paragraph {i + 1}
+        </Typography>
       ))}
     </>
   ),
