@@ -2,6 +2,7 @@ import { animated } from '@react-spring/web';
 import styled, { css } from 'styled-components';
 import { Theme } from '../../types';
 import { getRgba } from '../../utils';
+import { ToastProviderProps } from '../../context/toast/ToastProvider';
 
 export const getAnimatedStyles = (onClose?: VoidFunction) => {
   return {
@@ -13,12 +14,12 @@ export const getAnimatedStyles = (onClose?: VoidFunction) => {
   };
 };
 
-export const Container = styled.div`
+export const Container = styled.div<Pick<ToastProviderProps, 'zIndex'>>`
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: ${({ zIndex }) => zIndex ?? 1};
 `;
 
 export const AnimatedContainer = styled(animated.div)`
