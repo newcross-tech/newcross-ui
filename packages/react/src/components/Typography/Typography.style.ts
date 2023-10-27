@@ -152,7 +152,13 @@ export const getCoreStyles = ({
   ${numberOfLines && getElipsisStyles(numberOfLines)};
   margin-bottom: ${gutterBottom ? theme.SpacingBase8 : theme.SpacingBase0};
   ${color ? getColorStyles(theme)?.[mode]?.[color] : { color: 'inherit' }};
-  ${align ? { textAlign: align } : { textAlign: 'inherit' }}
+  ${align ? { textAlign: align } : { textAlign: 'inherit' }};
+
+  b,
+  strong,
+  em {
+    font-family: ${theme.TypographyFontFamilyPoppinsSemiBold};
+  }
 `;
 
 export const Typography = styled.div<TypographyProps>`
