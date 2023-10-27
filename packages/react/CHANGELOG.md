@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.37.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.37.1...@newcross-ui/react@1.37.2) (2023-10-27)
+
+
+### Bug Fixes
+
+* **HDS-47:** exposed toast zindex ([#51](https://bitbucket.org/newcrossdev/newcross-ui/issues/51)) ([a97d833](https://bitbucket.org/newcrossdev/newcross-ui/commits/a97d83387ec1f8bb6bbd6801d9b97ee82057192b))
+
+
+
+
+
 ## [1.37.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.37.0...@newcross-ui/react@1.37.1) (2023-10-26)
 
 
