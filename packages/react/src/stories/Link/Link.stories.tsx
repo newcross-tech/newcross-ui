@@ -69,6 +69,7 @@ export const TypeVariants = () => {
         variant="external"
         href={'https://www.newcrosshealthcare.com/'}
       >
+        {' '}
         Go to external Website
       </Link>
 
@@ -83,6 +84,40 @@ export const TypeVariants = () => {
       >
         Go to internal Website
       </Link>
+      <Spacing />
+      <StoryTitle.Regular>Custom Links</StoryTitle.Regular>
+      <Link
+        size="medium"
+        target={'_blank'}
+        variant="external"
+        href={'https://www.newcrosshealthcare.com/'}
+      >
+        Multilined Link that goes to external Website Multilined Link that goes
+        to external Website Multilined Link that goes to external Website
+        Multilined Link that goes to external Website Multilined Link that goes
+        to external Website
+      </Link>
+      <Spacing />
+      <Link
+        size="medium"
+        textLeft="This is a regular text that goes before the link. "
+        textRight=" This is a regular text that goes after the link."
+        target={'_blank'}
+        href={'https://www.newcrosshealthcare.com/'}
+      >
+        This is a Link.
+      </Link>
+      <Spacing />
+      <Link
+        size="medium"
+        target={'_blank'}
+        align="center"
+        variant="external"
+        href={'https://www.newcrosshealthcare.com/'}
+      >
+        This is a center aligned Link.
+      </Link>
+
       <Spacing />
       <StoryTitle.Regular>Section Link</StoryTitle.Regular>
       <Link size="medium" href="#here" onClick={handleClick}>

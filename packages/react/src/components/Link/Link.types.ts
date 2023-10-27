@@ -4,6 +4,7 @@ export type LinkSizes = 'small' | 'medium';
 
 export type LinkTextProp = {
   leftIcon?: boolean;
+  rightIcon?: boolean;
 } & Theme;
 
 export type LinkCoreVariant = 'email' | 'internal' | 'external' | 'phone';
