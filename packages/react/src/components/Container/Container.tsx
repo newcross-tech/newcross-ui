@@ -7,7 +7,7 @@ export type ContainerProps = {
   /**
    * margin-left and margin-right and margin-top and margin-bottom
    */
-  margin?: ThemeSpacing;
+  m?: ThemeSpacing;
   /**
    * margin-left and margin-right
    */
@@ -35,7 +35,7 @@ export type ContainerProps = {
   /**
    * padding-left and padding-right and padding-top and padding-bottom
    */
-  padding?: ThemeSpacing;
+  p?: ThemeSpacing;
   /**
    * padding-left and padding-right
    */

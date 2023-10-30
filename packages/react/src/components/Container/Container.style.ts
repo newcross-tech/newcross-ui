@@ -10,10 +10,10 @@ const getMarginProperty = {
 };
 
 export const Container = styled.div<ExtendedTheme<ContainerProps>>`
-  ${({ theme, margin, mx, my, ml, mr, mt, mb, padding, px, py, pl, pr, pt, pb, direction, gap, fullWidth }) => css`
-    ${margin &&
+  ${({ theme, m, mx, my, ml, mr, mt, mb, p, px, py, pl, pr, pt, pb, direction, gap, fullWidth }) => css`
+    ${m &&
     `
-        margin: ${theme[margin]};
+        margin: ${theme[m]};
     `}
     ${mx &&
     `
@@ -30,9 +30,9 @@ export const Container = styled.div<ExtendedTheme<ContainerProps>>`
     ${mt && `margin-top: ${theme[mt]};`}
     ${mb && `margin-bottom: ${theme[mb]};`}
     
-    ${padding &&
+    ${p &&
     `
-        padding-left: ${theme[padding]};
+        padding: ${theme[p]};
     `}
     ${px &&
     `
