@@ -56,11 +56,17 @@ const Pagination: React.FC<PaginationProps> = ({
   });
 
   return (
-    <Styled.Pagination fullWidth={fullWidth} ref={ref}>
+    <Styled.Pagination
+      fullWidth={fullWidth}
+      ref={ref}
+      data-testid="pagination-container"
+      role="navigation"
+    >
       <PaginationArrowButton {...items[0]} />
       <Styled.PaginationButtonsContainer>
         {items.slice(1, -1).map((item, index) => (
           <PaginationButton
+            data-testid={`pagination-button-${index}`}
             key={index}
             {...item}
             selected={selectedPage === item.page}

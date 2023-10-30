@@ -1,39 +1,47 @@
 import styled, { css } from 'styled-components';
 import ToggleButton from '../ToggleButton';
 import { StyledPaginationButtonProps, StyledPaginationProps } from './Pagination.types';
+import { ExtendedTheme } from '../../types';
 
 export const Pagination = styled.div<StyledPaginationProps>`
-  display: flex;
-  align-items: center;
-  padding: 0;
-  margin: 0;
-  ${({ fullWidth }) =>
-    fullWidth &&
-    css`
-      justify-content: space-between;
-      width: 100%;
-    `}
+  ${({ theme, fullWidth }: ExtendedTheme<StyledPaginationProps>) => css`
+    display: flex;
+    align-items: center;
+    padding: ${theme.SpacingBase0};
+    margin: ${theme.SpacingBase0};
+
+    ${
+      fullWidth &&
+      css`
+        justify-content: space-between;
+        width: 100%;
+      `
+    }}
+    `};
 `;
 
 export const PaginationButtonsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: ${theme.SpacingBase0} auto;
+  `};
 `;
 
 export const PaginationButton = styled(ToggleButton)<StyledPaginationButtonProps>`
-  display: flex;
-  width: 40px;
-  height: 48px;
-  padding: 0;
-  align-items: center;
-  justify-content: center;
-  margin: 0 4px;
+  ${({ theme, disabled }: ExtendedTheme<StyledPaginationButtonProps>) => css`
+    display: flex;
+    width: ${theme.SpacingBase40};
+    height: ${theme.SpacingBase48};
+    padding: ${theme.SpacingBase0};
+    align-items: center;
+    justify-content: center;
+    margin: ${theme.SpacingBase0} ${theme.SpacingBase4};
 
-  ${({ disabled }) =>
-    !disabled &&
+    ${!disabled &&
     css`
       cursor: pointer;
     `}
+  `};
 `;
