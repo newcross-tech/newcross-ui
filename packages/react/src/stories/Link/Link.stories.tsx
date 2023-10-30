@@ -1,7 +1,12 @@
+import React from 'react';
 import { Meta, Story } from '@storybook/react';
+import { faEnvelope } from '@fortawesome/pro-regular-svg-icons/faEnvelope';
+import { faPhone } from '@fortawesome/pro-regular-svg-icons/faPhone';
+import { faExternalLink } from '@fortawesome/pro-regular-svg-icons/faExternalLink';
+import { faChevronCircleRight } from '@fortawesome/pro-regular-svg-icons/faChevronCircleRight';
+import { faStar } from '@fortawesome/pro-regular-svg-icons/faStar';
 import Link, { LinkProps } from '../../components/Link';
 import Typography from '../../components/Typography';
-import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './LinkInfo';
@@ -20,24 +25,11 @@ export const Overview = () => {
       doInfo={DO}
       dontInfo={DONT}
     >
-      <Container direction="column">
-        <Link size="medium">This is a link</Link>
-      </Container>
+      <Link variant="paragraph1">This is a link</Link>
     </InfoTemplate>
   );
 };
 
-export const SizeVariants = () => {
-  return (
-    <Container direction="column">
-      <StoryTitle.Regular>Small Link</StoryTitle.Regular>
-      <Link size="small">This is a link</Link>
-      <Spacing />
-      <StoryTitle.Regular>Medium Link</StoryTitle.Regular>
-      <Link size="medium">This is a link</Link>
-    </Container>
-  );
-};
 export const TypeVariants = () => {
   const handleClick = (event) => {
     event.preventDefault();
@@ -46,28 +38,36 @@ export const TypeVariants = () => {
   };
 
   return (
-    <Container direction="column">
+    <>
+      <StoryTitle.Regular>Text with link together</StoryTitle.Regular>
+      <>
+        <Typography variant="paragraph1">Paragraph text</Typography>
+        <Link variant="paragraph1" rightIcon={faStar}>
+          and link together
+        </Link>
+      </>
+      <Spacing />
       <StoryTitle.Regular>Email Link</StoryTitle.Regular>
       <Link
-        size="medium"
         href={'mailto:someone@newcrosshealthcare.com'}
-        variant="email"
+        variant="paragraph1"
+        leftIcon={faEnvelope}
       >
         contact me
       </Link>
       <Spacing />
       <StoryTitle.Regular>Phone Link</StoryTitle.Regular>
-      <Link size="medium" variant="phone" href={'tel:6012345678'}>
+      <Link variant="paragraph1" href={'tel:6012345678'} leftIcon={faPhone}>
         6012345678
       </Link>
 
       <Spacing />
       <StoryTitle.Regular>External site Link</StoryTitle.Regular>
       <Link
-        size="medium"
         target={'_blank'}
-        variant="external"
+        variant="paragraph1"
         href={'https://www.newcrosshealthcare.com/'}
+        rightIcon={faExternalLink}
       >
         Go to external Website
       </Link>
@@ -75,17 +75,17 @@ export const TypeVariants = () => {
       <Spacing />
       <StoryTitle.Regular>Internal site Link</StoryTitle.Regular>
       <Link
-        size="medium"
-        variant="internal"
+        variant="paragraph1"
         href={
           'https://www.halodesignsystem.com/?path=/story/react-components-link--interactive'
         }
+        rightIcon={faChevronCircleRight}
       >
         Go to internal Website
       </Link>
       <Spacing />
       <StoryTitle.Regular>Section Link</StoryTitle.Regular>
-      <Link size="medium" href="#here" onClick={handleClick}>
+      <Link variant="paragraph1" href="#here" onClick={handleClick}>
         Go below
       </Link>
 
@@ -207,19 +207,17 @@ export const TypeVariants = () => {
       <Typography id={'here'} variant={'heading3'}>
         Welcome
       </Typography>
-    </Container>
+    </>
   );
 };
 
 const Template: Story<LinkProps> = ({ children, ...rest }) => (
-  <Container direction="column">
-    <Link {...rest}>{children}</Link>
-  </Container>
+  <Link {...rest}>{children}</Link>
 );
 
 export const Interactive = Template.bind({});
 Interactive.args = {
   children: 'This is a link',
-  size: 'medium',
-  variant: 'email',
+  variant: 'paragraph1',
+  leftIcon: faEnvelope,
 };

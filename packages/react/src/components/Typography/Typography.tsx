@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode, CSSProperties } from 'react';
 import { TestProp, Mode } from '../../types';
 import * as Styled from './Typography.style';
 import {
@@ -36,6 +36,10 @@ export type TypographyProps = {
    * Used to set maximum number of lines
    */
   numberOfLines?: number;
+  /**
+   * Used to define type of display
+   */
+  display?: CSSProperties['display'];
 } & TestProp &
   HTMLAttributes<HTMLDivElement>;
 
@@ -43,10 +47,16 @@ const Typography = ({
   children,
   testID,
   mode = 'light',
+  display = 'inline',
   ...rest
 }: TypographyProps) => {
   return (
-    <Styled.Typography data-testid={testID} mode={mode} {...rest}>
+    <Styled.Typography
+      data-testid={testID}
+      mode={mode}
+      display={display}
+      {...rest}
+    >
       {children}
     </Styled.Typography>
   );

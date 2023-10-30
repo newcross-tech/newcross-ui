@@ -1,80 +1,45 @@
-import { AnchorHTMLAttributes, ReactNode } from 'react';
-import { TestProp } from '../../types';
-import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
-import Typography from '../Typography';
+import { AnchorHTMLAttributes } from 'react';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import Typography, { TypographyProps } from '../Typography';
 import * as Styled from './Link.style';
-import { LinkSizes, LinkVariant } from './Link.types';
+import { TestProp } from '../../types';
 
 export type LinkProps = {
   /**
-   * Used to define size of the Link.
+   * Provide icon name for left icon
    */
-  size?: LinkSizes;
+  leftIcon?: IconDefinition;
   /**
-   * Used to define size of the Link.
+   * Provide icon name for right icon
    */
-  variant?: LinkVariant;
-  /**
-   * Supports any kind of content.
-   */
-  children?: ReactNode;
-  /**
-   * Called when a single click is detected.
-   */
-  onClick?: (href?: string) => void;
-} & TestProp &
-  AnchorHTMLAttributes<HTMLAnchorElement | HTMLDivElement>;
-
-const baseTestId = 'link';
+  rightIcon?: IconDefinition;
+} & TypographyProps &
+  TestProp &
+  AnchorHTMLAttributes<HTMLAnchorElement>;
 
 const Link = ({
-  size = 'small',
   children,
-  variant = 'section',
-  testID = '',
-  onClick,
-  href,
-  ...rest
+  variant = 'paragraph1',
+  leftIcon,
+  rightIcon,
+  ...restProps
 }: LinkProps) => {
-  const leftIcon = variant === 'email' || variant === 'phone';
-
-  const rightIcon = variant === 'external' || variant === 'internal';
-
-  const getContent = () => (
-    <Styled.LinkContent>
-      {leftIcon && <Styled.LinkIcon icon={Styled.getIcon()[variant]} />}
-      <Styled.LinkText leftIcon={leftIcon}>
-        <Typography variant={Styled.getTypographySizes()[size]}>
-          {children}
-        </Typography>
-      </Styled.LinkText>
-      {rightIcon && <Styled.LinkIcon icon={Styled.getIcon()[variant]} />}
-    </Styled.LinkContent>
-  );
-
   return (
-    <>
-      {href ? (
-        <Styled.LinkAnchor
-          data-testid={`${baseTestId}-anchor-component${testID}`}
-          href={href}
-          onClick={onClick}
-          {...rest}
-        >
-          {getContent()}
-        </Styled.LinkAnchor>
-      ) : (
-        <Styled.LinkDiv
-          data-testid={`${baseTestId}-div-component${testID}`}
-          onKeyPress={(event) => onClick && onSpacePressTrigger(event, onClick)}
-          tabIndex={0}
-          onClick={onClick}
-          {...rest}
-        >
-          {getContent()}
-        </Styled.LinkDiv>
-      )}
-    </>
+    <Styled.Link {...restProps}>
+      <Typography variant={variant} {...restProps}>
+        {leftIcon && (
+          <Styled.Icon icon={leftIcon} leftIcon={leftIcon} variant={variant} />
+        )}
+        {children}
+        {rightIcon && (
+          <Styled.Icon
+            icon={rightIcon}
+            rightIcon={rightIcon}
+            variant={variant}
+          />
+        )}
+      </Typography>
+    </Styled.Link>
   );
 };
 
