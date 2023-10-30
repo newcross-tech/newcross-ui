@@ -69,13 +69,10 @@ export const Link = styled.a`
   `};
 `;
 
-export const Icon = styled(FontAwesomeIcon)<Pick<LinkProps, 'leftIcon' | 'rightIcon' | 'variant'>>`
-  ${({
-    theme,
-    leftIcon,
-    rightIcon,
-    variant,
-  }: ExtendedTheme<Pick<LinkProps, 'leftIcon' | 'rightIcon' | 'variant'>>) => css`
+type IconProps = Pick<LinkProps, 'leftIcon' | 'rightIcon' | 'variant'>;
+
+export const Icon = styled(FontAwesomeIcon)<IconProps>`
+  ${({ theme, leftIcon, rightIcon, variant }: ExtendedTheme<IconProps>) => css`
     ${getIconSize(theme)[variant]};
     ${leftIcon && `margin-right: ${theme.SpacingBase8}`};
     ${rightIcon && `margin-left: ${theme.SpacingBase8}`};
