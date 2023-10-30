@@ -1,5 +1,5 @@
 import { AnchorHTMLAttributes } from 'react';
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import Typography, { TypographyProps } from '../Typography';
 import * as Styled from './Link.style';
 import { TestProp } from '../../types';
