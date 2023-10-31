@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.38.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.37.3...@newcross-ui/react@1.38.0) (2023-10-31)
+
+
+### Features
+
+* **OAE-1381:** create pagination component ([#49](https://bitbucket.org/newcrossdev/newcross-ui/issues/49)) ([8b9e347](https://bitbucket.org/newcrossdev/newcross-ui/commits/8b9e347de786751e4cdb3fa91e7f3170e77f3a1c))
+
+
+
+
+
 ## [1.37.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.37.2...@newcross-ui/react@1.37.3) (2023-10-27)
 
 **Note:** Version bump only for package @newcross-ui/react
