@@ -41,8 +41,10 @@ export const TypeVariants = () => {
     <>
       <StoryTitle.Regular>Text with link together</StoryTitle.Regular>
       <>
-        <Typography variant="paragraph1">Paragraph text</Typography>
-        <Link variant="paragraph1" rightIcon={faStar}>
+        <Typography variant="paragraph1" display="inline">
+          Paragraph text
+        </Typography>
+        <Link variant="paragraph1" rightIcon={faStar} display="inline">
           and link together
         </Link>
       </>

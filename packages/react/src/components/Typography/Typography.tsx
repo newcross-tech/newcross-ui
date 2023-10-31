@@ -47,7 +47,7 @@ const Typography = ({
   children,
   testID,
   mode = 'light',
-  display = 'inline',
+  display = 'block',
   ...rest
 }: TypographyProps) => {
   return (

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Checkbox, { CheckboxProps } from '../../components/Checkbox';
 import Container from '../Container';
@@ -6,6 +7,8 @@ import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './CheckboxInfo';
 import useState from 'storybook-addon-state';
 import * as StoryTitle from '../StoryTitle';
+import Typography from '../../components/Typography';
+import Link from '../../components/Link';
 
 export default {
   title: 'React/Components/Checkbox',
@@ -60,6 +63,27 @@ export const Variants = () => {
           </span>
         }
         checked
+      />
+      <StoryTitle.Regular>Label with text and link</StoryTitle.Regular>
+      <Checkbox
+        label={
+          <>
+            <Typography variant="paragraph1" display="inline">
+              Hello
+            </Typography>
+            <Link
+              variant="paragraph1"
+              display="inline"
+              onClick={(e) => {
+                e.stopPropagation();
+                alert('link is clicked');
+              }}
+            >
+              world
+            </Link>
+          </>
+        }
+        onChange={() => alert('checkbox is clicked')}
       />
     </Container>
   );
