@@ -39,7 +39,9 @@ export const PaginationButton: React.FC<PaginationButtonProps> = ({
   ...rest
 }) =>
   variant === 'ellipsis' ? (
-    <Styled.PaginationButton as="div">...</Styled.PaginationButton>
+    <Styled.PaginationButton as="div" disabled>
+      ...
+    </Styled.PaginationButton>
   ) : (
     <Styled.PaginationButton {...rest}>{page}</Styled.PaginationButton>
   );
