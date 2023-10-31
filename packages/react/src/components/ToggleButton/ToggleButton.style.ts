@@ -30,8 +30,8 @@ export const IconWrapper = styled.div<ExtendedTheme<ContentProps>>`
     color: ${theme.ToggleButtonColor};
   `};
 `;
-export const Text = styled(Typography)<ToggleButtonProps>`
-  ${({ theme }: ExtendedTheme<ToggleButtonProps>) => css`
+export const Text = styled(Typography)<Omit<ToggleButtonProps, 'variant'>>`
+  ${({ theme }: ExtendedTheme<Omit<ToggleButtonProps, 'variant'>>) => css`
     color: ${theme.ToggleButtonColor};
   `};
 `;
