@@ -5,13 +5,9 @@ type ChildrenProps = {
 };
 
 export const Overview = ({ children }: ChildrenProps) => (
-  <Typography variant="heading6" display="block">
-    {children}
-  </Typography>
+  <Typography variant="heading6">{children}</Typography>
 );
 
 export const Regular = ({ children }: ChildrenProps) => (
-  <Typography variant="subtitle1" display="block">
-    {children}
-  </Typography>
+  <Typography variant="subtitle1">{children}</Typography>
 );
