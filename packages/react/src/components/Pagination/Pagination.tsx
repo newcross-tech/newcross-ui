@@ -3,6 +3,8 @@ import * as Styled from './Pagination.style';
 import { PaginationArrowButton, PaginationButton } from './PaginationButton';
 import { useState, useRef } from 'react';
 import { useResize } from '../../hooks/useResize';
+import useTheme from '../../hooks/useTheme';
+import { getHaloValue } from '../../utils';
 
 export type PaginationProps = {
   /**
@@ -23,10 +25,6 @@ export type PaginationProps = {
   fullWidth?: boolean;
 };
 
-const CONTAINER_ELEMENTS_WIDTH = 372;
-const PAGINATION_BUTTON_WIDTH = 40;
-const LEFT_AND_RIGHT_SIBLING_COUNT = 2;
-
 const Pagination: React.FC<PaginationProps> = ({
   count,
   selectedValue,
@@ -35,6 +33,15 @@ const Pagination: React.FC<PaginationProps> = ({
 }) => {
   const [widthOfContainer, setWidthOfContainer] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
+  const theme = useTheme();
+
+  // CONTAINER_ELEMENTS_WIDTH = 372, which is the width of all pagination elements, which are always visible
+  // i.e. laft and right arrow, left and right ellipsis, selected element and paddings
+  const CONTAINER_ELEMENTS_WIDTH =
+    getPixelsFromHaloSpacing(theme.SpacingBase40) * 9 +
+    getPixelsFromHaloSpacing(theme.SpacingBase12);
+  const PAGINATION_BUTTON_WIDTH = getPixelsFromHaloSpacing(theme.SpacingBase40);
+  const LEFT_AND_RIGHT_SIBLING_COUNT = 2;
 
   useResize({
     ref,
@@ -79,3 +86,8 @@ const Pagination: React.FC<PaginationProps> = ({
 };
 
 export default Pagination;
+
+// +getHaloValue removes 'rem' from spacing and returns a number
+// * 16 converts to pixels
+const getPixelsFromHaloSpacing = (spacing: string) =>
+  +getHaloValue(spacing) * 16;
