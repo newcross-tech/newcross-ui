@@ -20,6 +20,8 @@ type ToggleButtonGroupGeneralProps = {
 export type ToggleButtonGroupProps = (SingleSelect | MultiSelect) &
   ToggleButtonGroupGeneralProps;
 
+// this component will be updated so it doesn't always take up
+// all the available space with this ticket https://newcross.atlassian.net/browse/HDS-52
 const ToggleButtonGroup = ({
   children,
   selectedValue,
