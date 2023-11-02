@@ -1,63 +1,64 @@
 import { TestProp } from '../../types';
 import { ThemeSpacing } from './Container.types';
 import * as Styled from './Container.style';
+import { CSSProperties } from 'react';
 
 export type ContainerProps = {
   children?: React.ReactNode;
   /**
-   * margin-left and margin-right and margin-top and margin-bottom
+   * CSS: `margin-left` and `margin-right` and `margin-top` and `margin-bottom`
    */
   m?: ThemeSpacing;
   /**
-   * margin-left and margin-right
+   * CSS: `margin-left` and `margin-right`
    */
   mx?: ThemeSpacing;
   /**
-   * margin-top and margin-bottom
+   * CSS: `margin-top` and `margin-bottom`
    */
   my?: ThemeSpacing;
   /**
-   * margin-left
+   * CSS: `margin-left`
    */
   ml?: ThemeSpacing;
   /**
-   * margin-right
+   * CSS: `margin-right`
    */
   mr?: ThemeSpacing;
   /**
-   * margin-top
+   * CSS: `margin-top`
    */
   mt?: ThemeSpacing;
   /**
-   * margin-bottom
+   * CSS: `margin-bottom`
    */
   mb?: ThemeSpacing;
   /**
-   * padding-left and padding-right and padding-top and padding-bottom
+   * CSS: `padding-left` and `padding-right` and `padding-top` and `padding-bottom`
    */
   p?: ThemeSpacing;
   /**
-   * padding-left and padding-right
+   * CSS: `padding-left` and `padding-right`
    */
   px?: ThemeSpacing;
   /**
-   * padding-top and padding-bottom
+   * CSS: `padding-top` and `padding-bottom`
    */
   py?: ThemeSpacing;
   /**
-   * padding-left
+   * CSS: `padding-left`
    */
   pl?: ThemeSpacing;
   /**
-   * padding-right
+   * CSS: `padding-right`
    */
   pr?: ThemeSpacing;
   /**
-   * padding-top
+   * CSS: `padding-top`
    */
   pt?: ThemeSpacing;
   /**
-   * padding-bottom
+   * CSS: `padding-bottom`
    */
   pb?: ThemeSpacing;
   /**
@@ -65,9 +66,25 @@ export type ContainerProps = {
    */
   direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
   /**
+   * CSS: `flex-wrap`
+   */
+  flexWrap?: CSSProperties['flexWrap'];
+  /**
+   * CSS: `justify-content`
+   */
+  justifyContent?: CSSProperties['justifyContent'];
+  /**
+   * CSS: `align-items`
+   */
+  alignItems?: CSSProperties['alignItems'];
+  /**
    * Sets the spacing between each child using margin
    */
   gap?: ThemeSpacing;
+  /**
+   * CSS: `display`
+   */
+  display?: CSSProperties['display'];
   /**
    * Used to make the container take the full width of its parent
    * `width: 100%`

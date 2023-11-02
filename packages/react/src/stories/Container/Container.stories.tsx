@@ -3,6 +3,7 @@ import Container, { ContainerProps } from '../../components/Container';
 import TextInput from '../../components/TextInput';
 import { DESCRIPTION, DO, DONT, TITLE } from './ContainerInfo';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
+import Card from '../../components/Card';
 import Typography from '../../components/Typography';
 import * as StoryTitle from '../StoryTitle';
 import styled from 'styled-components';
@@ -40,7 +41,7 @@ export const Variants = () => {
       <StyledContainer p="SpacingBase12">Lorem ipsum</StyledContainer>
 
       <StoryTitle.Overview>
-        Flexbox container with spacing and padding
+        Flexbox container with gap and padding
       </StoryTitle.Overview>
       <StyledContainer direction="column" gap="SpacingBase12" p="SpacingBase12">
         <TextInput label="Field A" />
@@ -61,9 +62,11 @@ Interactive.args = {
   children: (
     <>
       {[...new Array(4)].map((_, i) => (
-        <Typography variant="paragraph1" key={i}>
-          Paragraph {i + 1}
-        </Typography>
+        <Card hasBorder>
+          <Typography variant="paragraph1" key={i}>
+            Card {i + 1}
+          </Typography>
+        </Card>
       ))}
     </>
   ),

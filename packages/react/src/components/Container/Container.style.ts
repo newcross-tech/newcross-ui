@@ -10,7 +10,30 @@ const getMarginProperty = {
 };
 
 export const Container = styled.div<ExtendedTheme<ContainerProps>>`
-  ${({ theme, m, mx, my, ml, mr, mt, mb, p, px, py, pl, pr, pt, pb, direction, gap, fullWidth }) => css`
+  ${({
+    theme,
+    m,
+    mx,
+    my,
+    ml,
+    mr,
+    mt,
+    mb,
+    p,
+    px,
+    py,
+    pl,
+    pr,
+    pt,
+    pb,
+    direction,
+    flexWrap,
+    justifyContent,
+    alignItems,
+    gap,
+    display,
+    fullWidth,
+  }) => css`
     ${m &&
     `
         margin: ${theme[m]};
@@ -54,6 +77,9 @@ export const Container = styled.div<ExtendedTheme<ContainerProps>>`
         display: flex;
         flex-direction: ${direction};
     `}
+    ${flexWrap && `flex-wrap: ${flexWrap}`}
+    ${justifyContent && `flex-wrap: ${justifyContent}`}
+    ${alignItems && `flex-wrap: ${alignItems}`}
     ${direction &&
     gap &&
     `
@@ -61,6 +87,8 @@ export const Container = styled.div<ExtendedTheme<ContainerProps>>`
             ${getMarginProperty[direction]}: ${theme[gap]};
         }
     `}
+
+    ${display && `display: ${display}`}
 
     ${fullWidth && `width: 100%;`}
   `}
