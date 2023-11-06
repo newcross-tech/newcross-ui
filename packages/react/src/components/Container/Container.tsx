@@ -1,9 +1,8 @@
-import { TestProp } from '../../types';
-import { ThemeSpacing } from './Container.types';
+import { TestProp, ThemeSpacing } from '../../types';
 import * as Styled from './Container.style';
 import { CSSProperties } from 'react';
 
-export type ContainerProps = {
+type BaseProps = {
   children?: React.ReactNode;
   /**
    * CSS: `margin-left` and `margin-right` and `margin-top` and `margin-bottom`
@@ -62,9 +61,21 @@ export type ContainerProps = {
    */
   pb?: ThemeSpacing;
   /**
+   * CSS: `display`
+   */
+  display?: CSSProperties['display'];
+  /**
+   * Used to make the container take the full width of its parent
+   * `width: 100%`
+   */
+  fullWidth?: boolean;
+} & TestProp;
+
+type FlexBoxProps = {
+  /**
    * Makes the container a flexbox and sets the flex-direction
    */
-  direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
+  direction: 'row' | 'column' | 'row-reverse' | 'column-reverse';
   /**
    * CSS: `flex-wrap`
    */
@@ -84,13 +95,10 @@ export type ContainerProps = {
   /**
    * CSS: `display`
    */
-  display?: CSSProperties['display'];
-  /**
-   * Used to make the container take the full width of its parent
-   * `width: 100%`
-   */
-  fullWidth?: boolean;
-} & TestProp;
+  display?: 'flex' | 'inline-flex';
+};
+
+export type ContainerProps = BaseProps | (BaseProps & FlexBoxProps);
 
 const Container = ({ children, testID, ...props }: ContainerProps) => {
   return (

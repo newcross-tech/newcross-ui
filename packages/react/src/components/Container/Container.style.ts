@@ -2,13 +2,6 @@ import styled, { css } from 'styled-components';
 import { ExtendedTheme } from '../../types';
 import { ContainerProps } from './Container';
 
-const getMarginProperty = {
-  row: 'margin-left',
-  column: 'margin-top',
-  'row-reverse': 'margin-right',
-  'column-reverse': 'margin-bottom',
-};
-
 export const Container = styled.div<ExtendedTheme<ContainerProps>>`
   ${({
     theme,
@@ -76,16 +69,11 @@ export const Container = styled.div<ExtendedTheme<ContainerProps>>`
     `
         display: flex;
         flex-direction: ${direction};
-    `}
-    ${flexWrap && `flex-wrap: ${flexWrap}`}
-    ${justifyContent && `flex-wrap: ${justifyContent}`}
-    ${alignItems && `flex-wrap: ${alignItems}`}
-    ${direction &&
-    gap &&
-    `
-        & > *:not(:first-child) {
-            ${getMarginProperty[direction]}: ${theme[gap]};
-        }
+
+        ${flexWrap && `flex-wrap: ${flexWrap}`};
+        ${justifyContent && `flex-wrap: ${justifyContent}`};
+        ${alignItems && `flex-wrap: ${alignItems}`};
+        ${gap && `gap: ${theme[gap]}`};
     `}
 
     ${display && `display: ${display}`}
