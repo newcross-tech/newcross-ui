@@ -2,7 +2,7 @@ import { TestProp, ThemeSpacing } from '../../types';
 import * as Styled from './Container.style';
 import { CSSProperties } from 'react';
 
-type BaseProps = {
+export type ContainerProps = {
   children?: React.ReactNode;
   /**
    * CSS: `margin-left` and `margin-right` and `margin-top` and `margin-bottom`
@@ -69,13 +69,10 @@ type BaseProps = {
    * `width: 100%`
    */
   fullWidth?: boolean;
-} & TestProp;
-
-type FlexBoxProps = {
   /**
    * Makes the container a flexbox and sets the flex-direction
    */
-  direction: 'row' | 'column' | 'row-reverse' | 'column-reverse';
+  flexDirection?: CSSProperties['flexDirection'];
   /**
    * CSS: `flex-wrap`
    */
@@ -92,17 +89,16 @@ type FlexBoxProps = {
    * Sets the spacing between each child using margin
    */
   gap?: ThemeSpacing;
-  /**
-   * CSS: `display`
-   */
-  display?: 'flex' | 'inline-flex';
-};
+} & TestProp;
 
-export type ContainerProps = BaseProps | (BaseProps & FlexBoxProps);
-
-const Container = ({ children, testID, ...props }: ContainerProps) => {
+const Container = ({
+  children,
+  testID,
+  display = 'flex',
+  ...props
+}: ContainerProps) => {
   return (
-    <Styled.Container {...props} data-testid={testID}>
+    <Styled.Container {...props} display={display} data-testid={testID}>
       {children}
     </Styled.Container>
   );

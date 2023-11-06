@@ -1,3 +1,4 @@
+import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Container, { ContainerProps } from '../../components/Container';
 import TextInput from '../../components/TextInput';
@@ -33,7 +34,7 @@ export const Overview = () => {
 
 export const Variants = () => {
   return (
-    <Container direction="column" gap="SpacingBase32">
+    <Container flexDirection="column" gap="SpacingBase32">
       <StoryTitle.Overview>Container with margin</StoryTitle.Overview>
       <StyledContainer m="SpacingBase12">Lorem ipsum</StyledContainer>
 
@@ -43,7 +44,11 @@ export const Variants = () => {
       <StoryTitle.Overview>
         Flexbox container with gap and padding
       </StoryTitle.Overview>
-      <StyledContainer direction="column" gap="SpacingBase12" p="SpacingBase12">
+      <StyledContainer
+        flexDirection="column"
+        gap="SpacingBase12"
+        p="SpacingBase12"
+      >
         <TextInput label="Field A" />
         <TextInput label="Field B" />
         <TextInput label="Field C" />

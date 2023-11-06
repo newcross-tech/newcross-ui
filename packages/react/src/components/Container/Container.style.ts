@@ -19,7 +19,7 @@ export const Container = styled.div<ExtendedTheme<ContainerProps>>`
     pr,
     pt,
     pb,
-    direction,
+    flexDirection,
     flexWrap,
     justifyContent,
     alignItems,
@@ -65,18 +65,13 @@ export const Container = styled.div<ExtendedTheme<ContainerProps>>`
     ${pt && `padding-top: ${theme[pt]};`}
     ${pb && `padding-bottom: ${theme[pb]};`}
 
-    ${direction &&
-    `
-        display: flex;
-        flex-direction: ${direction};
-
-        ${flexWrap && `flex-wrap: ${flexWrap}`};
-        ${justifyContent && `flex-wrap: ${justifyContent}`};
-        ${alignItems && `flex-wrap: ${alignItems}`};
-        ${gap && `gap: ${theme[gap]}`};
-    `}
-
     ${display && `display: ${display}`}
+
+    ${flexWrap && `flex-wrap: ${flexWrap}`};
+    ${justifyContent && `justify-content: ${justifyContent}`};
+    ${alignItems && `align-items: ${alignItems}`};
+    ${gap && `gap: ${theme[gap]}`};
+    ${flexDirection && `flex-direction: ${flexDirection};`}
 
     ${fullWidth && `width: 100%;`}
   `}
