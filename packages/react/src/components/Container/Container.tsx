@@ -70,7 +70,7 @@ export type ContainerProps = {
    */
   fullWidth?: boolean;
   /**
-   * Makes the container a flexbox and sets the flex-direction
+   * CSS: `flex-direction`
    */
   flexDirection?: CSSProperties['flexDirection'];
   /**
