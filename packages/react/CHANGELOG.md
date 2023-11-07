@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.39.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.38.0...@newcross-ui/react@1.39.0) (2023-11-07)
+
+
+### Features
+
+* **AOE-1401:** container component implementation ([#50](https://bitbucket.org/newcrossdev/newcross-ui/issues/50)) ([4ee3ae9](https://bitbucket.org/newcrossdev/newcross-ui/commits/4ee3ae9bbec87c459a8ffbc495d794c00d2f6a74))
+
+
+
+
+
 # [1.38.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.37.3...@newcross-ui/react@1.38.0) (2023-10-31)
 
 
