@@ -43,6 +43,9 @@
       },
       "secondary": {
         "value": "{brand.color.secondary.100.value}"
+      },
+      "tertiary": {
+        "value": "{brand.color.tertiary.value}"
       }
     }
   }
