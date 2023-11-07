@@ -28,11 +28,17 @@ const Link = ({
     <Styled.Link {...restProps}>
       <Typography variant={variant} {...restProps}>
         {leftIcon && (
-          <Styled.Icon icon={leftIcon} leftIcon={leftIcon} variant={variant} />
+          <Styled.Icon
+            data-testid="link-left-icon"
+            icon={leftIcon}
+            leftIcon={leftIcon}
+            variant={variant}
+          />
         )}
         {children}
         {rightIcon && (
           <Styled.Icon
+            data-testid="link-right-icon"
             icon={rightIcon}
             rightIcon={rightIcon}
             variant={variant}
