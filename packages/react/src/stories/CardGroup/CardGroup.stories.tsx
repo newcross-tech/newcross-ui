@@ -8,8 +8,7 @@ import CardGroup, { CardGroupProps } from '../../components/CardGroup';
 import Typography from '../../components/Typography';
 import { Theme } from '../../types';
 import { CardShift } from '../Card/CardShift';
-import Container from '../Container';
-import Spacing from '../Spacing';
+import Container from '../../components/Container';
 import * as StoryTitle from '../StoryTitle';
 
 export default {
@@ -25,9 +24,9 @@ const StyledText = styled(Typography)`
 
 export const Variants = () => {
   return (
-    <Container direction="column" hasPadding={false}>
+    <Container flexDirection="column">
       <StoryTitle.Regular>CardGroup</StoryTitle.Regular>
-      <Spacing />
+      <Container m="SpacingBase4" />
       <CardGroup>
         <Card>
           <FontAwesomeIcon icon={faUser} size={'lg'} />
@@ -42,35 +41,40 @@ export const Variants = () => {
           <StyledText variant={'heading6'}>My card</StyledText>
         </Card>
       </CardGroup>
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase8" />
       <StoryTitle.Regular>FullWidth CardGroup</StoryTitle.Regular>
-      <Spacing />
+      <Container m="SpacingBase8" />
       <CardGroup fullWidth>
         <Card hasRightIcon>
-          <Container hasPadding={false}>
+          <Container>
             <FontAwesomeIcon icon={faUser} size={'lg'} />
             <StyledText variant={'heading6'}>My card</StyledText>
           </Container>
         </Card>
         <Card hasRightIcon>
-          <Container hasPadding={false}>
+          <Container>
             <FontAwesomeIcon icon={faUser} size={'lg'} />
             <StyledText variant={'heading6'}>My card</StyledText>
           </Container>
         </Card>
         <Card hasRightIcon>
-          <Container hasPadding={false}>
+          <Container>
             <FontAwesomeIcon icon={faUser} size={'lg'} />
             <StyledText variant={'heading6'}>My card</StyledText>
           </Container>
         </Card>
       </CardGroup>
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase8" />
       <StoryTitle.Regular>Day shift cards Group</StoryTitle.Regular>
-      <Spacing />
+      <Container m="SpacingBase8" />
       <CardGroup>
-        <CardShift shiftCardStatus={'DAY'} />
-        <CardShift shiftCardStatus={'DAY'} />
+        <Container pb="SpacingBase8">
+          <CardShift shiftCardStatus={'DAY'} />
+        </Container>
+        <Container pb="SpacingBase8">
+          <CardShift shiftCardStatus={'DAY'} />
+        </Container>
+
         <CardShift shiftCardStatus={'DAY'} />
       </CardGroup>
     </Container>

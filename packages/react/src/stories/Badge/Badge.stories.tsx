@@ -1,3 +1,4 @@
+import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { faBarsFilter } from '@fortawesome/pro-light-svg-icons/faBarsFilter';
 import { faKitMedical } from '@fortawesome/pro-light-svg-icons/faKitMedical';
@@ -10,8 +11,7 @@ import {
 import { web } from '@newcross-ui/design-tokens';
 import styled, { css } from 'styled-components';
 import Badge, { BadgeProps, BadgeSizes } from '../../components/Badge';
-import Container from '../Container';
-import Spacing from '../Spacing';
+import Container from '../../components/Container';
 
 const { SpacingBase24, SpacingBase48 } = web.healthforce;
 
@@ -46,17 +46,17 @@ const Icon = styled(FontAwesomeIcon)<IconProps>`
 export const VariantsWithIcons = () => {
   return (
     <Container display="inline-flex" justifyContent="space-around">
-      <Spacing position={'Horizontal'} />
+      <Container mx="SpacingBase8" />
       <Badge size="small" position="topRight">
         <StyledWrapper>
           <Icon icon={faBarsFilter} $size={SpacingBase24} />
         </StyledWrapper>
       </Badge>
-      <Spacing size={'Large'} position={'Horizontal'} />
+      <Container mx="SpacingBase8" />
       <Badge size={'medium'} badgeContent={9} position={'topLeft'}>
         <Icon icon={faUser} $size={SpacingBase24} />
       </Badge>
-      <Spacing size={'Large'} position={'Horizontal'} />
+      <Container mx="SpacingBase8" />
       <Badge size={'large'} badgeContent={'!'} position={'bottomRight'}>
         <Icon icon={faTrainSubway} $size={SpacingBase48} />
       </Badge>
@@ -66,7 +66,7 @@ export const VariantsWithIcons = () => {
 
 export const Variants = () => {
   return (
-    <Container justifyContent="space-around" hasPadding>
+    <Container justifyContent="space-around">
       <Badge size={'small'} />
       <Badge size={'medium'} badgeContent={9} />
       <Badge size={'medium'} badgeContent={'?'} />

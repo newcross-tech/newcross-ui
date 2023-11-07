@@ -1,9 +1,9 @@
+import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
-import { useState } from 'react';
 import Button from '../../components/Button';
 import Pill from '../../components/Pill';
 import PillGroup, { PillGroupProps } from '../../components/PillGroup';
-import Container from '../Container';
+import Container from '../../components/Container';
 import { faBird } from '@fortawesome/pro-solid-svg-icons/faBird';
 import { faCat } from '@fortawesome/pro-solid-svg-icons/faCat';
 import { faDog } from '@fortawesome/pro-solid-svg-icons/faDog';
@@ -14,7 +14,6 @@ import { faSheep } from '@fortawesome/pro-solid-svg-icons/faSheep';
 import { faSnake } from '@fortawesome/pro-solid-svg-icons/faSnake';
 import { faWhale } from '@fortawesome/pro-solid-svg-icons/faWhale';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Spacing from '../Spacing';
 import * as StoryTitle from '../StoryTitle';
 
 export default {
@@ -55,16 +54,18 @@ export const Variants = () => {
   };
 
   return (
-    <Container direction="column">
+    <Container flexDirection="column">
       <StoryTitle.Regular>
         Removable Pill Group (Interactive Section with Buttons)
       </StoryTitle.Regular>
       <Container>
         {items.map(({ label, id }) => {
           return (
-            <Button key={label} onClick={() => handleOnClick(id)}>
-              {label}
-            </Button>
+            <Container mr="SpacingBase8" key={label}>
+              <Button key={label} onClick={() => handleOnClick(id)}>
+                {label}
+              </Button>
+            </Container>
           );
         })}
       </Container>
@@ -83,7 +84,7 @@ export const Variants = () => {
         })}
       </PillGroup>
 
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase16" />
       <StoryTitle.Regular>Pill Group with Pill Variants</StoryTitle.Regular>
 
       <PillGroup>
@@ -94,7 +95,7 @@ export const Variants = () => {
         <Pill disabled label="Five" />
         <Pill disabled label="Six" />
       </PillGroup>
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase16" />
 
       <StoryTitle.Regular>
         Pill Group with Vertical Orientation

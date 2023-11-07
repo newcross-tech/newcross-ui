@@ -8,9 +8,9 @@ import { faStar } from '@fortawesome/pro-regular-svg-icons/faStar';
 import Link, { LinkProps } from '../../components/Link';
 import Typography from '../../components/Typography';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './LinkInfo';
 import * as StoryTitle from '../StoryTitle';
+import Container from '../../components/Container';
 
 export default {
   title: 'React/Components/Link',
@@ -44,11 +44,13 @@ export const TypeVariants = () => {
         <Typography variant="paragraph1" display="inline">
           Paragraph text
         </Typography>
-        <Link variant="paragraph1" rightIcon={faStar} display="inline">
-          and link together
-        </Link>
+        <Container display="inline" ml="SpacingBase4">
+          <Link variant="paragraph1" rightIcon={faStar} display="inline">
+            and link together
+          </Link>
+        </Container>
       </>
-      <Spacing />
+      <Container my="SpacingBase4" />
       <StoryTitle.Regular>Email Link</StoryTitle.Regular>
       <Link
         href={'mailto:someone@newcrosshealthcare.com'}
@@ -57,13 +59,13 @@ export const TypeVariants = () => {
       >
         contact me
       </Link>
-      <Spacing />
+      <Container my="SpacingBase4" />
       <StoryTitle.Regular>Phone Link</StoryTitle.Regular>
       <Link variant="paragraph1" href={'tel:6012345678'} leftIcon={faPhone}>
         6012345678
       </Link>
 
-      <Spacing />
+      <Container my="SpacingBase4" />
       <StoryTitle.Regular>External site Link</StoryTitle.Regular>
       <Link
         target={'_blank'}
@@ -74,7 +76,7 @@ export const TypeVariants = () => {
         Go to external Website
       </Link>
 
-      <Spacing />
+      <Container my="SpacingBase4" />
       <StoryTitle.Regular>Internal site Link</StoryTitle.Regular>
       <Link
         variant="paragraph1"
@@ -85,13 +87,13 @@ export const TypeVariants = () => {
       >
         Go to internal Website
       </Link>
-      <Spacing />
+      <Container my="SpacingBase4" />
       <StoryTitle.Regular>Section Link</StoryTitle.Regular>
       <Link variant="paragraph1" href="#here" onClick={handleClick}>
         Go below
       </Link>
 
-      <Spacing />
+      <Container my="SpacingBase4" />
 
       <Typography variant={'heading6'}>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur

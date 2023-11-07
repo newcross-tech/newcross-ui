@@ -1,7 +1,7 @@
+import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import ToggleButton, { ToggleButtonProps } from '../../components/ToggleButton';
-import Container from '../Container';
-import Spacing from '../Spacing';
+import Container from '../../components/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter } from '@fortawesome/pro-regular-svg-icons/faFilter';
 import { faCalendarDays } from '@fortawesome/pro-solid-svg-icons/faCalendarDays';
@@ -16,26 +16,26 @@ export default {
 
 export const Variants = () => {
   return (
-    <Container direction="column" display="block">
+    <Container display="block">
       <ToggleButton
         selected={false}
         rightIcon={<FontAwesomeIcon icon={faCalendarDays} />}
       >
         Apr
       </ToggleButton>
-      <Spacing />
+      <Container m="SpacingBase4" />
       <ToggleButton
         selected={true}
         rightIcon={<FontAwesomeIcon icon={faCalendarDays} />}
       >
         Apr
       </ToggleButton>
-      <Spacing />
+      <Container m="SpacingBase4" />
       <ToggleButton selected={false}>Fav (3)</ToggleButton>
-      <Spacing />
+      <Container m="SpacingBase4" />
       <ToggleButton selected={true}>Fav (3)</ToggleButton>
 
-      <Spacing />
+      <Container m="SpacingBase4" />
       <ToggleButton
         selected={false}
         leftIcon={<FontAwesomeIcon icon={faFilter} />}
@@ -43,7 +43,7 @@ export const Variants = () => {
       >
         Filter By
       </ToggleButton>
-      <Spacing />
+      <Container m="SpacingBase4" />
       <ToggleButton
         selected={true}
         leftIcon={<FontAwesomeIcon icon={faFilter} />}
@@ -63,14 +63,14 @@ export const Overview = () => {
       doInfo={DO}
       dontInfo={DONT}
     >
-      <Container hasPadding={false} direction={'column'} display={'block'}>
+      <Container display={'block'}>
         <ToggleButton
           selected={false}
           leftIcon={<FontAwesomeIcon icon={faFilter} />}
         >
           Filter By
         </ToggleButton>
-        <Spacing />
+        <Container m="SpacingBase4" />
         <ToggleButton
           selected={true}
           leftIcon={<FontAwesomeIcon icon={faFilter} />}
