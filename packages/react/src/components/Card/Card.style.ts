@@ -13,6 +13,9 @@ export const getColorValues = (theme: ThemeDesignTokens): Record<CardVariants, F
   secondary: css`
     ${theme.CardBorderColorSecondary}
   `,
+  tertiary: css`
+    ${theme.CardBorderColorTertiary}
+  `,
 });
 
 export const Card = styled.div<StyledCardProps>`
