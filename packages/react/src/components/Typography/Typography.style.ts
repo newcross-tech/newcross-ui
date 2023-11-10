@@ -162,7 +162,17 @@ export const getCoreStyles = ({
 `;
 
 export const Typography = styled.div<TypographyProps>`
-  ${({ theme, variant, color, mode, align, gutterBottom, numberOfLines }: ExtendedTheme<TypographyProps>) => css`
+  ${({
+    theme,
+    variant,
+    color,
+    mode,
+    align,
+    gutterBottom,
+    numberOfLines,
+    display,
+  }: ExtendedTheme<TypographyProps>) => css`
+    display: ${display};
     ${getCoreStyles({
       theme,
       variant,

@@ -1,9 +1,9 @@
+import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import styled from 'styled-components';
 import Tooltip, { TooltipProps } from '../../components/Tooltip';
-import Container from '../Container';
+import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './Tooltip.info';
 import * as StoryTitle from '../StoryTitle';
 
@@ -20,16 +20,16 @@ const CenteredWrapper = styled.div`
 
 export const Variants = () => {
   return (
-    <Container display={'block'} direction="column">
+    <Container display="block">
       <StoryTitle.Regular>Default Tooltip</StoryTitle.Regular>
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase8" />
       <Tooltip position="right">
         This is an info message. This is an info message. This is an info
         message.
       </Tooltip>
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase8" />
       <StoryTitle.Regular>Question Tooltip</StoryTitle.Regular>
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase8" />
       <Tooltip variant="question" position="right">
         This is a question message. This is a question message. This is a
         question message.
@@ -40,9 +40,9 @@ export const Variants = () => {
 
 export const VariantsWithPosition = () => {
   return (
-    <Container direction="column" display="flex">
+    <Container flexDirection="column">
       <StoryTitle.Regular>Variants with Position</StoryTitle.Regular>
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase8" />
       <Container display="inline-flex" justifyContent="space-around">
         <Tooltip position="top">Top</Tooltip>
         <StoryTitle.Regular>Top</StoryTitle.Regular>

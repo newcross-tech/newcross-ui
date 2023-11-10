@@ -1,13 +1,12 @@
-import { Meta, Story } from '@storybook/react';
 import React from 'react';
-import Container from '../Container';
+import { Meta, Story } from '@storybook/react';
+import Container from '../../components/Container';
 import Pagination, { PaginationProps } from '../../components/Pagination';
 import Card from '../../components/Card';
 import * as StoryTitle from '../StoryTitle';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './PaginationInfo';
 import styled from 'styled-components';
-import Spacing from '../Spacing';
 
 export default {
   title: 'React/Components/Pagination',
@@ -39,7 +38,7 @@ export const Overview = () => {
       doInfo={DO}
       dontInfo={DONT}
     >
-      <Container direction="column">
+      <Container flexDirection="column">
         <Pagination count={20} />
       </Container>
     </InfoTemplate>
@@ -48,21 +47,21 @@ export const Overview = () => {
 
 export const Variants = () => {
   return (
-    <Container direction="column">
+    <Container flexDirection="column">
       <StoryTitle.Regular>
         Pagination with 12 elements - aligned to the start
       </StoryTitle.Regular>
       <StyledCard fullWidth>
         <Pagination count={12} />
       </StyledCard>
-      <Spacing />
+      <Container m="SpacingBase16" />
       <StoryTitle.Regular>
         Pagination with 12 elements - full width
       </StoryTitle.Regular>
       <StyledCard fullWidth>
         <Pagination count={12} fullWidth selectedValue={12} />
       </StyledCard>
-      <Spacing />
+      <Container m="SpacingBase16" />
       <StoryTitle.Regular>
         Pagination with 55 elements - full width
       </StoryTitle.Regular>

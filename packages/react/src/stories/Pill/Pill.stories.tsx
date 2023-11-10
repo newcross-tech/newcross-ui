@@ -1,9 +1,10 @@
+import React from 'react';
 import { faBird } from '@fortawesome/pro-solid-svg-icons/faBird';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Meta, Story } from '@storybook/react';
 import Pill, { PillProps } from '../../components/Pill';
 import PillGroup from '../../components/PillGroup';
-import Container from '../Container';
+import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './PillInfo';
 import * as StoryTitle from '../StoryTitle';
@@ -23,7 +24,7 @@ export const Overview = () => {
       doInfo={DO}
       dontInfo={DONT}
     >
-      <Container direction="column">
+      <Container flexDirection="column">
         <StoryTitle.Overview>Pill with Label</StoryTitle.Overview>
         <Container>
           <Pill label="Label" removable={false} />
@@ -46,7 +47,7 @@ export const Overview = () => {
 
 export const Variants = () => {
   return (
-    <Container direction="column">
+    <Container flexDirection="column">
       <StoryTitle.Regular>Pill with Label</StoryTitle.Regular>
       <Pill label="Label" />
       <StoryTitle.Regular>Selected Pill with Label</StoryTitle.Regular>
@@ -79,9 +80,9 @@ export const Variants = () => {
 export const VariantsWithColor = () => {
   const theme = useTheme();
   return (
-    <Container direction="column">
+    <Container flexDirection="column">
       <StoryTitle.Regular>Status Pills</StoryTitle.Regular>
-      <Container direction="row">
+      <Container flexDirection="row">
         <Pill label="Default" icon={<FontAwesomeIcon icon={faBird} />} />
         <Pill label="Success" statusVariant="success" />
         <Pill label="Info" statusVariant="info" />
@@ -90,7 +91,7 @@ export const VariantsWithColor = () => {
       </Container>
 
       <StoryTitle.Regular>Status Pills With Icons</StoryTitle.Regular>
-      <Container direction="row">
+      <Container flexDirection="row">
         {[
           { label: 'Default', statusVariant: 'default' as PillVariant },
           { label: 'Success', statusVariant: 'success' as PillVariant },
@@ -107,7 +108,7 @@ export const VariantsWithColor = () => {
         ))}
       </Container>
       <StoryTitle.Regular>Custom styled Pill</StoryTitle.Regular>
-      <Container direction="row">
+      <Container flexDirection="row">
         {[
           {
             style: {

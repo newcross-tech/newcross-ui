@@ -1,38 +1,67 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled, { css } from 'styled-components';
-import { Theme } from '../../types';
-import { getTabbedStateStyles } from '../../utils';
+import styled, { FlattenSimpleInterpolation, css } from 'styled-components';
+import { ExtendedTheme, Theme } from '../../types';
 import { TypographyVariant } from '../Typography';
-import { LinkCoreVariant, LinkTextProp } from './Link.types';
-import { faCircleChevronRight } from '@fortawesome/pro-solid-svg-icons/faCircleChevronRight';
-import { faEnvelope } from '@fortawesome/pro-regular-svg-icons/faEnvelope';
-import { faPhone } from '@fortawesome/pro-regular-svg-icons/faPhone';
-import { faExternalLink } from '@fortawesome/pro-solid-svg-icons/faExternalLink';
-import { IconDefinition } from '@fortawesome/fontawesome-common-types';
+import { ThemeDesignTokens } from '../../theme/ThemeProvider';
+import { LinkProps } from './Link';
 
-export const getIcon = (): Record<LinkCoreVariant, IconDefinition> => ({
-  email: faEnvelope,
-  internal: faCircleChevronRight,
-  external: faExternalLink,
-  phone: faPhone,
+export const getIconSize = (theme: ThemeDesignTokens): Record<TypographyVariant, FlattenSimpleInterpolation> => ({
+  heading1: css`
+    height: ${theme.TypographyWebHeading1FontSize};
+    width: ${theme.TypographyWebHeading1FontSize};
+  `,
+  heading2: css`
+    height: ${theme.TypographyWebHeading2FontSize};
+    width: ${theme.TypographyWebHeading2FontSize};
+  `,
+  heading3: css`
+    height: ${theme.TypographyWebHeading3FontSize};
+    width: ${theme.TypographyWebHeading3FontSize};
+  `,
+  heading4: css`
+    height: ${theme.TypographyWebHeading4FontSize};
+    width: ${theme.TypographyWebHeading4FontSize};
+  `,
+  heading5: css`
+    height: ${theme.TypographyWebHeading5FontSize};
+    width: ${theme.TypographyWebHeading5FontSize};
+  `,
+  heading6: css`
+    height: ${theme.TypographyWebHeading6FontSize};
+    width: ${theme.TypographyWebHeading6FontSize};
+  `,
+  subtitle1: css`
+    height: ${theme.TypographyWebSubtitle1FontSize};
+    width: ${theme.TypographyWebSubtitle1FontSize};
+  `,
+  subtitle2: css`
+    height: ${theme.TypographyWebSubtitle2FontSize};
+    width: ${theme.TypographyWebSubtitle2FontSize};
+  `,
+  paragraph1: css`
+    height: ${theme.TypographyParagraph1FontSize};
+    width: ${theme.TypographyParagraph1FontSize};
+  `,
+  paragraph2: css`
+    height: ${theme.TypographyParagraph2FontSize};
+    width: ${theme.TypographyParagraph2FontSize};
+  `,
+  paragraph3: css`
+    height: ${theme.TypographyParagraph3FontSize};
+    width: ${theme.TypographyParagraph3FontSize};
+  `,
+  paragraph4: css`
+    height: ${theme.TypographyParagraph4FontSize};
+    width: ${theme.TypographyParagraph4FontSize};
+  `,
 });
 
-export const getTypographySizes = (): Record<string, TypographyVariant> => ({
-  small: 'paragraph2',
-  medium: 'paragraph1',
-});
+export const Link = styled.a`
+  text-decoration: underline;
+  cursor: pointer;
 
-export const LinkIcon = styled(FontAwesomeIcon)`
   ${({ theme }: Theme) => css`
-    width: ${theme.LinkIconMediumSize};
-    height: ${theme.LinkIconMediumSize};
-  `};
-`;
-
-export const LinkContent = styled.div`
-  ${({ theme }: Theme) => css`
-    display: flex;
-    align-items: center;
+    color: ${theme.LinkColor};
 
     &:active {
       opacity: ${theme.LinkPressedOpacity};
@@ -40,32 +69,12 @@ export const LinkContent = styled.div`
   `};
 `;
 
-export const LinkText = styled.div<LinkTextProp>`
-  ${({ theme, leftIcon }: LinkTextProp) => css`
-    text-decoration-line: underline;
-    ${leftIcon
-      ? css`
-          margin-left: ${theme.LinkMargin};
-        `
-      : css`
-          margin-right: ${theme.LinkMargin};
-        `}
+type IconProps = Pick<LinkProps, 'leftIcon' | 'rightIcon' | 'variant'>;
+
+export const Icon = styled(FontAwesomeIcon)<IconProps>`
+  ${({ theme, leftIcon, rightIcon, variant }: ExtendedTheme<IconProps>) => css`
+    ${getIconSize(theme)[variant]};
+    ${leftIcon && `margin-right: ${theme.SpacingBase8}`};
+    ${rightIcon && `margin-left: ${theme.SpacingBase8}`};
   `};
-`;
-
-const getLinkStyles = () => css`
-  cursor: pointer;
-  ${({ theme }: Theme) => css`
-    color: ${theme.LinkColor};
-    width: fit-content;
-    ${getTabbedStateStyles()}
-  `};
-`;
-
-export const LinkDiv = styled.div`
-  ${getLinkStyles()};
-`;
-
-export const LinkAnchor = styled.a`
-  ${getLinkStyles()};
 `;
