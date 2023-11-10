@@ -1,9 +1,9 @@
+import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Accordion, { AccordionProps } from '../../components/Accordion';
 import AccordionGroup from '../../components/AccordionGroup';
 import Typography from '../../components/Typography';
-import Container from '../Container';
-import Spacing from '../Spacing';
+import Container from '../../components/Container';
 import * as StoryTitle from '../StoryTitle';
 
 export default {
@@ -13,11 +13,11 @@ export default {
 
 export const Variants = () => {
   return (
-    <Container direction="column" hasPadding={false}>
+    <Container flexDirection="column">
       <StoryTitle.Regular>
         Accordion Group (Exclusive Selection)
       </StoryTitle.Regular>
-      <Spacing size={'Large'} />
+      <Container my="SpacingBase4" />
       <AccordionGroup>
         <Accordion label={'Section 1'}>
           <Typography variant={'paragraph2'}>
@@ -50,12 +50,12 @@ export const Variants = () => {
           </Typography>
         </Accordion>
       </AccordionGroup>
-      <Spacing size={'Large'} />
-      <Spacing size={'Large'} />
+      <Container my="SpacingBase4" />
+      <Container my="SpacingBase4" />
       <StoryTitle.Regular>
         Accordion Group (Multiple Selection)
       </StoryTitle.Regular>
-      <Spacing size={'Large'} />
+      <Container my="SpacingBase4" />
       <AccordionGroup exclusiveSelection={false}>
         <Accordion label={'Section 1'}>
           <Typography variant={'paragraph2'}>

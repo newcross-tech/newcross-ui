@@ -1,9 +1,9 @@
+import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import styled from 'styled-components';
 import ProgressBar, { ProgressBarProps } from '../../components/ProgressBar';
-import BasicContainer from '../Container';
+import BasicContainer from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './ProgressBarInfo';
 import * as StoryTitle from '../StoryTitle';
 
@@ -29,18 +29,18 @@ export const Overview = () => {
       doInfo={DO}
       dontInfo={DONT}
     >
-      <Container direction="column" hasPadding={false}>
+      <Container flexDirection="column">
         <StoryTitle.Overview>Determinate Progress Bar</StoryTitle.Overview>
-        <Spacing size={'Large'} />
+        <Container m="SpacingBase16" />
         <ProgressBar
           label={'Label'}
           labelPosition={'topLeft'}
           progressLabelPosition={'topRight'}
           progress={50}
         />
-        <Spacing size={'Large'} />
+        <Container m="SpacingBase16" />
         <StoryTitle.Overview>Indeterminate Progress Bar</StoryTitle.Overview>
-        <Spacing size={'Large'} />
+        <Container m="SpacingBase16" />
         <ProgressBar label={'Label'} variant={'indeterminate'} />
       </Container>
     </InfoTemplate>
@@ -49,32 +49,32 @@ export const Overview = () => {
 
 export const Variants = () => {
   return (
-    <Container direction="column">
+    <Container flexDirection="column">
       <StoryTitle.Regular>Determinate Progress Bar</StoryTitle.Regular>
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase16" />
       <ProgressBar
         label={'Label'}
         labelPosition={'topLeft'}
         progressLabelPosition={'topRight'}
         progress={0}
       />
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase16" />
 
       <StoryTitle.Regular>
         Determinate Centered Positioned Label Progress Bar
       </StoryTitle.Regular>
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase16" />
       <ProgressBar
         label={'Label'}
         labelPosition={'topCenter'}
         progressLabelPosition={'bottomCenter'}
         progress={25}
       />
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase16" />
       <StoryTitle.Regular>
         Determinate Two Line Label Progress Bar
       </StoryTitle.Regular>
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase24" />
       <ProgressBar
         label={
           'This label flows onto 2 lines This label flows onto 2 lines This label flows onto 2 lines This label flows onto 2 lines'
@@ -83,10 +83,10 @@ export const Variants = () => {
         progressLabelPosition={'topRight'}
         progress={50}
       />
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase16" />
 
       <StoryTitle.Regular>Indeterminate Progress Bar</StoryTitle.Regular>
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase16" />
       <ProgressBar label={'Label'} variant={'indeterminate'} />
     </Container>
   );
@@ -94,9 +94,9 @@ export const Variants = () => {
 
 const Template: Story<ProgressBarProps> = ({ ...rest }) => {
   return (
-    <Container direction="column">
+    <Container flexDirection="column">
       <StoryTitle.Regular>Interactive Progress Bar</StoryTitle.Regular>
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase24" />
       <ProgressBar {...rest} />
     </Container>
   );

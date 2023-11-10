@@ -1,3 +1,4 @@
+import React from 'react';
 import { faUser } from '@fortawesome/pro-light-svg-icons/faUser';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Meta, Story } from '@storybook/react';
@@ -10,9 +11,8 @@ import ToggleButton from '../../components/ToggleButton';
 import ToggleButtonGroup from '../../components/ToggleButtonGroup';
 import Typography from '../../components/Typography';
 import { Theme } from '../../types';
-import Container from '../Container';
+import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './CardInfo';
 import { CardShift } from './CardShift';
 import * as StoryTitle from '../StoryTitle';
@@ -36,9 +36,9 @@ export const Overview = () => {
       doInfo={DO}
       dontInfo={DONT}
     >
-      <Container display={'block'} direction={'column'} hasPadding={false}>
+      <Container display="block">
         <StoryTitle.Overview>Card with icon</StoryTitle.Overview>
-        <Spacing />
+        <Container m="SpacingBase4" />
         <Card hasRoundedCorners fullWidth={false}>
           <FontAwesomeIcon icon={faUser} size={'lg'} />
           <StyledText variant={'heading6'}>My Profile</StyledText>
@@ -55,7 +55,7 @@ export const Variants: Story<CardProps> = () => {
   );
 
   return (
-    <Container direction="column" display="flex">
+    <Container flexDirection="column">
       <StoryTitle.Regular>Card with icon and badge</StoryTitle.Regular>
 
       <Card hasRoundedCorners fullWidth={false}>
@@ -64,12 +64,15 @@ export const Variants: Story<CardProps> = () => {
         <Badge badgeContent={7} />
       </Card>
 
-      <Spacing />
+      <Container m="SpacingBase8" />
       <StoryTitle.Regular>Card with border</StoryTitle.Regular>
       <Container>
-        <Card hasBorder fullWidth={false}>
-          <Typography variant={'heading6'}>My card</Typography>
-        </Card>
+        <Container mr="SpacingBase8">
+          <Card hasBorder fullWidth={false}>
+            <Typography variant={'heading6'}>My card</Typography>
+          </Card>
+        </Container>
+
         <Card hasRoundedCorners hasBorder variant="secondary" fullWidth={false}>
           <Typography variant={'heading6'}>
             My card with rounded corners
@@ -77,25 +80,25 @@ export const Variants: Story<CardProps> = () => {
         </Card>
       </Container>
 
-      <Spacing />
+      <Container m="SpacingBase8" />
       <StoryTitle.Regular>Card with right icon</StoryTitle.Regular>
 
       <Card hasRoundedCorners hasRightIcon fullWidth>
         <Typography variant={'heading6'}>My card</Typography>
       </Card>
 
-      <Spacing />
+      <Container m="SpacingBase8" />
       <StoryTitle.Regular>Full Width Card</StoryTitle.Regular>
 
       <Card hasRoundedCorners fullWidth>
         <Typography variant={'heading6'}>My card</Typography>
       </Card>
 
-      <Spacing />
+      <Container m="SpacingBase8" />
       <StoryTitle.Regular>Card with Long text</StoryTitle.Regular>
 
       <Card hasRoundedCorners fullWidth>
-        <Container direction="column">
+        <Container flexDirection="column">
           <StyledText variant={'heading6'}>
             This is a Card Component with a long text!
           </StyledText>
@@ -108,19 +111,20 @@ export const Variants: Story<CardProps> = () => {
         </Container>
       </Card>
 
-      <Spacing />
+      <Container m="SpacingBase8" />
       <StoryTitle.Regular>Card with children</StoryTitle.Regular>
 
       <Card hasRoundedCorners fullWidth disabled>
-        <Container direction="column">
+        <Container flexDirection="column">
           <Typography variant={'heading6'}>My card with children</Typography>
           <CheckboxGroup
             defaultChecked={['Apple', 'Pear']}
             options={['Apple', 'Banana', 'Pear']}
           />
           <ToggleButtonGroup
+            variant="single"
             selectedValue={selectedSingleBtn}
-            onSingleSelect={setSelectedSingleBtn}
+            onToggle={setSelectedSingleBtn}
           >
             <ToggleButton value="1">Option A</ToggleButton>
             <ToggleButton value="2">Option B</ToggleButton>
@@ -129,10 +133,10 @@ export const Variants: Story<CardProps> = () => {
         </Container>
       </Card>
 
-      <Spacing />
+      <Container m="SpacingBase8" />
       <StoryTitle.Regular>Card with input field</StoryTitle.Regular>
       <Card hasRoundedCorners fullWidth>
-        <TextInput label="First name" />
+        <TextInput label="First name" fullWidth />
       </Card>
     </Container>
   );
@@ -140,19 +144,19 @@ export const Variants: Story<CardProps> = () => {
 
 export const ShiftVariants: Story<CardProps> = () => {
   return (
-    <Container direction="column">
+    <Container flexDirection="column">
       <StoryTitle.Regular>Day shift</StoryTitle.Regular>
       <Container>
         <CardShift shiftCardStatus="DAY" hasRoundedCorners />
       </Container>
 
-      <Spacing />
+      <Container m="SpacingBase8" />
       <StoryTitle.Regular>Night shift</StoryTitle.Regular>
       <Container>
         <CardShift shiftCardStatus="NIGHT" hasRoundedCorners />
       </Container>
 
-      <Spacing />
+      <Container m="SpacingBase8" />
       <StoryTitle.Regular>Sleeper shift</StoryTitle.Regular>
       <Container>
         <CardShift shiftCardStatus="SLEEPER" hasRoundedCorners />
