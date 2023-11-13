@@ -82,29 +82,26 @@ export const VariantWithIcon = () => {
   return (
     <Container flexDirection="column">
       <StoryTitle.Regular>Active Variant</StoryTitle.Regular>
-
       <Avatar />
       <BottomSpacing />
       <StoryTitle.Regular>Inactive Variant</StoryTitle.Regular>
-
       <Avatar inactive />
-      <BottomSpacing />
+      <BottomSpacing /> <BottomSpacing />
       <StoryTitle.Regular>Size Variants</StoryTitle.Regular>
-
-      <Container direction="row">
-        <Container direction="column">
-          <Typography variant={'paragraph2'}>32px</Typography>
-          <Avatar size={32} />
-        </Container>
-        <Container direction="column">
+      <Container flexDirection="row">
+        <Container flexDirection="column">
           <Typography variant={'paragraph2'}>48px</Typography>
           <Avatar size={48} />
         </Container>
-        <Container direction="column">
+        <HorizontalSpacing />
+
+        <Container flexDirection="column">
           <Typography variant={'paragraph2'}>64px</Typography>
           <Avatar />
         </Container>
-        <Container direction="column">
+        <HorizontalSpacing />
+
+        <Container flexDirection="column">
           <Typography variant={'paragraph2'}>144px</Typography>
           <Avatar size={144} />
         </Container>

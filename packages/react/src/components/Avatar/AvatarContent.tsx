@@ -19,7 +19,7 @@ const AvatarContent = ({
 
   const getTypographyVariant = (size: number) => {
     if (size <= 47) return 'heading6';
-    if (size >= 48 && size <= 87) return 'heading5';
+    if (size <= 87) return 'heading5';
     return 'heading1';
   };
 

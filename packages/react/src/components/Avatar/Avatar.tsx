@@ -1,8 +1,8 @@
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { TestProp } from '../../types';
 import * as Styled from './Avatar.style';
-
 import AvatarContent from './AvatarContent';
+import { VALUE_SUBTRACTOR } from './constants';
 
 export type AvatarProps = {
   /**
@@ -37,7 +37,7 @@ const Avatar = ({
   const sharedProps = {
     inactive,
     source,
-    size: size - 4,
+    size: size - VALUE_SUBTRACTOR,
   };
 
   return (
