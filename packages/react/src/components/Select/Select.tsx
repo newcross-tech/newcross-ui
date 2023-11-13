@@ -6,11 +6,11 @@ import {
   default as ReactSelect,
   GroupBase,
   createFilter,
+  Props,
 } from 'react-select';
 import { useTheme } from '@newcross-ui/react';
 import * as Styled from './Select.style';
 import { SelectContext, useSelectContext } from './SelectContext';
-import { SelectProps } from './Select.types';
 
 const CrossIcon: FunctionComponent = () => (
   <Styled.RightIconContainer>
@@ -25,6 +25,44 @@ const DownChevron: FunctionComponent = () => (
 );
 
 const baseTestId = 'select';
+
+/**
+ * Select component with Newcross branding built upon [react-select library v5.7.7](https://react-select.com/home)
+ */
+export type SelectProps<
+  Option,
+  IsMulti extends boolean = false,
+  Group extends GroupBase<Option> = GroupBase<Option>
+> = Props<Option, IsMulti, Group> & {
+  /**
+   * Gives select a label
+   */
+  label?: string;
+  /**
+   * Adds helper text
+   */
+  helperText?: string;
+  /**
+   * Adds error text
+   */
+  errorText?: string;
+  /**
+   * Controls error styles
+   */
+  hasError?: boolean;
+  /**
+   * Adds id to select menu-list which is the parent div of the options
+   */
+  id: string;
+  /**
+   * Adds placeholder text
+   */
+  placeholder?: string;
+  /**
+   * Show disabled state
+   */
+  disabled?: boolean;
+};
 
 const Select = <
   Option,
@@ -52,7 +90,6 @@ const Select = <
       )}
       <SelectContext.Provider value={{ id: rest?.id }}>
         <ReactSelect
-          menuIsOpen
           isDisabled={disabled}
           closeMenuOnSelect={!isMulti}
           components={{

@@ -157,13 +157,19 @@ export const getCustomStyles = <
       ...styles,
       color: state.isDisabled ? theme.ColorBaseGrey100 : theme.ColorPrimaryGravitas,
     }),
-    multiValue: (styles) => ({
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    //@ts-ignore
+    groupHeading: (styles) => ({
+      ...styles,
+      textTransform: 'unset',
+      ...getTypographyStyles({ theme }),
+    }),
+    multiValue: (styles, state) => ({
       ...styles,
       backgroundColor: 'transparent',
       border: `1px solid ${theme.ColorBaseMint100}`,
-
-      fontWeight: theme.TypographyFontWeightRegular,
-      lineHeight: theme.TypographyLineHeight24,
+      borderColor: state.isDisabled ? theme.ColorBaseGrey200 : theme.ColorBaseMint100,
+      color: state.isDisabled ? theme.ColorBaseGrey100 : theme.ColorPrimaryGravitas,
       borderRadius: theme.BorderBaseRadiusLg,
       paddingLeft: '3px',
       paddingRight: '6px',
@@ -177,8 +183,8 @@ export const getCustomStyles = <
     }),
     multiValueLabel: (styles) => ({
       ...styles,
-      fontSize: theme.TypographyFontSize16,
-      color: theme.ColorPrimaryGravitas,
+      fontSize: theme.TypographyFontSize14,
+      color: theme.ColorBaseGrey100,
     }),
     noOptionsMessage: (styles) => ({
       ...styles,
