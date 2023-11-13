@@ -16,6 +16,7 @@ export type ToastType = EnqueueArgs & {
 
 export type ToastProviderProps = {
   children: ReactNode;
+  zIndex?: number;
 };
 
 const initialState: ToastType[] = [];
@@ -31,11 +32,11 @@ export const ToastContext = createContext<{
 const reducer = (toasts: ToastType[], action: ToastAction) =>
   toastReducer(toasts, action);
 
-export const ToastProvider = ({ children }: ToastProviderProps) => {
+export const ToastProvider = ({ children, zIndex }: ToastProviderProps) => {
   const [toasts, dispatch] = useReducer(reducer, initialState);
 
   const renderToast = () => (
-    <Styled.Container>
+    <Styled.Container zIndex={zIndex}>
       {toasts.map(({ message, variant, show = true, ...rest }) => {
         const key = `${variant}-${message}`;
 

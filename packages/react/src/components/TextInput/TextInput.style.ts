@@ -13,9 +13,14 @@ import {
 } from './TextInput.types';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<TextAreaContainerProps>`
   display: flex;
   flex-direction: column;
+  ${({ fullWidth }) =>
+    fullWidth &&
+    css`
+      width: 100%;
+    `};
 `;
 
 const getCommonStateStyles = ({ theme, hasError, disabled }: PropStylesTypes) =>

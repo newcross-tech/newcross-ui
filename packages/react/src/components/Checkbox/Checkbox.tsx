@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { faCheck } from '@fortawesome/pro-light-svg-icons/faCheck';
 import { faMinus } from '@fortawesome/pro-light-svg-icons/faMinus';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,7 +16,7 @@ export type CheckboxProps = {
   /**
    * Label for the checkbox
    */
-  label?: string;
+  label?: ReactNode;
   /**
    * Whether the press behavior is disabled.
    */

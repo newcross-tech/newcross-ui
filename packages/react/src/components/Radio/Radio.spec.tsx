@@ -38,6 +38,17 @@ describe('Radio', () => {
     expect(ui.radioLabel.get()).toBeVisible();
   });
 
+  it('renders when passing a ReactNode in label', () => {
+    //Arrange
+    const Label = () => <div data-testid="custom-label-item">Label</div>;
+
+    //Act
+    renderComponent({ label: <Label /> });
+
+    //Assert
+    expect(byTestId('custom-label-item').get()).toBeVisible();
+  });
+
   it(`calls onChange when radio component is not disabled`, () => {
     // Arrange
     const onChange = jest.fn();

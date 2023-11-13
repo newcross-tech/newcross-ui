@@ -3,6 +3,107 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.40.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.40.1...@newcross-ui/react@1.40.2) (2023-11-10)
+
+**Note:** Version bump only for package @newcross-ui/react
+
+
+
+
+
+## [1.40.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.40.0...@newcross-ui/react@1.40.1) (2023-11-10)
+
+**Note:** Version bump only for package @newcross-ui/react
+
+
+
+
+
+# [1.40.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.39.0...@newcross-ui/react@1.40.0) (2023-11-07)
+
+
+### Features
+
+* **OAE-1439:** added new variant for card border color ([#56](https://bitbucket.org/newcrossdev/newcross-ui/issues/56)) ([c1807f9](https://bitbucket.org/newcrossdev/newcross-ui/commits/c1807f99df5a05d3206654ca24b9640970458948))
+
+
+
+
+
+# [1.39.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.38.0...@newcross-ui/react@1.39.0) (2023-11-07)
+
+
+### Features
+
+* **AOE-1401:** container component implementation ([#50](https://bitbucket.org/newcrossdev/newcross-ui/issues/50)) ([4ee3ae9](https://bitbucket.org/newcrossdev/newcross-ui/commits/4ee3ae9bbec87c459a8ffbc495d794c00d2f6a74))
+
+
+
+
+
+# [1.38.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.37.3...@newcross-ui/react@1.38.0) (2023-10-31)
+
+
+### Features
+
+* **OAE-1381:** create pagination component ([#49](https://bitbucket.org/newcrossdev/newcross-ui/issues/49)) ([8b9e347](https://bitbucket.org/newcrossdev/newcross-ui/commits/8b9e347de786751e4cdb3fa91e7f3170e77f3a1c))
+
+
+
+
+
+## [1.37.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.37.2...@newcross-ui/react@1.37.3) (2023-10-27)
+
+**Note:** Version bump only for package @newcross-ui/react
+
+
+
+
+
+## [1.37.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.37.1...@newcross-ui/react@1.37.2) (2023-10-27)
+
+
+### Bug Fixes
+
+* **HDS-47:** exposed toast zindex ([#51](https://bitbucket.org/newcrossdev/newcross-ui/issues/51)) ([a97d833](https://bitbucket.org/newcrossdev/newcross-ui/commits/a97d83387ec1f8bb6bbd6801d9b97ee82057192b))
+
+
+
+
+
+## [1.37.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.37.0...@newcross-ui/react@1.37.1) (2023-10-26)
+
+
+### Bug Fixes
+
+* **CAPP-624:** change labels to reactnode ([#48](https://bitbucket.org/newcrossdev/newcross-ui/issues/48)) ([77bea65](https://bitbucket.org/newcrossdev/newcross-ui/commits/77bea653cc0c5e5a8aca1b973e8c5a167d53e2ef))
+
+
+
+
+
+# [1.37.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.36.0...@newcross-ui/react@1.37.0) (2023-10-24)
+
+
+### Features
+
+* **OAE-1364:** text input not displayed at full width ([#45](https://bitbucket.org/newcrossdev/newcross-ui/issues/45)) ([94565cb](https://bitbucket.org/newcrossdev/newcross-ui/commits/94565cb183ac71c5b025d30c686ad0bacd2a36ee))
+
+
+
+
+
+# [1.36.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.35.3...@newcross-ui/react@1.36.0) (2023-10-24)
+
+
+### Features
+
+* **OAE-1346:** remove onKeyPress method from card component ([#44](https://bitbucket.org/newcrossdev/newcross-ui/issues/44)) ([73f4716](https://bitbucket.org/newcrossdev/newcross-ui/commits/73f4716c29eda3e96c4c4292ad75cb1a25f876a1))
+
+
+
+
+
 ## [1.35.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.35.2...@newcross-ui/react@1.35.3) (2023-10-12)
 
 **Note:** Version bump only for package @newcross-ui/react

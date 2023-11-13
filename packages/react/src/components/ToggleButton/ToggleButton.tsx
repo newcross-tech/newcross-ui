@@ -1,6 +1,10 @@
 import { ReactElement, ReactNode, useState } from 'react';
 import { useToggle } from '../../hooks/useToggle';
 import { TestProp } from '../../types';
+import {
+  MultiSelect,
+  SingleSelect,
+} from '../ToggleButtonGroup/ToggleButtonGroup.types';
 import * as Styled from './ToggleButton.style';
 import { ContentProps } from './ToggleButton.types';
 
@@ -35,6 +39,7 @@ export type ToggleButtonProps = {
    * Set the right icon element.
    */
   rightIcon?: ReactElement;
+  variant?: (SingleSelect | MultiSelect)['variant'];
 } & TestProp;
 
 export const ToggleIcon = ({
@@ -65,9 +70,11 @@ const ToggleButton = ({
   fullWidth,
   value = '',
   testID = '',
+  variant,
   ...rest
 }: ToggleButtonProps) => {
   const [isSelected, setSelected] = useState(selected);
+  const isMulti = variant === 'multi';
 
   useToggle(selected, () => setSelected(selected));
 
@@ -79,7 +86,7 @@ const ToggleButton = ({
   return (
     <Styled.Container
       onClick={handleOnClick}
-      selected={isSelected}
+      selected={isMulti ? isSelected : selected}
       fullWidth={fullWidth}
       data-testid={
         selected ? `${baseTestId}-selected${testID}` : `${baseTestId}${testID}`

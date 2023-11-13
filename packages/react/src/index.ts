@@ -24,10 +24,15 @@ export {
   CheckboxGroupProps,
   default as CheckboxGroup,
 } from './components/CheckboxGroup';
+export { default as Container, ContainerProps } from './components/Container';
 export { default as DashboardLayout } from './components/DashboardLayout';
 export { default as Dropdown, DropdownProps } from './components/Dropdown';
-export { default as Link, LinkProps, LinkSizes } from './components/Link';
+export { default as Link, LinkProps } from './components/Link';
 export { default as ProgressBar } from './components/ProgressBar';
+export {
+  default as Pagination,
+  PaginationProps,
+} from './components/Pagination';
 export { default as Pill, PillProps } from './components/Pill';
 export { default as PillGroup, PillGroupProps } from './components/PillGroup';
 export { default as RadioButton, RadioProps } from './components/Radio';

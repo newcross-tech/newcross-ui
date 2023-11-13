@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.47.10](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.47.9...@newcross-ui/react-native@1.47.10) (2023-11-10)
+
+**Note:** Version bump only for package @newcross-ui/react-native
+
+
+
+
+
+## [1.47.9](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.47.8...@newcross-ui/react-native@1.47.9) (2023-11-07)
+
+**Note:** Version bump only for package @newcross-ui/react-native
+
+
+
+
+
+## [1.47.8](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.47.7...@newcross-ui/react-native@1.47.8) (2023-10-31)
+
+
+### Bug Fixes
+
+* **HFGO-2257:** Pill not cleared when tapping on X icon ([51f1d1b](https://bitbucket.org/newcrossdev/newcross-ui/commits/51f1d1babb3059be0876d4e1534de979dd53fd7a))
+
+
+
+
+
 ## [1.47.7](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.47.6...@newcross-ui/react-native@1.47.7) (2023-10-17)
 
 

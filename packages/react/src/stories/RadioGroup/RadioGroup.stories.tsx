@@ -1,10 +1,10 @@
+import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Radio from '../../components/Radio/Radio';
 import RadioGroup, {
   RadioGroupProps,
 } from '../../components/RadioGroup/RadioGroup';
-import Container from '../Container';
-import Spacing from '../Spacing';
+import Container from '../../components/Container';
 import * as StoryTitle from '../StoryTitle';
 
 export default {
@@ -14,7 +14,7 @@ export default {
 
 export const Variants = () => {
   return (
-    <Container direction="column">
+    <Container flexDirection="column">
       <StoryTitle.Regular>
         Radio Group with Horizontal Orientation
       </StoryTitle.Regular>
@@ -24,7 +24,7 @@ export const Variants = () => {
         <Radio value="3" label="C" />
       </RadioGroup>
 
-      <Spacing />
+      <Container m="SpacingBase4" />
       <StoryTitle.Regular>
         Radio Group with Vertical Orientation
       </StoryTitle.Regular>
@@ -34,7 +34,7 @@ export const Variants = () => {
         <Radio value="6" label="C" />
       </RadioGroup>
 
-      <Spacing />
+      <Container m="SpacingBase4" />
       <StoryTitle.Regular>Disabled Radio Group</StoryTitle.Regular>
       <RadioGroup disabled defaultSelected="7">
         <Radio value="7" label="A" />
@@ -42,7 +42,7 @@ export const Variants = () => {
         <Radio value="9" label="C" />
       </RadioGroup>
 
-      <Spacing />
+      <Container m="SpacingBase4" />
       <StoryTitle.Regular>
         Radio Group with Horizontal Orientation and Secondary Radio Buttons
       </StoryTitle.Regular>
@@ -52,7 +52,7 @@ export const Variants = () => {
         <Radio value="12" label="C" />
       </RadioGroup>
 
-      <Spacing />
+      <Container m="SpacingBase4" />
       <StoryTitle.Regular>
         Radio Group with Vertical Orientation and Secondary Radio Buttons
       </StoryTitle.Regular>

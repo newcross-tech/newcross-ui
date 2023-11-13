@@ -1,4 +1,5 @@
-import Container from '../Container';
+import React from 'react';
+import Container from '../../components/Container';
 import styled from 'styled-components';
 import Link from '../../components/Link';
 import Button from '../../components/Button';
@@ -28,7 +29,7 @@ export const Variants = () => {
       enqueueToast({
         variant: variants[i],
         message: `This is ${variants[i]} Toast!`,
-        action: <Link>Click Here</Link>,
+        action: <Link variant="paragraph1">Click Here</Link>,
         autoHide: autoHide,
       });
 
@@ -37,8 +38,9 @@ export const Variants = () => {
   };
 
   return (
-    <StyledContainer justifyContent="center" direction="column">
+    <StyledContainer justifyContent="center" flexDirection="column">
       <Button onClick={() => triggerFunc()}>Show Toast</Button>
+      <Container mb="SpacingBase8" />
       <Button onClick={() => triggerFunc(false)}>Show Persistent Toast</Button>
     </StyledContainer>
   );

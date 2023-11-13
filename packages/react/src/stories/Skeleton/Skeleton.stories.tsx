@@ -1,11 +1,11 @@
+import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import styled, { css } from 'styled-components';
 import Skeleton, { SkeletonProps } from '../../components/Skeleton';
 import { ExtendedTheme, Theme } from '../../types';
 import useTheme from '../../hooks/useTheme';
 import { getHaloValue } from '../../utils';
-import Container from '../Container';
-import Spacing from '../Spacing';
+import Container from '../../components/Container';
 import Card from '../../components/Card';
 import * as StoryTitle from '../StoryTitle';
 
@@ -59,21 +59,21 @@ const SkeletonContent = styled.div`
 export const Variants = () => {
   const theme = useTheme();
   return (
-    <Container display={'block'} direction="column">
+    <Container display={'block'}>
       <StoryTitle.Regular>Skeleton</StoryTitle.Regular>
-      <Spacing />
+      <Container m="SpacingBase4" />
       <Content>
         <Skeleton />
       </Content>
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase12" />
       <StoryTitle.Regular>Full Width Skeleton</StoryTitle.Regular>
-      <Spacing />
+      <Container m="SpacingBase4" />
       <FullWidthContent>
         <Skeleton />
       </FullWidthContent>
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase12" />
       <StoryTitle.Regular>Custom Skeleton</StoryTitle.Regular>
-      <Spacing />
+      <Container m="SpacingBase4" />
       <Card
         fullWidth
         hasRoundedCorners

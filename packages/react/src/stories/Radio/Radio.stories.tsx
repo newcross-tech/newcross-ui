@@ -1,9 +1,9 @@
+import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Radio, { RadioProps } from '../../components/Radio';
-import Container from '../Container';
+import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './Radio.info';
-import Spacing from '../Spacing';
 import * as StoryTitle from '../StoryTitle';
 
 export default {
@@ -15,33 +15,54 @@ export const Variants = () => {
   return (
     <>
       <StoryTitle.Regular>Primary Radio Variants</StoryTitle.Regular>
-      <Spacing />
+      <Container m="SpacingBase4" />
       <Radio value="1" label="Primary" />
       <Radio selected value="2" label="Primary Selected" />
       <Radio label="Disabled" value="3" disabled />
       <Radio selected value="4" label="Disabled Selected" disabled />
-      <Spacing />
+      <Radio
+        value="9"
+        label={
+          <span>
+            <b>custom</b> react label
+          </span>
+        }
+      />
+      <Container m="SpacingBase4" />
       <StoryTitle.Regular>Secondary Radio Variants</StoryTitle.Regular>
-      <Spacing />
+      <Container m="SpacingBase4" />
       <Radio variant="secondary" value="5" label="Secondary" />
+      <Container m="SpacingBase4" />
       <Radio
         selected
         variant="secondary"
         value="6"
         label="Secondary Selected"
       />
+      <Container m="SpacingBase4" />
       <Radio
         disabled
         variant="secondary"
         value="7"
         label="Secondary Disabled"
       />
+      <Container m="SpacingBase4" />
       <Radio
         selected
         disabled
         variant="secondary"
         value="8"
         label="Secondary Disabled Selected"
+      />
+      <Container m="SpacingBase4" />
+      <Radio
+        variant="secondary"
+        value="10"
+        label={
+          <span>
+            <b>custom</b> react label
+          </span>
+        }
       />
     </>
   );
@@ -56,7 +77,7 @@ export const Overview = () => {
       dontInfo={DONT}
     >
       <Container>
-        <Radio selected={true} label="Primary Selected" />
+        <Radio selected={true} label="Primary Selected" value="" />
       </Container>
     </InfoTemplate>
   );

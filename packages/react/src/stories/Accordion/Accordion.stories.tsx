@@ -1,12 +1,12 @@
+import React from 'react';
 import { faCircleInfo } from '@fortawesome/pro-solid-svg-icons/faCircleInfo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Meta, Story } from '@storybook/react';
 import Accordion, { AccordionProps } from '../../components/Accordion';
 import AccordionGroup from '../../components/AccordionGroup';
 import Typography from '../../components/Typography';
-import Container from '../Container';
+import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './AccordionInfo';
 import * as StoryTitle from '../StoryTitle';
 
@@ -23,9 +23,9 @@ export const Overview = () => {
       doInfo={DO}
       dontInfo={DONT}
     >
-      <Container direction="column" hasPadding={false}>
+      <Container flexDirection="column">
         <StoryTitle.Overview>Default Accordion</StoryTitle.Overview>
-        <Spacing size={'Large'} />
+        <Container my="SpacingBase4" />
         <Accordion label={'Label'}>
           <Typography variant={'paragraph2'}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -33,11 +33,11 @@ export const Overview = () => {
             consequat.
           </Typography>
         </Accordion>
-        <Spacing size={'Large'} />
+        <Container my="SpacingBase4" />
         <StoryTitle.Overview>
           Default Accordion Group (Exclusive Selection)
         </StoryTitle.Overview>
-        <Spacing size={'Large'} />
+        <Container my="SpacingBase4" />
         <AccordionGroup>
           <Accordion label={'Section 1'}>
             <Typography variant={'paragraph2'}>
@@ -54,11 +54,11 @@ export const Overview = () => {
             </Typography>
           </Accordion>
         </AccordionGroup>
-        <Spacing size={'Large'} />
+        <Container my="SpacingBase4" />
         <StoryTitle.Overview>
           Default Accordion Group (Multiple Selection)
         </StoryTitle.Overview>
-        <Spacing size={'Large'} />
+        <Container my="SpacingBase4" />
         <AccordionGroup exclusiveSelection={false}>
           <Accordion label={'Section 1'}>
             <Typography variant={'paragraph2'}>
@@ -82,18 +82,18 @@ export const Overview = () => {
 
 export const Variants = () => {
   return (
-    <Container direction="column" hasPadding={false}>
+    <Container flexDirection="column">
       <StoryTitle.Regular>Default Accordion</StoryTitle.Regular>
-      <Spacing size={'Large'} />
+      <Container my="SpacingBase4" />
       <Accordion label={'Label'}>
         <Typography variant={'paragraph2'}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. consequat.
         </Typography>
       </Accordion>
-      <Spacing size={'Large'} />
+      <Container my="SpacingBase4" />
       <StoryTitle.Regular>Two Line Label Accordion</StoryTitle.Regular>
-      <Spacing size={'Large'} />
+      <Container my="SpacingBase4" />
       <Accordion
         label={
           'This label flows onto 2 lines This label flows onto 2 lines This label flows onto 2 lines This label flows onto 2 lines'
@@ -104,9 +104,9 @@ export const Variants = () => {
           eiusmod tempor incididunt ut labore et dolore magna aliqua. consequat.
         </Typography>
       </Accordion>
-      <Spacing size={'Large'} />
+      <Container my="SpacingBase4" />
       <StoryTitle.Regular>Expanded Accordion with Icon</StoryTitle.Regular>
-      <Spacing size={'Large'} />
+      <Container my="SpacingBase4" />
       <Accordion
         label={'Information'}
         icon={<FontAwesomeIcon icon={faCircleInfo} />}
@@ -123,7 +123,7 @@ export const Variants = () => {
 
 const Template: Story<AccordionProps> = ({ ...rest }) => {
   return (
-    <Container direction="column" hasPadding={false}>
+    <Container flexDirection="column">
       <Accordion {...rest}>
         <Typography variant={'paragraph2'}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

@@ -1,9 +1,8 @@
+import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
-import { useState } from 'react';
 import TextInput, { TextInputProps } from '../../components/TextInput';
-import Container from '../Container';
+import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './TextInputInfo';
 import * as StoryTitle from '../StoryTitle';
 
@@ -21,7 +20,7 @@ export const Overview = () => {
       doInfo={DO}
       dontInfo={DONT}
     >
-      <Container direction="column" hasPadding={false}>
+      <Container flexDirection="column">
         <TextInput
           value={text}
           placeholder="This is placeholder text"
@@ -46,10 +45,10 @@ export const Variants = () => {
   const [text7, onChangeText7] = useState('text7');
 
   return (
-    <Container direction="column" hasPadding={false}>
+    <Container flexDirection="column">
       <StoryTitle.Regular>Without placeholder</StoryTitle.Regular>
       <TextInput value={text1} type="text" onChange={onChangeText1} />
-      <Spacing />
+      <Container m="SpacingBase4" />
 
       <StoryTitle.Regular>With placeholder</StoryTitle.Regular>
       <TextInput
@@ -58,7 +57,7 @@ export const Variants = () => {
         type="text"
         onChange={onChangeText2}
       />
-      <Spacing />
+      <Container m="SpacingBase4" />
 
       <StoryTitle.Regular>With placeholder and disabled</StoryTitle.Regular>
       <TextInput
@@ -68,7 +67,7 @@ export const Variants = () => {
         placeholder="Disabled"
         disabled
       />
-      <Spacing />
+      <Container m="SpacingBase4" />
 
       <StoryTitle.Regular>Password</StoryTitle.Regular>
       <TextInput
@@ -77,11 +76,11 @@ export const Variants = () => {
         value={password}
         onChange={(text: string) => setPassword(text)}
       />
-      <Spacing />
+      <Container m="SpacingBase4" />
 
       <StoryTitle.Regular>With validation check</StoryTitle.Regular>
       <TextInput isValid value={text4} type="text" onChange={onChangeText4} />
-      <Spacing />
+      <Container m="SpacingBase4" />
 
       <StoryTitle.Regular>With a label</StoryTitle.Regular>
       <TextInput
@@ -90,7 +89,7 @@ export const Variants = () => {
         onChange={onChangeText5}
         label="Label"
       />
-      <Spacing />
+      <Container m="SpacingBase4" />
 
       <StoryTitle.Regular>With helper text</StoryTitle.Regular>
       <TextInput
@@ -100,7 +99,7 @@ export const Variants = () => {
         label="Label"
         helperText="This is the helper text"
       />
-      <Spacing />
+      <Container m="SpacingBase4" />
 
       <StoryTitle.Regular>With error text</StoryTitle.Regular>
       <TextInput
@@ -110,7 +109,7 @@ export const Variants = () => {
         label="Label"
         errorText="This is an error message"
       />
-      <Spacing />
+      <Container m="SpacingBase4" />
     </Container>
   );
 };
@@ -122,10 +121,10 @@ export const TextAreaVariants = () => {
     'This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar!This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar!  '
   );
   return (
-    <Container display="flex" direction="row">
-      <Container direction="column" display="block">
+    <Container flexDirection="row">
+      <Container display="block">
         <StoryTitle.Regular>TextArea</StoryTitle.Regular>
-        <Spacing />
+        <Container m="SpacingBase4" />
         <TextInput
           type={'textarea'}
           label={'Label'}
@@ -133,11 +132,11 @@ export const TextAreaVariants = () => {
           onChange={onChangeText1}
         />
       </Container>
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase12" />
 
-      <Container direction="column" display="block">
+      <Container display="block">
         <StoryTitle.Regular>TextArea with maxLength</StoryTitle.Regular>
-        <Spacing />
+        <Container m="SpacingBase4" />
         <TextInput
           type={'textarea'}
           label={'Label'}
@@ -148,10 +147,10 @@ export const TextAreaVariants = () => {
         />
       </Container>
 
-      <Spacing size={'Large'} />
-      <Container direction="column" display="block">
+      <Container m="SpacingBase12" />
+      <Container display="block">
         <StoryTitle.Regular>TextArea with long text</StoryTitle.Regular>
-        <Spacing />
+        <Container m="SpacingBase4" />
         <TextInput
           value={text3}
           type={'textarea'}
@@ -168,7 +167,7 @@ const Template: Story<TextInputProps> = ({ value, ...rest }) => {
   const [text, setText] = useState(value);
 
   return (
-    <Container direction="column" hasPadding={false}>
+    <Container flexDirection="column">
       <TextInput {...rest} value={text} onChange={setText} />
     </Container>
   );

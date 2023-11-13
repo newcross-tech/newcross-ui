@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.42.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.42.0...@newcross-ui/design-tokens@1.42.1) (2023-11-10)
+
+**Note:** Version bump only for package @newcross-ui/design-tokens
+
+
+
+
+
+# [1.42.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.41.1...@newcross-ui/design-tokens@1.42.0) (2023-11-07)
+
+
+### Features
+
+* **OAE-1439:** added new variant for card border color ([#56](https://bitbucket.org/newcrossdev/newcross-ui/issues/56)) ([c1807f9](https://bitbucket.org/newcrossdev/newcross-ui/commits/c1807f99df5a05d3206654ca24b9640970458948))
+
+
+
+
+
 ## [1.41.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.41.0...@newcross-ui/design-tokens@1.41.1) (2023-10-12)
 
 **Note:** Version bump only for package @newcross-ui/design-tokens

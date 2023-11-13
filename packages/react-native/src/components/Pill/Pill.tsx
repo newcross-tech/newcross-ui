@@ -107,9 +107,9 @@ const Pill = ({
             {label}
           </Typography>
           {removable && (
-            <TouchableOpacity testID="pill-close-icon-container-label">
+            <View testID="pill-close-icon-container-label">
               <FontAwesomeIcon style={styles.pillRemoveIcon} icon={faXmark} />
-            </TouchableOpacity>
+            </View>
           )}
         </View>
       </View>
