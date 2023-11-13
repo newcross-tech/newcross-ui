@@ -19,7 +19,7 @@ const getIconSize = (theme: ThemeDesignTokens, size: number) => {
   `;
 };
 
-const getContainerSize = (theme: ThemeDesignTokens, size: number, divider: number) => {
+const getContainerSize = (size: number, divider: number) => {
   let spacing = `calc(${28 / divider / 16}rem)`;
 
   if (size > 28) {
@@ -54,7 +54,7 @@ export const AvatarContainer = styled.div<AvatarContainerType>`
     border: ${theme.AvatarActiveEllipseLargeBorderWidth} solid
       ${inactive ? theme.AvatarInactiveBackgroundColor : theme.AvatarActiveEllipseBorderColor};
     border-radius: ${theme.AvatarBorderRadius};
-    ${getContainerSize(theme, size, 1)}
+    ${getContainerSize(size, 1)}
 
     > ${InnerContainer} {
       display: flex;
@@ -63,7 +63,7 @@ export const AvatarContainer = styled.div<AvatarContainerType>`
       overflow: hidden;
       border-radius: ${theme.AvatarBorderRadius};
       background-color: ${theme.AvatarInnerEllipseBackgroundColor};
-      ${getContainerSize(theme, size, CONTAINER_DIVIDER)}
+      ${getContainerSize(size, CONTAINER_DIVIDER)}
     }
   `};
 `;
