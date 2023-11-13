@@ -1,5 +1,4 @@
 import Typography from '../Typography';
-import { AvatarProps } from './Avatar';
 import styled, { css } from 'styled-components';
 import { ExtendedTheme } from '../../types';
 import { AvatarContainerType, InactiveType, StyledFontType } from './Avatar.types';
