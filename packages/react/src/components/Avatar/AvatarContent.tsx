@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { AvatarProps } from './Avatar';
 import * as Styled from './Avatar.style';
 import { nameToAbbreviation } from './utils';
+import { LARGE_SIZE_BREAKPOINT, MEDIUM_SIZE_BREAKPOINT } from './constants';
 
 const baseTestId = 'avatar';
 
@@ -18,8 +19,8 @@ const AvatarContent = ({
   const [imageError, setImageError] = useState(false);
 
   const getTypographyVariant = (size: number) => {
-    if (size <= 47) return 'heading6';
-    if (size <= 87) return 'heading5';
+    if (size <= MEDIUM_SIZE_BREAKPOINT) return 'heading6';
+    if (size <= LARGE_SIZE_BREAKPOINT) return 'heading5';
     return 'heading1';
   };
 

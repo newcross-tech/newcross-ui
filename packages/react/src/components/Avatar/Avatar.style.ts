@@ -4,13 +4,13 @@ import { ExtendedTheme } from '../../types';
 import { AvatarContainerType, InactiveType, StyledFontType } from './Avatar.types';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { CONTAINER_DIVIDER } from './constants';
+import { CONTAINER_DIVIDER, LARGE_SIZE_BREAKPOINT, MAX_SIZE, MEDIUM_SIZE_BREAKPOINT, MIN_SIZE } from './constants';
 
 const getIconSize = (theme: ThemeDesignTokens, size: number) => {
   let spacing = theme.SpacingBase48;
 
-  if (size <= 87) {
-    spacing = size <= 47 ? theme.SpacingBase12 : theme.SpacingBase24;
+  if (size <= LARGE_SIZE_BREAKPOINT) {
+    spacing = size <= MEDIUM_SIZE_BREAKPOINT ? theme.SpacingBase12 : theme.SpacingBase24;
   }
 
   return css`
@@ -20,14 +20,14 @@ const getIconSize = (theme: ThemeDesignTokens, size: number) => {
 };
 
 const getContainerSize = (size: number, divider: number) => {
-  let spacing = `calc(${28 / divider / 16}rem)`;
+  let spacing = `${MIN_SIZE / divider / 16}rem`;
 
-  if (size > 28) {
-    spacing = `calc(${size / divider / 16}rem)`;
+  if (size > MIN_SIZE) {
+    spacing = `${size / divider / 16}rem`;
   }
 
-  if (size > 300) {
-    spacing = `calc(${300 / divider / 16}rem)`;
+  if (size > MAX_SIZE) {
+    spacing = `${MAX_SIZE / divider / 16}rem`;
   }
 
   return css`
@@ -50,7 +50,7 @@ export const AvatarContainer = styled.div<AvatarContainerType>`
   justify-content: center;
   flex-shrink: 0;
 
-  ${({ theme, inactive, size = 28 }: ExtendedTheme<AvatarContainerType>) => css`
+  ${({ theme, inactive, size }: ExtendedTheme<AvatarContainerType>) => css`
     border: ${theme.AvatarActiveEllipseLargeBorderWidth} solid
       ${inactive ? theme.AvatarInactiveBackgroundColor : theme.AvatarActiveEllipseBorderColor};
     border-radius: ${theme.AvatarBorderRadius};
