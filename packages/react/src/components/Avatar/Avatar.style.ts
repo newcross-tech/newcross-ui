@@ -1,60 +1,33 @@
 import Typography from '../Typography';
 import { AvatarProps } from './Avatar';
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ExtendedTheme } from '../../types';
-import { getHaloValue } from '../../utils/getHaloValue';
-import { AvatarSizes, StyledFontType } from './Avatar.types';
+import { StyledFontType } from './Avatar.types';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { CONTAINER_DIVIDER } from './constants';
 
-const getInnerEllipseSize = (theme: ThemeDesignTokens): Record<AvatarSizes, FlattenSimpleInterpolation> => ({
-  small: css`
-    height: ${theme.AvatarInnerEllipseSmallHeight};
-    width: ${theme.AvatarInnerEllipseSmallWidth};
-  `,
-  medium: css`
-    width: ${+getHaloValue(theme.SpacingBase4) * 9}rem;
-    height: ${+getHaloValue(theme.SpacingBase4) * 9}rem;
-  `,
-  large: css`
-    height: ${theme.AvatarInnerEllipseLargeHeight};
-    width: ${theme.AvatarInnerEllipseLargeWidth};
-  `,
-});
+const getIconSize = (theme: ThemeDesignTokens, size: number) => {
+  if (size <= 47)
+    return css`
+      width: ${theme.SpacingBase12};
+      height: ${theme.SpacingBase12};
+    `;
+  if (size >= 48 && size <= 87)
+    return css`
+      width: ${theme.SpacingBase24};
+      height: ${theme.SpacingBase24};
+    `;
 
-const getActiveEllipseStyles = (theme: ThemeDesignTokens): Record<AvatarSizes, FlattenSimpleInterpolation> => ({
-  small: css`
-    width: ${+getHaloValue(theme.SpacingBase4) * 7}rem;
-    height: ${+getHaloValue(theme.SpacingBase4) * 7}rem;
-  `,
-  medium: css`
-    width: ${+getHaloValue(theme.SpacingBase4) * 11}rem;
-    height: ${+getHaloValue(theme.SpacingBase4) * 11}rem;
-  `,
-  large: css`
-    width: ${+getHaloValue(theme.SpacingBase12) * 5}rem;
-    height: ${+getHaloValue(theme.SpacingBase12) * 5}rem;
-  `,
-});
-
-export const getIconSize = (theme: ThemeDesignTokens): Record<AvatarSizes, FlattenSimpleInterpolation> => ({
-  small: css`
-    width: ${theme.AvatarInnerEllipseIconHeightSmall};
-    height: ${theme.AvatarInnerEllipseIconHeightSmall};
-  `,
-  medium: css`
-    width: ${theme.AvatarInnerEllipseIconHeightMedium};
-    height: ${theme.AvatarInnerEllipseIconHeightMedium};
-  `,
-  large: css`
-    width: ${theme.AvatarInnerEllipseIconHeightLarge};
-    height: ${theme.AvatarInnerEllipseIconHeightLarge};
-  `,
-});
+  return css`
+    width: ${theme.SpacingBase48};
+    height: ${theme.SpacingBase48};
+  `;
+};
 
 export const AvatarIcon = styled(FontAwesomeIcon)<ExtendedTheme<StyledFontType>>`
-  ${({ theme, $size }) => css`
-    ${$size && getIconSize(theme)[$size]};
+  ${({ theme, $size = 28 }: ExtendedTheme<StyledFontType>) => css`
+    ${getIconSize(theme, $size)};
   `};
 `;
 
@@ -66,12 +39,12 @@ export const AvatarContainer = styled.div<AvatarProps>`
   justify-content: center;
   flex-shrink: 0;
 
-  ${({ theme, inactive, size }: ExtendedTheme<AvatarProps>) => css`
+  ${({ theme, inactive, size = 28 }: ExtendedTheme<AvatarProps>) => css`
     border: ${theme.AvatarActiveEllipseLargeBorderWidth} solid
       ${inactive ? theme.AvatarInactiveBackgroundColor : theme.AvatarActiveEllipseBorderColor};
     border-radius: ${theme.AvatarBorderRadius};
-
-    ${size && getActiveEllipseStyles(theme)[size]};
+    width: ${size > 28 ? `calc(${size / 16}rem)` : `calc(${28 / 16}rem)`};
+    height: ${size > 28 ? `calc(${size / 16}rem)` : `calc(${28 / 16}rem)`};
 
     > ${InnerContainer} {
       display: flex;
@@ -80,8 +53,8 @@ export const AvatarContainer = styled.div<AvatarProps>`
       overflow: hidden;
       border-radius: ${theme.AvatarBorderRadius};
       background-color: ${theme.AvatarInnerEllipseBackgroundColor};
-
-      ${size && getInnerEllipseSize(theme)[size as AvatarSizes]};
+      width: ${size > 28 ? `calc(${size / CONTAINER_DIVIDER / 16}rem)` : `calc(${28 / CONTAINER_DIVIDER / 16}rem)`};
+      height: ${size > 28 ? `calc(${size / CONTAINER_DIVIDER / 16}rem)` : `calc(${28 / CONTAINER_DIVIDER / 16}rem)`};
     }
   `};
 `;

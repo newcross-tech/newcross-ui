@@ -71,7 +71,7 @@ export const VariantWithBadge = () => {
 
       <Container direction="row">
         <Badge size="medium" position="topRight">
-          <Avatar />
+          <Avatar size={64} />
         </Badge>
       </Container>
     </Container>
@@ -93,18 +93,20 @@ export const VariantWithIcon = () => {
 
       <Container direction="row">
         <Container direction="column">
-          <Typography variant={'paragraph2'}>Large</Typography>
-          <Avatar size="large" />
+          <Typography variant={'paragraph2'}>32px</Typography>
+          <Avatar size={32} />
         </Container>
-
         <Container direction="column">
-          <Typography variant={'paragraph2'}>Medium</Typography>
-          <Avatar size="medium" />
+          <Typography variant={'paragraph2'}>48px</Typography>
+          <Avatar size={48} />
         </Container>
-
         <Container direction="column">
-          <Typography variant={'paragraph2'}>Small</Typography>
-          <Avatar size="small" />
+          <Typography variant={'paragraph2'}>64px</Typography>
+          <Avatar />
+        </Container>
+        <Container direction="column">
+          <Typography variant={'paragraph2'}>144px</Typography>
+          <Avatar size={144} />
         </Container>
       </Container>
     </Container>
@@ -118,4 +120,4 @@ const Template: Story<AvatarProps> = (props) => (
 );
 
 export const Interactive = Template.bind({});
-Interactive.args = {};
+Interactive.args = { size: 64 };

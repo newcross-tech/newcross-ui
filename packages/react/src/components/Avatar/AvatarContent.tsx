@@ -11,11 +11,17 @@ const AvatarContent = ({
   source,
   icon,
   inactive,
-  size,
+  size = 0,
   testID = '',
 }: AvatarProps) => {
   const abbreviation = name && nameToAbbreviation(name);
   const [imageError, setImageError] = useState(false);
+
+  const getTypographyVariant = (size: number) => {
+    if (size <= 47) return 'heading6';
+    if (size >= 48 && size <= 87) return 'heading5';
+    return 'heading1';
+  };
 
   if (source && !imageError) {
     return (
@@ -31,7 +37,7 @@ const AvatarContent = ({
 
   if (abbreviation) {
     return (
-      <Styled.Text inactive={inactive} variant={'heading6'}>
+      <Styled.Text inactive={inactive} variant={getTypographyVariant(size)}>
         {abbreviation}
       </Styled.Text>
     );
