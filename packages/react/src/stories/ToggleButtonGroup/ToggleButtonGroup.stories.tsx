@@ -1,12 +1,12 @@
+import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import useState from 'storybook-addon-state';
 import ToggleButton from '../../components/ToggleButton';
 import ToggleButtonGroup, {
   ToggleButtonGroupProps,
 } from '../../components/ToggleButtonGroup';
-import Container from '../Container';
+import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './ToggleButtonGroupInfo';
 import * as StoryTitle from '../StoryTitle';
 
@@ -32,7 +32,7 @@ export const Variants = () => {
   );
 
   return (
-    <Container direction="column">
+    <Container flexDirection="column">
       <StoryTitle.Regular>Single Select Group</StoryTitle.Regular>
       <ToggleButtonGroup
         selectedValue={selectedSingleBtn}
@@ -43,7 +43,7 @@ export const Variants = () => {
         <ToggleButton value="2">Option B</ToggleButton>
         <ToggleButton value="3">Option C</ToggleButton>
       </ToggleButtonGroup>
-      <Spacing position={'Bottom'} />
+      <Container mb="SpacingBase4" />
       <StoryTitle.Regular>
         Multiple Select Group with horizontal orientation
       </StoryTitle.Regular>
@@ -60,7 +60,7 @@ export const Variants = () => {
 
         <ToggleButton value="3">Option C</ToggleButton>
       </ToggleButtonGroup>
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase12" />
       <StoryTitle.Regular>
         Multiple Select Group with vertical orientation
       </StoryTitle.Regular>
@@ -78,12 +78,12 @@ export const Variants = () => {
           <ToggleButton value="3">Aug</ToggleButton>
         </ToggleButtonGroup>
       </Container>
-      <Spacing position={'Bottom'} />
+      <Container mb="SpacingBase4" />
       <StoryTitle.Regular>
         Multiple Select Group with vertical / horizontal orientation
       </StoryTitle.Regular>
 
-      <Container direction="column" display={'block'}>
+      <Container display={'block'}>
         <ToggleButtonGroup
           selectedValue={selectedHorizontalBtns}
           onToggle={setSelectedHorizonalBtns}
@@ -137,7 +137,7 @@ export const Overview = () => {
       doInfo={DO}
       dontInfo={DONT}
     >
-      <Container hasPadding={false}>
+      <Container>
         <ToggleButtonGroup
           selectedValue={selectedBtns}
           onToggle={setSelectedBtns}

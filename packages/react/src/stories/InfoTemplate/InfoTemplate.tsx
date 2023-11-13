@@ -1,6 +1,6 @@
 import { Children, FC, ReactNode } from 'react';
 import Typography from '../../components/Typography';
-import Spacing from '../Spacing';
+import Container from '../../components/Container';
 import {
   StyledChildrenContainer,
   StyledContainer,
@@ -29,7 +29,7 @@ const TextRenderer = ({ data }: TextRendererProps) => {
 const Header = ({ title, description }: HeaderProps) => (
   <>
     <Typography variant={'heading2'}>{title}</Typography>
-    <Spacing />
+    <Container m="SpacingBase4" />
     <Typography variant={'paragraph2'}>
       <TextRenderer data={description} />
     </Typography>
@@ -45,8 +45,7 @@ const Usages = ({ doInfo = [], dontInfo = [] }: UsagesProps) => {
   return (
     <>
       <Typography variant={'heading4'}>Usage guidelines</Typography>
-      <Spacing hasBorder />
-      <Spacing />
+      <Container m="SpacingBase4" />
       <>
         {doInfo.map((doText, index) => (
           <StyledUsagesText key={index} variant={'paragraph2'}>
@@ -54,7 +53,7 @@ const Usages = ({ doInfo = [], dontInfo = [] }: UsagesProps) => {
             &nbsp;{doText}
           </StyledUsagesText>
         ))}
-        <Spacing />
+        <Container m="SpacingBase4" />
         {dontInfo.map((dontText, index) => (
           <StyledUsagesText key={index} variant={'paragraph2'}>
             <StyledDont variant={'subtitle1'}>DON'T:</StyledDont>
@@ -72,19 +71,18 @@ const Examples = ({ children, title }: ExamplesProps) => {
   return (
     <>
       <Typography variant={'heading4'}>Examples</Typography>
-      <Spacing hasBorder />
-      <Spacing />
+      <Container m="SpacingBase4" />
       {children &&
         Children.map(children, (index) => (
           <>
             <StyledExampleContainer>
               <StyledChildrenContainer>{index}</StyledChildrenContainer>
             </StyledExampleContainer>
-            <Spacing size={'Medium'} />
+            <Container m="SpacingBase8" />
           </>
         ))}
 
-      <Spacing />
+      <Container m="SpacingBase4" />
       <Typography variant={'paragraph2'}>
         Visit the Variants page to view all possible states and options for
         the&nbsp;
@@ -112,11 +110,11 @@ const InfoContainer: FC<InfoContainerProps> = ({
     <StyledStorybookContainer>
       <StyledContainer>
         <Header title={title} description={description} />
-        <Spacing size={'Medium'} />
+        <Container m="SpacingBase8" />
         <Examples title={title}>{children}</Examples>
-        <Spacing size={'Medium'} />
+        <Container m="SpacingBase8" />
         <Usages doInfo={doInfo} dontInfo={dontInfo} />
-        <Spacing />
+        <Container m="SpacingBase4" />
       </StyledContainer>
     </StyledStorybookContainer>
   );

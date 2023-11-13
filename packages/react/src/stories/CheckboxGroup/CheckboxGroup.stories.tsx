@@ -1,10 +1,10 @@
+import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import CheckboxGroup, {
   CheckboxGroupProps,
 } from '../../components/CheckboxGroup';
-import Container from '../Container';
+import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import Spacing from '../Spacing';
 import { DESCRIPTION, DO, DONT, TITLE } from './CheckboxGroupInfo';
 import * as StoryTitle from '../StoryTitle';
 
@@ -21,7 +21,7 @@ export const Overview = () => {
       doInfo={DO}
       dontInfo={DONT}
     >
-      <Container direction="column">
+      <Container flexDirection="column">
         <StoryTitle.Overview>Checkbox Group</StoryTitle.Overview>
         <CheckboxGroup
           defaultChecked={[]}
@@ -38,21 +38,21 @@ export const Overview = () => {
 
 export const Variants = () => {
   return (
-    <Container direction="column">
+    <Container flexDirection="column">
       <StoryTitle.Regular>Everything is Checked</StoryTitle.Regular>
 
       <CheckboxGroup
         defaultChecked={['Apple', 'Banana', 'Pear']}
         options={['Apple', 'Banana', 'Pear']}
       />
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase12" />
       <StoryTitle.Regular>One or more is Checked</StoryTitle.Regular>
 
       <CheckboxGroup
         defaultChecked={['Banana']}
         options={['Apple', 'Banana', 'Pear']}
       />
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase12" />
       <StoryTitle.Regular>One or more is Disabled</StoryTitle.Regular>
 
       <CheckboxGroup
@@ -63,7 +63,7 @@ export const Variants = () => {
           { label: 'Pear', value: 'fruit3' },
         ]}
       />
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase12" />
       <StoryTitle.Regular>One or more has Error</StoryTitle.Regular>
 
       <CheckboxGroup
@@ -78,7 +78,7 @@ export const Variants = () => {
   );
 };
 const Template: Story<CheckboxGroupProps> = () => (
-  <Container direction="column">
+  <Container flexDirection="column">
     <StoryTitle.Regular>Checkbox Group</StoryTitle.Regular>
     <CheckboxGroup defaultChecked={[]} options={['Apple', 'Banana', 'Pear']} />
   </Container>

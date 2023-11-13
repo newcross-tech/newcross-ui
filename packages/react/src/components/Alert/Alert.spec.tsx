@@ -9,7 +9,7 @@ import Alert, { AlertProps } from './Alert';
 
 const renderComponent = (customProps: Partial<AlertProps>) => {
   const props = {
-    action: <Link>Click Here</Link>,
+    action: <Link variant="paragraph1">Click Here</Link>,
     children: 'This is success. This is success. This is success.',
     ...customProps,
   };

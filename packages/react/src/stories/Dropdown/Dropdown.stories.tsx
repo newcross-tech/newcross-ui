@@ -1,9 +1,9 @@
+import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import DropDown, { DropdownProps } from '../../components/Dropdown';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './DropdownInfo';
-import Container from '../Container';
-import Spacing from '../Spacing';
+import Container from '../../components/Container';
 import * as StoryTitle from '../StoryTitle';
 
 export default {
@@ -19,9 +19,9 @@ export const Overview = () => {
       doInfo={DO}
       dontInfo={DONT}
     >
-      <Container direction="column" hasPadding={false}>
+      <Container flexDirection="column">
         <StoryTitle.Overview>Single Select</StoryTitle.Overview>
-        <Spacing />
+        <Container m="SpacingBase8" />
         <DropDown
           options={[
             'Dropdown Option 1',
@@ -31,9 +31,9 @@ export const Overview = () => {
           label="Label"
           placeholder="Select a 'label'"
         />
-        <Spacing size={'Large'} />
+        <Container m="SpacingBase8" />
         <StoryTitle.Overview>Multi Select</StoryTitle.Overview>
-        <Spacing />
+        <Container m="SpacingBase8" />
         <DropDown
           variant="multi"
           options={[
@@ -60,9 +60,9 @@ export const MultiSelectVariants = () => {
   ];
 
   return (
-    <Container direction="column" hasPadding={false}>
+    <Container flexDirection="column">
       <StoryTitle.Regular>Default Multi Select</StoryTitle.Regular>
-      <Spacing />
+      <Container m="SpacingBase8" />
       <DropDown
         variant="multi"
         label="Label"
@@ -71,9 +71,9 @@ export const MultiSelectVariants = () => {
         testID={'Drop1'}
       />
 
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase8" />
       <StoryTitle.Regular>Disabled Dropdown</StoryTitle.Regular>
-      <Spacing />
+      <Container m="SpacingBase8" />
       <DropDown
         variant="multi"
         placeholder={'Disabled Dropdown'}
@@ -81,9 +81,9 @@ export const MultiSelectVariants = () => {
         options={options}
         testID={'Drop2'}
       />
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase8" />
       <StoryTitle.Regular>Error Dropdown</StoryTitle.Regular>
-      <Spacing />
+      <Container m="SpacingBase8" />
       <DropDown
         variant="multi"
         placeholder={'Error Dropdown'}
@@ -106,9 +106,9 @@ export const SingleSelectVariants = () => {
   ];
 
   return (
-    <Container direction="column" hasPadding={false}>
+    <Container flexDirection="column">
       <StoryTitle.Regular>Default Dropdown</StoryTitle.Regular>
-      <Spacing />
+      <Container m="SpacingBase8" />
       <DropDown
         label="Label"
         placeholder="Select a 'label'"
@@ -116,18 +116,18 @@ export const SingleSelectVariants = () => {
         testID={'Drop1'}
       />
 
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase8" />
       <StoryTitle.Regular>Disabled Dropdown</StoryTitle.Regular>
-      <Spacing />
+      <Container m="SpacingBase8" />
       <DropDown
         placeholder={'Disabled Dropdown'}
         disabled
         options={options}
         testID={'Drop2'}
       />
-      <Spacing size={'Large'} />
+      <Container m="SpacingBase8" />
       <StoryTitle.Regular>Error Dropdown</StoryTitle.Regular>
-      <Spacing />
+      <Container m="SpacingBase8" />
       <DropDown
         placeholder={'Error Dropdown'}
         errorText={'Please make a selection'}
