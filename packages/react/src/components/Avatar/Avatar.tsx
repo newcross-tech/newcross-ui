@@ -2,7 +2,6 @@ import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { TestProp } from '../../types';
 import * as Styled from './Avatar.style';
 import AvatarContent from './AvatarContent';
-import { BORDER_SPACING_SUBTRACTOR } from './constants';
 
 export type AvatarProps = {
   /**
@@ -37,7 +36,7 @@ const Avatar = ({
   const sharedProps = {
     inactive,
     source,
-    size: size - BORDER_SPACING_SUBTRACTOR,
+    size: size,
   };
 
   return (
