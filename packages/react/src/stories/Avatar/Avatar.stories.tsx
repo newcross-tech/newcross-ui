@@ -71,7 +71,7 @@ export const VariantWithBadge = () => {
 
       <Container flexDirection="row">
         <Badge size="medium" position="topRight">
-          <Avatar />
+          <Avatar size={64} />
         </Badge>
       </Container>
     </Container>
@@ -82,29 +82,28 @@ export const VariantWithIcon = () => {
   return (
     <Container flexDirection="column">
       <StoryTitle.Regular>Active Variant</StoryTitle.Regular>
-
       <Avatar />
       <BottomSpacing />
       <StoryTitle.Regular>Inactive Variant</StoryTitle.Regular>
-
       <Avatar inactive />
-      <BottomSpacing />
+      <BottomSpacing /> <BottomSpacing />
       <StoryTitle.Regular>Size Variants</StoryTitle.Regular>
-      <BottomSpacing />
       <Container flexDirection="row">
         <Container flexDirection="column">
-          <Typography variant={'paragraph2'}>Large</Typography>
-          <Avatar size="large" />
+          <Typography variant={'paragraph2'}>48px</Typography>
+          <Avatar size={48} />
         </Container>
+        <HorizontalSpacing />
 
-        <Container flexDirection="column" ml="SpacingBase12">
-          <Typography variant={'paragraph2'}>Medium</Typography>
-          <Avatar size="medium" />
+        <Container flexDirection="column">
+          <Typography variant={'paragraph2'}>64px</Typography>
+          <Avatar />
         </Container>
+        <HorizontalSpacing />
 
-        <Container flexDirection="column" ml="SpacingBase12">
-          <Typography variant={'paragraph2'}>Small</Typography>
-          <Avatar size="small" />
+        <Container flexDirection="column">
+          <Typography variant={'paragraph2'}>144px</Typography>
+          <Avatar size={144} />
         </Container>
       </Container>
     </Container>
@@ -118,4 +117,4 @@ const Template: Story<AvatarProps> = (props) => (
 );
 
 export const Interactive = Template.bind({});
-Interactive.args = {};
+Interactive.args = { size: 64 };
