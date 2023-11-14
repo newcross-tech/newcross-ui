@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.40.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.40.2...@newcross-ui/react@1.40.3) (2023-11-14)
+
+
+### Bug Fixes
+
+* link component share testID & role with typography component ([#59](https://bitbucket.org/newcrossdev/newcross-ui/issues/59)) ([6ced0c6](https://bitbucket.org/newcrossdev/newcross-ui/commits/6ced0c6c7d7773b0b877deb1c83575fb9165ff63))
+
+
+
+
+
 ## [1.40.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.40.1...@newcross-ui/react@1.40.2) (2023-11-10)
 
 **Note:** Version bump only for package @newcross-ui/react
