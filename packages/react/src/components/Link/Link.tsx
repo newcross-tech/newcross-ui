@@ -22,10 +22,12 @@ const Link = ({
   variant = 'paragraph1',
   leftIcon,
   rightIcon,
+  testID,
+  role,
   ...restProps
 }: LinkProps) => {
   return (
-    <Styled.Link {...restProps}>
+    <Styled.Link testID={testID} role={role} {...restProps}>
       <Typography variant={variant} {...restProps}>
         {leftIcon && (
           <Styled.Icon

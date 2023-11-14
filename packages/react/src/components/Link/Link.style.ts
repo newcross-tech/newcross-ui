@@ -56,7 +56,7 @@ export const getIconSize = (theme: ThemeDesignTokens): Record<TypographyVariant,
   `,
 });
 
-export const Link = styled.a`
+export const Link = styled.a<Omit<LinkProps, 'variant'>>`
   text-decoration: underline;
   cursor: pointer;
 
