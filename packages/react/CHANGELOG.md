@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.40.3...@newcross-ui/react@2.0.0) (2023-11-14)
+
+
+* Feature/hfhr-103_avatar-custom-size_main (#58) ([4c5dc53](https://bitbucket.org/newcrossdev/newcross-ui/commits/4c5dc5346ab8fdc2b212dacbe3d59483fadb1342)), closes [#58](https://bitbucket.org/newcrossdev/newcross-ui/issue/58)
+
+
+### BREAKING CHANGES
+
+* Old sizes are deprecated. The new size functionality requires a number from 32px to
+300px.
+
+
+
+
+
 ## [1.40.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.40.2...@newcross-ui/react@1.40.3) (2023-11-14)
 
 
