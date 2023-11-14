@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { faPhone } from '@fortawesome/pro-regular-svg-icons/faPhone';
@@ -32,6 +33,15 @@ describe('Link Component', () => {
     const link = screen.getByRole('link', { name: 'My Link' });
     // Assert
     expect(link).toHaveAttribute('href', 'mailto:someone@example.com');
+    expect(link).toBeVisible();
+  });
+
+  it('should render successfully without href', () => {
+    // Act
+    renderComponent({ role: 'button' } as LinkProps);
+    const link = screen.getByRole('button', { name: 'My Link' });
+
+    // Assert
     expect(link).toBeVisible();
   });
 
