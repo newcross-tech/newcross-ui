@@ -2,6 +2,7 @@ import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { TestProp } from '../../types';
 import * as Styled from './Avatar.style';
 import AvatarContent from './AvatarContent';
+import { SizeRange } from './Avatar.types';
 
 export type AvatarProps = {
   /**
@@ -20,7 +21,7 @@ export type AvatarProps = {
   /**
    * Accepts a custom size in px to be used for the avatar (32min, 300max).
    */
-  size?: number;
+  size?: SizeRange;
   /**
    * Accepts a icon to be used for the avatar.
    */

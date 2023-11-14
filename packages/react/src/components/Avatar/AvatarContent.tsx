@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { AvatarProps } from './Avatar';
 import * as Styled from './Avatar.style';
 import { nameToAbbreviation } from './utils';
-import { LARGE_SIZE_BREAKPOINT, MEDIUM_SIZE_BREAKPOINT } from './constants';
+import { getPxFromRem } from '../../utils/getPxFromRem';
+import useTheme from '../../hooks/useTheme';
 
 const baseTestId = 'avatar';
 
@@ -12,15 +13,19 @@ const AvatarContent = ({
   source,
   icon,
   inactive,
-  size = 0,
+  size = 32,
   testID = '',
 }: AvatarProps) => {
   const abbreviation = name && nameToAbbreviation(name);
   const [imageError, setImageError] = useState(false);
+  const theme = useTheme();
 
   const getTypographyVariant = (size: number) => {
-    if (size <= MEDIUM_SIZE_BREAKPOINT) return 'heading6';
-    if (size <= LARGE_SIZE_BREAKPOINT) return 'heading5';
+    const mediumBreakpoint = getPxFromRem(theme.SpacingBase48);
+    const largeBreakPoint = getPxFromRem(theme.SpacingBase80);
+
+    if (size <= mediumBreakpoint) return 'heading6';
+    if (size <= largeBreakPoint) return 'heading5';
     return 'heading1';
   };
 

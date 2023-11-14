@@ -4,13 +4,15 @@ import { ExtendedTheme } from '../../types';
 import { AvatarContainerType, InactiveType, StyledFontType } from './Avatar.types';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { CONTAINER_DIVIDER, LARGE_SIZE_BREAKPOINT, MAX_SIZE, MEDIUM_SIZE_BREAKPOINT, MIN_SIZE } from './constants';
+import { CONTAINER_DIVIDER } from './constants';
+import { getPxFromRem } from '../../utils/getPxFromRem';
 
 const getIconSize = (theme: ThemeDesignTokens, size: number) => {
   let spacing = theme.SpacingBase48;
-
-  if (size <= LARGE_SIZE_BREAKPOINT) {
-    spacing = size <= MEDIUM_SIZE_BREAKPOINT ? theme.SpacingBase12 : theme.SpacingBase24;
+  const mediumBreakpoint = getPxFromRem(theme.SpacingBase48);
+  const largeBreakPoint = getPxFromRem(theme.SpacingBase80);
+  if (size <= largeBreakPoint) {
+    spacing = size <= mediumBreakpoint ? theme.SpacingBase12 : theme.SpacingBase24;
   }
 
   return css`
@@ -20,7 +22,9 @@ const getIconSize = (theme: ThemeDesignTokens, size: number) => {
 };
 
 const getContainerSize = (theme: ThemeDesignTokens, size: number, divider: number) => {
-  const safeSize = size > MIN_SIZE ? Math.min(size, MAX_SIZE) : MIN_SIZE;
+  const minSize = getPxFromRem(theme.SpacingBase32);
+  const maxSize = getPxFromRem(theme.SpacingBase4) * 75;
+  const safeSize = size > minSize ? Math.min(size, maxSize) : minSize;
 
   const spacing = safeSize / divider / 16;
 
