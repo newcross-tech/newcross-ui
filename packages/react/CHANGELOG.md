@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.0.0...@newcross-ui/react@2.0.1) (2023-11-14)
+
+
+### Bug Fixes
+
+* link underline color was not matching with text color ([#60](https://bitbucket.org/newcrossdev/newcross-ui/issues/60)) ([50ee5ce](https://bitbucket.org/newcrossdev/newcross-ui/commits/50ee5ce38ad441dd4ffc0fd0e16d36bbb0830908))
+
+
+
+
+
 # [2.0.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.40.3...@newcross-ui/react@2.0.0) (2023-11-14)
 
 
