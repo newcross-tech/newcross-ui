@@ -3,7 +3,7 @@ import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ExtendedTheme, FontWeight } from '../../types';
 import { getElipsisStyles } from '../../utils';
 import { TypographyProps } from './Typography';
-import { TypographyColors, TypographyVariant } from './Typography.types';
+import { TypographyVariant } from './Typography.types';
 
 export const getTypographyStyles = (
   theme: ThemeDesignTokens
@@ -82,60 +82,26 @@ export const getTypographyStyles = (
   `,
 });
 
-const getColorStyles = (
-  theme: ThemeDesignTokens
-): Record<string, Record<TypographyColors, FlattenSimpleInterpolation>> => ({
+export const getColorStyles = (theme: ThemeDesignTokens): Record<string, Record<string, string>> => ({
   dark: {
-    primary: css`
-      color: ${theme.TypographyDarkColorPrimary};
-    `,
-    secondary: css`
-      color: ${theme.TypographyDarkColorSecondary};
-    `,
-    white: css`
-      color: ${theme.TypographyColorWhite};
-    `,
-    black: css`
-      color: ${theme.TypographyColorBlack};
-    `,
-    success: css`
-      color: ${theme.TypographyColorSuccess};
-    `,
-    error: css`
-      color: ${theme.TypographyColorError};
-    `,
-    warning: css`
-      color: ${theme.TypographyColorWarning};
-    `,
-    info: css`
-      color: ${theme.TypographyColorInfo};
-    `,
+    primary: theme.TypographyDarkColorPrimary,
+    secondary: theme.TypographyDarkColorSecondary,
+    white: theme.TypographyColorWhite,
+    black: theme.TypographyColorBlack,
+    success: theme.TypographyColorSuccess,
+    error: theme.TypographyColorError,
+    warning: theme.TypographyColorWarning,
+    info: theme.TypographyColorInfo,
   },
   light: {
-    primary: css`
-      color: ${theme.TypographyColorPrimary};
-    `,
-    secondary: css`
-      color: ${theme.TypographyColorSecondary};
-    `,
-    white: css`
-      color: ${theme.TypographyColorWhite};
-    `,
-    black: css`
-      color: ${theme.TypographyColorBlack};
-    `,
-    success: css`
-      color: ${theme.TypographyColorSuccess};
-    `,
-    error: css`
-      color: ${theme.TypographyColorError};
-    `,
-    warning: css`
-      color: ${theme.TypographyColorWarning};
-    `,
-    info: css`
-      color: ${theme.TypographyColorInfo};
-    `,
+    primary: theme.TypographyColorPrimary,
+    secondary: theme.TypographyColorSecondary,
+    white: theme.TypographyColorWhite,
+    black: theme.TypographyColorBlack,
+    success: theme.TypographyColorSuccess,
+    error: theme.TypographyColorError,
+    warning: theme.TypographyColorWarning,
+    info: theme.TypographyColorInfo,
   },
 });
 
@@ -151,7 +117,7 @@ export const getCoreStyles = ({
   ${variant && getTypographyStyles(theme)[variant]};
   ${numberOfLines && getElipsisStyles(numberOfLines)};
   margin-bottom: ${gutterBottom ? theme.SpacingBase8 : theme.SpacingBase0};
-  ${color ? getColorStyles(theme)?.[mode]?.[color] : { color: 'inherit' }};
+  ${color ? { color: getColorStyles(theme)?.[mode]?.[color] } : { color: 'inherit' }};
   ${align ? { textAlign: align } : { textAlign: 'inherit' }};
 
   b,

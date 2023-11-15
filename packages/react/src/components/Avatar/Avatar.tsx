@@ -1,8 +1,8 @@
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { TestProp } from '../../types';
 import * as Styled from './Avatar.style';
-import { AvatarSizes } from './Avatar.types';
 import AvatarContent from './AvatarContent';
+import { SizeRange } from './Avatar.types';
 
 export type AvatarProps = {
   /**
@@ -17,10 +17,11 @@ export type AvatarProps = {
    * Accepts a boolean to determine if the avatar is inactive or not.
    */
   inactive?: boolean;
+
   /**
-   * Accepts a size to be used for the avatar.
+   * Accepts a custom size in px to be used for the avatar (32min, 300max).
    */
-  size?: AvatarSizes;
+  size?: SizeRange;
   /**
    * Accepts a icon to be used for the avatar.
    */
@@ -30,13 +31,13 @@ export type AvatarProps = {
 const Avatar = ({
   source,
   inactive = false,
-  size = 'large',
+  size = 64,
   ...rest
 }: AvatarProps) => {
   const sharedProps = {
-    size,
     inactive,
     source,
+    size: size,
   };
 
   return (

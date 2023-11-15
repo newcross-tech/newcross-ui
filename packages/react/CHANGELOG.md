@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.0.1...@newcross-ui/react@2.0.2) (2023-11-15)
+
+
+### Bug Fixes
+
+* **OAE-000:** container component flexWrap bug fix ([#61](https://bitbucket.org/newcrossdev/newcross-ui/issues/61)) ([b2fc4bd](https://bitbucket.org/newcrossdev/newcross-ui/commits/b2fc4bd7bfa643e012f58d768bbd32532638c0c6))
+
+
+
+
+
+## [2.0.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.0.0...@newcross-ui/react@2.0.1) (2023-11-14)
+
+
+### Bug Fixes
+
+* link underline color was not matching with text color ([#60](https://bitbucket.org/newcrossdev/newcross-ui/issues/60)) ([50ee5ce](https://bitbucket.org/newcrossdev/newcross-ui/commits/50ee5ce38ad441dd4ffc0fd0e16d36bbb0830908))
+
+
+
+
+
+# [2.0.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.40.3...@newcross-ui/react@2.0.0) (2023-11-14)
+
+
+* Feature/hfhr-103_avatar-custom-size_main (#58) ([4c5dc53](https://bitbucket.org/newcrossdev/newcross-ui/commits/4c5dc5346ab8fdc2b212dacbe3d59483fadb1342)), closes [#58](https://bitbucket.org/newcrossdev/newcross-ui/issue/58)
+
+
+### BREAKING CHANGES
+
+* Old sizes are deprecated. The new size functionality requires a number from 32px to
+300px.
+
+
+
+
+
+## [1.40.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.40.2...@newcross-ui/react@1.40.3) (2023-11-14)
+
+
+### Bug Fixes
+
+* link component share testID & role with typography component ([#59](https://bitbucket.org/newcrossdev/newcross-ui/issues/59)) ([6ced0c6](https://bitbucket.org/newcrossdev/newcross-ui/commits/6ced0c6c7d7773b0b877deb1c83575fb9165ff63))
+
+
+
+
+
 ## [1.40.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@1.40.1...@newcross-ui/react@1.40.2) (2023-11-10)
 
 **Note:** Version bump only for package @newcross-ui/react

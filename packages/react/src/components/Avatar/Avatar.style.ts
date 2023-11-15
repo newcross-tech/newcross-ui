@@ -1,77 +1,60 @@
 import Typography from '../Typography';
-import { AvatarProps } from './Avatar';
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ExtendedTheme } from '../../types';
-import { getHaloValue } from '../../utils/getHaloValue';
-import { AvatarSizes, StyledFontType } from './Avatar.types';
+import { AvatarContainerType, InactiveType, StyledFontType } from './Avatar.types';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { CONTAINER_DIVIDER } from './constants';
+import { getPxFromRem } from '../../utils/getPxFromRem';
 
-const getInnerEllipseSize = (theme: ThemeDesignTokens): Record<AvatarSizes, FlattenSimpleInterpolation> => ({
-  small: css`
-    height: ${theme.AvatarInnerEllipseSmallHeight};
-    width: ${theme.AvatarInnerEllipseSmallWidth};
-  `,
-  medium: css`
-    width: ${+getHaloValue(theme.SpacingBase4) * 9}rem;
-    height: ${+getHaloValue(theme.SpacingBase4) * 9}rem;
-  `,
-  large: css`
-    height: ${theme.AvatarInnerEllipseLargeHeight};
-    width: ${theme.AvatarInnerEllipseLargeWidth};
-  `,
-});
+const getIconSize = (theme: ThemeDesignTokens, size: number) => {
+  let spacing = theme.SpacingBase48;
+  const mediumBreakpoint = getPxFromRem(theme.SpacingBase48);
+  const largeBreakPoint = getPxFromRem(theme.SpacingBase80);
+  if (size <= largeBreakPoint) {
+    spacing = size <= mediumBreakpoint ? theme.SpacingBase12 : theme.SpacingBase24;
+  }
 
-const getActiveEllipseStyles = (theme: ThemeDesignTokens): Record<AvatarSizes, FlattenSimpleInterpolation> => ({
-  small: css`
-    width: ${+getHaloValue(theme.SpacingBase4) * 7}rem;
-    height: ${+getHaloValue(theme.SpacingBase4) * 7}rem;
-  `,
-  medium: css`
-    width: ${+getHaloValue(theme.SpacingBase4) * 11}rem;
-    height: ${+getHaloValue(theme.SpacingBase4) * 11}rem;
-  `,
-  large: css`
-    width: ${+getHaloValue(theme.SpacingBase12) * 5}rem;
-    height: ${+getHaloValue(theme.SpacingBase12) * 5}rem;
-  `,
-});
+  return css`
+    width: ${spacing};
+    height: ${spacing};
+  `;
+};
 
-export const getIconSize = (theme: ThemeDesignTokens): Record<AvatarSizes, FlattenSimpleInterpolation> => ({
-  small: css`
-    width: ${theme.AvatarInnerEllipseIconHeightSmall};
-    height: ${theme.AvatarInnerEllipseIconHeightSmall};
-  `,
-  medium: css`
-    width: ${theme.AvatarInnerEllipseIconHeightMedium};
-    height: ${theme.AvatarInnerEllipseIconHeightMedium};
-  `,
-  large: css`
-    width: ${theme.AvatarInnerEllipseIconHeightLarge};
-    height: ${theme.AvatarInnerEllipseIconHeightLarge};
-  `,
-});
+const getContainerSize = (theme: ThemeDesignTokens, size: number, divider: number) => {
+  const minSize = getPxFromRem(theme.SpacingBase32);
+  const maxSize = getPxFromRem(theme.SpacingBase4) * 75;
+  const safeSize = size > minSize ? Math.min(size, maxSize) : minSize;
+
+  const spacing = safeSize / divider / 16;
+
+  const computedSpacing = `calc(${spacing}rem - ${theme.AvatarActiveEllipseLargeBorderWidth} * 2)`;
+
+  return css`
+    width: ${computedSpacing};
+    height: ${computedSpacing};
+  `;
+};
 
 export const AvatarIcon = styled(FontAwesomeIcon)<ExtendedTheme<StyledFontType>>`
-  ${({ theme, $size }) => css`
-    ${$size && getIconSize(theme)[$size]};
+  ${({ theme, $size }: ExtendedTheme<StyledFontType>) => css`
+    ${getIconSize(theme, $size)};
   `};
 `;
 
 export const InnerContainer = styled.div``;
 
-export const AvatarContainer = styled.div<AvatarProps>`
+export const AvatarContainer = styled.div<AvatarContainerType>`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 
-  ${({ theme, inactive, size }: ExtendedTheme<AvatarProps>) => css`
+  ${({ theme, inactive, size }: ExtendedTheme<AvatarContainerType>) => css`
     border: ${theme.AvatarActiveEllipseLargeBorderWidth} solid
       ${inactive ? theme.AvatarInactiveBackgroundColor : theme.AvatarActiveEllipseBorderColor};
     border-radius: ${theme.AvatarBorderRadius};
-
-    ${size && getActiveEllipseStyles(theme)[size]};
+    ${getContainerSize(theme, size, 1)}
 
     > ${InnerContainer} {
       display: flex;
@@ -80,29 +63,28 @@ export const AvatarContainer = styled.div<AvatarProps>`
       overflow: hidden;
       border-radius: ${theme.AvatarBorderRadius};
       background-color: ${theme.AvatarInnerEllipseBackgroundColor};
-
-      ${size && getInnerEllipseSize(theme)[size as AvatarSizes]};
+      ${getContainerSize(theme, size, CONTAINER_DIVIDER)}
     }
   `};
 `;
 
-export const AvatarImage = styled.img<AvatarProps>`
+export const AvatarImage = styled.img<InactiveType>`
   height: 100%;
   width: 100%;
   object-fit: cover;
-  ${({ theme, inactive }: ExtendedTheme<AvatarProps>) => css`
+  ${({ theme, inactive }: ExtendedTheme<InactiveType>) => css`
     opacity: ${inactive && theme.AvatarInnerEllipseOpacity};
   `}
 `;
 
-export const Icon = styled.div<AvatarProps>`
-  ${({ theme, inactive }: ExtendedTheme<AvatarProps>) => css`
+export const Icon = styled.div<InactiveType>`
+  ${({ theme, inactive }: ExtendedTheme<InactiveType>) => css`
     color: ${inactive ? theme.AvatarInactiveColor : theme.AvatarInnerEllipseColor};
   `};
 `;
 
-export const Text = styled(Typography)<AvatarProps>`
-  ${({ theme, inactive }: ExtendedTheme<AvatarProps>) => css`
+export const Text = styled(Typography)<InactiveType>`
+  ${({ theme, inactive }: ExtendedTheme<InactiveType>) => css`
     opacity: ${inactive && theme.AvatarInnerEllipseOpacity};
     color: ${inactive ? theme.AvatarInactiveColor : theme.AvatarInnerEllipseColor};
   `};

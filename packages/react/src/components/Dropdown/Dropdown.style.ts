@@ -146,7 +146,7 @@ export const HeaderContainer = styled.div<HeaderContainerProps>`
 
     ${disabled &&
     css`
-      background-color: ${theme.ColorNeutralGrey400};
+      background-color: ${theme.ColorBaseGrey500};
     `}
 
     ${!disabled &&
