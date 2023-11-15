@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ExtendedTheme, Theme, Typography } from '@newcross-ui/react';
 import {
   ControlProps,
   CSSObjectWithLabel,
@@ -9,6 +8,8 @@ import {
   StylesConfig,
 } from 'react-select';
 import styled, { css } from 'styled-components';
+import { ExtendedTheme, Theme } from '../../types';
+import Typography from '../Typography';
 import { ErrorType } from './Select.types';
 
 const defaultAnimationSpeed = 0.2;

@@ -8,7 +8,7 @@ import {
   createFilter,
   Props,
 } from 'react-select';
-import { useTheme } from '@newcross-ui/react';
+import useTheme from '../../hooks/useTheme';
 import * as Styled from './Select.style';
 import { SelectContext, useSelectContext } from './SelectContext';
 

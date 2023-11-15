@@ -1,10 +1,8 @@
 import { Meta } from '@storybook/react';
 import { Select } from '../../components/Select';
 import { DESCRIPTION, DO, DONT, TITLE } from './Select.info';
-import Container from '../Container';
-import Spacing from '../Spacing';
+import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import * as StoryTitle from '../StoryTitle';
 import { SelectProps } from '../../components/Select';
 
 export default {
@@ -26,21 +24,16 @@ export const Overview = () => {
       doInfo={DO}
       dontInfo={DONT}
     >
-      <Container direction="column" hasPadding={false}>
-        <StoryTitle.Overview>Single Select</StoryTitle.Overview>
-        <Spacing />
+      <Container flexDirection="column" gap="SpacingBase8">
         <Select
           options={options}
-          label="Label"
+          label="Single Select"
           placeholder="Select a 'label'"
         />
-        <Spacing size={'Large'} />
-        <StoryTitle.Overview>Multi Select</StoryTitle.Overview>
-        <Spacing />
         <Select
           isMulti
           options={options}
-          label="Label"
+          label="Multi Select"
           placeholder="Select multiple 'labels'"
         />
       </Container>
@@ -50,32 +43,29 @@ export const Overview = () => {
 
 export const SingleSelectVariants = () => {
   return (
-    <Container direction="column" hasPadding={false}>
-      <StoryTitle.Regular>Default Select</StoryTitle.Regular>
-      <Spacing />
+    <Container flexDirection="column" gap="SpacingBase8">
       <Select
+        label="Default Select"
         id="default-select"
         placeholder="Select an option..."
         options={options}
       />
-      <Spacing size={'Large'} />
-      <StoryTitle.Regular>Not Searchable Select</StoryTitle.Regular>
-      <Spacing />
       <Select
+        label={'Not Searchable Select'}
         placeholder="Select some 'labels'"
         options={options}
         isSearchable={false}
       />
-      <Spacing size={'Large'} />
-      <StoryTitle.Regular>Disabled Dropdown</StoryTitle.Regular>
-      <Spacing />
-      <Select placeholder={'Disabled Dropdown'} disabled options={options} />
-      <Spacing size={'Large'} />
-      <StoryTitle.Regular>Error Dropdown</StoryTitle.Regular>
-      <Spacing />
       <Select
+        label={'Disabled Select'}
+        placeholder={'Disabled Select'}
+        disabled
+        options={options}
+      />
+      <Select
+        label={'Error Select'}
         hasError
-        placeholder={'Error Dropdown'}
+        placeholder={'Error Select'}
         errorText={'Please make a selection'}
         options={options}
       />
@@ -85,30 +75,24 @@ export const SingleSelectVariants = () => {
 
 export const MultiSelectVariants = () => {
   return (
-    <Container direction="column" hasPadding={false}>
-      <StoryTitle.Regular>Default Multi Select</StoryTitle.Regular>
-      <Spacing />
+    <Container flexDirection="column" gap="SpacingBase8">
       <Select
+        label={'Default Multi Select'}
         isMulti
-        label="Label"
         placeholder="Select some 'labels'"
         options={options}
       />
-      <Spacing size={'Large'} />
-      <StoryTitle.Regular>Disabled Dropdown</StoryTitle.Regular>
-      <Spacing />
       <Select
+        label={'Disabled Select'}
         isMulti
-        placeholder={'Disabled Dropdown'}
+        placeholder={'Disabled Select'}
         disabled
         options={options}
       />
-      <Spacing size={'Large'} />
-      <StoryTitle.Regular>Error Dropdown</StoryTitle.Regular>
-      <Spacing />
       <Select
+        label={'Error Select'}
         isMulti
-        placeholder={'Error Dropdown'}
+        placeholder={'Error Select'}
         hasError
         errorText={'Please make a selection'}
         options={options}
@@ -119,12 +103,10 @@ export const MultiSelectVariants = () => {
 
 export const GroupedSelect = () => {
   return (
-    <Container direction="column" hasPadding={false}>
-      <StoryTitle.Regular>Group Select</StoryTitle.Regular>
-      <Spacing />
+    <Container flexDirection="column" gap="SpacingBase8">
       <Select
         isMulti
-        label="Label"
+        label="Group Select"
         placeholder="Select some 'labels'"
         options={[
           {
