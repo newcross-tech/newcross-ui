@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.0.1...@newcross-ui/react@2.0.2) (2023-11-15)
+
+
+### Bug Fixes
+
+* **OAE-000:** container component flexWrap bug fix ([#61](https://bitbucket.org/newcrossdev/newcross-ui/issues/61)) ([b2fc4bd](https://bitbucket.org/newcrossdev/newcross-ui/commits/b2fc4bd7bfa643e012f58d768bbd32532638c0c6))
+
+
+
+
+
 ## [2.0.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.0.0...@newcross-ui/react@2.0.1) (2023-11-14)
 
 
