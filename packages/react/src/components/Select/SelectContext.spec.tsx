@@ -1,11 +1,13 @@
 import { render } from '@testing-library/react';
 import { byText } from 'testing-library-selector';
 import { SelectContext, useSelectContext } from './SelectContext';
+
 const ComponentUsingSelectContext = () => {
   const { id } = useSelectContext();
 
   return <div>Context ID: {id}</div>;
 };
+
 describe('useSelectContext', () => {
   const ui = {
     contextText: byText('Context ID: example-id'),
@@ -22,7 +24,7 @@ describe('useSelectContext', () => {
     render(
       <SelectContext.Provider value={selectContextValue}>
         <ComponentUsingSelectContext />
-      </SelectContext.Provider>,
+      </SelectContext.Provider>
     );
 
     expect(ui.contextText.get()).toBeInTheDocument();

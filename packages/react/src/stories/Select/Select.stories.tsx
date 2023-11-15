@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta, Story } from '@storybook/react';
 import { Select } from '../../components/Select';
 import { DESCRIPTION, DO, DONT, TITLE } from './Select.info';
 import Container from '../../components/Container';
