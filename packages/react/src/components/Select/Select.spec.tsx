@@ -1,7 +1,7 @@
 import { byTestId, byText } from 'testing-library-selector';
 import userEvent from '@testing-library/user-event';
-import { render, waitFor } from '@/common/test-utils';
 import Select from './Select';
+import { render, waitFor } from '@testing-library/react';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const renderComponent = (props: any) => {
@@ -24,6 +24,7 @@ const ui = {
   selectErrorText: byTestId('select-error-text'),
   selectCrossicon: byTestId('crossicon'),
 };
+
 describe('Select', () => {
   it('renders successfully', () => {
     renderComponent({

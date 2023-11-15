@@ -7,6 +7,9 @@ import {
   GroupBase,
   createFilter,
   Props,
+  DropdownIndicatorProps,
+  ClearIndicatorProps,
+  MenuListProps,
 } from 'react-select';
 import useTheme from '../../hooks/useTheme';
 import * as Styled from './Select.style';
@@ -23,6 +26,54 @@ const DownChevron: FunctionComponent = () => (
     <Styled.ChevronIcon icon={faChevronDown} />
   </Styled.RightIconContainer>
 );
+
+const ClearIndicator = <
+  Option,
+  IsMulti extends boolean = false,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>(
+  props: ClearIndicatorProps<Option, IsMulti, Group>
+) => {
+  const {
+    children = <CrossIcon />,
+    innerProps: { ref, ...restInnerProps },
+  } = props;
+  return (
+    <div {...restInnerProps} ref={ref} data-testid="crossicon">
+      {children}
+    </div>
+  );
+};
+
+const DropdownIndicator = <
+  Option,
+  IsMulti extends boolean = false,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>(
+  props: DropdownIndicatorProps<Option, IsMulti, Group>
+) => (
+  <components.DropdownIndicator {...props}>
+    <DownChevron />
+  </components.DropdownIndicator>
+);
+
+const MenuList = <
+  Option,
+  IsMulti extends boolean = false,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>(
+  props: React.PropsWithChildren<MenuListProps<Option, IsMulti, Group>>
+) => {
+  const { children, ...rest } = props;
+  const { id } = useSelectContext();
+  const menuListId = `react-select-menu-list${id ? `-${id}` : ''}`;
+
+  return (
+    <components.MenuList {...rest}>
+      <span id={menuListId}>{children}</span>
+    </components.MenuList>
+  );
+};
 
 const baseTestId = 'select';
 
@@ -93,33 +144,9 @@ const Select = <
           isDisabled={disabled}
           closeMenuOnSelect={!isMulti}
           components={{
-            ClearIndicator: (props) => {
-              const {
-                children = <CrossIcon />,
-                innerProps: { ref, ...restInnerProps },
-              } = props;
-              return (
-                <div {...restInnerProps} ref={ref} data-testid="crossicon">
-                  {children}
-                </div>
-              );
-            },
-            DropdownIndicator: (props) => (
-              <components.DropdownIndicator {...props}>
-                <DownChevron />
-              </components.DropdownIndicator>
-            ),
-            MenuList: (props) => {
-              const { children, ...rest } = props;
-              const { id } = useSelectContext();
-              const menuListId = `react-select-menu-list${id ? `-${id}` : ''}`;
-
-              return (
-                <components.MenuList {...rest}>
-                  <span id={menuListId}>{children}</span>
-                </components.MenuList>
-              );
-            },
+            ClearIndicator,
+            DropdownIndicator,
+            MenuList,
           }}
           styles={Styled.getCustomStyles<Option, IsMulti, Group>({
             theme,
