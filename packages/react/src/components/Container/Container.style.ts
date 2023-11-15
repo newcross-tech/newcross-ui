@@ -65,12 +65,12 @@ export const Container = styled.div<ExtendedTheme<ContainerProps>>`
     ${pt && `padding-top: ${theme[pt]};`}
     ${pb && `padding-bottom: ${theme[pb]};`}
 
-    ${display && `display: ${display}`}
+    ${display && `display: ${display};`}
 
-    ${flexWrap && `flex-wrap: ${flexWrap}`};
-    ${justifyContent && `justify-content: ${justifyContent}`};
-    ${alignItems && `align-items: ${alignItems}`};
-    ${gap && `gap: ${theme[gap]}`};
+    ${flexWrap && `flex-wrap: ${flexWrap};`}
+    ${justifyContent && `justify-content: ${justifyContent};`}
+    ${alignItems && `align-items: ${alignItems};`}
+    ${gap && `gap: ${theme[gap]};`}
     ${flexDirection && `flex-direction: ${flexDirection};`}
 
     ${fullWidth && `width: 100%;`}
