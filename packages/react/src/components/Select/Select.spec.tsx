@@ -1,20 +1,14 @@
 import { byTestId, byText } from 'testing-library-selector';
 import userEvent from '@testing-library/user-event';
-import Select from './Select';
 import { render, waitFor } from '@testing-library/react';
+import Select from './Select';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const renderComponent = (props: any) => {
-  const customProps = {
-    id: 'select',
-    options: [
-      { value: '1', label: '1' },
-      { value: '2', label: '2' },
-    ],
-    ...props,
-  };
-
-  return render(<Select {...customProps} />);
+const defaultProps = {
+  id: 'select',
+  options: [
+    { value: '1', label: '1' },
+    { value: '2', label: '2' },
+  ],
 };
 
 const ui = {
@@ -27,36 +21,35 @@ const ui = {
 
 describe('Select', () => {
   it('renders successfully', () => {
-    renderComponent({
-      label: 'Select Label',
-    });
+    render(<Select {...defaultProps} label={'Select Label'} />);
+
     expect(ui.selectLabel.get()).toBeVisible();
   });
 
   it('should render helper text', () => {
-    renderComponent({
-      helperText: 'Helper Text',
-    });
+    render(<Select {...defaultProps} helperText={'Helper Text'} />);
 
     expect(ui.selectMessageText.get()).toBeVisible();
   });
 
   it('should render error', () => {
-    renderComponent({
-      helperText: 'Error Text',
-      hasError: true,
-    });
+    render(<Select {...defaultProps} helperText={'Error Text'} hasError />);
+
     expect(ui.selectErrorText.get()).toBeVisible();
   });
 
   it('should call onChange on option click', async () => {
     const onChange = jest.fn();
 
-    const { getByText } = renderComponent({
-      onChange,
-      ClearIndicator: true,
-      isMulti: true,
-    });
+    const { getByText } = render(
+      <Select
+        {...defaultProps}
+        helperText={'Error Text'}
+        isMulti
+        onChange={onChange}
+      />
+    );
+
     await userEvent.click(getByText('Select...'));
 
     await waitFor(() => expect(getByText('2')).toBeVisible());

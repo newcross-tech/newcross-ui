@@ -169,8 +169,6 @@ export const getCustomStyles = <
       ...styles,
       color: state.isDisabled ? theme.ColorBaseGrey100 : theme.ColorPrimaryGravitas,
     }),
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-ignore
     groupHeading: (styles) => ({
       ...styles,
       textTransform: 'unset',
