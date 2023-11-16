@@ -1,7 +1,7 @@
 import Avatar, { AvatarProps } from './Avatar';
 import { axe } from '../../utils/test/axeConfig';
 import { fireEvent, render } from '@testing-library/react';
-import { byTestId, byText } from 'testing-library-selector';
+import { byTestId } from 'testing-library-selector';
 
 const renderComponent = (customProps: Partial<AvatarProps>) => {
   const props = {
@@ -18,6 +18,7 @@ describe('Avatar Component', () => {
   const ui = {
     avatarImage: byTestId(`${baseTestId}-with-image`),
     avatarIcon: byTestId(`${baseTestId}-with-icon`),
+    avatarText: byTestId(`${baseTestId}-with-text`),
   };
 
   it('should not have any a11y errors', async () => {
@@ -33,7 +34,7 @@ describe('Avatar Component', () => {
     renderComponent({});
 
     // Assert
-    expect(byText(/JD/i).get()).toBeInTheDocument();
+    expect(ui.avatarText.get()).toBeInTheDocument();
   });
 
   it('renders successfully with image and source', () => {

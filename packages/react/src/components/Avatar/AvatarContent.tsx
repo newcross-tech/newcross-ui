@@ -43,7 +43,11 @@ const AvatarContent = ({
 
   if (abbreviation) {
     return (
-      <Styled.Text inactive={inactive} variant={getTypographyVariant(size)}>
+      <Styled.Text
+        inactive={inactive}
+        variant={getTypographyVariant(size)}
+        data-testid={`${baseTestId}-with-text${testID}`}
+      >
         {abbreviation}
       </Styled.Text>
     );
