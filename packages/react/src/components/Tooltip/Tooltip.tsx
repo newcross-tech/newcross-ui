@@ -18,6 +18,12 @@ export type TooltipProps = {
   children?: ReactNode;
 };
 
+/**
+ * @description
+ * ### Accessibility
+ * #### Pattern: Tooltip
+ * #### Notes: -
+ */
 const Tooltip = ({ children, position, variant = 'info' }: TooltipProps) => (
   <Styled.Container position={position}>
     <Styled.Icon icon={Styled.getVariantIcon()[variant]} />

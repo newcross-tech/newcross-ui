@@ -10,6 +10,10 @@ Design system consist of design tokens, React & React Native components for web 
 
 [link to documentation](packages/react-native/README.md)
 
+## React
+
+[link to documentation](packages/react/README.md)
+
 ## How to use
 
 ### Prerequisites

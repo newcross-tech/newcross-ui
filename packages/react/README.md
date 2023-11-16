@@ -16,6 +16,12 @@ If that is not the case, we strongly recommend that you follow the [getting star
   - `react` >=16.8.0
   - `react-dom` >=16.8.0
 
+## Development
+
+See [**Coding Guidelines** on {TODO...}](#)
+
+See [**WAI-ARIA Guidelines** on Confluence](https://newcross.atlassian.net/wiki/spaces/HDS/pages/4024434689)
+
 ## Installation
 
 To start using the `@newcross-ui/react` components on your project, first you will need to install it

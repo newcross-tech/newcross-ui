@@ -25,6 +25,9 @@ export type ButtonProps = {
    * Set the right icon element.
    */
   rightIcon?: ReactElement;
+
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
 } & TestProp &
   ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -55,6 +58,13 @@ export const ButtonIcon = ({
   </Styled.IconWrapper>
 );
 
+/**
+ * @description
+ * ### Accessibility
+ * #### Pattern: Button
+ * #### Notes:
+ * Use `aria-label` or `aria-labeledby` if you use `children` without accessible text (e.g.: non-accessible icon).
+ */
 const Button = ({
   children,
   variant = 'primary',

@@ -18,6 +18,12 @@ export type AccordionGroupProps = {
   children: Array<ReactElement<AccordionProps>>;
 };
 
+/**
+ * @description
+ * ### Accessibility
+ * #### Pattern: -
+ * #### Notes: -
+ */
 const AccordionGroup = ({
   spacing = 'default',
   exclusiveSelection = true,

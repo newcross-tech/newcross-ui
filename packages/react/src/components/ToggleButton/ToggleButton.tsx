@@ -42,6 +42,12 @@ export type ToggleButtonProps = {
   variant?: (SingleSelect | MultiSelect)['variant'];
 } & TestProp;
 
+/**
+ * @description
+ * ### Accessibility
+ * #### Pattern: Checkbox
+ * #### Notes: -
+ */
 export const ToggleIcon = ({
   testID,
   rightIcon,

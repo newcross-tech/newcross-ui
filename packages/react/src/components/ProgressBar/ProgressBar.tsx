@@ -45,8 +45,19 @@ export type ProgressBarProps = {
    * The value of the progress indicator for the determinate variant. Value between 0 and 100.
    */
   progress?: number;
+
+  role?: 'progressbar' | 'meter';
 };
 
+/**
+ * @description
+ * ### Accessibility
+ * #### Pattern: Meter
+ * #### Notes:
+ * Depending on the usage, the progress bar can be presented as role:
+ *  - `progressbar` - loading data, uploading files, etc...
+ *  - `meter` - static display of data - your current progress on a flow, population of earth, etc...
+ */
 const ProgressBar = ({
   label,
   progress = defaultProgress,

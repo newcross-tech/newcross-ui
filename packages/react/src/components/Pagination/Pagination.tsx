@@ -23,8 +23,28 @@ export type PaginationProps = {
    * Whether the component is full width.
    */
   fullWidth?: boolean;
+
+  /**
+   * The kind of flow - are you presenting pages of entities (e.g.: page of users) or steps in a flow (e.g.: registration initial step, registration secondary step, etc...).
+   */
+  itemKind?: 'page' | 'step';
+
+  /**
+   * The label of the pagination.
+   */
+  'aria-label'?: string;
+  'aria-labeledby'?: string;
 };
 
+/**
+ * @description
+ * ### Accessibility
+ * #### Pattern: -
+ * #### Notes:
+ * Presented as a `navigation` `list` with `listitem` `button` elements.
+ * You can provide the kind of the items with the `itemKind` prop.
+ * Describe the list with `aria-label` or `aria-labelledby` props.
+ */
 const Pagination: React.FC<PaginationProps> = ({
   count,
   selectedValue,

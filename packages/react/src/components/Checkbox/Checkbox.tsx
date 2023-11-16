@@ -42,6 +42,12 @@ export type CheckboxProps = {
   allowTab?: boolean;
 } & TestProp;
 
+/**
+ * @description
+ * ### Accessibility
+ * #### Pattern: Checkbox
+ * #### Notes: -
+ */
 const Checkbox = ({
   onChange,
   checked,

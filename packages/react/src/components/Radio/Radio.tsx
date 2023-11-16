@@ -38,6 +38,12 @@ export type RadioProps = {
 
 const baseTestId = 'radio';
 
+/**
+ * @description
+ * ### Accessibility
+ * #### Pattern: Radio
+ * #### Notes: -
+ */
 const Radio = ({
   selected = false,
   disabled = false,

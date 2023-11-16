@@ -49,8 +49,20 @@ export type CardProps = {
    * To show custom sectoin on the left side of card
    */
   thumbnailContent?: ReactNode;
+
+  /**
+   * Landmark role of the card.
+   */
+  role?: 'navigation' | 'banner' | 'contentinfo' | 'form' | 'region';
 } & TestProp;
 
+/**
+ * @description
+ * ### Accessibility
+ * #### Pattern: Landmark
+ * #### Notes:
+ * Use `role` prop to define the landmark role of the card.
+ */
 const Card = ({
   children,
   hasBorder,

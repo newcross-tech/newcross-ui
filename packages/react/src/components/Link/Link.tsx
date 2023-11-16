@@ -17,6 +17,12 @@ export type LinkProps = {
   TestProp &
   AnchorHTMLAttributes<HTMLAnchorElement>;
 
+/**
+ * @description
+ * ### Accessibility
+ * #### Pattern: Link
+ * #### Notes: -
+ */
 const Link = ({
   children,
   variant = 'paragraph1',

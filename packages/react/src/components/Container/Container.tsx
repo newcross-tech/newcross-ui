@@ -89,8 +89,20 @@ export type ContainerProps = {
    * Sets the spacing between each child using margin
    */
   gap?: ThemeSpacing;
+
+  /**
+   * Landmark role of the container.
+   */
+  role?: 'main' | 'navigation' | 'banner' | 'contentinfo' | 'form' | 'region';
 } & TestProp;
 
+/**
+ * @description
+ * ### Accessibility
+ * #### Pattern: Landmark
+ * #### Notes:
+ * Use `role` prop to define the landmark role of the container.
+ */
 const Container = ({
   children,
   testID,
