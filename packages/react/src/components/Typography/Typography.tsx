@@ -40,9 +40,21 @@ export type TypographyProps = {
    * Used to define type of display
    */
   display?: CSSProperties['display'];
+
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div';
 } & TestProp &
   HTMLAttributes<HTMLDivElement>;
 
+/**
+ * @description
+ * ### Accessibility
+ * #### Pattern: -
+ * #### Notes:
+ * Polymorphic component that renders as a different role based on the `variant` prop if not overridden by `as` prop
+ * e.g.:
+ *  - `<Typography variant="heading2">Actual heading</Typography>` =outputs=> `<h2 class="heading2">Actual heading</h2>`
+ *  - `<Typography variant="heading2" as="p">Some big content mid-screen</Typography>` =outputs=> `<p class="heading2">Some big content mid-screen</p>`
+ */
 const Typography = ({
   children,
   testID,

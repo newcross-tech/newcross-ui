@@ -16,6 +16,13 @@ export type DashboardLayoutProps = {
   sidebar: ReactNode;
 };
 
+/**
+ * @description
+ * ### Accessibility
+ * #### Pattern: Landmark
+ * #### Notes:
+ * Provides `main`, `header` and `nav` layout landmarks.
+ */
 const DashboardLayout = ({ header, main, sidebar }: DashboardLayoutProps) => (
   <Styled.DashboardLayout>
     <Styled.PageHeader>{header}</Styled.PageHeader>

@@ -33,6 +33,14 @@ export type BadgeProps = {
   onClick?: VoidFunction;
 } & TestProp;
 
+/**
+ * @description
+ * ### Accessibility
+ * #### Pattern: -
+ * #### Notes:
+ * When clickable acts as a button, otherwise acts as an image. You can pass a `role=alert` to make it act as an `alert` (e.g.: focus more attention).
+ * Use `aria-label` to provide some info what is shown in the badge (e.g.: "999 unread messages").
+ */
 const Badge = ({
   size = 'large',
   badgeContent,

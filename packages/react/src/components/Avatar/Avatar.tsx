@@ -28,6 +28,14 @@ export type AvatarProps = {
   icon?: IconDefinition;
 } & TestProp;
 
+/**
+ * @description
+ * ### Accessibility
+ * #### Pattern: -
+ * #### Notes:
+ * When clickable acts as a button, otherwise acts as an image.
+ * Use `aria-label` to provide some info what is shown in the avatar
+ */
 const Avatar = ({
   source,
   inactive = false,

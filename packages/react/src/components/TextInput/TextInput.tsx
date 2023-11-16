@@ -58,6 +58,13 @@ export type TextInputProps = Omit<
 
 const baseTestId = 'text-input';
 
+/**
+ * @description
+ * ### Accessibility
+ * #### Pattern: -
+ * #### Notes:
+ * Uses `aria-invalid` when error is present to indicate that the input is invalid.
+ */
 const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
   {
     value,

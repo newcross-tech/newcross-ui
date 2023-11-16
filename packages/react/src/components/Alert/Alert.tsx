@@ -48,6 +48,12 @@ export type AlertProps = {
   action?: ReactNode;
 } & TestProp;
 
+/**
+ * @description
+ * ### Accessibility
+ * #### Pattern: Alert
+ * #### Notes: -
+ */
 const Alert = ({
   icon,
   title,

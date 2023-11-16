@@ -37,6 +37,13 @@ export type AccordionProps = {
   $animationSpeed?: number;
 } & TestProp;
 
+/**
+ * @description
+ * ### Accessibility
+ * #### Pattern: Accordion
+ * #### Notes:
+ * You can alter the toggle button level to be appropriate for the information architecture of the page by using the `aria-level` prop. The default level is 3.
+ */
 const Accordion = ({
   icon,
   testID,

@@ -58,6 +58,13 @@ export type PillProps = {
 
 const baseTestId = 'pill';
 
+/**
+ * @description
+ * ### Accessibility
+ * #### Pattern: -
+ * #### Notes:
+ * Checkbox with self delete button inside the label.
+ */
 const Pill = ({
   disabled = false,
   removable = false,

@@ -27,6 +27,12 @@ export type TabsProps = {
 
 const baseTestId = 'tab';
 
+/**
+ * @description
+ * ### Accessibility
+ * #### Pattern: Tabs
+ * #### Notes: -
+ */
 const Tabs = ({
   tabs,
   currentIndex,

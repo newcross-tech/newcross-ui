@@ -35,6 +35,12 @@ export type ToastProps = {
 } & TestProp &
   AlertProps;
 
+/**
+ * @description
+ * ### Accessibility
+ * #### Pattern: Alert and Message Dialogs
+ * #### Notes: -
+ */
 const Toast = ({
   show,
   testID = 'toast',

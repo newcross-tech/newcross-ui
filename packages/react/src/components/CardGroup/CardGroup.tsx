@@ -19,8 +19,20 @@ export type CardGroupProps = {
    * The content of the component
    */
   children: Array<ReactElement<CardProps>>;
+
+  /**
+   * Landmark role of the group.
+   */
+  role?: 'navigation' | 'banner' | 'contentinfo' | 'form' | 'region';
 };
 
+/**
+ * @description
+ * ### Accessibility
+ * #### Pattern: -
+ * #### Notes:
+ * Use `role` prop to define the landmark role of the group.
+ */
 const CardGroup = ({
   children,
   fullWidth,
