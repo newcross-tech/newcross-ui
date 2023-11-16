@@ -100,6 +100,17 @@ export const getCustomStyles = <
       ...styles,
       border: `1px solid ${theme.ColorBaseMint100}`,
       borderRadius: theme.BorderBaseRadiusMd,
+
+      '::-webkit-scrollbar': {
+        width: theme.SpacingBase4,
+      },
+      '::-webkit-scrollbar-track': {
+        borderRadius: theme.BorderBaseRadiusMd,
+      },
+      '::-webkit-scrollbar-thumb': {
+        background: theme.ColorNeutralGrey300,
+        borderRadius: theme.BorderBaseRadiusMd,
+      },
     }),
     listBox: (styles) => ({
       ...styles,
@@ -109,7 +120,7 @@ export const getCustomStyles = <
     option: (styles, { isDisabled, isFocused, isSelected, ...rest }) => ({
       ...styles,
       ...getTypographyStyles({ theme }),
-      ...getPaddingStyles({ theme }),
+      padding: `${theme.SpacingBase8} ${theme.SpacingBase16}`,
       cursor: isDisabled ? 'not-allowed' : 'pointer',
       ...getOptionStyles({ theme }, { isDisabled, isSelected, isFocused, ...rest }),
 
@@ -172,14 +183,31 @@ export const getCustomStyles = <
       borderColor: state.isDisabled ? theme.ColorBaseGrey200 : theme.ColorBaseMint100,
       color: state.isDisabled ? theme.ColorBaseGrey100 : theme.ColorPrimaryGravitas,
       borderRadius: theme.BorderBaseRadiusLg,
-      paddingLeft: '3px',
-      paddingRight: '6px',
+      margin: '0',
+      paddingTop: theme.SpacingBase4,
+      paddingRight: '0',
+      paddingBottom: theme.SpacingBase4,
+      paddingLeft: theme.SpacingBase16,
+
+      /* multi value generic text */
+      '> div': {
+        fontSize: theme.TypographyFontSize16,
+        lineHeight: theme.TypographyLineHeight24,
+        color: !state.isDisabled ? theme.ColorPrimaryGravitas : theme.ColorBaseGrey100,
+        padding: '0',
+      },
     }),
     multiValueRemove: (styles) => ({
       ...styles,
       cursor: 'pointer',
+      marginLeft: theme.SpacingBase8,
+      marginRight: theme.SpacingBase16,
       ':hover': {
-        color: theme.ColorBaseRed100,
+        background: 'transparent',
+      },
+
+      ' > svg': {
+        color: theme.ColorBaseGrey100,
       },
     }),
     multiValueLabel: (styles) => ({
@@ -196,20 +224,19 @@ export const getCustomStyles = <
     clearIndicator: (styles) => ({
       ...styles,
       padding: 0,
-      color: theme.ColorBaseGrey100,
+      backgroundColor: theme.ColorBaseGrey100,
     }),
     indicatorSeparator: (styles) => ({
       ...styles,
       marginTop: 0,
       marginBottom: 0,
-      backgroundColor: theme.ColorBaseGrey100,
+      backgroundColor: theme.ColorBaseGrey200,
     }),
     dropdownIndicator: (styles, state) => ({
       ...styles,
       padding: 0,
       transition: `all ${defaultAnimationSpeed}s ease-in-out`,
       transform: state.isFocused ? 'rotate(180deg)' : undefined,
-      color: theme.ColorPrimaryGravitas,
     }),
   };
   return customStyles;
@@ -237,10 +264,16 @@ export const MessageText = styled(Typography)<ErrorType>`
   `}
 `;
 
-export const ChevronIcon = styled(FontAwesomeIcon)`
+export const XMarkIcon = styled(FontAwesomeIcon)`
   ${({ theme }) => css`
-    transition: ${`all ${defaultAnimationSpeed}s ease-in-out`};
     color: ${theme.ColorBaseGrey100};
+  `};
+`;
+
+export const ChevronIcon = styled(FontAwesomeIcon)`
+  ${({ theme, isDisabled }: ExtendedTheme<{ isDisabled: boolean }>) => css`
+    transition: ${`all ${defaultAnimationSpeed}s ease-in-out`};
+    color: ${!isDisabled ? theme.ColorPrimaryGravitas : theme.ColorBaseGrey100};
   `};
 `;
 

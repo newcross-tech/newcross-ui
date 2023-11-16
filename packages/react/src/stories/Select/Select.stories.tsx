@@ -1,9 +1,8 @@
 import { Meta, Story } from '@storybook/react';
-import { Select } from '../../components/Select';
+import { Select, SelectProps } from '../../components/Select';
 import { DESCRIPTION, DO, DONT, TITLE } from './Select.info';
 import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import { SelectProps } from '../../components/Select';
 
 export default {
   title: 'React/Components/Select',
@@ -140,6 +139,6 @@ const Template: Story<SelectProps> = ({ ...rest }) => (
 export const Interactive = Template.bind({});
 Interactive.args = {
   isMulti: false,
-  options: options,
+  options,
   placeholder: "Select a 'label'",
 };

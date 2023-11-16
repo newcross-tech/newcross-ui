@@ -17,13 +17,13 @@ import { SelectContext, useSelectContext } from './SelectContext';
 
 const CrossIcon: FunctionComponent = () => (
   <Styled.RightIconContainer>
-    <Styled.ChevronIcon icon={faXmark} />
+    <Styled.XMarkIcon icon={faXmark} />
   </Styled.RightIconContainer>
 );
 
-const DownChevron: FunctionComponent = () => (
+const DownChevron = ({ isDisabled }: { isDisabled: boolean }) => (
   <Styled.RightIconContainer>
-    <Styled.ChevronIcon icon={faChevronDown} />
+    <Styled.ChevronIcon icon={faChevronDown} isDisabled={isDisabled} />
   </Styled.RightIconContainer>
 );
 
@@ -53,7 +53,7 @@ const DropdownIndicator = <
   props: DropdownIndicatorProps<Option, IsMulti, Group>
 ) => (
   <components.DropdownIndicator {...props}>
-    <DownChevron />
+    <DownChevron isDisabled={props.isDisabled} />
   </components.DropdownIndicator>
 );
 
