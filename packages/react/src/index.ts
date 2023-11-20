@@ -40,6 +40,7 @@ export {
   default as RadioButtonGroup,
   RadioGroupProps,
 } from './components/RadioGroup';
+export { default as Select, SelectProps } from './components/Select';
 export { default as Skeleton, SkeletonProps } from './components/Skeleton';
 export { default as Tabs, TabsProps } from './components/Tabs';
 export { TextInputProps, default as TextInput } from './components/TextInput';

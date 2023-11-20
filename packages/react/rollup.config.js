@@ -23,6 +23,13 @@ export default [
       }),
       terser(),
     ],
-    external: ['react', 'react-dom', 'styled-components'],
+    external: [
+      'react',
+      'react-dom',
+      'styled-components',
+      '@react-spring/web',
+      'react-select',
+      '@newcross-ui/design-tokens',
+    ],
   },
 ];

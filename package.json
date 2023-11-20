@@ -118,8 +118,5 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
-  },
-  "dependencies": {
-    "@react-spring/web": "^9.5.5"
   }
 }
