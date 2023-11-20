@@ -162,7 +162,7 @@ const Select = <
 
       {(helperText || errorText) && (
         <Styled.MessageText
-          variant={'paragraph3'}
+          variant={'paragraph2'}
           testID={
             hasError ? `${baseTestId}-error-text` : `${baseTestId}-message-text`
           }

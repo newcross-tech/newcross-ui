@@ -209,7 +209,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
 
       {(helperText || errorText) && (
         <Styled.MessageText
-          variant={'paragraph3'}
+          variant={'paragraph2'}
           testID={`${inputId}-message-text`}
           hasError={hasError}
         >
