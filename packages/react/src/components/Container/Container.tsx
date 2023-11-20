@@ -1,65 +1,66 @@
-import { TestProp, ThemeSpacing } from '../../types';
+import { TestProp } from '../../types';
 import * as Styled from './Container.style';
 import { CSSProperties } from 'react';
+import { ContainerGapSpacing, ContainerSpacing } from './Container.types';
 
 export type ContainerProps = {
   children?: React.ReactNode;
   /**
    * CSS: `margin-left` and `margin-right` and `margin-top` and `margin-bottom`
    */
-  m?: ThemeSpacing;
+  m?: ContainerSpacing;
   /**
    * CSS: `margin-left` and `margin-right`
    */
-  mx?: ThemeSpacing;
+  mx?: ContainerSpacing;
   /**
    * CSS: `margin-top` and `margin-bottom`
    */
-  my?: ThemeSpacing;
+  my?: ContainerSpacing;
   /**
    * CSS: `margin-left`
    */
-  ml?: ThemeSpacing;
+  ml?: ContainerSpacing;
   /**
    * CSS: `margin-right`
    */
-  mr?: ThemeSpacing;
+  mr?: ContainerSpacing;
   /**
    * CSS: `margin-top`
    */
-  mt?: ThemeSpacing;
+  mt?: ContainerSpacing;
   /**
    * CSS: `margin-bottom`
    */
-  mb?: ThemeSpacing;
+  mb?: ContainerSpacing;
   /**
    * CSS: `padding-left` and `padding-right` and `padding-top` and `padding-bottom`
    */
-  p?: ThemeSpacing;
+  p?: ContainerSpacing;
   /**
    * CSS: `padding-left` and `padding-right`
    */
-  px?: ThemeSpacing;
+  px?: ContainerSpacing;
   /**
    * CSS: `padding-top` and `padding-bottom`
    */
-  py?: ThemeSpacing;
+  py?: ContainerSpacing;
   /**
    * CSS: `padding-left`
    */
-  pl?: ThemeSpacing;
+  pl?: ContainerSpacing;
   /**
    * CSS: `padding-right`
    */
-  pr?: ThemeSpacing;
+  pr?: ContainerSpacing;
   /**
    * CSS: `padding-top`
    */
-  pt?: ThemeSpacing;
+  pt?: ContainerSpacing;
   /**
    * CSS: `padding-bottom`
    */
-  pb?: ThemeSpacing;
+  pb?: ContainerSpacing;
   /**
    * CSS: `display`
    */
@@ -88,7 +89,7 @@ export type ContainerProps = {
   /**
    * Sets the spacing between each child using margin
    */
-  gap?: ThemeSpacing;
+  gap?: ContainerGapSpacing;
 } & TestProp;
 
 const Container = ({
