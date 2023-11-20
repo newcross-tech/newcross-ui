@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.0.2...@newcross-ui/react@2.1.0) (2023-11-20)
+
+
+### Features
+
+* **OAE-000:** added 'auto' spacign and 'inherit' gap ([#64](https://bitbucket.org/newcrossdev/newcross-ui/issues/64)) ([02fc7a7](https://bitbucket.org/newcrossdev/newcross-ui/commits/02fc7a78914c04cca4a1e9c0242e13bce8beed8a))
+
+
+
+
+
 ## [2.0.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.0.1...@newcross-ui/react@2.0.2) (2023-11-15)
 
 
