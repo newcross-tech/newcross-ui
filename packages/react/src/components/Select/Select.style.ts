@@ -273,16 +273,16 @@ export const PillCloseIcon = styled(FontAwesomeIcon)`
 export const XMarkIcon = styled(FontAwesomeIcon)`
   ${({ theme }) => css`
     color: ${theme.ColorBaseGrey100};
-    width: ${theme.SpacingBase24};
-    height: ${theme.SpacingBase24};
+    width: ${theme.SpacingBase16};
+    height: ${theme.SpacingBase16};
   `};
 `;
 
 export const ChevronIcon = styled(FontAwesomeIcon)`
   ${({ theme, isDisabled }: ExtendedTheme<{ isDisabled: boolean }>) => css`
     transition: ${`all ${defaultAnimationSpeed}s ease-in-out`};
-    width: ${theme.SpacingBase24};
-    height: ${theme.SpacingBase24};
+    width: ${theme.SpacingBase16};
+    height: ${theme.SpacingBase16};
     color: ${!isDisabled ? theme.ColorPrimaryGravitas : theme.ColorBaseGrey100};
   `};
 `;

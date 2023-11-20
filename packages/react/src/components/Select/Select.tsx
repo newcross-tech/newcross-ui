@@ -1,5 +1,5 @@
-import { faChevronDown } from '@fortawesome/pro-solid-svg-icons/faChevronDown';
-import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
+import { faChevronDown } from '@fortawesome/pro-light-svg-icons/faChevronDown';
+import { faXmark } from '@fortawesome/pro-light-svg-icons/faXmark';
 import { FunctionComponent } from 'react';
 import {
   components,
