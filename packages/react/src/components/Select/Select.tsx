@@ -10,10 +10,25 @@ import {
   DropdownIndicatorProps,
   ClearIndicatorProps,
   MenuListProps,
+  MultiValueRemoveProps,
 } from 'react-select';
 import useTheme from '../../hooks/useTheme';
 import * as Styled from './Select.style';
 import { SelectContext, useSelectContext } from './SelectContext';
+
+const MultiValueRemove = <
+  Option,
+  IsMulti extends boolean = false,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>(
+  props: MultiValueRemoveProps<Option, IsMulti, Group>
+) => {
+  return (
+    <components.MultiValueRemove {...props}>
+      <Styled.PillCloseIcon icon={faXmark} />
+    </components.MultiValueRemove>
+  );
+};
 
 const CrossIcon: FunctionComponent = () => (
   <Styled.RightIconContainer>
@@ -144,6 +159,7 @@ const Select = <
           isDisabled={disabled}
           closeMenuOnSelect={!isMulti}
           components={{
+            MultiValueRemove,
             ClearIndicator,
             DropdownIndicator,
             MenuList,
