@@ -29,7 +29,6 @@ export default [
       'styled-components',
       '@react-spring/web',
       'react-select',
-      '@newcross-ui/design-tokens',
     ],
   },
 ];
