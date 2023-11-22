@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.1.0...@newcross-ui/react@2.1.1) (2023-11-22)
+
+
+### Bug Fixes
+
+* unit test failure in apps & add pr template and codeowners ([#65](https://bitbucket.org/newcrossdev/newcross-ui/issues/65)) ([8929d6e](https://bitbucket.org/newcrossdev/newcross-ui/commits/8929d6e427d5fed4c6a3b8ff0c914748fc0cf444))
+
+
+
+
+
 # [2.1.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.0.2...@newcross-ui/react@2.1.0) (2023-11-20)
 
 
