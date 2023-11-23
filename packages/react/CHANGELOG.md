@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.1.1...@newcross-ui/react@2.1.2) (2023-11-23)
+
+
+### Bug Fixes
+
+* **CAPP-000:** togglebutton children can now render outside typography ([#66](https://bitbucket.org/newcrossdev/newcross-ui/issues/66)) ([fc13c4c](https://bitbucket.org/newcrossdev/newcross-ui/commits/fc13c4c1e59311bcc13738b8f203e631f58f237a))
+
+
+
+
+
 ## [2.1.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.1.0...@newcross-ui/react@2.1.1) (2023-11-22)
 
 
