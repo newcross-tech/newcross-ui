@@ -4,10 +4,13 @@ import ToggleButton, { ToggleButtonProps } from '../../components/ToggleButton';
 import Container from '../../components/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter } from '@fortawesome/pro-regular-svg-icons/faFilter';
+import { faHeart } from '@fortawesome/pro-regular-svg-icons/faHeart';
 import { faCalendarDays } from '@fortawesome/pro-solid-svg-icons/faCalendarDays';
 import useState from 'storybook-addon-state';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './ToggleButtonInfo';
+import Avatar from '../../components/Avatar';
+import Typography from '../../components/Typography';
 
 export default {
   title: 'React/Components/ToggleButton',
@@ -50,6 +53,23 @@ export const Variants = () => {
         fullWidth
       >
         Filter By
+      </ToggleButton>
+
+      <Container m="SpacingBase4" />
+      <ToggleButton selected={false} fullWidth>
+        <Container
+          flexDirection="row"
+          justifyContent="flex-start"
+          alignItems="center"
+          fullWidth
+          gap="SpacingBase16"
+        >
+          <Avatar size={32} />
+          <Typography variant="paragraph2" color="primary">
+            Joe Doe
+          </Typography>
+        </Container>
+        <FontAwesomeIcon icon={faHeart} />
       </ToggleButton>
     </Container>
   );
