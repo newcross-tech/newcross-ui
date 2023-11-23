@@ -101,7 +101,13 @@ const ToggleButton = ({
           {leftIcon}
         </ToggleIcon>
       )}
-      <Styled.Text variant={'paragraph2'}>{children}</Styled.Text>
+      {typeof children === 'string' ? (
+        <Styled.Text variant={'paragraph2'} testID={`${baseTestId}-text`}>
+          {children}
+        </Styled.Text>
+      ) : (
+        children
+      )}
       {rightIcon && (
         <ToggleIcon
           hasRightContent={rightIcon && !!children}

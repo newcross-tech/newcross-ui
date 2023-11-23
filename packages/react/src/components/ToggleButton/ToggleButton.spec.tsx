@@ -1,6 +1,6 @@
 import { faCalendarDays } from '@fortawesome/pro-solid-svg-icons/faCalendarDays';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { byTestId, byText } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
 import ToggleButton, { ToggleButtonProps } from './ToggleButton';
@@ -66,5 +66,14 @@ describe('Toggle Button Component', () => {
 
     // Assert
     expect(ui.toggleIcon('right').get()).toBeInTheDocument();
+  });
+
+  it('does not render Typography element if children is not a simple string', () => {
+    //Act
+    renderComponent({
+      children: <div data-testid="nested-div">Nested Content</div>,
+    });
+    //Assert
+    expect(screen.queryByTestId('toggle-button-text')).toBeNull();
   });
 });
