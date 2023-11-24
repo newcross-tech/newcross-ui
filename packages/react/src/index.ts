@@ -26,7 +26,6 @@ export {
 } from './components/CheckboxGroup';
 export { default as Container, ContainerProps } from './components/Container';
 export { default as DashboardLayout } from './components/DashboardLayout';
-export { default as Dropdown, DropdownProps } from './components/Dropdown';
 export { default as Link, LinkProps } from './components/Link';
 export { default as ProgressBar } from './components/ProgressBar';
 export {
