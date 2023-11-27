@@ -46,6 +46,9 @@ export const baseTestId = 'dropdown';
 
 export type DropdownProps = (SingleProps | MultiProps) & CommonProps;
 
+/**
+ * @deprecated since version 2.1.2
+ */
 const DropdownWrapper = (props: DropdownProps) => (
   <Dropdown
     {...props}
