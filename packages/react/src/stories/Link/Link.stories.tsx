@@ -1,4 +1,3 @@
-import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { faEnvelope } from '@fortawesome/pro-regular-svg-icons/faEnvelope';
 import { faPhone } from '@fortawesome/pro-regular-svg-icons/faPhone';
@@ -221,6 +220,7 @@ const Template: Story<LinkProps> = ({ children, ...rest }) => (
 
 export const Interactive = Template.bind({});
 Interactive.args = {
+  testID: 'interactive-link',
   children: 'This is a link',
   variant: 'paragraph1',
   leftIcon: faEnvelope,
