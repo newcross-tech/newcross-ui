@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.1.3...@newcross-ui/react@2.1.4) (2023-11-27)
+
+
+### Bug Fixes
+
+* **HFHR-000:** link data-testid ([#68](https://bitbucket.org/newcrossdev/newcross-ui/issues/68)) ([083e754](https://bitbucket.org/newcrossdev/newcross-ui/commits/083e7549cbe5a7a18e8d0d8e87ec628c821c5148))
+
+
+
+
+
 ## [2.1.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.1.2...@newcross-ui/react@2.1.3) (2023-11-27)
 
 **Note:** Version bump only for package @newcross-ui/react
