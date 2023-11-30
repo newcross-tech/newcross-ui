@@ -31,12 +31,16 @@ jobs:
           yarn build
           yarn test
           yarn build-storybook
-      - uses: actions/upload-artifact@v3
+      - name: Upload storybook-static artifact
+        uses: actions/upload-artifact@v3
         with:
-          name: build-artifacts
-          path: |
-            storybook-static/**
-            packages/**/build/**
+          name: storybook-build
+          path: storybook-static/**
+      - name: Upload packages build artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: packages-build
+          path: packages/**/build/**
 
   deploy_acceptance:
     needs: build
@@ -49,9 +53,14 @@ jobs:
         with:
           node-version: '16'
           cache: 'yarn'
-      - uses: actions/download-artifact@v3
+      - name: Download storybook build
+        uses: actions/download-artifact@v3
         with:
-          name: build-artifacts
+          name: storybook-build
+      - name: Download packages build
+        uses: actions/download-artifact@v3
+        with:
+          name: packages-build
       - name: Deploy to acceptance
         run: |
           npm i -g serverless@3.7.1 serverless-s3-sync@3.0.0
@@ -70,16 +79,35 @@ jobs:
         with:
           node-version: '16'
           cache: 'yarn'
-      - uses: actions/download-artifact@v3
+      - name: Download packages build
+        uses: actions/download-artifact@v3
         with:
-          name: build-artifacts
+          name: packages-build
       - name: Setup git push permissions
         run: |
           git config --global user.name 'NewcrossGitHubSA'
           git config --global user.email 'github-actions@newcrosshealthcare.com'
       - name: Deploy to production
         run: |
+          export PREVIOUS_RELEASE_TAG=$(git describe --abbrev=0 --tags)
+          echo "PREVIOUS_RELEASE_TAG=$PREVIOUS_RELEASE_TAG" >> $GITHUB_ENV
+
+          lerna publish --yes
+
+          export LATEST_RELEASE_TAG=$(git describe --abbrev=0 --tags)
+          echo "LATEST_RELEASE_TAG=$LATEST_RELEASE_TAG" >> $GITHUB_ENV
+
+          yarn build-storybook
           npm i -g serverless@3.7.1 serverless-s3-sync@3.0.0 lerna@4.0.0 husky@7.0.0
           serverless config credentials --provider aws --key ${{ env.AWS_ACCESS_KEY_ID }} --secret ${{ env.AWS_SECRET_ACCESS_KEY }}
           serverless deploy -s production
-          lerna publish --yes
+      - id: create-release-notes
+        name: Create Release Notes
+        uses: newcross-tech/release-notes-action@v1
+        with:
+          service-name: ${{ github.event.repository.name }}
+          source-tag: ${{ env.PREVIOUS_RELEASE_TAG }}
+          target-tag: ${{ env.LATEST_RELEASE_TAG }}
+          git-pat: ${{ secrets.GH_REPO_SHARED_PAT }}
+          jira-user: ${{ vars.RELEASE_NOTES_JIRA_USER }}
+          jira-pat: ${{ secrets.RELEASE_NOTES_JIRA_PAT }}
