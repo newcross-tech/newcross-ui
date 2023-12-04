@@ -103,3 +103,25 @@ jobs:
           git-pat: ${{ secrets.GH_REPO_SHARED_PAT }}
           jira-user: ${{ vars.RELEASE_NOTES_JIRA_USER }}
           jira-pat: ${{ secrets.RELEASE_NOTES_JIRA_PAT }}
+      - name: Send slack notification
+        id: slack
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          payload: |
+            COMMIT=$(git rev-list -n 1 ${{ env.PREVIOUS_RELEASE_TAG }})
+            TAGS=$(git tag --contains $COMMIT | jq -R -s -c 'split("\n")[:-1]')
+
+            echo $TAGS | jq -R -s -c 'split(",")[:-1]' | jq -n \
+              --arg text "New versions of the Design System have been released" \
+              --argjson tags "$TAGS" \
+              '{
+                "text": $text,
+                "attachments": [
+                  {
+                    "color": "dbab09",
+                    "fields": ($tags | map({ "short": true, "value": . }))
+                  }
+                ]
+              }'
+        env:
+          SLACK_WEBHOOK_URL: ${{ vars.SLACK_WEBHOOK_URL }}
