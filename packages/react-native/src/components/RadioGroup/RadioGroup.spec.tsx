@@ -14,9 +14,9 @@ describe('Radio Group Component', () => {
     // Act
     const { queryByTestId } = renderComponent({
       children: [
-        <Radio testID={'radio-item-1'} />,
-        <Radio testID={'radio-item-2'} />,
-        <Radio testID={'radio-item-3'} />,
+        <Radio key={'radio-item-1'} testID={'radio-item-1'} />,
+        <Radio key={'radio-item-2'} testID={'radio-item-2'} />,
+        <Radio key={'radio-item-3'} testID={'radio-item-3'} />,
       ],
       testID: 'radio-group',
       disabled: ['radio-item-3'],
@@ -32,9 +32,9 @@ describe('Radio Group Component', () => {
     // Act
     const { queryByTestId } = renderComponent({
       children: [
-        <Radio testID={'radio-item-1'} />,
-        <Radio testID={'radio-item-2'} />,
-        <Radio testID={'radio-item-3'} />,
+        <Radio key={'radio-item-1'} testID={'radio-item-1'} />,
+        <Radio key={'radio-item-2'} testID={'radio-item-2'} />,
+        <Radio key={'radio-item-3'} testID={'radio-item-3'} />,
       ],
       initialSelected: 'radio-item-3',
       testID: 'radio-group',
@@ -61,7 +61,9 @@ describe('Radio Group Component', () => {
   it(`shows selected view when selected prop is true`, () => {
     // Act
     const { queryByTestId } = renderComponent({
-      children: [<Radio testID={'radio-item-1'} selected={true} />],
+      children: [
+        <Radio key={'radio-item-1'} testID={'radio-item-1'} selected={true} />,
+      ],
       testID: 'radio-group',
       initialSelected: '',
     });
@@ -75,6 +77,7 @@ describe('Radio Group Component', () => {
     const { queryByTestId } = renderComponent({
       children: [
         <Radio
+          key={'radio-item-1'}
           testID={'radio-item-1'}
           value={'this-will-be-selected'}
           selected={true}
@@ -95,8 +98,16 @@ describe('Radio Group Component', () => {
     // Act
     const { queryByTestId } = renderComponent({
       children: [
-        <Radio testID={'radio-item-1'} value={'value-1'} />,
-        <Radio testID={'radio-item-2'} value={'value-2'} />,
+        <Radio
+          key={'radio-item-1'}
+          testID={'radio-item-1'}
+          value={'value-1'}
+        />,
+        <Radio
+          key={'radio-item-2'}
+          testID={'radio-item-2'}
+          value={'value-2'}
+        />,
       ],
       testID: 'radio-group',
       onChange: onChangeMock,
@@ -121,7 +132,7 @@ describe('Radio Group Component', () => {
 
     // Act
     const { queryByTestId } = renderComponent({
-      children: [<Radio testID={'radio-item-1'} />],
+      children: [<Radio key={'radio-item-1'} testID={'radio-item-1'} />],
       testID: 'radio-group',
       containerStyle: customContainerStyle,
     });
@@ -135,8 +146,8 @@ describe('Radio Group Component', () => {
     // Act
     const { queryByTestId } = renderComponent({
       children: [
-        <Radio testID={'radio-item-1'} />,
-        <Radio testID={'radio-item-2'} />,
+        <Radio key={'radio-item-1'} testID={'radio-item-1'} />,
+        <Radio key={'radio-item-2'} testID={'radio-item-2'} />,
       ],
       testID: 'radio-group',
     });
@@ -153,7 +164,13 @@ describe('Radio Group Component', () => {
 
     // Act
     const { queryByTestId } = renderComponent({
-      children: [<Radio testID={'radio-item-1'} onPress={onPressMock} />],
+      children: [
+        <Radio
+          key={'radio-item-1'}
+          testID={'radio-item-1'}
+          onPress={onPressMock}
+        />,
+      ],
       testID: 'radio-group',
     });
 
