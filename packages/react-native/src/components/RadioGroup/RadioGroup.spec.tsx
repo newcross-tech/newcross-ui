@@ -1,18 +1,18 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import RadioGroup, { RadioGroupProps } from './RadioGroup';
-import Radio from '../Radio';
+import Radio, { RadioProps } from '../Radio';
+import { View } from 'react-native';
 
-const renderComponent = (props: RadioGroupProps) => {
-  const { getByText, queryByTestId } = render(<RadioGroup {...props} />);
-
-  return { getByText, queryByTestId };
+const renderRadioGroup = (props: RadioGroupProps) => {
+  const { queryByTestId } = render(<RadioGroup {...props} />);
+  return { queryByTestId };
 };
 
 describe('Radio Group Component', () => {
   it('renders default view', () => {
     // Act
-    const { queryByTestId } = renderComponent({
+    const { queryByTestId } = renderRadioGroup({
       children: [
         <Radio key={'radio-item-1'} testID={'radio-item-1'} />,
         <Radio key={'radio-item-2'} testID={'radio-item-2'} />,
@@ -30,7 +30,7 @@ describe('Radio Group Component', () => {
 
   it('renders disabled and selected item view', () => {
     // Act
-    const { queryByTestId } = renderComponent({
+    const { queryByTestId } = renderRadioGroup({
       children: [
         <Radio key={'radio-item-1'} testID={'radio-item-1'} />,
         <Radio key={'radio-item-2'} testID={'radio-item-2'} />,
@@ -49,7 +49,7 @@ describe('Radio Group Component', () => {
 
   it(`displays empty radiogroup when without radioitems`, () => {
     // Act
-    const { queryByTestId } = renderComponent({
+    const { queryByTestId } = renderRadioGroup({
       children: [],
       testID: 'radio-group',
     });
@@ -60,7 +60,7 @@ describe('Radio Group Component', () => {
 
   it(`shows selected view when selected prop is true`, () => {
     // Act
-    const { queryByTestId } = renderComponent({
+    const { queryByTestId } = renderRadioGroup({
       children: [
         <Radio key={'radio-item-1'} testID={'radio-item-1'} selected={true} />,
       ],
@@ -74,7 +74,7 @@ describe('Radio Group Component', () => {
 
   it(`shows selected `, () => {
     // Act
-    const { queryByTestId } = renderComponent({
+    const { queryByTestId } = renderRadioGroup({
       children: [
         <Radio
           key={'radio-item-1'}
@@ -96,7 +96,7 @@ describe('Radio Group Component', () => {
     const onChangeMock = jest.fn();
 
     // Act
-    const { queryByTestId } = renderComponent({
+    const { queryByTestId } = renderRadioGroup({
       children: [
         <Radio
           key={'radio-item-1'}
@@ -131,7 +131,7 @@ describe('Radio Group Component', () => {
     const customContainerStyle = { backgroundColor: 'red' };
 
     // Act
-    const { queryByTestId } = renderComponent({
+    const { queryByTestId } = renderRadioGroup({
       children: [<Radio key={'radio-item-1'} testID={'radio-item-1'} />],
       testID: 'radio-group',
       containerStyle: customContainerStyle,
@@ -144,7 +144,7 @@ describe('Radio Group Component', () => {
 
   it('applies test IDs to components', () => {
     // Act
-    const { queryByTestId } = renderComponent({
+    const { queryByTestId } = renderRadioGroup({
       children: [
         <Radio key={'radio-item-1'} testID={'radio-item-1'} />,
         <Radio key={'radio-item-2'} testID={'radio-item-2'} />,
@@ -163,7 +163,7 @@ describe('Radio Group Component', () => {
     const onPressMock = jest.fn();
 
     // Act
-    const { queryByTestId } = renderComponent({
+    const { queryByTestId } = renderRadioGroup({
       children: [
         <Radio
           key={'radio-item-1'}
@@ -179,5 +179,46 @@ describe('Radio Group Component', () => {
 
     // Assert
     expect(onPressMock).toHaveBeenCalled();
+  });
+
+  it('item onPress is not called when provided', () => {
+    // Arrange
+    const onPressMock = jest.fn();
+
+    // Act
+    const { queryByTestId } = renderRadioGroup({
+      children: [
+        <Radio
+          key={'radio-item-1'}
+          testID={'radio-item-1'}
+          value={'radio-item-1'}
+          onPress={onPressMock}
+        />,
+      ],
+      disabled: ['radio-item-1'],
+      testID: 'radio-group',
+    });
+
+    // Simulate press
+    fireEvent.press(queryByTestId('radio-item-1'));
+
+    // Assert
+    expect(onPressMock).not.toHaveBeenCalled();
+  });
+
+  it('handles invalid children gracefully', () => {
+    // Act
+    const { queryByTestId } = renderRadioGroup({
+      // Pass an invalid child that is not a ReactElement<RadioProps>
+      children: [
+        (
+          <View key={'fake-item-1'} testID={'fake-item-1'}></View>
+        ) as React.ReactElement<RadioProps>,
+      ],
+      testID: 'radio-group',
+    });
+
+    // Assert
+    expect(queryByTestId('radio-group')).toBeTruthy();
   });
 });

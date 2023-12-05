@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react';
+import React, { Children, isValidElement, ReactElement, useState } from 'react';
 import { GestureResponderEvent, View, ViewStyle } from 'react-native';
 import { RadioProps } from '../Radio';
 import radioGroupStyle from './RadioGroup.style';
@@ -25,7 +25,7 @@ const RadioGroup = ({
   dividerStyle,
 }: RadioGroupProps) => {
   const styles = radioGroupStyle();
-  const [selectedValue, setSelectedValue] = useState<string>(initialSelected);
+  const [selectedValue, setSelectedValue] = useState(initialSelected);
 
   const handleRadioPress = (value: string) => {
     if (value !== selectedValue) {
@@ -51,16 +51,16 @@ const RadioGroup = ({
           onPress: (e: GestureResponderEvent) => {
             if (!isDisabled) {
               handleRadioPress(value ?? '');
-              if (onPress) {
-                onPress(e);
-              }
+            }
+            if (onPress) {
+              onPress(e);
             }
           },
         })}
         {!isLastChild && (
           <View
             style={[styles.divider, dividerStyle]}
-            testID={`${testID}-divider-${value}`}
+            testID={`${testID}-divider`}
           />
         )}
       </>
@@ -72,10 +72,11 @@ const RadioGroup = ({
       testID={testID}
       style={[styles.container, containerStyle, { flexDirection: direction }]}
     >
-      {React.Children.map(children, (childElement, index) =>
-        React.isValidElement(childElement)
-          ? renderClonedRadioElement(childElement, index)
-          : null
+      {Children.map(
+        children,
+        (childElement, index) =>
+          isValidElement(childElement) &&
+          renderClonedRadioElement(childElement, index)
       )}
     </View>
   );
