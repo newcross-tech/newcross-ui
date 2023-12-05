@@ -13,9 +13,6 @@ const radioGroupStyle = () => {
   } = useTheme();
 
   return StyleSheet.create({
-    disableShadow: {
-      shadowOpacity: 0,
-    },
     divider: {
       height: CardGroupDividerBorderWidth,
       backgroundColor: CardGroupDividerBorderColor,
