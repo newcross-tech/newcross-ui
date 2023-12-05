@@ -19,6 +19,10 @@ export type RadioProps = {
    */
   label?: string;
   /**
+   * Value identifier of each radio component. Used for radio groups
+   */
+  value?: string;
+  /**
    * Called when a single tap gesture is detected.
    */
   onPress?: (event: GestureResponderEvent) => void;
