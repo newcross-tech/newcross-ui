@@ -13,7 +13,7 @@ import { native } from '@newcross-ui/design-tokens';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './RadioInfo';
 
-const { ColorBaseWhite100 } = native.healthforce;
+const { ColorBaseGrey100 } = native.healthforce;
 
 export default {
   title: 'ReactNative/Components/RadioGroup',
@@ -72,9 +72,7 @@ export const Variants = () => {
         Styled Radio Group Container
       </Typography>
       <Spacing size={SpacingSizes.Large} />
-      <RadioGroup
-        containerStyle={{ backgroundColor: ColorBaseWhite100, borderRadius: 0 }}
-      >
+      <RadioGroup containerStyle={{ borderRadius: 0 }}>
         <Radio value="7" label="A" />
         <Radio value="8" label="B" />
         <Radio value="9" label="C" />

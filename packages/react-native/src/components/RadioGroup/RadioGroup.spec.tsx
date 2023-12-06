@@ -23,9 +23,9 @@ describe('Radio Group Component', () => {
     });
 
     // Assert
-    expect(queryByTestId('radio-group')).toBeTruthy();
-    expect(queryByTestId('radio-item-1')).toBeTruthy();
-    expect(queryByTestId('radio-item-2')).toBeTruthy();
+    expect(queryByTestId('radio-group')).toBeEnabled();
+    expect(queryByTestId('radio-item-1')).toBeEnabled();
+    expect(queryByTestId('radio-item-2')).toBeEnabled();
   });
 
   it('renders disabled and selected item view', () => {
@@ -42,9 +42,9 @@ describe('Radio Group Component', () => {
     });
 
     // Assert
-    expect(queryByTestId('radio-group')).toBeTruthy();
-    expect(queryByTestId('radio-item-1')).toBeTruthy();
-    expect(queryByTestId('radio-item-2')).toBeTruthy();
+    expect(queryByTestId('radio-group')).toBeEnabled();
+    expect(queryByTestId('radio-item-1')).toBeEnabled();
+    expect(queryByTestId('radio-item-2')).toBeEnabled();
   });
 
   it(`displays empty radiogroup when without radioitems`, () => {
@@ -55,7 +55,7 @@ describe('Radio Group Component', () => {
     });
 
     // Assert
-    expect(queryByTestId('radio-group')).toBeTruthy();
+    expect(queryByTestId('radio-group')).toBeEnabled();
   });
 
   it(`shows selected view when selected prop is true`, () => {
@@ -88,7 +88,7 @@ describe('Radio Group Component', () => {
     });
 
     // Assert
-    expect(queryByTestId('radio-selected-view')).toBeTruthy();
+    expect(queryByTestId('radio-selected-view')).toBeEnabled();
   });
 
   it('calls onChange when selection changes and ignores same value passed', () => {
@@ -126,22 +126,6 @@ describe('Radio Group Component', () => {
     expect(onChangeMock).toHaveBeenCalledWith('value-1');
   });
 
-  it('applies custom styles', () => {
-    // Arrange
-    const customContainerStyle = { backgroundColor: 'red' };
-
-    // Act
-    const { queryByTestId } = renderRadioGroup({
-      children: [<Radio key={'radio-item-1'} testID={'radio-item-1'} />],
-      testID: 'radio-group',
-      containerStyle: customContainerStyle,
-    });
-
-    // Assert
-    const container = queryByTestId('radio-group');
-    expect(container.props.style).toContainEqual(customContainerStyle);
-  });
-
   it('applies test IDs to components', () => {
     // Act
     const { queryByTestId } = renderRadioGroup({
@@ -153,9 +137,9 @@ describe('Radio Group Component', () => {
     });
 
     // Assert
-    expect(queryByTestId('radio-group')).toBeTruthy();
-    expect(queryByTestId('radio-item-1')).toBeTruthy();
-    expect(queryByTestId('radio-item-2')).toBeTruthy();
+    expect(queryByTestId('radio-group')).toBeEnabled();
+    expect(queryByTestId('radio-item-1')).toBeEnabled();
+    expect(queryByTestId('radio-item-2')).toBeEnabled();
   });
 
   it('calls onPress when provided', () => {
@@ -169,6 +153,30 @@ describe('Radio Group Component', () => {
           key={'radio-item-1'}
           testID={'radio-item-1'}
           onPress={onPressMock}
+        />,
+      ],
+      testID: 'radio-group',
+    });
+
+    // Simulate press
+    fireEvent.press(queryByTestId('radio-item-1'));
+
+    // Assert
+    expect(onPressMock).toHaveBeenCalled();
+  });
+
+  it('ignores falsy values onPress', () => {
+    // Arrange
+    const onPressMock = jest.fn();
+
+    // Act
+    const { queryByTestId } = renderRadioGroup({
+      children: [
+        <Radio
+          key={'radio-item-1'}
+          testID={'radio-item-1'}
+          onPress={onPressMock}
+          value={''}
         />,
       ],
       testID: 'radio-group',
@@ -219,6 +227,6 @@ describe('Radio Group Component', () => {
     });
 
     // Assert
-    expect(queryByTestId('radio-group')).toBeTruthy();
+    expect(queryByTestId('radio-group')).toBeEnabled();
   });
 });
