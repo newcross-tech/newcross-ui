@@ -58,7 +58,7 @@ const RadioGroup = ({
   const styles = radioGroupStyle();
   const [selectedValue, setSelectedValue] = useState(initialSelected);
 
-  const handleRadioPress = (value: string = '') => {
+  const handleRadioPress = (value = '') => {
     if (value !== selectedValue) {
       setSelectedValue(value);
       onChange?.(value);
