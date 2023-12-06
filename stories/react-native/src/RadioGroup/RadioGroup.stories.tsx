@@ -101,9 +101,21 @@ export const Overview = () => {
 const Template: Story<RadioGroupProps> = ({ ...rest }) => {
   return (
     <RadioGroup {...rest}>
-      <Radio value="1" label="A" />
-      <Radio value="2" label="B" />
-      <Radio value="3" label="C" />
+      <Radio
+        value="1"
+        label="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus facilisis est quis purus congue placerat. Praesent posuere ultricies pretium. Duis eu sodales nunc, vitae consequat turpis
+"
+      />
+      <Radio
+        value="2"
+        label="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus facilisis est quis purus congue placerat. Praesent posuere ultricies pretium. Duis eu sodales nunc, vitae consequat turpis
+"
+      />
+      <Radio
+        value="3"
+        label="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus facilisis est quis purus congue placerat. Praesent posuere ultricies pretium. Duis eu sodales nunc, vitae consequat turpis
+"
+      />
     </RadioGroup>
   );
 };

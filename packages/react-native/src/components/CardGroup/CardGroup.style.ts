@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import useTheme from '../../hooks/useTheme';
 
-const cardGroupStyle = () => {
+const cardGroupStyle = (direction: 'column' | 'row') => {
   const {
     CardGroupDividerBorderWidth,
     CardGroupDividerBorderColor,
@@ -12,12 +12,13 @@ const cardGroupStyle = () => {
     CardGroupShadowRadius,
   } = useTheme();
 
+  const dividerBorder = direction === 'row' ? 'width' : 'height';
   return StyleSheet.create({
     disableShadow: {
       shadowOpacity: 0,
     },
     divider: {
-      height: CardGroupDividerBorderWidth,
+      [dividerBorder]: CardGroupDividerBorderWidth,
       backgroundColor: CardGroupDividerBorderColor,
     },
     container: {
@@ -26,6 +27,7 @@ const cardGroupStyle = () => {
       elevation: CardGroupShadowElevation,
       shadowOpacity: CardGroupShadowOpacity,
       shadowRadius: CardGroupShadowRadius,
+      flexDirection: direction,
       overflow: 'hidden',
     },
   });

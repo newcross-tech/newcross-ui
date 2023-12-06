@@ -99,11 +99,11 @@ const RadioGroup = ({
     <CardGroup
       testID={testID}
       containerStyle={{
-        flexDirection: direction,
         ...styles.container,
         ...containerStyle,
       }}
       dividerStyle={dividerStyle}
+      direction={direction}
     >
       {Children.map(
         children,
