@@ -1,5 +1,5 @@
 import React, { Children, isValidElement, ReactElement, useState } from 'react';
-import { GestureResponderEvent, View, ViewStyle } from 'react-native';
+import { GestureResponderEvent, ViewStyle } from 'react-native';
 import { RadioProps } from '../Radio';
 import radioGroupStyle from './RadioGroup.style';
 import CardGroup from '../CardGroup';
