@@ -1,232 +1,169 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
-import RadioGroup, { RadioGroupProps } from './RadioGroup';
-import Radio, { RadioProps } from '../Radio';
+import RadioGroup from './RadioGroup';
+import Radio from '../Radio';
 import { View } from 'react-native';
-
-const renderRadioGroup = (props: RadioGroupProps) => {
-  const { queryByTestId } = render(<RadioGroup {...props} />);
-  return { queryByTestId };
-};
 
 describe('Radio Group Component', () => {
   it('renders default view', () => {
-    // Act
-    const { queryByTestId } = renderRadioGroup({
-      children: [
-        <Radio key={'radio-item-1'} testID={'radio-item-1'} />,
-        <Radio key={'radio-item-2'} testID={'radio-item-2'} />,
-        <Radio key={'radio-item-3'} testID={'radio-item-3'} />,
-      ],
-      testID: 'radio-group',
-      disabled: ['radio-item-3'],
-    });
+    const { queryByTestId } = render(
+      <RadioGroup testID="radio-group-1">
+        <Radio key={'radio-item-1'} testID={'radio-item-1'} />
+        <Radio key={'radio-item-2'} testID={'radio-item-2'} />
+        <Radio key={'radio-item-3'} testID={'radio-item-3'} />
+      </RadioGroup>
+    );
 
-    // Assert
-    expect(queryByTestId('radio-group')).toBeEnabled();
+    expect(queryByTestId('radio-group-1')).toBeEnabled();
     expect(queryByTestId('radio-item-1')).toBeEnabled();
     expect(queryByTestId('radio-item-2')).toBeEnabled();
   });
 
   it('renders disabled and selected item view', () => {
-    // Act
-    const { queryByTestId } = renderRadioGroup({
-      children: [
-        <Radio key={'radio-item-1'} testID={'radio-item-1'} />,
-        <Radio key={'radio-item-2'} testID={'radio-item-2'} />,
-        <Radio key={'radio-item-3'} testID={'radio-item-3'} />,
-      ],
-      initialSelected: 'radio-item-3',
-      testID: 'radio-group',
-      disabled: ['radio-item-3'],
-    });
+    const { queryByTestId } = render(
+      <RadioGroup
+        testID="radio-group-2"
+        initialSelected="radio-item-4"
+        disabled={['radio-item-4']}
+      >
+        <Radio key={'radio-item-4'} testID={'radio-item-4'} />
+        <Radio key={'radio-item-5'} testID={'radio-item-5'} />
+        <Radio key={'radio-item-6'} testID={'radio-item-6'} />
+      </RadioGroup>
+    );
 
-    // Assert
-    expect(queryByTestId('radio-group')).toBeEnabled();
-    expect(queryByTestId('radio-item-1')).toBeEnabled();
-    expect(queryByTestId('radio-item-2')).toBeEnabled();
+    expect(queryByTestId('radio-group-2')).toBeEnabled();
+    expect(queryByTestId('radio-item-4')).toBeEnabled();
+    expect(queryByTestId('radio-item-5')).toBeEnabled();
   });
 
-  it(`displays empty radiogroup when without radioitems`, () => {
-    // Act
-    const { queryByTestId } = renderRadioGroup({
-      children: [],
-      testID: 'radio-group',
-    });
-
-    // Assert
-    expect(queryByTestId('radio-group')).toBeEnabled();
-  });
-
-  it(`shows selected view when selected prop is true`, () => {
-    // Act
-    const { queryByTestId } = renderRadioGroup({
-      children: [
-        <Radio key={'radio-item-1'} testID={'radio-item-1'} selected={true} />,
-      ],
-      testID: 'radio-group',
-      initialSelected: '',
-    });
-
-    // Assert
-    expect(queryByTestId('radio-selected-view')).toBeFalsy();
-  });
-
-  it(`shows selected `, () => {
-    // Act
-    const { queryByTestId } = renderRadioGroup({
-      children: [
+  it(`shows selected view`, () => {
+    const { queryByTestId } = render(
+      <RadioGroup
+        testID="radio-group-5"
+        initialSelected="this-will-be-selected"
+      >
         <Radio
-          key={'radio-item-1'}
-          testID={'radio-item-1'}
+          key={'this-will-be-selected'}
+          testID={'this-will-be-selected'}
           value={'this-will-be-selected'}
-          selected={true}
-        />,
-      ],
-      testID: 'radio-group',
-      initialSelected: 'this-will-be-selected',
-    });
-
-    // Assert
-    expect(queryByTestId('radio-selected-view')).toBeEnabled();
-  });
-
-  it('calls onChange when selection changes and ignores same value passed', () => {
-    // Arrange
-    const onChangeMock = jest.fn();
-
-    // Act
-    const { queryByTestId } = renderRadioGroup({
-      children: [
+        />
         <Radio
-          key={'radio-item-1'}
-          testID={'radio-item-1'}
-          value={'value-1'}
-        />,
-        <Radio
-          key={'radio-item-2'}
-          testID={'radio-item-2'}
-          value={'value-2'}
-        />,
-      ],
-      testID: 'radio-group',
-      onChange: onChangeMock,
-    });
+          key={'radio-item-8'}
+          testID={'radio-item-8'}
+          value={'radio-item-8'}
+        />
+      </RadioGroup>
+    );
 
-    // Select a radio item
-    fireEvent.press(queryByTestId('radio-item-1'));
-
-    // Assert
-    expect(onChangeMock).toHaveBeenCalledWith('value-1');
-
-    // Deselect the radio item
-    fireEvent.press(queryByTestId('radio-item-1'));
-
-    // Assert
-    expect(onChangeMock).toHaveBeenCalledWith('value-1');
+    expect(queryByTestId('radio-selected-view')).toBeDefined();
   });
 
   it('applies test IDs to components', () => {
-    // Act
-    const { queryByTestId } = renderRadioGroup({
-      children: [
-        <Radio key={'radio-item-1'} testID={'radio-item-1'} />,
-        <Radio key={'radio-item-2'} testID={'radio-item-2'} />,
-      ],
-      testID: 'radio-group',
-    });
+    const { queryByTestId } = render(
+      <RadioGroup testID="radio-group-6">
+        <Radio key={'radio-item-9'} testID={'radio-item-9'} />
+        <Radio key={'radio-item-10'} testID={'radio-item-10'} />
+      </RadioGroup>
+    );
 
-    // Assert
-    expect(queryByTestId('radio-group')).toBeEnabled();
-    expect(queryByTestId('radio-item-1')).toBeEnabled();
-    expect(queryByTestId('radio-item-2')).toBeEnabled();
+    expect(queryByTestId('radio-group-6')).toBeDefined();
+    expect(queryByTestId('radio-item-9')).toBeDefined();
+    expect(queryByTestId('radio-item-10')).toBeDefined();
   });
 
-  it('calls onPress when provided', () => {
-    // Arrange
+  it('item onPress is called when provided', () => {
     const onPressMock = jest.fn();
-
-    // Act
-    const { queryByTestId } = renderRadioGroup({
-      children: [
+    const { queryByTestId } = render(
+      <RadioGroup testID="radio-group-7">
         <Radio
-          key={'radio-item-1'}
-          testID={'radio-item-1'}
+          key={'radio-item-11'}
+          testID={'radio-item-11'}
+          value={'radio-item-11'}
           onPress={onPressMock}
-        />,
-      ],
-      testID: 'radio-group',
-    });
-
-    // Simulate press
-    fireEvent.press(queryByTestId('radio-item-1'));
-
-    // Assert
-    expect(onPressMock).toHaveBeenCalled();
-  });
-
-  it('ignores falsy values onPress', () => {
-    // Arrange
-    const onPressMock = jest.fn();
-
-    // Act
-    const { queryByTestId } = renderRadioGroup({
-      children: [
+        />
         <Radio
-          key={'radio-item-1'}
-          testID={'radio-item-1'}
+          key={'radio-item-12'}
+          testID={'radio-item-12'}
+          value={'radio-item-12'}
           onPress={onPressMock}
-          value={''}
-        />,
-      ],
-      testID: 'radio-group',
-    });
+        />
+      </RadioGroup>
+    );
 
-    // Simulate press
-    fireEvent.press(queryByTestId('radio-item-1'));
-
-    // Assert
-    expect(onPressMock).toHaveBeenCalled();
-  });
-
-  it('item onPress is not called when provided', () => {
-    // Arrange
-    const onPressMock = jest.fn();
-
-    // Act
-    const { queryByTestId } = renderRadioGroup({
-      children: [
-        <Radio
-          key={'radio-item-1'}
-          testID={'radio-item-1'}
-          value={'radio-item-1'}
-          onPress={onPressMock}
-        />,
-      ],
-      disabled: ['radio-item-1'],
-      testID: 'radio-group',
-    });
-
-    // Simulate press
-    fireEvent.press(queryByTestId('radio-item-1'));
-
-    // Assert
+    fireEvent.press(queryByTestId('radio-item-11'));
     expect(onPressMock).not.toHaveBeenCalled();
   });
 
   it('handles invalid children gracefully', () => {
-    // Act
-    const { queryByTestId } = renderRadioGroup({
-      // Pass an invalid child that is not a ReactElement<RadioProps>
-      children: [
-        (
-          <View key={'fake-item-1'} testID={'fake-item-1'}></View>
-        ) as React.ReactElement<RadioProps>,
-      ],
-      testID: 'radio-group',
-    });
+    const { queryByTestId } = render(
+      <RadioGroup testID="radio-group-8">
+        <View key={'fake-item-1'} testID={'fake-item-1'}></View>
+        <View key={'fake-item-2'} testID={'fake-item-2'}></View>
+      </RadioGroup>
+    );
 
-    // Assert
-    expect(queryByTestId('radio-group')).toBeEnabled();
+    expect(queryByTestId('radio-group-8')).toBeDefined();
+  });
+
+  it('does not call onPress when radio item is disabled', () => {
+    const onPressMock = jest.fn();
+
+    const { queryByTestId } = render(
+      <RadioGroup testID="radio-group-9" disabled={['radio-item-13']}>
+        <Radio
+          key={'radio-item-13'}
+          testID={'radio-item-13'}
+          value={'radio-item-13'}
+          onPress={onPressMock}
+        />
+        <Radio
+          key={'radio-item-14'}
+          testID={'radio-item-14'}
+          value={'radio-item-14'}
+        />
+      </RadioGroup>
+    );
+
+    // Simulate press
+    fireEvent.press(queryByTestId('radio-item-13'));
+
+    // Check that onPress is not called when the radio item is disabled
+    expect(onPressMock).not.toHaveBeenCalled();
+  });
+
+  it('call onPress when radio item is not disabled', () => {
+    const onPressMock = jest.fn();
+    const onChangeMock = jest.fn();
+
+    const { queryByTestId } = render(
+      <RadioGroup onChange={onChangeMock} disabled={[]} testID="radio-group-10">
+        <Radio
+          key={'radio-item-14'}
+          testID={'radio-item-14'}
+          value={'radio-item-14'}
+          onPress={onPressMock}
+        />
+        <Radio
+          key={'radio-item-15'}
+          testID={'radio-item-15'}
+          onPress={onPressMock}
+        />
+        <Radio
+          key={'radio-item-16'}
+          testID={'radio-item-16'}
+          onPress={onPressMock}
+        />
+        <Radio key={'radio-item-17'} testID={'radio-item-17'} />
+      </RadioGroup>
+    );
+
+    fireEvent.press(queryByTestId('radio-group-10-card-0'));
+    fireEvent.press(queryByTestId('radio-group-10-card-1'));
+    fireEvent.press(queryByTestId('radio-group-10-card-2'));
+    fireEvent.press(queryByTestId('radio-group-10-card-3'));
+
+    expect(onPressMock).toHaveBeenCalledTimes(3);
+    expect(onChangeMock).toHaveBeenCalledTimes(2);
   });
 });

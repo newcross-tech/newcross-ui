@@ -6,6 +6,7 @@ export type RadioStyle = {
   wrapper: ViewStyle;
   radio: ViewStyle;
   radioSelected: ViewStyle;
+  radioTextContainer: ViewStyle;
   radioLabel: TextStyle;
 };
 

@@ -40,9 +40,12 @@ const radioStyle = (
       borderRadius: theme.RadioSelectedHeight / 2,
     },
     radioLabel: {
+      color: theme.RadioColor,
+    },
+    radioTextContainer: {
+      flex: 1,
       paddingLeft: theme.RadioPaddingLeft,
       paddingRight: theme.RadioPaddingRight,
-      color: theme.RadioColor,
     },
   });
 };

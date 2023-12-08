@@ -1,19 +1,19 @@
 import { Meta, Story } from '@storybook/react';
 import React from 'react';
 import {
+  Link,
+  LinkSizes,
   Radio,
   RadioGroup,
+  RadioGroupProps,
   Typography,
   TypographyVariant,
 } from '@newcross-ui/react-native';
 import Container from '../Container';
-import { RadioGroupProps } from '@newcross-ui/react';
 import Spacing, { SpacingSizes } from '../Spacing';
-import { native } from '@newcross-ui/design-tokens';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './RadioInfo';
-
-const { ColorBaseGrey100 } = native.healthforce;
+import { View } from 'react-native';
 
 export default {
   title: 'ReactNative/Components/RadioGroup',
@@ -100,28 +100,26 @@ export const Overview = () => {
 
 const Template: Story<RadioGroupProps> = ({ ...rest }) => {
   return (
-    <RadioGroup {...rest}>
-      <Radio
-        value="1"
-        label="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus facilisis est quis purus congue placerat. Praesent posuere ultricies pretium. Duis eu sodales nunc, vitae consequat turpis
-"
-      />
-      <Radio
-        value="2"
-        label="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus facilisis est quis purus congue placerat. Praesent posuere ultricies pretium. Duis eu sodales nunc, vitae consequat turpis
-"
-      />
-      <Radio
-        value="3"
-        label="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus facilisis est quis purus congue placerat. Praesent posuere ultricies pretium. Duis eu sodales nunc, vitae consequat turpis
-"
-      />
-    </RadioGroup>
+    <View>
+      <RadioGroup {...rest}>
+        <Radio
+          value="A"
+          label={'Description below'}
+          content={
+            <Link size={LinkSizes.small} hasIcon={false}>
+              More Info
+            </Link>
+          }
+        ></Radio>
+        <Radio value="B" label={'B'} />
+        <Radio value="C" label={'C'} />
+      </RadioGroup>
+    </View>
   );
 };
 
 export const Interactive = Template.bind({});
 Interactive.args = {
-  initialSelected: '1',
+  initialSelected: 'A',
   direction: 'row',
 };

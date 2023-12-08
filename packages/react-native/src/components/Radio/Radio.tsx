@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import {
   Pressable,
   View,
@@ -19,6 +19,10 @@ export type RadioProps = {
    * Identifier of each radio component
    */
   label?: string;
+  /**
+   * Pass complex content as radio description below label
+   */
+  content?: ReactElement;
   /**
    * Value identifier of each radio component. Used for radio groups
    */
@@ -44,7 +48,9 @@ export type RadioProps = {
 const Radio = ({
   selected = false,
   disabled = false,
+  value = 'single-radio',
   label,
+  content,
   onPress,
   containerStyle,
   testID,
@@ -58,13 +64,16 @@ const Radio = ({
   };
 
   return (
-    <View style={[styles.container, containerStyle]}>
+    <View testID={value} style={[styles.container, containerStyle]}>
       <Pressable
         testID={testID}
         onPress={handlePress}
         disabled={disabled}
         style={({ pressed }) =>
-          pressedRadioStyle({ disabled, pressed } as PressedRadioProps)
+          pressedRadioStyle({
+            disabled,
+            pressed,
+          } as PressedRadioProps)
         }
       >
         <View testID="radio-view" style={styles.radio}>
@@ -73,15 +82,18 @@ const Radio = ({
           )}
         </View>
       </Pressable>
-      {label && (
-        <Typography
-          variant={TypographyVariant.paragraph1}
-          testID="radio-label"
-          style={styles.radioLabel}
-        >
-          {label}
-        </Typography>
-      )}
+      <View style={styles.radioTextContainer}>
+        {label && (
+          <Typography
+            variant={TypographyVariant.paragraph1}
+            testID="radio-label"
+            style={styles.radioLabel}
+          >
+            {label}
+          </Typography>
+        )}
+        {content && <View testID="radio-content">{content}</View>}
+      </View>
     </View>
   );
 };

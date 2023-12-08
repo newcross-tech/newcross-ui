@@ -70,10 +70,21 @@ const RadioGroup = ({
   ) => {
     const { value, testID, onPress } = childElement.props;
 
+    const isDisabled = !!value && disabled.includes(value);
+
     return (
       <Card
+        testID={`group-card-${testID}`}
         fullWidth={false}
-        isPressable={false}
+        isPressable={isDisabled}
+        onPress={(e: GestureResponderEvent) => {
+          if (!isDisabled) {
+            handleRadioPress(value);
+            if (onPress) {
+              onPress(e);
+            }
+          }
+        }}
         containerStyle={{
           ...styles.container,
           ...itemContainerStyle,
@@ -82,13 +93,10 @@ const RadioGroup = ({
         {React.cloneElement(childElement, {
           testID,
           selected: value === selectedValue,
-          disabled: !!value && disabled.includes(value),
+          disabled: isDisabled,
           containerStyle: styles.container,
-          onPress: (e: GestureResponderEvent) => {
+          onPress: () => {
             handleRadioPress(value);
-            if (onPress) {
-              onPress(e);
-            }
           },
         })}
       </Card>
