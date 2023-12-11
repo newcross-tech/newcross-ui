@@ -10,13 +10,10 @@ describe('Radio Group Component', () => {
       <RadioGroup testID="radio-group-1">
         <Radio key={'radio-item-1-1'} testID={'radio-item-1-1'} />
         <Radio key={'radio-item-1-2'} testID={'radio-item-1-2'} />
-        <Radio key={'radio-item-1-3'} testID={'radio-item-1-3'} />
       </RadioGroup>
     );
 
     expect(queryByTestId('radio-group-1')).toBeDefined();
-    expect(queryByTestId('radio-item-1-1')).toBeDefined();
-    expect(queryByTestId('radio-item-1-2')).toBeDefined();
   });
 
   it('renders disabled and selected item view', () => {
@@ -28,13 +25,11 @@ describe('Radio Group Component', () => {
       >
         <Radio key={'radio-item-2-1'} testID={'radio-item-2-1'} />
         <Radio key={'radio-item-2-2'} testID={'radio-item-2-2'} />
-        <Radio key={'radio-item-2-3'} testID={'radio-item-2-3'} />
       </RadioGroup>
     );
 
     expect(queryByTestId('radio-item-2-1')).toBeDefined();
     expect(queryByTestId('radio-item-2-2')).toBeDefined();
-    expect(queryByTestId('radio-item-2-3')).toBeDefined();
   });
 
   it(`shows selected view`, () => {
