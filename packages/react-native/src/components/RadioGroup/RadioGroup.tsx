@@ -91,7 +91,7 @@ const RadioGroup = ({
         }}
       >
         {React.cloneElement(childElement, {
-          testID,
+          testID: `group-item-${testID}`,
           selected: value === selectedValue,
           disabled: isDisabled,
           containerStyle: styles.container,
