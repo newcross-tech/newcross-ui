@@ -1,6 +1,7 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
+import { fireEvent, render } from '@testing-library/react-native';
 import Radio, { RadioProps } from './Radio';
+import { Typography, TypographyVariant } from '../../index';
 
 const renderComponent = (props: RadioProps) => {
   const { getByText, queryByTestId } = render(<Radio {...props} />);
@@ -15,6 +16,21 @@ describe('Radio Component', () => {
 
     // Assert
     expect(getByText(/hello/i)).toBeTruthy();
+    expect(queryByTestId('radio-view')).toBeTruthy();
+  });
+
+  it('renders with given value and default view', () => {
+    // Act
+    const { getByText, queryByTestId } = renderComponent({
+      content: (
+        <Typography variant={TypographyVariant.paragraph1}>
+          Complex text passed
+        </Typography>
+      ),
+    });
+
+    // Assert
+    expect(getByText(/Complex text passed/i)).toBeTruthy();
     expect(queryByTestId('radio-view')).toBeTruthy();
   });
 

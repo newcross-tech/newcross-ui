@@ -9,6 +9,10 @@ export type CardGroupProps = {
    */
   children: Array<ReactElement<CardProps>>;
   /**
+   * Used to display the group in either a row or a column.
+   */
+  direction?: 'row' | 'column';
+  /**
    * The style of the container.
    */
   containerStyle?: ViewStyle;
@@ -24,11 +28,12 @@ export type CardGroupProps = {
 
 const CardGroup = ({
   children,
+  direction = 'column',
   containerStyle,
   dividerStyle,
   testID = 'card-group',
 }: CardGroupProps) => {
-  const styles = cardGroupStyle();
+  const styles = cardGroupStyle(direction);
 
   return (
     <View testID={testID} style={[styles.container, containerStyle]}>

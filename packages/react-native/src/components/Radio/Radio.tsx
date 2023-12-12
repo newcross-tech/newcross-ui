@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import {
   Pressable,
   View,
   GestureResponderEvent,
   PressableProps,
+  ViewStyle,
 } from 'react-native';
 import radioStyle, { pressedRadioStyle } from './Radio.style';
 import { PressedRadioProps } from './Radio.types';
@@ -19,6 +20,14 @@ export type RadioProps = {
    */
   label?: string;
   /**
+   * Pass complex content as radio description below label
+   */
+  content?: ReactElement;
+  /**
+   * Value identifier of each radio component. Used for radio groups
+   */
+  value?: string;
+  /**
    * Called when a single tap gesture is detected.
    */
   onPress?: (event: GestureResponderEvent) => void;
@@ -27,7 +36,11 @@ export type RadioProps = {
    */
   selected?: boolean;
   /**
-   * testID for end to end testing.
+   * Overwrites or extends the styles applied to the component's content.
+   */
+  containerStyle?: ViewStyle;
+  /**
+   * testID for end-to-end testing.
    */
   testID?: string;
 } & PressableProps;
@@ -35,8 +48,11 @@ export type RadioProps = {
 const Radio = ({
   selected = false,
   disabled = false,
+  value = 'single-radio',
   label,
+  content,
   onPress,
+  containerStyle,
   testID,
 }: RadioProps) => {
   const styles = radioStyle(disabled);
@@ -48,13 +64,16 @@ const Radio = ({
   };
 
   return (
-    <View style={styles.container}>
+    <View testID={value} style={[styles.container, containerStyle]}>
       <Pressable
         testID={testID}
         onPress={handlePress}
         disabled={disabled}
         style={({ pressed }) =>
-          pressedRadioStyle({ disabled, pressed } as PressedRadioProps)
+          pressedRadioStyle({
+            disabled,
+            pressed,
+          } as PressedRadioProps)
         }
       >
         <View testID="radio-view" style={styles.radio}>
@@ -63,15 +82,18 @@ const Radio = ({
           )}
         </View>
       </Pressable>
-      {label && (
-        <Typography
-          variant={TypographyVariant.paragraph1}
-          testID="radio-label"
-          style={styles.radioLabel}
-        >
-          {label}
-        </Typography>
-      )}
+      <View style={styles.radioTextContainer}>
+        {label && (
+          <Typography
+            variant={TypographyVariant.paragraph1}
+            testID="radio-label"
+            style={styles.radioLabel}
+          >
+            {label}
+          </Typography>
+        )}
+        {content && <View testID="radio-content">{content}</View>}
+      </View>
     </View>
   );
 };
