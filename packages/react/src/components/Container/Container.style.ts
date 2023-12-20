@@ -19,11 +19,41 @@ export const Container = styled.div<ExtendedTheme<ContainerProps>>`
     pr,
     pt,
     pb,
+    mTablet,
+    mxTablet,
+    myTablet,
+    mlTablet,
+    mrTablet,
+    mtTablet,
+    mbTablet,
+    pTablet,
+    pxTablet,
+    pyTablet,
+    plTablet,
+    prTablet,
+    ptTablet,
+    pbTablet,
+    mMobile,
+    mxMobile,
+    myMobile,
+    mlMobile,
+    mrMobile,
+    mtMobile,
+    mbMobile,
+    pMobile,
+    pxMobile,
+    pyMobile,
+    plMobile,
+    prMobile,
+    ptMobile,
+    pbMobile,
     flexDirection,
     flexWrap,
     justifyContent,
     alignItems,
     gap,
+    gapTablet,
+    gapMobile,
     display,
     fullWidth,
   }) => css`
@@ -74,5 +104,88 @@ export const Container = styled.div<ExtendedTheme<ContainerProps>>`
     ${flexDirection && `flex-direction: ${flexDirection};`}
 
     ${fullWidth && `width: 100%;`}
+
+    @media (max-width: ${theme.GridTabletBreakpoint}px) {
+      ${mTablet &&
+      `
+          margin: ${theme?.[mTablet] ?? mTablet};
+      `}
+      ${mxTablet &&
+      `
+          margin-left: ${theme?.[mxTablet] ?? mxTablet};
+          margin-right: ${theme?.[mxTablet] ?? mxTablet};
+      `}
+      ${myTablet &&
+      `
+          margin-top: ${theme?.[myTablet] ?? myTablet};
+          margin-bottom: ${theme?.[myTablet] ?? myTablet};
+      `}
+      ${mlTablet && `margin-left: ${theme?.[mlTablet] ?? mlTablet};`}
+      ${mrTablet && `margin-right: ${theme?.[mrTablet] ?? mrTablet};`}
+      ${mtTablet && `margin-top: ${theme?.[mtTablet] ?? mtTablet};`}
+      ${mbTablet && `margin-bottom: ${theme?.[mbTablet] ?? mbTablet};`}
+      
+      ${pTablet &&
+      `
+          padding: ${theme?.[pTablet] ?? pTablet};
+      `}
+      ${pxTablet &&
+      `
+          padding-left: ${theme?.[pxTablet] ?? pxTablet};
+          padding-right: ${theme?.[pxTablet] ?? pxTablet};
+      `}
+      ${pyTablet &&
+      `
+          padding-top: ${theme?.[pyTablet] ?? pyTablet};
+          padding-bottom: ${theme?.[pyTablet] ?? pyTablet};
+      `}
+      ${plTablet && `padding-left: ${theme?.[plTablet] ?? plTablet};`}
+      ${prTablet && `padding-right: ${theme?.[prTablet] ?? prTablet};`}
+      ${ptTablet && `padding-top: ${theme?.[ptTablet] ?? ptTablet};`}
+      ${pbTablet && `padding-bottom: ${theme?.[pbTablet] ?? pbTablet};`}
+
+      ${gapTablet && `gap: ${theme?.[gapTablet] ?? gapTablet};`}
+    }
+
+    @media (max-width: ${theme.GridMobileBreakpoint}px) {
+      ${mMobile &&
+      `
+          margin: ${theme?.[mMobile] ?? mMobile};
+      `}
+      ${mxMobile &&
+      `
+          margin-left: ${theme?.[mxMobile] ?? mxMobile};
+          margin-right: ${theme?.[mxMobile] ?? mxMobile};
+      `}
+      ${myMobile &&
+      `
+          margin-top: ${theme?.[myMobile] ?? myMobile};
+          margin-bottom: ${theme?.[myMobile] ?? myMobile};
+      `}
+      ${mlMobile && `margin-left: ${theme?.[mlMobile] ?? mlMobile};`}
+      ${mrMobile && `margin-right: ${theme?.[mrMobile] ?? mrMobile};`}
+      ${mtMobile && `margin-top: ${theme?.[mtMobile] ?? mtMobile};`}
+      ${mbMobile && `margin-bottom: ${theme?.[mbMobile] ?? mbMobile};`}
+      
+      ${pMobile &&
+      `
+          padding: ${theme?.[pMobile] ?? pMobile};
+      `}
+      ${pxMobile &&
+      `
+          padding-left: ${theme?.[pxMobile] ?? pxMobile};
+          padding-right: ${theme?.[pxMobile] ?? pxMobile};
+      `}
+      ${pyMobile &&
+      `
+          padding-top: ${theme?.[pyMobile] ?? pyMobile};
+          padding-bottom: ${theme?.[pyMobile] ?? pyMobile};
+      `}
+      ${plMobile && `padding-left: ${theme?.[plMobile] ?? plMobile};`}
+      ${prMobile && `padding-right: ${theme?.[prMobile] ?? prMobile};`}
+      ${ptMobile && `padding-top: ${theme?.[ptMobile] ?? ptMobile};`}
+      ${pbMobile && `padding-bottom: ${theme?.[pbMobile] ?? pbMobile};`}
+      ${gapMobile && `gap: ${theme?.[gapMobile] ?? gapMobile};`}
+    }
   `}
 `;
