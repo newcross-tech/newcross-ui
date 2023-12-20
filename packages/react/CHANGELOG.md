@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.1.4...@newcross-ui/react@2.2.0) (2023-12-20)
+
+
+### Features
+
+* **CAPP-776:** add tablet and mobile props for offsets in container ([#73](https://bitbucket.org/newcrossdev/newcross-ui/issues/73)) ([2c1c52e](https://bitbucket.org/newcrossdev/newcross-ui/commits/2c1c52e70b61722b4c122d6e61106968c5580be7))
+
+
+
+
+
 ## [2.1.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.1.3...@newcross-ui/react@2.1.4) (2023-11-27)
 
 
