@@ -44,7 +44,6 @@ export const Container = styled.div<ExtendedTheme<ContainerProps>>`
   ${({ theme, hasError, fullWidth, search, disabled, isFocused }: ExtendedTheme<ContainerProps>) => css`
     display: flex;
     align-items: center;
-    justify-content: space-between;
     border: ${theme.TextInputBorderWidth} solid ${theme.TextInputBorderColor};
     border-radius: ${theme.TextInputBorderRadius};
     background-color: ${theme.TextInputBackgroundColor};
