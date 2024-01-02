@@ -105,7 +105,7 @@ const Radio = ({
         </View>
       </View>
       {hasExtraContentOnSelect && (
-        <View testID="radio-extra-content"> {extraContentOnSelect} </View>
+        <View testID="radio-extra-content">{extraContentOnSelect}</View>
       )}
     </View>
   );

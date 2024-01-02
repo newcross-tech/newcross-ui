@@ -23,7 +23,7 @@ export const Variants = () => {
           label="Primary Selected with extra content on selection"
           extraContentOnSelect={
             <TextInput
-              style={{ width: '20%' }}
+              style={{ width: '50%' }}
               label="Extra Content"
               onChangeText={() => null}
             />
