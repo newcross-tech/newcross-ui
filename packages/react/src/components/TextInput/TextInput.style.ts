@@ -106,6 +106,7 @@ export const RightIconContainer = styled.div`
 export const PasswordIcon = styled(FontAwesomeIcon)`
   ${({ theme }: Theme) => css`
     color: ${theme.TextInputRightIconColor};
+    cursor: pointer;
   `}
 `;
 
