@@ -46,16 +46,17 @@ export const Container = styled.div<ExtendedTheme<ContainerProps>>`
     align-items: center;
     border: ${theme.TextInputBorderWidth} solid ${theme.TextInputBorderColor};
     border-radius: ${theme.TextInputBorderRadius};
+
     background-color: ${theme.TextInputBackgroundColor};
+    justify-content: space-between;
     ${getCommonStateStyles({ theme, hasError, isFocused, disabled })}
     ${isFocused && getFocusedStyles(theme)};
     ${search &&
     css`
       border-radius: ${theme.TextInputSearchBarBorderRadius};
-    `}
+    `};
 
-    &
-      input {
+    & input {
       width: ${fullWidth ? '100%' : '90%'};
       border: none;
       background-color: transparent;
