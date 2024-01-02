@@ -40,7 +40,7 @@ const radioStyle = (
       borderRadius: theme.RadioSelectedHeight / 2,
     },
     radioLabel: {
-      color: theme.RadioColor,
+      color: disabled ? theme.RadioDisabledColor : theme.RadioColor,
     },
     radioTextContainer: {
       flex: 1,
