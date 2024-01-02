@@ -14,6 +14,7 @@ import Label from '../Label/Label';
 import { TextArea } from './TextArea';
 import * as Styled from './TextInput.style';
 import { SearchIcon } from './TextInput.style';
+import Container from '../Container';
 
 export type TextInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
@@ -153,25 +154,27 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
             isFocused ? `${inputId}-container-focused` : `${inputId}-container`
           }
         >
-          {search && (
-            <Styled.LeftIconContainer data-testid={`${inputId}-search-icon`}>
-              <SearchIcon icon={faSearch} />
-            </Styled.LeftIconContainer>
-          )}
-          <input
-            id={inputId}
-            ref={ref}
-            type={passwordVisibility && isPasswordType ? 'password' : 'text'}
-            value={value}
-            onClick={onClick}
-            onFocus={onFocus}
-            onBlur={onBlur}
-            onChange={onChangeHandler}
-            disabled={disabled}
-            data-testid={inputId}
-            placeholder={placeholder}
-            {...other}
-          />
+          <Container display="flex" fullWidth alignItems="center">
+            {search && (
+              <Styled.LeftIconContainer data-testid={`${inputId}-search-icon`}>
+                <SearchIcon icon={faSearch} />
+              </Styled.LeftIconContainer>
+            )}
+            <input
+              id={inputId}
+              ref={ref}
+              type={passwordVisibility && isPasswordType ? 'password' : 'text'}
+              value={value}
+              onClick={onClick}
+              onFocus={onFocus}
+              onBlur={onBlur}
+              onChange={onChangeHandler}
+              disabled={disabled}
+              data-testid={inputId}
+              placeholder={placeholder}
+              {...other}
+            />
+          </Container>
           {isPasswordType && (
             <Styled.RightIconContainer
               data-testid={`${inputId}-eye-icon`}

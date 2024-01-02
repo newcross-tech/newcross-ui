@@ -44,19 +44,19 @@ export const Container = styled.div<ExtendedTheme<ContainerProps>>`
   ${({ theme, hasError, fullWidth, search, disabled, isFocused }: ExtendedTheme<ContainerProps>) => css`
     display: flex;
     align-items: center;
-    justify-content: space-between;
     border: ${theme.TextInputBorderWidth} solid ${theme.TextInputBorderColor};
     border-radius: ${theme.TextInputBorderRadius};
+
     background-color: ${theme.TextInputBackgroundColor};
+    justify-content: space-between;
     ${getCommonStateStyles({ theme, hasError, isFocused, disabled })}
     ${isFocused && getFocusedStyles(theme)};
     ${search &&
     css`
       border-radius: ${theme.TextInputSearchBarBorderRadius};
-    `}
+    `};
 
-    &
-      input {
+    & input {
       width: ${fullWidth ? '100%' : '90%'};
       border: none;
       background-color: transparent;
@@ -106,6 +106,7 @@ export const RightIconContainer = styled.div`
 export const PasswordIcon = styled(FontAwesomeIcon)`
   ${({ theme }: Theme) => css`
     color: ${theme.TextInputRightIconColor};
+    cursor: pointer;
   `}
 `;
 
