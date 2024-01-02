@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.2.0...@newcross-ui/react@2.2.1) (2024-01-02)
+
+
+### Bug Fixes
+
+* **HFHR-205:** textinput search fix ([#75](https://bitbucket.org/newcrossdev/newcross-ui/issues/75)) ([8d6288f](https://bitbucket.org/newcrossdev/newcross-ui/commits/8d6288fd4c3fa89827b560d1f97688c8bb984fe1))
+
+
+
+
+
 # [2.2.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.1.4...@newcross-ui/react@2.2.0) (2023-12-20)
 
 
