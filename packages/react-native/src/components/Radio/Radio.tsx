@@ -36,6 +36,10 @@ export type RadioProps = {
    */
   selected?: boolean;
   /**
+   * Extra content to be displayed when radio is selected
+   */
+  extraContentOnSelect?: ReactElement;
+  /**
    * Overwrites or extends the styles applied to the component's content.
    */
   containerStyle?: ViewStyle;
@@ -54,8 +58,11 @@ const Radio = ({
   onPress,
   containerStyle,
   testID,
+  extraContentOnSelect,
 }: RadioProps) => {
   const styles = radioStyle(disabled);
+
+  const hasExtraContentOnSelect = selected && extraContentOnSelect;
 
   const handlePress = (event: GestureResponderEvent) => {
     if (!disabled && onPress) {
@@ -64,36 +71,42 @@ const Radio = ({
   };
 
   return (
-    <View testID={value} style={[styles.container, containerStyle]}>
-      <Pressable
-        testID={testID}
-        onPress={handlePress}
-        disabled={disabled}
-        style={({ pressed }) =>
-          pressedRadioStyle({
-            disabled,
-            pressed,
-          } as PressedRadioProps)
-        }
-      >
-        <View testID="radio-view" style={styles.radio}>
-          {selected && (
-            <View testID="radio-selected-view" style={styles.radioSelected} />
+    <View>
+      <View testID={value} style={[styles.container, containerStyle]}>
+        <Pressable
+          testID={testID}
+          onPress={handlePress}
+          disabled={disabled}
+          style={({ pressed }) =>
+            pressedRadioStyle({
+              disabled,
+              pressed,
+            } as PressedRadioProps)
+          }
+        >
+          <View testID="radio-view" style={styles.radio}>
+            {selected && (
+              <View testID="radio-selected-view" style={styles.radioSelected} />
+            )}
+          </View>
+        </Pressable>
+        <View style={styles.radioTextContainer}>
+          {label && (
+            <Typography
+              variant={TypographyVariant.paragraph1}
+              testID="radio-label"
+              style={styles.radioLabel}
+            >
+              {label}
+            </Typography>
           )}
+
+          {content && <View testID="radio-content">{content}</View>}
         </View>
-      </Pressable>
-      <View style={styles.radioTextContainer}>
-        {label && (
-          <Typography
-            variant={TypographyVariant.paragraph1}
-            testID="radio-label"
-            style={styles.radioLabel}
-          >
-            {label}
-          </Typography>
-        )}
-        {content && <View testID="radio-content">{content}</View>}
       </View>
+      {hasExtraContentOnSelect && (
+        <View testID="radio-extra-content">{extraContentOnSelect}</View>
+      )}
     </View>
   );
 };

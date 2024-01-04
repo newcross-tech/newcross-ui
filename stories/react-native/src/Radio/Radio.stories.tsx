@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import { Meta, Story } from '@storybook/react';
-import { Radio, RadioProps } from '@newcross-ui/react-native';
+import { Radio, RadioProps, TextInput } from '@newcross-ui/react-native';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './RadioInfo';
@@ -18,6 +18,17 @@ export const Variants = () => {
         <Radio selected={true} label="Primary Selected" />
         <Radio label="Disabled" disabled />
         <Radio selected label="Disabled Selected" disabled />
+        <Radio
+          selected={true}
+          label="Primary Selected with extra content on selection"
+          extraContentOnSelect={
+            <TextInput
+              style={{ width: '50%' }}
+              label="Extra Content"
+              onChangeText={() => null}
+            />
+          }
+        />
       </View>
     </Container>
   );

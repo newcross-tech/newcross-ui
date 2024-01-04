@@ -10,7 +10,8 @@
     "color": { "value": "{brand.color.primary.value}" },
 
     "disabled": {
-      "border-color": { "value": "{color.neutral.grey.200.value}" }
+      "border-color": { "value": "{color.neutral.grey.200.value}" },
+      "color": { "value": "{color.neutral.grey.200.value}" }
     },
 
     "selected": {

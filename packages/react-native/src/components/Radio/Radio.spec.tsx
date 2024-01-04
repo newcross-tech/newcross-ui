@@ -42,6 +42,37 @@ describe('Radio Component', () => {
     expect(queryByTestId('radio-label')).toBeFalsy();
   });
 
+  it(`renders with extra content when selected`, () => {
+    // Act
+    const { getByText } = renderComponent({
+      selected: true,
+      label: 'Hello',
+      extraContentOnSelect: (
+        <Typography variant={TypographyVariant.paragraph1}>
+          Extra content
+        </Typography>
+      ),
+    });
+
+    // Assert
+    expect(getByText('Extra content')).toBeDefined();
+  });
+
+  it(`doesn't show extra content when is not selected`, () => {
+    // Act
+    const { queryByTestId } = renderComponent({
+      label: 'Hello',
+      extraContentOnSelect: (
+        <Typography variant={TypographyVariant.paragraph1}>
+          Extra content
+        </Typography>
+      ),
+    });
+
+    // Assert
+    expect(queryByTestId('radio-extra-content')).toBeFalsy();
+  });
+
   it(`doesn't show selected view when selected prop is false`, () => {
     // Act
     const { queryByTestId } = renderComponent({ selected: false });
