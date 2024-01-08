@@ -3,6 +3,7 @@ import { RadioProps } from './Radio';
 
 export type RadioStyle = {
   container: ViewStyle;
+  radioContainer: ViewStyle;
   wrapper: ViewStyle;
   radio: ViewStyle;
   radioSelected: ViewStyle;
