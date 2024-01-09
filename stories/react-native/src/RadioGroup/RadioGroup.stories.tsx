@@ -13,7 +13,7 @@ import Container from '../Container';
 import Spacing, { SpacingSizes } from '../Spacing';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './RadioInfo';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 
 export default {
   title: 'ReactNative/Components/RadioGroup',
@@ -22,62 +22,66 @@ export default {
 
 export const Variants = () => {
   return (
-    <Container>
-      <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading4}>
-        Radio Group with Horizontal Orientation
-      </Typography>
-      <Spacing size={SpacingSizes.Large} />
-      <RadioGroup initialSelected="1">
-        <Radio value="1" label="A" />
-        <Radio value="2" label="B" />
-        <Radio value="3" label="C" />
-      </RadioGroup>
+    <ScrollView>
+      <Container>
+        <Spacing size={SpacingSizes.Large} />
+        <Typography variant={TypographyVariant.heading4}>
+          Radio Group with Horizontal Orientation
+        </Typography>
+        <Spacing size={SpacingSizes.Large} />
+        <RadioGroup initialSelected="1">
+          <Radio value="1" label="A" />
+          <Radio value="2" label="B" />
+          <Radio value="3" label="C" />
+        </RadioGroup>
 
-      <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading4}>
-        Radio Group with Vertical Orientation and divider
-      </Typography>
-      <Spacing size={SpacingSizes.Large} />
-      <RadioGroup direction="column" initialSelected="5">
-        <Radio value="4" label="A" />
-        <Radio value="5" label="B" />
-        <Radio value="6" label="C" />
-      </RadioGroup>
+        <Spacing size={SpacingSizes.Large} />
+        <Typography variant={TypographyVariant.heading4}>
+          Radio Group with Vertical Orientation and divider
+        </Typography>
+        <Spacing size={SpacingSizes.Large} />
+        <View>
+          <RadioGroup direction="column" initialSelected="5">
+            <Radio value="4" label="A" />
+            <Radio value="5" label="B" />
+            <Radio value="6" label="C" />
+          </RadioGroup>
+        </View>
 
-      <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading4}>
-        Disabled and Selected Items in Radio Group
-      </Typography>
-      <Spacing size={SpacingSizes.Large} />
-      <RadioGroup initialSelected="7" disabled={['7']}>
-        <Radio value="7" label="A" />
-        <Radio value="8" label="B" />
-        <Radio value="9" label="C" />
-      </RadioGroup>
+        <Spacing size={SpacingSizes.Large} />
+        <Typography variant={TypographyVariant.heading4}>
+          Disabled and Selected Items in Radio Group
+        </Typography>
+        <Spacing size={SpacingSizes.Large} />
+        <RadioGroup initialSelected="7" disabled={['7']}>
+          <Radio value="7" label="A" />
+          <Radio value="8" label="B" />
+          <Radio value="9" label="C" />
+        </RadioGroup>
 
-      <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading4}>
-        No default selection in Radio Group
-      </Typography>
-      <Spacing size={SpacingSizes.Large} />
-      <RadioGroup>
-        <Radio value="7" label="A" />
-        <Radio value="8" label="B" />
-        <Radio value="9" label="C" />
-      </RadioGroup>
+        <Spacing size={SpacingSizes.Large} />
+        <Typography variant={TypographyVariant.heading4}>
+          No default selection in Radio Group
+        </Typography>
+        <Spacing size={SpacingSizes.Large} />
+        <RadioGroup>
+          <Radio value="7" label="A" />
+          <Radio value="8" label="B" />
+          <Radio value="9" label="C" />
+        </RadioGroup>
 
-      <Spacing size={SpacingSizes.Large} />
-      <Typography variant={TypographyVariant.heading4}>
-        Styled Radio Group Container
-      </Typography>
-      <Spacing size={SpacingSizes.Large} />
-      <RadioGroup containerStyle={{ borderRadius: 0 }}>
-        <Radio value="7" label="A" />
-        <Radio value="8" label="B" />
-        <Radio value="9" label="C" />
-      </RadioGroup>
-    </Container>
+        <Spacing size={SpacingSizes.Large} />
+        <Typography variant={TypographyVariant.heading4}>
+          Styled Radio Group Container
+        </Typography>
+        <Spacing size={SpacingSizes.Large} />
+        <RadioGroup containerStyle={{ borderRadius: 0 }}>
+          <Radio value="7" label="A" />
+          <Radio value="8" label="B" />
+          <Radio value="9" label="C" />
+        </RadioGroup>
+      </Container>
+    </ScrollView>
   );
 };
 

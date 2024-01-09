@@ -14,6 +14,9 @@ const radioStyle = (
 
   return StyleSheet.create({
     container: {
+      flex: 1,
+    },
+    radioContainer: {
       alignItems: 'center',
       flexDirection: 'row',
     },

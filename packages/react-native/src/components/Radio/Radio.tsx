@@ -71,8 +71,8 @@ const Radio = ({
   };
 
   return (
-    <View>
-      <View testID={value} style={[styles.container, containerStyle]}>
+    <View style={styles.container}>
+      <View testID={value} style={[styles.radioContainer, containerStyle]}>
         <Pressable
           testID={testID}
           onPress={handlePress}

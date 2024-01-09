@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { Meta, Story } from '@storybook/react';
 import { Radio, RadioProps, TextInput } from '@newcross-ui/react-native';
 import Container from '../Container';
@@ -12,8 +12,8 @@ export default {
 
 export const Variants = () => {
   return (
-    <Container>
-      <View>
+    <ScrollView>
+      <Container>
         <Radio selected={false} label="Primary" />
         <Radio selected={true} label="Primary Selected" />
         <Radio label="Disabled" disabled />
@@ -29,8 +29,8 @@ export const Variants = () => {
             />
           }
         />
-      </View>
-    </Container>
+      </Container>
+    </ScrollView>
   );
 };
 
