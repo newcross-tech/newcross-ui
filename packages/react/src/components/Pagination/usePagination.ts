@@ -1,5 +1,6 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { PaginationButtonType } from './Pagination.types';
+import { useUpstreamState } from '../../hooks/useUpstreamState';
 
 // code used from MUI Pagination
 
@@ -33,7 +34,7 @@ export default function usePagination({
   onChange: handleChange,
   siblingCount = 1,
 }: UsePaginationProps) {
-  const [page, setPageState] = useState<number>(selectedValue);
+  const [page, setPageState] = useUpstreamState<number>(selectedValue);
 
   const handleClick = useCallback(
     (value: number) => {
