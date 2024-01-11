@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.2.2...@newcross-ui/react@2.2.3) (2024-01-11)
+
+
+### Bug Fixes
+
+* **OAE-1590:** pagination - selected value update ([#78](https://bitbucket.org/newcrossdev/newcross-ui/issues/78)) ([7152503](https://bitbucket.org/newcrossdev/newcross-ui/commits/71525032800db7575603d3cee2f77e73e37bc00a))
+
+
+
+
+
 ## [2.2.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.2.1...@newcross-ui/react@2.2.2) (2024-01-04)
 
 **Note:** Version bump only for package @newcross-ui/react
