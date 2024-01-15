@@ -1,10 +1,9 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { native } from '@newcross-ui/design-tokens';
 import { faAlarmClock } from '@fortawesome/pro-regular-svg-icons/faAlarmClock';
 import { faCircleCheck } from '@fortawesome/pro-regular-svg-icons/faCircleCheck';
-import { StyleSheet } from 'react-native';
 import { Typography, TypographyVariant } from '@newcross-ui/react-native';
 
 const { ColorBaseOrange200 } = native.healthforce;
