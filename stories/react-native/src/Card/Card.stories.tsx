@@ -17,6 +17,8 @@ import CardThumbnail from './CardThumbnail';
 import { getParameters } from '../utils';
 import { BadgeBlack, Badge as BadgeSVG } from './svg';
 import { View, Platform } from 'react-native';
+import { ExtraCardContent } from './ExtraCardContent';
+import { SpacingBase16 } from '@newcross-ui/design-tokens/build/js/web/healthforce';
 
 const { SpacingBase24, CardPadding, SpacingBase12 } = native.healthforce;
 
@@ -110,6 +112,18 @@ export const Variants: Story<CardProps> = () => {
           <BadgeBlack />
         </View>
       </Card>
+      <Spacing />
+      <Card
+        hasRightIcon={false}
+        hasRoundedCorners
+        hasBorder
+        fullWidth
+        thumbnailContent={<CardThumbnail shiftCardStatus="night" />}
+        color={CardColors.secondary}
+        extraFooterContent={
+          <ExtraCardContent contentStyles={{ paddingBottom: SpacingBase16 }} />
+        }
+      ></Card>
     </Container>
   );
 };
