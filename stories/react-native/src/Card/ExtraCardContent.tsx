@@ -6,7 +6,6 @@ import { faAlarmClock } from '@fortawesome/pro-regular-svg-icons/faAlarmClock';
 import { faCircleCheck } from '@fortawesome/pro-regular-svg-icons/faCircleCheck';
 import { StyleSheet } from 'react-native';
 import { Typography, TypographyVariant } from '@newcross-ui/react-native';
-import { SpacingBase4 } from '@newcross-ui/design-tokens/build/js/native/healthforce';
 
 const { ColorBaseOrange200 } = native.healthforce;
 const { ColorBaseGreen100 } = native.homeclinic;
