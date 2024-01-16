@@ -27,11 +27,13 @@ const cardStyle = ({
   fullWidth,
   theme,
   hasRightIcon,
+  extraFooterContent,
 }: ThemedCardProps) => {
   const contentBorderRadiusValues = getContentBorderRadiusValues(
     !!thumbnailContent,
     hasRoundedCorners,
-    theme
+    theme,
+    !!extraFooterContent
   );
 
   const colorValues = getColorValues(theme);
@@ -55,7 +57,8 @@ const cardStyle = ({
     thumbnail: {
       overflow: 'hidden',
       borderTopLeftRadius: hasRoundedCorners ? CardBorderRadius : 0,
-      borderBottomLeftRadius: hasRoundedCorners ? CardBorderRadius : 0,
+      borderBottomLeftRadius:
+        hasRoundedCorners && !extraFooterContent ? CardBorderRadius : 0,
     },
     content: {
       flexDirection: 'row',

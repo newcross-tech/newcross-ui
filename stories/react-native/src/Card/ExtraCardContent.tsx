@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Button } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { native } from '@newcross-ui/design-tokens';
 import { faAlarmClock } from '@fortawesome/pro-regular-svg-icons/faAlarmClock';
@@ -8,48 +8,6 @@ import { Typography, TypographyVariant } from '@newcross-ui/react-native';
 
 const { ColorBaseOrange200 } = native.healthforce;
 const { ColorBaseGreen100 } = native.homeclinic;
-export const ExtraCardContent = (props: Record<string, object>) => {
-  const { contentStyles } = props;
-  return (
-    <View
-      style={{ ...styles.shiftInvitationCardContentStyle, ...contentStyles }}
-    >
-      <View style={styles.shiftInvitationsCardContentContainer}>
-        <View style={styles.shiftInvitationAvailabilityAndExpirationContainer}>
-          <View style={styles.shiftInvitationAvailabilityContainer}>
-            <FontAwesomeIcon
-              icon={faCircleCheck}
-              color={'green'}
-              style={styles.shiftInvitationsIconSpacing}
-            />
-            <Typography
-              variant={TypographyVariant.paragraph3}
-              style={{
-                ...styles.shiftInvitationAvailability,
-                color: ColorBaseGreen100,
-              }}
-            >
-              You are available
-            </Typography>
-          </View>
-          <View style={styles.shiftInvitationExpirationContainer}>
-            <FontAwesomeIcon
-              icon={faAlarmClock}
-              color={ColorBaseOrange200}
-              style={styles.shiftInvitationsIconSpacing}
-            />
-            <Typography
-              variant={TypographyVariant.paragraph3}
-              style={styles.shiftInvitationExpiration}
-            >
-              Expires on date
-            </Typography>
-          </View>
-        </View>
-      </View>
-    </View>
-  );
-};
 
 const {
   SpacingBase8,
@@ -114,3 +72,45 @@ const styles = StyleSheet.create({
     margin: 0,
   },
 });
+export const ExtraCardContent = (props: Record<string, object>) => {
+  const { contentStyles } = props;
+  return (
+    <View
+      style={{ ...styles.shiftInvitationCardContentStyle, ...contentStyles }}
+    >
+      <View style={styles.shiftInvitationsCardContentContainer}>
+        <View style={styles.shiftInvitationAvailabilityAndExpirationContainer}>
+          <View style={styles.shiftInvitationAvailabilityContainer}>
+            <FontAwesomeIcon
+              icon={faCircleCheck}
+              color={'green'}
+              style={styles.shiftInvitationsIconSpacing}
+            />
+            <Typography
+              variant={TypographyVariant.paragraph3}
+              style={{
+                ...styles.shiftInvitationAvailability,
+                color: ColorBaseGreen100,
+              }}
+            >
+              You are available
+            </Typography>
+          </View>
+          <View style={styles.shiftInvitationExpirationContainer}>
+            <FontAwesomeIcon
+              icon={faAlarmClock}
+              color={ColorBaseOrange200}
+              style={styles.shiftInvitationsIconSpacing}
+            />
+            <Typography
+              variant={TypographyVariant.paragraph3}
+              style={styles.shiftInvitationExpiration}
+            >
+              Expires on date
+            </Typography>
+          </View>
+        </View>
+      </View>
+    </View>
+  );
+};

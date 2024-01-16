@@ -16,7 +16,7 @@ import CardContent from './CardContent';
 import CardThumbnail from './CardThumbnail';
 import { getParameters } from '../utils';
 import { BadgeBlack, Badge as BadgeSVG } from './svg';
-import { View, Platform } from 'react-native';
+import { View, Platform, ScrollView } from 'react-native';
 import { ExtraCardContent } from './ExtraCardContent';
 import { SpacingBase16 } from '@newcross-ui/design-tokens/build/js/web/healthforce';
 
@@ -32,99 +32,103 @@ export const Variants: Story<CardProps> = () => {
   const isWeb = Platform.OS === 'web';
 
   return (
-    <Container>
-      <Card hasRoundedCorners isPressable={false}>
-        <FontAwesomeIcon icon={faUser} size={SpacingBase24} />
-        <Typography
-          variant={TypographyVariant.heading3}
-          style={{ marginLeft: SpacingBase12, marginRight: SpacingBase12 }}
+    <ScrollView>
+      <Container>
+        <Card hasRoundedCorners isPressable={false}>
+          <FontAwesomeIcon icon={faUser} size={SpacingBase24} />
+          <Typography
+            variant={TypographyVariant.heading3}
+            style={{ marginLeft: SpacingBase12, marginRight: SpacingBase12 }}
+          >
+            My Profile
+          </Typography>
+          <Badge badgeContent={7} />
+        </Card>
+        <Spacing />
+        <Card
+          hasRoundedCorners
+          thumbnailContent={<CardThumbnail shiftCardStatus="day" />}
         >
-          My Profile
-        </Typography>
-        <Badge badgeContent={7} />
-      </Card>
-      <Spacing />
-      <Card
-        hasRoundedCorners
-        thumbnailContent={<CardThumbnail shiftCardStatus="day" />}
-      >
-        <CardContent />
-        <View
-          style={{
-            position: 'absolute',
-            alignSelf: 'flex-start',
-            marginTop: isWeb ? -CardPadding : 0,
-            paddingRight: CardPadding,
-            right: 0,
-          }}
+          <CardContent />
+          <View
+            style={{
+              position: 'absolute',
+              alignSelf: 'flex-start',
+              marginTop: isWeb ? -CardPadding : 0,
+              paddingRight: CardPadding,
+              right: 0,
+            }}
+          >
+            <BadgeBlack />
+          </View>
+        </Card>
+        <Spacing />
+        <Card
+          hasRightIcon
+          hasBorder
+          hasRoundedCorners
+          thumbnailContent={<CardThumbnail shiftCardStatus="sleeper" />}
         >
-          <BadgeBlack />
-        </View>
-      </Card>
-      <Spacing />
-      <Card
-        hasRightIcon
-        hasBorder
-        hasRoundedCorners
-        thumbnailContent={<CardThumbnail shiftCardStatus="sleeper" />}
-      >
-        <CardContent />
-        <View
-          style={{
-            position: 'absolute',
-            alignSelf: 'flex-start',
-            marginTop: isWeb ? -CardPadding : 0,
-            paddingRight: CardPadding,
-            right: 0,
-          }}
+          <CardContent />
+          <View
+            style={{
+              position: 'absolute',
+              alignSelf: 'flex-start',
+              marginTop: isWeb ? -CardPadding : 0,
+              paddingRight: CardPadding,
+              right: 0,
+            }}
+          >
+            <BadgeSVG />
+          </View>
+        </Card>
+        <Spacing />
+        <Card
+          hasRightIcon
+          hasBorder
+          thumbnailContent={<CardThumbnail shiftCardStatus="night" />}
+          rightIconContent={<Badge badgeContent={7} />}
         >
-          <BadgeSVG />
-        </View>
-      </Card>
-      <Spacing />
-      <Card
-        hasRightIcon
-        hasBorder
-        thumbnailContent={<CardThumbnail shiftCardStatus="night" />}
-        rightIconContent={<Badge badgeContent={7} />}
-      >
-        <CardContent />
-      </Card>
-      <Spacing />
-      <Card
-        hasRightIcon
-        hasRoundedCorners
-        hasBorder
-        fullWidth
-        color={CardColors.secondary}
-        thumbnailContent={<CardThumbnail shiftCardStatus="day" />}
-      >
-        <CardContent style={{ flex: 1 }} />
-        <View
-          style={{
-            position: 'absolute',
-            alignSelf: 'flex-start',
-            marginTop: isWeb ? -CardPadding : 0,
-            paddingRight: CardPadding,
-            right: 0,
-          }}
+          <CardContent />
+        </Card>
+        <Spacing />
+
+        <Card
+          hasRightIcon
+          hasRoundedCorners
+          hasBorder
+          fullWidth
+          color={CardColors.secondary}
+          thumbnailContent={<CardThumbnail shiftCardStatus="day" />}
         >
-          <BadgeBlack />
-        </View>
-      </Card>
-      <Spacing />
-      <Card
-        hasRightIcon={false}
-        hasRoundedCorners
-        hasBorder
-        fullWidth
-        thumbnailContent={<CardThumbnail shiftCardStatus="night" />}
-        color={CardColors.secondary}
-        extraFooterContent={
-          <ExtraCardContent contentStyles={{ paddingBottom: SpacingBase16 }} />
-        }
-      ></Card>
-    </Container>
+          <CardContent style={{ flex: 1 }} />
+          <View
+            style={{
+              position: 'absolute',
+              alignSelf: 'flex-start',
+              marginTop: isWeb ? -CardPadding : 0,
+              paddingRight: CardPadding,
+              right: 0,
+            }}
+          >
+            <BadgeBlack />
+          </View>
+        </Card>
+        <Spacing />
+        <Card
+          hasRightIcon={false}
+          hasRoundedCorners
+          hasBorder
+          fullWidth
+          thumbnailContent={<CardThumbnail shiftCardStatus="night" />}
+          color={CardColors.secondary}
+          extraFooterContent={
+            <ExtraCardContent contentStyles={{ paddingBottom: 16 }} />
+          }
+        ></Card>
+        <Spacing />
+      </Container>
+    </ScrollView>
   );
 };
 
