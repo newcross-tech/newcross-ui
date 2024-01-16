@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Button } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { native } from '@newcross-ui/design-tokens';
 import { faAlarmClock } from '@fortawesome/pro-regular-svg-icons/faAlarmClock';
