@@ -11,7 +11,6 @@ import { CardColors } from './Card.types';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronRight } from '@fortawesome/pro-light-svg-icons/faChevronRight';
 import useTheme from '../../hooks/useTheme';
-import { SpacingBase0 } from '@newcross-ui/design-tokens/build/js/web/healthforce';
 
 export type CardProps = {
   /**
@@ -125,9 +124,7 @@ const Card = ({
           <View
             style={[
               styles.thumbnail,
-              extraFooterContent
-                ? { borderBottomLeftRadius: SpacingBase0 }
-                : null,
+              extraFooterContent ? { borderBottomLeftRadius: 0 } : null,
             ]}
             testID={`${testID}-thumbnail`}
           >
@@ -138,9 +135,7 @@ const Card = ({
           style={[
             styles.content,
             contentStyle,
-            extraFooterContent
-              ? { borderBottomRightRadius: SpacingBase0 }
-              : null,
+            extraFooterContent ? { borderBottomRightRadius: 0 } : null,
           ]}
         >
           {children}
