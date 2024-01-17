@@ -73,6 +73,10 @@ export type CardProps = {
    * Whether card is pressable.
    */
   isPressable?: boolean;
+  /**
+   *Extra content on the bottom side of the Card.
+   */
+  extraFooterContent?: ReactNode;
 };
 
 const Card = ({
@@ -89,6 +93,7 @@ const Card = ({
   containerStyle,
   hasShadow = true,
   isPressable = true,
+  extraFooterContent = null,
   ...rest
 }: CardProps) => {
   const theme = useTheme();
@@ -102,37 +107,41 @@ const Card = ({
     fullWidth,
     theme,
     hasRightIcon,
+    extraFooterContent,
   });
 
   return (
-    <Pressable
-      style={({ pressed }) => [
-        styles.container,
-        containerStyle,
-        { opacity: pressed && isPressable ? theme.CardPressedOpacity : 1 },
-      ]}
-      {...rest}
-      testID={`${testID}`}
-    >
-      {thumbnailContent && (
-        <View style={styles.thumbnail} testID={`${testID}-thumbnail`}>
-          {thumbnailContent}
-        </View>
-      )}
-      <View style={[styles.content, contentStyle]}>
-        {children}
-        {hasRightIcon && (
-          <View style={styles.rightIcon} testID={`${testID}-right-icon`}>
-            {rightIconContent ?? (
-              <FontAwesomeIcon
-                icon={faChevronRight}
-                size={theme.SpacingBase24}
-              />
-            )}
+    <View>
+      <Pressable
+        style={({ pressed }) => [
+          styles.container,
+          containerStyle,
+          { opacity: pressed && isPressable ? theme.CardPressedOpacity : 1 },
+        ]}
+        {...rest}
+        testID={`${testID}`}
+      >
+        {thumbnailContent && (
+          <View style={[styles.thumbnail]} testID={`${testID}-thumbnail`}>
+            {thumbnailContent}
           </View>
         )}
-      </View>
-    </Pressable>
+        <View style={[styles.content, contentStyle]}>
+          {children}
+          {hasRightIcon && (
+            <View style={styles.rightIcon} testID={`${testID}-right-icon`}>
+              {rightIconContent ?? (
+                <FontAwesomeIcon
+                  icon={faChevronRight}
+                  size={theme.SpacingBase24}
+                />
+              )}
+            </View>
+          )}
+        </View>
+      </Pressable>
+      {!!extraFooterContent && extraFooterContent}
+    </View>
   );
 };
 

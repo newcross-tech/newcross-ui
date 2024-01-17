@@ -19,12 +19,14 @@ export const getColorValues = (
 export const getContentBorderRadiusValues = (
   hasThumbnailContent: boolean,
   hasRoundedCorners: boolean | undefined,
-  { CardBorderRadius }: ThemeDesignTokens
+  { CardBorderRadius }: ThemeDesignTokens,
+  extraFooterContent?: boolean
 ): ViewStyle => {
   if (hasThumbnailContent) {
     return {
       borderTopRightRadius: hasRoundedCorners ? CardBorderRadius : 0,
-      borderBottomRightRadius: hasRoundedCorners ? CardBorderRadius : 0,
+      borderBottomRightRadius:
+        hasRoundedCorners && !extraFooterContent ? CardBorderRadius : 0,
     };
   }
 

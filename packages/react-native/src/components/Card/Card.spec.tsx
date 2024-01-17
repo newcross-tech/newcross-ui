@@ -105,4 +105,17 @@ describe('Card Component', () => {
     // Assert
     expect(onPress).not.toBeCalled();
   });
+
+  it('renders extra footer content', async () => {
+    // Arrange
+    const props: CardProps = {
+      extraFooterContent: (
+        <Text testID={'extra-card-content'}>extra footer content</Text>
+      ),
+    };
+    //Act
+    const { findByTestId } = render(<Card {...props} />);
+    //Assert
+    expect(await findByTestId('extra-card-content')).toBeTruthy();
+  });
 });
