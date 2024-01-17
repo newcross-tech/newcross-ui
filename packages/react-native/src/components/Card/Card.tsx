@@ -121,23 +121,11 @@ const Card = ({
         testID={`${testID}`}
       >
         {thumbnailContent && (
-          <View
-            style={[
-              styles.thumbnail,
-              extraFooterContent ? { borderBottomLeftRadius: 0 } : null,
-            ]}
-            testID={`${testID}-thumbnail`}
-          >
+          <View style={[styles.thumbnail]} testID={`${testID}-thumbnail`}>
             {thumbnailContent}
           </View>
         )}
-        <View
-          style={[
-            styles.content,
-            contentStyle,
-            extraFooterContent ? { borderBottomRightRadius: 0 } : null,
-          ]}
-        >
+        <View style={[styles.content, contentStyle]}>
           {children}
           {hasRightIcon && (
             <View style={styles.rightIcon} testID={`${testID}-right-icon`}>

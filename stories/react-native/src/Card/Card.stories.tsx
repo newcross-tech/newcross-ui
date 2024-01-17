@@ -121,9 +121,7 @@ export const Variants: Story<CardProps> = () => {
           fullWidth
           thumbnailContent={<CardThumbnail shiftCardStatus="night" />}
           color={CardColors.secondary}
-          extraFooterContent={
-            <ExtraCardContent contentStyles={{ paddingBottom: 16 }} />
-          }
+          extraFooterContent={<ExtraCardContent />}
         ></Card>
         <Spacing />
       </Container>
