@@ -107,6 +107,7 @@ const Card = ({
     fullWidth,
     theme,
     hasRightIcon,
+    extraFooterContent,
   });
 
   return (
