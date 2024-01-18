@@ -56,7 +56,7 @@ export const ExtraCardContent = (props: Record<string, object>) => {
   const { contentStyles } = props;
   return (
     <View
-      onStartShouldSetResponder={(event) => true}
+      onStartShouldSetResponder={() => true}
       onTouchEnd={(e) => {
         e.stopPropagation();
       }}
