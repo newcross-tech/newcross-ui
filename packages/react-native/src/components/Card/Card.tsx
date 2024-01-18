@@ -111,16 +111,16 @@ const Card = ({
   });
 
   return (
-    <View>
-      <Pressable
-        style={({ pressed }) => [
-          styles.container,
-          containerStyle,
-          { opacity: pressed && isPressable ? theme.CardPressedOpacity : 1 },
-        ]}
-        {...rest}
-        testID={`${testID}`}
-      >
+    <Pressable
+      style={({ pressed }) => [
+        styles.container,
+        containerStyle,
+        { opacity: pressed && isPressable ? theme.CardPressedOpacity : 1 },
+      ]}
+      {...rest}
+      testID={`${testID}`}
+    >
+      <View style={styles.mainContentDirection}>
         {thumbnailContent && (
           <View style={[styles.thumbnail]} testID={`${testID}-thumbnail`}>
             {thumbnailContent}
@@ -139,9 +139,20 @@ const Card = ({
             </View>
           )}
         </View>
-      </Pressable>
-      {!!extraFooterContent && extraFooterContent}
-    </View>
+      </View>
+
+      {!!extraFooterContent && (
+        <View
+          onStartShouldSetResponder={() => true}
+          onTouchEnd={(e) => {
+            e.stopPropagation();
+          }}
+          style={styles.footerContent}
+        >
+          {extraFooterContent}
+        </View>
+      )}
+    </Pressable>
   );
 };
 
