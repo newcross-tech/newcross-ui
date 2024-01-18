@@ -49,7 +49,6 @@ const cardStyle = ({
 
   return StyleSheet.create({
     container: {
-      flexDirection: 'row',
       alignSelf: fullWidth ? 'stretch' : 'flex-start',
       borderRadius: hasRoundedCorners ? CardBorderRadius : 0,
       ...shadowValues,
@@ -70,6 +69,9 @@ const cardStyle = ({
       borderColor: colorValues[color as CardColors],
       ...contentBorderRadiusValues,
       backgroundColor: ColorNeutralWhite,
+    },
+    mainContentDirection: {
+      flexDirection: 'row',
     },
     rightIcon: {
       marginLeft: SpacingBase12,

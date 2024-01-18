@@ -56,6 +56,10 @@ export const ExtraCardContent = (props: Record<string, object>) => {
   const { contentStyles } = props;
   return (
     <View
+      onStartShouldSetResponder={(event) => true}
+      onTouchEnd={(e) => {
+        e.stopPropagation();
+      }}
       style={{ ...styles.shiftInvitationCardContentStyle, ...contentStyles }}
     >
       <View style={styles.shiftInvitationsCardContentContainer}>
