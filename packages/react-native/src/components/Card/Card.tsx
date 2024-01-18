@@ -142,7 +142,15 @@ const Card = ({
       </View>
 
       {!!extraFooterContent && (
-        <View style={styles.footerContent}>{extraFooterContent}</View>
+        <View
+          onStartShouldSetResponder={() => true}
+          onTouchEnd={(e) => {
+            e.stopPropagation();
+          }}
+          style={styles.footerContent}
+        >
+          {extraFooterContent}
+        </View>
       )}
     </Pressable>
   );
