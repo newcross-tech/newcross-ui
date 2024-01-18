@@ -3,13 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { native } from '@newcross-ui/design-tokens';
 import { Typography, TypographyVariant } from '@newcross-ui/react-native';
 
-const {
-  SpacingBase8,
-  SpacingBase16,
-  ColorBaseGrey500,
-  ColorBaseWhite100,
-  CardBorderRadius,
-} = native.healthforce;
+const { SpacingBase8, ColorBaseWhite100 } = native.healthforce;
 
 const styles = StyleSheet.create({
   shiftInvitationCardContentStyle: {
