@@ -45,6 +45,7 @@ const cardStyle = ({
     CardBorderRadius,
     ColorNeutralWhite,
     SpacingBase12,
+    ColorBaseGrey500,
   } = theme;
 
   return StyleSheet.create({
@@ -69,6 +70,14 @@ const cardStyle = ({
       borderColor: colorValues[color as CardColors],
       ...contentBorderRadiusValues,
       backgroundColor: ColorNeutralWhite,
+    },
+    footerContent: {
+      padding: CardPadding,
+      backgroundColor: ColorNeutralWhite,
+      borderWidth: 1,
+      borderColor: ColorBaseGrey500,
+      borderBottomLeftRadius: hasRoundedCorners ? CardBorderRadius : 0,
+      borderBottomRightRadius: hasRoundedCorners ? CardBorderRadius : 0,
     },
     mainContentDirection: {
       flexDirection: 'row',

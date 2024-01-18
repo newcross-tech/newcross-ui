@@ -14,20 +14,13 @@ const {
 const styles = StyleSheet.create({
   shiftInvitationCardContentStyle: {
     backgroundColor: ColorBaseWhite100,
-    borderTopWidth: 1,
-    borderColor: ColorBaseGrey500,
     flex: 1,
-    padding: 0,
-    borderBottomLeftRadius: CardBorderRadius,
-    borderBottomRightRadius: CardBorderRadius,
   },
   shiftInvitationsCardContentContainer: {
     flex: 1,
   },
   shiftInvitationAvailabilityAndExpirationContainer: {
     flex: 1,
-    paddingHorizontal: SpacingBase16,
-    paddingVertical: SpacingBase16,
   },
   shiftInvitationAvailabilityContainer: {
     display: 'flex',

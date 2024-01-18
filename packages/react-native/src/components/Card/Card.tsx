@@ -140,7 +140,10 @@ const Card = ({
           )}
         </View>
       </View>
-      {!!extraFooterContent && extraFooterContent}
+
+      {!!extraFooterContent && (
+        <View style={styles.footerContent}>{extraFooterContent}</View>
+      )}
     </Pressable>
   );
 };
