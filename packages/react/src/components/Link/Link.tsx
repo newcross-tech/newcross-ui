@@ -24,10 +24,16 @@ const Link = ({
   rightIcon,
   testID,
   role,
+  onClick,
   ...restProps
 }: LinkProps) => {
   return (
-    <Styled.Link data-testid={testID} role={role} {...restProps}>
+    <Styled.Link
+      data-testid={testID}
+      role={role}
+      onClick={onClick}
+      {...restProps}
+    >
       <Typography variant={variant} {...restProps}>
         {leftIcon && (
           <Styled.Icon
