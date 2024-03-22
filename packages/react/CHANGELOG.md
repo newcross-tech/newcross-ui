@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.5](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.2.4...@newcross-ui/react@2.2.5) (2024-03-22)
+
+
+### Bug Fixes
+
+* **OAE-1492:** fixed focus outline on textinput on safari and firefox ([#83](https://bitbucket.org/newcrossdev/newcross-ui/issues/83)) ([dfd1c1a](https://bitbucket.org/newcrossdev/newcross-ui/commits/dfd1c1acaafb9ce951d6a0b060f344da150fd2c9))
+
+
+
+
+
 ## [2.2.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.2.3...@newcross-ui/react@2.2.4) (2024-03-18)
 
 **Note:** Version bump only for package @newcross-ui/react
