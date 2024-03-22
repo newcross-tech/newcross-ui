@@ -78,6 +78,10 @@ export const Container = styled.div<ExtendedTheme<ContainerProps>>`
           cursor: pointer;
         `}
       }
+
+      &:focus-visible {
+        outline: none;
+      }
     }
   `}
 `;
