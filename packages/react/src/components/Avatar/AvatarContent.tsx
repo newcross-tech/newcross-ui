@@ -12,8 +12,8 @@ const AvatarContent = ({
   name,
   source,
   icon,
-  inactive,
-  size = 32,
+  inactive = false,
+  size = 64,
   testID = '',
 }: AvatarProps) => {
   const abbreviation = name && nameToAbbreviation(name);

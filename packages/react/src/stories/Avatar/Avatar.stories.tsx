@@ -2,7 +2,6 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Avatar, { AvatarProps } from '../../components/Avatar';
 import Badge from '../../components/Badge';
-import Typography from '../../components/Typography';
 import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './AvatarInfo';
@@ -29,83 +28,79 @@ export const Overview = () => {
       dontInfo={DONT}
     >
       <Container>
-        <Avatar />
-        <HorizontalSpacing />
         <Avatar source={person} />
         <HorizontalSpacing />
+        <Avatar />
+        <HorizontalSpacing />
+
         <Avatar name="John Doe" />
       </Container>
     </InfoTemplate>
   );
 };
+const variantProps: Array<AvatarProps> = [
+  { source: person },
+  {},
+  { name: 'John Doe' },
+];
 
-export const VariantWithImage = () => {
+const VariantsComponent = (props: AvatarProps) => {
   return (
-    <Container flexDirection="column">
-      <StoryTitle.Regular>Active Variant</StoryTitle.Regular>
-      <Avatar source={person} />
+    <>
       <BottomSpacing />
-      <StoryTitle.Regular>Inactive Variant</StoryTitle.Regular>
-      <Avatar inactive source={person} />
-    </Container>
-  );
-};
-
-export const VariantWithText = () => {
-  return (
-    <Container flexDirection="column">
-      <StoryTitle.Regular>Active Variant</StoryTitle.Regular>
-
-      <Avatar name="John Doe" />
-      <BottomSpacing />
-      <StoryTitle.Regular>Inactive Variant</StoryTitle.Regular>
-
-      <Avatar inactive name="John Doe" />
-    </Container>
-  );
-};
-export const VariantWithBadge = () => {
-  return (
-    <Container flexDirection="column">
-      <StoryTitle.Regular>Variant with Badge</StoryTitle.Regular>
-
-      <Container flexDirection="row">
+      <Container>
+        {variantProps.map((variant) => (
+          <>
+            <Avatar {...props} {...variant} />
+            <HorizontalSpacing />
+          </>
+        ))}
         <Badge size="medium" position="topRight">
-          <Avatar size={64} />
+          <Avatar {...props} />
         </Badge>
+        <HorizontalSpacing />
       </Container>
+      <BottomSpacing />
+    </>
+  );
+};
+
+export const Variants = () => {
+  return (
+    <Container flexDirection="column">
+      <StoryTitle.Regular>Default</StoryTitle.Regular>
+      <VariantsComponent clickable />
+      <BottomSpacing />
+
+      <StoryTitle.Regular>Selected</StoryTitle.Regular>
+      <VariantsComponent selected clickable />
+      <BottomSpacing />
+
+      <StoryTitle.Regular>Disabled with Hover</StoryTitle.Regular>
+      <VariantsComponent inactive allowHoverOnDisabled clickable />
+      <BottomSpacing />
+
+      <StoryTitle.Regular>Disabled without Hover</StoryTitle.Regular>
+      <VariantsComponent inactive />
+      <BottomSpacing />
     </Container>
   );
 };
 
-export const VariantWithIcon = () => {
+export const Sizes = () => {
   return (
     <Container flexDirection="column">
-      <StoryTitle.Regular>Active Variant</StoryTitle.Regular>
-      <Avatar />
+      <StoryTitle.Regular>Small (40px)</StoryTitle.Regular>
+      <VariantsComponent size={40} />
       <BottomSpacing />
-      <StoryTitle.Regular>Inactive Variant</StoryTitle.Regular>
-      <Avatar inactive />
-      <BottomSpacing /> <BottomSpacing />
-      <StoryTitle.Regular>Size Variants</StoryTitle.Regular>
-      <Container flexDirection="row">
-        <Container flexDirection="column">
-          <Typography variant={'paragraph2'}>48px</Typography>
-          <Avatar size={48} />
-        </Container>
-        <HorizontalSpacing />
 
-        <Container flexDirection="column">
-          <Typography variant={'paragraph2'}>64px</Typography>
-          <Avatar />
-        </Container>
-        <HorizontalSpacing />
+      <StoryTitle.Regular>Medium (60px)</StoryTitle.Regular>
+      <VariantsComponent size={60} />
+      <BottomSpacing />
 
-        <Container flexDirection="column">
-          <Typography variant={'paragraph2'}>144px</Typography>
-          <Avatar size={144} />
-        </Container>
-      </Container>
+      <StoryTitle.Regular>Large (80px)</StoryTitle.Regular>
+      <VariantsComponent size={80} />
+      <BottomSpacing />
     </Container>
   );
 };
