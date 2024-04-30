@@ -21,14 +21,26 @@ const getIconSize = (theme: ThemeDesignTokens, size: number) => {
   `;
 };
 
-const getContainerSize = (theme: ThemeDesignTokens, size: number, divider: number) => {
+const getBorderColor = (selected?: boolean, inactive?: boolean) => {
+  if (inactive) {
+    return 'Disabled';
+  }
+  if (selected) {
+    return 'Selected';
+  }
+  return 'Default';
+};
+
+const getContainerSize = (theme: ThemeDesignTokens, size: number, divider: number, adjstment?: string) => {
   const minSize = getPxFromRem(theme.SpacingBase32);
   const maxSize = getPxFromRem(theme.SpacingBase4) * 75;
   const safeSize = size > minSize ? Math.min(size, maxSize) : minSize;
 
   const spacing = safeSize / divider / 16;
 
-  const computedSpacing = `calc(${spacing}rem - ${theme.AvatarActiveEllipseLargeBorderWidth} * 2)`;
+  const computedSpacing = `calc(${spacing}rem - ${theme.AvatarActiveEllipseLargeBorderWidth} * 2 ${
+    adjstment ? `+ ${adjstment}` : ''
+  })`;
 
   return css`
     width: ${computedSpacing};
@@ -50,11 +62,31 @@ export const AvatarContainer = styled.div<AvatarContainerType>`
   justify-content: center;
   flex-shrink: 0;
 
-  ${({ theme, inactive, size }: ExtendedTheme<AvatarContainerType>) => css`
-    border: ${theme.AvatarActiveEllipseLargeBorderWidth} solid
-      ${inactive ? theme.AvatarInactiveBackgroundColor : theme.AvatarActiveEllipseBorderColor};
-    border-radius: ${theme.AvatarBorderRadius};
-    ${getContainerSize(theme, size, 1)}
+  ${({ theme, selected, inactive, clickable, allowHoverOnDisabled, size }: ExtendedTheme<AvatarContainerType>) => css`
+    position: relative;
+
+    ::before {
+      display: block;
+      position: absolute;
+      content: '';
+      z-index: -1;
+      border-radius: ${theme.AvatarBorderRadius};
+      transition: 0.3s;
+      ${getContainerSize(theme, size, 1, `${theme.SpacingBase4}/2`)}
+      border: ${theme.AvatarActiveEllipseLargeBorderWidth} solid ${theme[
+        `Avatar${getBorderColor(selected, inactive)}BorderColor`
+      ]};
+    }
+
+    ${clickable &&
+    (!inactive || allowHoverOnDisabled) &&
+    css`
+      :hover::before {
+        background-color: rgb(40 233 198 / 10%);
+        border-color: ${theme[`AvatarSelectedBorderColor`]};
+        ${getContainerSize(theme, size, 1, theme.SpacingBase8)}
+      }
+    `}
 
     > ${InnerContainer} {
       display: flex;
@@ -72,9 +104,11 @@ export const AvatarImage = styled.img<InactiveType>`
   height: 100%;
   width: 100%;
   object-fit: cover;
-  ${({ theme, inactive }: ExtendedTheme<InactiveType>) => css`
-    opacity: ${inactive && theme.AvatarInnerEllipseOpacity};
-  `}
+  ${({ inactive }: ExtendedTheme<InactiveType>) =>
+    inactive &&
+    css`
+      filter: grayscale(1);
+    `}
 `;
 
 export const Icon = styled.div<InactiveType>`
@@ -85,7 +119,6 @@ export const Icon = styled.div<InactiveType>`
 
 export const Text = styled(Typography)<InactiveType>`
   ${({ theme, inactive }: ExtendedTheme<InactiveType>) => css`
-    opacity: ${inactive && theme.AvatarInnerEllipseOpacity};
     color: ${inactive ? theme.AvatarInactiveColor : theme.AvatarInnerEllipseColor};
   `};
 `;

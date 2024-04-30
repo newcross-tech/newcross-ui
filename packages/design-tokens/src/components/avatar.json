@@ -3,6 +3,24 @@
     "border-radius": {
       "value": "{border.base.radius.rounded.value}"
     },
+    "background-color": {
+      "value": "{color.base.grey.500.value}"
+    },
+    "default": {
+      "border-color": {
+        "value": "{color.base.white.100.value}"
+      }
+    },
+    "selected": {
+      "border-color": {
+        "value": "{brand.color.secondary.100.value}"
+      }
+    },
+    "disabled": {
+      "border-color": {
+        "value": "{color.base.grey.200.value}"
+      }
+    },
     "inactive-background-color": {
       "value": "{color.neutral.grey.200.value}"
     },

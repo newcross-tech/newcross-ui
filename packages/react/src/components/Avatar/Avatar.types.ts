@@ -4,11 +4,13 @@ import { AvatarProps } from './Avatar';
 export type StyledFontType = FontAwesomeIconProps & {
   $size: number;
 };
+
 export type InactiveType = Pick<AvatarProps, 'inactive'>;
 
-export type AvatarContainerType = InactiveType & {
-  size: number;
-};
+export type AvatarContainerType = InactiveType &
+  Pick<AvatarProps, 'selected'> &
+  Pick<AvatarProps, 'clickable'> &
+  Pick<AvatarProps, 'allowHoverOnDisabled'> & { size: number };
 
 type Enumerate<
   N extends number,
