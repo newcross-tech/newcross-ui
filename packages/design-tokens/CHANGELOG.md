@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.43.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.42.2...@newcross-ui/design-tokens@1.43.0) (2024-04-30)
+
+
+### Features
+
+* **CAPP-574:** implement new web avatar design ([#84](https://bitbucket.org/newcrossdev/newcross-ui/issues/84)) ([8de75b3](https://bitbucket.org/newcrossdev/newcross-ui/commits/8de75b3ee20afcf3a9a4db2e7e51676d87506d3b))
+
+
+
+
+
 ## [1.42.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.42.1...@newcross-ui/design-tokens@1.42.2) (2024-01-04)
 
 **Note:** Version bump only for package @newcross-ui/design-tokens
