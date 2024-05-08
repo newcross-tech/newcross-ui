@@ -69,7 +69,6 @@ export const AvatarContainer = styled.div<AvatarContainerType>`
       display: block;
       position: absolute;
       content: '';
-      z-index: -1;
       border-radius: ${theme.AvatarBorderRadius};
       transition: 0.3s;
       ${getContainerSize(theme, size, 1, `${theme.SpacingBase4}/2`)}
