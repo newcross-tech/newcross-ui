@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.3.0...@newcross-ui/react@2.3.1) (2024-05-08)
+
+
+### Bug Fixes
+
+* **CAPP-1040:** remove z-index from Avatar border ([#85](https://bitbucket.org/newcrossdev/newcross-ui/issues/85)) ([6b4ec76](https://bitbucket.org/newcrossdev/newcross-ui/commits/6b4ec7650dd72d32fa188ee3ea18311ef5a6d32c))
+
+
+
+
+
 # [2.3.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.2.5...@newcross-ui/react@2.3.0) (2024-04-30)
 
 
