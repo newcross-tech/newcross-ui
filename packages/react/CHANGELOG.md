@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.3.1...@newcross-ui/react@2.4.0) (2024-05-09)
+
+
+### Features
+
+* **OAE-1777:** add subtitle and label variant property to select and textinput components ([#86](https://bitbucket.org/newcrossdev/newcross-ui/issues/86)) ([381e6dd](https://bitbucket.org/newcrossdev/newcross-ui/commits/381e6dd132f10f936b366c297a8e034260869e1f))
+
+
+
+
+
 ## [2.3.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.3.0...@newcross-ui/react@2.3.1) (2024-05-08)
 
 
