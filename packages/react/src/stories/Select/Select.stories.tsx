@@ -35,6 +35,12 @@ export const Overview = () => {
           label="Multi Select"
           placeholder="Select multiple 'labels'"
         />
+        <Select
+          options={options}
+          label="Label Variant - Paragraph 1"
+          placeholder="Select a 'label'"
+          labelVariant="paragraph1"
+        />
       </Container>
     </InfoTemplate>
   );

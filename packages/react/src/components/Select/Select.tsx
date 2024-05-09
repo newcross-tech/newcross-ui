@@ -15,6 +15,7 @@ import {
 import useTheme from '../../hooks/useTheme';
 import * as Styled from './Select.style';
 import { SelectContext, useSelectContext } from './SelectContext';
+import { TypographyVariant } from '../Typography';
 
 const MultiValueRemove = <
   Option,
@@ -128,6 +129,10 @@ export type SelectProps<
    * Show disabled state
    */
   disabled?: boolean;
+  /**
+   * Applies the theme typography styles to the label
+   */
+  labelVariant?: TypographyVariant;
 };
 
 const Select = <
@@ -143,6 +148,7 @@ const Select = <
   helperText,
   hasError,
   isMulti,
+  labelVariant = 'subtitle1',
   ...rest
 }: SelectProps<Option, IsMulti, Group>) => {
   const theme = useTheme();
@@ -150,7 +156,7 @@ const Select = <
   return (
     <div data-testid="select-component">
       {label && (
-        <Styled.Label variant="subtitle1" testID={`${baseTestId}-label`}>
+        <Styled.Label variant={labelVariant} testID={`${baseTestId}-label`}>
           {label}
         </Styled.Label>
       )}
