@@ -133,6 +133,14 @@ export type SelectProps<
    * Applies the theme typography styles to the label
    */
   labelVariant?: TypographyVariant;
+  /**
+   * Adds subtitle text
+   */
+  subtitle?: string;
+  /**
+   * Applies the theme typography styles to the subtitle
+   */
+  subtitleVariant?: TypographyVariant;
 };
 
 const Select = <
@@ -149,6 +157,8 @@ const Select = <
   hasError,
   isMulti,
   labelVariant = 'subtitle1',
+  subtitle,
+  subtitleVariant = 'subtitle2',
   ...rest
 }: SelectProps<Option, IsMulti, Group>) => {
   const theme = useTheme();
@@ -158,6 +168,11 @@ const Select = <
       {label && (
         <Styled.Label variant={labelVariant} testID={`${baseTestId}-label`}>
           {label}
+        </Styled.Label>
+      )}
+      {subtitle && (
+        <Styled.Label variant={subtitleVariant} color="secondary">
+          {subtitle}
         </Styled.Label>
       )}
       <SelectContext.Provider value={{ id: rest?.id }}>

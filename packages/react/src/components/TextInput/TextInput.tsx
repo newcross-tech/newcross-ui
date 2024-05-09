@@ -60,6 +60,14 @@ export type TextInputProps = Omit<
    * Applies the theme typography styles to the label
    */
   labelVariant?: TypographyVariant;
+  /**
+   * Adds subtitle text
+   */
+  subtitle?: string;
+  /**
+   * Applies the theme typography styles to the subtitle
+   */
+  subtitleVariant?: TypographyVariant;
 } & TestProp;
 
 const baseTestId = 'text-input';
@@ -81,6 +89,8 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
     fullWidth,
     testID,
     labelVariant = 'subtitle1',
+    subtitle,
+    subtitleVariant = 'subtitle2',
     ...otherProps
   },
   ref
@@ -134,6 +144,11 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
           testID={`${inputId}-label`}
         >
           {label}
+        </Label>
+      )}
+      {subtitle && (
+        <Label variant={subtitleVariant} color="secondary">
+          {subtitle}
         </Label>
       )}
 
