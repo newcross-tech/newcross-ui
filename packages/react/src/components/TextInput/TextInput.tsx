@@ -15,6 +15,7 @@ import { TextArea } from './TextArea';
 import * as Styled from './TextInput.style';
 import { SearchIcon } from './TextInput.style';
 import Container from '../Container';
+import { TypographyVariant } from '../Typography';
 
 export type TextInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
@@ -55,6 +56,18 @@ export type TextInputProps = Omit<
    * triggers the on press of the close icon
    */
   onClose?: VoidFunction;
+  /**
+   * Applies the theme typography styles to the label
+   */
+  labelVariant?: TypographyVariant;
+  /**
+   * Adds subtitle text
+   */
+  subtitle?: string;
+  /**
+   * Applies the theme typography styles to the subtitle
+   */
+  subtitleVariant?: TypographyVariant;
 } & TestProp;
 
 const baseTestId = 'text-input';
@@ -75,6 +88,9 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
     onClose,
     fullWidth,
     testID,
+    labelVariant = 'subtitle1',
+    subtitle,
+    subtitleVariant = 'subtitle2',
     ...otherProps
   },
   ref
@@ -124,10 +140,15 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
       {label && (
         <Label
           htmlFor={inputId}
-          variant={'subtitle1'}
+          variant={labelVariant}
           testID={`${inputId}-label`}
         >
           {label}
+        </Label>
+      )}
+      {subtitle && (
+        <Label variant={subtitleVariant} color="secondary">
+          {subtitle}
         </Label>
       )}
 

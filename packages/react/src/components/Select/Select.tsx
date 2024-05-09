@@ -15,6 +15,8 @@ import {
 import useTheme from '../../hooks/useTheme';
 import * as Styled from './Select.style';
 import { SelectContext, useSelectContext } from './SelectContext';
+import { TypographyVariant } from '../Typography';
+import { TestProp } from '../../types';
 
 const MultiValueRemove = <
   Option,
@@ -128,7 +130,19 @@ export type SelectProps<
    * Show disabled state
    */
   disabled?: boolean;
-};
+  /**
+   * Applies the theme typography styles to the label
+   */
+  labelVariant?: TypographyVariant;
+  /**
+   * Adds subtitle text
+   */
+  subtitle?: string;
+  /**
+   * Applies the theme typography styles to the subtitle
+   */
+  subtitleVariant?: TypographyVariant;
+} & TestProp;
 
 const Select = <
   Option,
@@ -143,15 +157,28 @@ const Select = <
   helperText,
   hasError,
   isMulti,
+  labelVariant = 'subtitle1',
+  subtitle,
+  subtitleVariant = 'subtitle2',
+  testID,
   ...rest
 }: SelectProps<Option, IsMulti, Group>) => {
   const theme = useTheme();
 
   return (
-    <div data-testid="select-component">
+    <div
+      data-testid={
+        testID ? `${baseTestId}-component-${testID}` : `${baseTestId}-component`
+      }
+    >
       {label && (
-        <Styled.Label variant="subtitle1" testID={`${baseTestId}-label`}>
+        <Styled.Label variant={labelVariant} testID={`${baseTestId}-label`}>
           {label}
+        </Styled.Label>
+      )}
+      {subtitle && (
+        <Styled.Label variant={subtitleVariant} color="secondary">
+          {subtitle}
         </Styled.Label>
       )}
       <SelectContext.Provider value={{ id: rest?.id }}>

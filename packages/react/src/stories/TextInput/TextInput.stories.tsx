@@ -43,6 +43,8 @@ export const Variants = () => {
   const [text5, onChangeText5] = useState('text5');
   const [text6, onChangeText6] = useState('text6');
   const [text7, onChangeText7] = useState('text7');
+  const [text8, onChangeText8] = useState('text8');
+  const [text9, onChangeText9] = useState('text9');
 
   return (
     <Container flexDirection="column">
@@ -108,6 +110,26 @@ export const Variants = () => {
         onChange={onChangeText7}
         label="Label"
         errorText="This is an error message"
+      />
+      <Container m="SpacingBase4" />
+
+      <StoryTitle.Regular>With label variant - paragraph1</StoryTitle.Regular>
+      <TextInput
+        value={text8}
+        type="text"
+        onChange={onChangeText8}
+        label="Label"
+        labelVariant="paragraph1"
+      />
+      <Container m="SpacingBase4" />
+
+      <StoryTitle.Regular>With subtitle</StoryTitle.Regular>
+      <TextInput
+        value={text9}
+        type="text"
+        onChange={onChangeText9}
+        label="Label"
+        subtitle="This is a subtitle"
       />
       <Container m="SpacingBase4" />
     </Container>
