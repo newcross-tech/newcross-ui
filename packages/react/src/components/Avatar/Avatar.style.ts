@@ -34,7 +34,7 @@ const getBorderColor = (selected?: boolean, inactive?: boolean) => {
 const getContainerSize = (theme: ThemeDesignTokens, size: number, divider: number, adjstment?: string) => {
   const minSize = getPxFromRem(theme.SpacingBase32);
   const maxSize = getPxFromRem(theme.SpacingBase4) * 75;
-  const safeSize = size > minSize ? Math.min(size, maxSize) : minSize;
+  const safeSize = size > minSize ? Math.min(size - 4, maxSize) : minSize;
 
   const spacing = safeSize / divider / 16;
 
@@ -83,7 +83,7 @@ export const AvatarContainer = styled.div<AvatarContainerType>`
       :hover::before {
         background-color: rgb(40 233 198 / 10%);
         border-color: ${theme[`AvatarSelectedBorderColor`]};
-        ${getContainerSize(theme, size, 1, theme.SpacingBase8)}
+        transform: scale(1.04);
       }
     `}
 

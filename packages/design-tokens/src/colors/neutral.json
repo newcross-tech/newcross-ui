@@ -25,6 +25,10 @@
         "400": {
           "value": "{color.base.grey.400.value}",
           "type": "neutral"
+        },
+        "500": {
+          "value": "{color.base.grey.500.value}",
+          "type": "neutral"
         }
       }
     }
