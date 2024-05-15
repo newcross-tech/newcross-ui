@@ -70,7 +70,7 @@
         "value": "{brand.color.primary.value}"
       },
       "background-color": {
-        "value": "{color.neutral.grey.400.value}"
+        "value": "{color.neutral.grey.500.value}"
       },
       "opacity": {
         "value": "{opacity.base.md.value}"
