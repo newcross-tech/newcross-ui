@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.43.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.43.0...@newcross-ui/design-tokens@1.43.1) (2024-05-15)
+
+
+### Bug Fixes
+
+* **CAPP-1040:** fix default background color and size of hover state ([#87](https://bitbucket.org/newcrossdev/newcross-ui/issues/87)) ([fce9e69](https://bitbucket.org/newcrossdev/newcross-ui/commits/fce9e69ea4006b7419cd43e7026d1e02d8604f58))
+
+
+
+
+
 # [1.43.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.42.2...@newcross-ui/design-tokens@1.43.0) (2024-04-30)
 
 
