@@ -244,7 +244,7 @@ const TextInput = ({
             testID="text-input-message-size"
             style={styles.count}
           >
-            {`${textSize}/400`}
+            {`${textSize}/${maxLength}`}
           </Typography>
         )}
       </View>
