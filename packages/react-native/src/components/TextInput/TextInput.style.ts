@@ -158,6 +158,7 @@ const textInputStyle = (
       ...(helperText && helperMessageStyles(theme).message),
     },
     count: {
+      marginLeft: 'auto',
       paddingHorizontal: theme.TextInputHelperTextPaddingHorizontal,
       marginTop: theme.TextInputMarginTop,
       color: theme.TextInputHelperTextColor,

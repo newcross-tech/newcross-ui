@@ -74,6 +74,11 @@ export type TextInputProps = {
    */
   style?: ViewStyle | TextStyle;
   /**
+   * Overwrites or extends the styles applied to the native component.
+   **/
+  nativeInputStyle?: TextStyle;
+  /**
+   *
    * Includes a dropdown component
    */
   includeDropdown?: ReactNode;
@@ -109,12 +114,13 @@ const TextInput = ({
   includeDropdown,
   onClosePress,
   style,
+  nativeInputStyle,
   mode = Mode.light,
   onBlur,
   onFocus,
   hasError,
   multiline = false,
-  numberOfLines = 4,
+  numberOfLines,
   maxLength = 400,
   ...rest
 }: TextInputProps) => {
@@ -167,7 +173,7 @@ const TextInput = ({
         )}
         {!!includeDropdown && includeDropdown}
         <NativeTextInput
-          style={styles.nativeInput}
+          style={[styles.nativeInput, nativeInputStyle]}
           value={value}
           placeholder={placeholder}
           placeholderTextColor={theme.TextInputPlaceholderColor}
