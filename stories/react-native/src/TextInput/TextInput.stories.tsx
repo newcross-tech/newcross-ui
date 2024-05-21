@@ -1,6 +1,6 @@
 import { TextInput, TextInputProps, Mode } from '@newcross-ui/react-native';
 import { Meta, Story } from '@storybook/react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView } from 'react-native';
 import useState from 'storybook-addon-state';
 import { native } from '@newcross-ui/design-tokens';
 import Container from '../Container';
@@ -51,6 +51,7 @@ export const Variants = () => {
   const [text6, onChangeText6] = useState('text6', '');
   const [text7, onChangeText7] = useState('text7', '');
   const [text8, onChangeText8] = useState('text8', '');
+  const [text9, onChangeText9] = useState('text9', '1234');
 
   return (
     <ScrollView>
@@ -107,7 +108,7 @@ export const Variants = () => {
           hasError
         />
         <TextInput
-          value={text6}
+          value={text7}
           textContentType="name"
           onChangeText={onChangeText7}
           label="With error text"
@@ -119,12 +120,21 @@ export const Variants = () => {
             padding: SpacingBase8,
             backgroundColor: ColorPrimaryGravitas,
           }}
-          value={text7}
+          value={text8}
           textContentType="name"
           onChangeText={onChangeText8}
           label="With dark mode"
           errorText="This is an error message"
           mode={Mode.dark}
+        />
+        <Spacing />
+        <TextInput
+          value={text9}
+          textContentType="name"
+          onChangeText={onChangeText9}
+          label="With multine"
+          errorText="This is an error message"
+          multiline={true}
         />
       </Container>
     </ScrollView>

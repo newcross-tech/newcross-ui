@@ -12,6 +12,8 @@ import {
   TextStyle,
   View,
   ViewStyle,
+  NativeSyntheticEvent,
+  TextInputChangeEventData,
 } from 'react-native';
 import useTheme from '../../hooks/useTheme';
 import { Mode } from '../../types';
@@ -79,6 +81,18 @@ export type TextInputProps = {
    * Used to set dark or light mode
    */
   mode?: Mode;
+  /**
+   * Multiline text input
+   */
+  multiline?: boolean;
+  /**
+   * Number of lines
+   */
+  numberOfLines?: number;
+  /**
+   * Maximum length of text input
+   */
+  maxLength?: number;
 } & NativeTextInputProps;
 
 const TextInput = ({
@@ -99,11 +113,14 @@ const TextInput = ({
   onBlur,
   onFocus,
   hasError,
+  multiline = false,
+  numberOfLines = 4,
+  maxLength = 400,
   ...rest
 }: TextInputProps) => {
   const [passwordVisibility, setPasswordVisibility] = useState(true);
   const [selected, setSelected] = useState(false);
-
+  const [textSize, setTextSize] = useState(value?.length || 0);
   const theme = useTheme();
   const styles = textInputStyle(
     {
@@ -119,6 +136,10 @@ const TextInput = ({
 
   const handleSelected = () => {
     setSelected(!selected);
+  };
+
+  const onChange = (event: NativeSyntheticEvent<TextInputChangeEventData>) => {
+    setTextSize(event?.nativeEvent?.text?.length);
   };
 
   const isNewPasswordType = textContentType === 'newPassword';
@@ -154,6 +175,7 @@ const TextInput = ({
           secureTextEntry={
             passwordVisibility && (isNewPasswordType || isPasswordType)
           }
+          onChange={onChange}
           onChangeText={onChangeText}
           onFocus={(event) => {
             if (onFocus) {
@@ -165,8 +187,12 @@ const TextInput = ({
             if (onBlur) {
               onBlur(event);
             }
+
             handleSelected();
           }}
+          multiline={multiline}
+          numberOfLines={numberOfLines}
+          maxLength={maxLength}
           {...rest}
         />
         {(isPasswordType || isNewPasswordType) && (
@@ -201,15 +227,27 @@ const TextInput = ({
           </Pressable>
         )}
       </View>
-      {(errorText || helperText) && (
-        <Typography
-          variant={TypographyVariant.paragraph3}
-          testID="text-input-message-text"
-          style={styles.message}
-        >
-          {errorText || helperText}
-        </Typography>
-      )}
+      <View style={styles.extrasContainer}>
+        {(errorText || helperText) && (
+          <Typography
+            variant={TypographyVariant.paragraph3}
+            testID="text-input-message-text"
+            style={styles.message}
+            numberOfLines={2}
+          >
+            {errorText || helperText}
+          </Typography>
+        )}
+        {multiline && (
+          <Typography
+            variant={TypographyVariant.paragraph3}
+            testID="text-input-message-size"
+            style={styles.count}
+          >
+            {`${textSize}/400`}
+          </Typography>
+        )}
+      </View>
     </View>
   );
 };

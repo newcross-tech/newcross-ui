@@ -145,13 +145,22 @@ const textInputStyle = (
 
       ...(mode === Mode.dark && { color: theme.TextInputModeDarkLabelColor }),
     },
+    extrasContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
     message: {
+      wordWrap: 'break-word',
       paddingHorizontal: theme.TextInputHelperTextPaddingHorizontal,
       marginTop: theme.TextInputMarginTop,
       color: theme.TextInputHelperTextColor,
-
       ...((hasError || errorText) && errorMessageStyles(theme, mode).message),
       ...(helperText && helperMessageStyles(theme).message),
+    },
+    count: {
+      paddingHorizontal: theme.TextInputHelperTextPaddingHorizontal,
+      marginTop: theme.TextInputMarginTop,
+      color: theme.TextInputHelperTextColor,
     },
   });
 };
