@@ -132,7 +132,7 @@ export const Variants = () => {
           value={text9}
           textContentType="name"
           onChangeText={onChangeText9}
-          label="With multine"
+          label="With multiline"
           errorText="This is an error message"
           multiline={true}
         />
