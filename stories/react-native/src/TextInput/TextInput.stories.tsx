@@ -135,6 +135,7 @@ export const Variants = () => {
           label="With multiline"
           errorText="This is an error message"
           multiline={true}
+          characterCountLabel=" characters"
         />
       </Container>
     </ScrollView>
