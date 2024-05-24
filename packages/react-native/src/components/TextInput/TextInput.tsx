@@ -98,6 +98,10 @@ export type TextInputProps = {
    * Maximum length of text input
    */
   maxLength?: number;
+  /**
+   * Character count label
+   */
+  characterCountLabel?: string;
 } & NativeTextInputProps;
 
 const TextInput = ({
@@ -122,6 +126,7 @@ const TextInput = ({
   multiline = false,
   numberOfLines,
   maxLength = 400,
+  characterCountLabel,
   ...rest
 }: TextInputProps) => {
   const [passwordVisibility, setPasswordVisibility] = useState(true);
@@ -250,7 +255,7 @@ const TextInput = ({
             testID="text-input-message-size"
             style={styles.count}
           >
-            {`${textSize}/${maxLength}`}
+            {`${textSize}/${maxLength} ${characterCountLabel}`}
           </Typography>
         )}
       </View>
