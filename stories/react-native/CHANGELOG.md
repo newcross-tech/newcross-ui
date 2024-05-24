@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.44.8](https://github.com/newcross-tech/newcross-ui/compare/@newcross-stories/react-native@1.44.7...@newcross-stories/react-native@1.44.8) (2024-05-24)
+
+
+### Bug Fixes
+
+* **HFGO-2582:** multiline text input ([e02ff64](https://github.com/newcross-tech/newcross-ui/commit/e02ff64aef0dba92778b3a5469447955d318474d))
+
+
+
+
+
 ## [1.44.7](https://github.com/newcross-tech/newcross-ui/compare/@newcross-stories/react-native@1.44.6...@newcross-stories/react-native@1.44.7) (2024-05-15)
 
 **Note:** Version bump only for package @newcross-stories/react-native

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.48.8](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.48.7...@newcross-ui/react-native@1.48.8) (2024-05-24)
+
+
+### Bug Fixes
+
+* **HFGO-2582:** multiline text input ([e02ff64](https://bitbucket.org/newcrossdev/newcross-ui/commits/e02ff64aef0dba92778b3a5469447955d318474d))
+
+
+
+
+
 ## [1.48.7](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.48.6...@newcross-ui/react-native@1.48.7) (2024-05-15)
 
 **Note:** Version bump only for package @newcross-ui/react-native
