@@ -126,7 +126,7 @@ const TextInput = ({
   multiline = false,
   numberOfLines,
   maxLength = 400,
-  characterCountLabel,
+  characterCountLabel = '',
   ...rest
 }: TextInputProps) => {
   const [passwordVisibility, setPasswordVisibility] = useState(true);
@@ -255,7 +255,7 @@ const TextInput = ({
             testID="text-input-message-size"
             style={styles.count}
           >
-            {`${textSize}/${maxLength} ${characterCountLabel}`}
+            {`${textSize}/${maxLength}${characterCountLabel}`}
           </Typography>
         )}
       </View>
