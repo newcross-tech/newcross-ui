@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.48.9](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.48.8...@newcross-ui/react-native@1.48.9) (2024-05-27)
+
+
+### Bug Fixes
+
+* **HFGO-2344:** quick bottomsheet fix ([f09c694](https://bitbucket.org/newcrossdev/newcross-ui/commits/f09c69413630ce20f52584a9898f3cb1fc73fde2))
+
+
+
+
+
 ## [1.48.8](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.48.7...@newcross-ui/react-native@1.48.8) (2024-05-24)
 
 
