@@ -123,7 +123,7 @@ const BottomSheet = forwardRef<BottomSheetRefProps, BottomSheetProps>(
     useEffect(() => {
       if (isOpen && contentHeight) {
         expand();
-      } else if (!isOpen && !contentHeight) {
+      } else if (!isOpen) {
         collapse();
       }
     }, [isOpen, contentHeight]);
