@@ -66,8 +66,10 @@ describe('Calendar Component', () => {
 
     // Assert
     await waitFor(() => {
-      expect(getByTestId('HEADER_MONTH_NAME')).toBeTruthy;
-      expect(getByTestId('HEADER_MONTH_NAME').props.children).toBe('Jun 2022');
+      expect(getByTestId('calendar.header')).toBeTruthy;
+      expect(getByTestId('calendar.header.title').props.children).toBe(
+        'Jun 2022'
+      );
     });
   });
 
@@ -83,8 +85,10 @@ describe('Calendar Component', () => {
 
     // Assert
     await waitFor(() => {
-      expect(getByTestId('HEADER_MONTH_NAME')).toBeTruthy;
-      expect(getByTestId('HEADER_MONTH_NAME').props.children).toBe('Apr 2022');
+      expect(getByTestId('calendar.header')).toBeTruthy;
+      expect(getByTestId('calendar.header.title').props.children).toBe(
+        'Apr 2022'
+      );
     });
   });
 
@@ -178,10 +182,7 @@ describe('Calendar Component', () => {
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-01')
-      );
-
+      fireEvent.press(getByTestId('calendar.day_2022-05-01'));
       // Assert
       await waitFor(() => {
         expect(onDateSelection).toHaveBeenLastCalledWith(['2022-05-01']);
@@ -200,9 +201,7 @@ describe('Calendar Component', () => {
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-01')
-      );
+      fireEvent.press(getByTestId('calendar.day_2022-05-01'));
 
       // Assert
       await waitFor(() => {
@@ -225,9 +224,7 @@ describe('Calendar Component', () => {
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-02')
-      );
+      fireEvent.press(getByTestId('calendar.day_2022-05-02'));
 
       // Assert
       await waitFor(() => {
@@ -252,12 +249,8 @@ describe('Calendar Component', () => {
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-01')
-      );
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-04')
-      );
+      fireEvent.press(getByTestId('calendar.day_2022-05-01'));
+      fireEvent.press(getByTestId('calendar.day_2022-05-04'));
 
       // Assert
       await waitFor(() => {
@@ -280,12 +273,8 @@ describe('Calendar Component', () => {
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-08')
-      );
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-07')
-      );
+      fireEvent.press(getByTestId('calendar.day_2022-05-08'));
+      fireEvent.press(getByTestId('calendar.day_2022-05-07'));
 
       // Assert
       await waitFor(() => {
@@ -305,12 +294,8 @@ describe('Calendar Component', () => {
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-08')
-      );
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-08')
-      );
+      fireEvent.press(getByTestId('calendar.day_2022-05-08'));
+      fireEvent.press(getByTestId('calendar.day_2022-05-08'));
 
       // Assert
       await waitFor(() => {
@@ -330,15 +315,9 @@ describe('Calendar Component', () => {
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-06')
-      );
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-09')
-      );
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-10')
-      );
+      fireEvent.press(getByTestId('calendar.day_2022-05-06'));
+      fireEvent.press(getByTestId('calendar.day_2022-05-09'));
+      fireEvent.press(getByTestId('calendar.day_2022-05-10'));
 
       // Assert
       await waitFor(() => {
@@ -360,19 +339,11 @@ describe('Calendar Component', () => {
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-06')
-      );
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-09')
-      );
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-10')
-      );
+      fireEvent.press(getByTestId('calendar.day_2022-05-06'));
+      fireEvent.press(getByTestId('calendar.day_2022-05-09'));
+      fireEvent.press(getByTestId('calendar.day_2022-05-10'));
 
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-12')
-      );
+      fireEvent.press(getByTestId('calendar.day_2022-05-12'));
 
       // Assert
       await waitFor(() => {
@@ -395,23 +366,13 @@ describe('Calendar Component', () => {
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-06')
-      );
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-09')
-      );
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-10')
-      );
+      fireEvent.press(getByTestId('calendar.day_2022-05-06'));
+      fireEvent.press(getByTestId('calendar.day_2022-05-09'));
+      fireEvent.press(getByTestId('calendar.day_2022-05-10'));
 
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-12')
-      );
+      fireEvent.press(getByTestId('calendar.day_2022-05-12'));
 
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-07')
-      );
+      fireEvent.press(getByTestId('calendar.day_2022-05-07'));
 
       // Assert
       await waitFor(() => {
@@ -434,12 +395,8 @@ describe('Calendar Component', () => {
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-08')
-      );
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-06')
-      );
+      fireEvent.press(getByTestId('calendar.day_2022-05-08'));
+      fireEvent.press(getByTestId('calendar.day_2022-05-06'));
 
       // Assert
       await waitFor(() => {
@@ -459,24 +416,14 @@ describe('Calendar Component', () => {
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-08')
-      );
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-10')
-      );
+      fireEvent.press(getByTestId('calendar.day_2022-05-08'));
+      fireEvent.press(getByTestId('calendar.day_2022-05-10'));
 
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-07')
-      );
+      fireEvent.press(getByTestId('calendar.day_2022-05-07'));
 
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-12')
-      );
+      fireEvent.press(getByTestId('calendar.day_2022-05-12'));
 
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-07')
-      );
+      fireEvent.press(getByTestId('calendar.day_2022-05-07'));
 
       // Assert
       await waitFor(() => {

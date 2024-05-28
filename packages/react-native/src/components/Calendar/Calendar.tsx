@@ -353,6 +353,7 @@ const Calendar = ({
     <View>
       <NativeCalendar
         firstDay={firstDay}
+        testID={'calendar'}
         current={formattedDate}
         markingType={'period'}
         disableArrowLeft={true}
