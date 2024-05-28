@@ -7,6 +7,18 @@ import {
 } from '@testing-library/react-native';
 import Calendar, { CalendarProps } from './Calendar';
 
+const dateString01_05 = '2022-05-01';
+const dateString05_05 = '2022-05-05';
+const dateString07_05 = '2022-05-07';
+const calendarHeader = 'calendar.header';
+const calendarHeaderTitle = 'calendar.header.title';
+const calendarDay01_05 = 'calendar.day_2022-05-01';
+const calendarDay06_05 = 'calendar.day_2022-05-06';
+const calendarDay07_05 = 'calendar.day_2022-05-07';
+const calendarDay08_05 = 'calendar.day_2022-05-08';
+const calendarDay09_05 = 'calendar.day_2022-05-09';
+const calendarDay10_05 = 'calendar.day_2022-05-10';
+const calendarDay12_05 = 'calendar.day_2022-05-12';
 describe('Calendar Component', () => {
   it('renders successfully', () => {
     // Arrange
@@ -57,7 +69,7 @@ describe('Calendar Component', () => {
   it('gets correct month on press of right arrow', async () => {
     // Arrange
     const { getByTestId } = render(
-      <Calendar startDate={new Date('2022-05-01')} />
+      <Calendar startDate={new Date(dateString01_05)} />
     );
 
     // Act
@@ -66,17 +78,15 @@ describe('Calendar Component', () => {
 
     // Assert
     await waitFor(() => {
-      expect(getByTestId('calendar.header')).toBeTruthy;
-      expect(getByTestId('calendar.header.title').props.children).toBe(
-        'Jun 2022'
-      );
+      expect(getByTestId(calendarHeader)).toBeTruthy;
+      expect(getByTestId(calendarHeaderTitle).props.children).toBe('Jun 2022');
     });
   });
 
   it('gets correct month on press of left arrow', async () => {
     // Arrange
     const { getByTestId } = render(
-      <Calendar startDate={new Date('2022-05-01')} />
+      <Calendar startDate={new Date(dateString01_05)} />
     );
 
     // Act
@@ -85,10 +95,8 @@ describe('Calendar Component', () => {
 
     // Assert
     await waitFor(() => {
-      expect(getByTestId('calendar.header')).toBeTruthy;
-      expect(getByTestId('calendar.header.title').props.children).toBe(
-        'Apr 2022'
-      );
+      expect(getByTestId(calendarHeader)).toBeTruthy;
+      expect(getByTestId(calendarHeaderTitle).props.children).toBe('Apr 2022');
     });
   });
 
@@ -97,7 +105,7 @@ describe('Calendar Component', () => {
     const onMonthChange = jest.fn();
     const { getByTestId } = render(
       <Calendar
-        startDate={new Date('2022-05-01')}
+        startDate={new Date(dateString01_05)}
         onMonthChange={onMonthChange}
       />
     );
@@ -117,7 +125,7 @@ describe('Calendar Component', () => {
     const onMonthChange = jest.fn();
     const { getByTestId } = render(
       <Calendar
-        startDate={new Date('2022-05-01')}
+        startDate={new Date(dateString01_05)}
         onMonthChange={onMonthChange}
       />
     );
@@ -137,7 +145,7 @@ describe('Calendar Component', () => {
     const onMonthChange = jest.fn();
     render(
       <Calendar
-        startDate={new Date('2022-05-01')}
+        startDate={new Date(dateString01_05)}
         onMonthChange={onMonthChange}
         disablePreviousMonth={true}
       />
@@ -156,7 +164,7 @@ describe('Calendar Component', () => {
     const onMonthChange = jest.fn();
     render(
       <Calendar
-        startDate={new Date('2022-05-01')}
+        startDate={new Date(dateString01_05)}
         onMonthChange={onMonthChange}
         disableNextMonth={true}
       />
@@ -177,15 +185,15 @@ describe('Calendar Component', () => {
       const { getByTestId } = render(
         <Calendar
           onDateSelection={onDateSelection}
-          startDate={new Date('2022-05-01')}
+          startDate={new Date(dateString01_05)}
         />
       );
 
       // Act
-      fireEvent.press(getByTestId('calendar.day_2022-05-01'));
+      fireEvent.press(getByTestId(calendarDay01_05));
       // Assert
       await waitFor(() => {
-        expect(onDateSelection).toHaveBeenLastCalledWith(['2022-05-01']);
+        expect(onDateSelection).toHaveBeenLastCalledWith([dateString01_05]);
       });
     });
 
@@ -195,13 +203,13 @@ describe('Calendar Component', () => {
       const { getByTestId } = render(
         <Calendar
           onDateSelection={onDateSelection}
-          startDate={new Date('2022-05-01')}
-          selectedDates={['2022-05-01']}
+          startDate={new Date(dateString01_05)}
+          selectedDates={[dateString01_05]}
         />
       );
 
       // Act
-      fireEvent.press(getByTestId('calendar.day_2022-05-01'));
+      fireEvent.press(getByTestId(calendarDay01_05));
 
       // Assert
       await waitFor(() => {
@@ -218,8 +226,8 @@ describe('Calendar Component', () => {
         <Calendar
           hasMultipleDateSelection
           onDateSelection={onDateSelection}
-          startDate={new Date('2022-05-01')}
-          selectedDates={['2022-05-01']}
+          startDate={new Date(dateString01_05)}
+          selectedDates={[dateString01_05]}
         />
       );
 
@@ -229,7 +237,7 @@ describe('Calendar Component', () => {
       // Assert
       await waitFor(() => {
         expect(onDateSelection).toHaveBeenLastCalledWith([
-          '2022-05-01',
+          dateString01_05,
           '2022-05-02',
         ]);
       });
@@ -244,18 +252,18 @@ describe('Calendar Component', () => {
         <Calendar
           hasSingleDateRange
           onSingleDateRange={onSingleDateRange}
-          startDate={new Date('2022-05-01')}
+          startDate={new Date(dateString01_05)}
         />
       );
 
       // Act
-      fireEvent.press(getByTestId('calendar.day_2022-05-01'));
+      fireEvent.press(getByTestId(calendarDay01_05));
       fireEvent.press(getByTestId('calendar.day_2022-05-04'));
 
       // Assert
       await waitFor(() => {
         expect(onSingleDateRange).toHaveBeenLastCalledWith([
-          '2022-05-01',
+          dateString01_05,
           '2022-05-04',
         ]);
       });
@@ -268,17 +276,17 @@ describe('Calendar Component', () => {
         <Calendar
           hasSingleDateRange
           onSingleDateRange={onSingleDateRange}
-          startDate={new Date('2022-05-05')}
+          startDate={new Date(dateString05_05)}
         />
       );
 
       // Act
-      fireEvent.press(getByTestId('calendar.day_2022-05-08'));
-      fireEvent.press(getByTestId('calendar.day_2022-05-07'));
+      fireEvent.press(getByTestId(calendarDay08_05));
+      fireEvent.press(getByTestId(calendarDay07_05));
 
       // Assert
       await waitFor(() => {
-        expect(onSingleDateRange).toHaveBeenLastCalledWith(['2022-05-07']);
+        expect(onSingleDateRange).toHaveBeenLastCalledWith([dateString07_05]);
       });
     });
 
@@ -289,13 +297,13 @@ describe('Calendar Component', () => {
         <Calendar
           hasSingleDateRange
           onSingleDateRange={onSingleDateRange}
-          startDate={new Date('2022-05-05')}
+          startDate={new Date(dateString05_05)}
         />
       );
 
       // Act
-      fireEvent.press(getByTestId('calendar.day_2022-05-08'));
-      fireEvent.press(getByTestId('calendar.day_2022-05-08'));
+      fireEvent.press(getByTestId(calendarDay08_05));
+      fireEvent.press(getByTestId(calendarDay08_05));
 
       // Assert
       await waitFor(() => {
@@ -310,14 +318,14 @@ describe('Calendar Component', () => {
         <Calendar
           hasSingleDateRange
           onSingleDateRange={onSingleDateRange}
-          startDate={new Date('2022-05-05')}
+          startDate={new Date(dateString05_05)}
         />
       );
 
       // Act
-      fireEvent.press(getByTestId('calendar.day_2022-05-06'));
-      fireEvent.press(getByTestId('calendar.day_2022-05-09'));
-      fireEvent.press(getByTestId('calendar.day_2022-05-10'));
+      fireEvent.press(getByTestId(calendarDay06_05));
+      fireEvent.press(getByTestId(calendarDay09_05));
+      fireEvent.press(getByTestId(calendarDay10_05));
 
       // Assert
       await waitFor(() => {
@@ -334,16 +342,16 @@ describe('Calendar Component', () => {
         <Calendar
           hasMultipleDateRange
           onMultipleDateRange={onMultipleDateRange}
-          startDate={new Date('2022-05-05')}
+          startDate={new Date(dateString05_05)}
         />
       );
 
       // Act
-      fireEvent.press(getByTestId('calendar.day_2022-05-06'));
-      fireEvent.press(getByTestId('calendar.day_2022-05-09'));
-      fireEvent.press(getByTestId('calendar.day_2022-05-10'));
+      fireEvent.press(getByTestId(calendarDay06_05));
+      fireEvent.press(getByTestId(calendarDay09_05));
+      fireEvent.press(getByTestId(calendarDay10_05));
 
-      fireEvent.press(getByTestId('calendar.day_2022-05-12'));
+      fireEvent.press(getByTestId(calendarDay12_05));
 
       // Assert
       await waitFor(() => {
@@ -361,24 +369,24 @@ describe('Calendar Component', () => {
         <Calendar
           hasMultipleDateRange
           onMultipleDateRange={onMultipleDateRange}
-          startDate={new Date('2022-05-05')}
+          startDate={new Date(dateString05_05)}
         />
       );
 
       // Act
-      fireEvent.press(getByTestId('calendar.day_2022-05-06'));
-      fireEvent.press(getByTestId('calendar.day_2022-05-09'));
-      fireEvent.press(getByTestId('calendar.day_2022-05-10'));
+      fireEvent.press(getByTestId(calendarDay06_05));
+      fireEvent.press(getByTestId(calendarDay09_05));
+      fireEvent.press(getByTestId(calendarDay10_05));
 
-      fireEvent.press(getByTestId('calendar.day_2022-05-12'));
+      fireEvent.press(getByTestId(calendarDay12_05));
 
-      fireEvent.press(getByTestId('calendar.day_2022-05-07'));
+      fireEvent.press(getByTestId(calendarDay07_05));
 
       // Assert
       await waitFor(() => {
         expect(onMultipleDateRange).toHaveBeenLastCalledWith([
           ['2022-05-10', '2022-05-12'],
-          ['2022-05-07'],
+          [dateString07_05],
         ]);
       });
     });
@@ -390,13 +398,13 @@ describe('Calendar Component', () => {
         <Calendar
           hasMultipleDateRange
           onMultipleDateRange={onMultipleDateRange}
-          startDate={new Date('2022-05-05')}
+          startDate={new Date(dateString05_05)}
         />
       );
 
       // Act
-      fireEvent.press(getByTestId('calendar.day_2022-05-08'));
-      fireEvent.press(getByTestId('calendar.day_2022-05-06'));
+      fireEvent.press(getByTestId(calendarDay08_05));
+      fireEvent.press(getByTestId(calendarDay06_05));
 
       // Assert
       await waitFor(() => {
@@ -411,23 +419,25 @@ describe('Calendar Component', () => {
         <Calendar
           hasMultipleDateRange
           onMultipleDateRange={onMultipleDateRange}
-          startDate={new Date('2022-05-05')}
+          startDate={new Date(dateString05_05)}
         />
       );
 
       // Act
-      fireEvent.press(getByTestId('calendar.day_2022-05-08'));
-      fireEvent.press(getByTestId('calendar.day_2022-05-10'));
+      fireEvent.press(getByTestId(calendarDay08_05));
+      fireEvent.press(getByTestId(calendarDay10_05));
 
-      fireEvent.press(getByTestId('calendar.day_2022-05-07'));
+      fireEvent.press(getByTestId(calendarDay07_05));
 
-      fireEvent.press(getByTestId('calendar.day_2022-05-12'));
+      fireEvent.press(getByTestId(calendarDay12_05));
 
-      fireEvent.press(getByTestId('calendar.day_2022-05-07'));
+      fireEvent.press(getByTestId(calendarDay07_05));
 
       // Assert
       await waitFor(() => {
-        expect(onMultipleDateRange).toHaveBeenLastCalledWith([['2022-05-07']]);
+        expect(onMultipleDateRange).toHaveBeenLastCalledWith([
+          [dateString07_05],
+        ]);
       });
     });
   });
