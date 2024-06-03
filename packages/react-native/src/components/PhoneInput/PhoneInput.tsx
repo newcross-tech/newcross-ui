@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { TextStyle, View } from 'react-native';
 import Dropdown from '../Dropdown';
 import TextInput from '../TextInput';
 import Typography, { TypographyVariant } from '../Typography';
@@ -48,6 +48,14 @@ export type PhoneInputProps = {
   /**
    * TODO: Allow user to set default country awaiting bottomSheet hooks
    */
+  /**
+   * Label for the input
+   */
+  label?: string;
+  /**
+   * Style for the input
+   */
+  style?: TextStyle;
 };
 
 const PhoneInput = ({
@@ -59,6 +67,8 @@ const PhoneInput = ({
   handleDropDownSelect,
   phoneInputSelected,
   testID = 'phone-input',
+  label,
+  style,
 }: PhoneInputProps) => {
   const [errorText, setErrorText] = useState<string>('');
 
@@ -93,7 +103,7 @@ const PhoneInput = ({
       isValid={isPhoneNumberValid}
       value={phoneNumber}
       textContentType="telephoneNumber"
-      label="Enter phone number"
+      label={label}
       onChangeText={(phoneInput) => setPhoneNumber(phoneInput)}
       maxLength={phoneInputSelected.format.maxLength}
       keyboardType="phone-pad"
@@ -132,6 +142,7 @@ const PhoneInput = ({
           </View>
         </>
       }
+      style={style}
     />
   );
 };
