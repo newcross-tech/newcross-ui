@@ -20,6 +20,7 @@ describe('Phone Input Component', () => {
       handleDropDownSelect: jest.fn(),
       setIsPhoneNumberValid: jest.fn(),
       isPhoneNumberValid: false,
+      label: 'Enter phone number',
     };
 
     // Act

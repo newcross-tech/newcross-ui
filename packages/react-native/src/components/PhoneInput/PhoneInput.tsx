@@ -48,6 +48,10 @@ export type PhoneInputProps = {
   /**
    * TODO: Allow user to set default country awaiting bottomSheet hooks
    */
+  /**
+   * Label for the input
+   */
+  label?: string;
 };
 
 const PhoneInput = ({
@@ -59,6 +63,7 @@ const PhoneInput = ({
   handleDropDownSelect,
   phoneInputSelected,
   testID = 'phone-input',
+  label,
 }: PhoneInputProps) => {
   const [errorText, setErrorText] = useState<string>('');
 
@@ -93,7 +98,7 @@ const PhoneInput = ({
       isValid={isPhoneNumberValid}
       value={phoneNumber}
       textContentType="telephoneNumber"
-      label="Enter phone number"
+      label={label}
       onChangeText={(phoneInput) => setPhoneNumber(phoneInput)}
       maxLength={phoneInputSelected.format.maxLength}
       keyboardType="phone-pad"
