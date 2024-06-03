@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.48.10](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.48.9...@newcross-ui/react-native@1.48.10) (2024-06-03)
+
+
+### Bug Fixes
+
+* **HFGO-2723:** fix label ([abe10db](https://bitbucket.org/newcrossdev/newcross-ui/commits/abe10db33a02e536b998484c95586c2aa56c98c5))
+
+
+
+
+
 ## [1.48.9](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.48.8...@newcross-ui/react-native@1.48.9) (2024-05-27)
 
 
