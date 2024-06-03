@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { TextStyle, View } from 'react-native';
 import Dropdown from '../Dropdown';
 import TextInput from '../TextInput';
 import Typography, { TypographyVariant } from '../Typography';
@@ -52,6 +52,10 @@ export type PhoneInputProps = {
    * Label for the input
    */
   label?: string;
+  /**
+   * Style for the input
+   */
+  style?: TextStyle;
 };
 
 const PhoneInput = ({
@@ -64,6 +68,7 @@ const PhoneInput = ({
   phoneInputSelected,
   testID = 'phone-input',
   label,
+  style,
 }: PhoneInputProps) => {
   const [errorText, setErrorText] = useState<string>('');
 
@@ -137,6 +142,7 @@ const PhoneInput = ({
           </View>
         </>
       }
+      style={style}
     />
   );
 };
