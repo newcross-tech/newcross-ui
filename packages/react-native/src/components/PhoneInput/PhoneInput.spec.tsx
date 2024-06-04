@@ -76,6 +76,7 @@ describe('Phone Input Component', () => {
       handleDropDownSelect: jest.fn(),
       setIsPhoneNumberValid: jest.fn(),
       isPhoneNumberValid: false,
+      phoneMinLength: 10,
     };
 
     // Act
