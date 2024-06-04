@@ -56,6 +56,10 @@ export type PhoneInputProps = {
    * Style for the input
    */
   style?: TextStyle;
+  /**
+   * Minimum length of the phone number
+   */
+  phoneMinLength?: number;
 };
 
 const PhoneInput = ({
@@ -69,23 +73,22 @@ const PhoneInput = ({
   testID = 'phone-input',
   label,
   style,
+  phoneMinLength,
 }: PhoneInputProps) => {
   const [errorText, setErrorText] = useState<string>('');
 
   const validateInput = (numberToValidate: string) => {
-    if (!numberToValidate) {
-      setErrorText('');
-    } else if (isNotNumber(numberToValidate)) {
-      setErrorText('Only numbers are valid');
-    } else if (
-      isMinLengthValid(numberToValidate, phoneInputSelected.format.minLength)
-    ) {
-      setErrorText(
-        `Phone number needs a minimum length of ${phoneInputSelected.format.minLength} `
+    if (!numberToValidate) return setErrorText('');
+
+    if (isNotNumber(numberToValidate))
+      return setErrorText('Only numbers are valid');
+
+    if (phoneMinLength && isMinLengthValid(numberToValidate, phoneMinLength))
+      return setErrorText(
+        `Phone number needs a minimum length of ${phoneMinLength} `
       );
-    } else {
-      setErrorText('');
-    }
+
+    return setErrorText('');
   };
 
   useEffect(() => {
