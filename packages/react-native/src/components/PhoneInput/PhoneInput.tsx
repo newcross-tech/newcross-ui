@@ -60,6 +60,10 @@ export type PhoneInputProps = {
    * Minimum length of the phone number
    */
   phoneMinLength?: number;
+  /**
+   * Maximum length of the phone number
+   */
+  phoneMaxLength?: number;
 };
 
 const PhoneInput = ({
@@ -74,6 +78,7 @@ const PhoneInput = ({
   label,
   style,
   phoneMinLength,
+  phoneMaxLength,
 }: PhoneInputProps) => {
   const [errorText, setErrorText] = useState<string>('');
 
@@ -108,7 +113,7 @@ const PhoneInput = ({
       textContentType="telephoneNumber"
       label={label}
       onChangeText={(phoneInput) => setPhoneNumber(phoneInput)}
-      maxLength={phoneInputSelected.format.maxLength}
+      maxLength={phoneMaxLength}
       keyboardType="phone-pad"
       errorText={errorText}
       testID={`${testID}-${phoneNumber}`}
