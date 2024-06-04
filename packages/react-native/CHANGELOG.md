@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.48.12](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.48.11...@newcross-ui/react-native@1.48.12) (2024-06-04)
+
+
+### Bug Fixes
+
+* **HFGO-2723:** add max length to phone ([6af775f](https://bitbucket.org/newcrossdev/newcross-ui/commits/6af775f4991229ee16b9e6b115ee6dad16c7ea86))
+
+
+
+
+
 ## [1.48.11](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.48.10...@newcross-ui/react-native@1.48.11) (2024-06-04)
 
 
