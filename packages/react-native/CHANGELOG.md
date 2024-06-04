@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.48.11](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.48.10...@newcross-ui/react-native@1.48.11) (2024-06-04)
+
+
+### Bug Fixes
+
+* **HFGO-2723:** add min length prop ([3eb31a2](https://bitbucket.org/newcrossdev/newcross-ui/commits/3eb31a235e01ea4eed4e5d73c9bfa3a026e4e39d))
+* **HFGO-2723:** fix test ([66449a0](https://bitbucket.org/newcrossdev/newcross-ui/commits/66449a0ccd2e30dabfee58a1ea8d1f4059172a86))
+
+
+
+
+
 ## [1.48.10](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.48.9...@newcross-ui/react-native@1.48.10) (2024-06-03)
 
 
