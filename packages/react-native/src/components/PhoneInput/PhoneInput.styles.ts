@@ -21,7 +21,6 @@ const phoneInputStyle = () => {
     },
     dialcode: {
       paddingLeft: theme.PhoneInputDialcodePaddingHorizontal,
-      color: theme.ColorPrimaryWarmth,
     },
     divider: {
       backgroundColor: theme.PhoneInputDividerBackgroundColor,
