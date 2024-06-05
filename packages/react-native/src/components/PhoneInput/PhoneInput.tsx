@@ -24,15 +24,15 @@ export type PhoneInputProps = {
   /**
    * Selected country data
    */
-  phoneInputSelected: phoneInputSelectedType;
+  phoneInputSelected?: phoneInputSelectedType;
   /**
    * Phone number input
    */
-  phoneNumber: string;
+  phoneNumber?: string;
   /**
    * Phone number input
    */
-  setPhoneNumber: (newState: string) => void;
+  setPhoneNumber?: (newState: string) => void;
   /**
    * Used to locate this view in end-to-end tests.
    */
@@ -40,11 +40,11 @@ export type PhoneInputProps = {
   /**
    * To set if phone number is valid or not
    */
-  setIsPhoneNumberValid: (newState: boolean) => void;
+  setIsPhoneNumberValid?: (newState: boolean) => void;
   /**
    * is Phone number valid
    */
-  isPhoneNumberValid: boolean;
+  isPhoneNumberValid?: boolean;
   /**
    * TODO: Allow user to set default country awaiting bottomSheet hooks
    */
@@ -97,11 +97,11 @@ const PhoneInput = ({
   };
 
   useEffect(() => {
-    validateInput(phoneNumber);
+    phoneNumber && validateInput(phoneNumber);
   }, [phoneNumber]);
 
   useEffect(() => {
-    phoneNumber && setIsPhoneNumberValid(!errorText);
+    setIsPhoneNumberValid && phoneNumber && setIsPhoneNumberValid(!errorText);
   }, [errorText]);
 
   const styles = phoneInputStyle();
@@ -112,7 +112,9 @@ const PhoneInput = ({
       value={phoneNumber}
       textContentType="telephoneNumber"
       label={label}
-      onChangeText={(phoneInput) => setPhoneNumber(phoneInput)}
+      onChangeText={(phoneInput) =>
+        setPhoneNumber && setPhoneNumber(phoneInput)
+      }
       maxLength={phoneMaxLength}
       keyboardType="phone-pad"
       errorText={errorText}
@@ -122,12 +124,12 @@ const PhoneInput = ({
           <Dropdown
             placeholder={
               <Typography variant={TypographyVariant.heading2}>
-                {phoneInputSelected.flag}
+                {phoneInputSelected?.flag}
               </Typography>
             }
             selectedValue={
               <Typography variant={TypographyVariant.heading2}>
-                {phoneInputSelected.flag}
+                {phoneInputSelected?.flag}
               </Typography>
             }
             testID={`country-code-dropdown-${testID}`}
@@ -145,7 +147,7 @@ const PhoneInput = ({
               variant={TypographyVariant.paragraph2}
               style={styles.dialcode}
             >
-              {phoneInputSelected.dial_code}
+              {phoneInputSelected?.dial_code}
             </Typography>
           </View>
         </>
