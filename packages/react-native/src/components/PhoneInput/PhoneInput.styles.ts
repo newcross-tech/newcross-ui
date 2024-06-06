@@ -15,6 +15,10 @@ const phoneInputStyle = () => {
       maxWidth: 75,
       paddingHorizontal: theme.PhoneInputContainerPaddingHorizontal,
     },
+    flag: {
+      paddingHorizontal: theme.PhoneInputContainerPaddingHorizontal,
+    },
+
     phoneNumberContainer: {
       justifyContent: 'space-between',
       flexDirection: 'row',

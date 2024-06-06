@@ -64,6 +64,10 @@ export type PhoneInputProps = {
    * Maximum length of the phone number
    */
   phoneMaxLength?: number;
+  /**
+   * Allow user to edit country code
+   */
+  isCountryCodeEditable?: boolean;
 };
 
 const PhoneInput = ({
@@ -79,6 +83,7 @@ const PhoneInput = ({
   style,
   phoneMinLength,
   phoneMaxLength,
+  isCountryCodeEditable = true,
 }: PhoneInputProps) => {
   const [errorText, setErrorText] = useState<string>('');
 
@@ -121,23 +126,32 @@ const PhoneInput = ({
       testID={`${testID}-${phoneNumber}`}
       includeDropdown={
         <>
-          <Dropdown
-            placeholder={
-              <Typography variant={TypographyVariant.heading2}>
-                {phoneInputSelected?.flag}
-              </Typography>
-            }
-            selectedValue={
-              <Typography variant={TypographyVariant.heading2}>
-                {phoneInputSelected?.flag}
-              </Typography>
-            }
-            testID={`country-code-dropdown-${testID}`}
-            style={styles.dropdownContainer}
-            contentStyle={styles.dropdownContent}
-            onPress={handleDropDownSelect}
-            iconStyle={styles.iconStyle}
-          />
+          {isCountryCodeEditable ? (
+            <Dropdown
+              placeholder={
+                <Typography variant={TypographyVariant.heading2}>
+                  {phoneInputSelected?.flag}
+                </Typography>
+              }
+              selectedValue={
+                <Typography variant={TypographyVariant.heading2}>
+                  {phoneInputSelected?.flag}
+                </Typography>
+              }
+              testID={`country-code-dropdown-${testID}`}
+              style={styles.dropdownContainer}
+              contentStyle={styles.dropdownContent}
+              onPress={handleDropDownSelect}
+              iconStyle={styles.iconStyle}
+            />
+          ) : (
+            <Typography
+              style={styles.flag}
+              variant={TypographyVariant.heading2}
+            >
+              {phoneInputSelected?.flag}
+            </Typography>
+          )}
           <View
             style={styles.phoneNumberContainer}
             testID={`phone-number-container-${testID}`}
