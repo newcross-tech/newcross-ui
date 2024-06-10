@@ -62,11 +62,6 @@ export const Variant = () => {
     defualtValues.phoneInput
   );
   const [phoneNumber, setPhoneNumber] = useState('phoneNumber', '');
-  const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(
-    'phoneNumberValid',
-    defualtValues.phoneNumberValid
-  );
-
   const handleSelection = (countryData: PhoneInputTypes) => {
     setPhoneInputSelected(countryData);
     ref.current?.collapse();
@@ -82,12 +77,10 @@ export const Variant = () => {
         </Typography>
         <PhoneInput
           // TODO: On refactor include defaultCountry="HK"
-          setPhoneNumber={(phoneInput) => setPhoneNumber(phoneInput)}
+          onChangePhoneNumber={(phoneInput) => setPhoneNumber(phoneInput)}
           phoneInputSelected={phoneInputSelected}
           phoneNumber={phoneNumber}
           handleDropDownSelect={() => ref.current?.expand()}
-          setIsPhoneNumberValid={setIsPhoneNumberValid}
-          isPhoneNumberValid={isPhoneNumberValid}
         />
         <Spacing />
       </Container>
@@ -136,11 +129,6 @@ const Template: Story<PhoneInputProps> = () => {
   );
   const [phoneNumber2, setPhoneNumber2] = useState('phoneNumber2', '');
 
-  const [isPhoneNumberValid2, setIsPhoneNumberValid2] = useState(
-    'phoneNumberValid2',
-    false
-  );
-
   const handleSelection = (countryData: PhoneInputTypes) => {
     setPhoneInputSelected2(countryData);
     ref.current?.collapse();
@@ -155,13 +143,10 @@ const Template: Story<PhoneInputProps> = () => {
           Phone Number
         </Typography>
         <PhoneInput
-          // TODO: On refactor include defaultCountry="HK"
-          setPhoneNumber={(phoneInput) => setPhoneNumber2(phoneInput)}
+          onChangePhoneNumber={(phoneInput) => setPhoneNumber2(phoneInput)}
           phoneInputSelected={phoneInputSelected2}
           phoneNumber={phoneNumber2}
           handleDropDownSelect={() => ref.current?.expand()}
-          setIsPhoneNumberValid={setIsPhoneNumberValid2}
-          isPhoneNumberValid={isPhoneNumberValid2}
         />
         <Spacing />
       </Container>
