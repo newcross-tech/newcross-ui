@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.44.16](https://github.com/newcross-tech/newcross-ui/compare/@newcross-stories/react-native@1.44.15...@newcross-stories/react-native@1.44.16) (2024-06-10)
+
+
+### Bug Fixes
+
+* **HFGO-2723:** update phone input ([#91](https://github.com/newcross-tech/newcross-ui/issues/91)) ([3c1bb3f](https://github.com/newcross-tech/newcross-ui/commit/3c1bb3f13d893e9c6965e41eaae528f7964c37bf))
+
+
+
+
+
 ## [1.44.15](https://github.com/newcross-tech/newcross-ui/compare/@newcross-stories/react-native@1.44.14...@newcross-stories/react-native@1.44.15) (2024-06-06)
 
 **Note:** Version bump only for package @newcross-stories/react-native

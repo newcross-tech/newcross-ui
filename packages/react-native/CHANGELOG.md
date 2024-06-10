@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.48.16](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.48.15...@newcross-ui/react-native@1.48.16) (2024-06-10)
+
+
+### Bug Fixes
+
+* **HFGO-2723:** update phone input ([#91](https://bitbucket.org/newcrossdev/newcross-ui/issues/91)) ([3c1bb3f](https://bitbucket.org/newcrossdev/newcross-ui/commits/3c1bb3f13d893e9c6965e41eaae528f7964c37bf))
+
+
+
+
+
 ## [1.48.15](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.48.14...@newcross-ui/react-native@1.48.15) (2024-06-06)
 
 
