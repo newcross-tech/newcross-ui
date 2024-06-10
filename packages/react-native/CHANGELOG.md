@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.48.17](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.48.16...@newcross-ui/react-native@1.48.17) (2024-06-10)
+
+
+### Bug Fixes
+
+* **HFGO-2723:** remove bad style prop ([7b4b322](https://bitbucket.org/newcrossdev/newcross-ui/commits/7b4b3223b29a1b921d4138f2d446488868f5e198))
+
+
+
+
+
 ## [1.48.16](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.48.15...@newcross-ui/react-native@1.48.16) (2024-06-10)
 
 
