@@ -150,7 +150,6 @@ const textInputStyle = (
       justifyContent: 'space-between',
     },
     message: {
-      wordWrap: 'break-word',
       paddingHorizontal: theme.TextInputHelperTextPaddingHorizontal,
       marginTop: theme.TextInputMarginTop,
       color: theme.TextInputHelperTextColor,
