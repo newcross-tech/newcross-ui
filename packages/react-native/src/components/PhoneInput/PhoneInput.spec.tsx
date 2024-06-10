@@ -16,9 +16,8 @@ describe('Phone Input Component', () => {
         format: { minLength: 10, maxLength: 10 },
       },
       phoneNumber: '5646456456',
-      setPhoneNumber: jest.fn(),
+      onChangePhoneNumber: jest.fn(),
       handleDropDownSelect: jest.fn(),
-      setIsPhoneNumberValid: jest.fn(),
       isPhoneNumberValid: false,
       label: 'Enter phone number',
     };
@@ -45,10 +44,10 @@ describe('Phone Input Component', () => {
         format: { minLength: 10, maxLength: 10 },
       },
       phoneNumber: 'A',
-      setPhoneNumber: jest.fn(),
+      onChangePhoneNumber: jest.fn(),
       handleDropDownSelect: jest.fn(),
-      setIsPhoneNumberValid: jest.fn(),
       isPhoneNumberValid: false,
+      errorText: 'Only numbers are valid',
     };
 
     // Act
@@ -57,34 +56,6 @@ describe('Phone Input Component', () => {
     // Assert
 
     expect(getByText('Only numbers are valid')).toBeTruthy();
-  });
-
-  it('renders error text with less numbers', () => {
-    // Arrange
-    const props: PhoneInputProps = {
-      phoneInputSelected: {
-        name: {
-          en: 'United Kingdom',
-        },
-        dial_code: '+44',
-        code: 'GB',
-        flag: '🇬🇧',
-        format: { minLength: 10, maxLength: 10 },
-      },
-      phoneNumber: '1',
-      setPhoneNumber: jest.fn(),
-      handleDropDownSelect: jest.fn(),
-      setIsPhoneNumberValid: jest.fn(),
-      isPhoneNumberValid: false,
-      phoneMinLength: 10,
-    };
-
-    // Act
-    const { getByText } = render(<PhoneInput {...props} />);
-
-    // Assert
-
-    expect(getByText('Phone number needs a minimum length of 10')).toBeTruthy();
   });
 
   it('renders error text is empty', () => {
@@ -100,9 +71,8 @@ describe('Phone Input Component', () => {
         format: { minLength: 10, maxLength: 10 },
       },
       phoneNumber: '',
-      setPhoneNumber: jest.fn(),
+      onChangePhoneNumber: jest.fn(),
       handleDropDownSelect: jest.fn(),
-      setIsPhoneNumberValid: jest.fn(),
       isPhoneNumberValid: false,
     };
 

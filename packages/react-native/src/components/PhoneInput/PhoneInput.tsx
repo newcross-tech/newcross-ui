@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { TextStyle, View } from 'react-native';
 import Dropdown from '../Dropdown';
 import TextInput from '../TextInput';
 import Typography, { TypographyVariant } from '../Typography';
 import phoneInputStyle from './PhoneInput.styles';
-import { isMinLengthValid, isNotNumber } from './utils';
 
 export type phoneInputSelectedType = {
   name: {
@@ -32,22 +31,15 @@ export type PhoneInputProps = {
   /**
    * Phone number input
    */
-  setPhoneNumber?: (newState: string) => void;
+  onChangePhoneNumber?: (newState: string) => void;
   /**
    * Used to locate this view in end-to-end tests.
    */
   testID?: string;
   /**
-   * To set if phone number is valid or not
-   */
-  setIsPhoneNumberValid?: (newState: boolean) => void;
-  /**
    * is Phone number valid
    */
   isPhoneNumberValid?: boolean;
-  /**
-   * TODO: Allow user to set default country awaiting bottomSheet hooks
-   */
   /**
    * Label for the input
    */
@@ -57,58 +49,27 @@ export type PhoneInputProps = {
    */
   style?: TextStyle;
   /**
-   * Minimum length of the phone number
-   */
-  phoneMinLength?: number;
-  /**
-   * Maximum length of the phone number
-   */
-  phoneMaxLength?: number;
-  /**
    * Allow user to edit country code
    */
   isCountryCodeEditable?: boolean;
+  /**
+   * Error text to display
+   */
+  errorText?: string;
 };
 
 const PhoneInput = ({
-  // TODO: On refactor add defaultCountry prop
-  setPhoneNumber,
+  onChangePhoneNumber,
   phoneNumber,
-  setIsPhoneNumberValid,
   isPhoneNumberValid,
   handleDropDownSelect,
   phoneInputSelected,
   testID = 'phone-input',
   label,
   style,
-  phoneMinLength,
-  phoneMaxLength,
   isCountryCodeEditable = true,
+  errorText,
 }: PhoneInputProps) => {
-  const [errorText, setErrorText] = useState<string>('');
-
-  const validateInput = (numberToValidate: string) => {
-    if (!numberToValidate) return setErrorText('');
-
-    if (isNotNumber(numberToValidate))
-      return setErrorText('Only numbers are valid');
-
-    if (phoneMinLength && isMinLengthValid(numberToValidate, phoneMinLength))
-      return setErrorText(
-        `Phone number needs a minimum length of ${phoneMinLength} `
-      );
-
-    return setErrorText('');
-  };
-
-  useEffect(() => {
-    phoneNumber && validateInput(phoneNumber);
-  }, [phoneNumber]);
-
-  useEffect(() => {
-    setIsPhoneNumberValid && phoneNumber && setIsPhoneNumberValid(!errorText);
-  }, [errorText]);
-
   const styles = phoneInputStyle();
 
   return (
@@ -118,11 +79,11 @@ const PhoneInput = ({
       textContentType="telephoneNumber"
       label={label}
       onChangeText={(phoneInput) =>
-        setPhoneNumber && setPhoneNumber(phoneInput)
+        onChangePhoneNumber && onChangePhoneNumber(phoneInput)
       }
-      maxLength={phoneMaxLength}
       keyboardType="phone-pad"
       errorText={errorText}
+      hasError={!!errorText}
       testID={`${testID}-${phoneNumber}`}
       includeDropdown={
         <>
