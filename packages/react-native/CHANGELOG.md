@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.48.18](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.48.17...@newcross-ui/react-native@1.48.18) (2024-06-11)
+
+
+### Bug Fixes
+
+* **HFGO-2723:** add text input validation ([67447a7](https://bitbucket.org/newcrossdev/newcross-ui/commits/67447a77cf3bbbfbafb28593fb7eadcbeca6ec5b))
+
+
+
+
+
 ## [1.48.17](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.48.16...@newcross-ui/react-native@1.48.17) (2024-06-10)
 
 
