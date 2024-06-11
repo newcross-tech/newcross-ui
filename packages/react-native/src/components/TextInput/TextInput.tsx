@@ -219,7 +219,7 @@ const TextInput = ({
             />
           </Pressable>
         )}
-        {isValid && (
+        {isValid && value?.length !== 0 && (
           <View testID="text-input-validation-check" style={styles.rightIcon}>
             <FontAwesomeIcon
               icon={faCheck}
