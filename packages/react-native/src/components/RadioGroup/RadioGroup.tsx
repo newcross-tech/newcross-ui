@@ -42,6 +42,10 @@ export type RadioGroupProps = {
    * The style of the divider.
    */
   dividerStyle?: ViewStyle;
+  /**
+   * The style of the content of a single item.
+   */
+  itemContentStyle?: ViewStyle;
 };
 
 const RadioGroup = ({
@@ -53,6 +57,7 @@ const RadioGroup = ({
   children,
   containerStyle,
   itemContainerStyle,
+  itemContentStyle,
   dividerStyle,
 }: RadioGroupProps) => {
   const styles = radioGroupStyle();
@@ -85,6 +90,7 @@ const RadioGroup = ({
             }
           }
         }}
+        contentStyle={itemContentStyle}
         containerStyle={{
           ...styles.container,
           ...itemContainerStyle,
