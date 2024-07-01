@@ -19,6 +19,20 @@ describe('Progress Bar Component', () => {
 
     expect(getByTestId('progress-bar-container')).toBeTruthy();
   });
+  it('renders successfully with customProgressLabel', () => {
+    // Arrange
+    const props: ProgressBarProps = {
+      customProgressLabel: 'Custom Progress Label',
+    };
+
+    // Act
+    const { getByTestId, getByText } = render(<ProgressBar {...props} />);
+
+    // Assert
+
+    expect(getByTestId('progress-bar-container')).toBeTruthy();
+    expect(getByText('Custom Progress Label')).toBeTruthy();
+  });
   it('renders successfully with label and progress label in the same position', () => {
     // Arrange
     const props: ProgressBarProps = {
