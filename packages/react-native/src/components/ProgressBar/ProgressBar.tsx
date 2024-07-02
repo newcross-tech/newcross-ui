@@ -66,6 +66,10 @@ export type ProgressBarProps = {
    * The value of the progress indicator for the determinate variant. Value between 0 and 100.
    */
   progress?: number;
+  /**
+   * Custom progress label to display.
+   */
+  customProgressLabel?: string;
 };
 
 const ProgressBar = ({
@@ -74,6 +78,7 @@ const ProgressBar = ({
   labelPosition = ProgressBarLabelPositions.topLeft,
   progressLabelPosition = ProgressBarLabelPositions.topRight,
   label,
+  customProgressLabel,
   progress = DEFAULT_PROGRESS,
   hasProgressLabel = DEFAULT_HAS_PROGRESS_LABEL,
   minProgress = DEFAULT_MIN_PROGRESS,
@@ -81,7 +86,6 @@ const ProgressBar = ({
   animationDuration = DEFAULT_ANIMATION_DURATION,
 }: ProgressBarProps) => {
   const { width } = Dimensions.get('screen');
-
   //Progress Bar Component
   const isDeterminate = variant === ProgressBarVariant.determinate;
   const isDeterminateAndHasProgressLabel = isDeterminate && hasProgressLabel;
@@ -152,7 +156,15 @@ const ProgressBar = ({
         false
       );
     }
-  }, [normalisedProgress, progressBarFillWidth, isDeterminate]);
+  }, [
+    normalisedProgress,
+    progressBarFillWidth,
+    isDeterminate,
+    translateX,
+    progressBarDeterminateWidth,
+    animationDuration,
+    width,
+  ]);
 
   const samePositionLabelView = () => (
     <View
@@ -161,7 +173,7 @@ const ProgressBar = ({
       testID="labels-container"
     >
       <Typography
-        variant={TypographyVariant.paragraph1}
+        variant={TypographyVariant.heading5}
         numberOfLines={DEFAULT_NUMBER_OF_LINES}
         style={styles.allLabels}
       >
@@ -172,7 +184,7 @@ const ProgressBar = ({
           variant={TypographyVariant.paragraph1}
           style={styles.allLabels}
         >
-          {normalisedProgress}%
+          {customProgressLabel ?? `${normalisedProgress}%`}
         </Typography>
       )}
     </View>
@@ -181,7 +193,7 @@ const ProgressBar = ({
   const differentPositionLabelView = () => (
     <>
       <Typography
-        variant={TypographyVariant.paragraph1}
+        variant={TypographyVariant.heading5}
         numberOfLines={DEFAULT_NUMBER_OF_LINES}
         style={[styles.allLabels, styles.label]}
         onLayout={onLayoutLabels}
@@ -192,11 +204,11 @@ const ProgressBar = ({
 
       {isDeterminateAndHasProgressLabel && (
         <Typography
-          variant={TypographyVariant.paragraph1}
+          variant={TypographyVariant.paragraph3}
           style={[styles.allLabels, styles.progress]}
           testID="progress-label-container"
         >
-          {normalisedProgress}%
+          {customProgressLabel ?? `${normalisedProgress}%`}
         </Typography>
       )}
     </>
