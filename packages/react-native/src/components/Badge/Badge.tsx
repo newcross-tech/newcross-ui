@@ -19,7 +19,7 @@ export type BadgeProps = {
   /**
    * Overwrites the styles of the Badge Container.
    */
-  badgeContainerStyles?: ViewStyle | TextStyle;
+  containerStyles?: ViewStyle | TextStyle;
   /**
    * Overwrites or extends the styles applied to the component.
    */
@@ -64,7 +64,7 @@ const Badge = ({
   position,
   onPress,
   testID,
-  badgeContainerStyles,
+  containerStyles,
 }: BadgeProps) => {
   const styles = badgeStyle({ size, children, position });
   const isSmallBadge = size === BadgeSizes.small;
@@ -73,7 +73,7 @@ const Badge = ({
   const renderContent = hasContent && !isSmallBadge;
 
   const badge = (
-    <View testID={testID} style={[styles.badgeContainer, badgeContainerStyles]}>
+    <View testID={testID} style={[styles.badgeContainer, containerStyles]}>
       <View style={[styles.badge, style]}>
         <Typography
           variant={getTypographyVariant(size)}
