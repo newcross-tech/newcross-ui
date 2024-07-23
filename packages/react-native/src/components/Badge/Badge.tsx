@@ -20,7 +20,6 @@ export type BadgeProps = {
    * Overwrites the styles of the Badge Container.
    */
   badgeContainerStyles?: ViewStyle | TextStyle;
-
   /**
    * Overwrites or extends the styles applied to the component.
    */
