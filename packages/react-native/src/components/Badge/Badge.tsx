@@ -17,6 +17,11 @@ import Typography from '../Typography';
 
 export type BadgeProps = {
   /**
+   * Overwrites the styles of the Badge Component to center the Badge.
+   */
+  isBadgeCentered?: boolean;
+
+  /**
    * Overwrites or extends the styles applied to the component.
    */
   style?: ViewStyle | TextStyle;
@@ -60,6 +65,7 @@ const Badge = ({
   position,
   onPress,
   testID,
+  isBadgeCentered = false,
 }: BadgeProps) => {
   const styles = badgeStyle({ size, children, position });
   const isSmallBadge = size === BadgeSizes.small;
@@ -68,7 +74,13 @@ const Badge = ({
   const renderContent = hasContent && !isSmallBadge;
 
   const badge = (
-    <View testID={testID} style={styles.badgeContainer}>
+    <View
+      testID={testID}
+      style={[
+        styles.badgeContainer,
+        isBadgeCentered && { alignSelf: 'center' },
+      ]}
+    >
       <View style={[styles.badge, style]}>
         <Typography
           variant={getTypographyVariant(size)}
