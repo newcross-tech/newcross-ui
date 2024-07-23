@@ -73,7 +73,7 @@ const Badge = ({
   const renderContent = hasContent && !isSmallBadge;
 
   const badge = (
-    <View testID={testID} style={badgeContainerStyles ?? styles.badgeContainer}>
+    <View testID={testID} style={[styles.badgeContainer, badgeContainerStyles]}>
       <View style={[styles.badge, style]}>
         <Typography
           variant={getTypographyVariant(size)}
