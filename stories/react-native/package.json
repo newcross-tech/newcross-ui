@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@newcross-stories/react-native",
-  "version": "1.44.20",
+  "version": "1.44.21",
   "main": "index.ts",
   "scripts": {
     "start": "expo start",
@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@expo-google-fonts/poppins": "^0.2.2",
-    "@newcross-ui/react-native": "^1.48.20",
+    "@newcross-ui/react-native": "^1.48.21",
     "expo": "^46.0.0",
     "expo-font": "~10.2.0",
     "expo-linear-gradient": "~11.4.0",
