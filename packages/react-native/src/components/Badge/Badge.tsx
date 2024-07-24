@@ -17,6 +17,10 @@ import Typography from '../Typography';
 
 export type BadgeProps = {
   /**
+   * Overwrites the styles of the Badge Container.
+   */
+  containerStyles?: ViewStyle | TextStyle;
+  /**
    * Overwrites or extends the styles applied to the component.
    */
   style?: ViewStyle | TextStyle;
@@ -60,6 +64,7 @@ const Badge = ({
   position,
   onPress,
   testID,
+  containerStyles,
 }: BadgeProps) => {
   const styles = badgeStyle({ size, children, position });
   const isSmallBadge = size === BadgeSizes.small;
@@ -68,7 +73,7 @@ const Badge = ({
   const renderContent = hasContent && !isSmallBadge;
 
   const badge = (
-    <View testID={testID} style={styles.badgeContainer}>
+    <View testID={testID} style={[styles.badgeContainer, containerStyles]}>
       <View style={[styles.badge, style]}>
         <Typography
           variant={getTypographyVariant(size)}
