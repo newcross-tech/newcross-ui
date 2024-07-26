@@ -24,8 +24,9 @@ const getPaddingStyles = (isMulti: boolean) => css`
 
 export const Label = styled(HaloLabel)<LabelProps>`
   ${({ theme }: ExtendedTheme<TypographyProps>) => css`
+    display: inline-block;
     color: ${theme.RadioColor};
-    margin-bottom: ${theme.TextInputMarginTop};
+    margin-bottom: ${theme.SpacingBase4};
   `}
 `;
 

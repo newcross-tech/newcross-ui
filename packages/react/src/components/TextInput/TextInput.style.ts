@@ -12,6 +12,7 @@ import {
   TextAreaContainerProps,
 } from './TextInput.types';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
+import Label from '../Label/Label';
 
 export const Wrapper = styled.div<TextAreaContainerProps>`
   display: flex;
@@ -188,5 +189,11 @@ export const LengthInfo = styled(Typography)`
     color: ${theme.ColorBaseGrey100};
     margin-top: ${theme.SpacingBase4};
     margin-right: ${theme.SpacingBase8};
+  `};
+`;
+
+export const LabelWithMargin = styled(Label)`
+  ${({ theme }: Theme) => css`
+    margin-bottom: ${theme.SpacingBase4};
   `};
 `;
