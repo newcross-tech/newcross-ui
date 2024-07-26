@@ -15,14 +15,14 @@ import { ErrorType } from './Select.types';
 const defaultAnimationSpeed = 0.2;
 
 const getTypographyStyles = ({ theme }: Theme) => ({
-  fontFamily: theme.TypographyFontFamilyPoppinsRegular,
-  fontSize: theme.TypographyFontSize16,
-  lineHeight: theme.TypographyLineHeight24,
+  fontFamily: theme.TextInputFontFamily,
+  fontSize: theme.TextInputFontSize,
+  lineHeight: theme.TextInputLineHeight,
 });
 
 const getPaddingStyles = ({ theme }: Theme) => {
   return {
-    padding: `${theme.SpacingBase12} ${theme.SpacingBase16}`,
+    padding: `${theme.TextInputPaddingVertical} ${theme.TextInputPaddingHorizontal}`,
   };
 };
 
@@ -152,7 +152,8 @@ export const getCustomStyles = <
     }),
     valueContainer: (styles, { isMulti }) => ({
       ...styles,
-      ...getPaddingStyles({ theme }),
+      paddingTop: 0,
+      paddingBottom: 0,
       gap: isMulti ? theme.SpacingBase8 : undefined,
     }),
     control: (_, state) => ({
@@ -167,6 +168,7 @@ export const getCustomStyles = <
     }),
     singleValue: (styles, state) => ({
       ...styles,
+      ...getPaddingStyles({ theme }),
       color: state.isDisabled ? theme.ColorBaseGrey100 : theme.ColorPrimaryGravitas,
     }),
     groupHeading: (styles) => ({
@@ -182,10 +184,7 @@ export const getCustomStyles = <
       color: state.isDisabled ? theme.ColorBaseGrey100 : theme.ColorPrimaryGravitas,
       borderRadius: theme.BorderBaseRadiusLg,
       margin: '0',
-      paddingTop: theme.SpacingBase4,
-      paddingRight: '0',
-      paddingBottom: theme.SpacingBase4,
-      paddingLeft: theme.SpacingBase16,
+      padding: `${theme.SpacingBase4} 0 ${theme.SpacingBase4} ${theme.SpacingBase16}`,
 
       /* multi value generic text */
       '> div': {

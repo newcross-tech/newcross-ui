@@ -10,10 +10,9 @@ import {
   useState,
 } from 'react';
 import { TestProp } from '../../types';
-import Label from '../Label/Label';
 import { TextArea } from './TextArea';
 import * as Styled from './TextInput.style';
-import { SearchIcon } from './TextInput.style';
+import { SearchIcon, LabelWithMargin } from './TextInput.style';
 import Container from '../Container';
 import { TypographyVariant } from '../Typography';
 
@@ -138,18 +137,18 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
   return (
     <Styled.Wrapper fullWidth={fullWidth}>
       {label && (
-        <Label
+        <LabelWithMargin
           htmlFor={inputId}
           variant={labelVariant}
           testID={`${inputId}-label`}
         >
           {label}
-        </Label>
+        </LabelWithMargin>
       )}
       {subtitle && (
-        <Label variant={subtitleVariant} color="secondary">
+        <LabelWithMargin variant={subtitleVariant} color="secondary">
           {subtitle}
-        </Label>
+        </LabelWithMargin>
       )}
 
       {isTextArea ? (
@@ -184,7 +183,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
             <input
               id={inputId}
               ref={ref}
-              type={passwordVisibility && isPasswordType ? 'password' : 'text'}
+              type={passwordVisibility && isPasswordType ? 'password' : type}
               value={value}
               onClick={onClick}
               onFocus={onFocus}
