@@ -63,4 +63,16 @@ describe('Badge Component', () => {
 
     expect(onClick).toBeCalled();
   });
+
+  it('should render with the correct background color', () => {
+    const testID = '2';
+    const backgroundColor = 'primary';
+
+    renderComponent({ testID, backgroundColor });
+
+    const container = ui.container(testID).get();
+    expect(container.firstChild).toHaveStyle(
+      `background-color: ${backgroundColor}`
+    );
+  });
 });

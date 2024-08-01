@@ -86,6 +86,15 @@ export const getPositionValues = ({
   },
 });
 
+export const getBadgeBackgroundColor = (theme: ThemeDesignTokens): Record<string, string> => ({
+  primary: theme.ColorPrimaryGravitas,
+  secondary: theme.ColorBaseMint100,
+  error: theme.ColorSemanticsError200,
+  warning: theme.ColorSemanticsWarning200,
+  success: theme.ColorSemanticsSuccess200,
+  info: theme.ColorSemanticsInfo100,
+});
+
 export const Container = styled.div`
   cursor: pointer;
   position: relative;
@@ -97,7 +106,7 @@ export const Content = styled.div`
   align-items: center;
   z-index: 1;
 
-  ${({ theme, size, renderContent, position, isSingleChar }: ExtendedTheme<BadgeContentProps>) => css`
+  ${({ theme, size, renderContent, position, isSingleChar, backgroundColor }: ExtendedTheme<BadgeContentProps>) => css`
     ${renderContent &&
     !isSingleChar &&
     css`
@@ -107,7 +116,7 @@ export const Content = styled.div`
     position: ${position ? 'absolute' : 'relative'};
     ${size && position && getPositionValues(theme)[size][position]};
     ${size && getHeightWidthValues(theme)[size]};
-    background-color: ${theme.BadgeBackgroundColor};
+    background-color: ${backgroundColor ? getBadgeBackgroundColor(theme)[backgroundColor] : theme.BadgeBackgroundColor};
     border-radius: ${theme.BadgeBorderRadius};
   `}
 `;
