@@ -2,7 +2,11 @@ import { ReactElement, ReactNode } from 'react';
 import { TestProp } from '../../types';
 import * as Styled from './Badge.style';
 import { getTypographyVariant } from './Badge.style';
-import { BadgePositions, BadgeSizes } from './Badge.types';
+import {
+  BadgeBackgroundColor,
+  BadgePositions,
+  BadgeSizes,
+} from './Badge.types';
 import { calculateDisplayNumber, isSingleChar } from './utils';
 
 export type BadgeProps = {
@@ -31,6 +35,10 @@ export type BadgeProps = {
    * Called when a single tap gesture is detected.
    */
   onClick?: VoidFunction;
+  /**
+   * Used to define the background color of the badge
+   */
+  backgroundColor?: BadgeBackgroundColor;
 } & TestProp;
 
 const Badge = ({
@@ -40,6 +48,7 @@ const Badge = ({
   children,
   position,
   onClick,
+  backgroundColor,
   testID,
 }: BadgeProps) => {
   const isSmallBadge = size === 'small';
@@ -60,6 +69,7 @@ const Badge = ({
         renderContent={renderContent}
         size={size}
         position={position}
+        backgroundColor={backgroundColor}
       >
         <Styled.Text variant={getTypographyVariant()[size]}>
           {renderContent && displayNumber}

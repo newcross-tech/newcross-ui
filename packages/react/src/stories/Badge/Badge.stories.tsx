@@ -76,6 +76,23 @@ export const Variants = () => {
   );
 };
 
+export const VariantsWithBackground = () => {
+  return (
+    <Container justifyContent="space-around">
+      <Badge size={'small'} backgroundColor="primary" />
+      <Badge size={'medium'} badgeContent={9} backgroundColor="secondary" />
+      <Badge size={'medium'} badgeContent={'?'} backgroundColor="warning" />
+      <Badge
+        size={'large'}
+        badgeContent={1000}
+        maxNumber={999}
+        backgroundColor="success"
+      />
+      <Badge size={'large'} badgeContent={'!'} backgroundColor="error" />
+    </Container>
+  );
+};
+
 const Template: Story<BadgeProps> = ({ size, ...rest }) => (
   <Container justifyContent={'flex-start'}>
     <Badge size={size as BadgeSizes} {...rest}>

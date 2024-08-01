@@ -17,6 +17,14 @@ export type BadgeContainerProps = RenderContentType & {
 };
 
 export type BadgeContentProps = RenderContentType &
-  Pick<BadgeProps, 'size' | 'position'> & {
+  Pick<BadgeProps, 'size' | 'position' | 'backgroundColor'> & {
     isSingleChar: boolean;
   };
+
+export type BadgeBackgroundColor =
+  | 'primary'
+  | 'secondary'
+  | 'error'
+  | 'warning'
+  | 'success'
+  | 'info';
