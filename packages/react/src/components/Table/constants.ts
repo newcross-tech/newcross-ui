@@ -1,0 +1,10 @@
+export const TABLE_DEFAULT_ROWS_PER_PAGE_OPTION = 5;
+
+export const TABLE_RECORDS_PER_PAGE_OPTIONS = [
+  TABLE_DEFAULT_ROWS_PER_PAGE_OPTION,
+  10,
+  20,
+  30,
+  40,
+  50,
+];
