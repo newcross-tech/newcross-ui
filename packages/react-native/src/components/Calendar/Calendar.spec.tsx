@@ -7,33 +7,33 @@ import {
 } from '@testing-library/react-native';
 import Calendar, { CalendarProps } from './Calendar';
 
+const testID = 'calendar-component';
+
 describe('Calendar Component', () => {
   it('renders successfully', () => {
     // Arrange
     const props: CalendarProps = {
-      testID: 'calendar-component',
+      testID,
     };
 
     // Act
     render(<Calendar {...props} />);
 
     // Assert
-    expect(screen.getByTestId('calendar-component')).toBeTruthy();
+    expect(screen.getByTestId(testID)).toBeTruthy();
     expect(screen.queryByTestId('calendar-loader')).toBeNull();
     expect(
-      screen.getByTestId('calendar-component-next').props.accessibilityState
-        .disabled
+      screen.getByTestId(`${testID}-next`).props.accessibilityState.disabled
     ).toBeFalsy();
     expect(
-      screen.getByTestId('calendar-component-previous').props.accessibilityState
-        .disabled
+      screen.getByTestId(`${testID}-previous`).props.accessibilityState.disabled
     ).toBeFalsy();
   });
 
   it('renders loading component when displayLoader is true', () => {
     // Arrange
     const props: CalendarProps = {
-      testID: 'calendar-component',
+      testID,
       displayLoader: true,
     };
 
@@ -42,7 +42,7 @@ describe('Calendar Component', () => {
 
     // Assert
     expect(screen.getByTestId('calendar-loader')).toBeTruthy();
-    expect(screen.getByTestId('calendar-component')).toBeTruthy();
+    expect(screen.getByTestId(testID)).toBeTruthy();
   });
 
   it('renders left and right arrow buttons successfully', () => {
@@ -50,41 +50,45 @@ describe('Calendar Component', () => {
     const { getByTestId } = render(<Calendar />);
 
     // Assert
-    expect(getByTestId('calendar-component-previous')).toBeTruthy();
-    expect(getByTestId('calendar-component-next')).toBeTruthy();
+    expect(getByTestId(`${testID}-previous`)).toBeTruthy();
+    expect(getByTestId(`${testID}-next`)).toBeTruthy();
   });
 
   it('gets correct month on press of right arrow', async () => {
     // Arrange
     const { getByTestId } = render(
-      <Calendar startDate={new Date('2022-05-01')} />
+      <Calendar testID={testID} startDate={new Date('2022-05-01')} />
     );
 
     // Act
-    const rightArrow = getByTestId('calendar-component-next');
+    const rightArrow = getByTestId(`${testID}-next`);
     fireEvent.press(rightArrow);
 
     // Assert
     await waitFor(() => {
-      expect(getByTestId('HEADER_MONTH_NAME')).toBeTruthy;
-      expect(getByTestId('HEADER_MONTH_NAME').props.children).toBe('Jun 2022');
+      expect(getByTestId(`${testID}.header.title`)).toBeTruthy;
+      expect(getByTestId(`${testID}.header.title`).props.children).toBe(
+        'Jun 2022'
+      );
     });
   });
 
   it('gets correct month on press of left arrow', async () => {
     // Arrange
     const { getByTestId } = render(
-      <Calendar startDate={new Date('2022-05-01')} />
+      <Calendar testID={testID} startDate={new Date('2022-05-01')} />
     );
 
     // Act
-    const leftArrow = getByTestId('calendar-component-previous');
+    const leftArrow = getByTestId(`${testID}-previous`);
     fireEvent.press(leftArrow);
 
     // Assert
     await waitFor(() => {
-      expect(getByTestId('HEADER_MONTH_NAME')).toBeTruthy;
-      expect(getByTestId('HEADER_MONTH_NAME').props.children).toBe('Apr 2022');
+      expect(getByTestId(`${testID}.header.title`)).toBeTruthy;
+      expect(getByTestId(`${testID}.header.title`).props.children).toBe(
+        'Apr 2022'
+      );
     });
   });
 
@@ -99,7 +103,7 @@ describe('Calendar Component', () => {
     );
 
     // Act
-    const rightArrow = getByTestId('calendar-component-next');
+    const rightArrow = getByTestId(`${testID}-next`);
     fireEvent.press(rightArrow);
 
     // Assert
@@ -119,7 +123,7 @@ describe('Calendar Component', () => {
     );
 
     // Act
-    const leftArrow = getByTestId('calendar-component-previous');
+    const leftArrow = getByTestId(`${testID}-previous`);
     fireEvent.press(leftArrow);
 
     // Assert
@@ -140,10 +144,9 @@ describe('Calendar Component', () => {
     );
 
     // Assert
-    expect(screen.getByTestId('calendar-component-previous')).toBeDisabled();
+    expect(screen.getByTestId(`${testID}-previous`)).toBeDisabled();
     expect(
-      screen.getByTestId('calendar-component-next').props.accessibilityState
-        .disabled
+      screen.getByTestId(`${testID}-next`).props.accessibilityState.disabled
     ).toBeFalsy();
   });
 
@@ -159,10 +162,9 @@ describe('Calendar Component', () => {
     );
 
     // Assert
-    expect(screen.getByTestId('calendar-component-next')).toBeDisabled();
+    expect(screen.getByTestId(`${testID}-next`)).toBeDisabled();
     expect(
-      screen.getByTestId('calendar-component-previous').props.accessibilityState
-        .disabled
+      screen.getByTestId(`${testID}-previous`).props.accessibilityState.disabled
     ).toBeFalsy();
   });
 
@@ -172,15 +174,14 @@ describe('Calendar Component', () => {
       const onDateSelection = jest.fn();
       const { getByTestId } = render(
         <Calendar
+          testID={testID}
           onDateSelection={onDateSelection}
           startDate={new Date('2022-05-01')}
         />
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-01')
-      );
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-01`));
 
       // Assert
       await waitFor(() => {
@@ -193,6 +194,7 @@ describe('Calendar Component', () => {
       const onDateSelection = jest.fn();
       const { getByTestId } = render(
         <Calendar
+          testID={testID}
           onDateSelection={onDateSelection}
           startDate={new Date('2022-05-01')}
           selectedDates={['2022-05-01']}
@@ -200,9 +202,7 @@ describe('Calendar Component', () => {
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-01')
-      );
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-01`));
 
       // Assert
       await waitFor(() => {
@@ -217,6 +217,7 @@ describe('Calendar Component', () => {
       const onDateSelection = jest.fn();
       const { getByTestId } = render(
         <Calendar
+          testID={testID}
           hasMultipleDateSelection
           onDateSelection={onDateSelection}
           startDate={new Date('2022-05-01')}
@@ -225,9 +226,7 @@ describe('Calendar Component', () => {
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-02')
-      );
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-02`));
 
       // Assert
       await waitFor(() => {
@@ -245,6 +244,7 @@ describe('Calendar Component', () => {
       const onSingleDateRange = jest.fn();
       const { getByTestId } = render(
         <Calendar
+          testID={testID}
           hasSingleDateRange
           onSingleDateRange={onSingleDateRange}
           startDate={new Date('2022-05-01')}
@@ -252,12 +252,8 @@ describe('Calendar Component', () => {
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-01')
-      );
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-04')
-      );
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-01`));
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-04`));
 
       // Assert
       await waitFor(() => {
@@ -273,6 +269,7 @@ describe('Calendar Component', () => {
       const onSingleDateRange = jest.fn();
       const { getByTestId } = render(
         <Calendar
+          testID={testID}
           hasSingleDateRange
           onSingleDateRange={onSingleDateRange}
           startDate={new Date('2022-05-05')}
@@ -280,12 +277,8 @@ describe('Calendar Component', () => {
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-08')
-      );
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-07')
-      );
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-08`));
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-07`));
 
       // Assert
       await waitFor(() => {
@@ -298,6 +291,7 @@ describe('Calendar Component', () => {
       const onSingleDateRange = jest.fn();
       const { getByTestId } = render(
         <Calendar
+          testID={testID}
           hasSingleDateRange
           onSingleDateRange={onSingleDateRange}
           startDate={new Date('2022-05-05')}
@@ -305,12 +299,8 @@ describe('Calendar Component', () => {
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-08')
-      );
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-08')
-      );
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-08`));
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-08`));
 
       // Assert
       await waitFor(() => {
@@ -323,6 +313,7 @@ describe('Calendar Component', () => {
       const onSingleDateRange = jest.fn();
       const { getByTestId } = render(
         <Calendar
+          testID={testID}
           hasSingleDateRange
           onSingleDateRange={onSingleDateRange}
           startDate={new Date('2022-05-05')}
@@ -330,15 +321,9 @@ describe('Calendar Component', () => {
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-06')
-      );
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-09')
-      );
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-10')
-      );
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-06`));
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-09`));
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-10`));
 
       // Assert
       await waitFor(() => {
@@ -353,6 +338,7 @@ describe('Calendar Component', () => {
       const onMultipleDateRange = jest.fn();
       const { getByTestId } = render(
         <Calendar
+          testID={testID}
           hasMultipleDateRange
           onMultipleDateRange={onMultipleDateRange}
           startDate={new Date('2022-05-05')}
@@ -360,19 +346,11 @@ describe('Calendar Component', () => {
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-06')
-      );
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-09')
-      );
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-10')
-      );
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-06`));
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-09`));
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-10`));
 
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-12')
-      );
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-12`));
 
       // Assert
       await waitFor(() => {
@@ -388,6 +366,7 @@ describe('Calendar Component', () => {
       const onMultipleDateRange = jest.fn();
       const { getByTestId } = render(
         <Calendar
+          testID={testID}
           hasMultipleDateRange
           onMultipleDateRange={onMultipleDateRange}
           startDate={new Date('2022-05-05')}
@@ -395,23 +374,13 @@ describe('Calendar Component', () => {
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-06')
-      );
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-09')
-      );
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-10')
-      );
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-06`));
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-09`));
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-10`));
 
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-12')
-      );
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-12`));
 
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-07')
-      );
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-07`));
 
       // Assert
       await waitFor(() => {
@@ -427,6 +396,7 @@ describe('Calendar Component', () => {
       const onMultipleDateRange = jest.fn();
       const { getByTestId } = render(
         <Calendar
+          testID={testID}
           hasMultipleDateRange
           onMultipleDateRange={onMultipleDateRange}
           startDate={new Date('2022-05-05')}
@@ -434,12 +404,8 @@ describe('Calendar Component', () => {
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-08')
-      );
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-06')
-      );
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-08`));
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-06`));
 
       // Assert
       await waitFor(() => {
@@ -452,6 +418,7 @@ describe('Calendar Component', () => {
       const onMultipleDateRange = jest.fn();
       const { getByTestId } = render(
         <Calendar
+          testID={testID}
           hasMultipleDateRange
           onMultipleDateRange={onMultipleDateRange}
           startDate={new Date('2022-05-05')}
@@ -459,24 +426,14 @@ describe('Calendar Component', () => {
       );
 
       // Act
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-08')
-      );
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-10')
-      );
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-08`));
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-10`));
 
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-07')
-      );
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-07`));
 
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-12')
-      );
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-12`));
 
-      fireEvent.press(
-        getByTestId('native.calendar.SELECT_DATE_SLOT-2022-05-07')
-      );
+      fireEvent.press(getByTestId(`${testID}.day_2022-05-07`));
 
       // Assert
       await waitFor(() => {
