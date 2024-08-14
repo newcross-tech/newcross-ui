@@ -15,6 +15,7 @@ const renderComponent = (props = {}) => {
       rowCount={100}
       rowsPerPage={10}
       onChangePage={mockOnChangePage}
+      paginationRowsPerPageOptions={[10, 20, 50]}
       {...props}
     />
   );
@@ -57,6 +58,6 @@ describe('PaginationAdapter', () => {
     const option = await byText('20').find();
     userEvent.click(option);
 
-    expect(mockOnChangeRowsPerPage).toHaveBeenCalledWith(20, 0);
+    expect(mockOnChangeRowsPerPage).toHaveBeenCalledWith(20, 1);
   });
 });

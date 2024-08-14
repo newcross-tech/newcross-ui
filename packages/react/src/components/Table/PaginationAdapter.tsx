@@ -2,10 +2,6 @@ import { useCallback } from 'react';
 import { PaginationComponentProps } from 'react-data-table-component/dist/DataTable/types';
 import Select from '../Select';
 import Pagination from '../Pagination';
-import {
-  TABLE_DEFAULT_ROWS_PER_PAGE_OPTION,
-  TABLE_RECORDS_PER_PAGE_OPTIONS,
-} from './constants';
 import * as Styled from './Table.style';
 
 const PaginationAdapter = ({
@@ -14,19 +10,21 @@ const PaginationAdapter = ({
   rowCount,
   rowsPerPage,
   onChangePage,
-  paginationPerPage = TABLE_DEFAULT_ROWS_PER_PAGE_OPTION,
-  paginationRowsPerPageOptions = TABLE_RECORDS_PER_PAGE_OPTIONS,
+  paginationRowsPerPageOptions,
 }: PaginationComponentProps & {
-  paginationRowsPerPageOptions?: number[];
-  paginationPerPage?: number;
+  paginationRowsPerPageOptions: number[];
 }) => {
   const handleChangeRowsPerPage = useCallback(
     (newValue) => {
-      const newRowsPerPage = newValue?.value ?? paginationPerPage;
-      const newPage = Math.floor((currentPage * rowsPerPage) / newRowsPerPage);
+      const newRowsPerPage = newValue?.value ?? rowCount;
+      const newPage = Math.ceil((currentPage * rowsPerPage) / newRowsPerPage);
+
+      // NOTE: this one updates the rows per page, but not the page number
       onChangeRowsPerPage(newRowsPerPage, newPage);
+      // NOTE: this one updates the page number
+      onChangePage(newPage, rowCount);
     },
-    [currentPage, onChangeRowsPerPage, paginationPerPage, rowsPerPage]
+    [currentPage, onChangeRowsPerPage, onChangePage, rowsPerPage, rowCount]
   );
 
   return (
@@ -38,9 +36,9 @@ const PaginationAdapter = ({
           label: `${option}`,
           value: option,
         }))}
-        defaultValue={{
-          label: paginationRowsPerPageOptions[0].toString(),
-          value: paginationRowsPerPageOptions[0],
+        value={{
+          label: rowsPerPage.toString(),
+          value: rowsPerPage,
         }}
         onChange={handleChangeRowsPerPage}
       />

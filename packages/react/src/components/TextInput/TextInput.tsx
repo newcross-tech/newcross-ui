@@ -183,7 +183,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
             <input
               id={inputId}
               ref={ref}
-              type={passwordVisibility && isPasswordType ? 'password' : type}
+              type={isPasswordType && !passwordVisibility ? 'text' : type}
               value={value}
               onClick={onClick}
               onFocus={onFocus}
