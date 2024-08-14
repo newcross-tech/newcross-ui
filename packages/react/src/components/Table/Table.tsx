@@ -4,7 +4,10 @@ import PaginationAdapter from './PaginationAdapter';
 import { getCustomStyles } from './Table.style';
 import useTheme from '../../hooks/useTheme';
 import Container from '../Container';
-import { TABLE_DEFAULT_ROWS_PER_PAGE_OPTION } from './constants';
+import {
+  TABLE_DEFAULT_ROWS_PER_PAGE_OPTION,
+  TABLE_RECORDS_PER_PAGE_OPTIONS,
+} from './constants';
 import { PaginationComponent } from 'react-data-table-component/dist/DataTable/types';
 
 export type TableProps<T> = IDataTableProps<T> & {
@@ -16,8 +19,8 @@ function Table<T>({
   data,
   pagination = true,
   $isFirstColumnFixed = false,
-  paginationRowsPerPageOptions,
-  paginationPerPage,
+  paginationRowsPerPageOptions = TABLE_RECORDS_PER_PAGE_OPTIONS,
+  paginationPerPage = TABLE_DEFAULT_ROWS_PER_PAGE_OPTION,
   ...props
 }: TableProps<T>) {
   const theme = useTheme();
@@ -27,10 +30,9 @@ function Table<T>({
       <PaginationAdapter
         {...props}
         paginationRowsPerPageOptions={paginationRowsPerPageOptions}
-        paginationPerPage={paginationPerPage}
       />
     ),
-    [paginationPerPage, paginationRowsPerPageOptions]
+    [paginationRowsPerPageOptions]
   );
 
   return (
@@ -48,6 +50,7 @@ function Table<T>({
         paginationPerPage={
           paginationPerPage ?? TABLE_DEFAULT_ROWS_PER_PAGE_OPTION
         }
+        paginationRowsPerPageOptions={paginationRowsPerPageOptions}
         {...props}
       />
     </Container>
