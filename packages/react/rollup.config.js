@@ -29,6 +29,7 @@ export default [
       'styled-components',
       '@react-spring/web',
       'react-select',
+      'react-data-table-component',
     ],
   },
 ];

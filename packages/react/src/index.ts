@@ -72,3 +72,4 @@ export { default as ThemeProvider } from './theme/ThemeProvider';
 export { Theme, ExtendedTheme } from './types';
 export { default as useTheme } from './hooks/useTheme';
 export { useToast } from './hooks/useToast';
+export { default as Table, TableProps } from './components/Table';
