@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.4.3...@newcross-ui/react@2.5.0) (2024-08-14)
+
+
+### Features
+
+* **CAPP-1367:** introduce table component ([e23ceca](https://bitbucket.org/newcrossdev/newcross-ui/commits/e23cecaa2937e7338e00e03ed94270c39efa771f))
+
+
+
+
+
 ## [2.4.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.4.2...@newcross-ui/react@2.4.3) (2024-08-01)
 
 **Note:** Version bump only for package @newcross-ui/react

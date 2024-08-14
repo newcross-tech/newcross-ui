@@ -1,6 +1,6 @@
 {
   "name": "@newcross-ui/react",
-  "version": "2.4.3",
+  "version": "2.5.0",
   "description": "Components for react apps",
   "author": "itdev@newcrosshealthcare.com",
   "license": "MIT",
@@ -37,7 +37,7 @@
   "dependencies": {
     "@newcross-ui/design-tokens": "^1.43.2",
     "@react-spring/web": "^9.5.5",
-    "react-select": "^5.7.7",
-    "react-data-table-component": "^7.6.2"
+    "react-data-table-component": "^7.6.2",
+    "react-select": "^5.7.7"
   }
 }
