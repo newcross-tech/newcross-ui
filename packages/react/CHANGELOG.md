@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.5.1...@newcross-ui/react@2.5.2) (2024-08-14)
+
+
+### Bug Fixes
+
+* **CAPP-1367:** small improvements on pagination ([#101](https://bitbucket.org/newcrossdev/newcross-ui/issues/101)) ([39e3c56](https://bitbucket.org/newcrossdev/newcross-ui/commits/39e3c566fff7aad29c5f6bb979f54c828f360c4d))
+
+
+
+
+
 ## [2.5.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.5.0...@newcross-ui/react@2.5.1) (2024-08-14)
 
 
