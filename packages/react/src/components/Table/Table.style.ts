@@ -7,7 +7,7 @@ import { Theme } from '../../types';
 const getFixedColumnStyles = (isColumnFixed: boolean): CSSObject => ({
   position: isColumnFixed ? 'sticky' : 'static',
   left: isColumnFixed ? 0 : 'auto',
-  zIndex: 100,
+  zIndex: isColumnFixed ? 1 : 0,
 });
 
 export const getCustomStyles = (theme: ThemeDesignTokens, $isFirstColumnFixed: boolean): TableStyles => ({
