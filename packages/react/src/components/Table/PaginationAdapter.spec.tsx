@@ -57,6 +57,6 @@ describe('PaginationAdapter', () => {
     const option = await byText('20').find();
     userEvent.click(option);
 
-    expect(mockOnChangeRowsPerPage).toHaveBeenCalledWith(20, 0);
+    expect(mockOnChangeRowsPerPage).toHaveBeenCalledWith(20, 1);
   });
 });

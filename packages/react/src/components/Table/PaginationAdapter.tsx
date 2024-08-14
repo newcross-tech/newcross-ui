@@ -23,10 +23,21 @@ const PaginationAdapter = ({
   const handleChangeRowsPerPage = useCallback(
     (newValue) => {
       const newRowsPerPage = newValue?.value ?? paginationPerPage;
-      const newPage = Math.floor((currentPage * rowsPerPage) / newRowsPerPage);
+      const newPage = Math.ceil((currentPage * rowsPerPage) / newRowsPerPage);
+
+      // NOTE: this one updates the rows per page, but not the page number
       onChangeRowsPerPage(newRowsPerPage, newPage);
+      // NOTE: this one updates the page number
+      onChangePage(newPage, rowCount);
     },
-    [currentPage, onChangeRowsPerPage, paginationPerPage, rowsPerPage]
+    [
+      currentPage,
+      onChangeRowsPerPage,
+      onChangePage,
+      paginationPerPage,
+      rowsPerPage,
+      rowCount,
+    ]
   );
 
   return (
@@ -38,9 +49,9 @@ const PaginationAdapter = ({
           label: `${option}`,
           value: option,
         }))}
-        defaultValue={{
-          label: paginationRowsPerPageOptions[0].toString(),
-          value: paginationRowsPerPageOptions[0],
+        value={{
+          label: rowsPerPage.toString(),
+          value: rowsPerPage,
         }}
         onChange={handleChangeRowsPerPage}
       />
