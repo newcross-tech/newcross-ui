@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.48.23](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.48.22...@newcross-ui/react-native@1.48.23) (2024-08-15)
+
+
+### Bug Fixes
+
+* **HFGO-2794:** update xdate library ([#97](https://bitbucket.org/newcrossdev/newcross-ui/issues/97)) ([995f24f](https://bitbucket.org/newcrossdev/newcross-ui/commits/995f24f41dfd337089a77bfef68929c555117307))
+
+
+
+
+
 ## [1.48.22](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.48.21...@newcross-ui/react-native@1.48.22) (2024-08-01)
 
 **Note:** Version bump only for package @newcross-ui/react-native
