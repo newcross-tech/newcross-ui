@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.5.2...@newcross-ui/react@2.5.3) (2024-08-19)
+
+
+### Bug Fixes
+
+* **OAE-1931:** add id prop to radio component ([#102](https://bitbucket.org/newcrossdev/newcross-ui/issues/102)) ([d11fcb7](https://bitbucket.org/newcrossdev/newcross-ui/commits/d11fcb735c8771e1247301c53d60a25ae470b4db))
+
+
+
+
+
 ## [2.5.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.5.1...@newcross-ui/react@2.5.2) (2024-08-14)
 
 
