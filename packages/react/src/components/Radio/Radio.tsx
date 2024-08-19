@@ -34,6 +34,10 @@ export type RadioProps = {
    * Used to define background and border variant
    */
   variant?: RadioVariant;
+  /**
+   * Adds id to the radio component input
+   */
+  id?: string;
 } & TestProp;
 
 const baseTestId = 'radio';
@@ -47,13 +51,16 @@ const Radio = ({
   testID = '',
   name,
   variant = 'primary',
+  ...rest
 }: RadioProps) => {
   const onChangeHandler = () => {
     if (disabled) return;
     onChange?.(value);
   };
 
-  const id = `${baseTestId}-input-${value}`;
+  const id = rest.id
+    ? `${baseTestId}-input-${value}-${rest.id}`
+    : `${baseTestId}-input-${value}`;
 
   return (
     <Styled.Radio
