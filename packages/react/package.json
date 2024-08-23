@@ -30,8 +30,8 @@
   },
   "peerDependencies": {
     "@types/styled-components": ">=5.0.0",
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0",
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0",
     "styled-components": ">=5.0.0"
   },
   "dependencies": {
@@ -39,5 +39,8 @@
     "@react-spring/web": "^9.5.5",
     "react-data-table-component": "^7.6.2",
     "react-select": "^5.7.7"
+  },
+  "devDependencies": {
+    "@types/react": ">=18.0.2"
   }
 }
