@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.5.3...@newcross-ui/react@2.5.4) (2024-08-28)
+
+
+### Bug Fixes
+
+* **CAPP-1409:** fix logic for calculating the page when the number of rows are changes in the Table ([#104](https://bitbucket.org/newcrossdev/newcross-ui/issues/104)) ([a5fd782](https://bitbucket.org/newcrossdev/newcross-ui/commits/a5fd782cdc644e2ee7f2fa91537a032f0b355d28))
+
+
+
+
+
 ## [2.5.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.5.2...@newcross-ui/react@2.5.3) (2024-08-19)
 
 
