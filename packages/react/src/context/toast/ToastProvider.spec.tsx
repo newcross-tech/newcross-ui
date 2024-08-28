@@ -1,3 +1,4 @@
+import { PropsWithChildren } from 'react';
 import { fireEvent, renderHook } from '@testing-library/react';
 import { byTestId } from 'testing-library-selector';
 import { useToast } from '../../hooks/useToast';
@@ -12,7 +13,7 @@ describe('useToast', () => {
   jest.useRealTimers();
 
   it('creates a toast using useToast ', async () => {
-    const wrapper: React.FC = ({ children }) => (
+    const wrapper = ({ children }: PropsWithChildren) => (
       <ToastProvider>{children}</ToastProvider>
     );
     const { result } = renderHook(() => useToast(), { wrapper });
@@ -32,7 +33,7 @@ describe('useToast', () => {
   });
 
   it('wont create a toast if there is no provider ', () => {
-    const wrapper: React.FC = ({ children }) => <div>{children}</div>;
+    const wrapper = ({ children }: PropsWithChildren) => <div>{children}</div>;
     const { result } = renderHook(() => useToast(), { wrapper });
 
     // Act

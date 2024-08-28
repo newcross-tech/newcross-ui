@@ -37,7 +37,7 @@ type PaginationProps = {
   /**
    * Data for which the pagination uses to calculate the number of dots
    */
-  data: Array<ReactNode>;
+  data: Array<CarouselItem>;
   /**
    * Active Pagination index
    */

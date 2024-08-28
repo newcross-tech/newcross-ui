@@ -4,7 +4,7 @@ import React, {
   ReactElement,
   useCallback,
 } from 'react';
-import { View, ViewStyle } from 'react-native';
+import { GestureResponderEvent, View, ViewStyle } from 'react-native';
 import { ToggleButtonProps } from '../ToggleButton';
 import toggleButtonGroupStyle from './ToggleButtonGroup.style';
 import { ToggleButtonGroupOrientation } from './ToggleButtonGroup.types';
@@ -96,7 +96,7 @@ const ToggleButtonGroup = ({
       : selectedValue === value;
 
   const handleOnPress = useCallback(
-    (_, value: string) => {
+    (event: GestureResponderEvent, value: string) => {
       onSingleSelect && onSingleSelect(value);
 
       onMultiSelect &&

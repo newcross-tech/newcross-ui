@@ -13,8 +13,8 @@ If that is not the case, we strongly recommend that you follow the [getting star
 - `node>=16`
 - `yarn`
 - a working project with:
-  - `react` >=16.8.0
-  - `react-native` >=0.63.0
+  - `react` >=18.2.0
+  - `react-native` >=0.68.2
 
 ## Installation
 

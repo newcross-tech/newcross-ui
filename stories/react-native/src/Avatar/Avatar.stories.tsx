@@ -9,6 +9,8 @@ import {
   BadgeSizes,
   BadgePositions,
 } from '@newcross-ui/react-native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faStar } from '@fortawesome/pro-regular-svg-icons/faStar';
 import Container from '../Container';
 import Spacing, { SpacingPositions } from '../Spacing';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
@@ -90,7 +92,7 @@ export const VariantWithIcon = () => {
         Active Variant
       </Typography>
       <BottomSpacing />
-      <Avatar />
+      <Avatar icon={<FontAwesomeIcon icon={faStar} />} />
       <BottomSpacing />
       <Typography variant={TypographyVariant.heading4}>
         Inactive Variant
