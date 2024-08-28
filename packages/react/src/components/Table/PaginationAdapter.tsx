@@ -17,7 +17,8 @@ const PaginationAdapter = ({
   const handleChangeRowsPerPage = useCallback(
     (newValue) => {
       const newRowsPerPage = newValue?.value ?? rowCount;
-      const newPage = Math.ceil((currentPage * rowsPerPage) / newRowsPerPage);
+      const newPageCount = Math.min(currentPage * rowsPerPage, rowCount);
+      const newPage = Math.ceil(newPageCount / newRowsPerPage);
 
       // NOTE: this one updates the rows per page, but not the page number
       onChangeRowsPerPage(newRowsPerPage, newPage);
