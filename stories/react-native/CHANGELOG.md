@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.45.0](https://github.com/newcross-tech/newcross-ui/compare/@newcross-stories/react-native@1.44.23...@newcross-stories/react-native@1.45.0) (2024-09-04)
+
+
+### Features
+
+* **OAE-1942:** construct Radio component id using useId ([#103](https://github.com/newcross-tech/newcross-ui/issues/103)) ([512128c](https://github.com/newcross-tech/newcross-ui/commit/512128ce42bd002bccfabddd94c862bc319214a1))
+
+
+
+
+
 ## [1.44.23](https://github.com/newcross-tech/newcross-ui/compare/@newcross-stories/react-native@1.44.22...@newcross-stories/react-native@1.44.23) (2024-08-15)
 
 **Note:** Version bump only for package @newcross-stories/react-native

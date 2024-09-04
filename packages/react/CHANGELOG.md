@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.5.4...@newcross-ui/react@2.6.0) (2024-09-04)
+
+
+### Features
+
+* **OAE-1942:** construct Radio component id using useId ([#103](https://bitbucket.org/newcrossdev/newcross-ui/issues/103)) ([512128c](https://bitbucket.org/newcrossdev/newcross-ui/commits/512128ce42bd002bccfabddd94c862bc319214a1))
+
+
+
+
+
 ## [2.5.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.5.3...@newcross-ui/react@2.5.4) (2024-08-28)
 
 
