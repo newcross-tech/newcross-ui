@@ -3,7 +3,6 @@ import { View, ImageSourcePropType, ViewStyle, TextStyle } from 'react-native';
 import avatarStyles from './Avatar.style';
 import AvatarContent from './AvatarContent';
 import { AvatarSizes } from './Avatar.types';
-import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 
 export type AvatarProps = {
   /**
@@ -29,7 +28,7 @@ export type AvatarProps = {
   /**
    * Accepts a icon to be used for the avatar.
    */
-  icon?: IconDefinition;
+  icon?: JSX.Element;
   /**
    * Accepts a style to be used for the avatar's content.
    */

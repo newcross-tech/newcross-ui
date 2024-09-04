@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useId } from 'react';
 import { TestProp } from '../../types';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import * as Styled from './Radio.style';
@@ -34,10 +34,6 @@ export type RadioProps = {
    * Used to define background and border variant
    */
   variant?: RadioVariant;
-  /**
-   * Adds id to the radio component input
-   */
-  id?: string;
 } & TestProp;
 
 const baseTestId = 'radio';
@@ -51,16 +47,13 @@ const Radio = ({
   testID = '',
   name,
   variant = 'primary',
-  ...rest
 }: RadioProps) => {
   const onChangeHandler = () => {
     if (disabled) return;
     onChange?.(value);
   };
 
-  const id = rest.id
-    ? `${baseTestId}-input-${value}-${rest.id}`
-    : `${baseTestId}-input-${value}`;
+  const id = `${baseTestId}-input-${value}-${useId()}`;
 
   return (
     <Styled.Radio
