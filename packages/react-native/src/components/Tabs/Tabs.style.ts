@@ -32,6 +32,10 @@ const tabsStyle = (theme: ThemeDesignTokens) => {
       justifyContent: 'center',
       alignItems: 'center',
     },
+    badge: {
+      alignSelf: 'baseline',
+      marginLeft: theme.SpacingBase8,
+    },
     activeTab: {
       position: 'absolute',
       backgroundColor: theme.TabsActiveTabBackgroundColor,

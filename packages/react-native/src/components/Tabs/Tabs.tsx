@@ -9,6 +9,8 @@ import Animated, {
 import { DEFAULT_SPRING_CONFIG } from './Tabs.constants';
 import tabsStyle from './Tabs.style';
 import useTheme from '../../hooks/useTheme';
+import Badge from '../Badge';
+import { BadgeSizes } from '../Badge';
 
 export type TabsProps = {
   /**
@@ -32,6 +34,12 @@ export type TabsProps = {
    * Overwrites or extends the styles applied to the component.
    */
   style?: ViewStyle | TextStyle;
+
+  /**
+   * Object containing the count of badges for each tab.
+   * The key should be the value of the index of the tab and the value should be the count of the badge.
+   */
+  badgeCountObject?: Record<string, number>;
 };
 
 const Tabs = ({
@@ -40,6 +48,7 @@ const Tabs = ({
   onCurrentIndexChange,
   disabled = false,
   style,
+  badgeCountObject,
   ...rest
 }: TabsProps) => {
   const theme = useTheme();
@@ -100,6 +109,8 @@ const Tabs = ({
         {tabs.map((tab, index) => {
           const isString = typeof tab === 'string';
           const isSelectedTab = currentIndex === index;
+          const badgeCount =
+            isString && badgeCountObject ? badgeCountObject[tab] : undefined;
           return (
             <Fragment key={index}>
               <Pressable
@@ -122,6 +133,14 @@ const Tabs = ({
                     numberOfLines={1}
                   >
                     {tab}
+                    {badgeCount && (
+                      <Badge
+                        testID={`tab-badge-${index}`}
+                        badgeContent={badgeCount}
+                        size={BadgeSizes.medium}
+                        style={styles.badge}
+                      />
+                    )}
                   </Typography>
                 ) : (
                   <View
