@@ -19,6 +19,7 @@ const tabsStyle = (theme: ThemeDesignTokens) => {
       textAlign: 'center',
       width: '90%',
       elevation: theme.TabsActiveTabShadowElevation,
+      flexDirection: 'row',
     },
     iconStyles: {
       justifyContent: 'center',
@@ -33,7 +34,6 @@ const tabsStyle = (theme: ThemeDesignTokens) => {
       alignItems: 'center',
     },
     badge: {
-      alignSelf: 'baseline',
       marginLeft: theme.SpacingBase8,
     },
     activeTab: {

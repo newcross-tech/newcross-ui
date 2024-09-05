@@ -39,6 +39,10 @@ export type TabsProps = {
    * The key should be the value of the index of the tab and the value should be the count of the badge.
    */
   badgeCountObject?: Record<string, number>;
+  /**
+   * Badge styles
+   * */
+  badgeStyle?: ViewStyle;
 };
 
 const Tabs = ({
@@ -48,6 +52,7 @@ const Tabs = ({
   disabled = false,
   style,
   badgeCountObject,
+  badgeStyle,
   ...rest
 }: TabsProps) => {
   const theme = useTheme();
@@ -137,7 +142,10 @@ const Tabs = ({
                         testID={`tab-badge-${index}`}
                         badgeContent={badgeCount}
                         size={BadgeSizes.medium}
-                        style={styles.badge}
+                        style={{
+                          ...styles.badge,
+                          ...badgeStyle,
+                        }}
                       />
                     )}
                   </Typography>
