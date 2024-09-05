@@ -9,8 +9,7 @@ import Animated, {
 import { DEFAULT_SPRING_CONFIG } from './Tabs.constants';
 import tabsStyle from './Tabs.style';
 import useTheme from '../../hooks/useTheme';
-import Badge from '../Badge';
-import { BadgeSizes } from '../Badge';
+import Badge, { BadgeSizes } from '../Badge';
 
 export type TabsProps = {
   /**
