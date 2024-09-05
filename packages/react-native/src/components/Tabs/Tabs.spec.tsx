@@ -92,4 +92,25 @@ describe('Tabs Component', () => {
       nativeEvent: { layout: { width: widthOfContainer } },
     });
   });
+  it('renders successfully', () => {
+    // Arrange
+    const tabs = ['Label A', 'Label B'];
+    const props: TabsProps = {
+      tabs,
+      currentIndex: 0,
+      onCurrentIndexChange: jest.fn(),
+      badgeCountObject: {
+        [tabs[0]]: 1,
+        [tabs[1]]: 2,
+      },
+    };
+    // Act
+    const { getByText, getByTestId } = render(<Tabs {...props} />);
+
+    // Assert
+    expect(getByText(/label a/i)).toBeTruthy();
+    expect(getByText(/label b/i)).toBeTruthy();
+    expect(getByTestId('tab-badge-0')).toBeTruthy();
+    expect(getByTestId('tab-badge-1')).toBeTruthy();
+  });
 });
