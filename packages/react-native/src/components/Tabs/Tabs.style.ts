@@ -20,6 +20,7 @@ const tabsStyle = (theme: ThemeDesignTokens) => {
       width: '90%',
       elevation: theme.TabsActiveTabShadowElevation,
       flexDirection: 'row',
+      alignItems: 'baseline',
     },
     iconStyles: {
       justifyContent: 'center',
