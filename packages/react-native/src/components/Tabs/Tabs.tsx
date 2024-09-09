@@ -1,10 +1,10 @@
-import React, { useLayoutEffect, useState, Fragment, ReactNode } from 'react';
-import { View, Pressable, ViewStyle, TextStyle } from 'react-native';
+import React, { Fragment, ReactNode, useLayoutEffect, useState } from 'react';
+import { Pressable, TextStyle, View, ViewStyle } from 'react-native';
 import Typography, { TypographyVariant } from '../Typography';
 import Animated, {
-  withSpring,
-  useSharedValue,
   useAnimatedStyle,
+  useSharedValue,
+  withSpring,
 } from 'react-native-reanimated';
 import { DEFAULT_SPRING_CONFIG } from './Tabs.constants';
 import tabsStyle from './Tabs.style';
@@ -123,32 +123,38 @@ const Tabs = ({
                 style={[styles.tab]}
               >
                 {isString ? (
-                  <Typography
-                    variant={
-                      isSelectedTab
-                        ? TypographyVariant.heading3
-                        : TypographyVariant.paragraph1
-                    }
-                    style={[
-                      styles.label,
-                      style,
-                      disabled && styles.labelDisabled,
-                    ]}
-                    numberOfLines={1}
-                  >
-                    {tab}
-                    {badgeCount && (
-                      <Badge
-                        testID={`tab-badge-${index}`}
-                        badgeContent={badgeCount}
-                        size={BadgeSizes.medium}
-                        style={{
-                          ...styles.badge,
-                          ...badgeStyle,
-                        }}
-                      />
-                    )}
-                  </Typography>
+                  <View style={styles.labelWithBadgeContainer}>
+                    <Typography
+                      variant={
+                        isSelectedTab
+                          ? TypographyVariant.heading3
+                          : TypographyVariant.paragraph1
+                      }
+                      style={[
+                        styles.label,
+                        style,
+                        disabled && styles.labelDisabled,
+                      ]}
+                      numberOfLines={1}
+                    >
+                      {tab}
+                    </Typography>
+                    <Typography
+                      variant={TypographyVariant.paragraph1}
+                      style={{
+                        ...styles.badge,
+                        ...badgeStyle,
+                      }}
+                    >
+                      {badgeCount && (
+                        <Badge
+                          testID={`tab-badge-${index}`}
+                          badgeContent={badgeCount}
+                          size={BadgeSizes.medium}
+                        />
+                      )}
+                    </Typography>
+                  </View>
                 ) : (
                   <View
                     testID={`tab-view-${index}`}
