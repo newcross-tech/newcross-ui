@@ -14,10 +14,14 @@ const tabsStyle = (theme: ThemeDesignTokens) => {
       flexDirection: 'row',
       alignItems: 'center',
     },
+    labelWithBadgeContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
     label: {
       color: theme.TabsLabelColor,
       textAlign: 'center',
-      width: '90%',
       elevation: theme.TabsActiveTabShadowElevation,
     },
     iconStyles: {
@@ -31,6 +35,9 @@ const tabsStyle = (theme: ThemeDesignTokens) => {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
+    },
+    badge: {
+      marginLeft: theme.SpacingBase8,
     },
     activeTab: {
       position: 'absolute',

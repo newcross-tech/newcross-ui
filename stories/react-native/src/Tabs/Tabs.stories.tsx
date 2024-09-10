@@ -119,6 +119,26 @@ export const VariantThatIsDisabled = () => {
   );
 };
 
+export const VariantWithBadges = () => {
+  const [currentIndex, setCurrentIndex] = useState('currentIndex', 0);
+  const tabs = ['Label A', 'Label B'];
+  const badgeCountObject = {
+    [tabs[0]]: 1,
+    [tabs[1]]: 2,
+  };
+  return (
+    <Container>
+      <Tabs
+        tabs={tabs}
+        currentIndex={currentIndex}
+        onCurrentIndexChange={setCurrentIndex}
+        badgeCountObject={badgeCountObject}
+      />
+      <Spacing />
+    </Container>
+  );
+};
+
 export const VariantWithMoreThanTwoLabels = () => {
   const [currentIndex, setCurrentIndex] = useState('currentIndex', 0);
   const tabs = ['Label A', 'Label B', 'Label C', 'Label D'];

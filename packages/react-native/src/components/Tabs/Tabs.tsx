@@ -1,14 +1,15 @@
-import React, { useLayoutEffect, useState, Fragment, ReactNode } from 'react';
-import { View, Pressable, ViewStyle, TextStyle } from 'react-native';
+import React, { Fragment, ReactNode, useLayoutEffect, useState } from 'react';
+import { Pressable, TextStyle, View, ViewStyle } from 'react-native';
 import Typography, { TypographyVariant } from '../Typography';
 import Animated, {
-  withSpring,
-  useSharedValue,
   useAnimatedStyle,
+  useSharedValue,
+  withSpring,
 } from 'react-native-reanimated';
 import { DEFAULT_SPRING_CONFIG } from './Tabs.constants';
 import tabsStyle from './Tabs.style';
 import useTheme from '../../hooks/useTheme';
+import Badge, { BadgeSizes } from '../Badge';
 
 export type TabsProps = {
   /**
@@ -32,6 +33,16 @@ export type TabsProps = {
    * Overwrites or extends the styles applied to the component.
    */
   style?: ViewStyle | TextStyle;
+
+  /**
+   * Object containing the count of badges for each tab.
+   * The key should be the value of the index of the tab and the value should be the count of the badge.
+   */
+  badgeCountObject?: Record<string, string> | null;
+  /**
+   * Badge styles
+   * */
+  badgeStyle?: ViewStyle;
 };
 
 const Tabs = ({
@@ -40,6 +51,8 @@ const Tabs = ({
   onCurrentIndexChange,
   disabled = false,
   style,
+  badgeCountObject,
+  badgeStyle,
   ...rest
 }: TabsProps) => {
   const theme = useTheme();
@@ -100,6 +113,8 @@ const Tabs = ({
         {tabs.map((tab, index) => {
           const isString = typeof tab === 'string';
           const isSelectedTab = currentIndex === index;
+          const badgeCount =
+            isString && badgeCountObject ? badgeCountObject[tab] : undefined;
           return (
             <Fragment key={index}>
               <Pressable
@@ -108,21 +123,37 @@ const Tabs = ({
                 style={[styles.tab]}
               >
                 {isString ? (
-                  <Typography
-                    variant={
-                      isSelectedTab
-                        ? TypographyVariant.heading3
-                        : TypographyVariant.paragraph1
-                    }
-                    style={[
-                      styles.label,
-                      style,
-                      disabled && styles.labelDisabled,
-                    ]}
-                    numberOfLines={1}
-                  >
-                    {tab}
-                  </Typography>
+                  <View style={styles.labelWithBadgeContainer}>
+                    <Typography
+                      variant={
+                        isSelectedTab
+                          ? TypographyVariant.heading3
+                          : TypographyVariant.paragraph1
+                      }
+                      style={[
+                        styles.label,
+                        style,
+                        disabled && styles.labelDisabled,
+                      ]}
+                      numberOfLines={1}
+                    >
+                      {tab}
+                    </Typography>
+                    <View
+                      style={{
+                        ...styles.badge,
+                        ...badgeStyle,
+                      }}
+                    >
+                      {!!badgeCount && (
+                        <Badge
+                          testID={`tab-badge-${index}`}
+                          badgeContent={badgeCount}
+                          size={BadgeSizes.medium}
+                        />
+                      )}
+                    </View>
+                  </View>
                 ) : (
                   <View
                     testID={`tab-view-${index}`}
