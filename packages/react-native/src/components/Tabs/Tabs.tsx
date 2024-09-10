@@ -139,8 +139,7 @@ const Tabs = ({
                     >
                       {tab}
                     </Typography>
-                    <Typography
-                      variant={TypographyVariant.paragraph1}
+                    <View
                       style={{
                         ...styles.badge,
                         ...badgeStyle,
@@ -153,7 +152,7 @@ const Tabs = ({
                           size={BadgeSizes.medium}
                         />
                       )}
-                    </Typography>
+                    </View>
                   </View>
                 ) : (
                   <View
