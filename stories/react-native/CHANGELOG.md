@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.46.0](https://github.com/newcross-tech/newcross-ui/compare/@newcross-stories/react-native@1.45.0...@newcross-stories/react-native@1.46.0) (2024-09-10)
+
+
+### Features
+
+* **HFGO-2993:** adds Badges to tabs content ([#105](https://github.com/newcross-tech/newcross-ui/issues/105)) ([ba5b791](https://github.com/newcross-tech/newcross-ui/commit/ba5b791d5afc04cfb892ed4930d28fd58292a79e))
+
+
+
+
+
 # [1.45.0](https://github.com/newcross-tech/newcross-ui/compare/@newcross-stories/react-native@1.44.23...@newcross-stories/react-native@1.45.0) (2024-09-04)
 
 
