@@ -38,7 +38,7 @@ export type TabsProps = {
    * Object containing the count of badges for each tab.
    * The key should be the value of the index of the tab and the value should be the count of the badge.
    */
-  badgeCountObject?: Record<string, number>;
+  badgeCountObject?: Record<string, string> | null;
   /**
    * Badge styles
    * */
@@ -145,7 +145,7 @@ const Tabs = ({
                         ...badgeStyle,
                       }}
                     >
-                      {badgeCount && (
+                      {!!badgeCount && (
                         <Badge
                           testID={`tab-badge-${index}`}
                           badgeContent={badgeCount}
