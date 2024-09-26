@@ -20,6 +20,10 @@ export type ToastProps = {
    */
   message: ReactNode | string;
   /**
+   * Pass the width of the toast
+   */
+  width?: string;
+  /**
    * set how long the toast should appear for in ms
    */
   duration?: number;
@@ -41,6 +45,7 @@ const Toast = ({
   variant,
   onClose,
   message,
+  width,
   customStatusIcon,
   autoHide = true,
   hasBorder = false,
@@ -62,6 +67,7 @@ const Toast = ({
             <Styled.AnimatedContainer
               data-testid={`${testID}-component`}
               style={style}
+              width={width}
             >
               <Alert
                 icon={customStatusIcon}

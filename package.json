@@ -13,6 +13,7 @@
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-conventional": "^16.2.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@fortawesome/pro-duotone-svg-icons": "^6.6.0",
     "@react-native-async-storage/async-storage": "~1.17.3",
     "@react-native-community/datetimepicker": "6.2.0",
     "@react-native-community/slider": "^4.4.2",
