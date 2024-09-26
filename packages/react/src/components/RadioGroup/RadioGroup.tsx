@@ -1,11 +1,11 @@
 import { Children, cloneElement, ReactElement, useState } from 'react';
-import { useToggle } from '../../hooks/useToggle';
 import { TestProp } from '../../types';
-import { RadioProps } from '../Radio/Radio';
-import { RadioVariant } from '../Radio/Radio.types';
+import { RadioProps } from '../Radio';
+import { RadioValue, RadioVariant } from '../Radio/Radio.types';
 import { Container, RadioItem } from './RadioGroup.style';
+import { useUpstreamState } from '../../hooks/useUpstreamState';
 
-export type RadioGroupProps = {
+export type RadioGroupProps<T extends RadioValue> = {
   /**
    * Used to display the group in either a row or a column.
    */
@@ -13,15 +13,15 @@ export type RadioGroupProps = {
   /**
    * The content of the component,
    */
-  children: Array<ReactElement<RadioProps>>;
+  children: Array<ReactElement<RadioProps<T>>>;
   /**
    * Callback fired when the state is changed.
    */
-  onChange?: (value: string) => void;
+  onChange?: (value: T) => void;
   /**
    * selects a radio by default
    */
-  defaultSelected?: string;
+  defaultSelected?: T;
   /**
    * disables all radio buttons
    */
@@ -32,22 +32,20 @@ export type RadioGroupProps = {
   variant?: RadioVariant;
 } & TestProp;
 
-const RadioGroup = ({
+function RadioGroup<T extends RadioValue>({
   direction = 'row',
   children,
   onChange,
   disabled = false,
-  defaultSelected = '',
+  defaultSelected,
   variant = 'primary',
   ...rest
-}: RadioGroupProps) => {
-  const [selectedOption, setSelectedOption] = useState(defaultSelected);
+}: RadioGroupProps<T>) {
+  const [selectedOption, setSelectedOption] = useUpstreamState(defaultSelected);
 
-  useToggle(defaultSelected, () => setSelectedOption(defaultSelected));
-
-  const handleOnChange = (value: string) => {
+  const handleOnChange = (value: T) => {
     setSelectedOption(value);
-    onChange && onChange(value);
+    onChange?.(value);
   };
 
   return (
@@ -64,7 +62,7 @@ const RadioGroup = ({
           <RadioItem direction={direction} variant={variant}>
             {cloneElement(child, {
               key: value,
-              onChange: () => value && handleOnChange(value as string),
+              onChange: () => value && handleOnChange(value),
               selected: value === selectedOption,
               disabled,
               variant,
@@ -74,6 +72,6 @@ const RadioGroup = ({
       })}
     </Container>
   );
-};
+}
 
 export default RadioGroup;
