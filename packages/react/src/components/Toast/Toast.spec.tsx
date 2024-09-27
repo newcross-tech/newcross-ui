@@ -1,3 +1,4 @@
+import React from 'react';
 import Toast, { ToastProps } from './Toast';
 import { byTestId } from 'testing-library-selector';
 import { render, fireEvent, waitFor } from '@testing-library/react';

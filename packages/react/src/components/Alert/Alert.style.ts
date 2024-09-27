@@ -7,6 +7,8 @@ import { getTabbedStateStyles } from '../../utils';
 import Typography from '../Typography';
 import { AlertProps } from './Alert';
 import { faCheck } from '@fortawesome/pro-regular-svg-icons/faCheck';
+import { faEnvelope } from '@fortawesome/pro-duotone-svg-icons/faEnvelope';
+
 import { faCircleExclamation } from '@fortawesome/pro-regular-svg-icons/faCircleExclamation';
 import { faCircleInfo } from '@fortawesome/pro-regular-svg-icons/faCircleInfo';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
@@ -16,20 +18,23 @@ export const getTitle = (): Record<AlertVariant, string> => ({
   warning: 'Warning',
   error: 'Error',
   info: 'Info',
+  notification: 'Notification',
 });
-
 export const getIcon = (): Record<AlertVariant, IconDefinition> => ({
   success: faCheck,
   warning: faCircleExclamation,
   error: faCircleExclamation,
   info: faCircleInfo,
+  // TODO: There is missmatch between @fortawesome/pro-regular-svg-icons and @fortawesome/pro-duotone-svg-icons
+  notification: faEnvelope as IconDefinition,
 });
 
-export const getAccentColor = (theme: ThemeDesignTokens): Record<AlertVariant, string> => ({
-  success: theme.AlertColorSuccessPrimary,
-  warning: theme.AlertColorWarningPrimary,
-  error: theme.AlertColorErrorPrimary,
-  info: theme.AlertColorInfoPrimary,
+export const getAccentColor = (theme: ThemeDesignTokens): Record<AlertVariant, { border: string; icon: string }> => ({
+  success: { icon: theme.AlertColorSuccessPrimary, border: theme.AlertColorSuccessPrimary },
+  warning: { icon: theme.AlertColorWarningPrimary, border: theme.AlertColorWarningPrimary },
+  error: { icon: theme.AlertColorErrorPrimary, border: theme.AlertColorErrorPrimary },
+  info: { icon: theme.AlertColorInfoPrimary, border: theme.AlertColorInfoPrimary },
+  notification: { icon: theme.BrandColorSecondary100, border: theme.ColorBaseBlue600 },
 });
 
 const getBackgroundColor = (theme: ThemeDesignTokens): Record<AlertVariant, FlattenSimpleInterpolation> => ({
@@ -45,6 +50,9 @@ const getBackgroundColor = (theme: ThemeDesignTokens): Record<AlertVariant, Flat
   info: css`
     background-color: ${theme.AlertColorInfoSecondary};
   `,
+  notification: css`
+    background-color: ${theme.ColorNeutralWhite};
+  `,
 });
 
 export const Alert = styled.div<AlertProps>`
@@ -54,18 +62,18 @@ export const Alert = styled.div<AlertProps>`
     gap: ${theme.SpacingBase12};
     padding: ${theme.SpacingBase16};
     border-radius: ${theme.AlertBorderRadius};
-    ${variant && getBackgroundColor(theme)[variant as AlertVariant]};
+    ${variant && getBackgroundColor(theme)[variant]};
 
     ${hasBorder &&
     css`
-      border: ${theme.AlertBorderWidth} solid ${getAccentColor(theme)[variant as AlertVariant]};
+      border: ${theme.AlertBorderWidth} solid ${getAccentColor(theme)[variant as AlertVariant].border};
     `}
   `};
 `;
 
 export const Text = styled(Typography)`
   ${({ theme }: Theme) => css`
-    color: ${theme.ColorBaseBlack100};
+    color: ${theme.TypographyColorPrimary};
   `};
 `;
 
@@ -87,7 +95,6 @@ export const IconStyle = styled.div<IconProps>`
   height: fit-content;
   ${({ theme, position, variant }: ExtendedTheme<IconProps>) => css`
     ${getTabbedStateStyles()};
-
     > ${Icon} {
       ${position === 'right' &&
       css`
@@ -101,7 +108,7 @@ export const IconStyle = styled.div<IconProps>`
       css`
         height: ${theme.AlertIconSizeLeft};
         width: ${theme.AlertIconSizeLeft};
-        color: ${getAccentColor(theme)[variant as AlertVariant]};
+        color: ${getAccentColor(theme)[variant as AlertVariant].icon};
       `}
     }
   `}

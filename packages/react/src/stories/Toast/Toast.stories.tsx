@@ -21,7 +21,13 @@ const StyledContainer = styled(Container)`
 `;
 let i = 0;
 export const Variants = () => {
-  const variants: AlertVariant[] = ['success', 'warning', 'info', 'error'];
+  const variants: AlertVariant[] = [
+    'success',
+    'warning',
+    'info',
+    'error',
+    'notification',
+  ];
 
   const { enqueueToast } = useToast();
   const triggerFunc = (autoHide = true) => {
