@@ -3,6 +3,7 @@ import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ExtendedTheme, Theme } from '../../types';
 import Typography, { TypographyVariant } from '../Typography';
 import { BadgeContentProps, BadgePositions, BadgeSizes } from './Badge.types';
+import { BadgeProps } from './Badge';
 
 export const getHeightWidthValues = (theme: ThemeDesignTokens): Record<BadgeSizes, FlattenSimpleInterpolation> => ({
   large: css`
@@ -126,4 +127,72 @@ export const Text = styled(Typography)`
   ${({ theme }: Theme) => css`
     color: ${theme.BadgeColor};
   `}
+`;
+
+//cutout styles
+const getMaskPosition = (position: string) => {
+  switch (position) {
+    case 'topRight':
+      return 'top 4px right 4px';
+    case 'topLeft':
+      return 'top 4px left 4px';
+    case 'bottomRight':
+      return 'bottom 4px right 4px';
+    case 'bottomLeft':
+      return 'bottom 4px left 4px';
+    default:
+      return '';
+  }
+};
+
+const getMaskBeforePosition = (position: string) => {
+  switch (position) {
+    case 'topRight':
+      return 'top 9.5px right 9.5px';
+    case 'topLeft':
+      return 'top 9.5px left 9.5px';
+    case 'bottomRight':
+      return 'bottom 9.5px right 9.5px';
+    case 'bottomLeft':
+      return 'bottom 9.5px left 9.5px';
+    default:
+      return '';
+  }
+};
+
+const getMaskSize = (size: string) => {
+  switch (size) {
+    case 'small':
+      return '6.5px';
+    case 'medium':
+      return '11px';
+    case 'large':
+      return '15px';
+    default:
+      return '0';
+  }
+};
+
+const getCutoutStyles = ({ size, position }: Partial<BadgeProps>) => {
+  if (position && size) {
+    const maskPosition = getMaskPosition(position);
+    const maskBeforePosition = getMaskBeforePosition(position);
+    const maskSize = getMaskSize(size);
+
+    return css`
+      > svg {
+        mask-image: radial-gradient(circle at ${maskPosition}, transparent ${maskSize}, black 0);
+      }
+      > div > div {
+        mask-image: radial-gradient(circle at ${maskPosition}, transparent ${maskSize}, black 0);
+      }
+      > div::before {
+        mask-image: radial-gradient(circle at ${maskBeforePosition}, transparent ${maskSize}, black 0);
+      }
+    `;
+  }
+};
+
+export const Cutout = styled.div`
+  ${({ size, position, hasCutout }: Partial<BadgeProps>) => hasCutout && getCutoutStyles({ size, position })}
 `;

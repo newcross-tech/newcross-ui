@@ -59,6 +59,19 @@ export const VariantsWithIcons = () => {
       <Container mx="SpacingBase8" />
       <Badge size={'large'} badgeContent={'!'} position={'bottomRight'}>
         <Icon icon={faTrainSubway} $size={SpacingBase48} />
+      </Badge>{' '}
+      <Container mx="SpacingBase32" />
+      <Badge size={'medium'} badgeContent={9} position={'topLeft'} hasCutout>
+        <Icon icon={faUser} $size={SpacingBase24} />
+      </Badge>
+      <Container mx="SpacingBase8" />
+      <Badge
+        size={'large'}
+        badgeContent={'C'}
+        position={'bottomRight'}
+        hasCutout
+      >
+        <Icon icon={faTrainSubway} $size={SpacingBase48} />
       </Badge>
     </Container>
   );

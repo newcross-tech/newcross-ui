@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Avatar, { AvatarProps } from '../../components/Avatar';
-import Badge from '../../components/Badge';
+import Badge, { BadgeSizes } from '../../components/Badge';
 import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './AvatarInfo';
@@ -11,6 +11,10 @@ export default {
   title: 'React/Components/Avatar',
   component: Avatar,
 } as Meta;
+
+interface VariantsComponentProps extends AvatarProps {
+  badgeSize: BadgeSizes;
+}
 
 const BottomSpacing = () => <Container mb="SpacingBase12" />;
 
@@ -32,19 +36,19 @@ export const Overview = () => {
         <HorizontalSpacing />
         <Avatar />
         <HorizontalSpacing />
-
         <Avatar name="John Doe" />
       </Container>
     </InfoTemplate>
   );
 };
+
 const variantProps: Array<AvatarProps> = [
   { source: person },
   {},
   { name: 'John Doe' },
 ];
 
-const VariantsComponent = (props: AvatarProps) => {
+const VariantsComponent = ({ badgeSize, ...props }: VariantsComponentProps) => {
   return (
     <>
       <BottomSpacing />
@@ -55,7 +59,7 @@ const VariantsComponent = (props: AvatarProps) => {
             <HorizontalSpacing />
           </>
         ))}
-        <Badge size="medium" position="topRight">
+        <Badge size={badgeSize} position="topRight" hasCutout>
           <Avatar {...props} />
         </Badge>
         <HorizontalSpacing />
@@ -69,19 +73,24 @@ export const Variants = () => {
   return (
     <Container flexDirection="column">
       <StoryTitle.Regular>Default</StoryTitle.Regular>
-      <VariantsComponent clickable />
+      <VariantsComponent clickable badgeSize="small" />
       <BottomSpacing />
 
       <StoryTitle.Regular>Selected</StoryTitle.Regular>
-      <VariantsComponent selected clickable />
+      <VariantsComponent selected clickable badgeSize="medium" />
       <BottomSpacing />
 
       <StoryTitle.Regular>Disabled with Hover</StoryTitle.Regular>
-      <VariantsComponent inactive allowHoverOnDisabled clickable />
+      <VariantsComponent
+        inactive
+        allowHoverOnDisabled
+        clickable
+        badgeSize="large"
+      />
       <BottomSpacing />
 
       <StoryTitle.Regular>Disabled without Hover</StoryTitle.Regular>
-      <VariantsComponent inactive />
+      <VariantsComponent inactive badgeSize="medium" />
       <BottomSpacing />
     </Container>
   );
@@ -91,15 +100,15 @@ export const Sizes = () => {
   return (
     <Container flexDirection="column">
       <StoryTitle.Regular>Small (40px)</StoryTitle.Regular>
-      <VariantsComponent size={40} />
+      <VariantsComponent size={40} badgeSize="small" />
       <BottomSpacing />
 
       <StoryTitle.Regular>Medium (60px)</StoryTitle.Regular>
-      <VariantsComponent size={60} />
+      <VariantsComponent size={60} badgeSize="medium" />
       <BottomSpacing />
 
       <StoryTitle.Regular>Large (80px)</StoryTitle.Regular>
-      <VariantsComponent size={80} />
+      <VariantsComponent size={80} badgeSize="large" />
       <BottomSpacing />
     </Container>
   );
