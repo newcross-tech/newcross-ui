@@ -130,7 +130,7 @@ export const Text = styled(Typography)`
 `;
 
 //cutout styles
-const getMaskPosition = (position: string) => {
+const getMaskPosition = (position: BadgePositions) => {
   switch (position) {
     case 'topRight':
       return 'top 4px right 4px';
@@ -145,7 +145,7 @@ const getMaskPosition = (position: string) => {
   }
 };
 
-const getMaskBeforePosition = (position: string) => {
+const getMaskBeforePosition = (position: BadgePositions) => {
   switch (position) {
     case 'topRight':
       return 'top 9.5px right 9.5px';
@@ -160,7 +160,7 @@ const getMaskBeforePosition = (position: string) => {
   }
 };
 
-const getMaskSize = (size: string) => {
+const getMaskSize = (size: BadgeSizes) => {
   switch (size) {
     case 'small':
       return '6.5px';
