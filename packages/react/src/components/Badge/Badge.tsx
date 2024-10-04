@@ -31,6 +31,13 @@ export type BadgeProps = {
    * Positions are predefined
    */
   position?: BadgePositions;
+
+  /**
+   * Used to add a cutout around the badge
+   * works for all positions and sizes, for a round badge
+   */
+  hasCutout?: boolean;
+
   /**
    * Called when a single tap gesture is detected.
    */
@@ -47,6 +54,7 @@ const Badge = ({
   maxNumber = 999,
   children,
   position,
+  hasCutout = false,
   onClick,
   backgroundColor,
   testID,
@@ -75,7 +83,9 @@ const Badge = ({
           {renderContent && displayNumber}
         </Styled.Text>
       </Styled.Content>
-      {children}
+      <Styled.Cutout size={size} position={position} hasCutout={hasCutout}>
+        {children}
+      </Styled.Cutout>
     </Styled.Container>
   );
 };
