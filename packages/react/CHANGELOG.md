@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.6.1...@newcross-ui/react@2.7.0) (2024-10-04)
+
+
+### Features
+
+* **CAPP-1339:** add cutout border prop on badge for avatar use ([#108](https://bitbucket.org/newcrossdev/newcross-ui/issues/108)) ([32eb6cf](https://bitbucket.org/newcrossdev/newcross-ui/commits/32eb6cf2ed3e87fb8362273ee481ff4c6dde66c9))
+
+
+
+
+
 ## [2.6.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.6.0...@newcross-ui/react@2.6.1) (2024-09-27)
 
 **Note:** Version bump only for package @newcross-ui/react
