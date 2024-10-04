@@ -130,54 +130,29 @@ export const Text = styled(Typography)`
 `;
 
 //cutout styles
-const getMaskPosition = (position: BadgePositions) => {
-  switch (position) {
-    case 'topRight':
-      return 'top 4px right 4px';
-    case 'topLeft':
-      return 'top 4px left 4px';
-    case 'bottomRight':
-      return 'bottom 4px right 4px';
-    case 'bottomLeft':
-      return 'bottom 4px left 4px';
-    default:
-      return '';
-  }
+const maskPositionMap: Record<BadgePositions, string> = {
+  topRight: 'top 4px right 4px',
+  topLeft: 'top 4px left 4px',
+  bottomRight: 'bottom 4px right 4px',
+  bottomLeft: 'bottom 4px left 4px',
 };
-
-const getMaskBeforePosition = (position: BadgePositions) => {
-  switch (position) {
-    case 'topRight':
-      return 'top 9.5px right 9.5px';
-    case 'topLeft':
-      return 'top 9.5px left 9.5px';
-    case 'bottomRight':
-      return 'bottom 9.5px right 9.5px';
-    case 'bottomLeft':
-      return 'bottom 9.5px left 9.5px';
-    default:
-      return '';
-  }
+const maskBeforePositionMap: Record<BadgePositions, string> = {
+  topRight: 'top 9.5px right 9.5px',
+  topLeft: 'top 9.5px left 9.5px',
+  bottomRight: 'bottom 9.5px right 9.5px',
+  bottomLeft: 'bottom 9.5px left 9.5px',
 };
-
-const getMaskSize = (size: BadgeSizes) => {
-  switch (size) {
-    case 'small':
-      return '6.5px';
-    case 'medium':
-      return '11px';
-    case 'large':
-      return '15px';
-    default:
-      return '0';
-  }
+const maskSizeMap: Record<BadgeSizes, string> = {
+  small: '6.5px',
+  medium: '11px',
+  large: '15px',
 };
 
 const getCutoutStyles = ({ size, position }: Partial<BadgeProps>) => {
   if (position && size) {
-    const maskPosition = getMaskPosition(position);
-    const maskBeforePosition = getMaskBeforePosition(position);
-    const maskSize = getMaskSize(size);
+    const maskPosition = maskPositionMap[position];
+    const maskBeforePosition = maskBeforePositionMap[position];
+    const maskSize = maskSizeMap[size];
 
     return css`
       > svg {
