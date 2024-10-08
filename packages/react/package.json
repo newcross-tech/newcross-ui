@@ -38,6 +38,7 @@
     "@newcross-ui/design-tokens": "^1.43.3",
     "@react-spring/web": "^9.5.5",
     "react-data-table-component": "^7.6.2",
-    "react-select": "^5.7.7"
+    "react-select": "^5.7.7",
+    "react-international-phone": "^4.3.0"
   }
 }
