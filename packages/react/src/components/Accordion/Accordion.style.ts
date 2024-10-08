@@ -24,12 +24,15 @@ export const getAnimatedStyles = ({
   paddingBottom: openAccordion ? theme.AccordionHeaderContentPaddingVertical : '0',
 });
 
+export const Container = styled.div`
+${({ theme }: Theme) => css`
+  border-radius: ${theme.CardBorderRadius};
+  background-color: ${theme.AccordionHeaderBackgroundColor};
+`};
+}`;
+
 export const BodyContainer = styled.div`
   overflow: hidden;
-  ${({ theme }: Theme) => css`
-    background-color: ${theme.AccordionHeaderBackgroundColor};
-    border-bottom: ${theme.AccordionHeaderBorderBottomWidth} solid ${theme.AccordionHeaderBorderBottomColor};
-  `};
 `;
 
 export const BodyContent = styled(animated.div)`
@@ -41,8 +44,6 @@ export const BodyContent = styled(animated.div)`
 
 export const HeaderContainer = styled.div`
   ${({ theme, isContentShown }: ExtendedTheme<AccordionContentProps>) => css`
-    background-color: ${theme.AccordionHeaderBackgroundColor};
-
     ${isContentShown &&
     css`
       border-bottom: ${theme.AccordionHeaderBorderBottomWidth} solid ${theme.AccordionHeaderBorderBottomColor};

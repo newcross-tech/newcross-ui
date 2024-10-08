@@ -18,6 +18,6 @@ export const Label = styled.label<LabelProps>`
 
     b,strong,em {
       font-family: ${theme.BrandFontFamilySemiBold};
-    } ;
+    }
   `}
 `;

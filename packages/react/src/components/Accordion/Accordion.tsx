@@ -30,7 +30,7 @@ export type AccordionProps = {
   /**
    * Text element to describe the accordion.
    */
-  label?: string;
+  label?: ReactNode | string;
   /**
    * Used to override default animation speed.
    */
@@ -78,7 +78,7 @@ const Accordion = ({
   });
 
   return (
-    <div data-testid={`accordion-pressable-container-${testID}`}>
+    <Styled.Container data-testid={`accordion-pressable-container-${testID}`}>
       <Styled.HeaderContainer
         isContentShown={openAccordion}
         data-testid={`accordion-header-container-${testID}`}
@@ -115,7 +115,7 @@ const Accordion = ({
           {children}
         </Styled.BodyContent>
       </Styled.BodyContainer>
-    </div>
+    </Styled.Container>
   );
 };
 

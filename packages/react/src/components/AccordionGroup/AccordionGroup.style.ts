@@ -25,5 +25,17 @@ export const Container = styled.div`
     > div:not(:last-child) {
       ${spacing && getSpacingValues(theme)[spacing]}
     }
+    > div:first-child {
+      border-top-right-radius: ${theme.CardBorderRadius};
+      border-top-left-radius: ${theme.CardBorderRadius};
+    }
+    > div {
+      border-radius: 0;
+      border-bottom: 1px solid ${theme.ColorNeutralGrey200};
+    }
+    > div:last-child {
+      border-bottom-right-radius: ${theme.CardBorderRadius};
+      border-bottom-left-radius: ${theme.CardBorderRadius};
+    }
   `}
 `;
