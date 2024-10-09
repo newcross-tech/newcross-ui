@@ -3,6 +3,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import { terser } from 'rollup-plugin-terser';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import css from 'rollup-plugin-import-css';
 
 const packageJson = require('./package.json');
 
@@ -22,6 +23,7 @@ export default [
         exclude: ['**/*.spec.ts', '**/stories/**', '**/utils/test/**'],
       }),
       terser(),
+      css(),
     ],
     external: [
       'react',

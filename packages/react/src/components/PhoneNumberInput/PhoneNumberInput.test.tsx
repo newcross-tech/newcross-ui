@@ -1,74 +1,74 @@
-//TO DO fix the tests for the PhoneNumberInput component
-//the issue is when importing import 'react-international-phone/style.css'; in the component, its not found when mocking
-// import { render, screen, fireEvent } from '@testing-library/react';
-// import PhoneNumberInput, { PhoneNumberInputProps } from './PhoneNumberInput';
+import { render, screen, fireEvent } from '@testing-library/react';
+import PhoneNumberInput, { PhoneNumberInputProps } from './PhoneNumberInput';
 
-// const renderComponent = (props: Partial<PhoneNumberInputProps> = {}) => {
-//   const defaultProps: PhoneNumberInputProps = {
-//     value: '',
-//     onChange: jest.fn(),
-//     disabled: false,
-//     ...props,
-//   };
+const renderComponent = (props: Partial<PhoneNumberInputProps> = {}) => {
+  const defaultProps: PhoneNumberInputProps = {
+    value: '',
+    onChange: jest.fn(),
+    disabled: false,
+    ...props,
+  };
 
-//   return render(<PhoneNumberInput {...defaultProps} />);
-// };
+  return render(<PhoneNumberInput {...defaultProps} />);
+};
 
-// describe('PhoneNumberInput Component', () => {
-//   it('should render the PhoneNumberInput component correctly', () => {
-//     // Arrange
-//     renderComponent();
+describe('PhoneNumberInput Component', () => {
+  it('should render the PhoneNumberInput component correctly', () => {
+    // Arrange;
+    renderComponent();
 
-//     // Act
-//     const textbox = screen.getByRole('textbox');
+    // Act;
+    const textbox = screen.getByRole('textbox');
 
-//     // Assert
-//     expect(textbox).toBeInTheDocument();
-//   });
+    // Assert;
+    expect(textbox).toBeInTheDocument();
+  });
 
-//   it('should call onChange when the phone number is changed', () => {
-//     // Arrange
-//     const handleChange = jest.fn();
-//     renderComponent({ onChange: handleChange });
+  it('should call onChange when the phone number is changed', () => {
+    // Arrange;
+    const handleChange = jest.fn();
+    renderComponent({ onChange: handleChange });
 
-//     // Act
-//     fireEvent.change(screen.getByRole('textbox'), { target: { value: '+441234567890' } });
+    // Act;
+    fireEvent.change(screen.getByRole('textbox'), {
+      target: { value: '+441234567890' },
+    });
 
-//     // Assert
-//     expect(handleChange).toHaveBeenCalledWith('+441234567890');
-//   });
+    // Assert;
+    expect(handleChange).toHaveBeenCalledWith('+441234567890');
+  });
 
-//   it('should render with the correct value', () => {
-//     // Arrange
-//     const phoneValue = '+441234567890';
-//     renderComponent({ value: phoneValue });
+  it('should render with the correct value', () => {
+    // Arrange;
+    const phoneValue = '+44 1234 567890';
+    renderComponent({ value: phoneValue });
 
-//     // Act
-//     const textbox = screen.getByRole('textbox');
+    // Act;
+    const textbox = screen.getByRole('textbox');
 
-//     // Assert
-//     expect(textbox).toHaveValue(phoneValue);
-//   });
+    // Assert;
+    expect(textbox).toHaveValue(phoneValue);
+  });
 
-//   it('should disable the input when the disabled prop is true', () => {
-//     // Arrange
-//     renderComponent({ disabled: true });
+  it('should disable the input when the disabled prop is true', () => {
+    // Arrange;
+    renderComponent({ disabled: true });
 
-//     // Act
-//     const textbox = screen.getByRole('textbox');
+    //  Act;
+    const textbox = screen.getByRole('textbox');
 
-//     // Assert
-//     expect(textbox).toBeDisabled();
-//   });
+    // Assert;
+    expect(textbox).toBeDisabled();
+  });
 
-//   it('should enable the input when the disabled prop is false', () => {
-//     // Arrange
-//     renderComponent({ disabled: false });
+  it('should enable the input when the disabled prop is false', () => {
+    // Arrange;
+    renderComponent({ disabled: false });
 
-//     // Act
-//     const textbox = screen.getByRole('textbox');
+    //  Act;
+    const textbox = screen.getByRole('textbox');
 
-//     // Assert
-//     expect(textbox).toBeEnabled();
-//   });
-// });
+    //  Assert;
+    expect(textbox).toBeEnabled();
+  });
+});

@@ -1,5 +1,4 @@
 import { PhoneInput } from 'react-international-phone';
-import { TestProp } from '../../types';
 import * as Styled from './PhoneNumberInput.styles';
 import 'react-international-phone/style.css';
 
@@ -9,6 +8,10 @@ export type PhoneNumberInputProps = {
    */
   value: string;
   /**
+   * Gives text input a label
+   */
+  label?: string;
+  /**
    * Updates text in input box
    */
   onChange: (phone: string) => void;
@@ -16,17 +19,18 @@ export type PhoneNumberInputProps = {
    * Accepts a boolean to determine if the input is disabled.
    */
   disabled?: boolean;
-} & TestProp;
+};
 
 const PhoneNumberInput = ({
   value,
+  label,
   onChange,
   disabled,
 }: PhoneNumberInputProps) => {
   return (
     <Styled.Content>
       <Styled.LabelWithMargin variant="subtitle1">
-        {'Phone number'}
+        {label}
       </Styled.LabelWithMargin>
       <PhoneInput
         value={value}

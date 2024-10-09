@@ -35,12 +35,21 @@ export const Variants = () => {
 
   return (
     <Container flexDirection="column">
-      <StoryTitle.Regular>With a title</StoryTitle.Regular>
-      <PhoneNumberInput value={text1} onChange={onChangeText1} />
+      <StoryTitle.Regular>With a label</StoryTitle.Regular>
+      <PhoneNumberInput
+        value={text1}
+        label={'Phone number'}
+        onChange={onChangeText1}
+      />
       <Container m="SpacingBase4" />
 
-      <StoryTitle.Regular>With a title and disabled</StoryTitle.Regular>
-      <PhoneNumberInput value={text2} disabled onChange={onChangeText2} />
+      <StoryTitle.Regular>With a label and disabled</StoryTitle.Regular>
+      <PhoneNumberInput
+        value={text2}
+        label={'Phone number'}
+        disabled
+        onChange={onChangeText2}
+      />
       <Container m="SpacingBase4" />
 
       <Container m="SpacingBase4" />
@@ -48,12 +57,17 @@ export const Variants = () => {
   );
 };
 
-const Template: Story<PhoneNumberInputProps> = ({ value, disabled }) => {
+const Template: Story<PhoneNumberInputProps> = ({ value, label, disabled }) => {
   const [text, setText] = useState(value);
 
   return (
     <Container flexDirection="column">
-      <PhoneNumberInput value={text} onChange={setText} disabled={disabled} />
+      <PhoneNumberInput
+        value={text}
+        label={label}
+        onChange={setText}
+        disabled={disabled}
+      />
     </Container>
   );
 };
@@ -61,5 +75,6 @@ const Template: Story<PhoneNumberInputProps> = ({ value, disabled }) => {
 export const Interactive = Template.bind({});
 Interactive.args = {
   value: '',
+  label: 'Phone Number',
   disabled: false,
 };

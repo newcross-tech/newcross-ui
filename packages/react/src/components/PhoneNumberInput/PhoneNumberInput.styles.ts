@@ -4,7 +4,7 @@ import Label from '../Label';
 
 export const Content = styled.div`
   ${({ theme }: Theme) => css`
-    min-height: 48px;
+    min-height: ${theme.SpacingBase48};
     & .react-international-phone-input-container  {
     max-width: 290px;
     border: ${theme.SizeBaseBorderWidthSm} solid ${theme.ColorBaseGrey200};
