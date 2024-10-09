@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.8.0...@newcross-ui/react@2.9.0) (2024-10-09)
+
+
+### Features
+
+* **CAPP-1570:** create the phone number field ([#111](https://bitbucket.org/newcrossdev/newcross-ui/issues/111)) ([ea7e7f2](https://bitbucket.org/newcrossdev/newcross-ui/commits/ea7e7f2e49fe0afddc1cde511310d483fe726177))
+
+
+
+
+
 # [2.8.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.7.1...@newcross-ui/react@2.8.0) (2024-10-09)
 
 
