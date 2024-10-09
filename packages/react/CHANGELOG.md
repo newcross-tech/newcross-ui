@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.8.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.7.1...@newcross-ui/react@2.8.0) (2024-10-09)
+
+
+### Features
+
+* **Checkbox:** add role=checkbox ([#112](https://bitbucket.org/newcrossdev/newcross-ui/issues/112)) ([16816f7](https://bitbucket.org/newcrossdev/newcross-ui/commits/16816f7a7ce238ed1469b6c23502964ad8d586d9))
+
+
+
+
+
 ## [2.7.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.7.0...@newcross-ui/react@2.7.1) (2024-10-08)
 
 **Note:** Version bump only for package @newcross-ui/react
