@@ -77,12 +77,22 @@ describe('PhoneNumberInput Component', () => {
   });
   it('should render error message when error prop is passed', () => {
     // Arrange;
-    renderComponent({ error: 'Invalid phone number' });
+    renderComponent({ helperText: 'Invalid phone number', isError: true });
 
     // Act;
     const errorMessage = screen.getByText('Invalid phone number');
 
     // Assert;
     expect(errorMessage).toBeInTheDocument();
+  });
+  it('should render helper text when helperText prop is passed', () => {
+    // Arrange;
+    renderComponent({ helperText: 'Enter your phone number' });
+
+    // Act;
+    const helperText = screen.getByText('Enter your phone number');
+
+    // Assert;
+    expect(helperText).toBeInTheDocument();
   });
 });

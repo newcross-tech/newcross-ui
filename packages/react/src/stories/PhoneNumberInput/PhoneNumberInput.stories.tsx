@@ -5,7 +5,6 @@ import PhoneNumberInput, {
 } from '../../components/PhoneNumberInput';
 import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
-import * as StoryTitle from '../StoryTitle';
 import { DESCRIPTION, DO, DONT, TITLE } from './PhoneNumberInput';
 
 export default {

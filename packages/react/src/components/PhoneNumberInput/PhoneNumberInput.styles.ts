@@ -41,9 +41,6 @@ export const Content = styled.div`
       border: ${theme.SpacingBase0} !important;
       border-radius: ${theme.SpacingBase0} ${theme.CardBorderRadius}
         ${theme.CardBorderRadius} ${theme.SpacingBase0}!important;
-      font-family: ${theme.TextInputFontFamily};
-      font-size: ${theme.TextInputFontSize};
-      line-height: ${theme.TextInputLineHeight};
       height: ${theme.SpacingBase48};
     }
 
@@ -63,6 +60,14 @@ export const Content = styled.div`
     .react-international-phone-country-selector-button__dropdown-arrow--active {
       transform: rotate(-135deg);
       margin-top: ${theme.SpacingBase8};
+    }
+
+    .react-international-phone-input,
+    .react-international-phone-country-selector-dropdown__list-item-country-name,
+    .react-international-phone-country-selector-dropdown__list-item-dial-code {
+      font-family: ${theme.TextInputFontFamily};
+      font-size: ${theme.TextInputFontSize};
+      line-height: ${theme.TextInputLineHeight};
     }
   `};
 `;
