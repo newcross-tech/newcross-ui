@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components';
-import { ExtendedTheme, Theme } from '../../types';
+import { Theme } from '../../types';
 import { getTabbedStateStyles } from '../../utils';
 import HaloLabel, { LabelProps } from '../Label';
-import { SelectedProps } from './Radio.types';
+import { RadioValue, RadioVariant } from './Radio.types';
+import { RadioProps } from './Radio';
 
 export const Label = styled(HaloLabel)<LabelProps>`
   ${({ theme }: Theme) => css`
@@ -11,11 +12,11 @@ export const Label = styled(HaloLabel)<LabelProps>`
   `}
 `;
 
-export const Radio = styled.div<SelectedProps>`
+export const Radio = styled.div<Theme & Required<Pick<RadioProps<RadioValue>, 'disabled' | 'selected' | 'variant'>>>`
   display: flex;
   align-items: center;
 
-  ${({ theme }: Theme) => css`
+  ${({ theme }) => css`
     padding: ${theme.RadioPaddingRight};
     & input[type='radio'] {
       margin-top: 0;
@@ -68,7 +69,7 @@ export const Radio = styled.div<SelectedProps>`
     }
   `}
 
-  ${({ theme, variant, selected, disabled }: ExtendedTheme<SelectedProps>) =>
+  ${({ theme, variant, selected, disabled }) =>
     variant === 'secondary' &&
     css`
       border: ${theme.RadioVariantSecondaryBorderWidth} solid ${theme.RadioVariantSecondaryBorderColor};

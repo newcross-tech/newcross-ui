@@ -1,17 +1,18 @@
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Radio, { RadioProps } from './Radio';
 import { byTestId, byText } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
-import { executeKeyPress } from '../../utils/test/executeKeyPress';
+import { executeKeyPress } from '../../utils/test';
 
-const renderComponent = (customProps: Partial<RadioProps>) => {
-  const props = {
-    label: 'Hello',
-    ...customProps,
-  };
+const TEST_OPTION = {
+  Value1: 1,
+  Value2: 2,
+} as const;
+type TestOption = typeof TEST_OPTION[keyof typeof TEST_OPTION];
 
-  render(<Radio value="1" {...props} />);
-};
+const renderComponent = (overrides?: Partial<RadioProps<TestOption>>) =>
+  render(<Radio value={TEST_OPTION.Value1} label="Hello" {...overrides} />);
 
 const testID = '1';
 const baseTestId = 'radio';
@@ -24,14 +25,14 @@ describe('Radio', () => {
 
   it('should not have any a11y errors', async () => {
     // Act
-    renderComponent({});
+    renderComponent();
 
     const results = await axe(document.body);
     expect(results).toHaveNoViolations();
   });
   it('renders with given label and default view', () => {
     // Act
-    renderComponent({});
+    renderComponent();
 
     // Assert
     expect(byText(/hello/i).get()).toBeVisible();
@@ -54,12 +55,17 @@ describe('Radio', () => {
     const onChange = jest.fn();
 
     // Act
-    renderComponent({ testID, disabled: false, onChange });
+    renderComponent({
+      testID,
+      disabled: false,
+      onChange,
+      value: TEST_OPTION.Value2,
+    });
 
-    fireEvent.click(ui.radio(testID).get());
+    userEvent.click(ui.radio(testID).get());
 
     // Assert
-    expect(onChange).toBeCalled();
+    expect(onChange).toBeCalledWith(TEST_OPTION.Value2);
   });
 
   it(`calls onChange when radio component is not disabled when Spacebar`, () => {
@@ -82,7 +88,7 @@ describe('Radio', () => {
     // Act
     renderComponent({ testID, disabled: true, onChange });
 
-    fireEvent.click(ui.radio(testID).get());
+    userEvent.click(ui.radio(testID).get());
 
     // Assert
     expect(onChange).not.toBeCalled();
