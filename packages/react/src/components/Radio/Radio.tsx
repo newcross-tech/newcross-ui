@@ -1,10 +1,10 @@
-import { ReactNode, useId } from 'react';
+import { ReactElement, ReactNode, useId } from 'react';
 import { TestProp } from '../../types';
-import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
+import { onSpacePressTrigger } from '../../utils';
 import * as Styled from './Radio.style';
-import { RadioVariant } from './Radio.types';
+import { RadioValue, RadioVariant } from './Radio.types';
 
-export type RadioProps = {
+export type RadioProps<T extends RadioValue> = {
   /**
    * Disable radio
    */
@@ -17,11 +17,11 @@ export type RadioProps = {
    * The currently selected value within the group or an array of
    * selected values
    */
-  value: string | number;
+  value: T;
   /**
    * Called when a single tap gesture is detected.
    */
-  onChange?: (isSelected: string | number) => void;
+  onChange?: (isSelected: T) => void;
   /**
    * Specifies whether the radio is selected
    */
@@ -38,7 +38,7 @@ export type RadioProps = {
 
 const baseTestId = 'radio';
 
-const Radio = ({
+function Radio<T extends RadioValue>({
   selected = false,
   disabled = false,
   label,
@@ -47,7 +47,7 @@ const Radio = ({
   testID = '',
   name,
   variant = 'primary',
-}: RadioProps) => {
+}: RadioProps<T>): ReactElement<RadioProps<T>> {
   const onChangeHandler = () => {
     if (disabled) return;
     onChange?.(value);
@@ -82,6 +82,6 @@ const Radio = ({
       </Styled.Label>
     </Styled.Radio>
   );
-};
+}
 
 export default Radio;
