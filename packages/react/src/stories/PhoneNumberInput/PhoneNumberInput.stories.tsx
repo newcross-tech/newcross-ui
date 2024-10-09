@@ -14,7 +14,6 @@ export default {
 } as Meta;
 
 export const Overview = () => {
-  const [text, setText] = useState('');
   return (
     <InfoTemplate
       title={TITLE}
@@ -23,51 +22,39 @@ export const Overview = () => {
       dontInfo={DONT}
     >
       <Container flexDirection="column">
-        <PhoneNumberInput value={text} onChange={setText} />
+        <PhoneNumberInput defaultCountry="gb" />
       </Container>
     </InfoTemplate>
   );
 };
 
 export const Variants = () => {
-  const [text1, onChangeText1] = useState('text1');
-  const [text2, onChangeText2] = useState('text2');
+  const [phone, setPhone] = useState('3456454564');
 
   return (
     <Container flexDirection="column">
-      <StoryTitle.Regular>With a label</StoryTitle.Regular>
       <PhoneNumberInput
-        value={text1}
-        label={'Phone number'}
-        onChange={onChangeText1}
+        label={'Phone number With Default Country'}
+        defaultCountry="gb"
       />
-      <Container m="SpacingBase4" />
+      <Container m="SpacingBase8" />
 
-      <StoryTitle.Regular>With a label and disabled</StoryTitle.Regular>
       <PhoneNumberInput
-        value={text2}
-        label={'Phone number'}
-        disabled
-        onChange={onChangeText2}
+        value={phone}
+        label={'Phone number With a value'}
+        onChange={setPhone}
       />
-      <Container m="SpacingBase4" />
+      <Container m="SpacingBase8" />
 
-      <Container m="SpacingBase4" />
+      <PhoneNumberInput label={'Phone number Disabled'} disabled />
     </Container>
   );
 };
 
-const Template: Story<PhoneNumberInputProps> = ({ value, label, disabled }) => {
-  const [text, setText] = useState(value);
-
+const Template: Story<PhoneNumberInputProps> = (props) => {
   return (
     <Container flexDirection="column">
-      <PhoneNumberInput
-        value={text}
-        label={label}
-        onChange={setText}
-        disabled={disabled}
-      />
+      <PhoneNumberInput {...props} />
     </Container>
   );
 };
@@ -77,4 +64,21 @@ Interactive.args = {
   value: '',
   label: 'Phone Number',
   disabled: false,
+  defaultCountry: 'gb',
+  countries: undefined,
+  preferredCountries: ['gb'],
+  hideDropdown: false,
+  prefix: '+',
+  defaultMask: '...',
+  charAfterDialCode: ' ',
+  historySaveDebounceMS: 200,
+  disableCountryGuess: false,
+  disableDialCodePrefill: false,
+  forceDialCode: false,
+  disableDialCodeAndPrefix: false,
+  showDisabledDialCodeAndPrefix: false,
+  disableFocusAfterCountrySelect: false,
+  disableFormatting: false,
+  flags: undefined,
+  inputProps: undefined,
 };
