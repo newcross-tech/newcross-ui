@@ -18,14 +18,13 @@ export const IndicatorWrapper = styled(Container)`
   `}
 `;
 
-export const Indicator = styled.div`
+export const Indicator = styled(Container)`
   ${({ theme, $useModal }: ExtendedTheme<{ $useModal: boolean }>) =>
     !$useModal &&
     css`
       @media (max-width: 640px) {
-        width: 100px;
-        height: 6px;
-        border-radius: 3px;
+        height: ${theme.SpacingBase8};
+        border-radius: ${theme.BorderBaseRadiusSm};
         background-color: ${theme.ColorBaseGrey200};
       }
     `}

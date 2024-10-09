@@ -83,7 +83,10 @@ const ActionModal = ({
               p="SpacingBase16"
               $useModal={!!isAlwaysModal}
             >
-              <Styled.Indicator $useModal={!!isAlwaysModal} />
+              <Styled.Indicator
+                $useModal={!!isAlwaysModal}
+                px="SpacingBase48"
+              />
             </Styled.IndicatorWrapper>
             <Container
               mt="SpacingBase32"
