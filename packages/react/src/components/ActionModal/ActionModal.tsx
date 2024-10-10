@@ -27,9 +27,9 @@ export type ActionModalProps = {
    */
   content?: React.ReactNode;
   /**
-   * Action modal's content component, usually CTAs
+   * Action modal's foote component, usually CTAs
    */
-  footer: React.ReactNode;
+  footer?: React.ReactNode;
   /**
    * Set if the sheet is open. When this prop is changed the sheet will animate and the unmount/remount.
    * When the component fully unmounts, onClose will be called.
@@ -134,17 +134,19 @@ const ActionModal = ({
               {content}
             </Styled.ContentWapper>
           </Content>
-          <Footer className="action-modal-footer">
-            <Styled.FooterWrapper
-              $useModal={!!isAlwaysModal}
-              px="SpacingBase24"
-              py="SpacingBase32"
-              pyMobile="SpacingBase16"
-              flexDirection="column"
-            >
-              {footer}
-            </Styled.FooterWrapper>
-          </Footer>
+          {footer && (
+            <Footer className="action-modal-footer">
+              <Styled.FooterWrapper
+                $useModal={!!isAlwaysModal}
+                px="SpacingBase24"
+                py="SpacingBase32"
+                pyMobile="SpacingBase16"
+                flexDirection="column"
+              >
+                {footer}
+              </Styled.FooterWrapper>
+            </Footer>
+          )}
         </Sheet>
       </Styled.SheetWrapper>
     </Portal>
