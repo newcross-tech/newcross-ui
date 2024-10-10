@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.11.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.10.1...@newcross-ui/react@2.11.0) (2024-10-10)
+
+
+### Features
+
+* **CAPP-1229:** create Action Modal component for web ([#110](https://bitbucket.org/newcrossdev/newcross-ui/issues/110)) ([bbf8bf6](https://bitbucket.org/newcrossdev/newcross-ui/commits/bbf8bf654069399181fcc2f40373ed86b82fa5fe))
+
+
+
+
+
 ## [2.10.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.10.0...@newcross-ui/react@2.10.1) (2024-10-09)
 
 **Note:** Version bump only for package @newcross-ui/react
