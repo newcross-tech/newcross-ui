@@ -77,3 +77,6 @@ export {
   default as ActionModal,
   ActionModalProps,
 } from './components/ActionModal';
+  default as PhoneNumberInput,
+  PhoneNumberInputProps,
+} from './components/PhoneNumberInput';

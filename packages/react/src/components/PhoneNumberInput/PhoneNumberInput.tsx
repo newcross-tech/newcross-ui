@@ -1,45 +1,44 @@
-import { PhoneInput } from 'react-international-phone';
+import { PhoneInput, PhoneInputProps } from 'react-international-phone';
 import * as Styled from './PhoneNumberInput.styles';
 import 'react-international-phone/style.css';
 
 export type PhoneNumberInputProps = {
   /**
-   * Gives text input a value
-   */
-  value: string;
-  /**
-   * Gives text input a label
+   * Gives phone number input a label
    */
   label?: string;
   /**
-   * Updates text in input box
+   * Gives phone number input an error state
    */
-  onChange: (phone: string) => void;
+  isError?: boolean;
   /**
-   * Accepts a boolean to determine if the input is disabled.
+   * Gives phone number input an helper text
    */
-  disabled?: boolean;
-};
+  helperText?: string;
+} & PhoneInputProps;
 
 const PhoneNumberInput = ({
-  value,
   label,
-  onChange,
-  disabled,
-}: PhoneNumberInputProps) => {
-  return (
-    <Styled.Content>
+  isError,
+  helperText,
+  ...phoneInputProps
+}: PhoneNumberInputProps) => (
+  <Styled.Content $isError={!!isError}>
+    {label && (
       <Styled.LabelWithMargin variant="subtitle1">
         {label}
       </Styled.LabelWithMargin>
-      <PhoneInput
-        value={value}
-        defaultCountry="gb"
-        disabled={disabled}
-        onChange={(phone) => onChange(phone)}
-      />
-    </Styled.Content>
-  );
-};
+    )}
+    <PhoneInput {...phoneInputProps} />
+    {helperText && (
+      <Styled.ErrorMessage
+        variant="paragraph3"
+        color={isError ? 'error' : 'secondary'}
+      >
+        {helperText}
+      </Styled.ErrorMessage>
+    )}
+  </Styled.Content>
+);
 
 export default PhoneNumberInput;
