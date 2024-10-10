@@ -37,8 +37,10 @@
   "dependencies": {
     "@newcross-ui/design-tokens": "^1.43.3",
     "@react-spring/web": "^9.5.5",
+    "@use-gesture/react": "^10",
     "react-data-table-component": "^7.6.2",
     "react-international-phone": "^4.3.0",
-    "react-select": "^5.7.7"
+    "react-select": "^5.7.7",
+    "react-sheet-slide": "^1.5.0"
   }
 }

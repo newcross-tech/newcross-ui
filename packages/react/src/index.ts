@@ -74,6 +74,10 @@ export { default as useTheme } from './hooks/useTheme';
 export { useToast } from './hooks/useToast';
 export { default as Table, TableProps } from './components/Table';
 export {
+  default as ActionModal,
+  ActionModalProps,
+} from './components/ActionModal';
+export {
   default as PhoneNumberInput,
   PhoneNumberInputProps,
 } from './components/PhoneNumberInput';

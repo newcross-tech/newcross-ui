@@ -97,6 +97,7 @@ type InfoContainerProps = {
   description: string;
   doInfo: string[];
   dontInfo: string[];
+  children?: ReactNode;
 };
 
 const InfoContainer: FC<InfoContainerProps> = ({
