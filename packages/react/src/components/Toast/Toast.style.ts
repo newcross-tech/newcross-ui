@@ -18,7 +18,6 @@ export const getAnimatedStyles = (onClose?: VoidFunction) => {
 export const Container = styled.div<Pick<ToastProviderProps, 'zIndex'>>`
   position: fixed;
   top: 0;
-  left: 0;
   right: 0;
   z-index: ${({ zIndex }) => zIndex ?? 1};
 `;
@@ -28,7 +27,7 @@ export const AnimatedContainer = styled(animated.div)<ExtendedTheme<Partial<Toas
   flex: 1;
   flex-direction: column;
   ${({ theme, width }) => css`
-    width: ${width ?? '100%'};
+    width: ${width ?? `calc(100vw - ${theme.SpacingBase24})`};
     margin: ${theme.SpacingBase12};
     margin-left: ${width ? 'auto' : '0'};
     box-shadow: ${theme.TabsActiveTabShadowOffsetWidth}px ${theme.TabsActiveTabShadowOffsetHeight}px

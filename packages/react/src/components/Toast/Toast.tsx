@@ -49,7 +49,7 @@ const Toast = ({
   customStatusIcon,
   autoHide = true,
   hasBorder = false,
-  hasButton = true,
+  hasButton = false,
   duration = 6000,
   ...rest
 }: ToastProps) => {
@@ -72,7 +72,7 @@ const Toast = ({
               <Alert
                 icon={customStatusIcon}
                 hasBorder={hasBorder}
-                hasButton={!autoHide && hasButton}
+                hasButton={hasButton || !autoHide}
                 variant={variant}
                 onClose={() => setShown(false)}
                 {...rest}

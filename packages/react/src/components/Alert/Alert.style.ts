@@ -34,7 +34,7 @@ export const getAccentColor = (theme: ThemeDesignTokens): Record<AlertVariant, {
   warning: { icon: theme.AlertColorWarningPrimary, border: theme.AlertColorWarningPrimary },
   error: { icon: theme.AlertColorErrorPrimary, border: theme.AlertColorErrorPrimary },
   info: { icon: theme.AlertColorInfoPrimary, border: theme.AlertColorInfoPrimary },
-  notification: { icon: theme.BrandColorSecondary100, border: theme.ColorBaseBlue600 },
+  notification: { icon: theme.ColorBaseBlue600, border: theme.BrandColorSecondary100 },
 });
 
 const getBackgroundColor = (theme: ThemeDesignTokens): Record<AlertVariant, FlattenSimpleInterpolation> => ({
