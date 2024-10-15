@@ -76,6 +76,7 @@ const Checkbox = ({
       label={label}
       onClick={onChangeHandler}
       {...rest}
+      role="checkbox"
     >
       <Styled.Box
         data-testid="checkmark-box"

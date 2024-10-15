@@ -3,6 +3,66 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.11.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.10.1...@newcross-ui/react@2.11.0) (2024-10-10)
+
+
+### Features
+
+* **CAPP-1229:** create Action Modal component for web ([#110](https://bitbucket.org/newcrossdev/newcross-ui/issues/110)) ([bbf8bf6](https://bitbucket.org/newcrossdev/newcross-ui/commits/bbf8bf654069399181fcc2f40373ed86b82fa5fe))
+
+
+
+
+
+## [2.10.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.10.0...@newcross-ui/react@2.10.1) (2024-10-09)
+
+**Note:** Version bump only for package @newcross-ui/react
+
+
+
+
+
+# [2.10.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.9.0...@newcross-ui/react@2.10.0) (2024-10-09)
+
+
+### Features
+
+* **radio:** replace casting with generics ([#107](https://bitbucket.org/newcrossdev/newcross-ui/issues/107)) ([62e1869](https://bitbucket.org/newcrossdev/newcross-ui/commits/62e1869d2d0b94effcd8b2c914a40e366a92d3d5))
+
+
+
+
+
+# [2.9.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.8.0...@newcross-ui/react@2.9.0) (2024-10-09)
+
+
+### Features
+
+* **CAPP-1570:** create the phone number field ([#111](https://bitbucket.org/newcrossdev/newcross-ui/issues/111)) ([ea7e7f2](https://bitbucket.org/newcrossdev/newcross-ui/commits/ea7e7f2e49fe0afddc1cde511310d483fe726177))
+
+
+
+
+
+# [2.8.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.7.1...@newcross-ui/react@2.8.0) (2024-10-09)
+
+
+### Features
+
+* **Checkbox:** add role=checkbox ([#112](https://bitbucket.org/newcrossdev/newcross-ui/issues/112)) ([16816f7](https://bitbucket.org/newcrossdev/newcross-ui/commits/16816f7a7ce238ed1469b6c23502964ad8d586d9))
+
+
+
+
+
+## [2.7.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.7.0...@newcross-ui/react@2.7.1) (2024-10-08)
+
+**Note:** Version bump only for package @newcross-ui/react
+
+
+
+
+
 # [2.7.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.6.1...@newcross-ui/react@2.7.0) (2024-10-04)
 
 
