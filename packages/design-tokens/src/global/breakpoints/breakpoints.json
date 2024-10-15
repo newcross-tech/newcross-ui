@@ -1,8 +1,8 @@
 {
   "breakpoints": {
-    "sm": 375,
-    "md": 768,
-    "lg": 1366,
-    "xl": 1920
+    "sm": { "value": 375 },
+    "md": { "value": 768 },
+    "lg": { "value": 1366 },
+    "xl": { "value": 1920 }
   }
 }
