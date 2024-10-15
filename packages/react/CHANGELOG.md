@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.12.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.11.0...@newcross-ui/react@2.12.0) (2024-10-15)
+
+
+### Features
+
+* **CAPP-1550:** update toast component ([#115](https://bitbucket.org/newcrossdev/newcross-ui/issues/115)) ([26ff2b1](https://bitbucket.org/newcrossdev/newcross-ui/commits/26ff2b118a9f5d32356744691532ff946ec6910b))
+
+
+
+
+
 # [2.11.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.10.1...@newcross-ui/react@2.11.0) (2024-10-10)
 
 
