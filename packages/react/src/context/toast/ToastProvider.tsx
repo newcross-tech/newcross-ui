@@ -4,10 +4,7 @@ import { Action as ToastAction } from './actions';
 import { reducer as toastReducer } from './reducer';
 import * as Styled from '../../components/Toast/Toast.style';
 
-export type EnqueueArgs = Pick<
-  ToastProps,
-  'variant' | 'message' | 'autoHide' | 'action' | 'duration'
->;
+export type EnqueueArgs = Omit<ToastProps, 'show'>;
 
 export type ToastType = EnqueueArgs & {
   id?: string;

@@ -11,7 +11,13 @@ import { EnqueueArgs, ToastContext } from '../context/toast/ToastProvider';
 export const useToast = () => {
   const { dispatch } = useContext(ToastContext);
 
-  const enqueueToast = (payload: EnqueueArgs) => {
+  const enqueueToast = (payload: EnqueueArgs, showLatestOnly = false) => {
+    if (showLatestOnly) {
+      dispatch({
+        type: 'REMOVE_ALL_TOASTS',
+      });
+    }
+
     dispatch({
       type: 'ADD_TOAST',
       payload,
