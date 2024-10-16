@@ -29,3 +29,8 @@ export type ThemeSpacing = keyof Pick<
   | 'SpacingBase72'
   | 'SpacingBase80'
 >;
+
+export type ThemeBreakpoints = keyof Pick<
+  ThemeDesignTokens,
+  'BreakpointsSm' | 'BreakpointsMd' | 'BreakpointsLg' | 'BreakpointsXl'
+>;

@@ -1,27 +1,20 @@
 import { css } from 'styled-components';
-import { Theme } from '../../types';
+import { Theme, ThemeBreakpoints } from '../../types';
 
 type Args = Parameters<typeof css>;
 
+const createMediaQuery =
+  (breakpoint: ThemeBreakpoints) =>
+  (...args: Args) =>
+    css`
+      @media (min-width: ${({ theme }: Theme) => theme[breakpoint]}px) {
+        ${css(...args)};
+      }
+    `;
+
 export const media = {
-  sm: (...args: Args) => css`
-    @media (max-width: ${({ theme }: Theme) => theme.BreakpointsSm}px) {
-      ${css(...args)};
-    }
-  `,
-  md: (...args: Args) => css`
-    @media (max-width: ${({ theme }: Theme) => theme.BreakpointsMd}px) {
-      ${css(...args)};
-    }
-  `,
-  lg: (...args: Args) => css`
-    @media (max-width: ${({ theme }: Theme) => theme.BreakpointsLg}px) {
-      ${css(...args)};
-    }
-  `,
-  xl: (...args: Args) => css`
-    @media (max-width: ${({ theme }: Theme) => theme.BreakpointsXl}px) {
-      ${css(...args)};
-    }
-  `,
+  sm: createMediaQuery('BreakpointsSm'),
+  md: createMediaQuery('BreakpointsMd'),
+  lg: createMediaQuery('BreakpointsLg'),
+  xl: createMediaQuery('BreakpointsXl'),
 };
