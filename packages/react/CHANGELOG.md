@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.13.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.12.0...@newcross-ui/react@2.13.0) (2024-10-16)
+
+
+### Features
+
+* **ASK-0000:** def breakpoints & create media util func ([#114](https://bitbucket.org/newcrossdev/newcross-ui/issues/114)) ([254097d](https://bitbucket.org/newcrossdev/newcross-ui/commits/254097d0cb0c5dedd6801d306cd89642ad89cba8))
+
+
+
+
+
 # [2.12.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.11.0...@newcross-ui/react@2.12.0) (2024-10-15)
 
 
