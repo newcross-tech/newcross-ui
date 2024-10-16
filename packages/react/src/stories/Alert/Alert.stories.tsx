@@ -67,6 +67,15 @@ export const Variants = () => {
         message.
       </Alert>
       <Container my="SpacingBase4" />
+      <StoryTitle.Regular>Notification Variant</StoryTitle.Regular>
+      <Alert
+        variant="notification"
+        action={<Link variant="paragraph1">Click Here</Link>}
+      >
+        This is a notification message. This is a noti notification. This is a
+        notification.
+      </Alert>
+      <Container my="SpacingBase4" />
       <StoryTitle.Regular>Variant without link</StoryTitle.Regular>
       <Alert variant="info">
         This is an info message. This is an info message. This is an info

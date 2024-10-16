@@ -16,6 +16,8 @@ export const reducer = (state: ToastType[], action: Action) => {
     case 'REMOVE_TOAST':
       return [...state.filter((item) => item.id !== action.payload.id)];
 
+    case 'REMOVE_ALL_TOASTS':
+      return [];
     default:
       return state;
   }

@@ -30,14 +30,18 @@ export const Variants = () => {
   ];
 
   const { enqueueToast } = useToast();
-  const triggerFunc = (autoHide = true) => {
-    if (i <= 3) {
-      enqueueToast({
-        variant: variants[i],
-        message: `This is ${variants[i]} Toast!`,
-        action: <Link variant="paragraph1">Click Here</Link>,
-        autoHide: autoHide,
-      });
+  const triggerFunc = (autoHide = true, closeAllOthers = false) => {
+    if (i <= variants.length - 1) {
+      enqueueToast(
+        {
+          variant: variants[i],
+          message: `This is ${variants[i]} Toast!`,
+          action: <Link variant="paragraph1">Click Here</Link>,
+          autoHide,
+          fullWidth: true,
+        },
+        closeAllOthers
+      );
 
       i = i + 1;
     } else i = 0;
@@ -48,6 +52,10 @@ export const Variants = () => {
       <Button onClick={() => triggerFunc()}>Show Toast</Button>
       <Container mb="SpacingBase8" />
       <Button onClick={() => triggerFunc(false)}>Show Persistent Toast</Button>
+      <Container mb="SpacingBase8" />
+      <Button onClick={() => triggerFunc(false, true)}>
+        Show Only latest Toast
+      </Button>
     </StyledContainer>
   );
 };
