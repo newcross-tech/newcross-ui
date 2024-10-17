@@ -1,0 +1,22 @@
+{
+  "elements": {
+    "surface": {
+      "default": { "value": "{themes.neutral.0}" },
+      "default-secondary": { "value": "{themes.neutral.200}" },
+      "highlight-subtle": { "value": "{themes.secondary.100}" },
+      "highlight-strong": { "value": "{themes.primary.500}" },
+      "page": { "value": "{themes.neutral.50}" },
+      "action-default": { "value": "{themes.secondary.500}" },
+      "action-hover": { "value": "{themes.secondary.200}" },
+      "action-hover-secondary": { "value": "{themes.secondary.100}" },
+      "action-danger": { "value": "{themes.danger.500}" },
+      "action-danger-hover": { "value": "{themes.danger.400}" },
+      "disabled": { "value": "{themes.neutral.100}" },
+      "disabled-highlight": { "value": "{themes.neutral.200}" },
+      "success": { "value": "{themes.success.50}" },
+      "info": { "value": "{themes.info.50}" },
+      "warning": { "value": "{themes.warning.50}" },
+      "danger": { "value": "{themes.danger.50}" }
+    }
+  }
+}
