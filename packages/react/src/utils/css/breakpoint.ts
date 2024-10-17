@@ -7,7 +7,7 @@ const createMediaQuery =
   (breakpoint: ThemeBreakpoints) =>
   (...args: Args) =>
     css`
-      @media (min-width: ${({ theme }: Theme) => theme[breakpoint]}px) {
+      @media (min-width: ${({ theme }: Theme) => theme[breakpoint] + 1}px) {
         ${css(...args)};
       }
     `;
