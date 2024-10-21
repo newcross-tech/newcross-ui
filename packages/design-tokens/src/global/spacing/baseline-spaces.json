@@ -1,0 +1,70 @@
+{
+  "baseline-spaces": {
+    "space": {
+      "0": {
+        "value": 0,
+        "type": "spacing"
+      },
+      "4": {
+        "value": 4,
+        "type": "spacing"
+      },
+      "8": {
+        "value": 8,
+        "type": "spacing"
+      },
+      "12": {
+        "value": 12,
+        "type": "spacing"
+      },
+      "16": {
+        "value": 16,
+        "type": "spacing"
+      },
+      "20": {
+        "value": 20,
+        "type": "spacing"
+      },
+      "24": {
+        "value": 24,
+        "type": "spacing"
+      },
+      "28": {
+        "value": 28,
+        "type": "spacing"
+      },
+      "32": {
+        "value": 32,
+        "type": "spacing"
+      },
+      "36": {
+        "value": 36,
+        "type": "spacing"
+      },
+      "42": {
+        "value": 42,
+        "type": "spacing"
+      },
+      "46": {
+        "value": 46,
+        "type": "spacing"
+      },
+      "50": {
+        "value": 50,
+        "type": "spacing"
+      },
+      "54": {
+        "value": 54,
+        "type": "spacing"
+      },
+      "58": {
+        "value": 58,
+        "type": "spacing"
+      },
+      "62": {
+        "value": 62,
+        "type": "spacing"
+      }
+    }
+  }
+}
