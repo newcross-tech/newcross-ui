@@ -17,6 +17,7 @@ describe('Card Component', () => {
       hasRoundedCorners: true,
       hasBorder: true,
       fullWidth: true,
+      isOpacityDisabled: true,
       children: <Text>children</Text>,
     };
     // Act

@@ -1,10 +1,10 @@
 import React, {
-  ReactElement,
   cloneElement,
   isValidElement,
+  ReactElement,
   ReactNode,
 } from 'react';
-import { Pressable, GestureResponderEvent, ViewStyle } from 'react-native';
+import { GestureResponderEvent, Pressable, ViewStyle } from 'react-native';
 import toggleStyle from './ToggleButton.style';
 import { ClonedIcon } from './ToggleButton.types';
 import Typography, { TypographyVariant } from '../Typography';
@@ -102,7 +102,9 @@ const ToggleButton = ({
         })}
       <Typography
         numberOfLines={1}
-        variant={TypographyVariant.paragraph2}
+        variant={
+          selected ? TypographyVariant.heading4 : TypographyVariant.paragraph2
+        }
         style={styles.text}
       >
         {children}
