@@ -68,6 +68,10 @@
       "64": {
         "value": 64,
         "type": "spacing"
+      },
+      "infinite": {
+        "value": 99999,
+        "type": "spacing"
       }
     }
   }
