@@ -1,7 +1,10 @@
 {
   "baseline-font": {
     "font-family": {
-      "default": { "value": "Poppins" }
+      "poppins-regular": { "value": "Poppins-Regular" },
+      "poppins-semi-bold": { "value": "Poppins-SemiBold" },
+      "poppins-bold": { "value": "Poppins-Bold" },
+      "poppins-extra-bold": { "value": "Poppins-ExtraBold" }
     }
   }
 }
