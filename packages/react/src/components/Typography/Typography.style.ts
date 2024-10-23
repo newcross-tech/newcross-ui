@@ -3,7 +3,7 @@ import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ExtendedTheme, FontWeight, Theme } from '../../types';
 import { getElipsisStyles } from '../../utils';
 import { TypographyProps } from './Typography';
-import { TypographyVariant } from './Typography.types';
+import { TypographyColors, TypographyVariant } from './Typography.types';
 import { breakpoint } from '../../utils/css';
 import { typographyConfig } from './Typography.config';
 
@@ -24,34 +24,26 @@ const getTypographyStyles = (theme: ThemeDesignTokens, variant: TypographyVarian
   `;
 };
 
-export const getColorStyles = (theme: ThemeDesignTokens): Record<string, Record<string, string>> => ({
-  dark: {
-    primary: theme.TypographyDarkColorPrimary,
-    secondary: theme.TypographyDarkColorSecondary,
-    white: theme.TypographyColorWhite,
-    black: theme.TypographyColorBlack,
-    success: theme.TypographyColorSuccess,
-    error: theme.TypographyColorError,
-    warning: theme.TypographyColorWarning,
-    info: theme.TypographyColorInfo,
-  },
-  light: {
-    primary: theme.TypographyColorPrimary,
-    secondary: theme.TypographyColorSecondary,
-    white: theme.TypographyColorWhite,
-    black: theme.TypographyColorBlack,
-    success: theme.TypographyColorSuccess,
-    error: theme.TypographyColorError,
-    warning: theme.TypographyColorWarning,
-    info: theme.TypographyColorInfo,
-  },
+export const getColorStyles = (theme: ThemeDesignTokens): Record<TypographyColors, string> => ({
+  defaultDark: theme.ElementsTextDefaultDark,
+  defaultLight: theme.ElementsTextDefaultLight,
+  defaultDarkSecondary: theme.ElementsTextDefaultDarkSecondary,
+  actionPrimaryDark: theme.ElementsTextActionPrimaryDark,
+  actionSecondaryLight: theme.ElementsTextActionSecondaryLight,
+  actionDanger: theme.ElementsTextActionDanger,
+  disabled: theme.ElementsTextDisabled,
+  success: theme.ElementsTextSuccess,
+  successStandalone: theme.ElementsTextSuccessStandalone,
+  info: theme.ElementsTextInfo,
+  warning: theme.ElementsTextWarning,
+  danger: theme.ElementsTextDanger,
+  dangerError: theme.ElementsTextDangerError,
 });
 
 export const getCoreStyles = ({
   theme,
   variant,
   color,
-  mode = 'light',
   align,
   gutterBottom,
   numberOfLines,
@@ -59,7 +51,7 @@ export const getCoreStyles = ({
   ${getTypographyStyles(theme, variant)};
   ${numberOfLines && getElipsisStyles(numberOfLines)};
   margin-bottom: ${gutterBottom ? theme.SpacingBase8 : theme.SpacingBase0};
-  ${color ? { color: getColorStyles(theme)?.[mode]?.[color] } : { color: 'inherit' }};
+  ${color ? { color: getColorStyles(theme)[color] } : { color: 'inherit' }};
   ${align ? { textAlign: align } : { textAlign: 'inherit' }};
 
   b,

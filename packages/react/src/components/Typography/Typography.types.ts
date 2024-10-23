@@ -25,14 +25,19 @@ export enum TypographyVariant {
 }
 
 export type TypographyColors =
-  | 'primary'
-  | 'secondary'
-  | 'white'
-  | 'black'
-  | 'error'
-  | 'warning'
+  | 'defaultDark'
+  | 'defaultLight'
+  | 'defaultDarkSecondary'
+  | 'actionPrimaryDark'
+  | 'actionSecondaryLight'
+  | 'actionDanger'
+  | 'disabled'
   | 'success'
-  | 'info';
+  | 'successStandalone'
+  | 'info'
+  | 'warning'
+  | 'danger'
+  | 'dangerError';
 
 export type TypographyAlignment = 'center' | 'left' | 'right' | 'justify';
 
