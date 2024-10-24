@@ -2,151 +2,171 @@ import { TypographyVariant, TypographySettings } from './Typography.types';
 
 export const typographyConfig: Record<TypographyVariant, TypographySettings> = {
   // Headings
-  [TypographyVariant.h1]: {
+  h1: {
     fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
     fontSize: 'BaselineFontFontSize32',
-    lineHeight: 'BaselineFontFontSize40',
+    lineHeight: 'BaselineFontFontSize46',
     fontWeight: 'BaselineFontFontWeightSemiBold',
     responsiveFontSize: 'BaselineFontFontSize28',
+    responsiveLineHeight: 'BaselineFontFontSize42',
+    semanticTag: 'h1',
   },
-  [TypographyVariant.h2]: {
+  h2: {
     fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
-    fontSize: 'BaselineFontFontSize28',
-    lineHeight: 'BaselineFontFontSize32',
-    fontWeight: 'BaselineFontFontWeightSemiBold',
-    responsiveFontSize: 'BaselineFontFontSize24',
-  },
-  [TypographyVariant.h3]: {
-    fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
-    fontSize: 'BaselineFontFontSize24',
-    lineHeight: 'BaselineFontFontSize32',
+    fontSize: 'BaselineFontFontSize22',
+    lineHeight: 'BaselineFontFontSize38',
     fontWeight: 'BaselineFontFontWeightSemiBold',
     responsiveFontSize: 'BaselineFontFontSize20',
+    responsiveLineHeight: 'BaselineFontFontSize30',
+    semanticTag: 'h2',
   },
-  [TypographyVariant.h4]: {
-    fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
-    fontSize: 'BaselineFontFontSize20',
-    lineHeight: 'BaselineFontFontSize28',
-    fontWeight: 'BaselineFontFontWeightSemiBold',
-    responsiveFontSize: 'BaselineFontFontSize18',
-  },
-  [TypographyVariant.h5]: {
+  h3: {
     fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
     fontSize: 'BaselineFontFontSize18',
-    lineHeight: 'BaselineFontFontSize24',
+    lineHeight: 'BaselineFontFontSize28',
     fontWeight: 'BaselineFontFontWeightSemiBold',
     responsiveFontSize: 'BaselineFontFontSize16',
+    responsiveLineHeight: 'BaselineFontFontSize24',
+    semanticTag: 'h3',
+  },
+  h4: {
+    fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
+    fontSize: 'BaselineFontFontSize16',
+    lineHeight: 'BaselineFontFontSize24',
+    fontWeight: 'BaselineFontFontWeightSemiBold',
+    responsiveFontSize: 'BaselineFontFontSize14',
+    responsiveLineHeight: 'BaselineFontFontSize20',
+    semanticTag: 'h4',
+  },
+  h5: {
+    fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
+    fontSize: 'BaselineFontFontSize14',
+    lineHeight: 'BaselineFontFontSize20',
+    fontWeight: 'BaselineFontFontWeightSemiBold',
+    responsiveFontSize: 'BaselineFontFontSize12',
+    responsiveLineHeight: 'BaselineFontFontSize18',
+    semanticTag: 'h5',
   },
 
   // Paragraphs
-  [TypographyVariant.p1]: {
+  p1: {
+    fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
+    fontSize: 'BaselineFontFontSize18',
+    lineHeight: 'BaselineFontFontSize28',
+    fontWeight: 'BaselineFontFontWeightRegular',
+    responsiveFontSize: 'BaselineFontFontSize16',
+    responsiveLineHeight: 'BaselineFontFontSize24',
+    semanticTag: 'p',
+  },
+  p2: {
     fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
     fontSize: 'BaselineFontFontSize16',
     lineHeight: 'BaselineFontFontSize24',
     fontWeight: 'BaselineFontFontWeightRegular',
+    responsiveFontSize: 'BaselineFontFontSize14',
+    responsiveLineHeight: 'BaselineFontFontSize20',
+    semanticTag: 'p',
   },
-  [TypographyVariant.p2]: {
+  p3: {
     fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
     fontSize: 'BaselineFontFontSize14',
     lineHeight: 'BaselineFontFontSize20',
     fontWeight: 'BaselineFontFontWeightRegular',
-  },
-  [TypographyVariant.p3]: {
-    fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
-    fontSize: 'BaselineFontFontSize12',
-    lineHeight: 'BaselineFontFontSize18',
-    fontWeight: 'BaselineFontFontWeightRegular',
-  },
-  [TypographyVariant.p4]: {
-    fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
-    fontSize: 'BaselineFontFontSize10',
-    lineHeight: 'BaselineFontFontSize18',
-    fontWeight: 'BaselineFontFontWeightRegular',
+    responsiveFontSize: 'BaselineFontFontSize12',
+    responsiveLineHeight: 'BaselineFontFontSize18',
+    semanticTag: 'p',
   },
 
   // Strong Paragraphs
-  [TypographyVariant.p1Strong]: {
+  p1Strong: {
+    fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
+    fontSize: 'BaselineFontFontSize18',
+    lineHeight: 'BaselineFontFontSize28',
+    fontWeight: 'BaselineFontFontWeightSemiBold',
+    responsiveFontSize: 'BaselineFontFontSize16',
+    responsiveLineHeight: 'BaselineFontFontSize24',
+    semanticTag: 'p',
+  },
+  p2Strong: {
     fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
     fontSize: 'BaselineFontFontSize16',
     lineHeight: 'BaselineFontFontSize24',
     fontWeight: 'BaselineFontFontWeightSemiBold',
+    responsiveFontSize: 'BaselineFontFontSize14',
+    responsiveLineHeight: 'BaselineFontFontSize20',
+    semanticTag: 'p',
   },
-  [TypographyVariant.p2Strong]: {
+  p3Strong: {
     fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
     fontSize: 'BaselineFontFontSize14',
     lineHeight: 'BaselineFontFontSize20',
     fontWeight: 'BaselineFontFontWeightSemiBold',
-  },
-  [TypographyVariant.p3Strong]: {
-    fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
-    fontSize: 'BaselineFontFontSize12',
-    lineHeight: 'BaselineFontFontSize18',
-    fontWeight: 'BaselineFontFontWeightSemiBold',
-  },
-  [TypographyVariant.p4Strong]: {
-    fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
-    fontSize: 'BaselineFontFontSize10',
-    lineHeight: 'BaselineFontFontSize18',
-    fontWeight: 'BaselineFontFontWeightSemiBold',
+    responsiveFontSize: 'BaselineFontFontSize12',
+    responsiveLineHeight: 'BaselineFontFontSize18',
+    semanticTag: 'p',
   },
 
   // Action Paragraphs
-  [TypographyVariant.p1Action]: {
+  p1Action: {
+    fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
+    fontSize: 'BaselineFontFontSize18',
+    lineHeight: 'BaselineFontFontSize28',
+    fontWeight: 'BaselineFontFontWeightRegular',
+    responsiveFontSize: 'BaselineFontFontSize16',
+    responsiveLineHeight: 'BaselineFontFontSize24',
+    capitaliseText: true,
+    semanticTag: 'p',
+  },
+  p2Action: {
     fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
     fontSize: 'BaselineFontFontSize16',
     lineHeight: 'BaselineFontFontSize24',
     fontWeight: 'BaselineFontFontWeightRegular',
+    responsiveFontSize: 'BaselineFontFontSize14',
+    responsiveLineHeight: 'BaselineFontFontSize20',
     capitaliseText: true,
+    semanticTag: 'p',
   },
-  [TypographyVariant.p2Action]: {
+  p3Action: {
     fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
     fontSize: 'BaselineFontFontSize14',
     lineHeight: 'BaselineFontFontSize20',
     fontWeight: 'BaselineFontFontWeightRegular',
+    responsiveFontSize: 'BaselineFontFontSize12',
+    responsiveLineHeight: 'BaselineFontFontSize18',
     capitaliseText: true,
-  },
-  [TypographyVariant.p3Action]: {
-    fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
-    fontSize: 'BaselineFontFontSize12',
-    lineHeight: 'BaselineFontFontSize18',
-    fontWeight: 'BaselineFontFontWeightRegular',
-    capitaliseText: true,
-  },
-  [TypographyVariant.p4Action]: {
-    fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
-    fontSize: 'BaselineFontFontSize10',
-    lineHeight: 'BaselineFontFontSize18',
-    fontWeight: 'BaselineFontFontWeightRegular',
-    capitaliseText: true,
+    semanticTag: 'p',
   },
 
   // Action Paragraphs (Regular)
-  [TypographyVariant.p1ActionRegular]: {
+  p1ActionRegular: {
+    fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
+    fontSize: 'BaselineFontFontSize18',
+    lineHeight: 'BaselineFontFontSize28',
+    fontWeight: 'BaselineFontFontWeightRegular',
+    responsiveFontSize: 'BaselineFontFontSize16',
+    responsiveLineHeight: 'BaselineFontFontSize24',
+    capitaliseText: true,
+    semanticTag: 'p',
+  },
+  p2ActionRegular: {
     fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
     fontSize: 'BaselineFontFontSize16',
     lineHeight: 'BaselineFontFontSize24',
     fontWeight: 'BaselineFontFontWeightRegular',
+    responsiveFontSize: 'BaselineFontFontSize14',
+    responsiveLineHeight: 'BaselineFontFontSize20',
     capitaliseText: true,
+    semanticTag: 'p',
   },
-  [TypographyVariant.p2ActionRegular]: {
+  p3ActionRegular: {
     fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
     fontSize: 'BaselineFontFontSize14',
     lineHeight: 'BaselineFontFontSize20',
     fontWeight: 'BaselineFontFontWeightRegular',
+    responsiveFontSize: 'BaselineFontFontSize12',
+    responsiveLineHeight: 'BaselineFontFontSize18',
     capitaliseText: true,
-  },
-  [TypographyVariant.p3ActionRegular]: {
-    fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
-    fontSize: 'BaselineFontFontSize12',
-    lineHeight: 'BaselineFontFontSize18',
-    fontWeight: 'BaselineFontFontWeightRegular',
-    capitaliseText: true,
-  },
-  [TypographyVariant.p4ActionRegular]: {
-    fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
-    fontSize: 'BaselineFontFontSize10',
-    lineHeight: 'BaselineFontFontSize18',
-    fontWeight: 'BaselineFontFontWeightRegular',
-    capitaliseText: true,
+    semanticTag: 'p',
   },
 };

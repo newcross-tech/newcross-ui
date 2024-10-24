@@ -8,7 +8,7 @@ import { breakpoint } from '../../utils/css';
 import { typographyConfig } from './Typography.config';
 
 const getTypographyStyles = (theme: ThemeDesignTokens, variant: TypographyVariant): FlattenInterpolation<Theme> => {
-  const { fontFamily, fontSize, lineHeight, fontWeight, responsiveFontSize, capitaliseText } =
+  const { fontFamily, fontSize, lineHeight, fontWeight, responsiveFontSize, responsiveLineHeight, capitaliseText } =
     typographyConfig[variant];
 
   return css`
@@ -19,6 +19,7 @@ const getTypographyStyles = (theme: ThemeDesignTokens, variant: TypographyVarian
     ${responsiveFontSize &&
     breakpoint.md`
       font-size: ${theme[responsiveFontSize]};
+      line-height: ${theme[responsiveLineHeight]};
     `}
     ${capitaliseText && 'text-transform: capitalize;'};
   `;
@@ -73,6 +74,8 @@ export const Typography = styled.div<TypographyProps>`
     display,
   }: ExtendedTheme<TypographyProps>) => css`
     display: ${display};
+    margin: 0;
+    padding: 0;
     ${getCoreStyles({
       theme,
       variant,

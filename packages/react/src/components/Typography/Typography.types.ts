@@ -1,28 +1,28 @@
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 
-export enum TypographyVariant {
-  h1 = 'h1',
-  h2 = 'h2',
-  h3 = 'h3',
-  h4 = 'h4',
-  h5 = 'h5',
-  p1 = 'p1',
-  p2 = 'p2',
-  p3 = 'p3',
-  p4 = 'p4',
-  p1Strong = 'p1Strong',
-  p2Strong = 'p2Strong',
-  p3Strong = 'p3Strong',
-  p4Strong = 'p4Strong',
-  p1Action = 'p1Action',
-  p2Action = 'p2Action',
-  p3Action = 'p3Action',
-  p4Action = 'p4Action',
-  p1ActionRegular = 'p1ActionRegular',
-  p2ActionRegular = 'p2ActionRegular',
-  p3ActionRegular = 'p3ActionRegular',
-  p4ActionRegular = 'p4ActionRegular',
-}
+export type TypographyVariant =
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'p1'
+  | 'p2'
+  | 'p3'
+  | 'p1Strong'
+  | 'p2Strong'
+  | 'p3Strong'
+  | 'p1Action'
+  | 'p2Action'
+  | 'p3Action'
+  | 'p1ActionRegular'
+  | 'p2ActionRegular'
+  | 'p3ActionRegular';
+
+type TypographyTags = keyof Pick<
+  JSX.IntrinsicElements,
+  'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p'
+>;
 
 export type TypographyColors =
   | 'defaultDark'
@@ -43,22 +43,24 @@ export type TypographyAlignment = 'center' | 'left' | 'right' | 'justify';
 
 export type TypographyFontSizes = keyof Pick<
   ThemeDesignTokens,
-  | 'BaselineFontFontSize10'
   | 'BaselineFontFontSize12'
   | 'BaselineFontFontSize14'
   | 'BaselineFontFontSize16'
   | 'BaselineFontFontSize18'
   | 'BaselineFontFontSize20'
+  | 'BaselineFontFontSize22'
   | 'BaselineFontFontSize24'
+  | 'BaselineFontFontSize26'
   | 'BaselineFontFontSize28'
   | 'BaselineFontFontSize30'
   | 'BaselineFontFontSize32'
+  | 'BaselineFontFontSize34'
   | 'BaselineFontFontSize36'
   | 'BaselineFontFontSize38'
   | 'BaselineFontFontSize40'
   | 'BaselineFontFontSize42'
   | 'BaselineFontFontSize44'
-  | 'BaselineFontFontSize48'
+  | 'BaselineFontFontSize46'
 >;
 
 export type TypographyFontWeights = keyof Pick<
@@ -83,5 +85,7 @@ export type TypographySettings = {
   lineHeight: TypographyFontSizes;
   fontWeight: TypographyFontWeights;
   responsiveFontSize?: TypographyFontSizes;
+  responsiveLineHeight?: TypographyFontSizes;
   capitaliseText?: boolean;
+  semanticTag: TypographyTags;
 };
