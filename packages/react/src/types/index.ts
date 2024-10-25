@@ -1,4 +1,5 @@
 import { ThemeDesignTokens } from '../theme/ThemeProvider';
+import { breakpoint } from '../utils/css';
 export type AlertVariant =
   | 'success'
   | 'warning'
@@ -30,7 +31,73 @@ export type ThemeSpacing = keyof Pick<
   | 'SpacingBase80'
 >;
 
+export type NewThemeSpacingTokens = keyof Pick<
+  ThemeDesignTokens,
+  | 'BaselineSpacesSpace0'
+  | 'BaselineSpacesSpace4'
+  | 'BaselineSpacesSpace8'
+  | 'BaselineSpacesSpace12'
+  | 'BaselineSpacesSpace16'
+  | 'BaselineSpacesSpace20'
+  | 'BaselineSpacesSpace24'
+  | 'BaselineSpacesSpace28'
+  | 'BaselineSpacesSpace32'
+  | 'BaselineSpacesSpace36'
+  | 'BaselineSpacesSpace40'
+  | 'BaselineSpacesSpace44'
+  | 'BaselineSpacesSpace48'
+  | 'BaselineSpacesSpace52'
+  | 'BaselineSpacesSpace56'
+  | 'BaselineSpacesSpace60'
+  | 'BaselineSpacesSpace64'
+  | 'BaselineSpacesSpaceInfinite'
+>;
+
+export type NewThemeSpacing = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+
 export type ThemeBreakpoints = keyof Pick<
   ThemeDesignTokens,
   'BreakpointsSm' | 'BreakpointsMd' | 'BreakpointsLg' | 'BreakpointsXl'
 >;
+
+export const responsiveSpacingMap: Record<
+  NewThemeSpacing,
+  Record<keyof typeof breakpoint, NewThemeSpacingTokens>
+> = {
+  xs: {
+    sm: 'BaselineSpacesSpace4',
+    md: 'BaselineSpacesSpace4',
+    lg: 'BaselineSpacesSpace4',
+    xl: 'BaselineSpacesSpace4',
+  },
+  sm: {
+    sm: 'BaselineSpacesSpace8',
+    md: 'BaselineSpacesSpace8',
+    lg: 'BaselineSpacesSpace8',
+    xl: 'BaselineSpacesSpace8',
+  },
+  md: {
+    sm: 'BaselineSpacesSpace16',
+    md: 'BaselineSpacesSpace16',
+    lg: 'BaselineSpacesSpace16',
+    xl: 'BaselineSpacesSpace16',
+  },
+  lg: {
+    sm: 'BaselineSpacesSpace20',
+    md: 'BaselineSpacesSpace24',
+    lg: 'BaselineSpacesSpace28',
+    xl: 'BaselineSpacesSpace28',
+  },
+  xl: {
+    sm: 'BaselineSpacesSpace32',
+    md: 'BaselineSpacesSpace36',
+    lg: 'BaselineSpacesSpace44',
+    xl: 'BaselineSpacesSpace44',
+  },
+  xxl: {
+    sm: 'BaselineSpacesSpace44',
+    md: 'BaselineSpacesSpace48',
+    lg: 'BaselineSpacesSpace52',
+    xl: 'BaselineSpacesSpace52',
+  },
+};
