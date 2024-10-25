@@ -1,4 +1,4 @@
-import styled, { css, FlattenInterpolation, FlattenSimpleInterpolation } from 'styled-components';
+import styled, { css, FlattenInterpolation } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ExtendedTheme, FontWeight, Theme } from '../../types';
 import { getElipsisStyles } from '../../utils';
