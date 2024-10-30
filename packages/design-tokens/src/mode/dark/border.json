@@ -1,0 +1,18 @@
+{
+  "elements": {
+    "border": {
+      "default": {
+        "value": "{themes.neutral.800}"
+      },
+      "disabled": {
+        "value": "{themes.neutral.700}"
+      },
+      "success": {
+        "value": "{themes.success.200}"
+      },
+      "danger": {
+        "value": "{themes.danger.300}"
+      }
+    }
+  }
+}
