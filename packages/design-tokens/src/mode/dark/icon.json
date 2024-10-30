@@ -1,0 +1,12 @@
+{
+  "elements": {
+    "icon": {
+      "action-danger": {
+        "value": "{themes.danger.900}"
+      },
+      "success": {
+        "value": "{themes.success.200}"
+      }
+    }
+  }
+}
