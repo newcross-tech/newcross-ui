@@ -1,0 +1,33 @@
+{
+  "elements": {
+    "surface": {
+      "default": {
+        "value": "{themes.neutral.700}"
+      },
+      "highlight-subtle": {
+        "value": "{themes.secondary.600}"
+      },
+      "highlight-strong": {
+        "value": "{themes.primary.600}"
+      },
+      "page": {
+        "value": "{themes.neutral.900}"
+      },
+      "action-danger": {
+        "value": "{themes.danger.200}"
+      },
+      "action-danger-hover": {
+        "value": "{themes.danger.300}"
+      },
+      "disabled": {
+        "value": "{themes.neutral.800}"
+      },
+      "disabled-highlight": {
+        "value": "{themes.neutral.900}"
+      },
+      "success": {
+        "value": "{themes.success.700}"
+      }
+    }
+  }
+}
