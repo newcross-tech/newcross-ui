@@ -34,3 +34,5 @@ export type ThemeBreakpoints = keyof Pick<
   ThemeDesignTokens,
   'BreakpointsSm' | 'BreakpointsMd' | 'BreakpointsLg' | 'BreakpointsXl'
 >;
+
+export type SemanticBreakpoints = 'sm' | 'md' | 'lg' | 'xl';

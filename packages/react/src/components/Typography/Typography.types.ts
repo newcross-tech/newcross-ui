@@ -1,4 +1,5 @@
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
+import { SemanticBreakpoints } from '../../types';
 
 export type TypographyVariant =
   | 'h1'
@@ -49,18 +50,20 @@ export type TypographyFontSizes = keyof Pick<
   | 'BaselineFontFontSize18'
   | 'BaselineFontFontSize20'
   | 'BaselineFontFontSize22'
-  | 'BaselineFontFontSize24'
-  | 'BaselineFontFontSize26'
   | 'BaselineFontFontSize28'
-  | 'BaselineFontFontSize30'
   | 'BaselineFontFontSize32'
-  | 'BaselineFontFontSize34'
-  | 'BaselineFontFontSize36'
-  | 'BaselineFontFontSize38'
-  | 'BaselineFontFontSize40'
-  | 'BaselineFontFontSize42'
-  | 'BaselineFontFontSize44'
-  | 'BaselineFontFontSize46'
+>;
+
+export type TypographyLineHeights = keyof Pick<
+  ThemeDesignTokens,
+  | 'BaselineFontLineHeight18'
+  | 'BaselineFontLineHeight20'
+  | 'BaselineFontLineHeight24'
+  | 'BaselineFontLineHeight28'
+  | 'BaselineFontLineHeight30'
+  | 'BaselineFontLineHeight38'
+  | 'BaselineFontLineHeight42'
+  | 'BaselineFontLineHeight46'
 >;
 
 export type TypographyFontWeights = keyof Pick<
@@ -79,13 +82,19 @@ export type TypographyFontFamily = keyof Pick<
   | 'BaselineFontFontFamilyPoppinsExtraBold'
 >;
 
+type TypographyResponsiveSettings = {
+  fontSize: TypographyFontSizes;
+  lineHeight: TypographyLineHeights;
+};
+
 export type TypographySettings = {
   fontFamily: TypographyFontFamily;
   fontSize: TypographyFontSizes;
-  lineHeight: TypographyFontSizes;
+  lineHeight: TypographyLineHeights;
   fontWeight: TypographyFontWeights;
-  responsiveFontSize?: TypographyFontSizes;
-  responsiveLineHeight?: TypographyFontSizes;
+  responsiveness?: Partial<
+    Record<SemanticBreakpoints, TypographyResponsiveSettings>
+  >;
   capitaliseText?: boolean;
   semanticTag: TypographyTags;
 };

@@ -8,19 +8,25 @@ import { breakpoint } from '../../utils/css';
 import { typographyConfig } from './Typography.config';
 
 const getTypographyStyles = (theme: ThemeDesignTokens, variant: TypographyVariant): FlattenInterpolation<Theme> => {
-  const { fontFamily, fontSize, lineHeight, fontWeight, responsiveFontSize, responsiveLineHeight, capitaliseText } =
-    typographyConfig[variant];
+  const { fontFamily, fontSize, lineHeight, fontWeight, responsiveness, capitaliseText } = typographyConfig[variant];
 
   return css`
     font-family: ${theme[fontFamily]};
     font-size: ${theme[fontSize]};
     line-height: ${theme[lineHeight]};
     font-weight: ${theme[fontWeight] as FontWeight};
-    ${responsiveFontSize &&
-    breakpoint.md`
-      font-size: ${theme[responsiveFontSize]};
-      line-height: ${theme[responsiveLineHeight]};
-    `}
+
+    ${responsiveness &&
+    Object.entries(responsiveness)
+      .reverse()
+      .map(
+        ([key, { fontSize, lineHeight }]) =>
+          breakpoint[key as keyof typeof breakpoint]`
+          font-size: ${theme[fontSize]};
+          line-height: ${theme[lineHeight]};
+        `
+      )}
+
     ${capitaliseText && 'text-transform: capitalize;'};
   `;
 };
