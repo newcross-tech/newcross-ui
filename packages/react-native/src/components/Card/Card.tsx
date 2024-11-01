@@ -77,6 +77,10 @@ export type CardProps = {
    *Extra content on the bottom side of the Card.
    */
   extraFooterContent?: ReactNode;
+  /**
+   * opacity disabled
+   * */
+  isOpacityDisabled?: boolean;
 };
 
 const Card = ({
@@ -94,6 +98,7 @@ const Card = ({
   hasShadow = true,
   isPressable = true,
   extraFooterContent = null,
+  isOpacityDisabled = false,
   ...rest
 }: CardProps) => {
   const theme = useTheme();
@@ -115,7 +120,12 @@ const Card = ({
       style={({ pressed }) => [
         styles.container,
         containerStyle,
-        { opacity: pressed && isPressable ? theme.CardPressedOpacity : 1 },
+        {
+          opacity:
+            pressed && isPressable && !isOpacityDisabled
+              ? theme.CardPressedOpacity
+              : 1,
+        },
       ]}
       {...rest}
       testID={`${testID}`}
