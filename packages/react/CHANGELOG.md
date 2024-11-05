@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.15.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.14.0...@newcross-ui/react@2.15.0) (2024-11-05)
+
+
+### Features
+
+* **CAPP-1671:** update font sizes on badges ([#125](https://bitbucket.org/newcrossdev/newcross-ui/issues/125)) ([531bc09](https://bitbucket.org/newcrossdev/newcross-ui/commits/531bc09ba6542e043259f5438723494673f7abdc))
+
+
+
+
+
 # [2.14.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.13.0...@newcross-ui/react@2.14.0) (2024-10-30)
 
 
