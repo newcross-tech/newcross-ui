@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.14.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.13.0...@newcross-ui/react@2.14.0) (2024-10-30)
+
+
+### Features
+
+* **ASK-0000:** create new color tokens ([#116](https://bitbucket.org/newcrossdev/newcross-ui/issues/116)) ([162bb92](https://bitbucket.org/newcrossdev/newcross-ui/commits/162bb929296b858c491e4bc1f7b35912bc59c513))
+
+
+
+
+
 # [2.13.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.12.0...@newcross-ui/react@2.13.0) (2024-10-16)
 
 

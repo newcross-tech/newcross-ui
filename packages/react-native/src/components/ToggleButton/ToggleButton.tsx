@@ -102,7 +102,9 @@ const ToggleButton = ({
         })}
       <Typography
         numberOfLines={1}
-        variant={TypographyVariant.paragraph2}
+        variant={
+          selected ? TypographyVariant.heading4 : TypographyVariant.paragraph2
+        }
         style={styles.text}
       >
         {children}
