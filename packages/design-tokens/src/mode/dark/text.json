@@ -1,0 +1,24 @@
+{
+  "elements": {
+    "text": {
+      "default-dark": {
+        "value": "{themes.neutral.50}"
+      },
+      "default-light": {
+        "value": "{themes.neutral.900}"
+      },
+      "default-dark-secondary": {
+        "value": "{themes.neutral.50}"
+      },
+      "action-danger": {
+        "value": "{themes.danger.900}"
+      },
+      "disabled": {
+        "value": "{themes.neutral.700}"
+      },
+      "success": {
+        "value": "{themes.success.300}"
+      }
+    }
+  }
+}
