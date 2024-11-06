@@ -21,8 +21,8 @@ export const getHeightWidthValues = (theme: ThemeDesignTokens): Record<BadgeSize
 });
 
 export const getTypographyVariant = (): Record<BadgeSizes, TypographyVariant> => ({
-  large: 'heading6',
-  medium: 'subtitle2',
+  large: 'paragraph3',
+  medium: 'paragraph4',
   small: 'subtitle2',
 });
 
