@@ -1,0 +1,25 @@
+{
+  "baseline-font": {
+    "font-size": {
+      "10": { "value": 10, "type": "size" },
+      "12": { "value": 12, "type": "size" },
+      "14": { "value": 14, "type": "size" },
+      "16": { "value": 16, "type": "size" },
+      "18": { "value": 18, "type": "size" },
+      "20": { "value": 20, "type": "size" },
+      "22": { "value": 22, "type": "size" },
+      "24": { "value": 24, "type": "size" },
+      "26": { "value": 26, "type": "size" },
+      "28": { "value": 28, "type": "size" },
+      "30": { "value": 30, "type": "size" },
+      "32": { "value": 32, "type": "size" },
+      "34": { "value": 34, "type": "size" },
+      "36": { "value": 36, "type": "size" },
+      "38": { "value": 38, "type": "size" },
+      "40": { "value": 40, "type": "size" },
+      "42": { "value": 42, "type": "size" },
+      "44": { "value": 44, "type": "size" },
+      "46": { "value": 46, "type": "size" }
+    }
+  }
+}
