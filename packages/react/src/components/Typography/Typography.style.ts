@@ -10,13 +10,15 @@ import { typographyConfig } from './Typography.config';
 const getTypographyStyles = (theme: ThemeDesignTokens, variant: TypographyVariant): FlattenInterpolation<Theme> => {
   const { fontFamily, fontSize, lineHeight, fontWeight, responsiveness, capitaliseText } = typographyConfig[variant];
 
+  const hasResponsiveValues = responsiveness && Object.entries(responsiveness).length > 0;
+
   return css`
     font-family: ${theme[fontFamily]};
     font-size: ${theme[fontSize]};
     line-height: ${theme[lineHeight]};
     font-weight: ${theme[fontWeight] as FontWeight};
 
-    ${responsiveness &&
+    ${hasResponsiveValues &&
     Object.entries(responsiveness)
       .reverse()
       .map(
