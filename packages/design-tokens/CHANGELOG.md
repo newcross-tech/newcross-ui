@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.46.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.45.0...@newcross-ui/design-tokens@1.46.0) (2024-11-06)
+
+
+### Features
+
+* **ASK-0000:** create baseline font tokens ([#120](https://bitbucket.org/newcrossdev/newcross-ui/issues/120)) ([f1e527d](https://bitbucket.org/newcrossdev/newcross-ui/commits/f1e527d8a77ed448b88ee8ae03ba2aa102842dcc))
+
+
+
+
+
 # [1.45.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.44.0...@newcross-ui/design-tokens@1.45.0) (2024-10-30)
 
 
