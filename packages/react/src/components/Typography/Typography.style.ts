@@ -1,12 +1,11 @@
 import styled, { css, FlattenInterpolation } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ExtendedTheme, FontWeight, Theme } from '../../types';
-import { getElipsisStyles } from '../../utils';
+import { getElipsisStyles, getSortedBreakpoints } from '../../utils';
 import { TypographyProps } from './Typography';
 import { TypographyColors, TypographyVariant } from './Typography.types';
 import { breakpoint } from '../../utils/css';
 import { typographyMap } from './Typography.constants';
-import { getSortedBreakpoints } from '../../utils';
 
 const getTypographyStyles = (theme: ThemeDesignTokens, variant: TypographyVariant): FlattenInterpolation<Theme> => {
   const { fontFamily, fontSize, lineHeight, fontWeight, responsiveness, capitaliseText } = typographyMap[variant];

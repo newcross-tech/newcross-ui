@@ -18,8 +18,5 @@ export const getSortedBreakpoints = (
         breakpointOrder.indexOf(b as SemanticBreakpoints) -
         breakpointOrder.indexOf(a as SemanticBreakpoints)
     )
-    .map(([key, value]) => [
-      key as SemanticBreakpoints,
-      value as TypographyResponsiveStyles,
-    ]);
+    .map(([key, value]) => [key as SemanticBreakpoints, value]);
 };

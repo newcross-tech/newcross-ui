@@ -1,6 +1,5 @@
-import { StyleSheet, ViewStyle } from 'react-native';
+import { StyleSheet, ViewStyle, Dimensions } from 'react-native';
 import useTheme from '../../hooks/useTheme';
-import { Dimensions } from 'react-native';
 
 export const getPaginationDotStyles = (selectedDot: boolean): ViewStyle => {
   const theme = useTheme();

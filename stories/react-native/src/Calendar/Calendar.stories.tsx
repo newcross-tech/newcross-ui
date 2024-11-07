@@ -9,8 +9,7 @@ import {
 } from '@newcross-ui/react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import Container from '../Container';
-import { isWebPlatform } from '../utils';
-import { getParameters } from '../utils';
+import { isWebPlatform, getParameters } from '../utils';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './CalendarInfo';
 import Spacing from '../Spacing';

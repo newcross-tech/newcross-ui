@@ -4,6 +4,9 @@ import {
   PhoneInput,
   Typography,
   TypographyVariant,
+  BottomSheetRefProps,
+  BottomSheet,
+  ListOption,
 } from '@newcross-ui/react-native';
 import Spacing, { SpacingPositions } from '../Spacing';
 import Container from '../Container';
@@ -13,9 +16,6 @@ import { TITLE, DESCRIPTION, DO, DONT } from './PhoneInputInfo';
 import useState from 'storybook-addon-state';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import React, { createRef } from 'react';
-import { BottomSheetRefProps } from '@newcross-ui/react-native';
-import { BottomSheet } from '@newcross-ui/react-native';
-import { ListOption } from '@newcross-ui/react-native';
 import { PHONE_FORMAT_DATA } from './PhoneFormatData.constants';
 import { PhoneInputProps } from '@newcross-ui/react-native/build/components/PhoneInput';
 
