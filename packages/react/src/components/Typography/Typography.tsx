@@ -6,7 +6,7 @@ import {
   TypographyColors,
   TypographyAlignment,
 } from './Typography.types';
-import { typographyConfig } from './Typography.config';
+import { typographyMap } from './Typography.constants';
 
 export type TypographyProps = {
   /**
@@ -58,7 +58,7 @@ const Typography = ({
       mode={mode}
       display={display}
       variant={variant}
-      as={typographyConfig[variant].semanticTag}
+      as={typographyMap[variant].semanticTag}
       {...rest}
     >
       {children}

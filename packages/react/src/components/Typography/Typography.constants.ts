@@ -1,23 +1,103 @@
-import { TypographyVariant, TypographySettings } from './Typography.types';
+import { TypographyVariant, TypographyStyles } from './Typography.types';
 
-/* *************************************************
- * Note: Ensure that the `responsiveness` object
- * is populated with semantic values in
- * ASCENDING order of screen sizes for proper CSS
- * application and cascading.
- ************************************************* */
-
-export const typographyConfig: Record<TypographyVariant, TypographySettings> = {
+export const typographyMap: Record<TypographyVariant, TypographyStyles> = {
+  //Legacy Headings
+  heading1: {
+    fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
+    fontSize: 'BaselineFontFontSize32',
+    lineHeight: 'BaselineFontFontSize40',
+    fontWeight: 'BaselineFontFontWeightBold',
+    semanticTag: 'h1',
+  },
+  heading2: {
+    fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
+    fontSize: 'BaselineFontFontSize28',
+    lineHeight: 'BaselineFontFontSize32',
+    fontWeight: 'BaselineFontFontWeightSemiBold',
+    semanticTag: 'h2',
+  },
+  heading3: {
+    fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
+    fontSize: 'BaselineFontFontSize24',
+    lineHeight: 'BaselineFontFontSize32',
+    fontWeight: 'BaselineFontFontWeightSemiBold',
+    semanticTag: 'h3',
+  },
+  heading4: {
+    fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
+    fontSize: 'BaselineFontFontSize20',
+    lineHeight: 'BaselineFontFontSize32',
+    fontWeight: 'BaselineFontFontWeightSemiBold',
+    semanticTag: 'h4',
+  },
+  heading5: {
+    fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
+    fontSize: 'BaselineFontFontSize18',
+    lineHeight: 'BaselineFontFontSize24',
+    fontWeight: 'BaselineFontFontWeightSemiBold',
+    semanticTag: 'h5',
+  },
+  heading6: {
+    fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
+    fontSize: 'BaselineFontFontSize16',
+    lineHeight: 'BaselineFontFontSize24',
+    fontWeight: 'BaselineFontFontWeightSemiBold',
+    semanticTag: 'h6',
+  },
+  // Legacy Subtitles
+  subtitle1: {
+    fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
+    fontSize: 'BaselineFontFontSize14',
+    lineHeight: 'BaselineFontFontSize20',
+    fontWeight: 'BaselineFontFontWeightSemiBold',
+    semanticTag: 'p',
+  },
+  subtitle2: {
+    fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
+    fontSize: 'BaselineFontFontSize12',
+    lineHeight: 'BaselineFontFontSize20',
+    fontWeight: 'BaselineFontFontWeightSemiBold',
+    semanticTag: 'p',
+  },
+  // Legacy Paragraphs
+  paragraph1: {
+    fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
+    fontSize: 'BaselineFontFontSize16',
+    lineHeight: 'BaselineFontFontSize24',
+    fontWeight: 'BaselineFontFontWeightRegular',
+    semanticTag: 'p',
+  },
+  paragraph2: {
+    fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
+    fontSize: 'BaselineFontFontSize14',
+    lineHeight: 'BaselineFontFontSize20',
+    fontWeight: 'BaselineFontFontWeightRegular',
+    semanticTag: 'p',
+  },
+  paragraph3: {
+    fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
+    fontSize: 'BaselineFontFontSize12',
+    lineHeight: 'BaselineFontFontSize18',
+    fontWeight: 'BaselineFontFontWeightRegular',
+    semanticTag: 'p',
+  },
+  paragraph4: {
+    fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
+    fontSize: 'BaselineFontFontSize10',
+    lineHeight: 'BaselineFontFontSize16',
+    fontWeight: 'BaselineFontFontWeightRegular',
+    semanticTag: 'p',
+  },
   // Headings
   h1: {
     fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
     fontSize: 'BaselineFontFontSize32',
-    lineHeight: 'BaselineFontLineHeight46',
+    lineHeight: 'BaselineFontFontSize46',
     fontWeight: 'BaselineFontFontWeightSemiBold',
     responsiveness: {
       md: {
         fontSize: 'BaselineFontFontSize28',
-        lineHeight: 'BaselineFontLineHeight42',
+        lineHeight: 'BaselineFontFontSize42',
       },
     },
     semanticTag: 'h1',
@@ -25,12 +105,12 @@ export const typographyConfig: Record<TypographyVariant, TypographySettings> = {
   h2: {
     fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
     fontSize: 'BaselineFontFontSize22',
-    lineHeight: 'BaselineFontLineHeight38',
+    lineHeight: 'BaselineFontFontSize38',
     fontWeight: 'BaselineFontFontWeightSemiBold',
     responsiveness: {
       md: {
         fontSize: 'BaselineFontFontSize20',
-        lineHeight: 'BaselineFontLineHeight30',
+        lineHeight: 'BaselineFontFontSize30',
       },
     },
     semanticTag: 'h2',
@@ -38,12 +118,12 @@ export const typographyConfig: Record<TypographyVariant, TypographySettings> = {
   h3: {
     fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
     fontSize: 'BaselineFontFontSize18',
-    lineHeight: 'BaselineFontLineHeight28',
+    lineHeight: 'BaselineFontFontSize28',
     fontWeight: 'BaselineFontFontWeightSemiBold',
     responsiveness: {
       md: {
         fontSize: 'BaselineFontFontSize16',
-        lineHeight: 'BaselineFontLineHeight24',
+        lineHeight: 'BaselineFontFontSize24',
       },
     },
     semanticTag: 'h3',
@@ -51,12 +131,12 @@ export const typographyConfig: Record<TypographyVariant, TypographySettings> = {
   h4: {
     fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
     fontSize: 'BaselineFontFontSize16',
-    lineHeight: 'BaselineFontLineHeight24',
+    lineHeight: 'BaselineFontFontSize24',
     fontWeight: 'BaselineFontFontWeightSemiBold',
     responsiveness: {
       md: {
         fontSize: 'BaselineFontFontSize14',
-        lineHeight: 'BaselineFontLineHeight20',
+        lineHeight: 'BaselineFontFontSize20',
       },
     },
     semanticTag: 'h4',
@@ -64,12 +144,12 @@ export const typographyConfig: Record<TypographyVariant, TypographySettings> = {
   h5: {
     fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
     fontSize: 'BaselineFontFontSize14',
-    lineHeight: 'BaselineFontLineHeight20',
+    lineHeight: 'BaselineFontFontSize20',
     fontWeight: 'BaselineFontFontWeightSemiBold',
     responsiveness: {
       md: {
         fontSize: 'BaselineFontFontSize12',
-        lineHeight: 'BaselineFontLineHeight18',
+        lineHeight: 'BaselineFontFontSize18',
       },
     },
     semanticTag: 'h5',
@@ -79,12 +159,12 @@ export const typographyConfig: Record<TypographyVariant, TypographySettings> = {
   p1: {
     fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
     fontSize: 'BaselineFontFontSize18',
-    lineHeight: 'BaselineFontLineHeight28',
+    lineHeight: 'BaselineFontFontSize28',
     fontWeight: 'BaselineFontFontWeightRegular',
     responsiveness: {
       md: {
         fontSize: 'BaselineFontFontSize16',
-        lineHeight: 'BaselineFontLineHeight24',
+        lineHeight: 'BaselineFontFontSize24',
       },
     },
     semanticTag: 'p',
@@ -92,12 +172,12 @@ export const typographyConfig: Record<TypographyVariant, TypographySettings> = {
   p2: {
     fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
     fontSize: 'BaselineFontFontSize16',
-    lineHeight: 'BaselineFontLineHeight24',
+    lineHeight: 'BaselineFontFontSize24',
     fontWeight: 'BaselineFontFontWeightRegular',
     responsiveness: {
       md: {
         fontSize: 'BaselineFontFontSize14',
-        lineHeight: 'BaselineFontLineHeight20',
+        lineHeight: 'BaselineFontFontSize20',
       },
     },
     semanticTag: 'p',
@@ -105,12 +185,12 @@ export const typographyConfig: Record<TypographyVariant, TypographySettings> = {
   p3: {
     fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
     fontSize: 'BaselineFontFontSize14',
-    lineHeight: 'BaselineFontLineHeight20',
+    lineHeight: 'BaselineFontFontSize20',
     fontWeight: 'BaselineFontFontWeightRegular',
     responsiveness: {
       md: {
         fontSize: 'BaselineFontFontSize12',
-        lineHeight: 'BaselineFontLineHeight18',
+        lineHeight: 'BaselineFontFontSize18',
       },
     },
     semanticTag: 'p',
@@ -120,12 +200,12 @@ export const typographyConfig: Record<TypographyVariant, TypographySettings> = {
   p1Strong: {
     fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
     fontSize: 'BaselineFontFontSize18',
-    lineHeight: 'BaselineFontLineHeight28',
+    lineHeight: 'BaselineFontFontSize28',
     fontWeight: 'BaselineFontFontWeightSemiBold',
     responsiveness: {
       md: {
         fontSize: 'BaselineFontFontSize16',
-        lineHeight: 'BaselineFontLineHeight24',
+        lineHeight: 'BaselineFontFontSize24',
       },
     },
     semanticTag: 'p',
@@ -133,12 +213,12 @@ export const typographyConfig: Record<TypographyVariant, TypographySettings> = {
   p2Strong: {
     fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
     fontSize: 'BaselineFontFontSize16',
-    lineHeight: 'BaselineFontLineHeight24',
+    lineHeight: 'BaselineFontFontSize24',
     fontWeight: 'BaselineFontFontWeightSemiBold',
     responsiveness: {
       md: {
         fontSize: 'BaselineFontFontSize14',
-        lineHeight: 'BaselineFontLineHeight20',
+        lineHeight: 'BaselineFontFontSize20',
       },
     },
     semanticTag: 'p',
@@ -146,12 +226,12 @@ export const typographyConfig: Record<TypographyVariant, TypographySettings> = {
   p3Strong: {
     fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
     fontSize: 'BaselineFontFontSize14',
-    lineHeight: 'BaselineFontLineHeight20',
+    lineHeight: 'BaselineFontFontSize20',
     fontWeight: 'BaselineFontFontWeightSemiBold',
     responsiveness: {
       md: {
         fontSize: 'BaselineFontFontSize12',
-        lineHeight: 'BaselineFontLineHeight18',
+        lineHeight: 'BaselineFontFontSize18',
       },
     },
     semanticTag: 'p',
@@ -161,12 +241,12 @@ export const typographyConfig: Record<TypographyVariant, TypographySettings> = {
   p1Action: {
     fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
     fontSize: 'BaselineFontFontSize18',
-    lineHeight: 'BaselineFontLineHeight28',
+    lineHeight: 'BaselineFontFontSize28',
     fontWeight: 'BaselineFontFontWeightRegular',
     responsiveness: {
       md: {
         fontSize: 'BaselineFontFontSize16',
-        lineHeight: 'BaselineFontLineHeight24',
+        lineHeight: 'BaselineFontFontSize24',
       },
     },
     capitaliseText: true,
@@ -175,12 +255,12 @@ export const typographyConfig: Record<TypographyVariant, TypographySettings> = {
   p2Action: {
     fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
     fontSize: 'BaselineFontFontSize16',
-    lineHeight: 'BaselineFontLineHeight24',
+    lineHeight: 'BaselineFontFontSize24',
     fontWeight: 'BaselineFontFontWeightRegular',
     responsiveness: {
       md: {
         fontSize: 'BaselineFontFontSize14',
-        lineHeight: 'BaselineFontLineHeight20',
+        lineHeight: 'BaselineFontFontSize20',
       },
     },
     capitaliseText: true,
@@ -189,12 +269,12 @@ export const typographyConfig: Record<TypographyVariant, TypographySettings> = {
   p3Action: {
     fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
     fontSize: 'BaselineFontFontSize14',
-    lineHeight: 'BaselineFontLineHeight20',
+    lineHeight: 'BaselineFontFontSize20',
     fontWeight: 'BaselineFontFontWeightRegular',
     responsiveness: {
       md: {
         fontSize: 'BaselineFontFontSize12',
-        lineHeight: 'BaselineFontLineHeight18',
+        lineHeight: 'BaselineFontFontSize18',
       },
     },
     capitaliseText: true,
@@ -205,12 +285,12 @@ export const typographyConfig: Record<TypographyVariant, TypographySettings> = {
   p1ActionRegular: {
     fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
     fontSize: 'BaselineFontFontSize18',
-    lineHeight: 'BaselineFontLineHeight28',
+    lineHeight: 'BaselineFontFontSize28',
     fontWeight: 'BaselineFontFontWeightRegular',
     responsiveness: {
       md: {
         fontSize: 'BaselineFontFontSize16',
-        lineHeight: 'BaselineFontLineHeight24',
+        lineHeight: 'BaselineFontFontSize24',
       },
     },
     capitaliseText: true,
@@ -219,12 +299,12 @@ export const typographyConfig: Record<TypographyVariant, TypographySettings> = {
   p2ActionRegular: {
     fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
     fontSize: 'BaselineFontFontSize16',
-    lineHeight: 'BaselineFontLineHeight24',
+    lineHeight: 'BaselineFontFontSize24',
     fontWeight: 'BaselineFontFontWeightRegular',
     responsiveness: {
       md: {
         fontSize: 'BaselineFontFontSize14',
-        lineHeight: 'BaselineFontLineHeight20',
+        lineHeight: 'BaselineFontFontSize20',
       },
     },
     capitaliseText: true,
@@ -233,12 +313,12 @@ export const typographyConfig: Record<TypographyVariant, TypographySettings> = {
   p3ActionRegular: {
     fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
     fontSize: 'BaselineFontFontSize14',
-    lineHeight: 'BaselineFontLineHeight20',
+    lineHeight: 'BaselineFontFontSize20',
     fontWeight: 'BaselineFontFontWeightRegular',
     responsiveness: {
       md: {
         fontSize: 'BaselineFontFontSize12',
-        lineHeight: 'BaselineFontLineHeight18',
+        lineHeight: 'BaselineFontFontSize18',
       },
     },
     capitaliseText: true,

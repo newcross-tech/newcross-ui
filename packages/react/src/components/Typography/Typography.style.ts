@@ -5,30 +5,28 @@ import { getElipsisStyles } from '../../utils';
 import { TypographyProps } from './Typography';
 import { TypographyColors, TypographyVariant } from './Typography.types';
 import { breakpoint } from '../../utils/css';
-import { typographyConfig } from './Typography.config';
+import { typographyMap } from './Typography.constants';
+import { getSortedBreakpoints } from '../../utils';
 
 const getTypographyStyles = (theme: ThemeDesignTokens, variant: TypographyVariant): FlattenInterpolation<Theme> => {
-  const { fontFamily, fontSize, lineHeight, fontWeight, responsiveness, capitaliseText } = typographyConfig[variant];
+  const { fontFamily, fontSize, lineHeight, fontWeight, responsiveness, capitaliseText } = typographyMap[variant];
 
-  const hasResponsiveValues = responsiveness && Object.entries(responsiveness).length > 0;
+  const hasResponsiveValues = responsiveness && Object.keys(responsiveness).length > 0;
 
   return css`
     font-family: ${theme[fontFamily]};
     font-size: ${theme[fontSize]};
     line-height: ${theme[lineHeight]};
     font-weight: ${theme[fontWeight] as FontWeight};
-
     ${hasResponsiveValues &&
-    Object.entries(responsiveness)
-      .reverse()
-      .map(
-        ([key, { fontSize, lineHeight }]) =>
-          breakpoint[key as keyof typeof breakpoint]`
-          font-size: ${theme[fontSize]};
-          line-height: ${theme[lineHeight]};
-        `
-      )}
-
+    getSortedBreakpoints(responsiveness).map(
+      ([breakpointKey, responsiveStyles]) =>
+        breakpoint[breakpointKey]`{
+          font-size: ${theme[responsiveStyles.fontSize]};
+          line-height: ${theme[responsiveStyles.lineHeight]};
+        }
+      `
+    )}
     ${capitaliseText && 'text-transform: capitalize;'};
   `;
 };
