@@ -31,6 +31,13 @@ type LegacyTypographyLineHeights = keyof Pick<
 
 type LegacyTypographyTags = keyof Pick<JSX.IntrinsicElements, 'h6'>;
 
+type LegacyTypographyColors =
+  | 'primary'
+  | 'secondary'
+  | 'white'
+  | 'black'
+  | 'error';
+
 // --------------------------------------------------------------------------------
 // Combined and Extended Types (Supporting Both Legacy and New Variants)
 // --------------------------------------------------------------------------------
@@ -92,6 +99,7 @@ type TypographyTags =
 // --------------------------------------------------------------------------------
 
 export type TypographyColors =
+  | LegacyTypographyColors
   | 'defaultDark'
   | 'defaultLight'
   | 'defaultDarkSecondary'
