@@ -32,11 +32,11 @@ const getTypographyStyles = (theme: ThemeDesignTokens, variant: TypographyVarian
 
 export const getColorStyles = (theme: ThemeDesignTokens): Record<Mode, Record<TypographyColors, string>> => ({
   dark: {
-    primary: theme.TypographyDarkColorPrimary,
-    secondary: theme.TypographyDarkColorSecondary,
-    white: theme.TypographyColorWhite,
-    black: theme.TypographyColorBlack,
-    error: theme.TypographyColorError,
+    primary: theme.ElementsTextDefaultDark,
+    secondary: theme.ElementsTextDefaultDarkSecondary,
+    white: theme.ElementsTextActionSecondaryLight,
+    black: theme.ThemesSecondary950,
+    error: theme.ElementsTextDangerError,
     defaultDark: theme.ElementsTextDefaultDark,
     defaultLight: theme.ElementsTextDefaultLight,
     defaultDarkSecondary: theme.ElementsTextDefaultDarkSecondary,
@@ -52,11 +52,11 @@ export const getColorStyles = (theme: ThemeDesignTokens): Record<Mode, Record<Ty
     dangerError: theme.ElementsTextDangerError,
   },
   light: {
-    primary: theme.TypographyDarkColorPrimary,
-    secondary: theme.TypographyDarkColorSecondary,
-    white: theme.TypographyColorWhite,
-    black: theme.TypographyColorBlack,
-    error: theme.TypographyColorError,
+    primary: theme.ElementsTextDefaultDark,
+    secondary: theme.ElementsTextDefaultDarkSecondary,
+    white: theme.ElementsTextActionSecondaryLight,
+    black: theme.ThemesSecondary950,
+    error: theme.ElementsTextDangerError,
     defaultDark: theme.ElementsTextDefaultDark,
     defaultLight: theme.ElementsTextDefaultLight,
     defaultDarkSecondary: theme.ElementsTextDefaultDarkSecondary,
