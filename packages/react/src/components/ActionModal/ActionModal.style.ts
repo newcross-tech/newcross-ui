@@ -36,9 +36,18 @@ export const Heading = styled(Typography)`
 
   @media (max-width: 640px) {
     text-align: start;
+    font-size: ${({ theme }: Theme) => theme.TypographyFontSize20};
+    line-height: ${({ theme }: Theme) => theme.TypographyLineHeight32};
   }
 `;
 
+export const HeaderContent = styled(Container)`
+  ${({ theme }: Theme) => css`
+    @media (max-width: 640px) {
+      padding: ${theme.SpacingBase24} ${theme.SpacingBase16};
+    }
+  `}
+`;
 export const Header = styled(Container)`
   ${({ theme, $useModal }: ExtendedTheme<{ $useModal: boolean }>) => css`
     ${$useModal && `border-bottom: 1px solid ${theme.ColorBaseGrey200};`}
@@ -62,7 +71,14 @@ export const Icon = styled(FontAwesomeIcon)`
 `;
 
 export const Subtitle = styled(Typography)`
-  margin: ${({ theme }) => theme.SpacingBase16} 0;
+  padding-top: ${({ theme }) => theme.SpacingBase16};
+
+  @media (max-width: 640px) {
+    padding: 0;
+
+    font-size: ${({ theme }: Theme) => theme.TypographyFontSize14};
+    line-height: ${({ theme }: Theme) => theme.TypographyLineHeight20};
+  }
 `;
 
 export const ContentWapper = styled(Container)`
@@ -70,6 +86,7 @@ export const ContentWapper = styled(Container)`
     !$useModal &&
     css`
       @media (max-width: 640px) {
+        padding: ${theme.SpacingBase24} ${theme.SpacingBase16};
         background-color: ${theme.ColorBaseGrey500};
       }
     `}
@@ -80,6 +97,7 @@ export const FooterWrapper = styled(Container)`
     !$useModal &&
     css`
       @media (max-width: 640px) {
+        padding: ${theme.SpacingBase16};
         box-shadow: ${theme.TabsActiveTabShadowOffsetWidth}px -${theme.TabsActiveTabShadowOffsetHeight}px ${theme.TabsActiveTabShadowRadius}px
           ${getRgba(theme.TabsActiveTabShadowColor, theme.TabsActiveTabShadowOpacity)};
       }
