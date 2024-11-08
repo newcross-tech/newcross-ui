@@ -9,7 +9,6 @@ import {
   SheetProps,
 } from 'react-sheet-slide';
 import 'react-sheet-slide/style.css';
-import Container from '../Container';
 import * as Styled from './ActionModal.style';
 import { faXmark } from '@fortawesome/pro-light-svg-icons/faXmark';
 
@@ -88,13 +87,10 @@ const ActionModal = ({
                 px="SpacingBase48"
               />
             </Styled.IndicatorWrapper>
-            <Container
-              mt="SpacingBase32"
-              pb="SpacingBase8"
-              mx="SpacingBase24"
-              mbMobile="SpacingBase0"
-              mxMobile="SpacingBase16"
-              myMobile="SpacingBase8"
+            <Styled.HeaderContent
+              pt="SpacingBase32"
+              pb="SpacingBase0"
+              px="SpacingBase24"
               flexDirection="column"
             >
               <Styled.Header
@@ -122,25 +118,26 @@ const ActionModal = ({
                   {subtitle}
                 </Styled.Subtitle>
               )}
-            </Container>
+            </Styled.HeaderContent>
           </Header>
-          <Content className="action-modal-content">
-            <Styled.ContentWapper
-              $useModal={!!isAlwaysModal}
-              py="SpacingBase24"
-              px="SpacingBase16"
-              flexDirection="column"
-            >
-              {content}
-            </Styled.ContentWapper>
-          </Content>
+          {content && (
+            <Content className="action-modal-content">
+              <Styled.ContentWapper
+                $useModal={!!isAlwaysModal}
+                pt="SpacingBase24"
+                px="SpacingBase24"
+                flexDirection="column"
+              >
+                {content}
+              </Styled.ContentWapper>
+            </Content>
+          )}
           {footer && (
             <Footer className="action-modal-footer">
               <Styled.FooterWrapper
                 $useModal={!!isAlwaysModal}
                 px="SpacingBase24"
                 py="SpacingBase32"
-                pyMobile="SpacingBase16"
                 flexDirection="column"
               >
                 {footer}
