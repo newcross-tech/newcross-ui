@@ -11,6 +11,7 @@ import {
 import 'react-sheet-slide/style.css';
 import * as Styled from './ActionModal.style';
 import { faXmark } from '@fortawesome/pro-light-svg-icons/faXmark';
+import { ColorPrimaryGravitas } from '@newcross-ui/design-tokens/build/js/web/healthforce';
 
 export type ActionModalProps = {
   /**
@@ -104,10 +105,10 @@ const ActionModal = ({
                 </Styled.Heading>
                 <Styled.Icon
                   icon={faXmark}
-                  width={24}
-                  height={24}
+                  width={16}
+                  height={16}
                   size="2x"
-                  color="primary"
+                  color={ColorPrimaryGravitas}
                   $useModal={!!isAlwaysModal}
                   onClick={rest.onDismiss}
                   data-testid="action-modal-close-icon"
@@ -126,24 +127,27 @@ const ActionModal = ({
                 $useModal={!!isAlwaysModal}
                 pt="SpacingBase24"
                 px="SpacingBase24"
+                pb={footer ? 'SpacingBase0' : 'SpacingBase40'}
                 flexDirection="column"
+                data-testid="content-wrapper"
               >
                 {content}
               </Styled.ContentWapper>
             </Content>
           )}
-          {footer && (
-            <Footer className="action-modal-footer">
+          <Footer className="action-modal-footer">
+            {footer && (
               <Styled.FooterWrapper
                 $useModal={!!isAlwaysModal}
                 px="SpacingBase24"
                 py="SpacingBase32"
                 flexDirection="column"
+                data-testid="footer-wrapper"
               >
                 {footer}
               </Styled.FooterWrapper>
-            </Footer>
-          )}
+            )}
+          </Footer>
         </Sheet>
       </Styled.SheetWrapper>
     </Portal>
