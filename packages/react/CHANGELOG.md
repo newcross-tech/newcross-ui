@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.15.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.15.1...@newcross-ui/react@2.15.2) (2024-11-08)
+
+
+### Bug Fixes
+
+* **CAPP-000:** update ActionModal spacings ([#126](https://bitbucket.org/newcrossdev/newcross-ui/issues/126)) ([f330d7c](https://bitbucket.org/newcrossdev/newcross-ui/commits/f330d7c4e854c2da07c25539dd1354c12f22094d))
+
+
+
+
+
+## [2.15.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.15.0...@newcross-ui/react@2.15.1) (2024-11-06)
+
+**Note:** Version bump only for package @newcross-ui/react
+
+
+
+
+
 # [2.15.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.14.0...@newcross-ui/react@2.15.0) (2024-11-05)
 
 
