@@ -55,6 +55,7 @@ describe('ActionModal', () => {
   });
   afterAll(() => {
     jest.clearAllMocks();
+    jest.resetAllMocks();
   });
   it('should render successfuly', () => {
     // Arrange
@@ -70,7 +71,13 @@ describe('ActionModal', () => {
     expect(byText('A Way Out').get()).toBeVisible();
     expect(byText('Decision').get()).toBeVisible();
   });
+  it('should have no footer when there is no footer prop', () => {
+    // Arrange & Act
+    renderActionModal({ ...defaultProps, footer: null });
 
+    // Assert
+    expect(byTestId('footer-wrapper').query()).not.toBeInTheDocument();
+  });
   it('should call onDismiss when clicking on the close icon', () => {
     // Arrange
     renderActionModal(defaultProps);
