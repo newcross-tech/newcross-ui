@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.16.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.15.2...@newcross-ui/react@2.16.0) (2024-11-12)
+
+
+### Features
+
+* **CAPP-1717:** action modal no footer fix ([#127](https://bitbucket.org/newcrossdev/newcross-ui/issues/127)) ([a29e289](https://bitbucket.org/newcrossdev/newcross-ui/commits/a29e2890ecaaed3d2491ecb5a86294443fa0dd78))
+
+
+
+
+
 ## [2.15.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.15.1...@newcross-ui/react@2.15.2) (2024-11-08)
 
 
