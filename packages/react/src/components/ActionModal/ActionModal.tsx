@@ -52,6 +52,14 @@ export type ActionModalProps = {
    */
   isAlwaysModal?: boolean;
   /**
+   * Prop to control if the ContentWapper should have grey background for screen smaller than 640px.
+   */
+  hasGreyBackground?: boolean;
+  /**
+   * Prop to control if the ContentWapper should have padding for screen smaller than 640px.
+   */
+  hasPadding?: boolean;
+  /**
    * The sheet also supports forwarding a ref that will be added onto the sheet root.
    */
   ref?: React.RefObject<HTMLDivElement>;
@@ -62,7 +70,9 @@ const ActionModal = ({
   content,
   subtitle,
   footer,
+  hasPadding,
   isAlwaysModal,
+  hasGreyBackground,
   ...rest
 }: ActionModalProps) => {
   return (
@@ -125,6 +135,8 @@ const ActionModal = ({
             <Content className="action-modal-content">
               <Styled.ContentWapper
                 $useModal={!!isAlwaysModal}
+                $hasGreyBackground={!!hasGreyBackground}
+                $hasPadding={!!hasPadding}
                 pt="SpacingBase24"
                 px="SpacingBase24"
                 pb={footer ? 'SpacingBase0' : 'SpacingBase40'}
