@@ -41,8 +41,12 @@ const MODAL_FOOTER = (
 
 const VariantComponent = ({
   isAlwaysModal,
+  hasPadding,
+  hasGreyBackground,
 }: {
   isAlwaysModal?: ActionModalProps['isAlwaysModal'];
+  hasGreyBackground?: ActionModalProps['hasGreyBackground'];
+  hasPadding?: ActionModalProps['hasPadding'];
 }) => {
   const [open, setOpen] = useState(false);
 
@@ -54,6 +58,8 @@ const VariantComponent = ({
       <ActionModal
         open={open}
         isAlwaysModal={isAlwaysModal}
+        hasPadding={hasPadding}
+        hasGreyBackground={hasGreyBackground}
         onDismiss={closeModal}
         title={MODAL_TITLE}
         subtitle={MODAL_SUBTITLE}
