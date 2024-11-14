@@ -94,8 +94,8 @@ export const ContentWapper = styled(Container)`
   }>) =>
     !$useModal &&
     css`
-      padding: ${theme.SpacingBase0} ${theme.SpacingBase16} ${theme.SpacingBase24} ${theme.SpacingBase16};
       @media (max-width: 640px) {
+        padding: ${theme.SpacingBase0} ${theme.SpacingBase16} ${theme.SpacingBase24} ${theme.SpacingBase16};
         ${$hasPadding && `padding-top: ${theme.SpacingBase16}`}
         ${$hasGreyBackground && `background-color: ${theme.ColorBaseGrey500};`}
       }
