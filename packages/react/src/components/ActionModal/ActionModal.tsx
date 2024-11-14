@@ -52,7 +52,7 @@ export type ActionModalProps = {
    */
   isAlwaysModal?: boolean;
   /**
-   * Prop to control if the ContentWapper should have grey background for screen smaller than 640px.
+   * Prop that control if the ContentWapper should have grey background for screen smaller than 640px.
    */
   hasGreyBackground?: boolean;
   /**
