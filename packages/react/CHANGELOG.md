@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.17.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.16.0...@newcross-ui/react@2.17.0) (2024-11-14)
+
+
+### Features
+
+* **CAPP-1743:** updating action modal component ([#128](https://bitbucket.org/newcrossdev/newcross-ui/issues/128)) ([3116323](https://bitbucket.org/newcrossdev/newcross-ui/commits/3116323d74f41810e55e2e98f0871a9afed579a6))
+
+
+
+
+
 # [2.16.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.15.2...@newcross-ui/react@2.16.0) (2024-11-12)
 
 
