@@ -82,12 +82,22 @@ export const Subtitle = styled(Typography)`
 `;
 
 export const ContentWapper = styled(Container)`
-  ${({ theme, $useModal }: ExtendedTheme<{ $useModal: boolean }>) =>
+  ${({
+    theme,
+    $useModal,
+    $hasGreyBackground,
+    $hasPadding,
+  }: ExtendedTheme<{
+    $useModal: boolean;
+    $hasGreyBackground: boolean;
+    $hasPadding: boolean;
+  }>) =>
     !$useModal &&
     css`
       @media (max-width: 640px) {
-        padding: ${theme.SpacingBase24} ${theme.SpacingBase16};
-        background-color: ${theme.ColorBaseGrey500};
+        padding: ${theme.SpacingBase0} ${theme.SpacingBase16} ${theme.SpacingBase24} ${theme.SpacingBase16};
+        ${$hasPadding && `padding-top: ${theme.SpacingBase16}`}
+        ${$hasGreyBackground && `background-color: ${theme.ColorBaseGrey500};`}
       }
     `}
 `;
@@ -105,6 +115,10 @@ export const FooterWrapper = styled(Container)`
 `;
 
 export const SheetWrapper = styled(Container)`
+  > div {
+    z-index: 10000;
+  }
+
   .action-modal-header,
   .action-modal-content,
   .action-modal-footer {
@@ -123,6 +137,10 @@ export const SheetWrapper = styled(Container)`
     }
   }
 
+  .action-modal-content > div {
+    overflow: unset;
+  }
+
   .action-modal-backdrop {
     background-color: ${({ theme }: Theme) => getRgba(theme.TabsActiveTabShadowColor, theme.OpacityBaseMd)};
     padding: 0;
@@ -134,6 +152,9 @@ export const SheetWrapper = styled(Container)`
 
   div[role='dialog'] {
     height: auto;
+    overflow: unset;
+    background-color: ${({ theme }: Theme) => theme.ColorBaseWhite100};
+
     ${({ theme, $useModal }: ExtendedTheme<{ $useModal: boolean }>) =>
       $useModal &&
       css`
