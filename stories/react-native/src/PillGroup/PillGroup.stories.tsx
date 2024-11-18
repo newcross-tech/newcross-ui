@@ -10,7 +10,7 @@ import {
   TypographyVariant,
 } from '@newcross-ui/react-native';
 import Container from '../Container';
-import { isWebPlatform } from '../utils';
+import { isWebPlatform, getParameters } from '../utils';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faBird } from '@fortawesome/pro-solid-svg-icons/faBird';
 import { faDog } from '@fortawesome/pro-solid-svg-icons/faDog';
@@ -23,7 +23,6 @@ import { faWhale } from '@fortawesome/pro-solid-svg-icons/faWhale';
 import { faSheep } from '@fortawesome/pro-solid-svg-icons/faSheep';
 import Spacing, { SpacingSizes } from '../Spacing';
 import { ScrollView } from 'react-native-gesture-handler';
-import { getParameters } from '../utils';
 
 export default {
   title: 'ReactNative/Components/PillGroup',

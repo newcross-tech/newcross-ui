@@ -6,6 +6,7 @@ import {
   TypographyColors,
   TypographyAlignment,
 } from './Typography.types';
+import { typographyMap } from './Typography.constants';
 
 export type TypographyProps = {
   /**
@@ -48,6 +49,7 @@ const Typography = ({
   testID,
   mode = 'light',
   display = 'block',
+  variant,
   ...rest
 }: TypographyProps) => {
   return (
@@ -55,6 +57,8 @@ const Typography = ({
       data-testid={testID}
       mode={mode}
       display={display}
+      variant={variant}
+      as={typographyMap[variant].semanticTag}
       {...rest}
     >
       {children}

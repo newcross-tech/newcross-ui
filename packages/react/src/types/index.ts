@@ -60,6 +60,8 @@ export type ThemeBreakpoints = keyof Pick<
   'BreakpointsSm' | 'BreakpointsMd' | 'BreakpointsLg' | 'BreakpointsXl'
 >;
 
+export type SemanticBreakpoints = 'sm' | 'md' | 'lg' | 'xl';
+
 export const responsiveSpacingMap: Record<
   NewThemeSpacing,
   Record<keyof typeof breakpoint, NewThemeSpacingTokens>

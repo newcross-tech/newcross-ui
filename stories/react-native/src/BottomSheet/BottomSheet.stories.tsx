@@ -11,8 +11,7 @@ import Container from '../Container';
 import { getParameters, isWebPlatform } from '../utils';
 import ButtonGroup from './ButtonGroup';
 import { BottomSheetActionType } from './reducer';
-import { BottomSheetContentType } from './bottomSheetContent';
-import { demoData } from './bottomSheetContent';
+import { BottomSheetContentType, demoData } from './bottomSheetContent';
 import { useBottomSheetContext } from './bottomSheetContext';
 
 const { SpacingBase0 } = native.healthforce;

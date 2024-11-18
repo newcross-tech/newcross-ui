@@ -14,8 +14,7 @@ import {
 import { native } from '@newcross-ui/design-tokens';
 import Container from '../Container';
 import Spacing from '../Spacing';
-import { isWebPlatform } from '../utils';
-import { getParameters } from '../utils';
+import { isWebPlatform, getParameters } from '../utils';
 
 const {
   ColorNeutralWhite,

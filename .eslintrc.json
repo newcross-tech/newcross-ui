@@ -32,6 +32,7 @@
           }
         ]
       }
-    ]
+    ],
+    "no-duplicate-imports": "error"
   }
 }

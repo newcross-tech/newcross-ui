@@ -9,8 +9,8 @@ describe('Typography', () => {
     // Prepare
     const props: TypographyProps = {
       children: 'My Text',
-      variant: 'heading4',
-      color: 'primary',
+      variant: 'h4',
+      color: 'defaultDark',
       mode: 'light',
       align: 'left',
     };
@@ -26,8 +26,8 @@ describe('Typography', () => {
     // Prepare
     const props: TypographyProps = {
       children: 'My Text',
-      variant: 'heading4',
-      color: 'primary',
+      variant: 'h4',
+      color: 'defaultDark',
       mode: 'light',
       align: 'left',
     };
