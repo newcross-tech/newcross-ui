@@ -12,10 +12,13 @@ import { breakpoint } from '../../../utils/css';
 import { NewContainerProps } from './NewContainer';
 
 const applyResponsiveStyles = (
+  theme: ThemeDesignTokens,
   property: string,
-  propValue: SemanticSpacing | 'auto' | 'inherit',
-  theme: ThemeDesignTokens
+  propValue?: SemanticSpacing | 'auto' | 'inherit'
 ) => {
+  if (!propValue) {
+    return '';
+  }
   // Special case handling for 'auto' and 'inherit'
   if (propValue === 'auto' || propValue === 'inherit') {
     return css`
@@ -32,7 +35,7 @@ const applyResponsiveStyles = (
   const responsiveCSS = sortedBreakpoints
     .slice(1) // Exclude the largest breakpoint
     .map(([key, value]) => {
-      return breakpoint[key as SemanticBreakpoints]`{
+      return breakpoint[key]`{
               ${property}: ${theme[value as NewThemeSpacing]};
             }
           `;
@@ -69,25 +72,25 @@ export const NewContainer = styled.div<ExtendedTheme<NewContainerProps>>`
     display,
     fullWidth,
   }) => css`
-    ${m && applyResponsiveStyles('margin', m, theme)}
-    ${mx && applyResponsiveStyles('margin-left', mx, theme)}
-    ${mx && applyResponsiveStyles('margin-right', mx, theme)}
-    ${my && applyResponsiveStyles('margin-top', my, theme)}
-    ${my && applyResponsiveStyles('margin-bottom', my, theme)}
-    ${ml && applyResponsiveStyles('margin-left', ml, theme)}
-    ${mr && applyResponsiveStyles('margin-right', mr, theme)}
-    ${mt && applyResponsiveStyles('margin-top', mt, theme)}
-    ${mb && applyResponsiveStyles('margin-bottom', mb, theme)}
-    ${p && applyResponsiveStyles('padding', p, theme)}
-    ${px && applyResponsiveStyles('padding-left', px, theme)}
-    ${px && applyResponsiveStyles('padding-right', px, theme)}
-    ${py && applyResponsiveStyles('padding-top', py, theme)}
-    ${py && applyResponsiveStyles('padding-bottom', py, theme)}
-    ${pl && applyResponsiveStyles('padding-left', pl, theme)}
-    ${pr && applyResponsiveStyles('padding-right', pr, theme)}
-    ${pt && applyResponsiveStyles('padding-top', pt, theme)}
-    ${pb && applyResponsiveStyles('padding-bottom', pb, theme)}
-    ${gap && applyResponsiveStyles('gap', gap, theme)}
+    ${applyResponsiveStyles(theme, 'margin', m)}
+    ${applyResponsiveStyles(theme, 'margin-left', mx)}
+    ${applyResponsiveStyles(theme, 'margin-right', mx)}
+    ${applyResponsiveStyles(theme, 'margin-top', my)}
+    ${applyResponsiveStyles(theme, 'margin-bottom', my)}
+    ${applyResponsiveStyles(theme, 'margin-left', ml)}
+    ${applyResponsiveStyles(theme, 'margin-right', mr)}
+    ${applyResponsiveStyles(theme, 'margin-top', mt)}
+    ${applyResponsiveStyles(theme, 'margin-bottom', mb)}
+    ${applyResponsiveStyles(theme, 'padding', p)}
+    ${applyResponsiveStyles(theme, 'padding-left', px)}
+    ${applyResponsiveStyles(theme, 'padding-right', px)}
+    ${applyResponsiveStyles(theme, 'padding-top', py)}
+    ${applyResponsiveStyles(theme, 'padding-bottom', py)}
+    ${applyResponsiveStyles(theme, 'padding-left', pl)}
+    ${applyResponsiveStyles(theme, 'padding-right', pr)}
+    ${applyResponsiveStyles(theme, 'padding-top', pt)}
+    ${applyResponsiveStyles(theme, 'padding-bottom', pb)}
+    ${applyResponsiveStyles(theme, 'gap', gap)}
     ${display && `display: ${display};`}
     ${flexWrap && `flex-wrap: ${flexWrap};`}
     ${justifyContent && `justify-content: ${justifyContent};`}
