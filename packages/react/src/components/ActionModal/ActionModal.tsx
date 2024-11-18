@@ -9,9 +9,9 @@ import {
   SheetProps,
 } from 'react-sheet-slide';
 import 'react-sheet-slide/style.css';
-import Container from '../Container';
 import * as Styled from './ActionModal.style';
 import { faXmark } from '@fortawesome/pro-light-svg-icons/faXmark';
+import { ColorPrimaryGravitas } from '@newcross-ui/design-tokens/build/js/web/healthforce';
 
 export type ActionModalProps = {
   /**
@@ -52,6 +52,14 @@ export type ActionModalProps = {
    */
   isAlwaysModal?: boolean;
   /**
+   * Prop that control if the ContentWapper should have grey background for screen smaller than 640px.
+   */
+  hasGreyBackground?: boolean;
+  /**
+   * Prop to control if the ContentWapper should have padding for screen smaller than 640px.
+   */
+  hasPadding?: boolean;
+  /**
    * The sheet also supports forwarding a ref that will be added onto the sheet root.
    */
   ref?: React.RefObject<HTMLDivElement>;
@@ -62,7 +70,9 @@ const ActionModal = ({
   content,
   subtitle,
   footer,
+  hasPadding,
   isAlwaysModal,
+  hasGreyBackground,
   ...rest
 }: ActionModalProps) => {
   return (
@@ -88,13 +98,10 @@ const ActionModal = ({
                 px="SpacingBase48"
               />
             </Styled.IndicatorWrapper>
-            <Container
-              mt="SpacingBase32"
-              pb="SpacingBase8"
-              mx="SpacingBase24"
-              mbMobile="SpacingBase0"
-              mxMobile="SpacingBase16"
-              myMobile="SpacingBase8"
+            <Styled.HeaderContent
+              pt="SpacingBase32"
+              pb="SpacingBase0"
+              px="SpacingBase24"
               flexDirection="column"
             >
               <Styled.Header
@@ -108,10 +115,10 @@ const ActionModal = ({
                 </Styled.Heading>
                 <Styled.Icon
                   icon={faXmark}
-                  width={24}
-                  height={24}
+                  width={16}
+                  height={16}
                   size="2x"
-                  color="primary"
+                  color={ColorPrimaryGravitas}
                   $useModal={!!isAlwaysModal}
                   onClick={rest.onDismiss}
                   data-testid="action-modal-close-icon"
@@ -122,31 +129,37 @@ const ActionModal = ({
                   {subtitle}
                 </Styled.Subtitle>
               )}
-            </Container>
+            </Styled.HeaderContent>
           </Header>
-          <Content className="action-modal-content">
-            <Styled.ContentWapper
-              $useModal={!!isAlwaysModal}
-              py="SpacingBase24"
-              px="SpacingBase16"
-              flexDirection="column"
-            >
-              {content}
-            </Styled.ContentWapper>
-          </Content>
-          {footer && (
-            <Footer className="action-modal-footer">
+          {content && (
+            <Content className="action-modal-content">
+              <Styled.ContentWapper
+                $useModal={!!isAlwaysModal}
+                $hasGreyBackground={!!hasGreyBackground}
+                $hasPadding={!!hasPadding}
+                pt="SpacingBase24"
+                px="SpacingBase24"
+                pb={footer ? 'SpacingBase0' : 'SpacingBase40'}
+                flexDirection="column"
+                data-testid="content-wrapper"
+              >
+                {content}
+              </Styled.ContentWapper>
+            </Content>
+          )}
+          <Footer className="action-modal-footer">
+            {footer && (
               <Styled.FooterWrapper
                 $useModal={!!isAlwaysModal}
                 px="SpacingBase24"
                 py="SpacingBase32"
-                pyMobile="SpacingBase16"
                 flexDirection="column"
+                data-testid="footer-wrapper"
               >
                 {footer}
               </Styled.FooterWrapper>
-            </Footer>
-          )}
+            )}
+          </Footer>
         </Sheet>
       </Styled.SheetWrapper>
     </Portal>

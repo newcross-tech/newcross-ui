@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.46.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.45.0...@newcross-ui/design-tokens@1.46.0) (2024-11-06)
+
+
+### Features
+
+* **ASK-0000:** create baseline font tokens ([#120](https://bitbucket.org/newcrossdev/newcross-ui/issues/120)) ([f1e527d](https://bitbucket.org/newcrossdev/newcross-ui/commits/f1e527d8a77ed448b88ee8ae03ba2aa102842dcc))
+
+
+
+
+
+# [1.45.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.44.0...@newcross-ui/design-tokens@1.45.0) (2024-10-30)
+
+
+### Features
+
+* **ASK-0000:** create dark mode element tokens ([#118](https://bitbucket.org/newcrossdev/newcross-ui/issues/118)) ([69e91e0](https://bitbucket.org/newcrossdev/newcross-ui/commits/69e91e0dc13db3fd0c4cc217c192ee85f44c3c42))
+* **ASK-0000:** create elements file and tokens ([#117](https://bitbucket.org/newcrossdev/newcross-ui/issues/117)) ([a5d3336](https://bitbucket.org/newcrossdev/newcross-ui/commits/a5d3336cc72ff4aa35976f691fffba21b48bc6bc))
+* **ASK-0000:** create new color tokens ([#116](https://bitbucket.org/newcrossdev/newcross-ui/issues/116)) ([162bb92](https://bitbucket.org/newcrossdev/newcross-ui/commits/162bb929296b858c491e4bc1f7b35912bc59c513))
+* **ASK-0000:** update spacing tokens ([#119](https://bitbucket.org/newcrossdev/newcross-ui/issues/119)) ([417b6c7](https://bitbucket.org/newcrossdev/newcross-ui/commits/417b6c7e3cbf7d11a0028b187306dda423071dd7))
+
+
+
+
+
 # [1.44.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.43.3...@newcross-ui/design-tokens@1.44.0) (2024-10-16)
 
 

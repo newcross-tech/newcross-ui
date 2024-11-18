@@ -36,9 +36,18 @@ export const Heading = styled(Typography)`
 
   @media (max-width: 640px) {
     text-align: start;
+    font-size: ${({ theme }: Theme) => theme.TypographyFontSize20};
+    line-height: ${({ theme }: Theme) => theme.TypographyLineHeight32};
   }
 `;
 
+export const HeaderContent = styled(Container)`
+  ${({ theme }: Theme) => css`
+    @media (max-width: 640px) {
+      padding: ${theme.SpacingBase24} ${theme.SpacingBase16};
+    }
+  `}
+`;
 export const Header = styled(Container)`
   ${({ theme, $useModal }: ExtendedTheme<{ $useModal: boolean }>) => css`
     ${$useModal && `border-bottom: 1px solid ${theme.ColorBaseGrey200};`}
@@ -62,15 +71,33 @@ export const Icon = styled(FontAwesomeIcon)`
 `;
 
 export const Subtitle = styled(Typography)`
-  margin: ${({ theme }) => theme.SpacingBase16} 0;
+  padding-top: ${({ theme }) => theme.SpacingBase16};
+
+  @media (max-width: 640px) {
+    padding: 0;
+
+    font-size: ${({ theme }: Theme) => theme.TypographyFontSize14};
+    line-height: ${({ theme }: Theme) => theme.TypographyLineHeight20};
+  }
 `;
 
 export const ContentWapper = styled(Container)`
-  ${({ theme, $useModal }: ExtendedTheme<{ $useModal: boolean }>) =>
+  ${({
+    theme,
+    $useModal,
+    $hasGreyBackground,
+    $hasPadding,
+  }: ExtendedTheme<{
+    $useModal: boolean;
+    $hasGreyBackground: boolean;
+    $hasPadding: boolean;
+  }>) =>
     !$useModal &&
     css`
       @media (max-width: 640px) {
-        background-color: ${theme.ColorBaseGrey500};
+        padding: ${theme.SpacingBase0} ${theme.SpacingBase16} ${theme.SpacingBase24} ${theme.SpacingBase16};
+        ${$hasPadding && `padding-top: ${theme.SpacingBase16}`}
+        ${$hasGreyBackground && `background-color: ${theme.ColorBaseGrey500};`}
       }
     `}
 `;
@@ -80,6 +107,7 @@ export const FooterWrapper = styled(Container)`
     !$useModal &&
     css`
       @media (max-width: 640px) {
+        padding: ${theme.SpacingBase16};
         box-shadow: ${theme.TabsActiveTabShadowOffsetWidth}px -${theme.TabsActiveTabShadowOffsetHeight}px ${theme.TabsActiveTabShadowRadius}px
           ${getRgba(theme.TabsActiveTabShadowColor, theme.TabsActiveTabShadowOpacity)};
       }
@@ -87,6 +115,10 @@ export const FooterWrapper = styled(Container)`
 `;
 
 export const SheetWrapper = styled(Container)`
+  > div {
+    z-index: 10000;
+  }
+
   .action-modal-header,
   .action-modal-content,
   .action-modal-footer {
@@ -105,6 +137,10 @@ export const SheetWrapper = styled(Container)`
     }
   }
 
+  .action-modal-content > div {
+    overflow: unset;
+  }
+
   .action-modal-backdrop {
     background-color: ${({ theme }: Theme) => getRgba(theme.TabsActiveTabShadowColor, theme.OpacityBaseMd)};
     padding: 0;
@@ -116,6 +152,9 @@ export const SheetWrapper = styled(Container)`
 
   div[role='dialog'] {
     height: auto;
+    overflow: unset;
+    background-color: ${({ theme }: Theme) => theme.ColorBaseWhite100};
+
     ${({ theme, $useModal }: ExtendedTheme<{ $useModal: boolean }>) =>
       $useModal &&
       css`

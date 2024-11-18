@@ -1,0 +1,16 @@
+{
+  "elements": {
+    "border": {
+      "default": { "value": "{themes.neutral.300}" },
+      "highlight-strong": { "value": "{themes.primary.500}" },
+      "action-default": { "value": "{themes.secondary.500}" },
+      "disabled": { "value": "{themes.neutral.200}" },
+      "success": { "value": "{themes.success.700}" },
+      "success-standalone": { "value": "{themes.success.500}" },
+      "info": { "value": "{themes.info.700}" },
+      "warning": { "value": "{themes.warning.800}" },
+      "danger": { "value": "{themes.danger.700}" },
+      "danger-error": { "value": "{themes.danger.500}" }
+    }
+  }
+}
