@@ -2,10 +2,10 @@ import React from 'react';
 import { render } from '@testing-library/react-native';
 import ToggleButtonGroup, {
   getMultipleSelectedValues,
+  calculateGap,
 } from './ToggleButtonGroup';
 import ToggleButton from '../ToggleButton/ToggleButton';
 import { ToggleButtonGroupOrientation } from './ToggleButtonGroup.types';
-import { calculateGap } from './ToggleButtonGroup';
 
 describe('ToggleButtonGroup', () => {
   it('renders successfully', () => {

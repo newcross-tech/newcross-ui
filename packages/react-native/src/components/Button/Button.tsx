@@ -12,17 +12,19 @@ import {
   PressableProps,
 } from 'react-native';
 import { Mode } from '../../types';
-import { pressedButtonStyle, pressedButtonTextStyle } from './Button.style';
-
+import {
+  pressedButtonStyle,
+  pressedButtonTextStyle,
+  iconStyles,
+} from './Button.style';
 import {
   ButtonVariant,
   ButtonSizes,
   ButtonCorners,
   ClonedIcon,
+  PressedButtonProps,
+  getTypographyValues,
 } from './Button.types';
-
-import { PressedButtonProps, getTypographyValues } from './Button.types';
-import { iconStyles } from './Button.style';
 import Typography from '../Typography';
 
 export type ButtonProps = {
