@@ -1,47 +1,38 @@
 import styled, { css } from 'styled-components';
-import { ExtendedTheme, NewThemeSpacing, responsiveSpacingMap } from '../../types';
+import { ExtendedTheme, responsiveSpacingMap } from '../../types';
 import { NewContainerProps } from './NewContainer';
 import { breakpoint } from '../../utils/css';
 import { NewContainerGapSpacing, NewContainerSpacing } from './NewContainer.types';
+import { ThemeDesignTokens } from '../../theme/ThemeProvider';
+import { getSortedSpacingBreakpoints, SemanticBreakpoints } from '../../utils/getSortedSpacingBreakpoints';
 
 const applyResponsiveStyles = (
   property: string,
-  propValue: NewContainerSpacing | NewContainerGapSpacing | undefined,
-  theme: any
+  propValue: NewContainerSpacing | NewContainerGapSpacing,
+  theme: ThemeDesignTokens
 ) => {
-  if (!propValue) return '';
-
   // Special case handling for 'auto' and 'inherit'
   if (propValue === 'auto' || propValue === 'inherit') {
     return css`
       ${property}: ${propValue};
     `;
   }
+  const sortedBreakpoints = getSortedSpacingBreakpoints(responsiveSpacingMap[propValue]);
 
-  // Get the keys of the responsiveSpacingMap for this spacing value
-  const breakpointsKeys = Object.keys(responsiveSpacingMap[propValue as NewThemeSpacing]);
-
-  // Set the largest breakpoint as the default CSS without a media query
-  const largestBreakpointKey = breakpointsKeys[breakpointsKeys.length - 1] as keyof typeof breakpoint;
-
-  // Create CSS for the default largest breakpoint (desktop-first)
+  // Generate default CSS for the largest breakpoint
   const defaultCSS = css`
-    ${property}: ${theme[responsiveSpacingMap[propValue as NewThemeSpacing][largestBreakpointKey]]};
+    ${property}: ${theme[Object.values(sortedBreakpoints)[0]]};
   `;
 
-  // Apply media queries for smaller breakpoints
-  const responsiveCSS = breakpointsKeys
-    .slice(0, -1) // Exclude the largest breakpoint
-    .reverse() // Ensure cascading with max-width
-    .map((key) => {
-      const spacingValue = theme[responsiveSpacingMap[propValue as NewThemeSpacing][key as keyof typeof breakpoint]];
-      return css`
-        ${breakpoint[key as keyof typeof breakpoint]`{
-          ${property}: ${spacingValue};
-        }`}
+  // Generate media queries for smaller breakpoints
+  const responsiveCSS = Object.entries(sortedBreakpoints)
+    .slice(1) // Exclude the largest breakpoint
+    .map(([key, value]) => {
+      return breakpoint[key as SemanticBreakpoints]`{
+          ${property}: ${theme[value]};
+        }
       `;
-    })
-    .join('');
+    });
 
   return css`
     ${defaultCSS}
