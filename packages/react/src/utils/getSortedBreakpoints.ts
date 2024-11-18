@@ -1,5 +1,5 @@
 import { TypographyResponsiveStyles } from '../components/Typography/Typography.types';
-import { SemanticBreakpoints } from '../types';
+import { SemanticBreakpoints, ThemeSpacing } from '../types';
 
 /**
  * Sorts breakpoints in DESC order.
@@ -8,8 +8,10 @@ import { SemanticBreakpoints } from '../types';
  */
 
 export const getSortedBreakpoints = (
-  breakpoints: Partial<Record<SemanticBreakpoints, TypographyResponsiveStyles>>
-): [SemanticBreakpoints, TypographyResponsiveStyles][] => {
+  breakpoints: Partial<
+    Record<SemanticBreakpoints, TypographyResponsiveStyles | ThemeSpacing>
+  >
+): [SemanticBreakpoints, TypographyResponsiveStyles | ThemeSpacing][] => {
   const breakpointOrder: SemanticBreakpoints[] = ['sm', 'md', 'lg', 'xl'];
 
   return Object.entries(breakpoints)

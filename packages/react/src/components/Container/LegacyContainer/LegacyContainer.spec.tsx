@@ -1,14 +1,15 @@
+import React from 'react';
 import { render } from '@testing-library/react';
-import Container, { ContainerProps } from './Container';
 import { byTestId } from 'testing-library-selector';
+import LegacyContainer, { LegacyContainerProps } from './LegacyContainer';
 
-const renderComponent = (customProps: ContainerProps) => {
+const renderComponent = (customProps: LegacyContainerProps) => {
   const props = {
     testID: 'container-component',
     ...customProps,
   };
 
-  render(<Container {...props} />);
+  render(<LegacyContainer {...props} />);
 };
 
 describe('Container Component', () => {
