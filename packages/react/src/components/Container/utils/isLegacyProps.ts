@@ -1,8 +1,31 @@
-import { ContainerProps } from '../Container';
+import { CombinedContainerProps } from '../Container';
 import { LegacyContainerProps } from '../LegacyContainer';
 
 export const isLegacyProps = (
-  props: ContainerProps
+  props: CombinedContainerProps
 ): props is LegacyContainerProps => {
-  return !!(props as LegacyContainerProps);
+  const newSpacingValues = ['sm', 'md', 'lg', 'xl'];
+  const newProps = [
+    'm',
+    'mt',
+    'mr',
+    'mb',
+    'ml',
+    'mx',
+    'my',
+    'p',
+    'pt',
+    'pr',
+    'pb',
+    'pl',
+    'px',
+    'py',
+    'gap',
+  ];
+
+  return !newProps.some((prop) => {
+    const value = props?.[prop as keyof CombinedContainerProps];
+    if (!value) return false;
+    return newSpacingValues.includes(value as string);
+  });
 };

@@ -1,15 +1,15 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import NewContainer, { NewContainerProps } from './NewContainer';
+import Container, { ContainerProps } from './Container';
 import { byTestId } from 'testing-library-selector';
 
-const renderComponent = (customProps: NewContainerProps) => {
+const renderComponent = (customProps: ContainerProps) => {
   const props = {
     testID: 'container-component',
     ...customProps,
   };
 
-  render(<NewContainer {...props} />);
+  render(<Container {...props} />);
 };
 
 describe('Container Component', () => {

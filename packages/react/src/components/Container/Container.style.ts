@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
-import { ThemeDesignTokens } from '../../../theme/ThemeProvider';
-import { ExtendedTheme, NewThemeSpacing, responsiveSpacingMap, SemanticSpacing } from '../../../types';
-import { getSortedBreakpoints } from '../../../utils';
-import { breakpoint } from '../../../utils/css';
-import { NewContainerProps } from './NewContainer';
+import { ThemeDesignTokens } from '../../theme/ThemeProvider';
+import { ExtendedTheme, NewThemeSpacing, responsiveSpacingMap, SemanticSpacing } from '../../types';
+import { getSortedBreakpoints } from '../../utils';
+import { breakpoint } from '../../utils/css';
+import { ContainerProps } from './Container';
 
 const applyResponsiveStyles = (
   theme: ThemeDesignTokens,
@@ -41,7 +41,7 @@ const applyResponsiveStyles = (
   `;
 };
 
-export const NewContainer = styled.div<ExtendedTheme<NewContainerProps>>`
+export const Container = styled.div<ExtendedTheme<ContainerProps>>`
   ${({
     theme,
     m,
