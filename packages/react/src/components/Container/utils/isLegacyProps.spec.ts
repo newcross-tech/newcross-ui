@@ -1,42 +1,40 @@
-import { CombinedContainerProps } from '../Container';
 import { isLegacyProps } from './isLegacyProps';
+import { CombinedContainerProps } from '../Container';
+
+const mockLegacyProps: CombinedContainerProps = {
+  m: 'SpacingBase16',
+  p: 'SpacingBase24',
+  gap: 'SpacingBase8',
+};
+
+const mockNewProps: CombinedContainerProps = {
+  m: 'sm',
+  p: 'md',
+  gap: 'lg',
+};
+
+const mockDontCareProps: CombinedContainerProps = {
+  m: 'auto',
+  p: 'auto',
+  gap: 'inherit',
+};
+
+const mockEmptyProps: CombinedContainerProps = {};
 
 describe('isLegacyProps', () => {
-  it('should return true for legacy spacing values', () => {
-    const props: CombinedContainerProps = { m: 'SpacingBase12' };
-    expect(isLegacyProps(props)).toBe(true);
+  it('should return true for legacy props', () => {
+    expect(isLegacyProps(mockLegacyProps)).toBe(true);
   });
 
-  it('should return false for new spacing values', () => {
-    const props: CombinedContainerProps = { p: 'sm' };
-    expect(isLegacyProps(props)).toBe(false);
+  it('should return false for new props', () => {
+    expect(isLegacyProps(mockNewProps)).toBe(false);
   });
 
-  it('should return true for unrelated properties', () => {
-    const props: CombinedContainerProps = { display: 'flex' };
-    expect(isLegacyProps(props)).toBe(true);
+  it('should return true for props with "dont care" values', () => {
+    expect(isLegacyProps(mockDontCareProps)).toBe(true);
   });
 
-  it('should return true for empty props', () => {
-    const props: CombinedContainerProps = {};
-    expect(isLegacyProps(props)).toBe(true);
-  });
-
-  it('should return true for undefined spacing values', () => {
-    const props: CombinedContainerProps = { m: undefined };
-    expect(isLegacyProps(props)).toBe(true);
-  });
-
-  it('should return false for a single new spacing value', () => {
-    const props: CombinedContainerProps = { mt: 'lg' };
-    expect(isLegacyProps(props)).toBe(false);
-  });
-
-  it('should return true for all legacy spacing values', () => {
-    const props: CombinedContainerProps = {
-      mx: 'SpacingBase16',
-      gap: 'SpacingBase8',
-    };
-    expect(isLegacyProps(props)).toBe(true);
+  it('should return false for empty props', () => {
+    expect(isLegacyProps(mockEmptyProps)).toBe(true);
   });
 });

@@ -96,24 +96,17 @@ export type ContainerProps = {
 
 export type CombinedContainerProps = ContainerProps | LegacyContainerProps;
 
-const NewContainer = ({
-  children,
-  testID,
-  display = 'flex',
-  ...props
-}: ContainerProps) => {
-  return (
-    <Styled.Container {...props} display={display} data-testid={testID}>
-      {children}
-    </Styled.Container>
-  );
-};
-
 const Container = (props: CombinedContainerProps) => {
   if (isLegacyProps(props)) {
     return <LegacyContainer {...props} />;
   }
-  return <NewContainer {...props} />;
+
+  const { children, testID, display = 'flex', ...restProps } = props;
+  return (
+    <Styled.Container {...restProps} display={display} data-testid={testID}>
+      {children}
+    </Styled.Container>
+  );
 };
 
 export default Container;
