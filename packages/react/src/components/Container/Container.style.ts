@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
-import { ExtendedTheme, NewThemeSpacing, responsiveSpacingMap, SemanticSpacing } from '../../types';
+import { ExtendedTheme, responsiveSpacingMap, SemanticSpacing } from '../../types';
 import { getSortedBreakpoints } from '../../utils';
 import { breakpoint } from '../../utils/css';
 import { ContainerProps } from './Container';
