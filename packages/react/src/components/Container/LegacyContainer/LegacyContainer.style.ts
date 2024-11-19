@@ -123,6 +123,7 @@ export const LegacyContainer = styled.div<ExtendedTheme<LegacyContainerProps>>`
       ${generateStyle(theme, 'padding-right', prTablet)}
       ${generateStyle(theme, 'padding-top', ptTablet)}
       ${generateStyle(theme, 'padding-bottom', pbTablet)}
+      ${generateStyle(theme, 'gap', gapTablet)}
   `}
 
   ${breakpoint.sm`
@@ -144,6 +145,7 @@ export const LegacyContainer = styled.div<ExtendedTheme<LegacyContainerProps>>`
       ${generateStyle(theme, 'padding-right', prMobile)}
       ${generateStyle(theme, 'padding-top', ptMobile)}
       ${generateStyle(theme, 'padding-bottom', pbMobile)}
+      ${generateStyle(theme, 'gap', gapMobile)}
     `}
   `}
 `;
