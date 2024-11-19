@@ -7,11 +7,9 @@ import { SemanticBreakpoints, ThemeSpacing } from '../types';
  * @returns The sorted breakpoints.
  */
 
-export const getSortedBreakpoints = (
-  breakpoints: Partial<
-    Record<SemanticBreakpoints, TypographyResponsiveStyles | ThemeSpacing>
-  >
-): [SemanticBreakpoints, TypographyResponsiveStyles | ThemeSpacing][] => {
+export const getSortedBreakpoints = <T>(
+  breakpoints: Partial<Record<SemanticBreakpoints, T>>
+): [SemanticBreakpoints, T][] => {
   const breakpointOrder: SemanticBreakpoints[] = ['sm', 'md', 'lg', 'xl'];
 
   return Object.entries(breakpoints)
