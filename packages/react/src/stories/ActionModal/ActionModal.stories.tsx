@@ -7,6 +7,8 @@ import { DESCRIPTION, DO, DONT, TITLE } from './ActionModalInfo';
 import * as StoryTitle from '../StoryTitle';
 import ActionModal, { ActionModalProps } from '../../components/ActionModal';
 import Typography from '../../components/Typography';
+import Select from '../../components/Select';
+
 /**
  * To use the library styles you need to import import 'react-sheet-slide/style.css';
  * as global styles in your project
@@ -15,6 +17,16 @@ export default {
   title: 'React/Components/ActionModal',
   component: ActionModal,
 } as Meta;
+
+const options = [
+  { label: 'Option 1', value: 'Option 1' },
+  { label: 'Option 2', value: 'Option 2' },
+  { label: 'Option 3', value: 'Option 3' },
+  { label: 'Option 4', value: 'Option 4' },
+  { label: 'Option 5', value: 'Option 5' },
+  { label: 'Option 6', value: 'Option 6' },
+];
+
 const MODAL_TITLE = 'Question to the user?';
 const MODAL_SUBTITLE = 'Description on what will happen if confirming';
 const MODAL_CONTENT = (
@@ -28,12 +40,12 @@ const MODAL_CONTENT = (
   </>
 );
 
-const MODAL_FOOTER = (
+const MODAL_FOOTER = (close: VoidFunction) => (
   <Container justifyContent="space-between" fullWidth gap="SpacingBase16">
-    <Button variant="secondary" style={{ flexGrow: 1 }}>
+    <Button variant="secondary" style={{ flexGrow: 1 }} onClick={close}>
       A Way Out
     </Button>
-    <Button variant="primary" style={{ flexGrow: 1 }}>
+    <Button variant="primary" style={{ flexGrow: 1 }} onClick={close}>
       Decision
     </Button>
   </Container>
@@ -41,12 +53,16 @@ const MODAL_FOOTER = (
 
 const VariantComponent = ({
   isAlwaysModal,
-  hasPadding,
-  hasGreyBackground,
+  $hasPadding,
+  $hasGreyBackground,
+  $overflowY,
+  content = MODAL_CONTENT,
 }: {
   isAlwaysModal?: ActionModalProps['isAlwaysModal'];
-  hasGreyBackground?: ActionModalProps['hasGreyBackground'];
-  hasPadding?: ActionModalProps['hasPadding'];
+  $hasGreyBackground?: ActionModalProps['$hasGreyBackground'];
+  $hasPadding?: ActionModalProps['$hasPadding'];
+  content?: ActionModalProps['content'];
+  $overflowY?: ActionModalProps['$overflowY'];
 }) => {
   const [open, setOpen] = useState(false);
 
@@ -58,13 +74,14 @@ const VariantComponent = ({
       <ActionModal
         open={open}
         isAlwaysModal={isAlwaysModal}
-        hasPadding={hasPadding}
-        hasGreyBackground={hasGreyBackground}
+        $hasPadding={$hasPadding}
+        $hasGreyBackground={$hasGreyBackground}
+        $overflowY={$overflowY}
         onDismiss={closeModal}
         title={MODAL_TITLE}
         subtitle={MODAL_SUBTITLE}
-        footer={MODAL_FOOTER}
-        content={MODAL_CONTENT}
+        footer={MODAL_FOOTER(closeModal)}
+        content={content}
       />
     </>
   );
@@ -79,7 +96,7 @@ export const Overview = () => (
   >
     <Container flexDirection="column">
       <StoryTitle.Overview>Action Modal</StoryTitle.Overview>
-      <VariantComponent isAlwaysModal={true} />
+      <VariantComponent isAlwaysModal={true} $overflowY="visible" />
     </Container>
   </InfoTemplate>
 );
@@ -94,6 +111,12 @@ export const Variants = () => {
         Action Modal with Bottom Sheet on mobile
       </StoryTitle.Overview>
       <VariantComponent />
+      <Container my="SpacingBase32" />
+      <StoryTitle.Overview>Action Modal with Select</StoryTitle.Overview>
+      <VariantComponent
+        content={<Select options={options} id="select" menuPlacement="top" />}
+        $overflowY="visible"
+      />
     </Container>
   );
 };

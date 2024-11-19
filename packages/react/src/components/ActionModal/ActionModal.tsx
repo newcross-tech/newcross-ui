@@ -54,15 +54,24 @@ export type ActionModalProps = {
   /**
    * Prop that control if the ContentWapper should have grey background for screen smaller than 640px.
    */
-  hasGreyBackground?: boolean;
+  $hasGreyBackground?: boolean;
   /**
    * Prop to control if the ContentWapper should have padding for screen smaller than 640px.
    */
-  hasPadding?: boolean;
+  $hasPadding?: boolean;
   /**
    * The sheet also supports forwarding a ref that will be added onto the sheet root.
    */
   ref?: React.RefObject<HTMLDivElement>;
+  /**
+   * Prop to control the overflow-y of the content.
+   * When the content includes elements with absolute position, like a dropdown, the overflow-y should be set to 'visible'.
+   */
+  $overflowY?: 'auto' | 'hidden' | 'scroll' | 'visible' | 'initial' | 'inherit';
+  /**
+   * Set custom z-index for the action modal
+   */
+  $zIndex?: number;
 };
 
 const ActionModal = ({
@@ -70,14 +79,20 @@ const ActionModal = ({
   content,
   subtitle,
   footer,
-  hasPadding,
+  $hasPadding,
   isAlwaysModal,
-  hasGreyBackground,
+  $hasGreyBackground,
+  $overflowY = 'auto',
+  $zIndex = 2,
   ...rest
 }: ActionModalProps) => {
   return (
     <Portal>
-      <Styled.SheetWrapper $useModal={!!isAlwaysModal}>
+      <Styled.SheetWrapper
+        $useModal={!!isAlwaysModal}
+        $overflowY={$overflowY}
+        $zIndex={$zIndex}
+      >
         <Sheet
           selectedDetent={detents.large}
           detents={(props) => [detents.large(props), detents.fit(props)]}
@@ -106,7 +121,6 @@ const ActionModal = ({
             >
               <Styled.Header
                 justifyContent="space-between"
-                alignItems="center"
                 pb="SpacingBase8"
                 $useModal={!!isAlwaysModal}
               >
@@ -135,8 +149,8 @@ const ActionModal = ({
             <Content className="action-modal-content">
               <Styled.ContentWapper
                 $useModal={!!isAlwaysModal}
-                $hasGreyBackground={!!hasGreyBackground}
-                $hasPadding={!!hasPadding}
+                $hasGreyBackground={!!$hasGreyBackground}
+                $hasPadding={!!$hasPadding}
                 pt="SpacingBase24"
                 px="SpacingBase24"
                 pb={footer ? 'SpacingBase0' : 'SpacingBase40'}
