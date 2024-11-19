@@ -142,6 +142,10 @@ export type SelectProps<
    * Applies the theme typography styles to the subtitle
    */
   subtitleVariant?: TypographyVariant;
+  /**
+   * Set custom z-index for the menu
+   */
+  $zIndex?: number;
 } & TestProp;
 
 const Select = <
@@ -161,6 +165,7 @@ const Select = <
   subtitle,
   subtitleVariant = 'subtitle2',
   testID,
+  $zIndex = 2,
   ...rest
 }: SelectProps<Option, IsMulti, Group>) => {
   const theme = useTheme();
@@ -194,6 +199,7 @@ const Select = <
           styles={Styled.getCustomStyles<Option, IsMulti, Group>({
             theme,
             hasError: !!errorText,
+            $zIndex,
           })}
           placeholder={placeholder}
           isMulti={isMulti}
