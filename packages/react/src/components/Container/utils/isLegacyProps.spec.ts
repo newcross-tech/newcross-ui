@@ -11,6 +11,7 @@ const mockNewProps: CombinedContainerProps = {
   m: 'sm',
   p: 'md',
   gap: 'lg',
+  display: 'flex',
 };
 
 const mockDontCareProps: CombinedContainerProps = {
