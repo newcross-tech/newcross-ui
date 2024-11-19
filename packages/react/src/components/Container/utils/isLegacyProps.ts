@@ -1,3 +1,4 @@
+import { Container } from 'react-dom';
 import { CombinedContainerProps } from '../Container';
 import { LegacyContainerProps } from '../LegacyContainer';
 
