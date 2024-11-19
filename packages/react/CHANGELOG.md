@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.18.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.18.0...@newcross-ui/react@2.18.1) (2024-11-19)
+
+
+### Bug Fixes
+
+* **HFX-1068:** add default max height of the dialog ([#133](https://bitbucket.org/newcrossdev/newcross-ui/issues/133)) ([dce885d](https://bitbucket.org/newcrossdev/newcross-ui/commits/dce885de676f0e7a2bc1c1eecdb03825da5276e4))
+
+
+
+
+
 # [2.18.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.17.3...@newcross-ui/react@2.18.0) (2024-11-19)
 
 
