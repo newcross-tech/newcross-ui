@@ -82,7 +82,8 @@ export const getCustomStyles = <
 >({
   theme,
   hasError,
-}: ExtendedTheme<{ hasError: boolean }>) => {
+  $zIndex,
+}: ExtendedTheme<{ hasError: boolean; $zIndex: number }>) => {
   const customStyles: StylesConfig<Option, IsMulti, Group> & {
     listBox: (styles: CSSObjectWithLabel) => CSSObjectWithLabel;
     dropdownIndicator: (
@@ -92,7 +93,7 @@ export const getCustomStyles = <
   } = {
     menu: (styles) => ({
       ...styles,
-      zIndex: '2', // 2 z-index on top of modal
+      zIndex: $zIndex,
       boxShadow: 'none',
       borderRadius: theme.BorderBaseRadiusMd,
     }),

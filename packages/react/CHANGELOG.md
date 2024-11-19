@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.18.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.17.3...@newcross-ui/react@2.18.0) (2024-11-19)
+
+
+### Features
+
+* **HFX-1069:** update ActionModal based on new design ([#132](https://bitbucket.org/newcrossdev/newcross-ui/issues/132)) ([d13a47b](https://bitbucket.org/newcrossdev/newcross-ui/commits/d13a47b602f445b9b03fe26c73c9461030013dac))
+
+
+
+
+
 ## [2.17.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.17.2...@newcross-ui/react@2.17.3) (2024-11-18)
 
 **Note:** Version bump only for package @newcross-ui/react
