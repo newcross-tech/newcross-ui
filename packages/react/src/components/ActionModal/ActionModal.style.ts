@@ -160,6 +160,7 @@ export const SheetWrapper = styled(Container)`
 
     div[role='dialog'] {
       height: auto;
+      max-height: 90vh;
       background-color: ${theme.ColorBaseWhite100};
 
       ${$useModal
