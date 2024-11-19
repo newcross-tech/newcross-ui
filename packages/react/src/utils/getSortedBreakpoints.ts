@@ -1,5 +1,4 @@
-import { TypographyResponsiveStyles } from '../components/Typography/Typography.types';
-import { SemanticBreakpoints, ThemeSpacing } from '../types';
+import { SemanticBreakpoints } from '../types';
 
 /**
  * Sorts breakpoints in DESC order.

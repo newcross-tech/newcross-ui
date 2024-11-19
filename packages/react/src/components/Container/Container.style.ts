@@ -23,14 +23,14 @@ const applyResponsiveStyles = (
 
   // Generate default CSS for the largest breakpoint
   const defaultCSS = css`
-    ${property}: ${theme[sortedBreakpoints[0][1] as NewThemeSpacing]};
+    ${property}: ${theme[sortedBreakpoints[0][1]]};
   `;
   // Generate media queries for smaller breakpoints
   const responsiveCSS = sortedBreakpoints
     .slice(1) // Exclude the largest breakpoint
     .map(([key, value]) => {
       return breakpoint[key]`{
-              ${property}: ${theme[value as NewThemeSpacing]};
+              ${property}: ${theme[value]};
             }
           `;
     });
