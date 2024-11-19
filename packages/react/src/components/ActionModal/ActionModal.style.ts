@@ -32,7 +32,6 @@ export const Indicator = styled(Container)`
 
 export const Heading = styled(Typography)`
   flex-grow: 1;
-  text-align: center;
 
   @media (max-width: 640px) {
     text-align: start;
@@ -115,53 +114,75 @@ export const FooterWrapper = styled(Container)`
 `;
 
 export const SheetWrapper = styled(Container)`
-  > div {
-    z-index: 10000;
-  }
-
-  .action-modal-header,
-  .action-modal-content,
-  .action-modal-footer {
-    background-color: transparent;
-    position: relative;
-    border: none;
-    box-shadow: none;
-    padding: 0;
-    margin: 0;
-    overflow: visible;
-  }
-  .action-modal-header {
-    cursor: auto;
-    svg {
-      display: none;
+  ${({
+    theme,
+    $useModal,
+    $overflowY,
+    $zIndex,
+  }: ExtendedTheme<{ $useModal: boolean; $overflowY: string; $zIndex: number }>) => css`
+    > div {
+      z-index: ${$zIndex};
     }
-  }
 
-  .action-modal-content > div {
-    overflow: unset;
-  }
-
-  .action-modal-backdrop {
-    background-color: ${({ theme }: Theme) => getRgba(theme.TabsActiveTabShadowColor, theme.OpacityBaseMd)};
-    padding: 0;
-    margin: 0;
-    border-radius: 0;
-    clip-path: none;
-    transform: unset;
-  }
-
-  div[role='dialog'] {
-    height: auto;
-    overflow: unset;
-    background-color: ${({ theme }: Theme) => theme.ColorBaseWhite100};
-
-    ${({ theme, $useModal }: ExtendedTheme<{ $useModal: boolean }>) =>
-      $useModal &&
-      css`
-        margin: ${theme.SpacingBase24};
-      `}
-    @media (min-width: 641px) {
-      max-width: 640px;
+    .action-modal-header,
+    .action-modal-content,
+    .action-modal-footer {
+      z-index: ${$zIndex};
+      background-color: transparent;
+      position: relative;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      margin: 0;
     }
-  }
+    .action-modal-header {
+      cursor: auto;
+      svg {
+        display: none;
+      }
+    }
+
+    div[role='dialog'],
+    .action-modal-content,
+    .action-modal-content > div {
+      overflow: unset;
+      ${$overflowY && `overflow-y: ${$overflowY};`}
+    }
+
+    .action-modal-backdrop {
+      background-color: ${getRgba(theme.TabsActiveTabShadowColor, theme.OpacityBaseMd)};
+      padding: 0;
+      margin: 0;
+      border-radius: 0;
+      clip-path: none;
+      transform: unset;
+    }
+
+    div[role='dialog'] {
+      height: auto;
+      background-color: ${theme.ColorBaseWhite100};
+
+      ${$useModal
+        ? css`
+            margin: ${theme.SpacingBase24};
+          `
+        : css`
+            @media (min-width: 641px) {
+              margin: ${theme.SpacingBase24};
+            }
+          `}
+
+      @media (min-width: ${theme.BreakpointsMd}px) {
+        max-height: 70vh;
+        min-width: 500px;
+        max-width: 800px;
+        width: 50%;
+      }
+
+      @media (max-width: ${theme.BreakpointsMd}px) and (min-width: 641px) {
+        min-width: 280px;
+        max-width: 100%;
+      }
+    }
+  `}
 `;
