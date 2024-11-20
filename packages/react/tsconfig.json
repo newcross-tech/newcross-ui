@@ -2,6 +2,5 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "build"
-  },
-  "exclude": ["**/*.spec.tsx", "**/*.d.ts", "**/*.stories.tsx", "build"]
+  }
 }

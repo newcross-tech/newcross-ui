@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 function Badge() {
   return (
     <svg width={20} height={24} viewBox="0 0 20 24" fill="none">

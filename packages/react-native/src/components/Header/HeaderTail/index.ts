@@ -1,1 +1,2 @@
-export { default, HeaderTailProps } from './HeaderTail';
+export { default } from './HeaderTail';
+export type { HeaderTailProps } from './HeaderTail';

@@ -1,6 +1,5 @@
-import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import Radio, { RadioProps } from '../../components/Radio';
+import Radio, { RadioProps, RadioValue } from '../../components/Radio';
 import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './Radio.info';
@@ -83,7 +82,7 @@ export const Overview = () => {
   );
 };
 
-const Template: Story<RadioProps> = (props) => <Radio {...props} />;
+const Template: Story<RadioProps<RadioValue>> = (props) => <Radio {...props} />;
 
 export const Interactive = Template.bind({});
 Interactive.args = { label: 'My Label', selected: true, disabled: false };

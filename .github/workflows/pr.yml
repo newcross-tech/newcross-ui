@@ -25,6 +25,7 @@ jobs:
           yarn format:check
           yarn lint:check
           yarn build
+          yarn typecheck
           git checkout main
           git checkout ${GITHUB_HEAD_REF}
           npm run test --branch=main

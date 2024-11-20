@@ -1,2 +1,3 @@
-export { default, AccordionGroupProps } from './AccordionGroup';
+export { default } from './AccordionGroup';
+export type { AccordionGroupProps } from './AccordionGroup';
 export { AccordionGroupSpacing } from './AccordionGroup.types';

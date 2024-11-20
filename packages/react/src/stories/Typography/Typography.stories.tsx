@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 import { Meta, Story } from '@storybook/react';
 import Typography, {
   TypographyProps,

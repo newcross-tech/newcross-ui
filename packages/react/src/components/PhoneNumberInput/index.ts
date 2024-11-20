@@ -1,1 +1,2 @@
-export { default, PhoneNumberInputProps } from './PhoneNumberInput';
+export { default } from './PhoneNumberInput';
+export type { PhoneNumberInputProps } from './PhoneNumberInput';
