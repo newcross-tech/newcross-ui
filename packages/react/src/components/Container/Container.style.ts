@@ -19,15 +19,13 @@ const applyResponsiveStyles = (
       ${property}: ${propValue};
     `;
   }
-
-  // Generate default CSS from the largest breakpoint
-  const defaultCSS = css`
-    ${property}: ${theme[responsiveSpacingMap[propValue]['xl']]};
-  `;
-
-  // Generate media queries for smaller breakpoints
   const sortedBreakpoints = getSortedBreakpoints(responsiveSpacingMap[propValue]);
 
+  // Generate default CSS for the largest breakpoint
+  const defaultCSS = css`
+    ${property}: ${theme[sortedBreakpoints[0][1]]};
+  `;
+  // Generate media queries for smaller breakpoints
   const responsiveCSS = sortedBreakpoints.map(([key, value]) => {
     return breakpoint[key]`{
               ${property}: ${theme[value]};
