@@ -11,7 +11,6 @@ import {
 import 'react-sheet-slide/style.css';
 import * as Styled from './ActionModal.style';
 import { faXmark } from '@fortawesome/pro-light-svg-icons/faXmark';
-import { ColorPrimaryGravitas } from '@newcross-ui/design-tokens/build/js/web/healthforce';
 
 export type ActionModalProps = {
   /**
@@ -129,10 +128,9 @@ const ActionModal = ({
                 </Styled.Heading>
                 <Styled.Icon
                   icon={faXmark}
-                  width={16}
-                  height={16}
                   size="2x"
-                  color={ColorPrimaryGravitas}
+                  width="16px"
+                  height="16px"
                   $useModal={!!isAlwaysModal}
                   onClick={rest.onDismiss}
                   data-testid="action-modal-close-icon"
