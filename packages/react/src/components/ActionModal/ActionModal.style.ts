@@ -57,8 +57,9 @@ export const Header = styled(Container)`
 `;
 
 export const Icon = styled(FontAwesomeIcon)`
-  ${({ $useModal }: ExtendedTheme<{ $useModal: boolean }>) => css`
+  ${({ $useModal, theme }: ExtendedTheme<{ $useModal: boolean }>) => css`
     cursor: pointer;
+    color: ${theme.ColorPrimaryGravitas};
     @media (min-width: 640px) {
       display: block !important;
     }

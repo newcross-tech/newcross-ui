@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.18.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.18.1...@newcross-ui/react@2.18.2) (2024-11-20)
+
+
+### Bug Fixes
+
+* **HFX-000:** unit tests imports issue fix ([#134](https://bitbucket.org/newcrossdev/newcross-ui/issues/134)) ([9dc3178](https://bitbucket.org/newcrossdev/newcross-ui/commits/9dc31786165da91055e419cbcacfa32dc223b9fc))
+
+
+
+
+
 ## [2.18.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.18.0...@newcross-ui/react@2.18.1) (2024-11-19)
 
 
