@@ -49,7 +49,7 @@ export type ActionModalProps = {
    * If you want to always use a modal, set this to true.
    * Otherwise it will default to true on any device larger than (max-width: 640px) to use a modal on desktop.
    */
-  isAlwaysModal?: boolean;
+  $isAlwaysModal?: boolean;
   /**
    * Prop that control if the ContentWapper should have grey background for screen smaller than 640px.
    */
@@ -78,9 +78,9 @@ const ActionModal = ({
   content,
   subtitle,
   footer,
-  $hasPadding,
-  isAlwaysModal,
-  $hasGreyBackground,
+  $hasPadding = false,
+  $isAlwaysModal = false,
+  $hasGreyBackground = false,
   $overflowY = 'auto',
   $zIndex = 2,
   ...rest
@@ -88,16 +88,17 @@ const ActionModal = ({
   return (
     <Portal>
       <Styled.SheetWrapper
-        $useModal={!!isAlwaysModal}
+        $isAlwaysModal={$isAlwaysModal}
         $overflowY={$overflowY}
         $zIndex={$zIndex}
+        $hasFooter={!!footer}
       >
         <Sheet
           selectedDetent={detents.large}
           detents={(props) => [detents.large(props), detents.fit(props)]}
           useDarkMode={false}
           scrollingExpands={true}
-          useModal={isAlwaysModal || undefined}
+          useModal={$isAlwaysModal || undefined}
           backdropClassName="action-modal-backdrop"
           {...rest}
         >
@@ -105,10 +106,10 @@ const ActionModal = ({
             <Styled.IndicatorWrapper
               justifyContent="center"
               p="SpacingBase16"
-              $useModal={!!isAlwaysModal}
+              $isAlwaysModal={$isAlwaysModal}
             >
               <Styled.Indicator
-                $useModal={!!isAlwaysModal}
+                $isAlwaysModal={$isAlwaysModal}
                 px="SpacingBase48"
               />
             </Styled.IndicatorWrapper>
@@ -121,7 +122,7 @@ const ActionModal = ({
               <Styled.Header
                 justifyContent="space-between"
                 pb="SpacingBase8"
-                $useModal={!!isAlwaysModal}
+                $isAlwaysModal={$isAlwaysModal}
               >
                 <Styled.Heading variant="heading2" color="primary">
                   {title}
@@ -131,7 +132,7 @@ const ActionModal = ({
                   size="2x"
                   width="16px"
                   height="16px"
-                  $useModal={!!isAlwaysModal}
+                  $isAlwaysModal={$isAlwaysModal}
                   onClick={rest.onDismiss}
                   data-testid="action-modal-close-icon"
                 />
@@ -146,9 +147,9 @@ const ActionModal = ({
           {content && (
             <Content className="action-modal-content">
               <Styled.ContentWapper
-                $useModal={!!isAlwaysModal}
-                $hasGreyBackground={!!$hasGreyBackground}
-                $hasPadding={!!$hasPadding}
+                $isAlwaysModal={$isAlwaysModal}
+                $hasGreyBackground={$hasGreyBackground}
+                $hasPadding={$hasPadding}
                 pt="SpacingBase24"
                 px="SpacingBase24"
                 pb={footer ? 'SpacingBase0' : 'SpacingBase40'}
@@ -162,7 +163,7 @@ const ActionModal = ({
           <Footer className="action-modal-footer">
             {footer && (
               <Styled.FooterWrapper
-                $useModal={!!isAlwaysModal}
+                $isAlwaysModal={$isAlwaysModal}
                 px="SpacingBase24"
                 py="SpacingBase32"
                 flexDirection="column"
