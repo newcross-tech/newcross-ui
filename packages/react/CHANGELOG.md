@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.18.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.18.2...@newcross-ui/react@2.18.3) (2024-11-20)
+
+
+### Bug Fixes
+
+* **HFX-1068:** fix footer shadow and hasPadding and hasGreyBackground styles ([#135](https://bitbucket.org/newcrossdev/newcross-ui/issues/135)) ([affc9de](https://bitbucket.org/newcrossdev/newcross-ui/commits/affc9de0d33216fdd366eea2e6992e51928aa63b))
+
+
+
+
+
 ## [2.18.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.18.1...@newcross-ui/react@2.18.2) (2024-11-20)
 
 

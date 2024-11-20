@@ -40,25 +40,25 @@ const MODAL_CONTENT = (
   </>
 );
 
-const MODAL_FOOTER = (close: VoidFunction) => (
+const MODAL_FOOTER = (
   <Container justifyContent="space-between" fullWidth gap="SpacingBase16">
-    <Button variant="secondary" style={{ flexGrow: 1 }} onClick={close}>
+    <Button variant="secondary" style={{ flexGrow: 1 }}>
       A Way Out
     </Button>
-    <Button variant="primary" style={{ flexGrow: 1 }} onClick={close}>
+    <Button variant="primary" style={{ flexGrow: 1 }}>
       Decision
     </Button>
   </Container>
 );
 
 const VariantComponent = ({
-  isAlwaysModal,
+  $isAlwaysModal,
   $hasPadding,
   $hasGreyBackground,
   $overflowY,
   content = MODAL_CONTENT,
 }: {
-  isAlwaysModal?: ActionModalProps['isAlwaysModal'];
+  $isAlwaysModal?: ActionModalProps['$isAlwaysModal'];
   $hasGreyBackground?: ActionModalProps['$hasGreyBackground'];
   $hasPadding?: ActionModalProps['$hasPadding'];
   content?: ActionModalProps['content'];
@@ -73,14 +73,14 @@ const VariantComponent = ({
       <Button onClick={() => setOpen(true)}>Open Action Modal</Button>
       <ActionModal
         open={open}
-        isAlwaysModal={isAlwaysModal}
+        $isAlwaysModal={$isAlwaysModal}
         $hasPadding={$hasPadding}
         $hasGreyBackground={$hasGreyBackground}
         $overflowY={$overflowY}
         onDismiss={closeModal}
         title={MODAL_TITLE}
         subtitle={MODAL_SUBTITLE}
-        footer={MODAL_FOOTER(closeModal)}
+        footer={MODAL_FOOTER}
         content={content}
       />
     </>
@@ -96,7 +96,7 @@ export const Overview = () => (
   >
     <Container flexDirection="column">
       <StoryTitle.Overview>Action Modal</StoryTitle.Overview>
-      <VariantComponent isAlwaysModal={true} $overflowY="visible" />
+      <VariantComponent $isAlwaysModal={true} $overflowY="visible" />
     </Container>
   </InfoTemplate>
 );
@@ -105,7 +105,7 @@ export const Variants = () => {
   return (
     <Container flexDirection="column">
       <StoryTitle.Overview>Always Action Modal</StoryTitle.Overview>
-      <VariantComponent isAlwaysModal={true} />
+      <VariantComponent $isAlwaysModal={true} />
       <Container my="SpacingBase32" />
       <StoryTitle.Overview>
         Action Modal with Bottom Sheet on mobile
@@ -134,6 +134,6 @@ Interactive.args = {
   open: true,
   title: MODAL_TITLE,
   subtitle: MODAL_SUBTITLE,
-  footer: MODAL_FOOTER,
   content: MODAL_CONTENT,
+  footer: MODAL_FOOTER,
 };

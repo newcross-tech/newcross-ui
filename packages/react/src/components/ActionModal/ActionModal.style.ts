@@ -6,11 +6,11 @@ import { getRgba } from '../../utils/getRgba';
 import { ExtendedTheme, Theme } from '../../types';
 
 export const IndicatorWrapper = styled(Container)`
-  ${({ theme, $useModal }: ExtendedTheme<{ $useModal: boolean }>) => css`
+  ${({ theme, $isAlwaysModal }: ExtendedTheme<{ $isAlwaysModal: boolean }>) => css`
     display: none;
 
     @media (max-width: 640px) {
-      display: ${$useModal ? 'none' : 'flex'};
+      display: ${$isAlwaysModal ? 'none' : 'flex'};
       box-shadow: ${theme.TabsActiveTabShadowOffsetWidth}px ${theme.TabsActiveTabShadowOffsetHeight}px
         ${theme.TabsActiveTabShadowRadius}px
         ${getRgba(theme.TabsActiveTabShadowColor, theme.TabsActiveTabShadowOpacity)};
@@ -19,8 +19,8 @@ export const IndicatorWrapper = styled(Container)`
 `;
 
 export const Indicator = styled(Container)`
-  ${({ theme, $useModal }: ExtendedTheme<{ $useModal: boolean }>) =>
-    !$useModal &&
+  ${({ theme, $isAlwaysModal }: ExtendedTheme<{ $isAlwaysModal: boolean }>) =>
+    !$isAlwaysModal &&
     css`
       @media (max-width: 640px) {
         height: ${theme.SpacingBase8};
@@ -48,8 +48,8 @@ export const HeaderContent = styled(Container)`
   `}
 `;
 export const Header = styled(Container)`
-  ${({ theme, $useModal }: ExtendedTheme<{ $useModal: boolean }>) => css`
-    ${$useModal && `border-bottom: 1px solid ${theme.ColorBaseGrey200};`}
+  ${({ theme, $isAlwaysModal }: ExtendedTheme<{ $isAlwaysModal: boolean }>) => css`
+    ${$isAlwaysModal && `border-bottom: 1px solid ${theme.ColorBaseGrey200};`}
     @media (min-width: 640px) {
       border-bottom: 1px solid ${theme.ColorBaseGrey200};
     }
@@ -57,7 +57,7 @@ export const Header = styled(Container)`
 `;
 
 export const Icon = styled(FontAwesomeIcon)`
-  ${({ $useModal, theme }: ExtendedTheme<{ $useModal: boolean }>) => css`
+  ${({ $isAlwaysModal, theme }: ExtendedTheme<{ $isAlwaysModal: boolean }>) => css`
     cursor: pointer;
     color: ${theme.ColorPrimaryGravitas};
     @media (min-width: 640px) {
@@ -65,7 +65,7 @@ export const Icon = styled(FontAwesomeIcon)`
     }
 
     @media (max-width: 640px) {
-      display: ${$useModal ? 'block !important' : 'none'};
+      display: ${$isAlwaysModal ? 'block !important' : 'none'};
     }
   `}
 `;
@@ -84,32 +84,36 @@ export const Subtitle = styled(Typography)`
 export const ContentWapper = styled(Container)`
   ${({
     theme,
-    $useModal,
+    $isAlwaysModal,
     $hasGreyBackground,
     $hasPadding,
   }: ExtendedTheme<{
-    $useModal: boolean;
+    $isAlwaysModal: boolean;
     $hasGreyBackground: boolean;
     $hasPadding: boolean;
   }>) =>
-    !$useModal &&
+    !$isAlwaysModal &&
     css`
       @media (max-width: 640px) {
         padding: ${theme.SpacingBase0} ${theme.SpacingBase16} ${theme.SpacingBase24} ${theme.SpacingBase16};
-        ${$hasPadding && `padding-top: ${theme.SpacingBase16}`}
-        ${$hasGreyBackground && `background-color: ${theme.ColorBaseGrey500};`}
+        ${$hasPadding &&
+        css`
+          padding-top: ${theme.SpacingBase16};
+        `}
+        ${$hasGreyBackground &&
+        css`
+          background-color: ${theme.ColorBaseGrey500};
+        `}
       }
     `}
 `;
 
 export const FooterWrapper = styled(Container)`
-  ${({ theme, $useModal }: ExtendedTheme<{ $useModal: boolean }>) =>
-    !$useModal &&
+  ${({ theme, $isAlwaysModal }: ExtendedTheme<{ $isAlwaysModal: boolean }>) =>
+    !$isAlwaysModal &&
     css`
       @media (max-width: 640px) {
         padding: ${theme.SpacingBase16};
-        box-shadow: ${theme.TabsActiveTabShadowOffsetWidth}px -${theme.TabsActiveTabShadowOffsetHeight}px ${theme.TabsActiveTabShadowRadius}px
-          ${getRgba(theme.TabsActiveTabShadowColor, theme.TabsActiveTabShadowOpacity)};
       }
     `}
 `;
@@ -117,10 +121,11 @@ export const FooterWrapper = styled(Container)`
 export const SheetWrapper = styled(Container)`
   ${({
     theme,
-    $useModal,
+    $isAlwaysModal,
     $overflowY,
     $zIndex,
-  }: ExtendedTheme<{ $useModal: boolean; $overflowY: string; $zIndex: number }>) => css`
+    $hasFooter,
+  }: ExtendedTheme<{ $isAlwaysModal: boolean; $overflowY: string; $zIndex: number; $hasFooter: boolean }>) => css`
     > div {
       z-index: ${$zIndex};
     }
@@ -136,11 +141,26 @@ export const SheetWrapper = styled(Container)`
       padding: 0;
       margin: 0;
     }
+
     .action-modal-header {
       cursor: auto;
       svg {
         display: none;
       }
+    }
+
+    .action-modal-footer {
+      ${!$hasFooter &&
+      css`
+        display: none;
+      `}
+      ${!$isAlwaysModal &&
+      css`
+        @media (max-width: 640px) {
+          box-shadow: ${theme.TabsActiveTabShadowOffsetWidth}px -${theme.TabsActiveTabShadowOffsetHeight}px ${theme.TabsActiveTabShadowRadius}px
+            ${getRgba(theme.TabsActiveTabShadowColor, theme.TabsActiveTabShadowOpacity)};
+        }
+      `}
     }
 
     div[role='dialog'],
@@ -164,7 +184,7 @@ export const SheetWrapper = styled(Container)`
       max-height: 90vh;
       background-color: ${theme.ColorBaseWhite100};
 
-      ${$useModal
+      ${$isAlwaysModal
         ? css`
             margin: ${theme.SpacingBase24};
           `
