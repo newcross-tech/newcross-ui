@@ -1,7 +1,9 @@
-import { TestProp } from '../../types';
 import * as Styled from './Container.style';
 import { CSSProperties } from 'react';
 import { ContainerGapSpacing, ContainerSpacing } from './Container.types';
+import { TestProp } from '../../types';
+import { isLegacyProps } from './utils';
+import LegacyContainer, { LegacyContainerProps } from './LegacyContainer';
 
 export type ContainerProps = {
   children?: React.ReactNode;
@@ -62,118 +64,6 @@ export type ContainerProps = {
    */
   pb?: ContainerSpacing;
   /**
-   * CSS: `margin-left` and `margin-right` and `margin-top` and `margin-bottom`
-   */
-  mTablet?: ContainerSpacing;
-  /**
-   * CSS: `margin-left` and `margin-right`
-   */
-  mxTablet?: ContainerSpacing;
-  /**
-   * CSS: `margin-top` and `margin-bottom`
-   */
-  myTablet?: ContainerSpacing;
-  /**
-   * CSS: `margin-left`
-   */
-  mlTablet?: ContainerSpacing;
-  /**
-   * CSS: `margin-right`
-   */
-  mrTablet?: ContainerSpacing;
-  /**
-   * CSS: `margin-top`
-   */
-  mtTablet?: ContainerSpacing;
-  /**
-   * CSS: `margin-bottom`
-   */
-  mbTablet?: ContainerSpacing;
-  /**
-   * CSS: `padding-left` and `padding-right` and `padding-top` and `padding-bottom`
-   */
-  pTablet?: ContainerSpacing;
-  /**
-   * CSS: `padding-left` and `padding-right`
-   */
-  pxTablet?: ContainerSpacing;
-  /**
-   * CSS: `padding-top` and `padding-bottom`
-   */
-  pyTablet?: ContainerSpacing;
-  /**
-   * CSS: `padding-left`
-   */
-  plTablet?: ContainerSpacing;
-  /**
-   * CSS: `padding-right`
-   */
-  prTablet?: ContainerSpacing;
-  /**
-   * CSS: `padding-top`
-   */
-  ptTablet?: ContainerSpacing;
-  /**
-   * CSS: `padding-bottom`
-   */
-  pbTablet?: ContainerSpacing;
-  /**
-   * CSS: `margin-left` and `margin-right` and `margin-top` and `margin-bottom`
-   */
-  mMobile?: ContainerSpacing;
-  /**
-   * CSS: `margin-left` and `margin-right`
-   */
-  mxMobile?: ContainerSpacing;
-  /**
-   * CSS: `margin-top` and `margin-bottom`
-   */
-  myMobile?: ContainerSpacing;
-  /**
-   * CSS: `margin-left`
-   */
-  mlMobile?: ContainerSpacing;
-  /**
-   * CSS: `margin-right`
-   */
-  mrMobile?: ContainerSpacing;
-  /**
-   * CSS: `margin-top`
-   */
-  mtMobile?: ContainerSpacing;
-  /**
-   * CSS: `margin-bottom`
-   */
-  mbMobile?: ContainerSpacing;
-  /**
-   * CSS: `padding-left` and `padding-right` and `padding-top` and `padding-bottom`
-   */
-  pMobile?: ContainerSpacing;
-  /**
-   * CSS: `padding-left` and `padding-right`
-   */
-  pxMobile?: ContainerSpacing;
-  /**
-   * CSS: `padding-top` and `padding-bottom`
-   */
-  pyMobile?: ContainerSpacing;
-  /**
-   * CSS: `padding-left`
-   */
-  plMobile?: ContainerSpacing;
-  /**
-   * CSS: `padding-right`
-   */
-  prMobile?: ContainerSpacing;
-  /**
-   * CSS: `padding-top`
-   */
-  ptMobile?: ContainerSpacing;
-  /**
-   * CSS: `padding-bottom`
-   */
-  pbMobile?: ContainerSpacing;
-  /**
    * CSS: `display`
    */
   display?: CSSProperties['display'];
@@ -202,24 +92,18 @@ export type ContainerProps = {
    * Sets the spacing between each child using margin
    */
   gap?: ContainerGapSpacing;
-  /**
-   * Sets the spacing between each child using margin
-   */
-  gapTablet?: ContainerGapSpacing;
-  /**
-   * Sets the spacing between each child using margin
-   */
-  gapMobile?: ContainerGapSpacing;
 } & TestProp;
 
-const Container = ({
-  children,
-  testID,
-  display = 'flex',
-  ...props
-}: ContainerProps) => {
+export type CombinedContainerProps = ContainerProps | LegacyContainerProps;
+
+const Container = (props: CombinedContainerProps) => {
+  if (isLegacyProps(props)) {
+    return <LegacyContainer {...props} />;
+  }
+
+  const { children, testID, display = 'flex', ...restProps } = props;
   return (
-    <Styled.Container {...props} display={display} data-testid={testID}>
+    <Styled.Container {...restProps} display={display} data-testid={testID}>
       {children}
     </Styled.Container>
   );

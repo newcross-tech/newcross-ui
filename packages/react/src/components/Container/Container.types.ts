@@ -1,4 +1,4 @@
-import { ThemeSpacing } from '../../types';
+import { SemanticSpacing } from '../../types';
 
-export type ContainerSpacing = ThemeSpacing | 'auto';
-export type ContainerGapSpacing = ThemeSpacing | 'inherit';
+export type ContainerSpacing = SemanticSpacing | 'auto';
+export type ContainerGapSpacing = SemanticSpacing | 'inherit';

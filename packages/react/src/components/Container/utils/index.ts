@@ -1,0 +1,1 @@
+export { isLegacyProps } from './isLegacyProps';

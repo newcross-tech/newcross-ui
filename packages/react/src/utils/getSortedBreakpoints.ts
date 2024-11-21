@@ -1,4 +1,3 @@
-import { TypographyResponsiveStyles } from '../components/Typography/Typography.types';
 import { SemanticBreakpoints } from '../types';
 
 /**
@@ -7,9 +6,9 @@ import { SemanticBreakpoints } from '../types';
  * @returns The sorted breakpoints.
  */
 
-export const getSortedBreakpoints = (
-  breakpoints: Partial<Record<SemanticBreakpoints, TypographyResponsiveStyles>>
-): [SemanticBreakpoints, TypographyResponsiveStyles][] => {
+export const getSortedBreakpoints = <T>(
+  breakpoints: Partial<Record<SemanticBreakpoints, T>>
+): [SemanticBreakpoints, T][] => {
   const breakpointOrder: SemanticBreakpoints[] = ['sm', 'md', 'lg', 'xl'];
 
   return Object.entries(breakpoints)

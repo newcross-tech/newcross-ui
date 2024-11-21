@@ -103,6 +103,7 @@
     "build-storybook": "build-storybook",
     "test": "lerna run test --stream --concurrency 1 --since $npm_config_branch",
     "test:coverage": "lerna run test:coverage",
+    "typecheck": "tsc --noEmit",
     "deploy": "sls deploy -s production",
     "deploy:acceptance": "sls deploy -s acceptance"
   },
