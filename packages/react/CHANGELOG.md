@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.19.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.18.3...@newcross-ui/react@2.19.0) (2024-11-21)
+
+
+### Features
+
+* **HFX-0000:** update Container ([#131](https://bitbucket.org/newcrossdev/newcross-ui/issues/131)) ([c703de9](https://bitbucket.org/newcrossdev/newcross-ui/commits/c703de92594ef81143b137e925907998b0b689ae))
+
+
+
+
+
 ## [2.18.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.18.2...@newcross-ui/react@2.18.3) (2024-11-20)
 
 
