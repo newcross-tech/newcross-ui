@@ -1,26 +1,26 @@
 import { isLegacyProps } from './isLegacyProps';
-import { CombinedContainerProps } from '../Container';
+import { ContainerProps } from '../Container';
 
-const mockLegacyProps: CombinedContainerProps = {
+const mockLegacyProps: ContainerProps = {
   m: 'SpacingBase16',
   p: 'SpacingBase24',
   gap: 'SpacingBase8',
 };
 
-const mockNewProps: CombinedContainerProps = {
+const mockNewProps: ContainerProps = {
   m: 'sm',
   p: 'md',
   gap: 'lg',
   display: 'flex',
 };
 
-const mockDontCareProps: CombinedContainerProps = {
+const mockDontCareProps: ContainerProps = {
   m: 'auto',
   p: 'auto',
   gap: 'inherit',
 };
 
-const mockEmptyProps: CombinedContainerProps = {};
+const mockEmptyProps: ContainerProps = {};
 
 describe('isLegacyProps', () => {
   it('should return true for legacy props', () => {
