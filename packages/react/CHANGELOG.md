@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.19.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.19.1...@newcross-ui/react@2.19.2) (2024-11-22)
+
+
+### Bug Fixes
+
+* **HFAUI-0000:** rework type export ([#139](https://bitbucket.org/newcrossdev/newcross-ui/issues/139)) ([a4eca9c](https://bitbucket.org/newcrossdev/newcross-ui/commits/a4eca9c5e03e2ba4d517adaf9e404581ce4d1a9c))
+
+
+
+
+
 ## [2.19.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.19.0...@newcross-ui/react@2.19.1) (2024-11-22)
 
 **Note:** Version bump only for package @newcross-ui/react
