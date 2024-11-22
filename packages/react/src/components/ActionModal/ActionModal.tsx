@@ -85,6 +85,8 @@ const ActionModal = ({
   $zIndex = 2,
   ...rest
 }: ActionModalProps) => {
+  const baseName = 'action-modal-';
+
   return (
     <Portal>
       <Styled.SheetWrapper
@@ -99,10 +101,10 @@ const ActionModal = ({
           useDarkMode={false}
           scrollingExpands={true}
           useModal={$isAlwaysModal || undefined}
-          backdropClassName="action-modal-backdrop"
+          backdropClassName={`${baseName}backdrop`}
           {...rest}
         >
-          <Header className="action-modal-header">
+          <Header className={`${baseName}header`}>
             <Styled.IndicatorWrapper
               justifyContent="center"
               p="SpacingBase16"
@@ -124,7 +126,11 @@ const ActionModal = ({
                 pb="SpacingBase8"
                 $isAlwaysModal={$isAlwaysModal}
               >
-                <Styled.Heading variant="heading2" color="primary">
+                <Styled.Heading
+                  variant="heading2"
+                  color="primary"
+                  testID={`${baseName}title`}
+                >
                   {title}
                 </Styled.Heading>
                 <Styled.Icon
@@ -134,18 +140,22 @@ const ActionModal = ({
                   height="16px"
                   $isAlwaysModal={$isAlwaysModal}
                   onClick={rest.onDismiss}
-                  data-testid="action-modal-close-icon"
+                  data-testid={`${baseName}close-icon`}
                 />
               </Styled.Header>
               {subtitle && (
-                <Styled.Subtitle variant="paragraph1" color="primary">
+                <Styled.Subtitle
+                  variant="paragraph1"
+                  color="primary"
+                  testID={`${baseName}subtitle`}
+                >
                   {subtitle}
                 </Styled.Subtitle>
               )}
             </Styled.HeaderContent>
           </Header>
           {content && (
-            <Content className="action-modal-content">
+            <Content className={`${baseName}content`}>
               <Styled.ContentWapper
                 $isAlwaysModal={$isAlwaysModal}
                 $hasGreyBackground={$hasGreyBackground}
@@ -160,7 +170,7 @@ const ActionModal = ({
               </Styled.ContentWapper>
             </Content>
           )}
-          <Footer className="action-modal-footer">
+          <Footer className={`${baseName}footer`}>
             {footer && (
               <Styled.FooterWrapper
                 $isAlwaysModal={$isAlwaysModal}
