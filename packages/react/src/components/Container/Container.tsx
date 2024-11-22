@@ -92,6 +92,7 @@ export type ContainerProps = {
    * Sets the spacing between each child using margin
    */
   gap?: ContainerGapSpacing;
+  semanticTag?: keyof Pick<JSX.IntrinsicElements, 'div' | 'button'>;
 } & TestProp;
 
 export type CombinedContainerProps = ContainerProps | LegacyContainerProps;
@@ -101,9 +102,20 @@ const Container = (props: CombinedContainerProps) => {
     return <LegacyContainer {...props} />;
   }
 
-  const { children, testID, display = 'flex', ...restProps } = props;
+  const {
+    children,
+    testID,
+    display = 'flex',
+    semanticTag = 'div',
+    ...restProps
+  } = props;
   return (
-    <Styled.Container {...restProps} display={display} data-testid={testID}>
+    <Styled.Container
+      {...restProps}
+      display={display}
+      data-testid={testID}
+      as={semanticTag}
+    >
       {children}
     </Styled.Container>
   );

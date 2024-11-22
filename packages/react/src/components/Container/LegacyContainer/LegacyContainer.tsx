@@ -213,16 +213,23 @@ export type LegacyContainerProps = {
    * Sets the spacing between each child using margin
    */
   gapMobile?: LegacyContainerGapSpacing;
+  semanticTag?: keyof Pick<JSX.IntrinsicElements, 'div' | 'button'>;
 } & TestProp;
 
 const LegacyContainer = ({
   children,
   testID,
   display = 'flex',
+  semanticTag = 'div',
   ...props
 }: LegacyContainerProps) => {
   return (
-    <Styled.LegacyContainer {...props} display={display} data-testid={testID}>
+    <Styled.LegacyContainer
+      {...props}
+      display={display}
+      data-testid={testID}
+      as={semanticTag}
+    >
       {children}
     </Styled.LegacyContainer>
   );

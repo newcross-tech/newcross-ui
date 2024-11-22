@@ -25,35 +25,12 @@ export type ButtonProps = {
    * Set the right icon element.
    */
   rightIcon?: ReactElement;
+  /**
+   * Set disabled state of button
+   */
+  disabled?: boolean;
 } & TestProp &
   ButtonHTMLAttributes<HTMLButtonElement>;
-
-export type IconProps = Pick<
-  ButtonProps,
-  'size' | 'testID' | 'rightIcon' | 'leftIcon'
-> & {
-  hasLabel?: boolean;
-  children?: ReactNode;
-};
-
-export const ButtonIcon = ({
-  hasLabel,
-  testID,
-  rightIcon,
-  leftIcon,
-  children,
-  size,
-}: IconProps) => (
-  <Styled.IconWrapper
-    size={size}
-    leftIcon={leftIcon}
-    rightIcon={rightIcon}
-    data-testid={testID}
-    hasLabel={hasLabel}
-  >
-    {children}
-  </Styled.IconWrapper>
-);
 
 const Button = ({
   children,
@@ -62,33 +39,57 @@ const Button = ({
   leftIcon,
   rightIcon,
   testID,
+  fullWidth = false,
   ...rest
 }: ButtonProps) => {
-  const hasLabel = !!children;
+  const iconOnly = !children && (leftIcon || rightIcon);
   return (
-    <Styled.Button variant={variant} size={size} data-testid={testID} {...rest}>
-      {leftIcon && (
-        <ButtonIcon
+    <Styled.Button
+      variant={variant}
+      fullWidth={fullWidth}
+      semanticTag="button"
+      display="inline-flex"
+      alignItems="center"
+      justifyContent="center"
+      gap="sm"
+      py="sm"
+      px={size === 'small' ? 'md' : 'lg'}
+      {...rest}
+    >
+      {leftIcon && !iconOnly && (
+        <Styled.IconWrapper
+          display="flex"
+          alignItems="center"
+          testID="left-icon"
           size={size}
-          leftIcon={leftIcon}
-          hasLabel={hasLabel}
-          testID={'left-icon'}
         >
           {leftIcon}
-        </ButtonIcon>
+        </Styled.IconWrapper>
       )}
-      <Typography variant={Styled.getTypographyValues()[size]}>
-        {children}
-      </Typography>
-      {rightIcon && (
-        <ButtonIcon
+      {iconOnly ? (
+        <Styled.IconWrapper
+          display="flex"
+          alignItems="center"
+          testID="center-icon"
+          aria-label="icon-button"
           size={size}
-          rightIcon={rightIcon}
-          hasLabel={hasLabel}
-          testID={'right-icon'}
+        >
+          {leftIcon ?? rightIcon}
+        </Styled.IconWrapper>
+      ) : (
+        <Typography variant={Styled.getTypographyValues()[size]}>
+          {children}
+        </Typography>
+      )}
+      {rightIcon && !iconOnly && (
+        <Styled.IconWrapper
+          display="flex"
+          alignItems="center"
+          testID="right-icon"
+          size={size}
         >
           {rightIcon}
-        </ButtonIcon>
+        </Styled.IconWrapper>
       )}
     </Styled.Button>
   );

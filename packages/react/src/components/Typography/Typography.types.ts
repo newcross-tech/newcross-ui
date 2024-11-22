@@ -5,7 +5,7 @@ import { SemanticBreakpoints } from '../../types';
 // Legacy Types for Backward Compatibility
 // --------------------------------------------------------------------------------
 
-type LegacyTypographyVariant =
+export type LegacyTypographyVariant =
   | 'heading1'
   | 'heading2'
   | 'heading3'
