@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Container, { CombinedContainerProps, ContainerProps } from './Container';
+import Container, { ContainerProps, NewContainerProps } from './Container';
 import { LegacyContainerProps } from './LegacyContainer';
 
-const renderComponent = (customProps: CombinedContainerProps) => {
+const renderComponent = (customProps: ContainerProps) => {
   const props = {
     testID: 'container-component',
     ...customProps,
@@ -31,7 +31,7 @@ describe('Container Component', () => {
   });
 
   it('should render Styled.Container when isLegacyProps is false', () => {
-    const newProps: ContainerProps = {
+    const newProps: NewContainerProps = {
       m: 'sm',
       p: 'md',
       gap: 'lg',
@@ -45,7 +45,7 @@ describe('Container Component', () => {
   });
 
   it('should render children correctly', () => {
-    const props: ContainerProps = {
+    const props: NewContainerProps = {
       children: <div>Child Content</div>,
     };
 
@@ -55,7 +55,7 @@ describe('Container Component', () => {
   });
 
   it('should apply testID to the container', () => {
-    const props: ContainerProps = {
+    const props: NewContainerProps = {
       testID: 'custom-container',
       children: <div>With TestID</div>,
     };
@@ -67,7 +67,7 @@ describe('Container Component', () => {
   });
 
   it('should apply custom display property', () => {
-    const props: ContainerProps = {
+    const props: NewContainerProps = {
       display: 'inline-block',
       children: <div>Custom Display</div>,
     };
@@ -78,7 +78,7 @@ describe('Container Component', () => {
   });
 
   it('should apply restProps to Styled.Container', () => {
-    const props: ContainerProps = {
+    const props: NewContainerProps = {
       m: 'sm',
       p: 'md',
       gap: 'lg',
@@ -92,7 +92,7 @@ describe('Container Component', () => {
   });
 
   it('should use default display when none is provided', () => {
-    const props: ContainerProps = {
+    const props: NewContainerProps = {
       children: <div>Default Display</div>,
     };
 

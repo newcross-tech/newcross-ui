@@ -3,7 +3,7 @@ import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ExtendedTheme, responsiveSpacingMap, SemanticSpacing } from '../../types';
 import { getSortedBreakpoints } from '../../utils';
 import { breakpoint } from '../../utils/css';
-import { ContainerProps } from './Container';
+import { NewContainerProps } from './Container';
 
 const applyResponsiveStyles = (
   theme: ThemeDesignTokens,
@@ -39,7 +39,7 @@ const applyResponsiveStyles = (
   `;
 };
 
-export const Container = styled.div<ExtendedTheme<ContainerProps>>`
+export const Container = styled.div<ExtendedTheme<NewContainerProps>>`
   ${({
     theme,
     m,

@@ -1,68 +1,68 @@
 import * as Styled from './Container.style';
 import { CSSProperties } from 'react';
-import { ContainerGapSpacing, ContainerSpacing } from './Container.types';
+import { NewContainerGapSpacing, NewContainerSpacing } from './Container.types';
 import { TestProp } from '../../types';
 import { isLegacyProps } from './utils';
 import LegacyContainer, { LegacyContainerProps } from './LegacyContainer';
 
-export type ContainerProps = {
+export type NewContainerProps = {
   children?: React.ReactNode;
   /**
    * CSS: `margin-left` and `margin-right` and `margin-top` and `margin-bottom`
    */
-  m?: ContainerSpacing;
+  m?: NewContainerSpacing;
   /**
    * CSS: `margin-left` and `margin-right`
    */
-  mx?: ContainerSpacing;
+  mx?: NewContainerSpacing;
   /**
    * CSS: `margin-top` and `margin-bottom`
    */
-  my?: ContainerSpacing;
+  my?: NewContainerSpacing;
   /**
    * CSS: `margin-left`
    */
-  ml?: ContainerSpacing;
+  ml?: NewContainerSpacing;
   /**
    * CSS: `margin-right`
    */
-  mr?: ContainerSpacing;
+  mr?: NewContainerSpacing;
   /**
    * CSS: `margin-top`
    */
-  mt?: ContainerSpacing;
+  mt?: NewContainerSpacing;
   /**
    * CSS: `margin-bottom`
    */
-  mb?: ContainerSpacing;
+  mb?: NewContainerSpacing;
   /**
    * CSS: `padding-left` and `padding-right` and `padding-top` and `padding-bottom`
    */
-  p?: ContainerSpacing;
+  p?: NewContainerSpacing;
   /**
    * CSS: `padding-left` and `padding-right`
    */
-  px?: ContainerSpacing;
+  px?: NewContainerSpacing;
   /**
    * CSS: `padding-top` and `padding-bottom`
    */
-  py?: ContainerSpacing;
+  py?: NewContainerSpacing;
   /**
    * CSS: `padding-left`
    */
-  pl?: ContainerSpacing;
+  pl?: NewContainerSpacing;
   /**
    * CSS: `padding-right`
    */
-  pr?: ContainerSpacing;
+  pr?: NewContainerSpacing;
   /**
    * CSS: `padding-top`
    */
-  pt?: ContainerSpacing;
+  pt?: NewContainerSpacing;
   /**
    * CSS: `padding-bottom`
    */
-  pb?: ContainerSpacing;
+  pb?: NewContainerSpacing;
   /**
    * CSS: `display`
    */
@@ -91,12 +91,12 @@ export type ContainerProps = {
   /**
    * Sets the spacing between each child using margin
    */
-  gap?: ContainerGapSpacing;
+  gap?: NewContainerGapSpacing;
 } & TestProp;
 
-export type CombinedContainerProps = ContainerProps | LegacyContainerProps;
+export type ContainerProps = NewContainerProps | LegacyContainerProps;
 
-const Container = (props: CombinedContainerProps) => {
+const Container = (props: ContainerProps) => {
   if (isLegacyProps(props)) {
     return <LegacyContainer {...props} />;
   }

@@ -1,9 +1,9 @@
 import { SemanticSpacing } from '../../../types';
-import { CombinedContainerProps, ContainerProps } from '../Container';
+import { NewContainerProps, ContainerProps } from '../Container';
 import { LegacyContainerProps } from '../LegacyContainer';
 
 export const isLegacyProps = (
-  props: CombinedContainerProps
+  props: ContainerProps
 ): props is LegacyContainerProps => {
   const newSpacingValues = new Set<SemanticSpacing>([
     'xs',
@@ -16,7 +16,7 @@ export const isLegacyProps = (
 
   const newProps: Array<
     keyof Omit<
-      ContainerProps,
+      NewContainerProps,
       | 'children'
       | 'display'
       | 'flexWrap'
