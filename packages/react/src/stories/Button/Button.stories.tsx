@@ -24,13 +24,15 @@ export const Overview = () => {
       dontInfo={DONT}
     >
       <Container display="block">
-        <Container m="SpacingBase12" />
+        <Container m="md" />
         <Button variant="primary">Primary Button</Button>
-        <Container m="SpacingBase12" />
+        <Container m="md" />
         <Button variant="secondary">Secondary Button</Button>
-        <Container m="SpacingBase12" />
+        <Container m="md" />
+        <Button variant="secondaryLight">Secondary Light Button</Button>
+        <Container m="md" />
         <Button variant="danger">Danger Button</Button>
-        <Container m="SpacingBase12" />
+        <Container m="md" />
       </Container>
     </InfoTemplate>
   );
@@ -42,15 +44,15 @@ export const VariantsWithSizes = () => {
       <StoryTitle.Regular>
         Primary Button with Different Sizes
       </StoryTitle.Regular>
-      <Container m="SpacingBase12" />
+      <Container m="md" />
       <Button size="small">Small Button</Button>
-      <Container m="SpacingBase12" />
+      <Container m="md" />
       <Button size="large">Large Button</Button>
-      <Container m="SpacingBase12" />
+      <Container m="md" />
       <Button fullWidth size="small">
         Full Width Small Button
       </Button>
-      <Container m="SpacingBase12" />
+      <Container m="md" />
       <Button fullWidth size="large">
         Full Width Large Button
       </Button>
@@ -62,31 +64,40 @@ export const Variants = () => {
   return (
     <Container display="block">
       <StoryTitle.Regular>Primary Button</StoryTitle.Regular>
-      <Container m="SpacingBase12" />
+      <Container m="md" />
       <Button variant="primary">Primary Button</Button>
-      <Container m="SpacingBase12" />
+      <Container m="md" />
       <Button disabled variant="primary">
         Primary Disabled Button
       </Button>
-      <Container m="SpacingBase12" />
-      <Container m="SpacingBase12" />
+      <Container m="md" />
+      <Container m="md" />
       <StoryTitle.Regular>Secondary Button</StoryTitle.Regular>
-      <Container m="SpacingBase12" />
+      <Container m="md" />
       <Button variant="secondary">Secondary Button</Button>
-      <Container m="SpacingBase12" />
+      <Container m="md" />
       <Button disabled variant="secondary">
         Secondary Disabled Button
       </Button>
-      <Container m="SpacingBase12" />
-      <Container m="SpacingBase12" />
+      <Container m="md" />
+      <Container m="md" />
+      <StoryTitle.Regular>Secondary Light Button</StoryTitle.Regular>
+      <Container m="md" />
+      <Button variant="secondaryLight">Secondary Light Button</Button>
+      <Container m="md" />
+      <Button disabled variant="secondaryLight">
+        Secondary Light Disabled Button
+      </Button>
+      <Container m="md" />
+      <Container m="md" />
       <StoryTitle.Regular>Danger Button</StoryTitle.Regular>
-      <Container m="SpacingBase12" />
+      <Container m="md" />
       <Button variant="danger">Danger Button</Button>
-      <Container m="SpacingBase12" />
+      <Container m="md" />
       <Button disabled variant="danger">
         Danger Disabled Button
       </Button>
-      <Container m="SpacingBase12" />
+      <Container m="md" />
     </Container>
   );
 };
@@ -94,26 +105,26 @@ export const VariantsWithIcons = () => {
   return (
     <Container display="block">
       <StoryTitle.Regular>Primary Button with Icons</StoryTitle.Regular>
-      <Container m="SpacingBase12" />
+      <Container m="md" />
       <Button
         size="small"
         rightIcon={<FontAwesomeIcon icon={faChevronRight} />}
       >
         Right Icon
       </Button>
-      <Container m="SpacingBase12" />
+      <Container m="md" />
       <Button leftIcon={<FontAwesomeIcon icon={faChevronLeft} />}>
         Left Icon
       </Button>
-      <Container m="SpacingBase12" />
+      <Container m="md" />
       <Button
         rightIcon={<FontAwesomeIcon icon={faCircleChevronRight} />}
       ></Button>
-      <Container m="SpacingBase12" />
+      <Container m="md" />
       <Button fullWidth rightIcon={<FontAwesomeIcon icon={faChevronRight} />}>
         Full Width with Right Icon
       </Button>
-      <Container m="SpacingBase12" />
+      <Container m="md" />
       <Button
         fullWidth
         rightIcon={<FontAwesomeIcon icon={faCircleChevronRight} />}
