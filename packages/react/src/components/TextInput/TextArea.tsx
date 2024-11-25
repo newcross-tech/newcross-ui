@@ -38,7 +38,7 @@ export const TextArea = ({
       alignItems="flex-start"
     >
       <Container fullWidth>
-        {(helperText || errorText) && (
+        {(helperText ?? errorText) && (
           <HelperText
             errorText={errorText}
             helperText={helperText}

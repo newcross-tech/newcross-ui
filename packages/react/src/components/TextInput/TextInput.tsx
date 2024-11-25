@@ -232,7 +232,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
         </Styled.Container>
       )}
 
-      {!isTextArea && (helperText || errorText) && (
+      {!isTextArea && (helperText ?? errorText) && (
         <HelperText
           errorText={errorText}
           helperText={helperText}
