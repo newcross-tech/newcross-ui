@@ -12,7 +12,7 @@ export const HelperText = ({
       testID={`${testID}-message-text`}
       hasError={!!errorText}
     >
-      {errorText ?? helperText}
+      {errorText || helperText}
     </Styled.MessageText>
   );
 };
