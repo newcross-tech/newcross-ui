@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.20.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.20.1...@newcross-ui/react@2.20.2) (2024-11-25)
+
+
+### Bug Fixes
+
+* **HFX-697:** helper text not showing fix ([#143](https://bitbucket.org/newcrossdev/newcross-ui/issues/143)) ([4025369](https://bitbucket.org/newcrossdev/newcross-ui/commits/4025369756a4477cf8225d80c5a0acef01e65647))
+
+
+
+
+
 ## [2.20.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.20.0...@newcross-ui/react@2.20.1) (2024-11-25)
 
 
