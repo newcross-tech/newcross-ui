@@ -1,4 +1,4 @@
 import { SemanticSpacing } from '../../types';
 
-export type ContainerSpacing = SemanticSpacing | 'auto';
-export type ContainerGapSpacing = SemanticSpacing | 'inherit';
+export type NewContainerSpacing = SemanticSpacing | 'auto';
+export type NewContainerGapSpacing = SemanticSpacing | 'inherit';

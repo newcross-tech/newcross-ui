@@ -14,16 +14,6 @@ import {
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import Label from '../Label/Label';
 
-export const Wrapper = styled.div<TextAreaContainerProps>`
-  display: flex;
-  flex-direction: column;
-  ${({ fullWidth }) =>
-    fullWidth &&
-    css`
-      width: 100%;
-    `};
-`;
-
 const getCommonStateStyles = ({ theme, hasError, disabled }: PropStylesTypes) =>
   css`
     ${hasError &&
@@ -131,9 +121,8 @@ export const MessageText = styled(Typography)<MessageTextProps & Theme>`
   ${({ theme, hasError }) => css`
     color: ${theme.TextInputHelperTextColor};
     margin-top: ${theme.TextInputMarginBottom};
-    padding-right: ${theme.TextInputHelperTextPaddingHorizontal};
+    padding-right: ${theme.SpacingBase0};
     padding-left: ${theme.TextInputHelperTextPaddingHorizontal};
-
     ${hasError &&
     css`
       color: ${theme.TextInputErrorColor};
@@ -183,12 +172,9 @@ export const TextArea = styled.textarea<StyledTextAreaProps>`
 `;
 
 export const LengthInfo = styled(Typography)`
-  display: flex;
-  align-self: flex-end;
   ${({ theme }: Theme) => css`
     color: ${theme.ColorBaseGrey100};
-    margin-top: ${theme.SpacingBase4};
-    margin-right: ${theme.SpacingBase8};
+    margin-top: ${theme.SpacingBase8};
   `};
 `;
 
