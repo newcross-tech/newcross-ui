@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.20.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.19.2...@newcross-ui/react@2.20.0) (2024-11-25)
+
+
+### Features
+
+* **HFX-697:** update textarea component ([#141](https://bitbucket.org/newcrossdev/newcross-ui/issues/141)) ([d903fc8](https://bitbucket.org/newcrossdev/newcross-ui/commits/d903fc83fbdb432bc92ef036295ba5ff491282ee))
+
+
+
+
+
 ## [2.19.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.19.1...@newcross-ui/react@2.19.2) (2024-11-22)
 
 
