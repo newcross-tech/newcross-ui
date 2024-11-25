@@ -1,0 +1,11 @@
+{
+  "app-layout": {
+    "width": {
+      "aside": { "value": 330, "type": "spacing" },
+      "main": { "value": 880, "type": "spacing" }
+    },
+    "height": {
+      "header": { "value": 64, "type": "spacing" }
+    }
+  }
+}
