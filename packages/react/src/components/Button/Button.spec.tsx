@@ -24,74 +24,133 @@ describe('Button', () => {
   };
 
   it('renders successfully', () => {
+    // Arrange
     renderComponent({});
-    expect(ui.button.get()).toBeInTheDocument();
+
+    // Act
+    const button = ui.button.get();
+
+    // Assert
+    expect(button).toBeInTheDocument();
   });
 
   it('triggers onClick successfully', () => {
+    // Arrange
     const onClick = jest.fn();
     renderComponent({ onClick });
+
+    // Act
     fireEvent.click(ui.button.get());
+
+    // Assert
     expect(onClick).toBeCalled();
   });
 
   it(`doesn't trigger onClick when button is disabled`, () => {
+    // Arrange
     const onClick = jest.fn();
     renderComponent({ onClick, disabled: true });
+
+    // Act
     fireEvent.click(ui.button.get());
+
+    // Assert
     expect(onClick).not.toBeCalled();
   });
 
   it('renders successfully with left icon only', () => {
+    // Arrange
     const props: ButtonProps = {
       leftIcon: <FontAwesomeIcon icon={faChevronLeft} />,
       testID: 'button',
       children: undefined,
     };
     renderComponent(props);
-    expect(ui.centerIcon.get()).toBeInTheDocument(); // Icon-only case
+
+    // Act
+    const centerIcon = ui.centerIcon.get();
+
+    // Assert
+    expect(centerIcon).toBeInTheDocument(); // Icon-only case
   });
 
   it('renders successfully with right icon only', () => {
+    // Arrange
     const props: ButtonProps = {
       rightIcon: <FontAwesomeIcon icon={faChevronRight} />,
       testID: 'button',
       children: undefined,
     };
     renderComponent(props);
-    expect(ui.centerIcon.get()).toBeInTheDocument(); // Icon-only case
+
+    // Act
+    const centerIcon = ui.centerIcon.get();
+
+    // Assert
+    expect(centerIcon).toBeInTheDocument(); // Icon-only case
   });
 
   it('renders successfully with both left and right icons and text', () => {
+    // Arrange
     const props: ButtonProps = {
       leftIcon: <FontAwesomeIcon icon={faChevronLeft} />,
       rightIcon: <FontAwesomeIcon icon={faChevronRight} />,
       children: 'Button with Icons',
     };
     renderComponent(props);
-    expect(ui.leftIcon.get()).toBeInTheDocument();
-    expect(ui.rightIcon.get()).toBeInTheDocument();
-    expect(ui.button.get()).toHaveTextContent('Button with Icons');
+
+    // Act
+    const leftIcon = ui.leftIcon.get();
+    const rightIcon = ui.rightIcon.get();
+    const button = ui.button.get();
+
+    // Assert
+    expect(leftIcon).toBeInTheDocument();
+    expect(rightIcon).toBeInTheDocument();
+    expect(button).toHaveTextContent('Button with Icons');
   });
 
   it('applies fullWidth styles when fullWidth is true', () => {
+    // Arrange
     renderComponent({ fullWidth: true });
+
+    // Act
     const button = ui.button.get();
+
+    // Assert
     expect(button).toHaveStyle({ width: '100%' });
   });
 
-  it('applies correct padding based on size', () => {
+  it('applies correct padding for small size', () => {
+    // Arrange
     renderComponent({ size: 'small' });
-    const button = ui.button.get();
-    expect(button).toHaveStyle({ paddingLeft: 'md', paddingRight: 'md' });
 
+    // Act
+    const buttonSmall = ui.button.get();
+
+    // Assert
+    expect(buttonSmall).toHaveStyle({ paddingLeft: 'md', paddingRight: 'md' });
+  });
+
+  it('applies correct padding for large size', () => {
+    // Arrange
     renderComponent({ size: 'large' });
-    expect(button).toHaveStyle({ paddingLeft: 'lg', paddingRight: 'lg' });
+
+    // Act
+    const buttonLarge = ui.button.get();
+
+    // Assert
+    expect(buttonLarge).toHaveStyle({ paddingLeft: 'lg', paddingRight: 'lg' });
   });
 
   it('renders correctly when no children, leftIcon, or rightIcon are provided', () => {
+    // Arrange
     renderComponent({});
+
+    // Act
     const button = ui.button.get();
+
+    // Assert
     expect(button).toBeInTheDocument();
     expect(button).not.toContainHTML('<svg>');
   });

@@ -83,7 +83,7 @@ const getActiveStyles = (theme: ThemeDesignTokens): Record<ButtonVariant, Flatte
 });
 
 export const IconWrapper = styled(Container)<ExtendedTheme<{ size?: ButtonSizes }>>`
-  ${({ theme, size = 'large' }) => getIconSize.fontSize(theme, getTypographyValues()[size])};
+  ${({ theme, size = 'large' }) => getIconSize(theme, getTypographyValues()[size], 'fontSize')};
 `;
 
 export const Button = styled(Container)<ExtendedTheme<Pick<ButtonProps, 'variant' | 'disabled'>>>`

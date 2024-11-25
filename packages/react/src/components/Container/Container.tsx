@@ -1,6 +1,10 @@
 import * as Styled from './Container.style';
 import { CSSProperties } from 'react';
-import { NewContainerGapSpacing, NewContainerSpacing } from './Container.types';
+import {
+  NewContainerGapSpacing,
+  NewContainerSpacing,
+  SemanticContainerTags,
+} from './Container.types';
 import { TestProp } from '../../types';
 import { isLegacyProps } from './utils';
 import LegacyContainer, { LegacyContainerProps } from './LegacyContainer';
@@ -92,7 +96,11 @@ export type NewContainerProps = {
    * Sets the spacing between each child using margin
    */
   gap?: NewContainerGapSpacing;
-  semanticTag?: keyof Pick<JSX.IntrinsicElements, 'div' | 'button'>;
+  /**
+   * Used to define the semantic tag of the container
+   * @default 'div'
+   */
+  semanticTag?: SemanticContainerTags;
 } & TestProp;
 
 export type ContainerProps = NewContainerProps | LegacyContainerProps;

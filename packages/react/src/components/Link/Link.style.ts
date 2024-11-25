@@ -26,7 +26,7 @@ type IconProps = Pick<LinkProps, 'leftIcon' | 'rightIcon' | 'variant'>;
 
 export const Icon = styled(FontAwesomeIcon)<IconProps>`
   ${({ theme, leftIcon, rightIcon, variant }: ExtendedTheme<IconProps>) => css`
-    ${getIconSize.heightWidth(theme, variant)};
+    ${getIconSize(theme, variant, 'heightWidth')};
     ${leftIcon && `margin-right: ${theme.SpacingBase8}`};
     ${rightIcon && `margin-left: ${theme.SpacingBase8}`};
   `};
