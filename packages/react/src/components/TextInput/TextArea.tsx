@@ -1,3 +1,5 @@
+import Container from '../Container';
+import { HelperText } from './HelperText';
 import * as Styled from './TextInput.style';
 import { TextAreaProps } from './TextInput.types';
 
@@ -13,6 +15,8 @@ export const TextArea = ({
   fullWidth,
   onChangeHandler,
   testID,
+  helperText,
+  errorText,
 }: TextAreaProps) => (
   <Styled.TextAreaContainer
     data-testid={`${baseTestId}-container-component-${testID}`}
@@ -28,14 +32,30 @@ export const TextArea = ({
       onChange={(event) => onChangeHandler(event)}
       value={value}
     />
-
-    {!!maxLength && maxLength > 0 && (
-      <Styled.LengthInfo
-        variant={'paragraph3'}
-        data-testid={`${baseTestId}-max-length-${testID}`}
-      >
-        {`${length}/${maxLength} characters`}
-      </Styled.LengthInfo>
-    )}
+    <Container
+      fullWidth
+      gap="SpacingBase24"
+      justifyContent="flex-start"
+      alignItems="flex-start"
+    >
+      <Container fullWidth>
+        {(helperText || errorText) && (
+          <HelperText
+            errorText={errorText}
+            helperText={helperText}
+            hasError={hasError}
+            testID={baseTestId}
+          />
+        )}
+      </Container>
+      {!!maxLength && maxLength > 0 && (
+        <Styled.LengthInfo
+          variant={'paragraph2'}
+          data-testid={`${baseTestId}-max-length-${testID}`}
+        >
+          {`${length}/${maxLength}`}
+        </Styled.LengthInfo>
+      )}
+    </Container>
   </Styled.TextAreaContainer>
 );

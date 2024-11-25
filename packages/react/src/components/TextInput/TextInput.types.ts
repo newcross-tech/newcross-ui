@@ -27,6 +27,8 @@ export type TextAreaContainerProps = Pick<TextInputProps, 'fullWidth'>;
 export type TextAreaProps = {
   maxLength?: number;
   length?: number;
+  helperText?: string;
+  errorText?: string;
   onChangeHandler: (
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => void;

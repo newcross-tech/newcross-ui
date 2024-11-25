@@ -15,6 +15,7 @@ import * as Styled from './TextInput.style';
 import { SearchIcon, LabelWithMargin } from './TextInput.style';
 import Container from '../Container';
 import { TypographyVariant } from '../Typography';
+import { HelperText } from './HelperText';
 
 export type TextInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
@@ -135,7 +136,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
   };
 
   return (
-    <Styled.Wrapper fullWidth={fullWidth}>
+    <Container flexDirection="column" fullWidth={fullWidth}>
       {label && (
         <LabelWithMargin
           htmlFor={inputId}
@@ -162,6 +163,8 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
           length={typeof value === 'string' ? value.length : 0}
           onChangeHandler={onChangeHandler}
           testID={testID}
+          helperText={helperText}
+          errorText={errorText}
         />
       ) : (
         <Styled.Container
@@ -230,16 +233,15 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
         </Styled.Container>
       )}
 
-      {(helperText || errorText) && (
-        <Styled.MessageText
-          variant={'paragraph2'}
-          testID={`${inputId}-message-text`}
+      {!isTextArea && (helperText || errorText) && (
+        <HelperText
+          errorText={errorText}
+          helperText={helperText}
           hasError={hasError}
-        >
-          {errorText || helperText}
-        </Styled.MessageText>
+          testID={inputId}
+        />
       )}
-    </Styled.Wrapper>
+    </Container>
   );
 };
 

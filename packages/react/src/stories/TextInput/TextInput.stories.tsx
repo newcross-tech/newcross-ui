@@ -152,6 +152,7 @@ export const TextAreaVariants = () => {
           label={'Label'}
           placeholder={'Please tell us more...'}
           onChange={onChangeText1}
+          helperText="This is an helper text"
         />
       </Container>
       <Container m="SpacingBase12" />
@@ -166,6 +167,7 @@ export const TextAreaVariants = () => {
           placeholder={'Please tell us more...'}
           onChange={onChangeText2}
           maxLength={400}
+          errorText="This is an error message"
         />
       </Container>
 
