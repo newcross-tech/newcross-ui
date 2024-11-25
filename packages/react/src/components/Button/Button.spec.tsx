@@ -80,14 +80,14 @@ describe('Button', () => {
     expect(button).toHaveStyle({ width: '100%' });
   });
 
-  // it('applies correct padding based on size', () => {
-  //   renderComponent({ size: 'small' });
-  //   const button = ui.button.get();
-  //   expect(button).toHaveStyle({ paddingLeft: 'md', paddingRight: 'md' });
+  it('applies correct padding based on size', () => {
+    renderComponent({ size: 'small' });
+    const button = ui.button.get();
+    expect(button).toHaveStyle({ paddingLeft: 'md', paddingRight: 'md' });
 
-  //   renderComponent({ size: 'large' });
-  //   expect(button).toHaveStyle({ paddingLeft: 'lg', paddingRight: 'lg' });
-  // });
+    renderComponent({ size: 'large' });
+    expect(button).toHaveStyle({ paddingLeft: 'lg', paddingRight: 'lg' });
+  });
 
   it('renders correctly when no children, leftIcon, or rightIcon are provided', () => {
     renderComponent({});

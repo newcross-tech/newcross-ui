@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ReactElement, ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactElement } from 'react';
 import { TestProp } from '../../types';
 import Typography from '../Typography';
 import * as Styled from './Button.style';
