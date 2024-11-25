@@ -1,21 +1,16 @@
 import * as Styled from './TextInput.style';
+import { HelperTextProps } from './TextInput.types';
 
 export const HelperText = ({
   errorText,
   helperText,
-  hasError,
   testID,
-}: {
-  errorText?: string;
-  helperText?: string;
-  hasError?: boolean;
-  testID: string;
-}) => {
+}: HelperTextProps) => {
   return (
     <Styled.MessageText
       variant={'paragraph2'}
       testID={`${testID}-message-text`}
-      hasError={hasError}
+      hasError={!!errorText}
     >
       {errorText ?? helperText}
     </Styled.MessageText>

@@ -156,7 +156,6 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
         <TextArea
           placeholder={placeholder}
           disabled={disabled}
-          hasError={hasError}
           maxLength={maxLength}
           value={value}
           fullWidth={fullWidth}
@@ -237,7 +236,6 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
         <HelperText
           errorText={errorText}
           helperText={helperText}
-          hasError={hasError}
           testID={inputId}
         />
       )}

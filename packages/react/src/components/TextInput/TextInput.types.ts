@@ -37,4 +37,8 @@ export type TextAreaProps = {
   ErrorType &
   TestProp;
 
-export type StyledTextAreaProps = Omit<TextAreaProps, 'onChangeHandler'>;
+export type StyledTextAreaProps = Omit<TextAreaProps, 'onChangeHandler'> &
+  ErrorType;
+
+export type HelperTextProps = Pick<TextAreaProps, 'errorText' | 'helperText'> &
+  TestProp;

@@ -11,7 +11,6 @@ export const TextArea = ({
   disabled,
   length,
   value,
-  hasError,
   fullWidth,
   onChangeHandler,
   testID,
@@ -27,7 +26,7 @@ export const TextArea = ({
       fullWidth={fullWidth}
       disabled={disabled}
       placeholder={placeholder}
-      hasError={hasError}
+      hasError={!!errorText}
       data-testid={`${baseTestId}-component-${testID}`}
       onChange={(event) => onChangeHandler(event)}
       value={value}
@@ -43,7 +42,6 @@ export const TextArea = ({
           <HelperText
             errorText={errorText}
             helperText={helperText}
-            hasError={hasError}
             testID={baseTestId}
           />
         )}
