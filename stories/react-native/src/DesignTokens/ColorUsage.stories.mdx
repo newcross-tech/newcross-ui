@@ -5,45 +5,47 @@ import { DesignTokenDocBlock } from 'storybook-design-token/dist/doc-blocks';
 
 # Color Usage
 
-Generic colors to use within Newcross Healthcare applications. Tokens that have the prefix of "brand" are brandable tokens.
+Color tokens in Newcross Healthcare applications are divided into **themes** and **elements**. This structured approach ensures consistency and simplifies the design and development process.
 
-## Primary Colors
+## Themes
 
-The Newcross Healthcare primary palette combines heritage with strength, energy  and warmth to convey a trustworthy, approachable and digital tone.
+Themes define the foundational colors and are categorized into semantic groups:
 
-<DesignTokenDocBlock categoryName="Primary" viewType="card" />
+- **danger**: For errors, destructive actions, or alerts.
+- **info**: Informational content, hints, or notifications.
+- **neutral**: Base and neutral colors for backgrounds or text.
+- **primary**: The primary brand color used prominently in the design.
+- **secondary**: Supporting brand colors or accents.
+- **success**: Indicators for positive actions, success messages, or validations.
+- **tertiary**: Additional accent colors for non-critical content.
+- **warning**: Alerts, cautions, or warnings.
 
-## Lines of Business
+Each theme category has shades ranging from lighter (`50`) to darker (`950`). These shades offer flexibility for usage in various contexts.
 
-The Newcross Healthcare line of business bring a pop of colour and energy to the overall palette. These colours are meant to skew more digital and to only be used in graphical elements and are not to be used for text. 
+## Elements
 
-Below our are ‘lines of business’ primary colours. They give each of our brands a distinct identity to strengthen brand awareness.  We use ‘Gravitas’ to maintain the core connection to our overaching brand - ‘Newcross HealthCare’.
+**Elements** are semantic representations derived from themes. They map the theme colors to specific functional roles, ensuring that designers and developers use consistent colors for text, surfaces, icons, and borders.
 
-#### HEALTHFORCE
+### Text
 
-<DesignTokenDocBlock categoryName="healthforce Color" viewType="card" />
+Text elements provide semantic mappings for typography colors:
 
-#### HOMECLINIC
+<DesignTokenDocBlock categoryName="Text" viewType="card" />
 
-<DesignTokenDocBlock categoryName="homeclinic Color" viewType="card" />
+### Surface
 
-#### YOURCARE
+Surface elements define background colors for different contexts:
 
-<DesignTokenDocBlock categoryName="yourcare Color" viewType="card" />
+<DesignTokenDocBlock categoryName="Surface" viewType="card" />
 
-#### YOURLIFE
+### Icon
 
-<DesignTokenDocBlock categoryName="yourlife Color" viewType="card" />
+Icon elements ensure consistent coloring for graphical icons:
 
-## Neutral Colors
+<DesignTokenDocBlock categoryName="Icon" viewType="card" />
 
-These include shades of grey, all the way from ‘White’ to ‘Black’. These are used for backgrounds, text colors, etc.
+### Border
 
-<DesignTokenDocBlock categoryName="Neutral" viewType="card"/>
+Border elements define consistent colors for outlines and borders:
 
-## Semantic Colors
-
-These are the colors that communicate purpose. They help users convey messages.   For example, ‘Green’ has a positive connotation. We use ‘Green’ to convey success, confirmation messages, etc. 
-
-<DesignTokenDocBlock categoryName="Semantics" viewType="card"/>
-
+<DesignTokenDocBlock categoryName="Border" viewType="card" />
