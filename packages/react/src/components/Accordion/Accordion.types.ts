@@ -1,5 +1,4 @@
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
-import { Theme } from '../../types';
 import { AccordionProps } from './Accordion';
 
 export type AccordionContentProps = {
@@ -17,5 +16,4 @@ export type AccordionIconProps = FontAwesomeIconProps & AnimationSpeedType;
 export type AccordionAnimatedStyleArgs = {
   openAccordion: boolean;
   contentMaxHeight?: number;
-} & AnimationSpeedType &
-  Theme;
+} & AnimationSpeedType;

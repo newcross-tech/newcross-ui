@@ -1,1 +1,1 @@
-export const defaultAnimationSpeed = 0.2;
+export const DEFAULT_ANIMATION_SPEED = 0.2;

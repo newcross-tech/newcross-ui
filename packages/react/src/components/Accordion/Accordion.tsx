@@ -1,14 +1,15 @@
 import { RotateProp } from '@fortawesome/fontawesome-svg-core';
-import { faChevronDown } from '@fortawesome/pro-solid-svg-icons/faChevronDown';
-import { useSpring } from '@react-spring/web';
+import { animated, useSpring } from '@react-spring/web';
 import { ReactNode, useRef, useState } from 'react';
+import { faChevronDown } from '@fortawesome/pro-light-svg-icons/faChevronDown';
 import { useFirstRender } from '../../hooks/useFirstRender';
 import { useResize } from '../../hooks/useResize';
-import useTheme from '../../hooks/useTheme';
 import { useToggle } from '../../hooks/useToggle';
 import { TestProp } from '../../types';
-import { defaultAnimationSpeed } from './Accordion.constants';
+import { DEFAULT_ANIMATION_SPEED } from './Accordion.constants';
 import * as Styled from './Accordion.style';
+import Container from '../Container';
+import Typography from '../Typography';
 
 export type AccordionProps = {
   /**
@@ -37,18 +38,19 @@ export type AccordionProps = {
   $animationSpeed?: number;
 } & TestProp;
 
+const AnimatedContainer = animated.div;
+
 const Accordion = ({
   icon,
   testID,
   onClick,
   children,
   expanded = false,
-  $animationSpeed = defaultAnimationSpeed,
+  $animationSpeed = DEFAULT_ANIMATION_SPEED,
   label = 'Label',
 }: AccordionProps) => {
   const [openAccordion, setOpenAccordion] = useState(expanded);
   const [contentMaxHeight, setContentMaxHeight] = useState(0);
-  const theme = useTheme();
   const ref = useRef<HTMLDivElement>(null);
   const { isFirstRender } = useFirstRender();
 
@@ -60,14 +62,13 @@ const Accordion = ({
 
   useResize({
     ref,
-    containerSize: ref?.current?.scrollHeight || 0,
-    onResize: () => setContentMaxHeight(ref?.current?.scrollHeight || 0),
+    containerSize: ref?.current?.scrollHeight ?? 0,
+    onResize: () => setContentMaxHeight(ref?.current?.scrollHeight ?? 0),
   });
 
   const initialStyles = isFirstRender
     ? {}
     : Styled.getAnimatedStyles({
-        theme,
         openAccordion,
         contentMaxHeight,
         $animationSpeed,
@@ -78,32 +79,39 @@ const Accordion = ({
   });
 
   return (
-    <Styled.Container data-testid={`accordion-pressable-container-${testID}`}>
+    <Styled.Wrapper
+      testID={`accordion-pressable-container-${testID}`}
+      flexDirection="column"
+    >
       <Styled.HeaderContainer
         isContentShown={openAccordion}
         data-testid={`accordion-header-container-${testID}`}
         onClick={toggleAccordion}
       >
-        <Styled.HeaderContent>
-          <Styled.HeaderLabel>
+        <Styled.HeaderContent
+          gap="sm"
+          alignItems="center"
+          justifyContent="space-between"
+          py="sm"
+          px="md"
+        >
+          <Container fullWidth gap="sm" alignItems="center">
             {icon}
-            <Styled.Text
-              hasIcon={!!icon}
-              variant={'paragraph1'}
-              numberOfLines={2}
-            >
+            <Typography variant="h3" numberOfLines={2}>
               {label}
-            </Styled.Text>
-          </Styled.HeaderLabel>
-          <Styled.Icon
-            icon={faChevronDown}
-            rotation={(openAccordion ? 180 : 0) as RotateProp}
-            $animationSpeed={$animationSpeed}
-          />
+            </Typography>
+          </Container>
+          <Container>
+            <Styled.Icon
+              icon={faChevronDown}
+              rotation={(openAccordion ? 180 : 0) as RotateProp}
+              $animationSpeed={$animationSpeed}
+            />
+          </Container>
         </Styled.HeaderContent>
       </Styled.HeaderContainer>
       <Styled.BodyContainer>
-        <Styled.BodyContent
+        <AnimatedContainer
           ref={ref}
           style={springProps}
           data-testid={
@@ -112,10 +120,10 @@ const Accordion = ({
               : `accordion-body-container-${testID}`
           }
         >
-          {children}
-        </Styled.BodyContent>
+          <Container p="md">{children}</Container>
+        </AnimatedContainer>
       </Styled.BodyContainer>
-    </Styled.Container>
+    </Styled.Wrapper>
   );
 };
 
