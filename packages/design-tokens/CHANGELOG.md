@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.46.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.46.1...@newcross-ui/design-tokens@1.46.2) (2024-11-27)
+
+**Note:** Version bump only for package @newcross-ui/design-tokens
+
+
+
+
+
 ## [1.46.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.46.0...@newcross-ui/design-tokens@1.46.1) (2024-11-27)
 
 **Note:** Version bump only for package @newcross-ui/design-tokens
