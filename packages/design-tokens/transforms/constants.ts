@@ -15,7 +15,7 @@ export const getGlobalStorybookTokens = (): Array<StorybookToken> => [
   {
     destination: 'color.css',
     headers: ['@tokens Color', '@presenter Color'],
-    filterAttributes: { category: 'color' },
+    filterAttributes: { category: 'themes' },
   },
   {
     destination: 'baseline-font-family.css',
@@ -46,18 +46,23 @@ export const getBrandStorybookTokens = (
 
 export const getColorStorybookTokens = (): Array<StorybookToken> => [
   {
-    destination: 'neutral.css',
-    headers: ['@tokens Neutral', '@presenter Color'],
-    filterAttributes: { category: 'color', type: 'neutral' },
+    destination: 'border.css',
+    headers: ['@tokens Border', '@presenter Color'],
+    filterAttributes: { category: 'elements', type: 'border' },
   },
   {
-    destination: 'primary.css',
-    headers: ['@tokens Primary', '@presenter Color'],
-    filterAttributes: { category: 'color', type: 'primary' },
+    destination: 'icon.css',
+    headers: ['@tokens Icon', '@presenter Color'],
+    filterAttributes: { category: 'elements', type: 'icon' },
   },
   {
-    destination: 'semantics.css',
-    headers: ['@tokens Semantics', '@presenter Color'],
-    filterAttributes: { category: 'color', type: 'semantics' },
+    destination: 'surface.css',
+    headers: ['@tokens Surface', '@presenter Color'],
+    filterAttributes: { category: 'elements', type: 'surface' },
+  },
+  {
+    destination: 'text.css',
+    headers: ['@tokens Text', '@presenter Color'],
+    filterAttributes: { category: 'elements', type: 'text' },
   },
 ];
