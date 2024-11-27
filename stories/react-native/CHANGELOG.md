@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.47.0](https://github.com/newcross-tech/newcross-ui/compare/@newcross-stories/react-native@1.46.8...@newcross-stories/react-native@1.47.0) (2024-11-27)
+
+
+### Features
+
+* **HFAUI-22:** update storybook for color tokens & usage ([#147](https://github.com/newcross-tech/newcross-ui/issues/147)) ([76e5c16](https://github.com/newcross-tech/newcross-ui/commit/76e5c162cf850501c742b84d79bdcc4f53dd5be2))
+
+
+
+
+
 ## [1.46.8](https://github.com/newcross-tech/newcross-ui/compare/@newcross-stories/react-native@1.46.7...@newcross-stories/react-native@1.46.8) (2024-11-27)
 
 **Note:** Version bump only for package @newcross-stories/react-native
