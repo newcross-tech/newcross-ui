@@ -8,9 +8,9 @@ type StorybookToken = {
 
 export const getGlobalStorybookTokens = (): Array<StorybookToken> => [
   {
-    destination: 'spacing.css',
-    headers: ['@tokens Spacing', '@presenter Spacing'],
-    filterAttributes: { category: 'spacing' },
+    destination: 'baseline-spaces.css',
+    headers: ['@tokens BaselineSpacing', '@presenter Spacing'],
+    filterAttributes: { category: 'baseline-spaces' },
   },
   {
     destination: 'color.css',
