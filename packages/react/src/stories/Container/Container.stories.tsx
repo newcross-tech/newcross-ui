@@ -21,41 +21,33 @@ export default {
   component: Container,
 } as Meta;
 
-export const Overview = () => {
-  return (
-    <InfoTemplate
-      title={TITLE}
-      description={DESCRIPTION}
-      doInfo={DO}
-      dontInfo={DONT}
-    />
-  );
-};
+export const Overview = () => (
+  <InfoTemplate
+    title={TITLE}
+    description={DESCRIPTION}
+    doInfo={DO}
+    dontInfo={DONT}
+  />
+);
 
-export const Variants = () => {
-  return (
-    <Container flexDirection="column" gap="SpacingBase32">
-      <StoryTitle.Overview>Container with margin</StoryTitle.Overview>
-      <StyledContainer m="SpacingBase12">Lorem ipsum</StyledContainer>
+export const Variants = () => (
+  <Container flexDirection="column" gap="lg">
+    <StoryTitle.Overview>Container with margin</StoryTitle.Overview>
+    <StyledContainer m="sm">Lorem ipsum</StyledContainer>
 
-      <StoryTitle.Overview>Container with padding</StoryTitle.Overview>
-      <StyledContainer p="SpacingBase12">Lorem ipsum</StyledContainer>
+    <StoryTitle.Overview>Container with padding</StoryTitle.Overview>
+    <StyledContainer p="md">Lorem ipsum</StyledContainer>
 
-      <StoryTitle.Overview>
-        Flexbox container with gap and padding
-      </StoryTitle.Overview>
-      <StyledContainer
-        flexDirection="column"
-        gap="SpacingBase12"
-        p="SpacingBase12"
-      >
-        <TextInput label="Field A" />
-        <TextInput label="Field B" />
-        <TextInput label="Field C" />
-      </StyledContainer>
-    </Container>
-  );
-};
+    <StoryTitle.Overview>
+      Flexbox container with gap and padding
+    </StoryTitle.Overview>
+    <StyledContainer flexDirection="column" gap="lg" p="lg">
+      <TextInput label="Field A" />
+      <TextInput label="Field B" />
+      <TextInput label="Field C" />
+    </StyledContainer>
+  </Container>
+);
 
 const Template = ({ children, ...rest }: ContainerProps) => (
   <StyledContainer {...rest}>{children}</StyledContainer>
@@ -67,12 +59,13 @@ Interactive.args = {
   children: (
     <>
       {[...new Array(4)].map((_, i) => (
-        <Card hasBorder>
-          <Typography variant="paragraph1" key={i}>
-            Card {i + 1}
-          </Typography>
+        <Card hasBorder key={i}>
+          <Typography variant="paragraph1">Card {i + 1}</Typography>
         </Card>
       ))}
     </>
   ),
+  flexDirection: 'row',
+  gap: 'lg',
+  m: 'md',
 };
