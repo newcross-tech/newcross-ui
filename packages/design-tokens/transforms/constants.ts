@@ -18,24 +18,19 @@ export const getGlobalStorybookTokens = (): Array<StorybookToken> => [
     filterAttributes: { category: 'color' },
   },
   {
-    destination: 'font-family.css',
-    headers: ['@tokens FontFamily', '@presenter FontFamily'],
-    filterAttributes: { type: 'font-family' },
+    destination: 'baseline-font-family.css',
+    headers: ['@tokens BaselineFontFamily', '@presenter FontFamily'],
+    filterAttributes: { category: 'baseline-font', type: 'font-family' },
   },
   {
-    destination: 'font-size.css',
-    headers: ['@tokens FontSize', '@presenter FontSize'],
-    filterAttributes: { type: 'font-size' },
+    destination: 'baseline-font-size.css',
+    headers: ['@tokens BaselineFontSize', '@presenter FontSize'],
+    filterAttributes: { category: 'baseline-font', type: 'font-size' },
   },
   {
-    destination: 'font-weight.css',
-    headers: ['@tokens FontWeight', '@presenter FontWeight'],
-    filterAttributes: { type: 'font-weight' },
-  },
-  {
-    destination: 'line-height.css',
-    headers: ['@tokens LineHeight', '@presenter LineHeight'],
-    filterAttributes: { type: 'line-height' },
+    destination: 'baseline-font-weight.css',
+    headers: ['@tokens BaselineFontWeight', '@presenter FontWeight'],
+    filterAttributes: { category: 'baseline-font', type: 'font-weight' },
   },
 ];
 
