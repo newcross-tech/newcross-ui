@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.21.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.20.6...@newcross-ui/react@2.21.0) (2024-11-28)
+
+
+### Features
+
+* **HFAUI-11:** update link component, introduced disabled prop ([d71a635](https://bitbucket.org/newcrossdev/newcross-ui/commits/d71a63564cb52b115f750420e34f64e18d29c881))
+
+
+
+
+
 ## [2.20.6](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.20.5...@newcross-ui/react@2.20.6) (2024-11-27)
 
 **Note:** Version bump only for package @newcross-ui/react
