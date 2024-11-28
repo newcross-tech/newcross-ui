@@ -1,20 +1,16 @@
-import { PropsWithChildren, ReactNode, Suspense } from 'react';
+import { PropsWithChildren, ReactNode } from 'react';
 import * as Styled from './Layout.style';
 
-type LayoutProps = {
+export type LayoutProps = {
   header: ReactNode;
   sidebar: ReactNode;
-  fallback?: ReactNode;
 };
 
 const Layout = ({
   header,
   sidebar,
-  fallback,
   children,
 }: PropsWithChildren<LayoutProps>) => {
-  const Fallback = fallback ?? null;
-
   return (
     <div>
       <Styled.LayoutContainer>
@@ -27,7 +23,7 @@ const Layout = ({
           {sidebar}
         </Styled.PageSidebar>
         <Styled.PageMain display="block" p="md">
-          <Suspense fallback={Fallback}>{children}</Suspense>
+          {children}
         </Styled.PageMain>
       </Styled.LayoutContainer>
     </div>

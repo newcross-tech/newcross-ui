@@ -1,97 +1,72 @@
-import React, { lazy } from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
-import Layout from './Layout';
+import React, { PropsWithChildren } from 'react';
+import { render } from '@testing-library/react';
+import { byTestId } from 'testing-library-selector';
+import Layout, { LayoutProps } from './Layout';
+
+const renderComponent = (
+  customProps: PropsWithChildren<Partial<LayoutProps>>
+) => {
+  const defaultProps = {
+    header: <div data-testid="header">Header Content</div>,
+    sidebar: <div data-testid="sidebar">Sidebar Content</div>,
+    children: <div data-testid="children">Main Content</div>,
+    ...customProps,
+  };
+
+  render(<Layout {...defaultProps} />);
+};
 
 describe('Layout Component', () => {
-  const headerContent = <div data-testid="header">Header Content</div>;
-  const sidebarContent = <div data-testid="sidebar">Sidebar Content</div>;
-  const fallbackContent = <div data-testid="fallback">Loading...</div>;
-  const childrenContent = <div data-testid="children">Main Content</div>;
+  const ui = {
+    header: byTestId('header'),
+    sidebar: byTestId('sidebar'),
+    children: byTestId('children'),
+  };
 
-  it('renders the header content', () => {
+  it('renders the header, sidebar, and main content correctly', () => {
     // Arrange & Act
-    render(
-      <Layout header={headerContent} sidebar={sidebarContent}>
-        {childrenContent}
-      </Layout>
-    );
+    renderComponent({});
 
     // Assert
-    expect(screen.getByTestId('header')).toBeInTheDocument();
-    expect(screen.getByTestId('header')).toHaveTextContent('Header Content');
+    expect(ui.header.get()).toBeInTheDocument();
+    expect(ui.header.get()).toHaveTextContent('Header Content');
+    expect(ui.sidebar.get()).toBeInTheDocument();
+    expect(ui.sidebar.get()).toHaveTextContent('Sidebar Content');
+    expect(ui.children.get()).toBeInTheDocument();
+    expect(ui.children.get()).toHaveTextContent('Main Content');
   });
 
-  it('renders the sidebar content', () => {
+  it('renders only header and children when no sidebar is provided', () => {
     // Arrange & Act
-    render(
-      <Layout header={headerContent} sidebar={sidebarContent}>
-        {childrenContent}
-      </Layout>
-    );
+    renderComponent({ sidebar: undefined });
 
     // Assert
-    expect(screen.getByTestId('sidebar')).toBeInTheDocument();
-    expect(screen.getByTestId('sidebar')).toHaveTextContent('Sidebar Content');
+    expect(ui.header.get()).toBeInTheDocument();
+    expect(ui.header.get()).toHaveTextContent('Header Content');
+    expect(() => ui.sidebar.get()).toThrow();
+    expect(ui.children.get()).toBeInTheDocument();
+    expect(ui.children.get()).toHaveTextContent('Main Content');
   });
 
-  it('renders the fallback content when provided', async () => {
-    const LazyComponent = lazy(
-      () =>
-        new Promise<{ default: React.FC }>((resolve) =>
-          setTimeout(() => {
-            resolve({
-              default: () => <div data-testid="lazy">Lazy Loaded Content</div>,
-            });
-          }, 100)
-        )
-    );
-
-    // Render the Layout with lazy-loaded content
-    render(
-      <Layout
-        header={headerContent}
-        sidebar={sidebarContent}
-        fallback={fallbackContent}
-      >
-        <LazyComponent />
-      </Layout>
-    );
-
-    // Assert that the fallback content is rendered initially
-    expect(screen.getByTestId('fallback')).toBeInTheDocument();
-    expect(screen.getByTestId('fallback')).toHaveTextContent('Loading...');
-
-    // Wait for the lazy component to finish loading
-    await waitFor(() => {
-      expect(screen.getByTestId('lazy')).toBeInTheDocument();
-    });
-
-    // Assert that the fallback content is removed after loading
-    expect(screen.queryByTestId('fallback')).not.toBeInTheDocument();
-  });
-
-  it('renders the children content inside the Suspense boundary', () => {
+  it('renders only sidebar and children when no header is provided', () => {
     // Arrange & Act
-    render(
-      <Layout header={headerContent} sidebar={sidebarContent}>
-        {childrenContent}
-      </Layout>
-    );
+    renderComponent({ header: undefined });
 
     // Assert
-    expect(screen.getByTestId('children')).toBeInTheDocument();
-    expect(screen.getByTestId('children')).toHaveTextContent('Main Content');
+    expect(() => ui.header.get()).toThrow();
+    expect(ui.sidebar.get()).toBeInTheDocument();
+    expect(ui.sidebar.get()).toHaveTextContent('Sidebar Content');
+    expect(ui.children.get()).toBeInTheDocument();
+    expect(ui.children.get()).toHaveTextContent('Main Content');
   });
 
-  it('renders correctly without a fallback', () => {
+  it('renders correctly without children', () => {
     // Arrange & Act
-    render(
-      <Layout header={headerContent} sidebar={sidebarContent}>
-        {childrenContent}
-      </Layout>
-    );
+    renderComponent({ children: undefined });
 
     // Assert
-    expect(screen.queryByTestId('fallback')).not.toBeInTheDocument();
+    expect(ui.header.get()).toBeInTheDocument();
+    expect(ui.sidebar.get()).toBeInTheDocument();
+    expect(() => ui.children.get()).toThrow();
   });
 });
