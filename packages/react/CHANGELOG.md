@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.22.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.21.1...@newcross-ui/react@2.22.0) (2024-11-28)
+
+
+### Features
+
+* **HFAUI-10:** update button ([#140](https://bitbucket.org/newcrossdev/newcross-ui/issues/140)) ([8e5b1f9](https://bitbucket.org/newcrossdev/newcross-ui/commits/8e5b1f96c153c860fbf3294626e96609028c5b1c))
+
+
+
+
+
 ## [2.21.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.21.0...@newcross-ui/react@2.21.1) (2024-11-28)
 
 **Note:** Version bump only for package @newcross-ui/react
