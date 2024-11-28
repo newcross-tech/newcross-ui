@@ -178,6 +178,7 @@ export const SheetWrapper = styled(Container)`
       border-radius: 0;
       clip-path: none;
       transform: unset;
+      opacity: 1 !important;
     }
 
     div[role='dialog'] {

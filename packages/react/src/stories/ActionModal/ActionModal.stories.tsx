@@ -40,12 +40,12 @@ const MODAL_CONTENT = (
   </>
 );
 
-const MODAL_FOOTER = (
+const renderModalFooter = (onClose?: VoidFunction) => (
   <Container justifyContent="space-between" fullWidth gap="SpacingBase16">
-    <Button variant="secondary" style={{ flexGrow: 1 }}>
+    <Button variant="secondary" style={{ flexGrow: 1 }} onClick={onClose}>
       A Way Out
     </Button>
-    <Button variant="primary" style={{ flexGrow: 1 }}>
+    <Button variant="primary" style={{ flexGrow: 1 }} onClick={onClose}>
       Decision
     </Button>
   </Container>
@@ -57,12 +57,14 @@ const VariantComponent = ({
   $hasGreyBackground,
   $overflowY,
   content = MODAL_CONTENT,
+  canCloseOnActionOnly,
 }: {
   $isAlwaysModal?: ActionModalProps['$isAlwaysModal'];
   $hasGreyBackground?: ActionModalProps['$hasGreyBackground'];
   $hasPadding?: ActionModalProps['$hasPadding'];
   content?: ActionModalProps['content'];
   $overflowY?: ActionModalProps['$overflowY'];
+  canCloseOnActionOnly?: ActionModalProps['canCloseOnActionOnly'];
 }) => {
   const [open, setOpen] = useState(false);
 
@@ -80,8 +82,9 @@ const VariantComponent = ({
         onDismiss={closeModal}
         title={MODAL_TITLE}
         subtitle={MODAL_SUBTITLE}
-        footer={MODAL_FOOTER}
+        footer={renderModalFooter(closeModal)}
         content={content}
+        canCloseOnActionOnly={canCloseOnActionOnly}
       />
     </>
   );
@@ -106,17 +109,22 @@ export const Variants = () => {
     <Container flexDirection="column">
       <StoryTitle.Overview>Always Action Modal</StoryTitle.Overview>
       <VariantComponent $isAlwaysModal={true} />
-      <Container my="SpacingBase32" />
+      <Container my="xl" />
       <StoryTitle.Overview>
         Action Modal with Bottom Sheet on mobile
       </StoryTitle.Overview>
       <VariantComponent />
-      <Container my="SpacingBase32" />
+      <Container my="xl" />
       <StoryTitle.Overview>Action Modal with Select</StoryTitle.Overview>
       <VariantComponent
         content={<Select options={options} id="select" menuPlacement="top" />}
         $overflowY="visible"
       />
+      <Container my="xl" />
+      <StoryTitle.Overview>
+        Action Modal That needs action to close
+      </StoryTitle.Overview>
+      <VariantComponent canCloseOnActionOnly />
     </Container>
   );
 };
@@ -135,5 +143,5 @@ Interactive.args = {
   title: MODAL_TITLE,
   subtitle: MODAL_SUBTITLE,
   content: MODAL_CONTENT,
-  footer: MODAL_FOOTER,
+  footer: renderModalFooter(),
 };
