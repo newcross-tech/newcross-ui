@@ -24,13 +24,13 @@ export const Overview = () => {
       doInfo={DO}
       dontInfo={DONT}
     >
-      <Link variant="paragraph1">This is a link</Link>
+      <Link variant="p1">This is a link</Link>
     </InfoTemplate>
   );
 };
 
 export const TypeVariants = () => {
-  const handleClick = (event) => {
+  const handleClick = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
     event.preventDefault();
     const element = document.getElementById('here');
     element?.scrollIntoView({ behavior: 'smooth' });
@@ -40,45 +40,45 @@ export const TypeVariants = () => {
     <>
       <StoryTitle.Regular>Text with link together</StoryTitle.Regular>
       <>
-        <Typography variant="paragraph1" display="inline">
+        <Typography variant="p1" display="inline">
           Paragraph text
         </Typography>
         <Container display="inline" ml="SpacingBase4">
-          <Link variant="paragraph1" rightIcon={faStar} display="inline">
+          <Link variant="p1" rightIcon={faStar} display="inline">
             and link together
           </Link>
         </Container>
       </>
-      <Container my="SpacingBase4" />
+      <Container my="xs" />
       <StoryTitle.Regular>Email Link</StoryTitle.Regular>
       <Link
         href={'mailto:someone@newcrosshealthcare.com'}
-        variant="paragraph1"
+        variant="p1"
         leftIcon={faEnvelope}
       >
         contact me
       </Link>
-      <Container my="SpacingBase4" />
+      <Container my="xs" />
       <StoryTitle.Regular>Phone Link</StoryTitle.Regular>
-      <Link variant="paragraph1" href={'tel:6012345678'} leftIcon={faPhone}>
+      <Link variant="p1" href={'tel:6012345678'} leftIcon={faPhone}>
         6012345678
       </Link>
 
-      <Container my="SpacingBase4" />
+      <Container my="xs" />
       <StoryTitle.Regular>External site Link</StoryTitle.Regular>
       <Link
         target={'_blank'}
-        variant="paragraph1"
+        variant="p1"
         href={'https://www.newcrosshealthcare.com/'}
         rightIcon={faExternalLink}
       >
         Go to external Website
       </Link>
 
-      <Container my="SpacingBase4" />
+      <Container my="xs" />
       <StoryTitle.Regular>Internal site Link</StoryTitle.Regular>
       <Link
-        variant="paragraph1"
+        variant="p1"
         href={
           'https://www.halodesignsystem.com/?path=/story/react-components-link--interactive'
         }
@@ -86,9 +86,9 @@ export const TypeVariants = () => {
       >
         Go to internal Website
       </Link>
-      <Container my="SpacingBase4" />
+      <Container my="xs" />
       <StoryTitle.Regular>Section Link</StoryTitle.Regular>
-      <Link variant="paragraph1" href="#here" onClick={handleClick}>
+      <Link variant="p1" href="#here" onClick={handleClick}>
         Go below
       </Link>
 
@@ -222,6 +222,6 @@ export const Interactive = Template.bind({});
 Interactive.args = {
   testID: 'interactive-link',
   children: 'This is a link',
-  variant: 'paragraph1',
+  variant: 'p1',
   leftIcon: faEnvelope,
 };
