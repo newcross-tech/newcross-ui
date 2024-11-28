@@ -72,6 +72,7 @@ export const Icon = styled(FontAwesomeIcon)`
 
 export const Subtitle = styled(Typography)`
   padding-top: ${({ theme }) => theme.SpacingBase16};
+  padding-bottom: ${({ theme }) => theme.SpacingBase12};
 
   @media (max-width: 640px) {
     padding: 0;

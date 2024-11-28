@@ -5,6 +5,26 @@ import { DesignTokenDocBlock } from 'storybook-design-token/dist/doc-blocks';
 
 # Spacing
 
-Spacing tokens are used for padding, margins, and position coordinates.
+Spacing tokens define consistent values for margins, paddings, and positional offsets, helping to maintain a unified layout across the application.
 
-<DesignTokenDocBlock categoryName="Spacing" />
+## Why Use Spacing Tokens?
+
+Spacing tokens standardize the design and implementation of spacing across the UI. They allow developers and designers to maintain consistent spacing patterns while ensuring responsiveness and scalability.
+
+## Responsiveness
+
+To build responsive layouts efficiently, we recommend using the `Container` component. This component abstracts paddings, margins, gaps, and positioning, making it easier to apply spacing in a consistent and scalable manner.
+
+**Why use `Container`?**
+
+- Simplifies layout adjustments across breakpoints.
+- Ensures design consistency by leveraging predefined spacing tokens.
+- Reduces redundancy and hardcoded values in your components.
+
+Refer to the `Container` documentation in Storybook for detailed guidance and examples.
+
+## Available Tokens
+
+Below are the available baseline spacing tokens.
+
+<DesignTokenDocBlock categoryName="BaselineSpacing" />

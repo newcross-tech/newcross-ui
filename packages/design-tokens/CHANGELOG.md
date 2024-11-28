@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.47.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.46.2...@newcross-ui/design-tokens@1.47.0) (2024-11-27)
+
+
+### Features
+
+* **HFAUI-22:** update storybook for color tokens & usage ([#147](https://bitbucket.org/newcrossdev/newcross-ui/issues/147)) ([76e5c16](https://bitbucket.org/newcrossdev/newcross-ui/commits/76e5c162cf850501c742b84d79bdcc4f53dd5be2))
+
+
+
+
+
+## [1.46.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.46.1...@newcross-ui/design-tokens@1.46.2) (2024-11-27)
+
+**Note:** Version bump only for package @newcross-ui/design-tokens
+
+
+
+
+
+## [1.46.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.46.0...@newcross-ui/design-tokens@1.46.1) (2024-11-27)
+
+**Note:** Version bump only for package @newcross-ui/design-tokens
+
+
+
+
+
 # [1.46.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.45.0...@newcross-ui/design-tokens@1.46.0) (2024-11-06)
 
 
