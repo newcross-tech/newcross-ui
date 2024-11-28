@@ -72,6 +72,7 @@ export const Icon = styled(FontAwesomeIcon)`
 
 export const Subtitle = styled(Typography)`
   padding-top: ${({ theme }) => theme.SpacingBase16};
+  padding-bottom: ${({ theme }) => theme.SpacingBase12};
 
   @media (max-width: 640px) {
     padding: 0;
@@ -177,6 +178,7 @@ export const SheetWrapper = styled(Container)`
       border-radius: 0;
       clip-path: none;
       transform: unset;
+      opacity: 1 !important;
     }
 
     div[role='dialog'] {

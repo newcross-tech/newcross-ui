@@ -1,20 +1,26 @@
 {
   "elements": {
     "icon": {
-      "default-dark": { "value": "{themes.primary.500}" },
-      "default-light": { "value": "{themes.neutral.0}" },
-      "default-dark-secondary": { "value": "{themes.neutral.700}" },
-      "default-variant-2": { "value": "{themes.secondary.500}" },
-      "action-default": { "value": "{themes.primary.500}" },
-      "action-variant": { "value": "{themes.neutral.0}" },
-      "action-danger": { "value": "{themes.neutral.0}" },
-      "disabled": { "value": "{themes.neutral.500}" },
-      "success": { "value": "{themes.success.700}" },
-      "success-standalone": { "value": "{themes.success.500}" },
-      "info": { "value": "{themes.info.700}" },
-      "warning": { "value": "{themes.warning.800}" },
-      "danger": { "value": "{themes.danger.700}" },
-      "danger-error": { "value": "{themes.danger.500}" }
+      "default-dark": { "value": "{themes.primary.500}", "type": "icon" },
+      "default-light": { "value": "{themes.neutral.0}", "type": "icon" },
+      "default-dark-secondary": {
+        "value": "{themes.neutral.700}",
+        "type": "icon"
+      },
+      "default-variant-2": {
+        "value": "{themes.secondary.500}",
+        "type": "icon"
+      },
+      "action-default": { "value": "{themes.primary.500}", "type": "icon" },
+      "action-variant": { "value": "{themes.neutral.0}", "type": "icon" },
+      "action-danger": { "value": "{themes.neutral.0}", "type": "icon" },
+      "disabled": { "value": "{themes.neutral.500}", "type": "icon" },
+      "success": { "value": "{themes.success.700}", "type": "icon" },
+      "success-standalone": { "value": "{themes.success.500}", "type": "icon" },
+      "info": { "value": "{themes.info.700}", "type": "icon" },
+      "warning": { "value": "{themes.warning.800}", "type": "icon" },
+      "danger": { "value": "{themes.danger.700}", "type": "icon" },
+      "danger-error": { "value": "{themes.danger.500}", "type": "icon" }
     }
   }
 }

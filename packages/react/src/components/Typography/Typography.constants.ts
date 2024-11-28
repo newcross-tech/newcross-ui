@@ -239,10 +239,10 @@ export const typographyMap: Record<TypographyVariant, TypographyStyles> = {
 
   // Action Paragraphs
   p1Action: {
-    fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
+    fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
     fontSize: 'BaselineFontFontSize18',
     lineHeight: 'BaselineFontFontSize28',
-    fontWeight: 'BaselineFontFontWeightRegular',
+    fontWeight: 'BaselineFontFontWeightSemiBold',
     responsiveness: {
       md: {
         fontSize: 'BaselineFontFontSize16',
@@ -253,10 +253,10 @@ export const typographyMap: Record<TypographyVariant, TypographyStyles> = {
     semanticTag: 'p',
   },
   p2Action: {
-    fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
+    fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
     fontSize: 'BaselineFontFontSize16',
     lineHeight: 'BaselineFontFontSize24',
-    fontWeight: 'BaselineFontFontWeightRegular',
+    fontWeight: 'BaselineFontFontWeightSemiBold',
     responsiveness: {
       md: {
         fontSize: 'BaselineFontFontSize14',
@@ -267,10 +267,10 @@ export const typographyMap: Record<TypographyVariant, TypographyStyles> = {
     semanticTag: 'p',
   },
   p3Action: {
-    fontFamily: 'BaselineFontFontFamilyPoppinsRegular',
+    fontFamily: 'BaselineFontFontFamilyPoppinsSemiBold',
     fontSize: 'BaselineFontFontSize14',
     lineHeight: 'BaselineFontFontSize20',
-    fontWeight: 'BaselineFontFontWeightRegular',
+    fontWeight: 'BaselineFontFontWeightSemiBold',
     responsiveness: {
       md: {
         fontSize: 'BaselineFontFontSize12',

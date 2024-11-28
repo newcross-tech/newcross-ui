@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.21.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.21.0...@newcross-ui/react@2.21.1) (2024-11-28)
+
+**Note:** Version bump only for package @newcross-ui/react
+
+
+
+
+
+# [2.21.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.20.6...@newcross-ui/react@2.21.0) (2024-11-28)
+
+
+### Features
+
+* **HFAUI-11:** update link component, introduced disabled prop ([d71a635](https://bitbucket.org/newcrossdev/newcross-ui/commits/d71a63564cb52b115f750420e34f64e18d29c881))
+
+
+
+
+
+## [2.20.6](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.20.5...@newcross-ui/react@2.20.6) (2024-11-27)
+
+**Note:** Version bump only for package @newcross-ui/react
+
+
+
+
+
+## [2.20.5](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.20.4...@newcross-ui/react@2.20.5) (2024-11-27)
+
+**Note:** Version bump only for package @newcross-ui/react
+
+
+
+
+
+## [2.20.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.20.3...@newcross-ui/react@2.20.4) (2024-11-27)
+
+**Note:** Version bump only for package @newcross-ui/react
+
+
+
+
+
+## [2.20.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.20.2...@newcross-ui/react@2.20.3) (2024-11-27)
+
+
+### Bug Fixes
+
+* **HFX-1319:** add padding bottom to Modal subtitle ([#149](https://bitbucket.org/newcrossdev/newcross-ui/issues/149)) ([95359de](https://bitbucket.org/newcrossdev/newcross-ui/commits/95359ded49b1efd8138a5fdacbd4226ff85d0c83))
+
+
+
+
+
 ## [2.20.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.20.1...@newcross-ui/react@2.20.2) (2024-11-25)
 
 

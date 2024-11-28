@@ -2,13 +2,17 @@ import { ButtonHTMLAttributes, ReactElement } from 'react';
 import { TestProp } from '../../types';
 import Typography from '../Typography';
 import * as Styled from './Button.style';
-import { ButtonSizes, ButtonVariant } from './Button.types';
+import { ButtonScheme, ButtonSizes, ButtonVariant } from './Button.types';
 
 export type ButtonProps = {
   /**
    * Used to define background variant
    */
   variant?: ButtonVariant;
+  /**
+   * Use to define the background the button is applied to
+   */
+  scheme?: ButtonScheme;
   /**
    * Used to define size of button
    */
@@ -32,9 +36,15 @@ export type ButtonProps = {
 } & TestProp &
   ButtonHTMLAttributes<HTMLButtonElement>;
 
+export enum TypographyValues {
+  small = 'p2Action',
+  large = 'p1Action',
+}
+
 const Button = ({
   children,
   variant = 'primary',
+  scheme = 'light',
   size = 'large',
   leftIcon,
   rightIcon,
@@ -43,9 +53,12 @@ const Button = ({
   ...rest
 }: ButtonProps) => {
   const iconOnly = !children && (leftIcon || rightIcon);
+  const paddingX = iconOnly ? 'sm' : size === 'small' ? 'md' : 'lg';
+
   return (
     <Styled.Button
       variant={variant}
+      scheme={scheme}
       fullWidth={fullWidth}
       semanticTag="button"
       display="inline-flex"
@@ -53,7 +66,8 @@ const Button = ({
       justifyContent="center"
       gap="sm"
       py="sm"
-      px={size === 'small' ? 'md' : 'lg'}
+      px={paddingX}
+      testID={testID}
       {...rest}
     >
       {leftIcon && !iconOnly && (
@@ -77,9 +91,7 @@ const Button = ({
           {leftIcon ?? rightIcon}
         </Styled.IconWrapper>
       ) : (
-        <Typography variant={Styled.getTypographyValues()[size]}>
-          {children}
-        </Typography>
+        <Typography variant={TypographyValues[size]}>{children}</Typography>
       )}
       {rightIcon && !iconOnly && (
         <Styled.IconWrapper

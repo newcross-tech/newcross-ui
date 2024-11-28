@@ -71,6 +71,12 @@ export type ActionModalProps = {
    * Set custom z-index for the action modal
    */
   $zIndex?: number;
+  /**
+   * Prop to enforce action in the sheet and not allow user to close it.
+   * If true the sheet cannot be closed by click outside and close button is not displayed.
+   * Default is false.
+   */
+  canCloseOnActionOnly?: boolean;
 };
 
 const ActionModal = ({
@@ -83,6 +89,8 @@ const ActionModal = ({
   $hasGreyBackground = false,
   $overflowY = 'auto',
   $zIndex = 2,
+  canCloseOnActionOnly = false,
+  onDismiss,
   ...rest
 }: ActionModalProps) => {
   const baseName = 'action-modal-';
@@ -94,6 +102,7 @@ const ActionModal = ({
         $overflowY={$overflowY}
         $zIndex={$zIndex}
         $hasFooter={!!footer}
+        testID={`${baseName}container`}
       >
         <Sheet
           selectedDetent={detents.large}
@@ -102,6 +111,7 @@ const ActionModal = ({
           scrollingExpands={true}
           useModal={$isAlwaysModal || undefined}
           backdropClassName={`${baseName}backdrop`}
+          onDismiss={!canCloseOnActionOnly ? onDismiss : undefined}
           {...rest}
         >
           <Header className={`${baseName}header`}>
@@ -133,15 +143,17 @@ const ActionModal = ({
                 >
                   {title}
                 </Styled.Heading>
-                <Styled.Icon
-                  icon={faXmark}
-                  size="2x"
-                  width="16px"
-                  height="16px"
-                  $isAlwaysModal={$isAlwaysModal}
-                  onClick={rest.onDismiss}
-                  data-testid={`${baseName}close-icon`}
-                />
+                {!canCloseOnActionOnly && (
+                  <Styled.Icon
+                    icon={faXmark}
+                    size="2x"
+                    width="16px"
+                    height="16px"
+                    $isAlwaysModal={$isAlwaysModal}
+                    onClick={onDismiss}
+                    data-testid={`${baseName}close-icon`}
+                  />
+                )}
               </Styled.Header>
               {subtitle && (
                 <Styled.Subtitle
