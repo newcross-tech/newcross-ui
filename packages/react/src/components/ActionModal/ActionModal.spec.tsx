@@ -1,7 +1,7 @@
 /** @jest-environment jsdom */
 import React from 'react';
 import '@testing-library/jest-dom';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { byTestId, byText } from 'testing-library-selector';
 import ActionModal, { ActionModalProps } from './ActionModal';
@@ -46,7 +46,14 @@ const defaultProps: ActionModalProps = {
 };
 
 const renderActionModal = (props: ActionModalProps) => {
-  render(<ActionModal {...props} />);
+  return render(<ActionModal {...props} />);
+};
+
+const clickOnBackdrop = () => {
+  const backdrop = byTestId('action-modal-container')
+    .get()
+    .getElementsByClassName('action-modal-backdrop')[0];
+  fireEvent.click(backdrop);
 };
 
 describe('ActionModal', () => {
@@ -78,15 +85,51 @@ describe('ActionModal', () => {
     // Assert
     expect(byTestId('footer-wrapper').query()).not.toBeInTheDocument();
   });
+  it('should not call onDismiss when clicking on the backdrop if canCloseOnActionOnly is true', () => {
+    // Arrange
+    const onDismiss = jest.fn();
+    renderActionModal({
+      ...defaultProps,
+      canCloseOnActionOnly: true,
+      onDismiss,
+    });
+
+    // Act
+    clickOnBackdrop();
+
+    // Assert
+    expect(onDismiss).not.toHaveBeenCalled();
+  });
+
+  it('should not display the close icon when canCloseOnActionOnly is true', () => {
+    // Arrange
+    renderActionModal({ ...defaultProps, canCloseOnActionOnly: true });
+
+    // Assert
+    expect(byTestId('action-modal-close-icon').query()).not.toBeInTheDocument();
+  });
   it('should call onDismiss when clicking on the close icon', () => {
     // Arrange
-    renderActionModal(defaultProps);
+    const onDismiss = jest.fn();
+    renderActionModal({ ...defaultProps, onDismiss });
 
     // Act
     const closeIcon = byTestId('action-modal-close-icon').get();
     userEvent.click(closeIcon);
 
     // Assert
-    expect(defaultProps.onDismiss).toHaveBeenCalled();
+    expect(onDismiss).toHaveBeenCalled();
+  });
+
+  it('should  call onDismiss when clicking on the backdrop', () => {
+    // Arrange
+    const onDismiss = jest.fn();
+    renderActionModal({ ...defaultProps, onDismiss });
+
+    // Act
+    clickOnBackdrop();
+
+    // Assert
+    expect(onDismiss).toHaveBeenCalled();
   });
 });
