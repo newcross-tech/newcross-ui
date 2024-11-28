@@ -1,33 +1,24 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled, { css } from 'styled-components';
-import { ExtendedTheme, Theme } from '../../types';
+import { ExtendedTheme } from '../../types';
 import { getColorStyles } from '../Typography';
-import { LinkProps } from './Link';
 import { getIconSize } from '../../utils/css';
-
-type LinkType = Omit<LinkProps, 'variant'>;
+import { IconProps, LinkType } from './Link.types';
 
 export const Link = styled.a<LinkType>`
-  text-decoration: underline;
-  cursor: pointer;
-  text-decoration: underline
-    ${({ theme, mode = 'light', color = 'primary' }: ExtendedTheme<LinkType>) => getColorStyles(theme)[mode][color]};
-
-  ${({ theme }: Theme) => css`
-    color: ${theme.LinkColor};
-
+  ${({ theme, mode = 'light', color = 'primary', disabled }: ExtendedTheme<LinkType>) => css`
+    text-decoration: underline ${getColorStyles(theme)[mode][color]};
+    color: ${disabled ? theme.ElementsTextDisabled : theme.ElementsTextDefaultDark};
+    cursor: ${disabled ? 'not-allowed' : 'pointer'};
+    pointer-events: ${disabled ? 'none' : 'auto'};
     &:active {
-      opacity: ${theme.LinkPressedOpacity};
+      opacity: ${theme.OpacityBaseMd};
     }
   `};
 `;
 
-type IconProps = Pick<LinkProps, 'leftIcon' | 'rightIcon' | 'variant'>;
-
 export const Icon = styled(FontAwesomeIcon)<IconProps>`
-  ${({ theme, leftIcon, rightIcon, variant }: ExtendedTheme<IconProps>) => css`
+  ${({ theme, variant }: ExtendedTheme<IconProps>) => css`
     ${getIconSize(theme, variant, 'heightWidth')};
-    ${leftIcon && `margin-right: ${theme.SpacingBase8}`};
-    ${rightIcon && `margin-left: ${theme.SpacingBase8}`};
   `};
 `;
