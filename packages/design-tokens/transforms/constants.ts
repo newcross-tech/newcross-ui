@@ -8,34 +8,29 @@ type StorybookToken = {
 
 export const getGlobalStorybookTokens = (): Array<StorybookToken> => [
   {
-    destination: 'spacing.css',
-    headers: ['@tokens Spacing', '@presenter Spacing'],
-    filterAttributes: { category: 'spacing' },
+    destination: 'baseline-spaces.css',
+    headers: ['@tokens BaselineSpacing', '@presenter Spacing'],
+    filterAttributes: { category: 'baseline-spaces' },
   },
   {
     destination: 'color.css',
     headers: ['@tokens Color', '@presenter Color'],
-    filterAttributes: { category: 'color' },
+    filterAttributes: { category: 'themes' },
   },
   {
-    destination: 'font-family.css',
-    headers: ['@tokens FontFamily', '@presenter FontFamily'],
-    filterAttributes: { type: 'font-family' },
+    destination: 'baseline-font-family.css',
+    headers: ['@tokens BaselineFontFamily', '@presenter FontFamily'],
+    filterAttributes: { category: 'baseline-font', type: 'font-family' },
   },
   {
-    destination: 'font-size.css',
-    headers: ['@tokens FontSize', '@presenter FontSize'],
-    filterAttributes: { type: 'font-size' },
+    destination: 'baseline-font-size.css',
+    headers: ['@tokens BaselineFontSize', '@presenter FontSize'],
+    filterAttributes: { category: 'baseline-font', type: 'font-size' },
   },
   {
-    destination: 'font-weight.css',
-    headers: ['@tokens FontWeight', '@presenter FontWeight'],
-    filterAttributes: { type: 'font-weight' },
-  },
-  {
-    destination: 'line-height.css',
-    headers: ['@tokens LineHeight', '@presenter LineHeight'],
-    filterAttributes: { type: 'line-height' },
+    destination: 'baseline-font-weight.css',
+    headers: ['@tokens BaselineFontWeight', '@presenter FontWeight'],
+    filterAttributes: { category: 'baseline-font', type: 'font-weight' },
   },
 ];
 
@@ -51,18 +46,23 @@ export const getBrandStorybookTokens = (
 
 export const getColorStorybookTokens = (): Array<StorybookToken> => [
   {
-    destination: 'neutral.css',
-    headers: ['@tokens Neutral', '@presenter Color'],
-    filterAttributes: { category: 'color', type: 'neutral' },
+    destination: 'border.css',
+    headers: ['@tokens Border', '@presenter Color'],
+    filterAttributes: { category: 'elements', type: 'border' },
   },
   {
-    destination: 'primary.css',
-    headers: ['@tokens Primary', '@presenter Color'],
-    filterAttributes: { category: 'color', type: 'primary' },
+    destination: 'icon.css',
+    headers: ['@tokens Icon', '@presenter Color'],
+    filterAttributes: { category: 'elements', type: 'icon' },
   },
   {
-    destination: 'semantics.css',
-    headers: ['@tokens Semantics', '@presenter Color'],
-    filterAttributes: { category: 'color', type: 'semantics' },
+    destination: 'surface.css',
+    headers: ['@tokens Surface', '@presenter Color'],
+    filterAttributes: { category: 'elements', type: 'surface' },
+  },
+  {
+    destination: 'text.css',
+    headers: ['@tokens Text', '@presenter Color'],
+    filterAttributes: { category: 'elements', type: 'text' },
   },
 ];
