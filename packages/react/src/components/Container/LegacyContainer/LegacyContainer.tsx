@@ -5,6 +5,7 @@ import {
   LegacyContainerSpacing,
 } from './LegacyContainer.types';
 import * as Styled from './LegacyContainer.style';
+import { SemanticContainerTags } from '../Container.types';
 
 export type LegacyContainerProps = {
   children?: React.ReactNode;
@@ -213,16 +214,27 @@ export type LegacyContainerProps = {
    * Sets the spacing between each child using margin
    */
   gapMobile?: LegacyContainerGapSpacing;
+  /**
+   * Used to define the semantic tag of the container
+   * @default 'div'
+   */
+  semanticTag?: SemanticContainerTags;
 } & TestProp;
 
 const LegacyContainer = ({
   children,
   testID,
   display = 'flex',
+  semanticTag = 'div',
   ...props
 }: LegacyContainerProps) => {
   return (
-    <Styled.LegacyContainer {...props} display={display} data-testid={testID}>
+    <Styled.LegacyContainer
+      {...props}
+      display={display}
+      data-testid={testID}
+      as={semanticTag}
+    >
       {children}
     </Styled.LegacyContainer>
   );

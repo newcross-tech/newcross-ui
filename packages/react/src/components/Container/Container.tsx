@@ -1,6 +1,10 @@
 import * as Styled from './Container.style';
 import { CSSProperties } from 'react';
-import { NewContainerGapSpacing, NewContainerSpacing } from './Container.types';
+import {
+  NewContainerGapSpacing,
+  NewContainerSpacing,
+  SemanticContainerTags,
+} from './Container.types';
 import { TestProp } from '../../types';
 import { isLegacyProps } from './utils';
 import LegacyContainer, { LegacyContainerProps } from './LegacyContainer';
@@ -92,6 +96,11 @@ export type NewContainerProps = {
    * Sets the spacing between each child using margin
    */
   gap?: NewContainerGapSpacing;
+  /**
+   * Used to define the semantic tag of the container
+   * @default 'div'
+   */
+  semanticTag?: SemanticContainerTags;
 } & TestProp;
 
 export type ContainerProps = NewContainerProps | LegacyContainerProps;
@@ -101,9 +110,20 @@ const Container = (props: ContainerProps) => {
     return <LegacyContainer {...props} />;
   }
 
-  const { children, testID, display = 'flex', ...restProps } = props;
+  const {
+    children,
+    testID,
+    display = 'flex',
+    semanticTag = 'div',
+    ...restProps
+  } = props;
   return (
-    <Styled.Container {...restProps} display={display} data-testid={testID}>
+    <Styled.Container
+      {...restProps}
+      display={display}
+      data-testid={testID}
+      as={semanticTag}
+    >
       {children}
     </Styled.Container>
   );

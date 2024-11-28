@@ -1,119 +1,74 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ExtendedTheme } from '../../types';
-import { getTabbedStateStyles } from '../../utils/css';
-import { TypographyVariant } from '../Typography';
-import { ButtonProps, IconProps } from './Button';
-import { ButtonSizes, ButtonVariant } from './Button.types';
+import { getIconSize, getTabbedStateStyles } from '../../utils/css';
+import { ButtonProps, TypographyValues } from './Button';
+import { ButtonScheme, ButtonSizes, ButtonVariant } from './Button.types';
+import Container from '../Container';
 
-export const getTypographyValues = (): Record<ButtonSizes, TypographyVariant> => ({
-  small: 'subtitle1',
-  large: 'heading6',
-});
-
-export const getIconSize = (theme: ThemeDesignTokens): Record<ButtonSizes, FlattenSimpleInterpolation> => ({
-  small: css`
-    font-size: ${theme.ButtonSizeSmallIconSize};
-  `,
-  large: css`
-    font-size: ${theme.ButtonSizeLargeIconSize};
-  `,
-});
-
-const getVariantStyles = (theme: ThemeDesignTokens): Record<ButtonVariant, FlattenSimpleInterpolation> => ({
-  primary: css`
-    color: ${theme.ButtonVariantPrimaryColor};
-    background-color: ${theme.ButtonVariantPrimaryBackgroundColor};
-  `,
-  secondary: css`
-    color: ${theme.ButtonVariantSecondaryColor};
-    background-color: transparent;
-    border: ${theme.ButtonVariantSecondaryBorderWidth} solid ${theme.ButtonVariantSecondaryBorderColor};
-  `,
-  danger: css`
-    color: ${theme.ButtonVariantDangerColor};
-    background-color: ${theme.ButtonVariantDangerBackgroundColor};
-  `,
-});
-
-const getDisabledStyles = (theme: ThemeDesignTokens): Record<ButtonVariant, FlattenSimpleInterpolation> => ({
-  primary: css`
-    cursor: default;
-    color: ${theme.ButtonVariantPrimaryDisabledColor};
-    background-color: ${theme.ButtonVariantPrimaryDisabledBackgroundColor};
-  `,
-  secondary: css`
-    cursor: default;
-    color: ${theme.ButtonVariantSecondaryDisabledColor};
-    border: ${theme.ButtonVariantSecondaryBorderWidth} solid ${theme.ButtonVariantSecondaryDisabledBorderColor};
-    background-color: transparent;
-  `,
-  danger: css`
-    cursor: default;
-    color: ${theme.ButtonVariantDangerDisabledColor};
-    background-color: ${theme.ButtonVariantDangerDisabledBackgroundColor};
-  `,
-});
-
-const getSizeStyles = (theme: ThemeDesignTokens): Record<ButtonSizes, FlattenSimpleInterpolation> => ({
-  small: css`
-    font-family: ${theme.TypographyHeading4FontFamily};
-    font-weight: ${theme.TypographyHeading4FontWeight};
-    font-size: ${theme.TypographyHeading4FontSize};
-    line-height: ${theme.TypographyHeading4LineHeight};
-    padding: ${theme.ButtonSizeSmallPadding};
-  `,
-  large: css`
-    font-family: ${theme.TypographyHeading3FontFamily};
-    font-weight: ${theme.TypographyHeading3FontWeight};
-    font-size: ${theme.TypographyHeading3FontSize};
-    line-height: ${theme.TypographyHeading3LineHeight};
-    padding: ${theme.ButtonSizeLargePadding};
-  `,
-});
-
-const getFullWidthStyles = () => css`
-  display: flex;
-  width: 100%;
+const getBorderStyle = (theme: ThemeDesignTokens, color: string) => css`
+  border: ${theme.BorderBaseWidthSm} solid ${color};
 `;
 
-const getHoverStyles = (theme: ThemeDesignTokens): Record<ButtonVariant, FlattenSimpleInterpolation> => ({
+const variantStyles = (
+  theme: ThemeDesignTokens,
+  scheme: ButtonScheme
+): Record<ButtonVariant, FlattenSimpleInterpolation> => ({
   primary: css`
-    background-color: ${theme.ButtonVariantPrimaryPressedBackgroundColor};
+    color: ${theme.ElementsTextActionPrimaryDark};
+    background-color: ${theme.ElementsSurfaceActionDefault};
+    ${getBorderStyle(theme, theme.ElementsBorderActionDefault)};
   `,
   secondary: css`
-    background-color: ${theme.ButtonVariantSecondaryPressedBackgroundColor};
+    color: ${scheme === 'light' ? theme.ElementsTextActionPrimaryDark : theme.ElementsTextActionSecondaryLight};
+    background-color: transparent;
+    ${getBorderStyle(theme, theme.ElementsBorderActionDefault)};
   `,
   danger: css`
-    background-color: ${theme.ButtonVariantDangerPressedBackgroundColor};
+    color: ${theme.ElementsTextActionDanger};
+    background-color: ${theme.ElementsSurfaceActionDanger};
+    ${getBorderStyle(theme, theme.ElementsSurfaceActionDanger)};
   `,
 });
-export const IconWrapper = styled.div<ExtendedTheme<IconProps>>`
-  ${({ theme, rightIcon, leftIcon, hasLabel, size }) => css`
-    display: flex;
-    align-items: center;
-    margin-left: ${rightIcon && hasLabel && theme.ButtonIconSpacing};
-    margin-right: ${leftIcon && hasLabel && theme.ButtonIconSpacing};
-    ${size && getIconSize(theme)[size]};
-  `};
+
+const disabledStyles = (theme: ThemeDesignTokens, variant: ButtonVariant): FlattenSimpleInterpolation => css`
+  cursor: default;
+  color: ${theme.ElementsTextDisabled};
+  background-color: ${variant === 'secondary' ? 'transparent' : theme.ElementsSurfaceDisabled};
+  ${getBorderStyle(theme, theme.ElementsSurfaceDisabled)};
 `;
-export const Button = styled.button<ExtendedTheme<ButtonProps>>`
-  ${({ theme, variant, size, disabled, fullWidth }) => css`
-    display: inline-flex;
-    cursor: pointer;
-    justify-content: center;
-    border-width: 0;
-    align-items: center;
+
+const activeStyles = (theme: ThemeDesignTokens): Record<ButtonVariant, FlattenSimpleInterpolation> => ({
+  primary: css`
+    background-color: ${theme.ElementsSurfaceActionHover};
+    ${getBorderStyle(theme, theme.ElementsSurfaceActionHover)};
+  `,
+  secondary: css`
+    color: ${theme.ElementsTextActionPrimaryDark};
+    background-color: ${theme.ElementsSurfaceActionHoverSecondary};
+    ${getBorderStyle(theme, theme.ElementsBorderActionDefault)};
+  `,
+  danger: css`
+    background-color: ${theme.ElementsSurfaceActionDangerHover};
+    ${getBorderStyle(theme, theme.ElementsSurfaceActionDangerHover)};
+  `,
+});
+
+export const IconWrapper = styled(Container)<ExtendedTheme<{ size?: ButtonSizes }>>`
+  ${({ theme, size = 'large' }) => getIconSize(theme, TypographyValues[size], 'fontSize')};
+`;
+
+export const Button = styled(Container)<ExtendedTheme<Pick<ButtonProps, 'variant' | 'scheme' | 'disabled'>>>`
+  ${({ theme, variant = 'primary', scheme = 'light', disabled }) => css`
+    cursor: ${disabled ? 'default' : 'pointer'};
+    border-radius: ${theme.BorderBaseRadiusRounded};
 
     ${getTabbedStateStyles()};
-    border-radius: ${theme.ButtonCornersPillBorderRadius};
-    ${fullWidth && getFullWidthStyles()}
-    ${variant && getVariantStyles(theme)[variant]}
-    ${disabled && variant && getDisabledStyles(theme)[variant]}
-    ${size && getSizeStyles(theme)[size]}
- 
+
+    ${disabled ? disabledStyles(theme, variant) : variantStyles(theme, scheme)[variant]}
+
     &:active {
-      ${!disabled && variant && getHoverStyles(theme)[variant]}
+      ${!disabled && activeStyles(theme)[variant]};
     }
   `}
 `;

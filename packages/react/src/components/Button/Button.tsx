@@ -1,14 +1,18 @@
-import { ButtonHTMLAttributes, ReactElement, ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactElement } from 'react';
 import { TestProp } from '../../types';
 import Typography from '../Typography';
 import * as Styled from './Button.style';
-import { ButtonSizes, ButtonVariant } from './Button.types';
+import { ButtonScheme, ButtonSizes, ButtonVariant } from './Button.types';
 
 export type ButtonProps = {
   /**
    * Used to define background variant
    */
   variant?: ButtonVariant;
+  /**
+   * Use to define the background the button is applied to
+   */
+  scheme?: ButtonScheme;
   /**
    * Used to define size of button
    */
@@ -25,70 +29,79 @@ export type ButtonProps = {
    * Set the right icon element.
    */
   rightIcon?: ReactElement;
+  /**
+   * Set disabled state of button
+   */
+  disabled?: boolean;
 } & TestProp &
   ButtonHTMLAttributes<HTMLButtonElement>;
 
-export type IconProps = Pick<
-  ButtonProps,
-  'size' | 'testID' | 'rightIcon' | 'leftIcon'
-> & {
-  hasLabel?: boolean;
-  children?: ReactNode;
-};
-
-export const ButtonIcon = ({
-  hasLabel,
-  testID,
-  rightIcon,
-  leftIcon,
-  children,
-  size,
-}: IconProps) => (
-  <Styled.IconWrapper
-    size={size}
-    leftIcon={leftIcon}
-    rightIcon={rightIcon}
-    data-testid={testID}
-    hasLabel={hasLabel}
-  >
-    {children}
-  </Styled.IconWrapper>
-);
+export enum TypographyValues {
+  small = 'p2Action',
+  large = 'p1Action',
+}
 
 const Button = ({
   children,
   variant = 'primary',
+  scheme = 'light',
   size = 'large',
   leftIcon,
   rightIcon,
   testID,
+  fullWidth = false,
   ...rest
 }: ButtonProps) => {
-  const hasLabel = !!children;
+  const iconOnly = !children && (leftIcon || rightIcon);
+  const paddingX = iconOnly ? 'sm' : size === 'small' ? 'md' : 'lg';
+
   return (
-    <Styled.Button variant={variant} size={size} data-testid={testID} {...rest}>
-      {leftIcon && (
-        <ButtonIcon
+    <Styled.Button
+      variant={variant}
+      scheme={scheme}
+      fullWidth={fullWidth}
+      semanticTag="button"
+      display="inline-flex"
+      alignItems="center"
+      justifyContent="center"
+      gap="sm"
+      py="sm"
+      px={paddingX}
+      testID={testID}
+      {...rest}
+    >
+      {leftIcon && !iconOnly && (
+        <Styled.IconWrapper
+          display="flex"
+          alignItems="center"
+          testID="left-icon"
           size={size}
-          leftIcon={leftIcon}
-          hasLabel={hasLabel}
-          testID={'left-icon'}
         >
           {leftIcon}
-        </ButtonIcon>
+        </Styled.IconWrapper>
       )}
-      <Typography variant={Styled.getTypographyValues()[size]}>
-        {children}
-      </Typography>
-      {rightIcon && (
-        <ButtonIcon
+      {iconOnly ? (
+        <Styled.IconWrapper
+          display="flex"
+          alignItems="center"
+          testID="center-icon"
+          aria-label="icon-button"
           size={size}
-          rightIcon={rightIcon}
-          hasLabel={hasLabel}
-          testID={'right-icon'}
+        >
+          {leftIcon ?? rightIcon}
+        </Styled.IconWrapper>
+      ) : (
+        <Typography variant={TypographyValues[size]}>{children}</Typography>
+      )}
+      {rightIcon && !iconOnly && (
+        <Styled.IconWrapper
+          display="flex"
+          alignItems="center"
+          testID="right-icon"
+          size={size}
         >
           {rightIcon}
-        </ButtonIcon>
+        </Styled.IconWrapper>
       )}
     </Styled.Button>
   );
