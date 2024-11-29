@@ -32,6 +32,11 @@ export const getGlobalStorybookTokens = (): Array<StorybookToken> => [
     headers: ['@tokens BaselineFontWeight', '@presenter FontWeight'],
     filterAttributes: { category: 'baseline-font', type: 'font-weight' },
   },
+  {
+    destination: 'breakpoints.css',
+    headers: ['@tokens Breakpoints', '@presenter Spacing'],
+    filterAttributes: { category: 'breakpoints' },
+  },
 ];
 
 export const getBrandStorybookTokens = (
