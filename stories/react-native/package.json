@@ -10,7 +10,8 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "prestart": "sb-rn-get-stories --config-path .ondevice",
-    "storybook-watcher": "sb-rn-watcher --config-path .ondevice"
+    "storybook-watcher": "sb-rn-watcher --config-path .ondevice",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@expo-google-fonts/poppins": "^0.2.2",

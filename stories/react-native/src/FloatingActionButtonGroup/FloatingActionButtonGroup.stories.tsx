@@ -57,6 +57,7 @@ export const Variants = () => {
   const [calendar, setCalendar] = useState('calendar', false);
   const [filter, setFilter] = useState('filter', false);
   const ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+  const Wrapper = isWeb ? 'div' : React.Fragment;
 
   return (
     <Container
@@ -67,34 +68,50 @@ export const Variants = () => {
         position: 'relative',
       }}
     >
-      <FloatingActionButtonGroup
-        style={{
-          position: isWeb ? 'fixed' : 'absolute',
-          bottom: 30,
-        }}
+      <Wrapper
+        style={
+          isWeb
+            ? {
+                position: 'fixed',
+                bottom: 30,
+                zIndex: 100,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }
+            : {}
+        }
       >
-        <FloatingActionButton
-          text={'Sort'}
-          onPress={() => {
-            setSort(!sort);
+        <FloatingActionButtonGroup
+          style={{
+            position: 'absolute',
+            bottom: 30,
           }}
-          isSelected={sort}
-        />
-        <FloatingActionButton
-          icon={faCalendarDays}
-          onPress={() => {
-            setCalendar(!calendar);
-          }}
-          isSelected={calendar}
-        />
-        <FloatingActionButton
-          text={'Filter'}
-          onPress={() => {
-            setFilter(!filter);
-          }}
-          isSelected={filter}
-        />
-      </FloatingActionButtonGroup>
+        >
+          <FloatingActionButton
+            text={'Sort'}
+            onPress={() => {
+              setSort(!sort);
+            }}
+            isSelected={sort}
+          />
+          <FloatingActionButton
+            icon={faCalendarDays}
+            onPress={() => {
+              setCalendar(!calendar);
+            }}
+            isSelected={calendar}
+          />
+          <FloatingActionButton
+            text={'Filter'}
+            onPress={() => {
+              setFilter(!filter);
+            }}
+            isSelected={filter}
+          />
+        </FloatingActionButtonGroup>
+      </Wrapper>
+
       <ScrollView style={{ width: '100%' }}>
         {ids.map((id) => (
           <Card

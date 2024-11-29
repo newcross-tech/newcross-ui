@@ -84,17 +84,32 @@ export const Variants = () => {
 
 export const VariantWithScroll = () => {
   const ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+  const Wrapper = isWeb ? 'div' : React.Fragment;
 
   return (
     <Container>
-      <FloatingActionButton
-        icon={faCalendarDays}
-        style={{
-          position: isWeb ? 'fixed' : 'absolute',
-          bottom: 30,
-          right: 30,
-        }}
-      />
+      <Wrapper
+        style={
+          isWeb
+            ? {
+                position: 'fixed',
+                bottom: 10,
+                right: 10,
+                zIndex: 100,
+              }
+            : {}
+        }
+      >
+        <FloatingActionButton
+          icon={faCalendarDays}
+          style={{
+            position: 'absolute',
+            bottom: 30,
+            right: 30,
+          }}
+        />
+      </Wrapper>
+
       <ScrollView style={{ width: '100%' }}>
         {ids.map((id) => (
           <Card
