@@ -1,5 +1,6 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import * as Styled from './Layout.style';
+import Header from './Header';
 
 export type LayoutProps = {
   header: ReactNode;
@@ -14,7 +15,9 @@ const Layout = ({
   return (
     <div>
       <Styled.LayoutContainer>
-        <Styled.PageHeader>{header}</Styled.PageHeader>
+        <Styled.PageHeader>
+          <Header>{header}</Header>
+        </Styled.PageHeader>
         <Styled.PageSidebar
           display="flex"
           flexDirection="column"
@@ -22,7 +25,7 @@ const Layout = ({
         >
           {sidebar}
         </Styled.PageSidebar>
-        <Styled.PageMain display="block" p="md">
+        <Styled.PageMain display="block" p="md" semanticTag="main">
           {children}
         </Styled.PageMain>
       </Styled.LayoutContainer>
