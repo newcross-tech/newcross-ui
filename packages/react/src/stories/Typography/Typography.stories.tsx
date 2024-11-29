@@ -68,8 +68,8 @@ export const Overview = () => (
 
 export const Variants = () => (
   <Container flexDirection="column" gap="lg">
-    {variants.map(({ variant, text }, index) => (
-      <Typography key={index} variant={variant}>
+    {variants.map(({ variant, text }) => (
+      <Typography key={variant} variant={variant}>
         {text}
       </Typography>
     ))}
@@ -78,8 +78,8 @@ export const Variants = () => (
 
 export const LegacyVariants = () => (
   <Container flexDirection="column" gap="lg">
-    {legacyVariants.map(({ variant, text }, index) => (
-      <Typography key={index} variant={variant}>
+    {legacyVariants.map(({ variant, text }) => (
+      <Typography key={variant} variant={variant}>
         {text}
       </Typography>
     ))}
