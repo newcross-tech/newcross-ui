@@ -1,0 +1,52 @@
+import { Meta } from '@storybook/addon-docs';
+import { DesignTokenDocBlock } from 'storybook-design-token/dist/doc-blocks';
+
+<Meta title="Design Tokens/Breakpoints" />
+
+# Breakpoints and Media Queries
+
+Breakpoints define the responsiveness across different screen sizes. They provide a standard way to apply media queries and ensure consistency across the application.
+
+## Available Breakpoints
+
+The breakpoints available in the design system are:
+
+<DesignTokenDocBlock categoryName="Breakpoints" />
+
+## Media Query Utility
+
+To simplify the use of media queries, we provide a utility function called `breakpoint`. This function enables you to create semantic media queries using the predefined breakpoints.
+
+### How It Works
+
+Under the hood, the `breakpoint` utility uses `max-width` media queries. This means that the styles defined for smaller breakpoints will override those defined for larger breakpoints if applied after them. To ensure the intended cascading effect:
+
+**Always define breakpoints in descending order (`xl` → `lg` → `md` → `sm`).**
+
+### Example Usage
+
+Here’s how you can use the `breakpoint` function in your styled-components:
+
+```typescript
+const ResponsiveBox = styled.div`
+  width: 100%;
+  height: 100px;
+  background-color: blue;
+
+  ${breakpoint.xl`
+    background-color: purple;
+  `}
+
+  ${breakpoint.lg`
+    background-color: yellow;
+  `}
+
+  ${breakpoint.md`
+    background-color: green;
+  `}
+
+  ${breakpoint.sm`
+    background-color: red;
+  `}
+`;
+```
