@@ -13,15 +13,15 @@ import {
 } from '@newcross-ui/react-native';
 import { Meta, Story } from '@storybook/react';
 import React from 'react';
-import { Platform, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 import { getParameters } from '../utils';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './FloatingActionButtonGroupInfo';
 import useState from 'storybook-addon-state';
+import { PlatformStyle } from '../PlatformStyle';
 
 const { SpacingBase0, SpacingBase24 } = native.healthforce;
-const isWeb = Platform.OS === 'web';
 
 export default {
   title: 'ReactNative/Components/FloatingActionButtonGroup',
@@ -57,7 +57,6 @@ export const Variants = () => {
   const [calendar, setCalendar] = useState('calendar', false);
   const [filter, setFilter] = useState('filter', false);
   const ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-  const Wrapper = isWeb ? 'div' : React.Fragment;
 
   return (
     <Container
@@ -68,20 +67,7 @@ export const Variants = () => {
         position: 'relative',
       }}
     >
-      <Wrapper
-        style={
-          isWeb
-            ? {
-                position: 'fixed',
-                bottom: 30,
-                zIndex: 100,
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }
-            : {}
-        }
-      >
+      <PlatformStyle>
         <FloatingActionButtonGroup
           style={{
             position: 'absolute',
@@ -110,7 +96,7 @@ export const Variants = () => {
             isSelected={filter}
           />
         </FloatingActionButtonGroup>
-      </Wrapper>
+      </PlatformStyle>
 
       <ScrollView style={{ width: '100%' }}>
         {ids.map((id) => (
