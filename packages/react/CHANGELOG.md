@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.23.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.22.2...@newcross-ui/react@2.23.0) (2024-12-02)
+
+
+### Features
+
+* **HFAUI-12:** update accordion component styles/tokens ([34c3c43](https://bitbucket.org/newcrossdev/newcross-ui/commits/34c3c4357ee11c3c06d38550950bd7c2969874c7))
+
+
+
+
+
 ## [2.22.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.22.1...@newcross-ui/react@2.22.2) (2024-11-29)
 
 **Note:** Version bump only for package @newcross-ui/react
