@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { native } from '@newcross-ui/design-tokens';
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Platform, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 import { getParameters } from '../utils';
 import Container from '../Container';
 import Spacing, { SpacingSizes, SpacingPositions } from '../Spacing';
@@ -20,9 +20,9 @@ import { faCalendarDays } from '@fortawesome/pro-light-svg-icons/faCalendarDays'
 import { faBarsFilter } from '@fortawesome/pro-regular-svg-icons/faBarsFilter';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './FloatingActionButtonInfo';
+import { PlatformStyle } from '../PlatformStyle';
 
 const { SpacingBase24 } = native.healthforce;
-const isWeb = Platform.OS === 'web';
 
 export default {
   title: 'ReactNative/Components/FloatingActionButton',
@@ -87,14 +87,17 @@ export const VariantWithScroll = () => {
 
   return (
     <Container>
-      <FloatingActionButton
-        icon={faCalendarDays}
-        style={{
-          position: isWeb ? 'fixed' : 'absolute',
-          bottom: 30,
-          right: 30,
-        }}
-      />
+      <PlatformStyle>
+        <FloatingActionButton
+          icon={faCalendarDays}
+          style={{
+            position: 'absolute',
+            bottom: 30,
+            right: 30,
+          }}
+        />
+      </PlatformStyle>
+
       <ScrollView style={{ width: '100%' }}>
         {ids.map((id) => (
           <Card

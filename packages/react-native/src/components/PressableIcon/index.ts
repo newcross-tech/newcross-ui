@@ -1,1 +1,2 @@
-export { default, PressableIconProps } from './PressableIcon';
+export { default } from './PressableIcon';
+export type { PressableIconProps } from './PressableIcon';

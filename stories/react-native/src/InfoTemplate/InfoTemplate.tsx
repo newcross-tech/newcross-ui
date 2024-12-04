@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { PropsWithChildren, ReactNode } from 'react';
 import { View, ViewStyle, ScrollView } from 'react-native';
 import Spacing, { SpacingSizes } from '../Spacing';
 import { Typography, TypographyVariant } from '@newcross-ui/react-native';
@@ -108,14 +108,14 @@ type InfoContainerProps = {
   dontInfo: string[];
 };
 
-const InfoContainer: FC<InfoContainerProps> = ({
+const InfoContainer = ({
   containerStyle,
   title,
   description,
   dontInfo,
   doInfo,
   children,
-}) => {
+}: PropsWithChildren<InfoContainerProps>) => {
   const styles = infoTemplateStyle();
   return (
     <View style={styles.storybookContainer}>

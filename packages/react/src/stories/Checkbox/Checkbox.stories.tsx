@@ -1,4 +1,3 @@
-import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Checkbox, { CheckboxProps } from '../../components/Checkbox';
 import Container from '../../components/Container';

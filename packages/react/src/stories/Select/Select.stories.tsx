@@ -25,23 +25,27 @@ export const Overview = () => {
     >
       <Container flexDirection="column" gap="SpacingBase8">
         <Select
+          id="single-select"
           options={options}
           label="Single Select"
           placeholder="Select a 'label'"
         />
         <Select
+          id="multi-select"
           isMulti
           options={options}
           label="Multi Select"
           placeholder="Select multiple 'labels'"
         />
         <Select
+          id="label-variant-select"
           options={options}
           label="Label Variant - paragraph1"
           placeholder="Select a 'label'"
           labelVariant="paragraph1"
         />
         <Select
+          id="subtitle-select"
           options={options}
           label="Select with a subtitle"
           placeholder="Select a 'label'"
@@ -62,18 +66,21 @@ export const SingleSelectVariants = () => {
         options={options}
       />
       <Select
+        id="non-searchable-select"
         label={'Not Searchable Select'}
         placeholder="Select some 'labels'"
         options={options}
         isSearchable={false}
       />
       <Select
+        id="disable-select"
         label={'Disabled Select'}
         placeholder={'Disabled Select'}
         disabled
         options={options}
       />
       <Select
+        id="error-select"
         label={'Error Select'}
         hasError
         placeholder={'Error Select'}
@@ -88,12 +95,14 @@ export const MultiSelectVariants = () => {
   return (
     <Container flexDirection="column" gap="SpacingBase8">
       <Select
+        id="default-multi-select"
         label={'Default Multi Select'}
         isMulti
         placeholder="Select some 'labels'"
         options={options}
       />
       <Select
+        id="disable-multi-select"
         label={'Disabled Select'}
         isMulti
         placeholder={'Disabled Select'}
@@ -101,6 +110,7 @@ export const MultiSelectVariants = () => {
         options={options}
       />
       <Select
+        id="error-multi-select"
         label={'Error Select'}
         isMulti
         placeholder={'Error Select'}
@@ -116,6 +126,7 @@ export const GroupedSelect = () => {
   return (
     <Container flexDirection="column" gap="SpacingBase8">
       <Select
+        id="group-multi-select"
         isMulti
         label="Group Select"
         placeholder="Select some 'labels'"
@@ -142,7 +153,9 @@ export const GroupedSelect = () => {
   );
 };
 
-const Template: Story<SelectProps> = ({ ...rest }) => (
+const Template: Story<SelectProps<{ label: string; value: string }>> = ({
+  ...rest
+}) => (
   <Container>
     <Select {...rest} />
   </Container>

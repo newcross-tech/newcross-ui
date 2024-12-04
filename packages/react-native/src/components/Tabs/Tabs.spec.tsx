@@ -100,8 +100,8 @@ describe('Tabs Component', () => {
       currentIndex: 0,
       onCurrentIndexChange: jest.fn(),
       badgeCountObject: {
-        [tabs[0]]: 1,
-        [tabs[1]]: 2,
+        [tabs[0]]: '1',
+        [tabs[1]]: '2',
       },
     };
     // Act

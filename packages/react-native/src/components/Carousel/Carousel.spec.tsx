@@ -21,7 +21,7 @@ const data = [
   },
 ];
 
-const slideData = data.map((slide, index) => {
+const slideData = data.map((slide) => {
   return {
     id: slide.id,
     content: <Image source={{ uri: slide.image }} />,
