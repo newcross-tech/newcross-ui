@@ -81,3 +81,4 @@ export {
   default as PhoneNumberInput,
   PhoneNumberInputProps,
 } from './components/PhoneNumberInput';
+export { default as Icon } from './components/Icon';

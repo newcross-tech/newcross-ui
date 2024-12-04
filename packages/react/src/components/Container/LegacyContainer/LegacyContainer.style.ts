@@ -78,6 +78,16 @@ export const LegacyContainer = styled.div<ExtendedTheme<LegacyContainerProps>>`
     display,
     fullWidth,
   }) => css`
+    > button {
+      margin: 0;
+      padding: 0;
+      border: none;
+      background: none;
+      color: inherit;
+      font: inherit;
+      line-height: inherit;
+      cursor: pointer;
+    }
     ${display && `display: ${display};`}
     ${flexWrap && `flex-wrap: ${flexWrap};`}
     ${justifyContent && `justify-content: ${justifyContent};`}

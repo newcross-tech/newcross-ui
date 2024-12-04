@@ -64,6 +64,17 @@ export const Container = styled.div<ExtendedTheme<NewContainerProps>>`
     display,
     fullWidth,
   }) => css`
+    > button {
+      margin: 0;
+      padding: 0;
+      border: none;
+      background: none;
+      color: inherit;
+      font: inherit;
+      line-height: inherit;
+      cursor: pointer;
+    }
+
     ${applyResponsiveStyles(theme, 'margin', m)}
     ${applyResponsiveStyles(theme, 'margin-left', mx)}
     ${applyResponsiveStyles(theme, 'margin-right', mx)}
