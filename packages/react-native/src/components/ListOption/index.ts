@@ -1,3 +1,2 @@
-export { default } from './ListOption';
-export type { ListOptionProps } from './ListOption';
+export { default, ListOptionProps } from './ListOption';
 export { ListOptionAlignment } from './ListOption.types';

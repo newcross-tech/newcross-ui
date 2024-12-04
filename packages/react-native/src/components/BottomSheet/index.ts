@@ -1,2 +1,1 @@
-export { default } from './BottomSheet';
-export type { BottomSheetProps, BottomSheetRefProps } from './BottomSheet';
+export { default, BottomSheetProps, BottomSheetRefProps } from './BottomSheet';

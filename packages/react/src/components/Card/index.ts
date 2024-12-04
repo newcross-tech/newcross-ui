@@ -1,3 +1,3 @@
-export { default } from './Card';
-export type { CardProps } from './Card';
-export type { CardVariants } from './Card.types';
+export { default, CardProps } from './Card';
+
+export { CardVariants } from './Card.types';

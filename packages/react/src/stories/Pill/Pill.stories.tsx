@@ -1,3 +1,4 @@
+import React from 'react';
 import { faBird } from '@fortawesome/pro-solid-svg-icons/faBird';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Meta, Story } from '@storybook/react';

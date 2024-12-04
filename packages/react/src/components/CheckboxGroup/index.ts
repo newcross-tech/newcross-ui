@@ -1,3 +1,2 @@
-export { default } from './CheckboxGroup';
-export type { CheckboxGroupProps } from './CheckboxGroup';
-export type { OptionProps as optionsProps } from './CheckboxGroup.types';
+export { default, CheckboxGroupProps } from './CheckboxGroup';
+export { OptionProps as optionsProps } from './CheckboxGroup.types';

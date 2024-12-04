@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { Theme } from '../../types';
 import { getTabbedStateStyles } from '../../utils';
 import HaloLabel, { LabelProps } from '../Label';
-import { RadioValue } from './Radio.types';
+import { RadioValue, RadioVariant } from './Radio.types';
 import { RadioProps } from './Radio';
 
 export const Label = styled(HaloLabel)<LabelProps>`

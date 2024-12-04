@@ -1,3 +1,4 @@
+import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Avatar, { AvatarProps } from '../../components/Avatar';
 import Badge, { BadgeSizes } from '../../components/Badge';

@@ -1,9 +1,11 @@
 import { Meta, Story } from '@storybook/react';
+import { useEffect, createRef } from 'react';
 import Spacing, { SpacingSizes } from '../Spacing';
 import {
   Typography,
   TypographyVariant,
   BottomSheet,
+  BottomSheetRefProps,
   DropDown,
   ListOption,
   DropdownProps,
@@ -36,6 +38,8 @@ export const Overview = () => {
 };
 
 export const Variants = () => {
+  const ref = createRef<BottomSheetRefProps>();
+
   const options = [
     { label: 'Option 1', id: 1, isSelected: false },
     { label: 'Option 2', id: 2, isSelected: false },
@@ -65,6 +69,10 @@ export const Variants = () => {
   const handleBottomSheet = () => {
     setExpanded(!expanded);
   };
+
+  useEffect(() => {
+    expanded ? ref.current?.expand() : ref.current?.collapse();
+  }, [expanded]);
 
   return (
     <>
@@ -105,7 +113,7 @@ export const Variants = () => {
         <Spacing size={SpacingSizes.Large} />
         <DropDown focused={true} placeholder={'Focused Dropdown'} />
       </Container>
-      <BottomSheet hasBackdrop={false} isOpen={expanded}>
+      <BottomSheet hasBackdrop={false} ref={ref}>
         {selectedList.map(({ label, id, isSelected }) => (
           <ListOption
             key={id}
@@ -121,6 +129,8 @@ export const Variants = () => {
 };
 
 const Template: Story<DropdownProps> = ({ ...rest }) => {
+  const ref = createRef<BottomSheetRefProps>();
+
   const options = [
     { label: 'Option 1', id: 1, isSelected: false },
     { label: 'Option 2', id: 2, isSelected: false },
@@ -151,6 +161,10 @@ const Template: Story<DropdownProps> = ({ ...rest }) => {
     setExpanded(!expanded);
   };
 
+  useEffect(() => {
+    expanded ? ref.current?.expand() : ref.current?.collapse();
+  }, [expanded]);
+
   return (
     <>
       <Container>
@@ -168,7 +182,7 @@ const Template: Story<DropdownProps> = ({ ...rest }) => {
           placeholder="Click to open dropdown"
         />
       </Container>
-      <BottomSheet hasBackdrop={false} isOpen={expanded}>
+      <BottomSheet hasBackdrop={false} ref={ref}>
         {selectedList.map(({ label, id, isSelected }) => (
           <ListOption
             key={id}

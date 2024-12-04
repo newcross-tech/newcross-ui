@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileArrowDown } from '@fortawesome/pro-light-svg-icons/faFileArrowDown';
@@ -102,7 +102,7 @@ export const Variants = () => (
       columns={COLUMNS_WITH_ACTION}
       data={DATA}
       selectableRows
-      selectableRowsComponent={Checkbox as unknown as ReactNode}
+      selectableRowsComponent={Checkbox}
       pagination
       $isFirstColumnFixed
     />

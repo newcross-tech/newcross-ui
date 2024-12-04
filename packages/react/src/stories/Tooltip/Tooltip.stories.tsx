@@ -1,3 +1,4 @@
+import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import styled from 'styled-components';
 import Tooltip, { TooltipProps } from '../../components/Tooltip';

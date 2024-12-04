@@ -1,2 +1,1 @@
-export { default } from './PhoneInput';
-export type { PhoneInputProps } from './PhoneInput';
+export { default, PhoneInputProps } from './PhoneInput';

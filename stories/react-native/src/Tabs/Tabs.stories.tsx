@@ -123,8 +123,8 @@ export const VariantWithBadges = () => {
   const [currentIndex, setCurrentIndex] = useState('currentIndex', 0);
   const tabs = ['Label A', 'Label B'];
   const badgeCountObject = {
-    [tabs[0]]: '1',
-    [tabs[1]]: '2',
+    [tabs[0]]: 1,
+    [tabs[1]]: 2,
   };
   return (
     <Container>

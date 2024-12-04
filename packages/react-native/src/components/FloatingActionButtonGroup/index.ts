@@ -1,2 +1,4 @@
-export { default } from './FloatingActionButtonGroup';
-export type { FloatingActionButtonGroupProps } from './FloatingActionButtonGroup';
+export {
+  default,
+  FloatingActionButtonGroupProps,
+} from './FloatingActionButtonGroup';

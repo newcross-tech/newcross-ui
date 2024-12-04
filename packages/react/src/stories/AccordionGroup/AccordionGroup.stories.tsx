@@ -1,3 +1,4 @@
+import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Accordion, { AccordionProps } from '../../components/Accordion';
 import AccordionGroup from '../../components/AccordionGroup';

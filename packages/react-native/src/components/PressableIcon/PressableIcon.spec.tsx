@@ -1,12 +1,13 @@
 import React from 'react';
+import { PressableProps } from 'react-native';
 import { render, fireEvent, screen } from '@testing-library/react-native';
-import PressableIcon, { PressableIconProps } from './PressableIcon';
+import PressableIcon from './PressableIcon';
 
 describe('PressableIcon', () => {
   it('renders successfully', () => {
     // Arrange
     const onPress = jest.fn();
-    const props: PressableIconProps = { onPress, testID: 'pressable-icon' };
+    const props: PressableProps = { onPress, testID: 'pressable-icon' };
 
     // Act
     render(<PressableIcon {...props}></PressableIcon>);
@@ -18,7 +19,7 @@ describe('PressableIcon', () => {
   it('calls onPress handler', () => {
     // Arrange
     const onPress = jest.fn();
-    const props: PressableIconProps = { onPress, testID: 'pressable-icon' };
+    const props: PressableProps = { onPress, testID: 'pressable-icon' };
 
     // Act
     render(<PressableIcon {...props}></PressableIcon>);

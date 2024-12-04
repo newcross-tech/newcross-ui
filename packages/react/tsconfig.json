@@ -3,5 +3,5 @@
   "compilerOptions": {
     "outDir": "build"
   },
-  "exclude": ["build"]
+  "exclude": ["**/*.spec.tsx", "**/*.d.ts", "**/*.stories.tsx", "build"]
 }

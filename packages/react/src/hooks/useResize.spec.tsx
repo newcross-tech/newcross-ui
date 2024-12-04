@@ -1,4 +1,5 @@
 import { render, renderHook } from '@testing-library/react';
+import * as React from 'react';
 import { createRef } from 'react';
 import { useResize } from './useResize';
 

@@ -96,7 +96,7 @@ const ToggleButtonGroup = ({
       : selectedValue === value;
 
   const handleOnPress = useCallback(
-    (_: GestureResponderEvent, value: string) => {
+    (event: GestureResponderEvent, value: string) => {
       onSingleSelect && onSingleSelect(value);
 
       onMultiSelect &&

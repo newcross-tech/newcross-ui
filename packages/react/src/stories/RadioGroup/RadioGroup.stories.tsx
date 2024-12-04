@@ -1,5 +1,6 @@
+import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import Radio, { RadioValue } from '../../components/Radio';
+import Radio from '../../components/Radio/Radio';
 import RadioGroup, {
   RadioGroupProps,
 } from '../../components/RadioGroup/RadioGroup';
@@ -64,7 +65,7 @@ export const Variants = () => {
   );
 };
 
-const Template: Story<RadioGroupProps<RadioValue>> = ({ ...rest }) => {
+const Template: Story<RadioGroupProps> = ({ ...rest }) => {
   return (
     <RadioGroup {...rest}>
       <Radio value="1" label="A" />

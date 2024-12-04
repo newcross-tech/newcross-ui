@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
 import DataTable, { IDataTableProps } from 'react-data-table-component';
 import PaginationAdapter from './PaginationAdapter';
 import { getCustomStyles } from './Table.style';

@@ -1,3 +1,4 @@
+import React from 'react';
 import { render } from '@testing-library/react';
 import { byRole, byTestId, byText } from 'testing-library-selector';
 import userEvent from '@testing-library/user-event';

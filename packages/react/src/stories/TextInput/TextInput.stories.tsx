@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 import TextInput, { TextInputProps } from '../../components/TextInput';
 import Container from '../../components/Container';

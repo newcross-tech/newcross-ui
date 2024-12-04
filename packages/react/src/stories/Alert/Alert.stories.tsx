@@ -1,3 +1,4 @@
+import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Alert, { AlertProps } from '../../components/Alert';
 import Link from '../../components/Link';

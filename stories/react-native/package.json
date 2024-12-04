@@ -10,8 +10,7 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "prestart": "sb-rn-get-stories --config-path .ondevice",
-    "storybook-watcher": "sb-rn-watcher --config-path .ondevice",
-    "typecheck": "tsc --noEmit"
+    "storybook-watcher": "sb-rn-watcher --config-path .ondevice"
   },
   "dependencies": {
     "@expo-google-fonts/poppins": "^0.2.2",
@@ -20,7 +19,6 @@
     "expo-font": "~10.2.0",
     "expo-linear-gradient": "~11.4.0",
     "expo-status-bar": "~1.4.0",
-    "storybook-addon-state": "^1.0.3",
-    "react-native-svg": "15.9.0"
+    "storybook-addon-state": "^1.0.3"
   }
 }

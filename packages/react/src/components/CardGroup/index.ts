@@ -1,2 +1,1 @@
-export { default } from './CardGroup';
-export type { CardGroupProps } from './CardGroup';
+export { default, CardGroupProps } from './CardGroup';
