@@ -15,11 +15,11 @@ const generateStyle = (
   }
   if (propValue === 'auto' || propValue === 'inherit') {
     return css`
-      ${property}: ${propValue};
+      ${`${property}: ${propValue}`};
     `;
   }
   return css`
-    ${property}: ${theme?.[propValue]};
+    ${`${property}: ${theme?.[propValue]}`};
   `;
 };
 
@@ -77,17 +77,16 @@ export const LegacyContainer = styled.div<ExtendedTheme<LegacyContainerProps>>`
     gapMobile,
     display,
     fullWidth,
+    semanticTag,
   }) => css`
-    > button {
-      margin: 0;
-      padding: 0;
+    ${semanticTag === 'button' &&
+    css`
       border: none;
-      background: none;
-      color: inherit;
-      font: inherit;
-      line-height: inherit;
+      background: transparent;
+      padding-block: 0;
+      padding-inline: 0;
       cursor: pointer;
-    }
+    `}
     ${display && `display: ${display};`}
     ${flexWrap && `flex-wrap: ${flexWrap};`}
     ${justifyContent && `justify-content: ${justifyContent};`}

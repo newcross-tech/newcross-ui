@@ -16,14 +16,14 @@ const applyResponsiveStyles = (
   // Special case handling for 'auto' and 'inherit'
   if (propValue === 'auto' || propValue === 'inherit') {
     return css`
-      ${property}: ${propValue};
+      ${`${property}: ${propValue}`};
     `;
   }
   const sortedBreakpoints = getSortedBreakpoints(responsiveSpacingMap[propValue]);
 
   // Generate default CSS for the largest breakpoint
   const defaultCSS = css`
-    ${property}: ${theme[sortedBreakpoints[0][1]]};
+    ${`${property}: ${theme[sortedBreakpoints[0][1]]}`};
   `;
   // Generate media queries for smaller breakpoints
   const responsiveCSS = sortedBreakpoints.map(([key, value]) => {
@@ -63,18 +63,16 @@ export const Container = styled.div<ExtendedTheme<NewContainerProps>>`
     gap,
     display,
     fullWidth,
+    semanticTag,
   }) => css`
-    > button {
-      margin: 0;
-      padding: 0;
+    ${semanticTag === 'button' &&
+    css`
       border: none;
-      background: none;
-      color: inherit;
-      font: inherit;
-      line-height: inherit;
+      background: transparent;
+      padding-block: 0;
+      padding-inline: 0;
       cursor: pointer;
-    }
-
+    `}
     ${applyResponsiveStyles(theme, 'margin', m)}
     ${applyResponsiveStyles(theme, 'margin-left', mx)}
     ${applyResponsiveStyles(theme, 'margin-right', mx)}

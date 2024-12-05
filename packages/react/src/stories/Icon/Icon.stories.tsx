@@ -24,11 +24,7 @@ export const Overview = () => (
   />
 );
 
-const Template: Story<IconProps> = (args) => (
-  <Container flexDirection="column" alignItems="left" gap="lg">
-    <Icon {...args} />
-  </Container>
-);
+const Template: Story<IconProps> = (args) => <Icon {...args} />;
 
 export const Interactive: Story<IconProps> = Template.bind({});
 Interactive.args = {

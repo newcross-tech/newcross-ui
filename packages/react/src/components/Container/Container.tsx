@@ -123,6 +123,7 @@ const Container = (props: ContainerProps) => {
       display={display}
       data-testid={testID}
       as={semanticTag}
+      semanticTag={semanticTag}
     >
       {children}
     </Styled.Container>

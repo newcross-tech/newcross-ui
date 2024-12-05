@@ -4,7 +4,6 @@ import { TypographyColors } from '../Typography/Typography.types';
 import * as Styled from './Icon.style';
 import Container, { ContainerProps } from '../Container';
 import { Mode } from '../../types';
-import { NewContainerProps } from '../Container/Container';
 
 export type IconProps = {
   /**
@@ -30,10 +29,10 @@ const Icon = ({
   variant,
   color = 'defaultDark',
   mode = 'light',
-  ...props
+  ...rest
 }: IconProps) => {
   return (
-    <Container {...props}>
+    <Container {...rest}>
       <Styled.Icon icon={icon} variant={variant} color={color} mode={mode} />
     </Container>
   );
