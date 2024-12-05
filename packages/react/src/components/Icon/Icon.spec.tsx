@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { faChevronRight } from '@fortawesome/pro-light-svg-icons/faChevronRight';
 import Icon, { IconProps } from './Icon';

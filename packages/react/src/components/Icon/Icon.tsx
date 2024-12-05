@@ -1,9 +1,8 @@
-import { TypographyVariant } from '../Typography';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
-import { TypographyColors } from '../Typography/Typography.types';
+import { TypographyVariant, TypographyColors } from '../Typography';
 import * as Styled from './Icon.style';
-import Container, { ContainerProps } from '../Container';
 import { Mode } from '../../types';
+import Container, { ContainerProps } from '../Container';
 
 export type IconProps = {
   /**

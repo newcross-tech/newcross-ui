@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
-import { IconProps } from './Alert.types';
+import { AlertIconProps } from './Alert.types';
 import { AlertVariant, ExtendedTheme, Theme } from '../../types';
 import { getTabbedStateStyles } from '../../utils';
 import Typography from '../Typography';
@@ -89,11 +89,11 @@ export const TextContainer = styled.div`
 
 export const Icon = styled(FontAwesomeIcon)``;
 
-export const IconStyle = styled.div<IconProps>`
+export const IconStyle = styled.div<AlertIconProps>`
   display: flex;
   justify-content: center;
   height: fit-content;
-  ${({ theme, position, variant }: ExtendedTheme<IconProps>) => css`
+  ${({ theme, position, variant }: ExtendedTheme<AlertIconProps>) => css`
     ${getTabbedStateStyles()};
     > ${Icon} {
       ${position === 'right' &&

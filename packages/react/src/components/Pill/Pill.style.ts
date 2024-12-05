@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { getTabbedStateStyles } from '../../utils';
 import Typography from '../Typography';
-import { BackGroundProps, IconProps, PillVariant, RemoveIconProps, SelectedProps, TextProp } from './Pill.types';
+import { BackGroundProps, PillIconProps, PillVariant, RemoveIconProps, SelectedProps, TextProp } from './Pill.types';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ExtendedTheme, Theme } from '../../types';
 
@@ -90,8 +90,8 @@ export const Text = styled(Typography)<TextProp>`
   `}
 `;
 
-export const Icon = styled.div<IconProps>`
-  ${({ theme, hasIcon, disabled, statusVariant = 'default' }: ExtendedTheme<IconProps>) => css`
+export const Icon = styled.div<PillIconProps>`
+  ${({ theme, hasIcon, disabled, statusVariant = 'default' }: ExtendedTheme<PillIconProps>) => css`
     margin-right: ${hasIcon && theme.PillIconMarginLeft};
     color: ${getVariantColor(theme)[statusVariant]};
     color: ${statusVariant === 'default' && disabled && theme.PillDisabledColor};

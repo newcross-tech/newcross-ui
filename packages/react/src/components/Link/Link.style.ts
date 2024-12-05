@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { ExtendedTheme } from '../../types';
 import { getColorStyles } from '../Typography';
 import { getIconSize } from '../../utils/css';
-import { IconProps, LinkType } from './Link.types';
+import { LinkIconProps, LinkType } from './Link.types';
 
 export const Link = styled.a<LinkType>`
   ${({ theme, mode = 'light', color = 'primary', disabled }: ExtendedTheme<LinkType>) => css`
@@ -17,8 +17,8 @@ export const Link = styled.a<LinkType>`
   `};
 `;
 
-export const Icon = styled(FontAwesomeIcon)<IconProps>`
-  ${({ theme, variant }: ExtendedTheme<IconProps>) => css`
+export const Icon = styled(FontAwesomeIcon)<LinkIconProps>`
+  ${({ theme, variant }: ExtendedTheme<LinkIconProps>) => css`
     ${getIconSize(theme, variant, 'heightWidth')};
   `};
 `;

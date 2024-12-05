@@ -1,4 +1,3 @@
-import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { faCoffee } from '@fortawesome/pro-light-svg-icons/faCoffee';
 import { faHome } from '@fortawesome/pro-light-svg-icons/faHome';
