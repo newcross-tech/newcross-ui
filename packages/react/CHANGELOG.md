@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.23.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.23.0...@newcross-ui/react@2.23.1) (2024-12-05)
+
+
+### Reverts
+
+* Revert "chore(CAPP-0000): add typecheck  (#136)" ([0575e94](https://bitbucket.org/newcrossdev/newcross-ui/commits/0575e94ee6f3de8b15780688ba1abaaff766f0cc)), closes [#136](https://bitbucket.org/newcrossdev/newcross-ui/issue/136)
+
+
+
+
+
 # [2.23.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.22.2...@newcross-ui/react@2.23.0) (2024-12-02)
 
 
