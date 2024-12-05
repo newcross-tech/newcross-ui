@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Container, { ContainerProps, NewContainerProps } from './Container';
 import { LegacyContainerProps } from './LegacyContainer';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Container, { ContainerProps } from '../../components/Container';
 import TextInput from '../../components/TextInput';

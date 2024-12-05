@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fireEvent, render } from '@testing-library/react';
 import { byRole, byTestId } from 'testing-library-selector';
 import Button, { ButtonProps } from './Button';
-import React from 'react';
 
 const renderComponent = (customProps: Partial<ButtonProps>) => {
   const props = {

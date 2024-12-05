@@ -13,15 +13,15 @@ import {
 } from '@newcross-ui/react-native';
 import { Meta, Story } from '@storybook/react';
 import React from 'react';
-import { Platform, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 import { getParameters } from '../utils';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './FloatingActionButtonGroupInfo';
 import useState from 'storybook-addon-state';
+import { PlatformStyle } from '../PlatformStyle';
 
 const { SpacingBase0, SpacingBase24 } = native.healthforce;
-const isWeb = Platform.OS === 'web';
 
 export default {
   title: 'ReactNative/Components/FloatingActionButtonGroup',
@@ -67,34 +67,37 @@ export const Variants = () => {
         position: 'relative',
       }}
     >
-      <FloatingActionButtonGroup
-        style={{
-          position: isWeb ? 'fixed' : 'absolute',
-          bottom: 30,
-        }}
-      >
-        <FloatingActionButton
-          text={'Sort'}
-          onPress={() => {
-            setSort(!sort);
+      <PlatformStyle>
+        <FloatingActionButtonGroup
+          style={{
+            position: 'absolute',
+            bottom: 30,
           }}
-          isSelected={sort}
-        />
-        <FloatingActionButton
-          icon={faCalendarDays}
-          onPress={() => {
-            setCalendar(!calendar);
-          }}
-          isSelected={calendar}
-        />
-        <FloatingActionButton
-          text={'Filter'}
-          onPress={() => {
-            setFilter(!filter);
-          }}
-          isSelected={filter}
-        />
-      </FloatingActionButtonGroup>
+        >
+          <FloatingActionButton
+            text={'Sort'}
+            onPress={() => {
+              setSort(!sort);
+            }}
+            isSelected={sort}
+          />
+          <FloatingActionButton
+            icon={faCalendarDays}
+            onPress={() => {
+              setCalendar(!calendar);
+            }}
+            isSelected={calendar}
+          />
+          <FloatingActionButton
+            text={'Filter'}
+            onPress={() => {
+              setFilter(!filter);
+            }}
+            isSelected={filter}
+          />
+        </FloatingActionButtonGroup>
+      </PlatformStyle>
+
       <ScrollView style={{ width: '100%' }}>
         {ids.map((id) => (
           <Card

@@ -1,1 +1,2 @@
-export { default, LegacyContainerProps } from './LegacyContainer';
+export { default } from './LegacyContainer';
+export type { LegacyContainerProps } from './LegacyContainer';

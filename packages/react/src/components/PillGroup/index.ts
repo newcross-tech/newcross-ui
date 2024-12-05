@@ -1,1 +1,2 @@
-export { default, PillGroupProps } from './PillGroup';
+export { default } from './PillGroup';
+export type { PillGroupProps } from './PillGroup';
