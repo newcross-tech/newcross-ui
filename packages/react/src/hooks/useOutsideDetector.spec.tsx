@@ -1,5 +1,4 @@
 import { fireEvent, render, renderHook } from '@testing-library/react';
-import * as React from 'react';
 import { createRef } from 'react';
 import { byTestId } from 'testing-library-selector';
 import { useOutsideDetector } from './useOutsideDetector';

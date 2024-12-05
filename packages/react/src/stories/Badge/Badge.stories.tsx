@@ -1,4 +1,3 @@
-import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { faBarsFilter } from '@fortawesome/pro-light-svg-icons/faBarsFilter';
 import { faKitMedical } from '@fortawesome/pro-light-svg-icons/faKitMedical';

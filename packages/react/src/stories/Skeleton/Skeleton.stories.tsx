@@ -1,4 +1,3 @@
-import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import styled, { css } from 'styled-components';
 import Skeleton, { SkeletonProps } from '../../components/Skeleton';
@@ -8,6 +7,7 @@ import { getHaloValue } from '../../utils';
 import Container from '../../components/Container';
 import Card from '../../components/Card';
 import * as StoryTitle from '../StoryTitle';
+import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 
 export default {
   title: 'React/Components/Skeleton',
@@ -38,20 +38,21 @@ const ThumbnailSkeleton = styled(Skeleton)`
 `;
 
 const SkeletonText = styled(Skeleton)`
-  ${({ theme, mb }: ExtendedTheme<{ mb: boolean }>) =>
+  ${({ theme, mb }: ExtendedTheme<{ mb?: boolean }>) =>
     css`
       flex: 1;
       margin-bottom: ${mb && theme.SpacingBase8};
     `};
 `;
 
-const getTextHeight = (theme) => `${+getHaloValue(theme.SpacingBase12)}rem`;
+const getTextHeight = (theme: ThemeDesignTokens) =>
+  `${+getHaloValue(theme.SpacingBase12)}rem`;
 
 const SkeletonContent = styled.div`
-  ${({ theme, direction }: any) => css`
+  ${({ theme, direction }: ExtendedTheme<{ direction: string }>) => css`
     display: flex;
     width: 100%;
-    flex-direction: ${direction || 'row'};
+    flex-direction: ${direction};
     gap: ${theme.SpacingBase8};
   `};
 `;
@@ -87,7 +88,7 @@ export const Variants = () => {
           {Array.from({ length: 3 }).map((_, index) => (
             <Skeleton key={`skeleton-${index}`} height={getTextHeight(theme)} />
           ))}
-          <SkeletonContent>
+          <SkeletonContent direction="row">
             {Array.from({ length: 3 }).map((_, index) => (
               <SkeletonText
                 key={`skeleton-flexed-${index}`}

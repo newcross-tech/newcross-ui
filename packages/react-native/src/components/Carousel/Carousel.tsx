@@ -3,7 +3,6 @@ import {
   View,
   FlatList,
   ViewStyle,
-  TextStyle,
   NativeScrollEvent,
   NativeSyntheticEvent,
 } from 'react-native';

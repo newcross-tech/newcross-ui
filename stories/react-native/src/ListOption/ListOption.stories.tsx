@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react';
-import { useEffect, createRef } from 'react';
+import { useEffect } from 'react';
 import { ScrollView, View, Pressable } from 'react-native';
 import {
   ListOption,
@@ -8,7 +8,6 @@ import {
   Typography,
   TypographyVariant,
   BottomSheet,
-  BottomSheetRefProps,
   Button,
 } from '@newcross-ui/react-native';
 import Container from '../Container';
@@ -315,6 +314,7 @@ export const VariantWithBottomSheet = () => {
   ];
 
   const [selectedList, setSelectedList] = useState('selectedList', options);
+  const [expanded, setExpanded] = useState('expanded', false);
 
   const handleSelect = (id: number) => {
     const updatedList = selectedList.map((option) => {
@@ -327,13 +327,11 @@ export const VariantWithBottomSheet = () => {
     setSelectedList(updatedList);
   };
 
-  const refTemplate = createRef<BottomSheetRefProps>();
-
   return (
     <>
       <Container containerStyle={{ alignItems: 'center' }}>
         <View style={{ justifyContent: 'center' }}>
-          <Button onPress={() => refTemplate.current?.expand()}>
+          <Button onPress={() => setExpanded(true)}>
             Open To Select Options
           </Button>
           <Spacing />
@@ -352,9 +350,9 @@ export const VariantWithBottomSheet = () => {
           })}
         </View>
       </Container>
-      <BottomSheet ref={refTemplate} hasBackdrop={false}>
+      <BottomSheet isOpen={expanded} hasBackdrop={false}>
         <View style={{ alignItems: 'flex-end' }}>
-          <Pressable onPress={() => refTemplate.current?.collapse()}>
+          <Pressable onPress={() => setExpanded(false)}>
             <FontAwesomeIcon
               icon={faClose}
               size={16}

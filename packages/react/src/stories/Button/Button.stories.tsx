@@ -1,4 +1,3 @@
-import React from 'react';
 import { faChevronLeft } from '@fortawesome/pro-light-svg-icons/faChevronLeft';
 import { faChevronRight } from '@fortawesome/pro-light-svg-icons/faChevronRight';
 import { faCircleChevronRight } from '@fortawesome/pro-solid-svg-icons/faCircleChevronRight';
@@ -29,7 +28,7 @@ export const Overview = () => {
         <Container m="md" />
         <Button variant="secondary">Secondary Button</Button>
         <Container m="md" />
-        <Button variant="secondaryLight">Secondary Light Button</Button>
+        <Button variant="secondary">Secondary Light Button</Button>
         <Container m="md" />
         <Button variant="danger">Danger Button</Button>
         <Container m="md" />
@@ -83,9 +82,9 @@ export const Variants = () => {
       <Container m="md" />
       <StoryTitle.Regular>Secondary Light Button</StoryTitle.Regular>
       <Container m="md" />
-      <Button variant="secondaryLight">Secondary Light Button</Button>
+      <Button variant="secondary">Secondary Light Button</Button>
       <Container m="md" />
-      <Button disabled variant="secondaryLight">
+      <Button disabled variant="secondary">
         Secondary Light Disabled Button
       </Button>
       <Container m="md" />

@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import Brand from './Brand';
-import ThemeProvider, { ThemeDesignTokens } from './ThemeProvider';
+import ThemeProvider from './ThemeProvider';
 import useTheme from '../hooks/useTheme';
 
 jest.mock('@newcross-ui/design-tokens', () => ({
@@ -8,9 +8,8 @@ jest.mock('@newcross-ui/design-tokens', () => ({
 }));
 
 describe('ThemeProvider', () => {
-  let theme: ThemeDesignTokens;
   const Component = () => {
-    theme = useTheme();
+    useTheme();
     return <div data-testid="dummy-component" />;
   };
 
