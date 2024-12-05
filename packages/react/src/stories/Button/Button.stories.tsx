@@ -1,4 +1,3 @@
-import React from 'react';
 import { faChevronLeft } from '@fortawesome/pro-light-svg-icons/faChevronLeft';
 import { faChevronRight } from '@fortawesome/pro-light-svg-icons/faChevronRight';
 import { faCircleChevronRight } from '@fortawesome/pro-solid-svg-icons/faCircleChevronRight';

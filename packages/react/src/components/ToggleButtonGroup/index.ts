@@ -1,1 +1,2 @@
-export { default, ToggleButtonGroupProps } from './ToggleButtonGroup';
+export { default } from './ToggleButtonGroup';
+export type { ToggleButtonGroupProps } from './ToggleButtonGroup';

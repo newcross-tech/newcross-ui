@@ -4,7 +4,6 @@ import {
   PhoneInput,
   Typography,
   TypographyVariant,
-  BottomSheetRefProps,
   BottomSheet,
   ListOption,
 } from '@newcross-ui/react-native';
@@ -15,7 +14,7 @@ import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './PhoneInputInfo';
 import useState from 'storybook-addon-state';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import React, { createRef } from 'react';
+import React from 'react';
 import { PHONE_FORMAT_DATA } from './PhoneFormatData.constants';
 import { PhoneInputProps } from '@newcross-ui/react-native/build/components/PhoneInput';
 
@@ -42,7 +41,7 @@ export const Overview = () => {
 };
 
 export const Variant = () => {
-  const ref = createRef<BottomSheetRefProps>();
+  const [expanded, setExpanded] = useState('expanded', false);
 
   const defualtValues = {
     phoneInput: {
@@ -64,7 +63,7 @@ export const Variant = () => {
   const [phoneNumber, setPhoneNumber] = useState('phoneNumber', '');
   const handleSelection = (countryData: PhoneInputTypes) => {
     setPhoneInputSelected(countryData);
-    ref.current?.collapse();
+    setExpanded(false);
   };
 
   return (
@@ -80,11 +79,11 @@ export const Variant = () => {
           onChangePhoneNumber={(phoneInput) => setPhoneNumber(phoneInput)}
           phoneInputSelected={phoneInputSelected}
           phoneNumber={phoneNumber}
-          handleDropDownSelect={() => ref.current?.expand()}
+          handleDropDownSelect={() => setExpanded(true)}
         />
         <Spacing />
       </Container>
-      <BottomSheet ref={ref}>
+      <BottomSheet isOpen={expanded}>
         <View>
           <Spacing />
           {PHONE_FORMAT_DATA.map((countryData) => (
@@ -109,7 +108,7 @@ export const Variant = () => {
 };
 
 const Template: Story<PhoneInputProps> = () => {
-  const ref = createRef<BottomSheetRefProps>();
+  const [expanded, setExpanded] = useState('expanded', false);
 
   const defualtValues = {
     phoneInput: {
@@ -131,7 +130,7 @@ const Template: Story<PhoneInputProps> = () => {
 
   const handleSelection = (countryData: PhoneInputTypes) => {
     setPhoneInputSelected2(countryData);
-    ref.current?.collapse();
+    setExpanded(false);
   };
 
   return (
@@ -146,11 +145,11 @@ const Template: Story<PhoneInputProps> = () => {
           onChangePhoneNumber={(phoneInput) => setPhoneNumber2(phoneInput)}
           phoneInputSelected={phoneInputSelected2}
           phoneNumber={phoneNumber2}
-          handleDropDownSelect={() => ref.current?.expand()}
+          handleDropDownSelect={() => setExpanded(true)}
         />
         <Spacing />
       </Container>
-      <BottomSheet ref={ref}>
+      <BottomSheet isOpen={expanded}>
         <View>
           <Spacing />
           {PHONE_FORMAT_DATA.map((countryData) => (

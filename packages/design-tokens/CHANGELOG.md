@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.47.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.47.1...@newcross-ui/design-tokens@1.47.2) (2024-12-05)
+
+
+### Reverts
+
+* Revert "chore(CAPP-0000): add typecheck  (#136)" ([0575e94](https://bitbucket.org/newcrossdev/newcross-ui/commits/0575e94ee6f3de8b15780688ba1abaaff766f0cc)), closes [#136](https://bitbucket.org/newcrossdev/newcross-ui/issue/136)
+
+
+
+
+
 ## [1.47.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.47.0...@newcross-ui/design-tokens@1.47.1) (2024-11-29)
 
 **Note:** Version bump only for package @newcross-ui/design-tokens

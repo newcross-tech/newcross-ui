@@ -1,4 +1,3 @@
-import React from 'react';
 import { faCircleInfo } from '@fortawesome/pro-solid-svg-icons/faCircleInfo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Meta, Story } from '@storybook/react';

@@ -1,6 +1,6 @@
 {
   "name": "@newcross-ui/design-tokens",
-  "version": "1.47.1",
+  "version": "1.47.2",
   "description": "Design tokens for native and web projects across multiple brands",
   "author": "itdev@newcrosshealthcare.com",
   "license": "MIT",
@@ -23,6 +23,7 @@
     "prebuild": "rm -rf build",
     "build:tokens": "ts-node config.ts && ts-node scripts/createIndexFiles.ts",
     "build": "yarn build:tokens",
-    "build:watch": "nodemon --watch 'src/**' --exec 'yarn build:tokens'"
+    "build:watch": "nodemon --watch 'src/**' --exec 'yarn build:tokens'",
+    "typecheck": "tsc --noEmit"
   }
 }

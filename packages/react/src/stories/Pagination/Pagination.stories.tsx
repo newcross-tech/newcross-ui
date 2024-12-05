@@ -1,4 +1,3 @@
-import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Container from '../../components/Container';
 import Pagination, { PaginationProps } from '../../components/Pagination';
