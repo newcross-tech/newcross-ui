@@ -4,6 +4,7 @@ import { LegacyContainerProps } from './LegacyContainer';
 import { breakpoint } from '../../../utils/css';
 import { ThemeDesignTokens } from '../../../theme/ThemeProvider';
 import { LegacyContainerGapSpacing, LegacyContainerSpacing } from './LegacyContainer.types';
+import { resetButtonCSS } from '../utils';
 
 const generateStyle = (
   theme: ThemeDesignTokens,
@@ -15,11 +16,11 @@ const generateStyle = (
   }
   if (propValue === 'auto' || propValue === 'inherit') {
     return css`
-      ${`${property}: ${propValue}`};
+      ${property}: ${propValue};
     `;
   }
   return css`
-    ${`${property}: ${theme?.[propValue]}`};
+    ${property}: ${theme?.[propValue]};
   `;
 };
 
@@ -79,14 +80,7 @@ export const LegacyContainer = styled.div<ExtendedTheme<LegacyContainerProps>>`
     fullWidth,
     semanticTag,
   }) => css`
-    ${semanticTag === 'button' &&
-    css`
-      border: none;
-      background: transparent;
-      padding-block: 0;
-      padding-inline: 0;
-      cursor: pointer;
-    `}
+    ${semanticTag === 'button' && resetButtonCSS()}
     ${display && `display: ${display};`}
     ${flexWrap && `flex-wrap: ${flexWrap};`}
     ${justifyContent && `justify-content: ${justifyContent};`}

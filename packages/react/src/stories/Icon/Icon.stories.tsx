@@ -31,7 +31,7 @@ Interactive.args = {
   icon: faCoffee,
   variant: 'h1',
   color: 'defaultDark',
-  mode: 'light',
+  scheme: 'light',
 };
 
 export const Variants = () => (
@@ -48,6 +48,26 @@ export const Variants = () => (
       <Icon icon={faCheckCircle} variant="h2" color="success" />
       <Icon icon={faExclamationCircle} variant="h2" color="warning" />
       <Icon icon={faCoffee} variant="h2" color="danger" />
+    </Container>
+
+    <Typography variant="h2">Alignment with Typography</Typography>
+    <Container flexDirection="row" gap="lg">
+      <Container gap="sm" alignItems="center">
+        <Icon icon={faHome} variant="h2" color="defaultDark" />
+        <Typography variant="h2">Home</Typography>
+      </Container>
+      <Container gap="sm" alignItems="center">
+        <Icon icon={faCoffee} variant="h3" color="danger" />
+        <Typography variant="h3" color="danger">
+          Coffee
+        </Typography>
+      </Container>
+      <Container gap="sm" alignItems="center">
+        <Icon icon={faExclamationCircle} variant="p1" color="warning" />
+        <Typography variant="p1" color="warning">
+          Warning
+        </Typography>
+      </Container>
     </Container>
   </Container>
 );

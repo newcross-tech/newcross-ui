@@ -6,8 +6,8 @@ import { getIconSize } from '../../utils/css';
 import { getColorStyles } from '../Typography';
 
 export const Icon = styled(FontAwesomeIcon)<IconProps>`
-  ${({ theme, variant, color, mode = 'light' }: ExtendedTheme<IconProps>) => css`
+  ${({ theme, variant, color, scheme = 'light' }: ExtendedTheme<IconProps>) => css`
     ${getIconSize(theme, variant, 'heightWidth')};
-    ${color ? { color: getColorStyles(theme)[mode][color] } : { color: 'inherit' }};
+    ${color ? { color: getColorStyles(theme)[scheme][color] } : { color: 'inherit' }};
   `};
 `;

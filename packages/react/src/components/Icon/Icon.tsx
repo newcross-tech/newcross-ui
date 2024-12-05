@@ -17,7 +17,7 @@ export type IconProps = {
   /**
    * The mode of the component.
    */
-  mode?: Mode;
+  scheme?: Mode;
   /**
    * The color of the icon.
    */
@@ -28,12 +28,17 @@ const Icon = ({
   icon,
   variant,
   color = 'defaultDark',
-  mode = 'light',
+  scheme = 'light',
   ...rest
 }: IconProps) => {
   return (
     <Container {...rest}>
-      <Styled.Icon icon={icon} variant={variant} color={color} mode={mode} />
+      <Styled.Icon
+        icon={icon}
+        variant={variant}
+        color={color}
+        scheme={scheme}
+      />
     </Container>
   );
 };
