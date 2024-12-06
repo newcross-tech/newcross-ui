@@ -3,6 +3,7 @@ import { TypographyVariant, TypographyColors } from '../Typography';
 import * as Styled from './Icon.style';
 import { Mode } from '../../types';
 import Container, { ContainerProps } from '../Container';
+import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 
 export type IconProps = {
   /**
@@ -21,6 +22,10 @@ export type IconProps = {
    * The color of the icon.
    */
   color?: TypographyColors;
+  /**
+   * The rotation of the icon.
+   */
+  rotation?: FontAwesomeIconProps['rotation'];
 } & ContainerProps;
 
 const Icon = ({
@@ -28,6 +33,7 @@ const Icon = ({
   variant,
   color = 'defaultDark',
   scheme = 'light',
+  rotation,
   ...rest
 }: IconProps) => {
   return (
@@ -37,6 +43,7 @@ const Icon = ({
         variant={variant}
         color={color}
         scheme={scheme}
+        rotation={rotation}
       />
     </Container>
   );

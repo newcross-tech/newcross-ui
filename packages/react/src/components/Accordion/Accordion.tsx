@@ -102,7 +102,8 @@ const Accordion = ({
             </Typography>
           </Container>
           <Container>
-            <Styled.Icon
+            <Styled.AnimatedIcon
+              variant="h2"
               icon={faChevronDown}
               rotation={(openAccordion ? 180 : 0) as RotateProp}
               $animationSpeed={$animationSpeed}
