@@ -14,9 +14,11 @@ export const Variants = () => {
   return (
     <>
       <StoryTitle.Regular>Primary Radio Variants</StoryTitle.Regular>
-      <Container m="SpacingBase4" />
+      <Container m="xs" />
       <Radio value="1" label="Primary" />
+      <Radio value="1" label="Primary with Error" hasError />
       <Radio selected value="2" label="Primary Selected" />
+      <Radio selected value="1" label="Primary Selected with Error" hasError />
       <Radio label="Disabled" value="3" disabled />
       <Radio selected value="4" label="Disabled Selected" disabled />
       <Radio
@@ -27,42 +29,52 @@ export const Variants = () => {
           </span>
         }
       />
-      <Container m="SpacingBase4" />
+      <Container m="xs" />
       <StoryTitle.Regular>Secondary Radio Variants</StoryTitle.Regular>
-      <Container m="SpacingBase4" />
-      <Radio variant="secondary" value="5" label="Secondary" />
-      <Container m="SpacingBase4" />
-      <Radio
-        selected
-        variant="secondary"
-        value="6"
-        label="Secondary Selected"
-      />
-      <Container m="SpacingBase4" />
-      <Radio
-        disabled
-        variant="secondary"
-        value="7"
-        label="Secondary Disabled"
-      />
-      <Container m="SpacingBase4" />
-      <Radio
-        selected
-        disabled
-        variant="secondary"
-        value="8"
-        label="Secondary Disabled Selected"
-      />
-      <Container m="SpacingBase4" />
-      <Radio
-        variant="secondary"
-        value="10"
-        label={
-          <span>
-            <b>custom</b> react label
-          </span>
-        }
-      />
+      <Container flexDirection="column" gap="sm">
+        <Radio variant="secondary" value="5" label="Secondary" />
+        <Radio
+          variant="secondary"
+          value="5"
+          label="Secondary with Error"
+          hasError
+        />
+        <Radio
+          selected
+          variant="secondary"
+          value="6"
+          label="Secondary Selected"
+        />
+        <Radio
+          selected
+          variant="secondary"
+          value="6"
+          label="Secondary Selected with Error"
+          hasError
+        />
+        <Radio
+          disabled
+          variant="secondary"
+          value="7"
+          label="Secondary Disabled"
+        />
+        <Radio
+          selected
+          disabled
+          variant="secondary"
+          value="8"
+          label="Secondary Disabled Selected"
+        />
+        <Radio
+          variant="secondary"
+          value="10"
+          label={
+            <span>
+              <b>custom</b> react label
+            </span>
+          }
+        />
+      </Container>
     </>
   );
 };

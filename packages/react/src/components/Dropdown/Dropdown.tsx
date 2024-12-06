@@ -143,7 +143,7 @@ const Dropdown = ({
       )}
       <Styled.HeaderContainer
         tabIndex={!disabled ? 0 : -1}
-        onKeyPress={(event: React.KeyboardEvent<HTMLElement>) =>
+        onKeyDown={(event: React.KeyboardEvent<HTMLElement>) =>
           onSpacePressTrigger(event, toggleFocus)
         }
         data-testid={`${baseTestId}-header-container-${testID}`}
@@ -209,7 +209,7 @@ const Dropdown = ({
                   isMulti={isMulti}
                   variant={'paragraph1'}
                   onClick={onOptionSelect}
-                  onKeyPress={(event: React.KeyboardEvent<HTMLElement>) =>
+                  onKeyDown={(event: React.KeyboardEvent<HTMLElement>) =>
                     onSpacePressTrigger(event, onOptionSelect)
                   }
                   tabIndex={0}

@@ -11,7 +11,7 @@ export function executeKeyPress(
   locator: LocatorType,
   customOptions?: KeyOptions
 ) {
-  fireEvent.keyPress(
+  fireEvent.keyDown(
     locator,
     customOptions || {
       key: 'Space',
