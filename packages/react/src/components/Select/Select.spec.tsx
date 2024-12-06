@@ -15,6 +15,7 @@ const ui = {
   selectComponent: byTestId('select-component'),
   selectLabel: byTestId('select-label'),
   selectMessageText: byTestId('select-message-text'),
+  selectHelperElement: byText('Helper Text'),
   selectErrorText: byTestId('select-error-text'),
   selectCrossicon: byTestId('crossicon'),
 };
@@ -26,14 +27,20 @@ describe('Select', () => {
     expect(ui.selectLabel.get()).toBeVisible();
   });
 
-  it('should render helper text', () => {
+  it('should render helper text as string', () => {
     render(<Select {...defaultProps} helperText={'Helper Text'} />);
 
     expect(ui.selectMessageText.get()).toBeVisible();
   });
 
+  it('should render helper text as ReactElement', () => {
+    render(<Select {...defaultProps} helperText={<div>Helper Text</div>} />);
+
+    expect(ui.selectHelperElement.get()).toBeVisible();
+  });
+
   it('should render error', () => {
-    render(<Select {...defaultProps} helperText={'Error Text'} hasError />);
+    render(<Select {...defaultProps} errorText={'Error Text'} hasError />);
 
     expect(ui.selectErrorText.get()).toBeVisible();
   });
