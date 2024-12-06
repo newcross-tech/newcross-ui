@@ -1,6 +1,6 @@
 import { faChevronDown } from '@fortawesome/pro-light-svg-icons/faChevronDown';
 import { faXmark } from '@fortawesome/pro-light-svg-icons/faXmark';
-import { FunctionComponent } from 'react';
+import { FunctionComponent, ReactElement, useMemo } from 'react';
 import {
   components,
   default as ReactSelect,
@@ -109,7 +109,7 @@ export type SelectProps<
   /**
    * Adds helper text
    */
-  helperText?: string;
+  helperText?: string | ReactElement;
   /**
    * Adds error text
    */
@@ -170,6 +170,32 @@ const Select = <
 }: SelectProps<Option, IsMulti, Group>) => {
   const theme = useTheme();
 
+  const message = useMemo(() => {
+    if (errorText) {
+      return (
+        <Styled.MessageText
+          variant="paragraph2"
+          testID={`${baseTestId}-error-text`}
+          hasError={!!hasError}
+        >
+          {errorText}
+        </Styled.MessageText>
+      );
+    }
+    if (typeof helperText === 'string') {
+      return (
+        <Styled.MessageText
+          variant="paragraph2"
+          testID={`${baseTestId}-message-text`}
+          hasError={!!hasError}
+        >
+          {helperText}
+        </Styled.MessageText>
+      );
+    }
+    return helperText;
+  }, [errorText, helperText, hasError]);
+
   return (
     <div
       data-testid={
@@ -209,17 +235,7 @@ const Select = <
         />
       </SelectContext.Provider>
 
-      {(helperText || errorText) && (
-        <Styled.MessageText
-          variant={'paragraph2'}
-          testID={
-            hasError ? `${baseTestId}-error-text` : `${baseTestId}-message-text`
-          }
-          hasError={!!hasError}
-        >
-          {errorText || helperText}
-        </Styled.MessageText>
-      )}
+      {(errorText || helperText) && message}
     </div>
   );
 };
