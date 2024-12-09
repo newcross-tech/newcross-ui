@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
 import { ExtendedTheme } from '../../types';
-import Typography, { getColorStyles } from '../Typography';
-import { LinkType } from './Link.types';
+import { getColorStyles } from '../Typography';
+import { getIconSize } from '../../utils/css';
+import { LinkIconProps, LinkType } from './Link.types';
 
 export const Link = styled.a<LinkType>`
   ${({ theme, disabled }: ExtendedTheme<LinkType>) => css`
@@ -13,9 +14,8 @@ export const Link = styled.a<LinkType>`
   `};
 `;
 
-export const Text = styled(Typography)`
-  ${({ theme, mode = 'light', color = 'primary', disabled }: ExtendedTheme<LinkType>) => css`
-    color: ${disabled ? theme.ElementsTextDisabled : theme.ElementsTextDefaultDark};
-    text-decoration: underline ${getColorStyles(theme)[mode][color]};
-  `}
+export const Icon = styled(FontAwesomeIcon)<LinkIconProps>`
+  ${({ theme, variant }: ExtendedTheme<LinkIconProps>) => css`
+    ${getIconSize(theme, variant, 'heightWidth')};
+  `};
 `;

@@ -1,9 +1,8 @@
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { TypographyVariant, TypographyColors } from '../Typography';
 import * as Styled from './Icon.style';
-import { Mode } from '../../types';
 import Container, { ContainerProps } from '../Container';
-import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
+import { Scheme } from '../../types';
 
 export type IconProps = {
   /**
@@ -15,17 +14,13 @@ export type IconProps = {
    */
   variant: TypographyVariant;
   /**
-   * The mode of the component.
+   * The scheme of the component.
    */
-  scheme?: Mode;
+  scheme?: Scheme;
   /**
    * The color of the icon.
    */
   color?: TypographyColors;
-  /**
-   * The rotation of the icon.
-   */
-  rotation?: FontAwesomeIconProps['rotation'];
 } & ContainerProps;
 
 const Icon = ({
@@ -33,7 +28,6 @@ const Icon = ({
   variant,
   color = 'defaultDark',
   scheme = 'light',
-  rotation,
   ...rest
 }: IconProps) => {
   return (
@@ -43,7 +37,6 @@ const Icon = ({
         variant={variant}
         color={color}
         scheme={scheme}
-        rotation={rotation}
       />
     </Container>
   );
