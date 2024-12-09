@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.24.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.23.2...@newcross-ui/react@2.24.0) (2024-12-09)
+
+
+### Features
+
+* **HFAUI-52:** create Icon ([#155](https://bitbucket.org/newcrossdev/newcross-ui/issues/155)) ([f09a98f](https://bitbucket.org/newcrossdev/newcross-ui/commits/f09a98fb68bec344d852112ad528f220a122819e))
+
+
+
+
+
 ## [2.23.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.23.1...@newcross-ui/react@2.23.2) (2024-12-06)
 
 **Note:** Version bump only for package @newcross-ui/react
