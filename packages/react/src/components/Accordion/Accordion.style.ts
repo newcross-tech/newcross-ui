@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import { ExtendedTheme, Theme } from '../../types';
-
 import { AccordionAnimatedStyleArgs, AccordionContentProps, AnimationSpeedType } from './Accordion.types';
 import Container from '../Container';
 import Icon from '../Icon';
