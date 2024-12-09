@@ -3,6 +3,7 @@ import Select, { SelectProps } from '../../components/Select';
 import { DESCRIPTION, DO, DONT, TITLE } from './Select.info';
 import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
+import Typography from '../../components/Typography';
 
 export default {
   title: 'React/Components/Select',
@@ -71,6 +72,11 @@ export const SingleSelectVariants = () => {
         placeholder="Select some 'labels'"
         options={options}
         isSearchable={false}
+        helperText={
+          <Typography variant="paragraph2" align="right">
+            This is a right aligned custom helper text
+          </Typography>
+        }
       />
       <Select
         id="disable-select"
