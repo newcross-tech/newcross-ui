@@ -4,6 +4,7 @@ import { LegacyContainerProps } from './LegacyContainer';
 import { breakpoint } from '../../../utils/css';
 import { ThemeDesignTokens } from '../../../theme/ThemeProvider';
 import { LegacyContainerGapSpacing, LegacyContainerSpacing } from './LegacyContainer.types';
+import { resetButtonCSS } from '../utils';
 
 const generateStyle = (
   theme: ThemeDesignTokens,
@@ -77,7 +78,9 @@ export const LegacyContainer = styled.div<ExtendedTheme<LegacyContainerProps>>`
     gapMobile,
     display,
     fullWidth,
+    semanticTag,
   }) => css`
+    ${semanticTag === 'button' && resetButtonCSS()}
     ${display && `display: ${display};`}
     ${flexWrap && `flex-wrap: ${flexWrap};`}
     ${justifyContent && `justify-content: ${justifyContent};`}

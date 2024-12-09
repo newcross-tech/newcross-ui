@@ -4,6 +4,7 @@ import { ExtendedTheme, responsiveSpacingMap, SemanticSpacing } from '../../type
 import { getSortedBreakpoints } from '../../utils';
 import { breakpoint } from '../../utils/css';
 import { NewContainerProps } from './Container';
+import { resetButtonCSS } from './utils';
 
 const applyResponsiveStyles = (
   theme: ThemeDesignTokens,
@@ -63,7 +64,9 @@ export const Container = styled.div<ExtendedTheme<NewContainerProps>>`
     gap,
     display,
     fullWidth,
+    semanticTag,
   }) => css`
+    ${semanticTag === 'button' && resetButtonCSS()}
     ${applyResponsiveStyles(theme, 'margin', m)}
     ${applyResponsiveStyles(theme, 'margin-left', mx)}
     ${applyResponsiveStyles(theme, 'margin-right', mx)}

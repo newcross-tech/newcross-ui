@@ -28,7 +28,9 @@ export const Overview = () => {
         <Container m="md" />
         <Button variant="secondary">Secondary Button</Button>
         <Container m="md" />
-        <Button variant="secondary">Secondary Light Button</Button>
+        <Button variant="secondary" scheme="dark">
+          Secondary Light Button
+        </Button>
         <Container m="md" />
         <Button variant="danger">Danger Button</Button>
         <Container m="md" />
@@ -82,9 +84,11 @@ export const Variants = () => {
       <Container m="md" />
       <StoryTitle.Regular>Secondary Light Button</StoryTitle.Regular>
       <Container m="md" />
-      <Button variant="secondary">Secondary Light Button</Button>
+      <Button variant="secondary" scheme="dark">
+        Secondary Light Button
+      </Button>
       <Container m="md" />
-      <Button disabled variant="secondary">
+      <Button disabled variant="secondary" scheme="dark">
         Secondary Light Disabled Button
       </Button>
       <Container m="md" />

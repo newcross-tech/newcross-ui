@@ -85,7 +85,7 @@ export const getCoreStyles = ({
   ${getTypographyStyles(theme, variant)};
   ${numberOfLines && getElipsisStyles(numberOfLines)};
   margin-bottom: ${gutterBottom ? theme.SpacingBase8 : theme.SpacingBase0};
-  ${color ? { color: getColorStyles(theme)[mode]?.[color] } : { color: 'inherit' }};
+  ${color ? { color: getColorStyles(theme)[mode][color] } : { color: 'inherit' }};
   ${align ? { textAlign: align } : { textAlign: 'inherit' }};
 
   b,

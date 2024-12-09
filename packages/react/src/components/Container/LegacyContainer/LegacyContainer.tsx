@@ -234,6 +234,7 @@ const LegacyContainer = ({
       display={display}
       data-testid={testID}
       as={semanticTag}
+      semanticTag={semanticTag}
     >
       {children}
     </Styled.LegacyContainer>

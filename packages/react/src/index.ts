@@ -82,3 +82,4 @@ export { default as ActionModal } from './components/ActionModal';
 export type { ActionModalProps } from './components/ActionModal';
 export { default as PhoneNumberInput } from './components/PhoneNumberInput';
 export type { PhoneNumberInputProps } from './components/PhoneNumberInput';
+export { default as Icon } from './components/Icon';

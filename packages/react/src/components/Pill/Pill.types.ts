@@ -8,11 +8,12 @@ type ExtendedPillProps = PillProps & {
   isSelected: boolean;
 };
 
-export type IconProps = TextProp & Pick<ExtendedPillProps, 'hasIcon'>;
+export type PillIconProps = TextProp & Pick<ExtendedPillProps, 'hasIcon'>;
 
 export type BackGroundProps = TextProp & Pick<SelectedProps, 'isSelected'>;
 
-export type RemoveIconProps = IconProps & Pick<ExtendedPillProps, 'hasLabel'>;
+export type RemoveIconProps = PillIconProps &
+  Pick<ExtendedPillProps, 'hasLabel'>;
 
 export type SelectedProps = TextProp &
   Pick<

@@ -12,6 +12,7 @@ export type Theme = {
 };
 export type ExtendedTheme<T> = Theme & T;
 export type Mode = 'dark' | 'light';
+export type Scheme = 'dark' | 'light';
 
 export type LegacyThemeSpacing = keyof Pick<
   ThemeDesignTokens,
