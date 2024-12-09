@@ -1,8 +1,8 @@
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { TypographyVariant, TypographyColors } from '../Typography';
 import * as Styled from './Icon.style';
-import { Mode } from '../../types';
 import Container, { ContainerProps } from '../Container';
+import { Scheme } from '../../types';
 
 export type IconProps = {
   /**
@@ -14,9 +14,9 @@ export type IconProps = {
    */
   variant: TypographyVariant;
   /**
-   * The mode of the component.
+   * The scheme of the component.
    */
-  scheme?: Mode;
+  scheme?: Scheme;
   /**
    * The color of the icon.
    */
