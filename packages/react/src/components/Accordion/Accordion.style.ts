@@ -1,9 +1,8 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled, { css } from 'styled-components';
 import { ExtendedTheme, Theme } from '../../types';
-
-import { AccordionAnimatedStyleArgs, AccordionContentProps, AccordionIconProps } from './Accordion.types';
+import { AccordionAnimatedStyleArgs, AccordionContentProps, AnimationSpeedType } from './Accordion.types';
 import Container from '../Container';
+import Icon from '../Icon';
 
 export const getAnimatedStyles = ({
   openAccordion,
@@ -42,8 +41,10 @@ export const HeaderContent = styled(Container)`
   `}
 `;
 
-export const Icon = styled(FontAwesomeIcon)`
-  ${({ $animationSpeed }: ExtendedTheme<AccordionIconProps>) => css`
-    transition: ${`all ${$animationSpeed}s ease-in-out`};
+export const AnimatedIcon = styled(Icon)<AnimationSpeedType>`
+  ${({ $animationSpeed }) => css`
+    > svg {
+      transition: ${`all ${$animationSpeed}s ease-in-out`};
+    }
   `}
 `;

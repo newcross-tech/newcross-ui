@@ -1,9 +1,10 @@
 import { AnchorHTMLAttributes } from 'react';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
-import Typography, { TypographyProps } from '../Typography';
+import { TypographyProps } from '../Typography';
 import Container from '../Container';
 import { TestProp } from '../../types';
 import * as Styled from './Link.style';
+import Icon from '../Icon';
 
 type LinkTypographyVariant = Exclude<
   TypographyProps['variant'],
@@ -50,29 +51,17 @@ const Link = ({
       disabled={disabled}
       {...restProps}
     >
-      <Typography variant={variant} {...restProps}>
+      <Container display="inline-flex" alignItems="center" gap="sm">
         {leftIcon && (
-          <Container display="inline" mr="sm">
-            <Styled.Icon
-              data-testid="link-left-icon"
-              icon={leftIcon}
-              leftIcon={leftIcon}
-              variant={variant}
-            />
-          </Container>
+          <Icon testID="link-left-icon" variant={variant} icon={leftIcon} />
         )}
-        {children}
+        <Styled.Text variant={variant} {...restProps}>
+          {children}
+        </Styled.Text>
         {rightIcon && (
-          <Container display="inline" ml="sm">
-            <Styled.Icon
-              data-testid="link-right-icon"
-              icon={rightIcon}
-              rightIcon={rightIcon}
-              variant={variant}
-            />
-          </Container>
+          <Icon testID="link-right-icon" variant={variant} icon={rightIcon} />
         )}
-      </Typography>
+      </Container>
     </Styled.Link>
   );
 };
