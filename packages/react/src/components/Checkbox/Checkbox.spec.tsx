@@ -113,7 +113,7 @@ describe('Checkbox Component', () => {
     expect(onChange).toHaveBeenCalled();
     expect(onChange).toHaveBeenCalledWith(
       true,
-      expect.objectContaining({ type: 'keypress' })
+      expect.objectContaining({ type: 'keydown' })
     );
   });
 });

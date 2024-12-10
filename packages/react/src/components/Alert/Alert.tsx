@@ -94,7 +94,7 @@ const Alert = ({
           tabIndex={1}
           onClick={onClose}
           data-testid={`${testID}-close-icon`}
-          onKeyPress={(event) => onClose && onSpacePressTrigger(event, onClose)}
+          onKeyDown={(event) => onClose && onSpacePressTrigger(event, onClose)}
           position={'right'}
         >
           <Styled.Icon icon={faXmark} />

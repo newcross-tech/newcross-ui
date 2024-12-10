@@ -97,7 +97,7 @@ const Checkbox = ({
         <LabelStyled.Label
           disabled={disabled}
           variant={'paragraph1'}
-          onKeyPress={(event: React.KeyboardEvent<HTMLElement>) =>
+          onKeyDown={(event: React.KeyboardEvent<HTMLElement>) =>
             onSpacePressTrigger(event, handleChecked)
           }
           tabIndex={!disabled && allowTab ? 0 : -1}

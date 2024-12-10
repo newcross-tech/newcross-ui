@@ -3,6 +3,7 @@ import { TestProp } from '../../types';
 import { onSpacePressTrigger } from '../../utils';
 import * as Styled from './Radio.style';
 import { RadioValue, RadioVariant } from './Radio.types';
+import Container from '../Container';
 
 export type RadioProps<T extends RadioValue> = {
   /**
@@ -34,6 +35,10 @@ export type RadioProps<T extends RadioValue> = {
    * Used to define background and border variant
    */
   variant?: RadioVariant;
+  /**
+   * Used to define color variant of the radio
+   */
+  hasError?: boolean;
 } & TestProp;
 
 const baseTestId = 'radio';
@@ -47,6 +52,7 @@ function Radio<T extends RadioValue>({
   testID = '',
   name,
   variant = 'primary',
+  hasError = false,
 }: RadioProps<T>): ReactElement<RadioProps<T>> {
   const onChangeHandler = () => {
     if (disabled) return;
@@ -57,26 +63,34 @@ function Radio<T extends RadioValue>({
 
   return (
     <Styled.Radio
+      alignItems="center"
+      p={'sm'}
+      gap="xs"
       variant={variant}
       selected={selected}
       disabled={disabled}
+      hasError={hasError}
       onChange={onChangeHandler}
-      as={variant === 'primary' ? 'div' : 'label'}
+      semanticTag={variant === 'primary' ? 'div' : 'label'}
     >
-      <input
-        id={id}
-        type="radio"
-        data-testid={`${baseTestId}-input-${testID}`}
-        name={name ?? id}
-        checked={selected}
-        onChange={onChangeHandler}
-        disabled={disabled}
-        onKeyPress={(event) => onSpacePressTrigger(event, onChangeHandler)}
-      />
+      <Container p="xs">
+        <input
+          id={id}
+          type="radio"
+          data-testid={`${baseTestId}-input-${testID}`}
+          name={name ?? id}
+          checked={selected}
+          onChange={onChangeHandler}
+          disabled={disabled}
+          onKeyDown={(event) => onSpacePressTrigger(event, onChangeHandler)}
+        />
+      </Container>
       <Styled.Label
         variant={'paragraph1'}
         testID={`${baseTestId}-label`}
         htmlFor={id}
+        hasError={hasError}
+        disabled={disabled}
       >
         {label}
       </Styled.Label>

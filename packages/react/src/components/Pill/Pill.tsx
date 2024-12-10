@@ -116,7 +116,7 @@ const Pill = ({
       onClick={handleSelect}
       isRemovable={removable}
       tabIndex={!disabled && !removable ? 0 : -1}
-      onKeyPress={(event) => onKeyPressHandler(event, true)}
+      onKeyDown={(event) => onKeyPressHandler(event, true)}
       hasPadding={hasPadding}
       statusVariant={statusVariant}
       style={coreStyles}
@@ -145,7 +145,7 @@ const Pill = ({
             data-testid={`${baseTestId}-clickable${testID}`}
             onClick={onRemoveHandler}
             tabIndex={!disabled ? 0 : -1}
-            onKeyPress={(event) => onKeyPressHandler(event, false)}
+            onKeyDown={(event) => onKeyPressHandler(event, false)}
             disabled={disabled}
             hasIcon={!!icon}
             hasLabel={!!label}

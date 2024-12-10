@@ -64,7 +64,7 @@ const Tabs = ({
               <Styled.Tab
                 data-testid={`${baseTestId}-${index}`}
                 onClick={() => !disabled && onCurrentIndexChange(index)}
-                onKeyPress={(event) =>
+                onKeyDown={(event) =>
                   onSpacePressTrigger(
                     event,
                     () => !disabled && onCurrentIndexChange(index)
