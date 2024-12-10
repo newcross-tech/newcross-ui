@@ -1,4 +1,5 @@
 import { Scheme } from '../../types';
+import Container from '../Container';
 import { logoPaths } from './NXLogo.constants';
 
 export type NXLogoProps = {
@@ -12,16 +13,10 @@ export type NXLogoProps = {
   scheme?: Scheme;
 };
 
-const NXLogo = ({ type, scheme = 'light' }: NXLogoProps) => {
-  return (
-    <span
-      role="img"
-      aria-label={`NX ${type} ${scheme}`}
-      data-testid={`NX-${type}-${scheme}`}
-    >
-      {logoPaths[type][scheme]}
-    </span>
-  );
-};
+const NXLogo = ({ type, scheme = 'light' }: NXLogoProps) => (
+  <Container testID={`NX-${type}-${scheme}`}>
+    {logoPaths[type][scheme]}
+  </Container>
+);
 
 export default NXLogo;

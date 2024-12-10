@@ -2,8 +2,6 @@ import { render } from '@testing-library/react';
 import { byTestId } from 'testing-library-selector';
 import NXLogo, { NXLogoProps } from './NXLogo';
 
-type NXLogoTestCase = NXLogoProps & { expectedAriaLabel: string };
-
 const renderComponent = (customProps: Partial<NXLogoProps>) => {
   const props: NXLogoProps = {
     type: 'logo',
@@ -20,20 +18,20 @@ describe('NXLogo Component', () => {
       byTestId(`NX-${type}-${scheme}`),
   };
 
-  const testCases: Array<NXLogoTestCase> = [
-    { type: 'logo', scheme: 'dark', expectedAriaLabel: 'NX logo dark' },
-    { type: 'logo', scheme: 'light', expectedAriaLabel: 'NX logo light' },
-    { type: 'logomark', scheme: 'dark', expectedAriaLabel: 'NX logomark dark' },
+  const testCases: Array<NXLogoProps> = [
+    { type: 'logo', scheme: 'dark' },
+    { type: 'logo', scheme: 'light' },
+    { type: 'logomark', scheme: 'dark' },
     {
       type: 'logomark',
       scheme: 'light',
-      expectedAriaLabel: 'NX logomark light',
     },
+    { type: 'logo' },
   ];
 
   it.each(testCases)(
     'renders successfully with type: $type and scheme: $scheme',
-    ({ type, scheme, expectedAriaLabel }) => {
+    ({ type, scheme }) => {
       // Arrange
       renderComponent({ type, scheme });
 
@@ -42,7 +40,6 @@ describe('NXLogo Component', () => {
 
       // Assert
       expect(logo).toBeInTheDocument();
-      expect(logo).toHaveAttribute('aria-label', expectedAriaLabel);
     }
   );
 });
