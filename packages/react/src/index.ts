@@ -83,3 +83,5 @@ export type { ActionModalProps } from './components/ActionModal';
 export { default as PhoneNumberInput } from './components/PhoneNumberInput';
 export type { PhoneNumberInputProps } from './components/PhoneNumberInput';
 export { default as Icon } from './components/Icon';
+export { default as NXLogo } from './components/NXLogo';
+export type { NXLogoProps } from './components/NXLogo';
