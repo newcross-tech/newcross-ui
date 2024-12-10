@@ -1,9 +1,9 @@
 import { RefObject, useEffect, useState } from 'react';
 
 /**
- * Hook that abstracts the logic to detect whether click event occured inside/outside of container
+ * Hook that abstracts the logic to detect whether a click or touch event occurred inside/outside of a container
  * @param ref container
- * @param handler callback function to be executed on outsideClick
+ * @param handler callback function to be executed on outsideClick or outsideTouch
  * @returns
  */
 export function useOutsideDetector<T extends HTMLElement>(
@@ -13,23 +13,35 @@ export function useOutsideDetector<T extends HTMLElement>(
   const [clickedOutside, setClickedOutside] = useState(false);
 
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      const isOutsideClick = Boolean(
-        !!ref && ref.current && !ref.current.contains(event.target as Node)
-      );
+    function handleEvent(event: MouseEvent | TouchEvent) {
+      const isOutsideClick =
+        ref.current && !ref.current.contains(event.target as Node);
+
       if (isOutsideClick) {
         handler();
+        if (!clickedOutside) setClickedOutside(true);
+      } else if (clickedOutside) {
+        setClickedOutside(false);
       }
-      setClickedOutside(isOutsideClick);
     }
-    // Bind the event listener
-    document.addEventListener('click', handleClickOutside, true);
+
+    // Add event listeners
+    const eventNames = ['click', 'touchend'];
+    eventNames.forEach((eventName) =>
+      document.addEventListener(eventName, handleEvent as EventListener, true)
+    );
+
+    // Cleanup
     return () => {
-      setClickedOutside(false);
-      // Unbind the event listener on clean up
-      document.removeEventListener('click', handleClickOutside, false);
+      eventNames.forEach((eventName) =>
+        document.removeEventListener(
+          eventName,
+          handleEvent as EventListener,
+          true
+        )
+      );
     };
-  }, [ref]);
+  }, [ref, handler, clickedOutside]);
 
   return { clickedOutside };
 }

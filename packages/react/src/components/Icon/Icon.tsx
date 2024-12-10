@@ -26,6 +26,10 @@ export type IconProps = {
    * The rotation of the icon.
    */
   rotation?: FontAwesomeIconProps['rotation'];
+  /**
+   * onClick event handler.
+   */
+  onClick?: FontAwesomeIconProps['onClick'];
 } & ContainerProps;
 
 const Icon = ({
@@ -34,6 +38,7 @@ const Icon = ({
   color = 'defaultDark',
   scheme = 'light',
   rotation,
+  onClick,
   ...rest
 }: IconProps) => {
   return (
@@ -44,6 +49,7 @@ const Icon = ({
         color={color}
         scheme={scheme}
         rotation={rotation}
+        onClick={onClick}
       />
     </Container>
   );

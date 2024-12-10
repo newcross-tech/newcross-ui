@@ -1,0 +1,7 @@
+{
+  "app-layout": {
+    "width": {
+      "sidebar-drawer": { "value": 320, "type": "spacing" }
+    }
+  }
+}
