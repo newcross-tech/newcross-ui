@@ -1,66 +1,64 @@
 import styled, { css } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ExtendedTheme } from '../../types';
-import * as LabelStyled from '../Label/Label.style';
 import { CheckboxProps } from './Checkbox';
-import { CheckboxPropsExtended, hasErrorProps, isSelectedProps } from './Checkbox.types';
+import { CheckboxPropsExtended, hasErrorProps, isSelectedProps, UserInteractionType } from './Checkbox.types';
+import Container from '../Container';
 
-export const Checkbox = styled.div<CheckboxProps>`
-  ${({ theme, disabled }: ExtendedTheme<CheckboxProps>) => css`
-    display: flex;
+const getBackgroundColorHoverStyles = ({ theme, disabled, hasError }: ExtendedTheme<CheckboxProps>) => {
+  if (disabled) return;
+
+  return !hasError ? theme.ElementsSurfaceActionHover : theme.ElementsSurfaceDanger;
+};
+
+const getColorHoverStyles = ({ theme, disabled, hasError }: ExtendedTheme<CheckboxProps>) => {
+  if (disabled) return;
+
+  return !hasError ? theme.ElementsIconActionDefault : theme.ElementsIconDangerError;
+};
+
+export const Checkbox = styled(Container)<CheckboxProps & UserInteractionType>`
+  ${({ theme, disabled, hasError }: ExtendedTheme<CheckboxProps>) => css`
     cursor: ${!disabled && 'pointer'};
-    margin-top: ${theme.CheckboxMarginVertical};
-    margin-bottom: ${theme.CheckboxMarginVertical};
 
-    > ${LabelStyled.Label} {
-      cursor: ${!disabled && 'pointer'};
-      color: ${disabled ? theme.CheckboxLabelDisabledColor : theme.CheckboxLabelColor};
-      margin-left: ${theme.CheckboxLabelMarginHorizontal};
+    &:hover ${Box} {
+      background-color: ${getBackgroundColorHoverStyles({ theme, disabled, hasError })};
+      color: ${getColorHoverStyles({ theme, disabled, hasError })};
     }
   `};
 `;
 
-export const Label = styled.div<CheckboxProps>`
-  ${({ theme, disabled }: ExtendedTheme<CheckboxProps>) => css`
-    color: ${disabled ? theme.CheckboxLabelDisabledColor : theme.CheckboxLabelColor};
-    margin-left: ${theme.CheckboxLabelMarginHorizontal};
-    margin-right: ${theme.CheckboxLabelMarginHorizontal};
-  `};
-`;
-
 const getHasErrorStyles = ({ theme, selected, type }: ExtendedTheme<hasErrorProps>) => css`
-  outline-color: ${theme.CheckboxErrorBackgroundColor};
-  color: ${theme.CheckboxErrorCheckmarkColor};
-  background-color: ${selected && theme.CheckboxErrorBackgroundColor};
+  color: ${theme.ElementsIconActionDanger};
+  border-color: ${theme.ElementsBorderDangerError};
+  background-color: ${selected && theme.ElementsSurfaceActionDanger};
+
   ${type === 'indeterminate' &&
   css`
-    color: ${theme.CheckboxErrorBackgroundColor};
-    background-color: ${theme.CheckboxBackgroundColor};
+    color: ${theme.ElementsIconActionDanger};
+    background-color: ${theme.ElementsSurfaceActionDanger};
   `}
 `;
 
 const getDisabledStyles = (theme: ThemeDesignTokens) => css`
-  outline-color: ${theme.CheckboxDisabledBorderColor};
-  color: ${theme.CheckboxDisabledCheckmarkColor};
-  background-color: ${theme.CheckboxDisabledBackgroundColor};
+  color: ${theme.ElementsIconDisabled};
+  background-color: ${theme.ElementsSurfaceDisabled};
+  border-color: ${theme.ElementsBorderDisabled};
 `;
 
-const getSelectedStyled = ({ theme, type }: ExtendedTheme<isSelectedProps>) => css`
-  background-color: ${theme.CheckboxSelectedBackgroundColor};
-  background-color: ${type === 'indeterminate' && theme.CheckboxBackgroundColor};
+const getSelectedStyled = ({ theme }: ExtendedTheme<isSelectedProps>) => css`
+  background-color: ${theme.ElementsSurfaceActionDefault};
 `;
 
-export const Box = styled.div<CheckboxPropsExtended>`
+export const Box = styled(Container)<CheckboxPropsExtended>`
   ${({ theme, hasError, disabled, selected, type }: ExtendedTheme<CheckboxPropsExtended>) => css`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: ${theme.CheckboxHeight};
-    min-width: ${theme.CheckboxWidth};
-    border: solid ${theme.CheckboxBorderWidth};
-    border-radius: ${theme.CheckboxBorderRadius};
-    color: ${theme.CheckboxSelectedCheckmarkColor};
-    background-color: ${theme.CheckboxBackgroundColor};
+    height: ${theme.BaselineSpacesSpace24};
+    min-width: ${theme.BaselineSpacesSpace24};
+    border: solid ${theme.BorderBaseWidthSm};
+    border-radius: ${theme.BorderBaseRadiusSm};
+    color: ${theme.ElementsIconDefaultDark};
+    background-color: ${theme.ElementsSurfaceDefault};
+    transition: 0.2s ease-in-out;
 
     ${!hasError && selected && getSelectedStyled({ theme, type })};
     ${hasError && getHasErrorStyles({ theme, selected, type })};

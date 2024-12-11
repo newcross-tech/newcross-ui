@@ -1,85 +1,79 @@
-import { ReactNode } from 'react';
 import { faCheck } from '@fortawesome/pro-light-svg-icons/faCheck';
 import { faMinus } from '@fortawesome/pro-light-svg-icons/faMinus';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { TestProp } from '../../types';
-import * as LabelStyled from '../Label/Label.style';
+import { OptionalProps } from '../../types';
 import * as Styled from './Checkbox.style';
-import { CheckboxType } from './Checkbox.types';
+import {
+  CheckboxPropsStrict,
+  MouseEventOrKeyboardEvent,
+} from './Checkbox.types';
+import Typography, { TypographyColors } from '../Typography';
 import { onSpacePressTrigger } from '../../utils';
 
-export type CheckboxProps = {
-  /**
-   * Sets the type the checkbox is - check or indeterminate
-   */
-  type?: CheckboxType;
-  /**
-   * Label for the checkbox
-   */
-  label?: ReactNode;
-  /**
-   * Whether the press behavior is disabled.
-   */
-  disabled?: boolean;
-  /**
-   * Shows different styles when error is true
-   */
-  hasError?: boolean;
-  /**
-   * Callback fired when the state is changed.
-   */
-  onChange?: (
-    selected: boolean,
-    event?: React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLElement>
-  ) => void;
-  /**
-   * Determines selected/checked state
-   */
-  checked?: boolean;
-  /**
-   * Flag to enable/disable accessibility
-   */
-  allowTab?: boolean;
-} & TestProp;
+export type CheckboxProps = OptionalProps<
+  CheckboxPropsStrict,
+  'allowTab' | 'testID' | 'disabled'
+>;
 
-const Checkbox = ({
-  onChange,
-  checked,
-  type,
-  label,
-  disabled = false,
-  hasError,
-  testID = '',
-  allowTab = true,
-  ...rest
-}: CheckboxProps) => {
+const normalizeCheckboxProps = (props: CheckboxProps): CheckboxPropsStrict => ({
+  ...props,
+  allowTab: props.allowTab ?? true,
+  testID: props.testID ?? '',
+  disabled: props.disabled ?? false,
+});
+
+const Checkbox = (_props: CheckboxProps) => {
+  const {
+    testID,
+    hasError,
+    type,
+    onChange,
+    checked,
+    disabled,
+    allowTab,
+    label,
+    ...props
+  } = normalizeCheckboxProps(_props);
   const isChecked = !!checked;
 
   const icon = type === 'indeterminate' ? faMinus : faCheck;
 
-  const handleChecked = (
-    event?: React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLElement>
-  ) => {
+  const handleChecked = (event?: MouseEventOrKeyboardEvent) => {
     if (disabled) return;
     onChange?.(!checked, event);
   };
 
-  const onChangeHandler = (event: React.MouseEvent<HTMLDivElement>) => {
+  const onChangeHandler = (event: MouseEventOrKeyboardEvent) => {
     event.preventDefault();
     handleChecked(event);
   };
 
+  const getLabelColor = ({
+    disabled,
+    hasError,
+  }: Pick<CheckboxProps, 'disabled' | 'hasError'>): TypographyColors => {
+    if (disabled) return 'disabled';
+
+    return hasError ? 'dangerError' : 'defaultDark';
+  };
+
   return (
     <Styled.Checkbox
-      data-testid={testID}
+      alignItems="center"
+      gap="xs"
+      testID={testID}
       disabled={disabled}
       label={label}
       onClick={onChangeHandler}
-      {...rest}
+      hasError={hasError}
+      {...props}
       role="checkbox"
     >
       <Styled.Box
-        data-testid="checkmark-box"
+        justifyContent="center"
+        alignItems="center"
+        m="xs"
+        testID="checkmark-box"
         disabled={disabled}
         hasError={hasError}
         label={label}
@@ -94,17 +88,17 @@ const Checkbox = ({
         )}
       </Styled.Box>
       {label && (
-        <LabelStyled.Label
-          disabled={disabled}
-          variant={'paragraph1'}
+        <Typography
+          testID="checkbox-label"
+          variant="p1"
+          color={getLabelColor({ disabled, hasError })}
           onKeyDown={(event: React.KeyboardEvent<HTMLElement>) =>
             onSpacePressTrigger(event, handleChecked)
           }
           tabIndex={!disabled && allowTab ? 0 : -1}
-          data-testid={'checkbox-label'}
         >
           {label}
-        </LabelStyled.Label>
+        </Typography>
       )}
     </Styled.Checkbox>
   );

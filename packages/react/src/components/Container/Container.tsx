@@ -1,5 +1,5 @@
 import * as Styled from './Container.style';
-import { CSSProperties } from 'react';
+import { CSSProperties, InputHTMLAttributes } from 'react';
 import {
   NewContainerGapSpacing,
   NewContainerSpacing,
@@ -101,6 +101,10 @@ export type NewContainerProps = {
    * @default 'div'
    */
   semanticTag?: SemanticContainerTags;
+  /**
+   * Aria role attribute
+   */
+  role?: InputHTMLAttributes<HTMLElement>['role'];
 } & TestProp;
 
 export type ContainerProps = NewContainerProps | LegacyContainerProps;
