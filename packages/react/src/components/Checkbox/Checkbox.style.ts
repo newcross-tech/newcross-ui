@@ -1,69 +1,77 @@
 import styled, { css } from 'styled-components';
-import { ThemeDesignTokens } from '../../theme/ThemeProvider';
-import { ExtendedTheme } from '../../types';
-import * as LabelStyled from '../Label/Label.style';
-import { CheckboxProps } from './Checkbox';
-import { CheckboxPropsExtended, hasErrorProps, isSelectedProps } from './Checkbox.types';
+import { Theme } from '../../types';
+import { CheckboxPropsStrict } from './Checkbox.types';
+import Container from '../Container';
 
-export const Checkbox = styled.div<CheckboxProps>`
-  ${({ theme, disabled }: ExtendedTheme<CheckboxProps>) => css`
-    display: flex;
-    cursor: ${!disabled && 'pointer'};
-    margin-top: ${theme.CheckboxMarginVertical};
-    margin-bottom: ${theme.CheckboxMarginVertical};
+const getBackgroundColorHoverStyles = ({
+  theme,
+  disabled,
+  hasError,
+}: Theme & Pick<CheckboxPropsStrict, 'disabled' | 'hasError'>) => {
+  if (disabled) return;
 
-    > ${LabelStyled.Label} {
-      cursor: ${!disabled && 'pointer'};
-      color: ${disabled ? theme.CheckboxLabelDisabledColor : theme.CheckboxLabelColor};
-      margin-left: ${theme.CheckboxLabelMarginHorizontal};
-    }
-  `};
-`;
+  return !hasError ? theme.ElementsSurfaceActionHover : theme.ElementsSurfaceDanger;
+};
 
-export const Label = styled.div<CheckboxProps>`
-  ${({ theme, disabled }: ExtendedTheme<CheckboxProps>) => css`
-    color: ${disabled ? theme.CheckboxLabelDisabledColor : theme.CheckboxLabelColor};
-    margin-left: ${theme.CheckboxLabelMarginHorizontal};
-    margin-right: ${theme.CheckboxLabelMarginHorizontal};
-  `};
-`;
+const getColorHoverStyles = ({
+  theme,
+  disabled,
+  hasError,
+}: Theme & Pick<CheckboxPropsStrict, 'disabled' | 'hasError'>) => {
+  if (disabled) return;
 
-const getHasErrorStyles = ({ theme, selected, type }: ExtendedTheme<hasErrorProps>) => css`
-  outline-color: ${theme.CheckboxErrorBackgroundColor};
-  color: ${theme.CheckboxErrorCheckmarkColor};
-  background-color: ${selected && theme.CheckboxErrorBackgroundColor};
-  ${type === 'indeterminate' &&
-  css`
-    color: ${theme.CheckboxErrorBackgroundColor};
-    background-color: ${theme.CheckboxBackgroundColor};
-  `}
-`;
+  return !hasError ? theme.ElementsIconActionDefault : theme.ElementsIconDangerError;
+};
 
-const getDisabledStyles = (theme: ThemeDesignTokens) => css`
-  outline-color: ${theme.CheckboxDisabledBorderColor};
-  color: ${theme.CheckboxDisabledCheckmarkColor};
-  background-color: ${theme.CheckboxDisabledBackgroundColor};
-`;
+export const Checkbox = styled(Container)<CheckboxPropsStrict>((props) => [
+  {
+    cursor: !props.disabled ? 'pointer' : 'inherit',
+    ':hover': {
+      [`${Box}`]: {
+        backgroundColor: getBackgroundColorHoverStyles(props),
+        color: getColorHoverStyles(props),
+      },
+    },
+  },
+]);
 
-const getSelectedStyled = ({ theme, type }: ExtendedTheme<isSelectedProps>) => css`
-  background-color: ${theme.CheckboxSelectedBackgroundColor};
-  background-color: ${type === 'indeterminate' && theme.CheckboxBackgroundColor};
-`;
+const getHasErrorStyles = ({ theme, checked, type }: Theme & Pick<CheckboxPropsStrict, 'checked' | 'type'>) =>
+  css({
+    color: theme.ElementsIconActionDanger,
+    borderColor: theme.ElementsBorderDangerError,
+    backgroundColor: checked ? theme.ElementsSurfaceActionDanger : undefined,
 
-export const Box = styled.div<CheckboxPropsExtended>`
-  ${({ theme, hasError, disabled, selected, type }: ExtendedTheme<CheckboxPropsExtended>) => css`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: ${theme.CheckboxHeight};
-    min-width: ${theme.CheckboxWidth};
-    border: solid ${theme.CheckboxBorderWidth};
-    border-radius: ${theme.CheckboxBorderRadius};
-    color: ${theme.CheckboxSelectedCheckmarkColor};
-    background-color: ${theme.CheckboxBackgroundColor};
+    ...(type === 'indeterminate' && {
+      color: theme.ElementsIconActionDanger,
+      backgroundColor: theme.ElementsSurfaceActionDanger,
+    }),
+  });
 
-    ${!hasError && selected && getSelectedStyled({ theme, type })};
-    ${hasError && getHasErrorStyles({ theme, selected, type })};
-    ${disabled && getDisabledStyles(theme)};
-  `};
-`;
+const getDisabledStyles = ({ theme }: Theme) =>
+  css({
+    color: theme.ElementsIconDisabled,
+    backgroundColor: theme.ElementsSurfaceDisabled,
+    borderColor: theme.ElementsBorderDisabled,
+  });
+
+const getSelectedStyled = ({ theme }: Theme & Pick<CheckboxPropsStrict, 'type'>) =>
+  css({
+    backgroundColor: theme.ElementsSurfaceActionDefault,
+  });
+
+export const Box = styled(Container)<Pick<CheckboxPropsStrict, 'hasError' | 'disabled' | 'checked' | 'type'>>(
+  (props) => [
+    {
+      height: props.theme.BaselineSpacesSpace24,
+      minWidth: props.theme.BaselineSpacesSpace24,
+      border: `solid ${props.theme.BorderBaseWidthSm}`,
+      borderRadius: props.theme.BorderBaseRadiusSm,
+      color: props.theme.ElementsIconDefaultDark,
+      backgroundColor: props.theme.ElementsSurfaceDefault,
+      transition: '0.2s ease-in-out',
+    },
+    !props.hasError && props.checked && getSelectedStyled(props),
+    props.hasError && getHasErrorStyles(props),
+    props.disabled && getDisabledStyles(props),
+  ]
+);

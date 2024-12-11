@@ -1,5 +1,5 @@
 import { TestProp } from '../../../types';
-import { CSSProperties } from 'react';
+import { CSSProperties, InputHTMLAttributes } from 'react';
 import {
   LegacyContainerGapSpacing,
   LegacyContainerSpacing,
@@ -219,6 +219,10 @@ export type LegacyContainerProps = {
    * @default 'div'
    */
   semanticTag?: SemanticContainerTags;
+  /**
+   * Aria role attribute
+   */
+  role?: InputHTMLAttributes<HTMLElement>['role'];
 } & TestProp;
 
 const LegacyContainer = ({
