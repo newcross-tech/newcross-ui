@@ -3,9 +3,9 @@ import { faCheck } from '@fortawesome/pro-light-svg-icons/faCheck';
 import { faMinus } from '@fortawesome/pro-light-svg-icons/faMinus';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { TestProp } from '../../types';
-import * as LabelStyled from '../Label/Label.style';
 import * as Styled from './Checkbox.style';
-import { CheckboxType } from './Checkbox.types';
+import { CheckboxType, MouseEventOrKeyboardEvent } from './Checkbox.types';
+import Typography, { TypographyColors } from '../Typography';
 import { onSpacePressTrigger } from '../../utils';
 
 export type CheckboxProps = {
@@ -28,10 +28,7 @@ export type CheckboxProps = {
   /**
    * Callback fired when the state is changed.
    */
-  onChange?: (
-    selected: boolean,
-    event?: React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLElement>
-  ) => void;
+  onChange?: (selected: boolean, event?: MouseEventOrKeyboardEvent) => void;
   /**
    * Determines selected/checked state
    */
@@ -57,29 +54,42 @@ const Checkbox = ({
 
   const icon = type === 'indeterminate' ? faMinus : faCheck;
 
-  const handleChecked = (
-    event?: React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLElement>
-  ) => {
+  const handleChecked = (event?: MouseEventOrKeyboardEvent) => {
     if (disabled) return;
     onChange?.(!checked, event);
   };
 
-  const onChangeHandler = (event: React.MouseEvent<HTMLDivElement>) => {
+  const onChangeHandler = (event: MouseEventOrKeyboardEvent) => {
     event.preventDefault();
     handleChecked(event);
   };
 
+  const getLabelColor = ({
+    disabled,
+    hasError,
+  }: Pick<CheckboxProps, 'disabled' | 'hasError'>): TypographyColors => {
+    if (disabled) return 'disabled';
+
+    return hasError ? 'dangerError' : 'defaultDark';
+  };
+
   return (
     <Styled.Checkbox
-      data-testid={testID}
+      alignItems="center"
+      gap="xs"
+      testID={testID}
       disabled={disabled}
       label={label}
       onClick={onChangeHandler}
+      hasError={hasError}
       {...rest}
       role="checkbox"
     >
       <Styled.Box
-        data-testid="checkmark-box"
+        justifyContent="center"
+        alignItems="center"
+        m="xs"
+        testID="checkmark-box"
         disabled={disabled}
         hasError={hasError}
         label={label}
@@ -94,17 +104,17 @@ const Checkbox = ({
         )}
       </Styled.Box>
       {label && (
-        <LabelStyled.Label
-          disabled={disabled}
-          variant={'paragraph1'}
+        <Typography
+          testID="checkbox-label"
+          variant="p1"
+          color={getLabelColor({ disabled, hasError })}
           onKeyDown={(event: React.KeyboardEvent<HTMLElement>) =>
             onSpacePressTrigger(event, handleChecked)
           }
           tabIndex={!disabled && allowTab ? 0 : -1}
-          data-testid={'checkbox-label'}
         >
           {label}
-        </LabelStyled.Label>
+        </Typography>
       )}
     </Styled.Checkbox>
   );
