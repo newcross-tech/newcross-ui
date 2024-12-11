@@ -116,4 +116,28 @@ describe('Checkbox Component', () => {
       expect.objectContaining({ type: 'keydown' })
     );
   });
+
+  it('applies the correct label color for enabled and error states', () => {
+    // Arrange & Act
+    renderComponent({ hasError: true });
+
+    // Assert
+    expect(ui.checkboxLabel.get()).toHaveStyle(`color: dangerError`);
+  });
+
+  it('applies the correct label color for disabled state', () => {
+    // Arrange & Act
+    renderComponent({ disabled: true });
+
+    // Assert
+    expect(ui.checkboxLabel.get()).toHaveStyle(`color: disabled`);
+  });
+
+  it('renders with allowTab prop set to false successfully', () => {
+    // Arrange & Act
+    renderComponent({ allowTab: false });
+
+    // Assert
+    expect(ui.checkboxLabel.get()).toHaveAttribute('tabIndex', '-1');
+  });
 });
