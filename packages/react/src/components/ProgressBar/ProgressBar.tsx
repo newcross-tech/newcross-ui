@@ -1,4 +1,3 @@
-import { animated, useSpring } from '@react-spring/web';
 import {
   defaultMaxProgress,
   defaultMinProgress,
@@ -14,6 +13,7 @@ import { applyWidthStyles, normaliseValue } from './utils';
 
 export type ProgressBarProps = {
   /**
+   * @deprecated Deprecated: default position is 'topLeft'
    * Use labelPosition to position the label element.
    */
   labelPosition?: ProgressBarLabelPositions;
@@ -26,6 +26,7 @@ export type ProgressBarProps = {
    */
   variant?: ProgressBarVariant;
   /**
+   * @deprecated Deprecated: default position is 'topRight'
    * Use progressLabelPosition to position the progress element.
    */
   progressLabelPosition?: ProgressBarLabelPositions;
@@ -45,6 +46,10 @@ export type ProgressBarProps = {
    * The value of the progress indicator for the determinate variant. Value between 0 and 100.
    */
   progress?: number;
+  /**
+   * Sets the ProgressBar to disabled.
+   */
+  disabled?: boolean;
 };
 
 const ProgressBar = ({
@@ -56,9 +61,9 @@ const ProgressBar = ({
   minProgress = defaultMinProgress,
   maxProgress = defaultMaxProgress,
   variant = 'determinate',
+  disabled = false,
 }: ProgressBarProps) => {
   const isIndeterminate = variant === 'indeterminate';
-
   const isEachLabelSamePosition = labelPosition === progressLabelPosition;
   const normalisedProgress = normaliseValue(progress, minProgress, maxProgress);
   const isDeterminateAndHasProgressLabel = !isIndeterminate && hasProgressLabel;
@@ -68,20 +73,14 @@ const ProgressBar = ({
     value: progress ? normalisedProgress : undefined,
   };
 
-  const springProps = useSpring(
-    Styled.getAnimatedStyles({
-      isIndeterminate,
-      normalisedProgress,
-    })
-  );
-
   const commonTextProps: CommonTextProps = {
     applyWidthStyles: applyWidthStyles({
       labelPosition,
       progressLabelPosition,
       forceWidthStyles: !hasProgressLabel || isIndeterminate,
     }),
-    variant: 'paragraph1',
+    variant: 'h3',
+    color: disabled ? 'disabled' : 'defaultDark',
   };
 
   const getSamePositionContent = () => (
@@ -111,17 +110,20 @@ const ProgressBar = ({
         <Styled.ProgressValue
           isEachLabelSamePosition={isEachLabelSamePosition}
           progressLabelPosition={progressLabelPosition}
-          variant={'paragraph1'}
+          variant={'p1'}
           testID="progress-label-container"
+          color={disabled ? 'disabled' : 'defaultDark'}
         >
-          {normalisedProgress}%
+          {variant !== 'steps'
+            ? normalisedProgress + '%'
+            : progress + '/' + maxProgress}
         </Styled.ProgressValue>
       )}
     </>
   );
 
   return (
-    <Styled.Container
+    <Styled.Wrapper
       labelPosition={labelPosition}
       isEachLabelSamePosition={isEachLabelSamePosition}
     >
@@ -135,17 +137,38 @@ const ProgressBar = ({
           ? getSamePositionContent()
           : getDifferentPositionContent()}
       </Styled.HeaderContent>
+
       <Styled.Meter
         isIndeterminate={isIndeterminate}
         data-testid={isIndeterminate ? 'indeterminate' : 'determinate'}
         role="progressbar"
         aria-describedby="loading-zone"
         aria-label={label || `${variant}-progressbar`}
+        variant={variant}
+        disabled={disabled}
         {...progressProps}
       >
-        <animated.span style={springProps} />
+        {variant !== 'steps' ? (
+          <Styled.Progress
+            isIndeterminate={isIndeterminate}
+            normalisedProgress={normalisedProgress}
+            variant={variant}
+            disabled={disabled}
+          />
+        ) : (
+          <Styled.SteppedMeter gap="xs" my="sm">
+            {Array.from({ length: maxProgress }).map((_, index) => (
+              <Styled.Step
+                key={index}
+                isCompleted={index < progress}
+                isLast={index === maxProgress - 1}
+                disabled={disabled}
+              />
+            ))}
+          </Styled.SteppedMeter>
+        )}
       </Styled.Meter>
-    </Styled.Container>
+    </Styled.Wrapper>
   );
 };
 

@@ -2,8 +2,11 @@ import { ProgressHTMLAttributes } from 'react';
 import { TypographyProps, TypographyVariant } from '../Typography';
 import { ProgressBarProps } from './ProgressBar';
 
-export type ProgressBarVariant = 'determinate' | 'indeterminate';
+export type ProgressBarVariant = 'determinate' | 'indeterminate' | 'steps';
 
+/**
+ * @deprecated
+ */
 export type ProgressBarLabelPositions =
   | 'topCenter'
   | 'topRight'
@@ -38,10 +41,14 @@ export type AnimatedStyleArgs = CommonProps & {
 export type CommonTextProps = {
   applyWidthStyles: boolean;
   variant: TypographyVariant;
+  color: TypographyProps['color'];
 };
 
 export type ProgressProps = CommonProps &
-  ProgressHTMLAttributes<HTMLProgressElement>;
+  ProgressHTMLAttributes<HTMLProgressElement> & {
+    variant: ProgressBarVariant;
+    disabled: boolean;
+  };
 
 export type AllLabelProps = TypographyProps &
   Pick<ProgressBarProps, 'labelPosition'> & {

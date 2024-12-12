@@ -1,4 +1,4 @@
-import { config } from '@react-spring/web';
+import { animated, config } from '@react-spring/web';
 import styled, { css, FlattenSimpleInterpolation, keyframes } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { ExtendedTheme, Theme } from '../../types';
@@ -14,6 +14,7 @@ import {
   ProgressProps,
   ProgressValueProps,
 } from './ProgressBar.types';
+import Container from '../Container';
 
 export const getAnimatedStyles = ({ isIndeterminate, normalisedProgress }: AnimatedStyleArgs) => ({
   width: !isIndeterminate ? `${normalisedProgress}%` : '100%',
@@ -70,7 +71,7 @@ export const getLabelPositionValues = (
   `,
 });
 
-export const Container = styled.label`
+export const Wrapper = styled.label<ContainerProps>`
   position: relative;
   ${({ labelPosition, isEachLabelSamePosition }: ExtendedTheme<ContainerProps>) => css`
     ${isEachLabelSamePosition &&
@@ -93,13 +94,7 @@ export const HeaderContent = styled.div`
   `};
 `;
 
-const CoreText = styled(Typography)`
-  ${({ theme }: Theme) => css`
-    color: ${theme.RadioColor};
-  `};
-`;
-
-export const LabelText = styled(CoreText)<ExtendedTheme<AllLabelProps>>`
+export const LabelText = styled(Typography)<ExtendedTheme<AllLabelProps>>`
   ${({ applyWidthStyles }: ExtendedTheme<AllLabelProps>) => css`
     max-width: ${applyWidthStyles ? '80%' : '40%'};
   `};
@@ -117,7 +112,7 @@ export const DifferentLabel = styled(LabelText)<ExtendedTheme<DifferentLabelProp
   `}
 `;
 
-export const ProgressValue = styled(CoreText)`
+export const ProgressValue = styled(Typography)`
   ${({ theme, isEachLabelSamePosition, progressLabelPosition }: ExtendedTheme<ProgressValueProps>) => css`
     position: absolute;
     ${getCoreFlexStyles()};
@@ -140,38 +135,81 @@ const progressLoading = keyframes`
  }
 `;
 
-const getTrackColorValue = (theme: ThemeDesignTokens) => theme.ProgressBarFillBackgroundColor;
+const getTrackColorValue = (theme: ThemeDesignTokens, disabled: boolean) =>
+  disabled ? theme.ElementsSurfaceDisabledHighlight : theme.ProgressBarFillBackgroundColor;
 
-const getIndeterminateStyles = (theme: ThemeDesignTokens) => css`
+const getIndeterminateStyles = (theme: ThemeDesignTokens, disabled: boolean) => css`
   background: linear-gradient(
     to right,
     ${theme.ProgressBarTrackBackgroundColor} 45%,
-    ${getTrackColorValue(theme)} 0%,
-    ${getTrackColorValue(theme)} 55%,
+    ${getTrackColorValue(theme, disabled)} 0%,
+    ${getTrackColorValue(theme, disabled)} 55%,
     ${theme.ProgressBarTrackBackgroundColor} 0%
   );
   animation: ${progressLoading} ${defaultAnimationSpeed}s infinite ease-in;
 `;
 
 export const Meter = styled.div`
-  ${({ theme, isIndeterminate }: ExtendedTheme<ProgressProps>) => css`
+  ${({ theme, variant = 'determinate', disabled }: ExtendedTheme<ProgressProps>) => css`
     height: ${theme.ProgressBarFillHeight};
-    background-color: ${theme.ProgressBarTrackBackgroundColor};
+    background-color: ${variant !== 'steps' ? theme.ProgressBarTrackBackgroundColor : 'transparent'};
     border-radius: ${theme.ProgressBarTrackBorderRadius};
     margin-top: ${theme.ProgressBarTrackMarginTop};
     margin-bottom: ${theme.ProgressBarTrackMarginBottom};
+    ${disabled &&
+    css`
+      background-color: ${variant === 'steps' ? theme.ElementsSurfaceDefault : theme.ElementsSurfaceDisabled};
+    `}
+  `};
+`;
 
-    > span {
-      display: block;
-      height: 100%;
-      border-radius: ${theme.ProgressBarTrackBorderRadius};
-      background-color: ${theme.ProgressBarFillBackgroundColor};
-      overflow: hidden;
+export const Progress = styled(animated.span)<ProgressProps & AnimatedStyleArgs>`
+  ${({ theme, isIndeterminate, normalisedProgress, disabled }) => css`
+    ${getAnimatedStyles({
+      isIndeterminate,
+      normalisedProgress,
+    })}
+    display: block;
+    height: 100%;
+    border-radius: ${theme.ProgressBarTrackBorderRadius};
+    background-color: ${disabled ? theme.ElementsSurfaceDisabledHighlight : theme.ProgressBarFillBackgroundColor};
+    overflow: hidden;
 
-      ${isIndeterminate &&
-      css`
-        ${getIndeterminateStyles(theme)}
-      `};
+    ${isIndeterminate &&
+    css`
+      ${getIndeterminateStyles(theme, disabled)};
+    `}
+  `}
+`;
+
+export const SteppedMeter = styled(Container)`
+  ${({ theme }: Theme) => css`
+    height: ${theme.BaselineSpacesSpace8};
+  `};
+`;
+
+export const Step = styled.div<{ isCompleted: boolean; isLast: boolean; disabled: boolean }>`
+  ${({
+    theme,
+    isCompleted,
+    disabled,
+  }: ExtendedTheme<{ isCompleted: boolean; isLast: boolean; disabled: boolean }>) => css`
+    flex-grow: 1;
+    background-color: ${isCompleted
+      ? disabled
+        ? theme.ElementsSurfaceDisabledHighlight
+        : theme.ProgressBarFillBackgroundColor
+      : disabled
+      ? theme.ElementsSurfaceDisabled
+      : theme.ProgressBarTrackBackgroundColor};
+    &:first-child {
+      border-top-left-radius: ${theme.ProgressBarTrackBorderRadius};
+      border-bottom-left-radius: ${theme.ProgressBarTrackBorderRadius};
+    }
+
+    &:last-child {
+      border-top-right-radius: ${theme.ProgressBarTrackBorderRadius};
+      border-bottom-right-radius: ${theme.ProgressBarTrackBorderRadius};
     }
   `};
 `;
