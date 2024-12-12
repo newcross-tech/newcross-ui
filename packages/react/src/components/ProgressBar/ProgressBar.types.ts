@@ -5,7 +5,7 @@ import { ProgressBarProps } from './ProgressBar';
 export type ProgressBarVariant = 'determinate' | 'indeterminate' | 'steps';
 
 /**
- * @deprecated
+ * Deprecated
  */
 export type ProgressBarLabelPositions =
   | 'topCenter'

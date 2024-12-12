@@ -13,10 +13,15 @@ import { applyWidthStyles, normaliseValue } from './utils';
 
 export type ProgressBarProps = {
   /**
-   * @deprecated Deprecated: default position is 'topLeft'
+   * Deprecated: default position is 'topLeft'
    * Use labelPosition to position the label element.
    */
   labelPosition?: ProgressBarLabelPositions;
+  /**
+   * Deprecated: default position is 'topRight'
+   * Use progressLabelPosition to position the progress element.
+   */
+  progressLabelPosition?: ProgressBarLabelPositions;
   /**
    * Text element to describe the progress bar action.
    */
@@ -25,11 +30,6 @@ export type ProgressBarProps = {
    * The variant to use. Use indeterminate when there is no progress value.
    */
   variant?: ProgressBarVariant;
-  /**
-   * @deprecated Deprecated: default position is 'topRight'
-   * Use progressLabelPosition to position the progress element.
-   */
-  progressLabelPosition?: ProgressBarLabelPositions;
   /**
    * Hide the progress text element.
    */

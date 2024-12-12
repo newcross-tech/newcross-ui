@@ -48,26 +48,26 @@ export const getLabelPositionValues = (
   isEachLabelSamePosition: boolean
 ): Record<ProgressBarLabelPositions, FlattenSimpleInterpolation> => ({
   topCenter: css`
-    bottom: ${isEachLabelSamePosition ? theme.SpacingBase24 : theme.SpacingBase0};
+    bottom: ${isEachLabelSamePosition ? theme.BaselineSpacesSpace24 : theme.BaselineSpacesSpace0};
   `,
   topLeft: css`
-    left: ${theme.SpacingBase0};
-    bottom: ${isEachLabelSamePosition ? theme.SpacingBase24 : theme.SpacingBase0};
+    left: ${theme.BaselineSpacesSpace0};
+    bottom: ${isEachLabelSamePosition ? theme.BaselineSpacesSpace24 : theme.BaselineSpacesSpace0};
   `,
   topRight: css`
-    right: ${theme.SpacingBase0};
-    bottom: ${isEachLabelSamePosition ? theme.SpacingBase24 : theme.SpacingBase0};
+    right: ${theme.BaselineSpacesSpace0};
+    bottom: ${isEachLabelSamePosition ? theme.BaselineSpacesSpace24 : theme.BaselineSpacesSpace0};
   `,
   bottomCenter: css`
-    top: ${theme.SpacingBase24};
+    top: ${theme.BaselineSpacesSpace24};
   `,
   bottomLeft: css`
-    left: ${theme.SpacingBase0};
-    top: ${theme.SpacingBase24};
+    left: ${theme.BaselineSpacesSpace0};
+    top: ${theme.BaselineSpacesSpace24};
   `,
   bottomRight: css`
-    right: ${theme.SpacingBase0};
-    top: ${theme.SpacingBase24};
+    right: ${theme.BaselineSpacesSpace0};
+    top: ${theme.BaselineSpacesSpace24};
   `,
 });
 
@@ -136,15 +136,15 @@ const progressLoading = keyframes`
 `;
 
 const getTrackColorValue = (theme: ThemeDesignTokens, disabled: boolean) =>
-  disabled ? theme.ElementsSurfaceDisabledHighlight : theme.ProgressBarFillBackgroundColor;
+  disabled ? theme.ElementsSurfaceDisabledHighlight : theme.ElementsSurfaceActionDefault;
 
 const getIndeterminateStyles = (theme: ThemeDesignTokens, disabled: boolean) => css`
   background: linear-gradient(
     to right,
-    ${theme.ProgressBarTrackBackgroundColor} 45%,
+    ${theme.ElementsSurfaceDefault} 45%,
     ${getTrackColorValue(theme, disabled)} 0%,
     ${getTrackColorValue(theme, disabled)} 55%,
-    ${theme.ProgressBarTrackBackgroundColor} 0%
+    ${theme.ElementsSurfaceDefault} 0%
   );
   animation: ${progressLoading} ${defaultAnimationSpeed}s infinite ease-in;
 `;
@@ -152,7 +152,7 @@ const getIndeterminateStyles = (theme: ThemeDesignTokens, disabled: boolean) => 
 export const Meter = styled.div`
   ${({ theme, variant = 'determinate', disabled }: ExtendedTheme<ProgressProps>) => css`
     height: ${theme.ProgressBarFillHeight};
-    background-color: ${variant !== 'steps' ? theme.ProgressBarTrackBackgroundColor : 'transparent'};
+    background-color: ${variant !== 'steps' ? theme.ElementsSurfaceDefault : 'transparent'};
     border-radius: ${theme.ProgressBarTrackBorderRadius};
     margin-top: ${theme.ProgressBarTrackMarginTop};
     margin-bottom: ${theme.ProgressBarTrackMarginBottom};
@@ -172,7 +172,7 @@ export const Progress = styled(animated.span)<ProgressProps & AnimatedStyleArgs>
     display: block;
     height: 100%;
     border-radius: ${theme.ProgressBarTrackBorderRadius};
-    background-color: ${disabled ? theme.ElementsSurfaceDisabledHighlight : theme.ProgressBarFillBackgroundColor};
+    background-color: ${disabled ? theme.ElementsSurfaceDisabledHighlight : theme.ElementsSurfaceActionDefault};
     overflow: hidden;
 
     ${isIndeterminate &&
@@ -198,10 +198,10 @@ export const Step = styled.div<{ isCompleted: boolean; isLast: boolean; disabled
     background-color: ${isCompleted
       ? disabled
         ? theme.ElementsSurfaceDisabledHighlight
-        : theme.ProgressBarFillBackgroundColor
+        : theme.ElementsSurfaceActionDefault
       : disabled
       ? theme.ElementsSurfaceDisabled
-      : theme.ProgressBarTrackBackgroundColor};
+      : theme.ElementsSurfaceDefault};
     &:first-child {
       border-top-left-radius: ${theme.ProgressBarTrackBorderRadius};
       border-bottom-left-radius: ${theme.ProgressBarTrackBorderRadius};
