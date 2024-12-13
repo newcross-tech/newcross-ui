@@ -83,7 +83,7 @@ const ProgressBar = ({
     color: disabled ? 'disabled' : 'defaultDark',
   };
 
-  const getSamePositionContent = () => (
+  const renderSamePositionContent = () => (
     <>
       <Styled.LabelText {...commonTextProps} numberOfLines={2}>
         {label}
@@ -96,7 +96,7 @@ const ProgressBar = ({
     </>
   );
 
-  const getDifferentPositionContent = () => (
+  const renderDifferentPositionContent = () => (
     <>
       <Styled.DifferentLabel
         {...commonTextProps}
@@ -110,22 +110,39 @@ const ProgressBar = ({
         <Styled.ProgressValue
           isEachLabelSamePosition={isEachLabelSamePosition}
           progressLabelPosition={progressLabelPosition}
-          variant={'p1'}
+          variant="p2"
           testID="progress-label-container"
           color={disabled ? 'disabled' : 'defaultDark'}
         >
           {variant !== 'steps'
-            ? normalisedProgress + '%'
-            : progress + '/' + maxProgress}
+            ? `${normalisedProgress}%`
+            : `${progress}/${maxProgress}`}
         </Styled.ProgressValue>
       )}
     </>
   );
 
+  const renderSteps = () =>
+    Array.from({ length: maxProgress }).map((_, index) => {
+      const isCompleted = index < progress;
+      return (
+        <Styled.Step
+          data-testid={`${
+            isCompleted ? 'completed' : 'uncompleted'
+          }-step-${index}`}
+          key={index}
+          isCompleted={isCompleted}
+          isLast={index === maxProgress - 1}
+          disabled={disabled}
+        />
+      );
+    });
+
   return (
     <Styled.Wrapper
       labelPosition={labelPosition}
       isEachLabelSamePosition={isEachLabelSamePosition}
+      data-testid={`${disabled ? 'disabled-' : ''}progress-bar`}
     >
       <Styled.HeaderContent
         data-testid={`${
@@ -134,18 +151,19 @@ const ProgressBar = ({
         labelPosition={labelPosition}
       >
         {isEachLabelSamePosition
-          ? getSamePositionContent()
-          : getDifferentPositionContent()}
+          ? renderSamePositionContent()
+          : renderDifferentPositionContent()}
       </Styled.HeaderContent>
-
       <Styled.Meter
         isIndeterminate={isIndeterminate}
-        data-testid={isIndeterminate ? 'indeterminate' : 'determinate'}
+        testID={isIndeterminate ? 'indeterminate' : 'determinate'}
         role="progressbar"
         aria-describedby="loading-zone"
         aria-label={label || `${variant}-progressbar`}
         variant={variant}
         disabled={disabled}
+        mt="sm"
+        gap={variant === 'steps' ? 'xs' : undefined}
         {...progressProps}
       >
         {variant !== 'steps' ? (
@@ -156,16 +174,7 @@ const ProgressBar = ({
             disabled={disabled}
           />
         ) : (
-          <Styled.SteppedMeter gap="xs" my="sm">
-            {Array.from({ length: maxProgress }).map((_, index) => (
-              <Styled.Step
-                key={index}
-                isCompleted={index < progress}
-                isLast={index === maxProgress - 1}
-                disabled={disabled}
-              />
-            ))}
-          </Styled.SteppedMeter>
+          renderSteps()
         )}
       </Styled.Meter>
     </Styled.Wrapper>

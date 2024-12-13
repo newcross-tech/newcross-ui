@@ -15,20 +15,15 @@ export type ProgressBarLabelPositions =
   | 'bottomRight'
   | 'bottomLeft';
 
-export type LabelPositionProps = Required<
-  Pick<ProgressBarProps, 'labelPosition'>
->;
-
-type SameLabelProps = {
+export type WrapperProps = Pick<ProgressBarProps, 'labelPosition'> & {
   isEachLabelSamePosition: boolean;
 };
 
-export type ContainerProps = LabelPositionProps & SameLabelProps;
-
 export type ProgressValueProps = Required<
   Pick<ProgressBarProps, 'progressLabelPosition'>
-> &
-  SameLabelProps;
+> & {
+  isEachLabelSamePosition: boolean;
+};
 
 type CommonProps = {
   isIndeterminate: boolean;
@@ -55,13 +50,13 @@ export type AllLabelProps = TypographyProps &
     applyWidthStyles: boolean;
   };
 
-export type ApplyCenteredStyleArgs = LabelPositionProps &
-  Required<
+export type ApplyCenteredStyleArgs = Required<
+  Pick<ProgressBarProps, 'labelPosition'> &
     Pick<ProgressBarProps, 'progressLabelPosition'> & {
       forceWidthStyles: boolean;
     }
-  >;
+>;
 
-export type DifferentLabelProps = AllLabelProps &
-  SameLabelProps &
-  LabelPositionProps;
+export type DifferentLabelProps = AllLabelProps & {
+  isEachLabelSamePosition: boolean;
+};
