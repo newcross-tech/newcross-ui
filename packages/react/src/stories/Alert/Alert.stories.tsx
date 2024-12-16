@@ -19,12 +19,11 @@ export const Overview = () => {
       doInfo={DO}
       dontInfo={DONT}
     >
-      <Alert
-        variant="success"
-        action={<Link variant="paragraph1">Click Here</Link>}
-      >
-        This is success. This is success. This is success.
-      </Alert>
+      <Container>
+        <Alert variant="success" action={<Link variant="p1">Click Here</Link>}>
+          This is success. This is success. This is success.
+        </Alert>
+      </Container>
     </InfoTemplate>
   );
 };
@@ -33,56 +32,60 @@ export const Variants = () => {
   return (
     <Container flexDirection="column">
       <StoryTitle.Regular>Success Variant</StoryTitle.Regular>
-      <Alert
-        variant="success"
-        action={<Link variant="paragraph1">Click Here</Link>}
-      >
-        This is a success message. This is a success message. This is a success.
-      </Alert>
-      <Container my="SpacingBase4" />
+      <Container>
+        <Alert variant="success" action={<Link variant="p1">Click Here</Link>}>
+          This is a success message. This is a success message. This is a
+          success.
+        </Alert>
+      </Container>
+      <Container my="xs" />
       <StoryTitle.Regular>Warning Variant</StoryTitle.Regular>
-      <Alert
-        variant="warning"
-        action={<Link variant="paragraph1">Click Here</Link>}
-      >
-        This is a warning message. This is a warning message. This is a warning.
-      </Alert>
-      <Container my="SpacingBase4" />
+      <Container>
+        <Alert variant="warning" action={<Link variant="p1">Click Here</Link>}>
+          This is a warning message. This is a warning message. This is a
+          warning.
+        </Alert>
+      </Container>
+      <Container my="xs" />
       <StoryTitle.Regular>Error Variant</StoryTitle.Regular>
-      <Alert
-        variant="error"
-        action={<Link variant="paragraph1">Click Here</Link>}
-      >
-        This is an error message. This is an error message. This is an error
-        message.
-      </Alert>
-      <Container my="SpacingBase4" />
+      <Container>
+        <Alert variant="error" action={<Link variant="p1">Click Here</Link>}>
+          This is an error message. This is an error message. This is an error
+          message.
+        </Alert>
+      </Container>
+      <Container my="xs" />
       <StoryTitle.Regular>Info Variant</StoryTitle.Regular>
-      <Alert
-        variant="info"
-        action={<Link variant="paragraph1">Click Here</Link>}
-      >
-        This is an info message. This is an info message. This is an info
-        message.
-      </Alert>
-      <Container my="SpacingBase4" />
+      <Container>
+        <Alert variant="info" action={<Link variant="p1">Click Here</Link>}>
+          This is an info message. This is an info message. This is an info
+          message.
+        </Alert>
+      </Container>
+      <Container my="xs" />
       <StoryTitle.Regular>Notification Variant</StoryTitle.Regular>
-      <Alert
-        variant="notification"
-        action={<Link variant="paragraph1">Click Here</Link>}
-      >
-        This is a notification message. This is a noti notification. This is a
-        notification.
-      </Alert>
-      <Container my="SpacingBase4" />
+      <Container>
+        <Alert
+          variant="notification"
+          action={<Link variant="p1">Click Here</Link>}
+        >
+          This is a notification message. This is a noti notification. This is a
+          notification.
+        </Alert>
+      </Container>
+      <Container my="xs" />
       <StoryTitle.Regular>Variant without link</StoryTitle.Regular>
-      <Alert variant="info">
-        This is an info message. This is an info message. This is an info
-        message.
-      </Alert>
-      <Container my="SpacingBase4" />
+      <Container>
+        <Alert variant="info">
+          This is an info message. This is an info message. This is an info
+          message.
+        </Alert>
+      </Container>
+      <Container my="xs" />
       <StoryTitle.Regular>Variant without children and link</StoryTitle.Regular>
-      <Alert variant="success" />
+      <Container>
+        <Alert variant="success" />
+      </Container>
     </Container>
   );
 };
