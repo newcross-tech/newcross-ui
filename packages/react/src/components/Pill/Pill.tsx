@@ -1,17 +1,20 @@
-import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  cloneElement,
-  isValidElement,
-  ReactNode,
-  SyntheticEvent,
-  useState,
-} from 'react';
+import { faXmark } from '@fortawesome/pro-light-svg-icons/faXmark';
+import { ReactNode, SyntheticEvent, useState } from 'react';
 import { useToggle } from '../../hooks/useToggle';
 import { TestProp } from '../../types';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import * as Styled from './Pill.style';
-import { CustomStyle, PillVariant } from './Pill.types';
+import {
+  CustomStyle,
+  PillSize,
+  PillPaddingXSize,
+  PillTypographySize,
+  PillVariant,
+  PillTypographyColor,
+} from './Pill.types';
+import Container from '../Container';
+import Icon from '../Icon';
+import Typography from '../Typography';
 
 export type PillProps = {
   /**
@@ -22,6 +25,10 @@ export type PillProps = {
    * Disables pill from being pressed
    */
   disabled?: boolean;
+  /**
+   * Size of the pill
+   */
+  size?: PillSize;
   /**
    * Each pill can opt to include an icon which will be displayed before the label.
    */
@@ -61,6 +68,7 @@ const baseTestId = 'pill';
 const Pill = ({
   disabled = false,
   removable = false,
+  size = 'large',
   icon,
   onClick,
   hasBorder = true,
@@ -103,15 +111,26 @@ const Pill = ({
 
   if (isDeleted) return null;
 
+  const getPillTestId = (
+    disabled: boolean,
+    isSelected: boolean,
+    basetestId: string
+  ) => {
+    if (isSelected) {
+      return `${basetestId}-component${testID}-selected`;
+    }
+    if (disabled) {
+      return `${basetestId}-component${testID}-disabled
+`;
+    }
+    return `${basetestId}-component${testID}`;
+  };
+
   return (
     <Styled.Pill
       hasBorder={hasBorder}
       isSelected={isSelected}
-      data-testid={
-        isSelected
-          ? `${baseTestId}-component${testID}-selected`
-          : `${baseTestId}-component${testID}`
-      }
+      data-testid={getPillTestId(disabled, isSelected, baseTestId)}
       disabled={disabled}
       onClick={handleSelect}
       isRemovable={removable}
@@ -121,25 +140,35 @@ const Pill = ({
       statusVariant={statusVariant}
       style={coreStyles}
     >
-      <Styled.Content>
-        <Styled.Icon
-          data-testid={`${baseTestId}-icon`}
-          disabled={disabled}
-          hasIcon={!!icon}
-          style={iconStyles}
-          statusVariant={statusVariant}
-        >
-          {isValidElement(icon) && cloneElement(icon)}
-        </Styled.Icon>
-        <Styled.Text
-          disabled={disabled}
-          variant={'paragraph1'}
+      <Container
+        alignItems="center"
+        justifyContent="center"
+        py="sm"
+        px={PillPaddingXSize[size]}
+        gap="sm"
+      >
+        {icon && (
+          <Styled.Icon
+            data-testid={`${baseTestId}-icon`}
+            disabled={disabled}
+            style={iconStyles}
+            statusVariant={statusVariant}
+          >
+            {icon}
+          </Styled.Icon>
+        )}
+        <Typography
+          color={
+            disabled
+              ? PillTypographyColor.disabled
+              : PillTypographyColor[statusVariant]
+          }
+          variant={PillTypographySize[size]}
           numberOfLines={2}
-          statusVariant={statusVariant}
           style={textStyles}
         >
           {label}
-        </Styled.Text>
+        </Typography>
         {removable && (
           <Styled.RemoveIcon
             data-testid={`${baseTestId}-clickable${testID}`}
@@ -147,13 +176,19 @@ const Pill = ({
             tabIndex={!disabled ? 0 : -1}
             onKeyDown={(event) => onKeyPressHandler(event, false)}
             disabled={disabled}
-            hasIcon={!!icon}
-            hasLabel={!!label}
           >
-            <FontAwesomeIcon icon={faXmark} />
+            <Icon
+              variant={PillTypographySize[size]}
+              icon={faXmark}
+              color={
+                disabled
+                  ? PillTypographyColor.disabled
+                  : PillTypographyColor[statusVariant]
+              }
+            />
           </Styled.RemoveIcon>
         )}
-      </Styled.Content>
+      </Container>
     </Styled.Pill>
   );
 };

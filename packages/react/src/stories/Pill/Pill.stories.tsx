@@ -1,5 +1,4 @@
 import { faBird } from '@fortawesome/pro-solid-svg-icons/faBird';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Meta, Story } from '@storybook/react';
 import Pill, { PillProps } from '../../components/Pill';
 import PillGroup from '../../components/PillGroup';
@@ -9,6 +8,8 @@ import { DESCRIPTION, DO, DONT, TITLE } from './PillInfo';
 import * as StoryTitle from '../StoryTitle';
 import useTheme from '../../hooks/useTheme';
 import { PillVariant } from '../../components/Pill/Pill.types';
+import Icon from '../../components/Icon';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default {
   title: 'React/Components/Pill',
@@ -46,33 +47,94 @@ export const Overview = () => {
 
 export const Variants = () => {
   return (
-    <Container flexDirection="column">
-      <StoryTitle.Regular>Pill with Label</StoryTitle.Regular>
-      <Pill label="Label" />
-      <StoryTitle.Regular>Selected Pill with Label</StoryTitle.Regular>
-      <Pill label="Label" selected />
-      <StoryTitle.Regular>Disabled Pill with Label</StoryTitle.Regular>
-      <Pill label="Label" disabled />
-      <StoryTitle.Regular>Pill with Icon</StoryTitle.Regular>
-      <Pill label="Label" icon={<FontAwesomeIcon icon={faBird} />} />
-      <StoryTitle.Regular>Disabled Pill with Icon</StoryTitle.Regular>
-      <Pill label="Label" disabled icon={<FontAwesomeIcon icon={faBird} />} />
-      <StoryTitle.Regular>Removable Pill with Icon</StoryTitle.Regular>
-      <Pill removable label="Label" icon={<FontAwesomeIcon icon={faBird} />} />
-      <StoryTitle.Regular>Disabled Removable Pill with Icon</StoryTitle.Regular>
-      <Pill
-        removable
-        label="Label"
-        disabled
-        icon={<FontAwesomeIcon icon={faBird} />}
-      />
-      <StoryTitle.Regular>Removable Pill with No Border</StoryTitle.Regular>
-      <Pill
-        removable
-        label="Label"
-        hasBorder={false}
-        icon={<FontAwesomeIcon icon={faBird} />}
-      />
+    <Container flexDirection="column" gap="lg">
+      {/* Variants */}
+      <Container flexDirection="column" gap="md">
+        {/* Label Pill */}
+        <Container flexDirection="column" gap="sm">
+          <StoryTitle.Regular>Pill with Label</StoryTitle.Regular>
+          <Container flexDirection="row" gap="sm" alignItems="center">
+            <Pill label="Large" />
+            <Pill label="Small" size="small" />
+          </Container>
+        </Container>
+
+        {/* Selected Pill */}
+        <Container flexDirection="column" gap="sm">
+          <StoryTitle.Regular>Selected Pill</StoryTitle.Regular>
+          <Container flexDirection="row" gap="sm" alignItems="center">
+            <Pill label="Large" selected />
+            <Pill label="Small" selected size="small" />
+          </Container>
+        </Container>
+
+        {/* Disabled Pill */}
+        <Container flexDirection="column" gap="sm">
+          <StoryTitle.Regular>Disabled Pill</StoryTitle.Regular>
+          <Container flexDirection="row" gap="sm" alignItems="center">
+            <Pill label="Large" disabled />
+            <Pill label="Small" disabled size="small" />
+          </Container>
+        </Container>
+
+        {/* Pill with Icon */}
+        <Container flexDirection="column" gap="sm">
+          <StoryTitle.Regular>Pill with Icon</StoryTitle.Regular>
+          <Container flexDirection="row" gap="sm" alignItems="center">
+            <Pill label="Large" icon={<Icon variant="p1" icon={faBird} />} />
+            <Pill
+              label="Small"
+              icon={<Icon variant="p2" icon={faBird} />}
+              size="small"
+            />
+          </Container>
+        </Container>
+
+        {/* Disabled Pill with Icon */}
+        <Container flexDirection="column" gap="sm">
+          <StoryTitle.Regular>Disabled Pill with Icon</StoryTitle.Regular>
+          <Container flexDirection="row" gap="sm" alignItems="center">
+            <Pill
+              label="Large"
+              disabled
+              icon={<Icon variant="p1" icon={faBird} />}
+            />
+            <Pill
+              label="Small"
+              disabled
+              icon={<Icon variant="p2" icon={faBird} />}
+              size="small"
+            />
+          </Container>
+        </Container>
+
+        {/* Removable Pill */}
+        <Container flexDirection="column" gap="sm">
+          <StoryTitle.Regular>Removable Pill</StoryTitle.Regular>
+          <Container flexDirection="row" gap="sm" alignItems="center">
+            <Pill label="Large" removable />
+            <Pill label="Small" removable size="small" />
+          </Container>
+        </Container>
+
+        {/* Removable Pill with Icon */}
+        <Container flexDirection="column" gap="sm">
+          <StoryTitle.Regular>Removable Pill with Icon</StoryTitle.Regular>
+          <Container flexDirection="row" gap="sm" alignItems="center">
+            <Pill
+              label="Large"
+              removable
+              icon={<Icon variant="p1" icon={faBird} />}
+            />
+            <Pill
+              label="Small"
+              removable
+              icon={<Icon variant="p2" icon={faBird} />}
+              size="small"
+            />
+          </Container>
+        </Container>
+      </Container>
     </Container>
   );
 };
@@ -82,7 +144,7 @@ export const VariantsWithColor = () => {
     <Container flexDirection="column">
       <StoryTitle.Regular>Status Pills</StoryTitle.Regular>
       <Container flexDirection="row">
-        <Pill label="Default" icon={<FontAwesomeIcon icon={faBird} />} />
+        <Pill label="Default" icon={<Icon variant="p1" icon={faBird} />} />
         <Pill label="Success" statusVariant="success" />
         <Pill label="Info" statusVariant="info" />
         <Pill label="Warning" statusVariant="warning" />
@@ -102,7 +164,7 @@ export const VariantsWithColor = () => {
             key={label}
             label={label}
             statusVariant={statusVariant}
-            icon={<FontAwesomeIcon icon={faBird} />}
+            icon={<Icon variant="p1" icon={faBird} />}
           />
         ))}
       </Container>
@@ -111,46 +173,46 @@ export const VariantsWithColor = () => {
         {[
           {
             style: {
-              iconStyles: { color: theme.ColorBaseMint100 },
-              textStyles: { color: theme.ColorBaseMint100 },
+              iconStyles: { color: theme.ThemesSecondary400 },
+              textStyles: { color: theme.ThemesSecondary400 },
               coreStyles: {
-                backgroundColor: theme.ColorBaseWhite100,
+                backgroundColor: theme.ThemesNeutral0,
               },
             },
           },
           {
             style: {
-              iconStyles: { color: theme.ColorBaseGrey100 },
-              textStyles: { color: theme.ColorBaseGrey100 },
+              iconStyles: { color: theme.ThemesNeutral700 },
+              textStyles: { color: theme.ThemesNeutral700 },
               coreStyles: {
-                backgroundColor: theme.ColorBaseOrange300,
+                backgroundColor: theme.ThemesWarning400,
               },
             },
           },
           {
             style: {
-              iconStyles: { color: theme.ColorBaseMagenta100 },
-              textStyles: { color: theme.ColorBaseMagenta100 },
+              iconStyles: { color: theme.ThemesTertiary700 },
+              textStyles: { color: theme.ThemesTertiary700 },
               coreStyles: {
-                backgroundColor: theme.ColorBaseMagenta400,
+                backgroundColor: theme.ThemesTertiary300,
               },
             },
           },
           {
             style: {
-              iconStyles: { color: theme.ColorBaseCyan100 },
-              textStyles: { color: theme.ColorBaseCyan100 },
+              iconStyles: { color: theme.ThemesPrimary100 },
+              textStyles: { color: theme.ThemesPrimary100 },
               coreStyles: {
-                backgroundColor: theme.ColorBaseCyan400,
+                backgroundColor: theme.ThemesPrimary700,
               },
             },
           },
           {
             style: {
-              iconStyles: { color: theme.ColorBaseMint100 },
-              textStyles: { color: theme.ColorBaseMint100 },
+              iconStyles: { color: theme.ThemesSecondary400 },
+              textStyles: { color: theme.ThemesSecondary400 },
               coreStyles: {
-                backgroundColor: theme.ColorBaseMint400,
+                backgroundColor: theme.ThemesSecondary100,
               },
             },
           },
@@ -177,4 +239,7 @@ const Template: Story<PillProps> = ({ ...rest }) => {
 };
 
 export const Interactive = Template.bind({});
-Interactive.args = { label: 'Label', icon: <FontAwesomeIcon icon={faBird} /> };
+Interactive.args = {
+  label: 'Label',
+  icon: <Icon variant="p1" icon={faBird} />,
+};

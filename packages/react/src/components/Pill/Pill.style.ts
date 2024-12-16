@@ -1,16 +1,15 @@
 import styled, { css } from 'styled-components';
 import { getTabbedStateStyles } from '../../utils';
-import Typography from '../Typography';
-import { BackGroundProps, PillIconProps, PillVariant, RemoveIconProps, SelectedProps, TextProp } from './Pill.types';
+import { BackGroundProps, PillVariant, PillVariantProps, SelectedProps } from './Pill.types';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
-import { ExtendedTheme, Theme } from '../../types';
+import { ExtendedTheme } from '../../types';
 
 export const getVariantBackgroundColor = (theme: ThemeDesignTokens): Record<PillVariant, string> => ({
-  default: theme.PillVariantDefaultBackgroundColor,
-  success: theme.PillVariantSuccessBackgroundColor,
-  error: theme.PillVariantErrorBackgroundColor,
-  info: theme.PillVariantInfoBackgroundColor,
-  warning: theme.PillVariantWarningBackgroundColor,
+  default: theme.ElementsSurfacePage,
+  success: theme.ElementsSurfaceSuccess,
+  error: theme.ElementsSurfaceDanger,
+  info: theme.ElementsSurfaceInfo,
+  warning: theme.ElementsSurfaceWarning,
 });
 
 const getBackgroundColor = ({
@@ -22,24 +21,24 @@ const getBackgroundColor = ({
   if (statusVariant !== 'default') return getVariantBackgroundColor(theme)[statusVariant];
   if (disabled)
     return css`
-      ${theme.PillDisabledBackgroundColor}
+      ${theme.ElementsSurfaceDisabled}
     `;
   if (isSelected)
     return css`
-      ${theme.BrandColorSecondary400}
+      ${theme.ElementsSurfaceActionHoverSecondary}
     `;
 
   return css`
-    ${theme.PillVariantDefaultBackgroundColor}
+    ${theme.ElementsSurfacePage}
   `;
 };
 
 export const getVariantColor = (theme: ThemeDesignTokens): Record<PillVariant, string> => ({
-  default: theme.PillVariantDefaultTextColor,
-  success: theme.PillVariantSuccessTextColor,
-  error: theme.PillVariantErrorTextColor,
-  info: theme.PillVariantInfoTextColor,
-  warning: theme.PillVariantWarningBorderColor,
+  default: theme.ElementsTextDefaultDark,
+  info: theme.ElementsTextInfo,
+  success: theme.ElementsTextSuccess,
+  error: theme.ElementsTextDanger,
+  warning: theme.ElementsTextWarning,
 });
 
 export const Pill = styled.div<SelectedProps>`
@@ -54,19 +53,19 @@ export const Pill = styled.div<SelectedProps>`
   }: ExtendedTheme<SelectedProps>) => css`
     width: fit-content;
     height: fit-content;
-    margin: ${hasPadding && theme.PillMargin};
-    border-radius: ${theme.PillBorderRadius};
+    margin: ${hasPadding && theme.BaselineSpacesSpace8};
+    border-radius: ${theme.BorderBaseRadiusRounded};
     background-color: ${getBackgroundColor({ theme, disabled, isSelected, statusVariant })};
 
     ${hasBorder &&
     css`
-      border: solid ${theme.PillBorderWidth};
+      border: solid ${theme.BorderBaseWidthSm};
       border-color: ${statusVariant && getVariantColor(theme)[statusVariant]};
     `}
 
     ${statusVariant === 'default' &&
     css`
-      border-color: ${disabled ? theme.PillDisabledBorderColor : theme.PillVariantDefaultBorderColor};
+      border-color: ${disabled ? theme.ElementsBorderDisabled : theme.ElementsBorderHighlightStrong};
       cursor: ${!disabled && !isRemovable && 'pointer'};
     `};
 
@@ -74,34 +73,16 @@ export const Pill = styled.div<SelectedProps>`
   `};
 `;
 
-export const Content = styled.div`
-  ${({ theme }: Theme) => css`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: ${theme.PillPaddingVertical} ${theme.PillPaddingHorizontal};
-  `}
-`;
-
-export const Text = styled(Typography)<TextProp>`
-  ${({ theme, disabled, statusVariant = 'default' }: ExtendedTheme<TextProp>) => css`
-    color: ${statusVariant === 'warning' ? theme.PillVariantWarningTextColor : getVariantColor(theme)[statusVariant]};
-    color: ${statusVariant === 'default' && disabled && theme.PillDisabledColor};
-  `}
-`;
-
-export const Icon = styled.div<PillIconProps>`
-  ${({ theme, hasIcon, disabled, statusVariant = 'default' }: ExtendedTheme<PillIconProps>) => css`
-    margin-right: ${hasIcon && theme.PillIconMarginLeft};
+export const Icon = styled.div<PillVariantProps>`
+  ${({ theme, disabled, statusVariant = 'default' }: ExtendedTheme<PillVariantProps>) => css`
     color: ${getVariantColor(theme)[statusVariant]};
-    color: ${statusVariant === 'default' && disabled && theme.PillDisabledColor};
+    color: ${statusVariant === 'default' && disabled && theme.ElementsTextDisabled};
   `}
 `;
 
-export const RemoveIcon = styled.div<RemoveIconProps>`
-  ${({ theme, hasIcon, hasLabel, disabled }: ExtendedTheme<RemoveIconProps>) => css`
-    margin-left: ${(hasLabel || hasIcon) && theme.PillIconMarginRight};
-    color: ${theme.PillDisabledColor};
+export const RemoveIcon = styled.div<PillVariantProps>`
+  ${({ theme, disabled }: ExtendedTheme<PillVariantProps>) => css`
+    color: ${theme.ElementsTextDisabled};
     cursor: ${!disabled && 'pointer'};
 
     ${getTabbedStateStyles()}
