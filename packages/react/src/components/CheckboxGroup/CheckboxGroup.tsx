@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { TestProp } from '../../types';
 import Checkbox from '../Checkbox';
-import * as Styled from './CheckboxGroup.style';
-import { OptionProps } from './CheckboxGroup.types';
+import { OptionObjectType, OptionProps } from './CheckboxGroup.types';
 import {
   getDefaultList,
   getIsOptionObject,
   getLabel,
   getOptionsList,
+  getSelectedList,
   getValue,
 } from './utils';
+import Container from '../Container';
 
 export type CheckboxGroupProps = {
   /**
@@ -44,9 +45,12 @@ const CheckboxGroup = ({
   const childHasError = options.some(
     (item) => getIsOptionObject(item) && item.hasError === true
   );
-  const childHasDisabled = options.some(
-    (item) => getIsOptionObject(item) && item.disabled === true
+
+  const childrenDisabled = (options as Array<string | OptionObjectType>).every(
+    (item: string | OptionObjectType) =>
+      getIsOptionObject(item) && item.disabled === true
   );
+
   const isIndeterminate = () =>
     options.length === selectedList.length ? undefined : 'indeterminate';
 
@@ -58,13 +62,23 @@ const CheckboxGroup = ({
     )
       return true;
   };
+
   const isDefaultChecked = (label: string) =>
     selectedList.some((item) => item === getLabel(label));
 
   const onChangeHandler = (newList: string[]) => onChange && onChange(newList);
 
   const handleCheckAll = () => {
-    const newList = !isAnySelected() ? getOptionsList(options) : [];
+    const disabledList = getOptionsList.disabled(options);
+    const enabledList = getOptionsList.enabled(options);
+    const selectedEnabledList = getSelectedList(enabledList, selectedList);
+    const selectedDisabledList = getSelectedList(disabledList, selectedList);
+
+    const newList =
+      selectedEnabledList.length === 0
+        ? [...enabledList, ...selectedDisabledList]
+        : [...selectedDisabledList];
+
     setSelectedList(newList);
     onChangeHandler(newList);
   };
@@ -96,18 +110,20 @@ const CheckboxGroup = ({
     });
 
   return (
-    <div data-testid="checkbox-group">
+    <Container flexDirection="column" gap="sm" testID="checkbox-group">
       <Checkbox
         type={isIndeterminate()}
         label={label}
         onChange={handleCheckAll}
-        disabled={childHasDisabled}
+        disabled={childrenDisabled}
         hasError={childHasError}
         checked={isAnySelected()}
         testID="checkbox-selectAll"
       />
-      <Styled.CheckboxList>{renderCheckboxList()}</Styled.CheckboxList>
-    </div>
+      <Container gap="sm" pl="md" flexDirection="column">
+        {renderCheckboxList()}
+      </Container>
+    </Container>
   );
 };
 export default CheckboxGroup;
