@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.50.12](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.50.11...@newcross-ui/react-native@1.50.12) (2024-12-23)
+
+**Note:** Version bump only for package @newcross-ui/react-native
+
+
+
+
+
 ## [1.50.11](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.50.10...@newcross-ui/react-native@1.50.11) (2024-12-05)
 
 
