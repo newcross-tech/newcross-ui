@@ -1,8 +1,9 @@
 import Toast, { ToastProps } from './Toast';
 import { byTestId } from 'testing-library-selector';
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDays } from '@fortawesome/pro-solid-svg-icons/faCalendarDays';
+import userEvent from '@testing-library/user-event';
 
 const ui = {
   toastComp: byTestId(`toast-component`),
@@ -56,14 +57,10 @@ describe('Toast component', () => {
     // Assert
     expect(ui.alertCloseIconComp.get()).toBeInTheDocument();
 
-    fireEvent.click(ui.alertCloseIconComp.get());
+    userEvent.click(ui.alertCloseIconComp.get());
 
-    await waitFor(() => expect(onClose).toHaveBeenCalled(), {
-      timeout: 1000,
-    });
-    await waitFor(() => expect(ui.toastComp.query()).not.toBeInTheDocument(), {
-      timeout: 1000,
-    });
+    await waitFor(() => expect(onClose).toHaveBeenCalled());
+    await waitFor(() => expect(ui.toastComp.query()).not.toBeInTheDocument());
   });
 
   it('renders toast and autohides it ', async () => {

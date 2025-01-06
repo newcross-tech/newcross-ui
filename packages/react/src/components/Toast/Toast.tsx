@@ -1,63 +1,36 @@
 import { useTransition } from '@react-spring/web';
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 import { useTimeout } from '../../hooks/useTimeout';
-import { TestProp } from '../../types';
-import Alert, { AlertProps } from '../Alert';
+import { OptionalProps } from '../../types';
+import Alert from '../Alert';
 import * as Styled from './Toast.style';
+import { ToastPropsStrict } from './Toast.types';
 
-export type ToastProps = {
-  /**
-   * Pass a custom icon to show on the left side of message
-   */
-  customStatusIcon?: ReactNode;
-  /**
-   * Called when close icon is clicked or
-   * timeout has been reached
-   */
-  onClose?: VoidFunction;
-  /**
-   * Pass the message for the toast notification
-   */
-  message: ReactNode | string;
-  /**
-   * Pass the width of the toast
-   */
-  width?: string;
-  /**
-   * set how long the toast should appear for in ms
-   */
-  duration?: number;
-  /**
-   * state of toast visibility
-   */
-  show: boolean;
-  /**
-   * allows the toast to timeout based on the number given in duration
-   * it also hides the close icon
-   */
-  autoHide?: boolean;
-} & TestProp &
-  AlertProps;
+export type ToastProps = OptionalProps<
+  ToastPropsStrict,
+  'autoHide' | 'hasBorder' | 'hasButton' | 'variant' | 'duration'
+>;
 
-const Toast = ({
-  show,
-  testID = 'toast',
-  variant,
-  onClose,
-  message,
-  width,
-  customStatusIcon,
-  autoHide = true,
-  hasBorder = false,
-  hasButton = false,
-  duration = 6000,
-  ...rest
-}: ToastProps) => {
-  const [isShown, setShown] = useState(show);
+const normalizeToastProps = (props: ToastProps): ToastPropsStrict => ({
+  ...props,
+  autoHide: props.autoHide ?? true,
+  hasBorder: props.hasBorder ?? false,
+  variant: props.variant ?? 'success',
+  get hasButton() {
+    return props.hasButton || !this.autoHide;
+  },
+  duration: props.duration ?? 6000,
+  testID: props.testID ?? 'toast',
+});
 
-  const transition = useTransition(isShown, Styled.getAnimatedStyles(onClose));
+const Toast = (_props: ToastProps) => {
+  const { testID, ...props } = normalizeToastProps(_props);
 
-  useTimeout(duration, () => autoHide && setShown(false));
+  const [isShown, setIsShown] = useState(props.show);
+
+  const transition = useTransition(isShown, Styled.getAnimatedStyles(props));
+
+  useTimeout(props.duration, () => props.autoHide && setIsShown(false));
 
   return (
     <>
@@ -65,19 +38,20 @@ const Toast = ({
         (style, item) =>
           item && (
             <Styled.AnimatedContainer
-              data-testid={`${testID}-component`}
+              testID={`${testID}-component`}
               style={style}
-              width={width}
+              width={props.width}
+              flexDirection="column"
             >
               <Alert
-                icon={customStatusIcon}
-                hasBorder={hasBorder}
-                hasButton={hasButton || !autoHide}
-                variant={variant}
-                onClose={() => setShown(false)}
-                {...rest}
+                icon={props.customStatusIcon}
+                {...props}
+                onClose={() => {
+                  props.onClose?.();
+                  setIsShown(false);
+                }}
               >
-                {message}
+                {props.message}
               </Alert>
             </Styled.AnimatedContainer>
           )
