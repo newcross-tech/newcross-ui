@@ -1,13 +1,12 @@
 import styled, { css } from 'styled-components';
 import { ExtendedTheme } from '../../types';
 import { getTabbedStateStyles } from '../../utils';
-import { TypographyProps } from '../Typography';
-import * as TypographyStyled from '../Typography/Typography.style';
+import { TypographyProps, getTypographyCoreStyles } from '../Typography';
 import { LabelProps } from './Label';
 
 export const Label = styled.label<LabelProps>`
   ${({ theme, variant, gutterBottom, numberOfLines, disabled }: ExtendedTheme<LabelProps>) => css`
-    ${TypographyStyled.getCoreStyles({
+    ${getTypographyCoreStyles({
       theme,
       variant,
       gutterBottom,

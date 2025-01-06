@@ -93,9 +93,9 @@
   },
   "scripts": {
     "lint:check": "eslint '**/*.{ts,tsx,json}'",
-    "lint:fix": "eslint --fix '**/*.{ts,tsx,json}'",
+    "lint:fix": "_() { eslint --fix ${1:-'**/*.{ts,tsx,json}'}; }; _",
     "format:check": "prettier --check '**/*.{ts,tsx,json}'",
-    "format": "prettier --write '**/*.{ts,tsx,json}'",
+    "format": "_() { prettier --write ${1:-'**/*.{ts,tsx,json}'}; }; _",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006",
     "build": "lerna run build",
@@ -109,8 +109,8 @@
   },
   "lint-staged": {
     "**/*.{ts,tsx,json}": [
-      "yarn format:check",
-      "yarn lint:check"
+      "yarn format",
+      "yarn lint:fix"
     ]
   },
   "config": {

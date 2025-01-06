@@ -41,6 +41,10 @@ export type TypographyProps = {
    * Used to define type of display
    */
   display?: CSSProperties['display'];
+  /**
+   * The text decoration of the component text.
+   */
+  textDecoration?: CSSProperties['textDecoration'];
 } & TestProp &
   HTMLAttributes<HTMLDivElement>;
 

@@ -30,7 +30,7 @@ const getTypographyStyles = (theme: ThemeDesignTokens, variant: TypographyVarian
   `;
 };
 
-export const getColorStyles = (theme: ThemeDesignTokens): Record<Mode, Record<TypographyColors, string>> => ({
+export const getTypographyColorStyles = (theme: ThemeDesignTokens): Record<Mode, Record<TypographyColors, string>> => ({
   dark: {
     primary: theme.ThemesNeutral0,
     secondary: theme.ThemesNeutral100,
@@ -73,7 +73,7 @@ export const getColorStyles = (theme: ThemeDesignTokens): Record<Mode, Record<Ty
   },
 });
 
-export const getCoreStyles = ({
+export const getTypographyCoreStyles = ({
   theme,
   variant,
   color,
@@ -81,19 +81,27 @@ export const getCoreStyles = ({
   align,
   gutterBottom,
   numberOfLines,
-}: ExtendedTheme<TypographyProps>) => css`
-  ${getTypographyStyles(theme, variant)};
-  ${numberOfLines && getElipsisStyles(numberOfLines)};
-  margin-bottom: ${gutterBottom ? theme.SpacingBase8 : theme.SpacingBase0};
-  ${color ? { color: getColorStyles(theme)[mode][color] } : { color: 'inherit' }};
-  ${align ? { textAlign: align } : { textAlign: 'inherit' }};
+  textDecoration,
+}: ExtendedTheme<Omit<TypographyProps, 'children'>>) => {
+  const styledColor = getTypographyColorStyles(theme)[mode][color ?? 'primary'];
 
-  b,
-  strong,
-  em {
-    font-family: ${theme.TypographyFontFamilyPoppinsSemiBold};
-  }
-`;
+  return css`
+    ${getTypographyStyles(theme, variant)};
+    ${numberOfLines && getElipsisStyles(numberOfLines)};
+    margin-bottom: ${gutterBottom ? theme.SpacingBase8 : theme.SpacingBase0};
+    ${color ? { color: styledColor } : { color: 'inherit' }};
+    ${align ? { textAlign: align } : { textAlign: 'inherit' }};
+    ${textDecoration
+      ? { textDecoration: styledColor ? `${textDecoration} ${styledColor}` : textDecoration }
+      : { textDecoration: 'inherit' }};
+
+    b,
+    strong,
+    em {
+      font-family: ${theme.TypographyFontFamilyPoppinsSemiBold};
+    }
+  `;
+};
 
 export const Typography = styled.div<TypographyProps>`
   ${({
@@ -105,11 +113,12 @@ export const Typography = styled.div<TypographyProps>`
     gutterBottom,
     numberOfLines,
     display,
+    textDecoration,
   }: ExtendedTheme<TypographyProps>) => css`
     display: ${display};
     margin: 0;
     padding: 0;
-    ${getCoreStyles({
+    ${getTypographyCoreStyles({
       theme,
       variant,
       color,
@@ -117,6 +126,7 @@ export const Typography = styled.div<TypographyProps>`
       align,
       gutterBottom,
       numberOfLines,
-    } as ExtendedTheme<TypographyProps>)};
+      textDecoration,
+    })};
   `}
 `;

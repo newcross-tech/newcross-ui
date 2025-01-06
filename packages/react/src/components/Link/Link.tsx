@@ -1,6 +1,6 @@
 import { AnchorHTMLAttributes } from 'react';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
-import { TypographyProps } from '../Typography';
+import Typography, { TypographyProps } from '../Typography';
 import Container from '../Container';
 import { TestProp } from '../../types';
 import * as Styled from './Link.style';
@@ -41,25 +41,46 @@ const Link = ({
   role,
   onClick,
   disabled = false,
+  color: _color,
+  mode = 'light',
   ...restProps
 }: LinkProps) => {
+  const color = disabled ? 'disabled' : _color ?? 'primary';
+
   return (
     <Styled.Link
       data-testid={testID}
       role={role}
       onClick={onClick}
       disabled={disabled}
+      // TODO: consider spreading props only in one of the components.. either the anchor or the text
       {...restProps}
     >
       <Container display="inline-flex" alignItems="center" gap="sm">
         {leftIcon && (
-          <Icon testID="link-left-icon" variant={variant} icon={leftIcon} />
+          <Icon
+            testID="link-left-icon"
+            icon={leftIcon}
+            color={color}
+            variant={variant}
+          />
         )}
-        <Styled.Text variant={variant} {...restProps}>
+        <Typography
+          textDecoration="underline"
+          color={color}
+          mode={mode}
+          variant={variant}
+          {...restProps}
+        >
           {children}
-        </Styled.Text>
+        </Typography>
         {rightIcon && (
-          <Icon testID="link-right-icon" variant={variant} icon={rightIcon} />
+          <Icon
+            testID="link-right-icon"
+            icon={rightIcon}
+            color={color}
+            variant={variant}
+          />
         )}
       </Container>
     </Styled.Link>
