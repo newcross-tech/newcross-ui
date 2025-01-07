@@ -1,8 +1,8 @@
 {
   "breakpoints": {
-    "sm": { "value": 375, "type": "spacing" },
-    "md": { "value": 768, "type": "spacing" },
-    "lg": { "value": 1366, "type": "spacing" },
-    "xl": { "value": 1920, "type": "spacing" }
+    "sm": { "value": 375 },
+    "md": { "value": 768 },
+    "lg": { "value": 1366 },
+    "xl": { "value": 1920 }
   }
 }
