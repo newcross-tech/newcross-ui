@@ -9,7 +9,6 @@ export const getOptionsList = {
           getIsOptionObject(item) && item.disabled === true
       )
       .map((item) => item.value),
-
   enabled: (options: OptionProps): string[] =>
     (options as Array<string | OptionObjectType>)
       .filter((item) => !getIsOptionObject(item) || !item.disabled)
