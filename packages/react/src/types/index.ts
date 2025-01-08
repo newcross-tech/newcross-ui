@@ -6,7 +6,13 @@ export type AlertVariant =
   | 'info'
   | 'notification';
 export type FontWeight = '400' | '600' | '700' | '800';
-export type TestProp = { testID?: string };
+export type TestProp = {
+  /**
+   * @deprecated Use {@link data-testid} instead
+   */
+  testID?: string;
+  'data-testid'?: string;
+};
 export type Theme = {
   theme: ThemeDesignTokens;
 };
@@ -105,3 +111,5 @@ export const responsiveSpacingMap: Record<
     xl: 'BaselineSpacesSpace52',
   },
 };
+
+export * from './utility-types';

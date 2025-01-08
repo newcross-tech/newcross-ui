@@ -5,20 +5,20 @@ import { faExternalLink } from '@fortawesome/pro-regular-svg-icons/faExternalLin
 import Link, { LinkProps } from './Link';
 import { axe } from '../../utils/test/axeConfig';
 
-const renderComponent = (props: LinkProps) => {
-  const customProps: LinkProps = {
-    ...props,
+function renderComponent(overrides: Partial<LinkProps>) {
+  const props: LinkProps = {
     variant: 'paragraph1',
     children: 'My Link',
+    ...overrides,
   };
 
-  return render(<Link {...customProps} />);
-};
+  return render(<Link {...props} />);
+}
 
 describe('Link Component', () => {
   it('should not have any a11y errors', async () => {
     // Act
-    const { container } = renderComponent({} as LinkProps);
+    const { container } = renderComponent({});
     const results = await axe(container);
     // Assert
     expect(results).toHaveNoViolations();
@@ -28,7 +28,7 @@ describe('Link Component', () => {
     // Act
     renderComponent({
       href: 'mailto:someone@example.com',
-    } as LinkProps);
+    });
     const link = screen.getByRole('link', { name: 'My Link' });
     // Assert
     expect(link).toHaveAttribute('href', 'mailto:someone@example.com');
@@ -37,7 +37,7 @@ describe('Link Component', () => {
 
   it('should render successfully without href', () => {
     // Act
-    renderComponent({ role: 'button' } as LinkProps);
+    renderComponent({ role: 'button' });
     const link = screen.getByRole('button', { name: 'My Link' });
 
     // Assert
@@ -49,15 +49,15 @@ describe('Link Component', () => {
     renderComponent({
       leftIcon: faPhone,
       rightIcon: faExternalLink,
-    } as LinkProps);
+    });
 
-    expect(screen.queryByTestId('link-left-icon')).toBeInTheDocument();
-    expect(screen.queryByTestId('link-right-icon')).toBeInTheDocument();
+    expect(screen.getByTestId('link-left-icon')).toBeInTheDocument();
+    expect(screen.getByTestId('link-right-icon')).toBeInTheDocument();
   });
 
   it('should not render icons when not provided', () => {
     // Act
-    renderComponent({} as LinkProps);
+    renderComponent({});
 
     expect(screen.queryByTestId('link-left-icon')).not.toBeInTheDocument();
     expect(screen.queryByTestId('link-right-icon')).not.toBeInTheDocument();
@@ -69,7 +69,7 @@ describe('Link Component', () => {
     renderComponent({
       onClick,
       href: 'mailto:someone@example.com',
-    } as unknown as LinkProps);
+    });
     const link = screen.getByRole('link', { name: 'My Link' });
 
     // Act
@@ -77,5 +77,20 @@ describe('Link Component', () => {
 
     // Assert
     expect(onClick).toHaveBeenCalled();
+  });
+
+  it('should not be clickable when disabled', () => {
+    // Arrange
+    renderComponent({
+      disabled: true,
+      href: 'https://example.com',
+    });
+    const link = screen.getByRole('link', { name: 'My Link' });
+
+    // Act
+    const click = () => userEvent.click(link);
+
+    // Assert
+    expect(click).toThrowError();
   });
 });

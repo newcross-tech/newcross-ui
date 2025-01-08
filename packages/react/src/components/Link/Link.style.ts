@@ -1,12 +1,12 @@
-import styled, { css } from 'styled-components';
-import { Theme } from '../../types';
+import styled from 'styled-components';
+import { type LinkPropsStrict } from './Link.types';
 
-export const Link = styled.a`
-  ${({ theme, disabled }: Theme & { disabled: boolean }) => css`
-    cursor: ${disabled ? 'not-allowed' : 'pointer'};
-    pointer-events: ${disabled ? 'none' : 'auto'};
-    &:active {
-      opacity: ${theme.OpacityBaseMd};
-    }
-  `};
-`;
+export const Link = styled.a<Pick<LinkPropsStrict, 'disabled'>>(({ theme, disabled }) => [
+  {
+    cursor: disabled ? 'not-allowed' : 'pointer',
+    pointerEvents: disabled ? 'none' : 'auto',
+    ':active': {
+      opacity: theme.OpacityBaseMd,
+    },
+  },
+]);
