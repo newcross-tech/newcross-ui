@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { useToggle } from '../../hooks/useToggle';
 import { TestProp } from '../../types';
 import {
@@ -6,7 +6,9 @@ import {
   SingleSelect,
 } from '../ToggleButtonGroup/ToggleButtonGroup.types';
 import * as Styled from './ToggleButton.style';
-import { ContentProps } from './ToggleButton.types';
+import Typography from '../Typography';
+import Icon from '../Icon';
+import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 
 export type ToggleButtonProps = {
   /**
@@ -34,30 +36,35 @@ export type ToggleButtonProps = {
   /**
    * Set the left icon element.
    */
-  leftIcon?: ReactElement;
+  leftIcon?: IconDefinition;
   /**
    * Set the right icon element.
    */
-  rightIcon?: ReactElement;
+  rightIcon?: IconDefinition;
+  /**
+   * Set the disabled state of the button.
+   */
+  disabled?: boolean;
   variant?: (SingleSelect | MultiSelect)['variant'];
 } & TestProp;
 
-export const ToggleIcon = ({
-  testID,
-  rightIcon,
-  children,
-  hasLeftContent,
-  hasRightContent,
-}: ContentProps) => (
-  <Styled.IconWrapper
-    hasLeftContent={hasLeftContent}
-    hasRightContent={hasRightContent}
-    rightIcon={rightIcon}
-    data-testid={testID}
-  >
-    {children}
-  </Styled.IconWrapper>
-);
+// TODO - To be removed
+// export const ToggleIcon = ({
+//   testID,
+//   rightIcon,
+//   children,
+//   hasLeftContent,
+//   hasRightContent,
+// }: ContentProps) => (
+//   <Styled.IconWrapper
+//     hasLeftContent={hasLeftContent}
+//     hasRightContent={hasRightContent}
+//     rightIcon={rightIcon}
+//     data-testid={testID}
+//   >
+//     {children}
+//   </Styled.IconWrapper>
+// );
 
 const baseTestId = 'toggle-button';
 
@@ -71,16 +78,19 @@ const ToggleButton = ({
   value = '',
   testID = '',
   variant,
+  disabled = false, // New prop
   ...rest
 }: ToggleButtonProps) => {
-  const [isSelected, setSelected] = useState(selected);
+  const [isSelected, setIsSelected] = useState(selected);
   const isMulti = variant === 'multi';
 
-  useToggle(selected, () => setSelected(selected));
+  useToggle(selected, () => setIsSelected(selected));
 
   const handleOnClick = () => {
+    if (disabled) return;
+
     onClick && onClick(value);
-    setSelected(!isSelected);
+    setIsSelected(!isSelected);
   };
 
   return (
@@ -88,33 +98,40 @@ const ToggleButton = ({
       onClick={handleOnClick}
       selected={isMulti ? isSelected : selected}
       fullWidth={fullWidth}
+      disabled={disabled}
       data-testid={
         selected ? `${baseTestId}-selected${testID}` : `${baseTestId}${testID}`
       }
       {...rest}
     >
       {leftIcon && (
-        <ToggleIcon
-          hasLeftContent={leftIcon && !!children}
+        <Icon
           testID={`${baseTestId}-left-icon`}
-        >
-          {leftIcon}
-        </ToggleIcon>
+          variant="p2"
+          icon={leftIcon}
+          color={disabled ? 'disabled' : 'primary'}
+          mr="sm"
+        />
       )}
       {typeof children === 'string' ? (
-        <Styled.Text variant={'paragraph2'} testID={`${baseTestId}-text`}>
+        <Typography
+          testID={`${baseTestId}-text`}
+          variant="p2"
+          color={disabled ? 'disabled' : 'primary'}
+        >
           {children}
-        </Styled.Text>
+        </Typography>
       ) : (
         children
       )}
       {rightIcon && (
-        <ToggleIcon
-          hasRightContent={rightIcon && !!children}
+        <Icon
           testID={`${baseTestId}-right-icon`}
-        >
-          {rightIcon}
-        </ToggleIcon>
+          variant="p2"
+          icon={rightIcon}
+          color={disabled ? 'disabled' : 'primary'}
+          ml="sm"
+        />
       )}
     </Styled.Container>
   );

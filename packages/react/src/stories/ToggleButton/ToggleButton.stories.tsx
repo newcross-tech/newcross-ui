@@ -19,17 +19,11 @@ export default {
 export const Variants = () => {
   return (
     <Container display="block">
-      <ToggleButton
-        selected={false}
-        rightIcon={<FontAwesomeIcon icon={faCalendarDays} />}
-      >
+      <ToggleButton selected={false} rightIcon={faCalendarDays}>
         Apr
       </ToggleButton>
       <Container m="SpacingBase4" />
-      <ToggleButton
-        selected={true}
-        rightIcon={<FontAwesomeIcon icon={faCalendarDays} />}
-      >
+      <ToggleButton selected={true} rightIcon={faCalendarDays}>
         Apr
       </ToggleButton>
       <Container m="SpacingBase4" />
@@ -38,19 +32,11 @@ export const Variants = () => {
       <ToggleButton selected={true}>Fav (3)</ToggleButton>
 
       <Container m="SpacingBase4" />
-      <ToggleButton
-        selected={false}
-        leftIcon={<FontAwesomeIcon icon={faFilter} />}
-        fullWidth
-      >
+      <ToggleButton selected={false} leftIcon={faFilter} fullWidth>
         Filter By
       </ToggleButton>
       <Container m="SpacingBase4" />
-      <ToggleButton
-        selected={true}
-        leftIcon={<FontAwesomeIcon icon={faFilter} />}
-        fullWidth
-      >
+      <ToggleButton selected={true} leftIcon={faFilter} fullWidth>
         Filter By
       </ToggleButton>
 
@@ -83,17 +69,11 @@ export const Overview = () => {
       dontInfo={DONT}
     >
       <Container display={'block'}>
-        <ToggleButton
-          selected={false}
-          leftIcon={<FontAwesomeIcon icon={faFilter} />}
-        >
+        <ToggleButton selected={false} leftIcon={faFilter}>
           Filter By
         </ToggleButton>
         <Container m="SpacingBase4" />
-        <ToggleButton
-          selected={true}
-          leftIcon={<FontAwesomeIcon icon={faFilter} />}
-        >
+        <ToggleButton selected={true} leftIcon={faFilter}>
           Filter By
         </ToggleButton>
       </Container>
@@ -109,7 +89,7 @@ const Template: Story<ToggleButtonProps> = (props) => {
       <ToggleButton
         {...props}
         selected={selected || props.selected}
-        leftIcon={<FontAwesomeIcon icon={faFilter} />}
+        leftIcon={faFilter}
         onClick={() => setSelected(!selected)}
       />
     </Container>
