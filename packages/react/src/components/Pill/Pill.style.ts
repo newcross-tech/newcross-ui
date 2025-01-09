@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { getTabbedStateStyles } from '../../utils';
 import { BackGroundProps, PillVariant, PillVariantProps, SelectedProps } from './Pill.types';
 import { Theme } from '../../types';
