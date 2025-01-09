@@ -1,26 +1,10 @@
-import { CheckboxProps } from './Checkbox';
 import { ReactNode } from 'react';
 import { TestProp } from '../../types';
 
 export type CheckboxType = 'indeterminate';
 
-export type CheckboxPropsExtended = CheckboxProps & {
-  selected?: boolean;
-};
-
-export type MouseEventOrKeyboardEvent =
-  | React.MouseEvent<HTMLDivElement>
-  | React.KeyboardEvent<HTMLElement>;
-
-export type UserInteractionType = {
-  onClick: (event: MouseEventOrKeyboardEvent) => void;
-};
-
-export type hasErrorProps = Pick<CheckboxPropsExtended, 'type' | 'selected'>;
-export type isSelectedProps = Pick<CheckboxProps, 'type'>;
-
 /**
- * @private
+ * @private The props after normalization
  */
 export type CheckboxPropsStrict = {
   /**
@@ -42,7 +26,10 @@ export type CheckboxPropsStrict = {
   /**
    * Callback fired when the state is changed.
    */
-  onChange?: (selected: boolean, event?: MouseEventOrKeyboardEvent) => void;
+  onChange: (
+    selected: boolean,
+    event?: React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLElement>
+  ) => void;
   /**
    * Determines selected/checked state
    */
