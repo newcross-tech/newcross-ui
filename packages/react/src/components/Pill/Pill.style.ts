@@ -1,109 +1,69 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { getTabbedStateStyles } from '../../utils';
-import Typography from '../Typography';
-import { BackGroundProps, PillIconProps, PillVariant, RemoveIconProps, SelectedProps, TextProp } from './Pill.types';
-import { ThemeDesignTokens } from '../../theme/ThemeProvider';
-import { ExtendedTheme, Theme } from '../../types';
+import { BackGroundProps, PillVariant, PillVariantProps, SelectedProps } from './Pill.types';
+import { Theme } from '../../types';
 
-export const getVariantBackgroundColor = (theme: ThemeDesignTokens): Record<PillVariant, string> => ({
-  default: theme.PillVariantDefaultBackgroundColor,
-  success: theme.PillVariantSuccessBackgroundColor,
-  error: theme.PillVariantErrorBackgroundColor,
-  info: theme.PillVariantInfoBackgroundColor,
-  warning: theme.PillVariantWarningBackgroundColor,
-});
+const getBackgroundColor = ({ theme, disabled, isSelected, statusVariant }: Theme & BackGroundProps) => {
+  if (disabled) return theme.ElementsSurfaceDisabled;
+  if (isSelected) return theme.ElementsSurfaceActionHoverSecondary;
 
-const getBackgroundColor = ({
-  theme,
-  disabled,
-  isSelected,
-  statusVariant = 'default',
-}: ExtendedTheme<BackGroundProps>) => {
-  if (statusVariant !== 'default') return getVariantBackgroundColor(theme)[statusVariant];
-  if (disabled)
-    return css`
-      ${theme.PillDisabledBackgroundColor}
-    `;
-  if (isSelected)
-    return css`
-      ${theme.BrandColorSecondary400}
-    `;
-
-  return css`
-    ${theme.PillVariantDefaultBackgroundColor}
-  `;
+  return {
+    default: theme.ElementsSurfacePage,
+    success: theme.ElementsSurfaceSuccess,
+    error: theme.ElementsSurfaceDanger,
+    info: theme.ElementsSurfaceInfo,
+    warning: theme.ElementsSurfaceWarning,
+  }[statusVariant];
 };
 
-export const getVariantColor = (theme: ThemeDesignTokens): Record<PillVariant, string> => ({
-  default: theme.PillVariantDefaultTextColor,
-  success: theme.PillVariantSuccessTextColor,
-  error: theme.PillVariantErrorTextColor,
-  info: theme.PillVariantInfoTextColor,
-  warning: theme.PillVariantWarningBorderColor,
-});
+export const getVariantColor = ({ theme, statusVariant }: Theme & { statusVariant: PillVariant }): string => {
+  return {
+    default: theme.ElementsTextDefaultDark,
+    info: theme.ElementsTextInfo,
+    success: theme.ElementsTextSuccess,
+    error: theme.ElementsTextDanger,
+    warning: theme.ElementsTextWarning,
+  }[statusVariant];
+};
 
-export const Pill = styled.div<SelectedProps>`
-  ${({
-    theme,
-    disabled,
-    isRemovable,
-    isSelected,
-    hasPadding,
-    statusVariant,
-    hasBorder,
-  }: ExtendedTheme<SelectedProps>) => css`
-    width: fit-content;
-    height: fit-content;
-    margin: ${hasPadding && theme.PillMargin};
-    border-radius: ${theme.PillBorderRadius};
-    background-color: ${getBackgroundColor({ theme, disabled, isSelected, statusVariant })};
+export const Pill = styled.div<Theme & SelectedProps>(
+  ({ theme, disabled, isRemovable, isSelected, hasPadding, statusVariant, hasBorder }) => {
+    return [
+      {
+        width: 'fit-content',
+        height: 'fit-content',
+        margin: hasPadding ? theme.BaselineSpacesSpace8 : undefined,
+        borderRadius: theme.BorderBaseRadiusRounded,
+        backgroundColor: getBackgroundColor({ theme, disabled, isSelected, statusVariant }),
+      },
+      hasBorder && {
+        border: `solid ${theme.BorderBaseWidthSm}`,
+        borderColor: statusVariant ? getVariantColor({ theme, statusVariant }) : undefined,
+      },
+      statusVariant === 'default' && {
+        borderColor: disabled ? theme.ElementsBorderDisabled : theme.ElementsBorderHighlightStrong,
+        cursor: !disabled && !isRemovable ? 'pointer' : 'default',
+      },
+      getTabbedStateStyles(),
+    ];
+  }
+);
 
-    ${hasBorder &&
-    css`
-      border: solid ${theme.PillBorderWidth};
-      border-color: ${statusVariant && getVariantColor(theme)[statusVariant]};
-    `}
+export const Icon = styled.div<PillVariantProps>(({ theme, disabled, statusVariant }) => [
+  {
+    'div > svg': {
+      color:
+        statusVariant === 'default' && disabled
+          ? theme.ElementsTextDisabled
+          : getVariantColor({ theme, statusVariant }),
+    },
+  },
+]);
 
-    ${statusVariant === 'default' &&
-    css`
-      border-color: ${disabled ? theme.PillDisabledBorderColor : theme.PillVariantDefaultBorderColor};
-      cursor: ${!disabled && !isRemovable && 'pointer'};
-    `};
-
-    ${getTabbedStateStyles()}
-  `};
-`;
-
-export const Content = styled.div`
-  ${({ theme }: Theme) => css`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: ${theme.PillPaddingVertical} ${theme.PillPaddingHorizontal};
-  `}
-`;
-
-export const Text = styled(Typography)<TextProp>`
-  ${({ theme, disabled, statusVariant = 'default' }: ExtendedTheme<TextProp>) => css`
-    color: ${statusVariant === 'warning' ? theme.PillVariantWarningTextColor : getVariantColor(theme)[statusVariant]};
-    color: ${statusVariant === 'default' && disabled && theme.PillDisabledColor};
-  `}
-`;
-
-export const Icon = styled.div<PillIconProps>`
-  ${({ theme, hasIcon, disabled, statusVariant = 'default' }: ExtendedTheme<PillIconProps>) => css`
-    margin-right: ${hasIcon && theme.PillIconMarginLeft};
-    color: ${getVariantColor(theme)[statusVariant]};
-    color: ${statusVariant === 'default' && disabled && theme.PillDisabledColor};
-  `}
-`;
-
-export const RemoveIcon = styled.div<RemoveIconProps>`
-  ${({ theme, hasIcon, hasLabel, disabled }: ExtendedTheme<RemoveIconProps>) => css`
-    margin-left: ${(hasLabel || hasIcon) && theme.PillIconMarginRight};
-    color: ${theme.PillDisabledColor};
-    cursor: ${!disabled && 'pointer'};
-
-    ${getTabbedStateStyles()}
-  `};
-`;
+export const RemoveIcon = styled.div<PillVariantProps>(({ theme, disabled }) => [
+  {
+    color: theme.ElementsTextDisabled,
+    cursor: !disabled ? 'pointer' : 'default',
+  },
+  getTabbedStateStyles(),
+]);
