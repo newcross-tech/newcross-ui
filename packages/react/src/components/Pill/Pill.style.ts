@@ -3,7 +3,7 @@ import { getTabbedStateStyles } from '../../utils';
 import { BackGroundProps, PillVariant, PillVariantProps, SelectedProps } from './Pill.types';
 import { Theme } from '../../types';
 
-const getBackgroundColor = ({ theme, disabled, isSelected, statusVariant = 'default' }: Theme & BackGroundProps) => {
+const getBackgroundColor = ({ theme, disabled, isSelected, statusVariant }: Theme & BackGroundProps) => {
   if (disabled) return theme.ElementsSurfaceDisabled;
   if (isSelected) return theme.ElementsSurfaceActionHoverSecondary;
 
@@ -16,10 +16,7 @@ const getBackgroundColor = ({ theme, disabled, isSelected, statusVariant = 'defa
   }[statusVariant];
 };
 
-export const getVariantColor = ({
-  theme,
-  statusVariant = 'default',
-}: Theme & { statusVariant: PillVariant }): string => {
+export const getVariantColor = ({ theme, statusVariant }: Theme & { statusVariant: PillVariant }): string => {
   return {
     default: theme.ElementsTextDefaultDark,
     info: theme.ElementsTextInfo,
@@ -52,16 +49,12 @@ export const Pill = styled.div(
   }
 );
 
-export const Icon = styled.div<PillVariantProps>(
-  ({ theme, disabled, statusVariant = 'default' }: Theme & PillVariantProps) => [
-    {
-      color:
-        statusVariant === 'default' && disabled
-          ? theme.ElementsTextDisabled
-          : getVariantColor({ theme, statusVariant }),
-    },
-  ]
-);
+export const Icon = styled.div<PillVariantProps>(({ theme, disabled, statusVariant }: Theme & PillVariantProps) => [
+  {
+    color:
+      statusVariant === 'default' && disabled ? theme.ElementsTextDisabled : getVariantColor({ theme, statusVariant }),
+  },
+]);
 
 export const RemoveIcon = styled.div<PillVariantProps>(({ theme, disabled }: Theme & PillVariantProps) => [
   {

@@ -1,93 +1,75 @@
 import { faXmark } from '@fortawesome/pro-light-svg-icons/faXmark';
-import { ReactNode, SyntheticEvent, useState } from 'react';
+import { SyntheticEvent, useState } from 'react';
 import { useToggle } from '../../hooks/useToggle';
-import { TestProp } from '../../types';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import * as Styled from './Pill.style';
 import {
-  CustomStyle,
-  PillSize,
   PillPaddingXSize,
   PillTypographySize,
-  PillVariant,
   PillTypographyColor,
+  PillPropsStrict,
 } from './Pill.types';
 import Container from '../Container';
 import Icon from '../Icon';
 import Typography from '../Typography';
+import { OptionalProps } from '../../types/utility-types';
 
-export type PillProps = {
-  /**
-   * Text element to describe the pill.
-   */
-  label?: string;
-  /**
-   * Disables pill from being pressed
-   */
-  disabled?: boolean;
-  /**
-   * Size of the pill
-   */
-  size?: PillSize;
-  /**
-   * Each pill can opt to include an icon which will be displayed before the label.
-   */
-  icon?: ReactNode;
-  /**
-   * If true displays a delete icon next to the label
-   */
-  removable?: boolean;
-  /**
-   * Called when a single tap gesture is detected.
-   */
-  onClick?: (event: SyntheticEvent) => void;
-  /**
-   * Used to apply padding
-   */
-  hasPadding?: boolean;
-  /**
-   * Checks if the Component is selected
-   */
-  selected?: boolean;
-  /**
-   * Whether the pill has border
-   */
-  hasBorder?: boolean;
-  /**
-   * Used to define color palette of the Pills.
-   */
-  statusVariant?: PillVariant;
-  /**
-   * Used to add custom style to the pill container.
-   */
-  style?: CustomStyle;
-} & TestProp;
+export type PillProps = OptionalProps<
+  PillPropsStrict,
+  | 'disabled'
+  | 'hasBorder'
+  | 'hasPadding'
+  | 'removable'
+  | 'selected'
+  | 'size'
+  | 'statusVariant'
+  | 'label'
+  | 'style'
+  | 'testID'
+>;
 
-const baseTestId = 'pill';
-
-const Pill = ({
-  disabled = false,
-  removable = false,
-  size = 'large',
-  icon,
-  onClick,
-  hasBorder = true,
-  selected = false,
-  label,
-  style = {
+const normalizePillProps = (props: PillProps): PillPropsStrict => ({
+  ...props,
+  disabled: props.disabled ?? false,
+  hasBorder: props.hasBorder ?? true,
+  hasPadding: props.hasPadding ?? true,
+  removable: props.removable ?? false,
+  selected: props.selected ?? false,
+  size: props.size ?? 'large',
+  statusVariant: props.statusVariant ?? 'default',
+  label: props.label ?? '',
+  style: props.style ?? {
     iconStyles: {},
     textStyles: {},
     coreStyles: {},
   },
-  hasPadding = true,
-  statusVariant = 'default',
-  testID = '',
-}: PillProps) => {
+  testID: props.testID ?? '',
+});
+
+const baseTestId = 'pill';
+
+const Pill = (_props: PillProps) => {
+  const {
+    disabled,
+    hasBorder,
+    hasPadding,
+    icon,
+    label,
+    onClick,
+    removable,
+    selected,
+    size,
+    statusVariant,
+    style,
+    testID,
+  } = normalizePillProps(_props);
+
+  const { iconStyles, textStyles, coreStyles } = style;
+
   const [isSelected, setSelected] = useState(selected);
   const [isDeleted, setIsDeleted] = useState(false);
 
   useToggle(selected, () => setSelected(selected));
-  const { iconStyles, textStyles, coreStyles } = style;
 
   const onRemoveHandler = (event: SyntheticEvent) => {
     if (disabled) return;
@@ -176,6 +158,7 @@ const Pill = ({
             tabIndex={!disabled ? 0 : -1}
             onKeyDown={(event) => onKeyPressHandler(event, false)}
             disabled={disabled}
+            statusVariant={statusVariant}
           >
             <Icon
               variant={PillTypographySize[size]}
