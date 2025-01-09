@@ -1,69 +1,29 @@
-import { HTMLAttributes, ReactNode, CSSProperties } from 'react';
-import { TestProp, Mode } from '../../types';
+import { OptionalProps } from '../../types';
 import * as Styled from './Typography.style';
-import {
-  TypographyVariant,
-  TypographyColors,
-  TypographyAlignment,
-} from './Typography.types';
+import { TypographyPropsStrict } from './Typography.types';
 import { typographyMap } from './Typography.constants';
 
-export type TypographyProps = {
-  /**
-   * Applies the theme typography styles.
-   */
-  variant: TypographyVariant;
-  /**
-   * The color of the component.
-   */
-  color?: TypographyColors;
-  /**
-   * The mode of the component.
-   */
-  mode?: Mode;
-  /**
-   * The text alignment of the component text.
-   */
-  align?: TypographyAlignment;
-  /**
-   * The content of the component.
-   */
-  children: ReactNode;
-  /**
-   * If true, the text will have a bottom margin.
-   */
-  gutterBottom?: boolean;
-  /**
-   * Used to set maximum number of lines
-   */
-  numberOfLines?: number;
-  /**
-   * Used to define type of display
-   */
-  display?: CSSProperties['display'];
-} & TestProp &
-  HTMLAttributes<HTMLDivElement>;
+export type TypographyProps = OptionalProps<
+  TypographyPropsStrict,
+  'mode' | 'display'
+>;
 
-const Typography = ({
-  children,
-  testID,
-  mode = 'light',
-  display = 'block',
-  variant,
-  ...rest
-}: TypographyProps) => {
+const normalizeTypographyProps = (
+  props: TypographyProps
+): TypographyPropsStrict => ({
+  ...props,
+  mode: props.mode ?? 'light',
+  display: props.display ?? 'block',
+});
+
+export default function Typography(_props: TypographyProps) {
+  const props = normalizeTypographyProps(_props);
   return (
     <Styled.Typography
-      data-testid={testID}
-      mode={mode}
-      display={display}
-      variant={variant}
-      as={typographyMap[variant].semanticTag}
-      {...rest}
-    >
-      {children}
-    </Styled.Typography>
+      // This line can be removed when all usages of `Typography` replace `testID` with `data-testid`
+      data-testid={props.testID}
+      as={typographyMap[props.variant].semanticTag}
+      {...props}
+    />
   );
-};
-
-export default Typography;
+}

@@ -1,23 +1,23 @@
-import styled, { css } from 'styled-components';
-import { ExtendedTheme } from '../../types';
+import styled from 'styled-components';
+import { Theme } from '../../types';
 import { getTabbedStateStyles } from '../../utils';
-import { TypographyProps } from '../Typography';
-import * as TypographyStyled from '../Typography/Typography.style';
+import { getTypographyCoreStyles } from '../Typography';
 import { LabelProps } from './Label';
 
-export const Label = styled.label<LabelProps>`
-  ${({ theme, variant, gutterBottom, numberOfLines, disabled }: ExtendedTheme<LabelProps>) => css`
-    ${TypographyStyled.getCoreStyles({
-      theme,
+export const Label = styled.label<LabelProps>(
+  ({ theme, variant, gutterBottom, numberOfLines, disabled }: Theme & LabelProps) => [
+    getTypographyCoreStyles({
       variant,
       gutterBottom,
       numberOfLines,
-    } as ExtendedTheme<TypographyProps>)};
-    color: ${theme.RadioColor};
-    ${!disabled && getTabbedStateStyles()}
-
-    b,strong,em {
-      font-family: ${theme.BrandFontFamilySemiBold};
-    }
-  `}
-`;
+      mode: 'light',
+    }),
+    {
+      color: theme.RadioColor,
+      'b,strong,em': {
+        fontFamily: theme.BrandFontFamilySemiBold,
+      },
+    },
+    !disabled && getTabbedStateStyles(),
+  ]
+);

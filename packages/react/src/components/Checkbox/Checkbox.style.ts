@@ -5,16 +5,16 @@ import { CheckboxProps } from './Checkbox';
 import { CheckboxPropsExtended, hasErrorProps, isSelectedProps, UserInteractionType } from './Checkbox.types';
 import Container from '../Container';
 
-const getHoverStyles = ({ theme, disabled, hasError }: ExtendedTheme<CheckboxProps>, type: 'background' | 'color') => {
+const getBackgroundColorHoverStyles = ({ theme, disabled, hasError }: ExtendedTheme<CheckboxProps>) => {
   if (disabled) return;
 
-  if (type === 'background') {
-    return !hasError ? theme.ElementsSurfaceActionHover : theme.ElementsSurfaceDanger;
-  }
+  return !hasError ? theme.ElementsSurfaceActionHover : theme.ElementsSurfaceDanger;
+};
 
-  if (type === 'color') {
-    return !hasError ? theme.ElementsIconActionDefault : theme.ElementsIconDangerError;
-  }
+const getColorHoverStyles = ({ theme, disabled, hasError }: ExtendedTheme<CheckboxProps>) => {
+  if (disabled) return;
+
+  return !hasError ? theme.ElementsIconActionDefault : theme.ElementsIconDangerError;
 };
 
 export const Checkbox = styled(Container)<CheckboxProps & UserInteractionType>`
@@ -22,8 +22,8 @@ export const Checkbox = styled(Container)<CheckboxProps & UserInteractionType>`
     cursor: ${!disabled && 'pointer'};
 
     &:hover ${Box} {
-      background-color: ${getHoverStyles({ theme, disabled, hasError }, 'background')};
-      color: ${getHoverStyles({ theme, disabled, hasError }, 'color')};
+      background-color: ${getBackgroundColorHoverStyles({ theme, disabled, hasError })};
+      color: ${getColorHoverStyles({ theme, disabled, hasError })};
     }
   `};
 `;

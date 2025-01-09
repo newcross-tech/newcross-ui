@@ -1,55 +1,39 @@
-import { ReactNode } from 'react';
 import { faCheck } from '@fortawesome/pro-light-svg-icons/faCheck';
 import { faMinus } from '@fortawesome/pro-light-svg-icons/faMinus';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { TestProp } from '../../types';
+import { OptionalProps } from '../../types';
 import * as Styled from './Checkbox.style';
-import { CheckboxType, MouseEventOrKeyboardEvent } from './Checkbox.types';
+import {
+  CheckboxPropsStrict,
+  MouseEventOrKeyboardEvent,
+} from './Checkbox.types';
 import Typography, { TypographyColors } from '../Typography';
 import { onSpacePressTrigger } from '../../utils';
 
-export type CheckboxProps = {
-  /**
-   * Sets the type the checkbox is - check or indeterminate
-   */
-  type?: CheckboxType;
-  /**
-   * Label for the checkbox
-   */
-  label?: ReactNode;
-  /**
-   * Whether the press behavior is disabled.
-   */
-  disabled?: boolean;
-  /**
-   * Shows different styles when error is true
-   */
-  hasError?: boolean;
-  /**
-   * Callback fired when the state is changed.
-   */
-  onChange?: (selected: boolean, event?: MouseEventOrKeyboardEvent) => void;
-  /**
-   * Determines selected/checked state
-   */
-  checked?: boolean;
-  /**
-   * Flag to enable/disable accessibility
-   */
-  allowTab?: boolean;
-} & TestProp;
+export type CheckboxProps = OptionalProps<
+  CheckboxPropsStrict,
+  'allowTab' | 'testID' | 'disabled'
+>;
 
-const Checkbox = ({
-  onChange,
-  checked,
-  type,
-  label,
-  disabled = false,
-  hasError,
-  testID = '',
-  allowTab = true,
-  ...rest
-}: CheckboxProps) => {
+const normalizeCheckboxProps = (props: CheckboxProps): CheckboxPropsStrict => ({
+  ...props,
+  allowTab: props.allowTab ?? true,
+  testID: props.testID ?? '',
+  disabled: props.disabled ?? false,
+});
+
+const Checkbox = (_props: CheckboxProps) => {
+  const {
+    testID,
+    hasError,
+    type,
+    onChange,
+    checked,
+    disabled,
+    allowTab,
+    label,
+    ...props
+  } = normalizeCheckboxProps(_props);
   const isChecked = !!checked;
 
   const icon = type === 'indeterminate' ? faMinus : faCheck;
@@ -82,7 +66,7 @@ const Checkbox = ({
       label={label}
       onClick={onChangeHandler}
       hasError={hasError}
-      {...rest}
+      {...props}
       role="checkbox"
     >
       <Styled.Box
