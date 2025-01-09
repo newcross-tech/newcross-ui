@@ -1,12 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { animated } from '@react-spring/web';
 import styled, { css } from 'styled-components';
-import { ExtendedTheme, Theme } from '../../types';
 import { getElipsisStyles, getTabbedStateStyles } from '../../utils/css';
 import { getScrollbarStyles } from '../../utils/css/getScrollbarStyles';
 import { getHaloValue } from '../../utils/getHaloValue';
 import HaloLabel, { LabelProps } from '../Label';
-import Typography, { TypographyProps } from '../Typography';
+import Typography from '../Typography';
 import { defaultAnimationSpeed, optionNumberOfLines } from './Dropdown.constants';
 import {
   DropdownAnimatedStyleArgs,
@@ -17,13 +16,13 @@ import {
 } from './Dropdown.types';
 
 const getPaddingStyles = (isMulti: boolean) => css`
-  ${({ theme }: Theme) => css`
+  ${({ theme }) => css`
     padding: ${!isMulti ? theme.SpacingBase8 : theme.SpacingBase4} ${theme.TextInputPaddingHorizontal};
   `};
 `;
 
 export const Label = styled(HaloLabel)<LabelProps>`
-  ${({ theme }: ExtendedTheme<TypographyProps>) => css`
+  ${({ theme }) => css`
     display: inline-block;
     color: ${theme.RadioColor};
     margin-bottom: ${theme.SpacingBase4};
@@ -34,7 +33,7 @@ export const Option = styled(Typography)<OptionProps>`
   cursor: pointer;
   ${getElipsisStyles(optionNumberOfLines)};
 
-  ${({ theme, isMulti }: ExtendedTheme<OptionProps>) => css`
+  ${({ theme, isMulti }) => css`
     color: ${theme.AccordionIconColor};
     ${getPaddingStyles(isMulti)};
 
@@ -64,7 +63,7 @@ export const BodyContainer = styled.div`
   width: 100%;
   position: absolute;
   z-index: 1;
-  ${({ theme }: Theme) => css`
+  ${({ theme }) => css`
     background-color: ${theme.AccordionHeaderBackgroundColor};
     border-radius: ${theme.TextInputBorderRadius};
     border-top-left-radius: 0;
@@ -75,7 +74,7 @@ export const BodyContainer = styled.div`
 export const BodyContent = styled(animated.div)<ErrorProps>`
   overflow-y: auto;
 
-  ${({ theme, $hasError }: ExtendedTheme<ErrorProps>) => css`
+  ${({ theme, $hasError }) => css`
     max-height: ${+getHaloValue(theme.SpacingBase16) * 10}rem;
     background: ${theme.ColorNeutralWhite};
     border-radius: ${theme.TextInputBorderRadius};
@@ -94,14 +93,14 @@ export const HeaderContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  ${({ theme }: Theme) => css`
+  ${({ theme }) => css`
     color: ${theme.AccordionIconColor};
     padding: ${theme.TextInputPaddingVertical} ${theme.TextInputPaddingHorizontal};
   `}
 `;
 
 export const Divider = styled.div`
-  ${({ theme }: Theme) => css`
+  ${({ theme }) => css`
     border: ${theme.BorderBaseWidthSm} solid ${theme.ColorNeutralGrey200};
     align-self: stretch;
     display: flex;
@@ -114,7 +113,7 @@ export const IndicatorsContainer = styled.div`
   align-self: stretch;
   align-items: center;
 
-  ${({ theme }: Theme) => css`
+  ${({ theme }) => css`
     margin-left: ${theme.SpacingBase16};
     > div:not(:last-child) {
       margin-right: ${theme.SpacingBase16};
@@ -131,7 +130,7 @@ export const Icon = styled(FontAwesomeIcon)`
 `;
 
 export const CloseIcon = styled(FontAwesomeIcon)`
-  ${({ theme }: Theme) => css`
+  ${({ theme }) => css`
     color: ${theme.TextInputSearchBarCloseIconColor};
     height: ${+getHaloValue(theme.SpacingBase16) * 1.2}rem;
     width: ${+getHaloValue(theme.SpacingBase16) * 1.2}rem;
@@ -139,7 +138,7 @@ export const CloseIcon = styled(FontAwesomeIcon)`
 `;
 
 export const HeaderContainer = styled.div<HeaderContainerProps>`
-  ${({ theme, isContentShown, $hasError, disabled }: ExtendedTheme<HeaderContainerProps>) => css`
+  ${({ theme, isContentShown, $hasError, disabled }) => css`
     background-color: ${theme.AccordionHeaderBackgroundColor};
     border: ${theme.TextInputBorderWidth} solid ${theme.TextInputBorderColor};
     border-radius: ${theme.TextInputBorderRadius};
@@ -189,8 +188,8 @@ export const HeaderLabel = styled.div`
   width: 80%;
 `;
 
-export const HeaderValue = styled(Typography)`
-  ${({ theme, hasChosen }: ExtendedTheme<HeaderValueProps>) =>
+export const HeaderValue = styled(Typography)<HeaderValueProps>`
+  ${({ theme, hasChosen }) =>
     !hasChosen &&
     css`
       color: ${theme.ColorNeutralGrey100};
@@ -200,7 +199,7 @@ export const HeaderValue = styled(Typography)`
 export const PillContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  ${({ theme }: Theme) => css`
+  ${({ theme }) => css`
     gap: ${theme.SpacingBase8};
   `};
 `;

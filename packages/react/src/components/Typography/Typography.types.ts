@@ -1,5 +1,46 @@
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
-import { SemanticBreakpoints } from '../../types';
+import { Mode, SemanticBreakpoints, TestProp } from '../../types';
+import { CSSProperties, HTMLAttributes, ReactNode } from 'react';
+
+export type TypographyPropsStrict = {
+  /**
+   * Applies the theme typography styles.
+   */
+  variant: TypographyVariant;
+  /**
+   * The color of the component.
+   */
+  color?: TypographyColors;
+  /**
+   * The mode of the component.
+   */
+  mode: Mode;
+  /**
+   * The text alignment of the component text.
+   */
+  align?: TypographyAlignment;
+  /**
+   * The content of the component.
+   */
+  children: ReactNode;
+  /**
+   * If true, the text will have a bottom margin.
+   */
+  gutterBottom?: boolean;
+  /**
+   * Used to set maximum number of lines
+   */
+  numberOfLines?: number;
+  /**
+   * Used to define type of display
+   */
+  display: NonNullable<CSSProperties['display']>;
+  /**
+   * The text decoration of the component text.
+   */
+  textDecoration?: CSSProperties['textDecoration'];
+} & TestProp &
+  HTMLAttributes<HTMLDivElement>;
 
 // --------------------------------------------------------------------------------
 // Legacy Types for Backward Compatibility
