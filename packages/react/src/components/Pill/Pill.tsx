@@ -69,6 +69,10 @@ const Pill = (_props: PillProps) => {
   const [isSelected, setSelected] = useState(selected);
   const [isDeleted, setIsDeleted] = useState(false);
 
+  const contentColor = disabled
+    ? PillTypographyColor.disabled
+    : PillTypographyColor[statusVariant];
+
   useToggle(selected, () => setSelected(selected));
 
   const onRemoveHandler = (event: SyntheticEvent) => {
@@ -140,11 +144,7 @@ const Pill = (_props: PillProps) => {
           </Styled.Icon>
         )}
         <Typography
-          color={
-            disabled
-              ? PillTypographyColor.disabled
-              : PillTypographyColor[statusVariant]
-          }
+          color={contentColor}
           variant={PillTypographySize[size]}
           numberOfLines={2}
           style={textStyles}
@@ -163,11 +163,7 @@ const Pill = (_props: PillProps) => {
             <Icon
               variant={PillTypographySize[size]}
               icon={faXmark}
-              color={
-                disabled
-                  ? PillTypographyColor.disabled
-                  : PillTypographyColor[statusVariant]
-              }
+              color={contentColor}
             />
           </Styled.RemoveIcon>
         )}

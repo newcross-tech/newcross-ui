@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { getTabbedStateStyles } from '../../utils';
 import { BackGroundProps, PillVariant, PillVariantProps, SelectedProps } from './Pill.types';
 import { Theme } from '../../types';
@@ -26,8 +26,8 @@ export const getVariantColor = ({ theme, statusVariant }: Theme & { statusVarian
   }[statusVariant];
 };
 
-export const Pill = styled.div(
-  ({ theme, disabled, isRemovable, isSelected, hasPadding, statusVariant, hasBorder }: Theme & SelectedProps) => {
+export const Pill = styled.div<Theme & SelectedProps>(
+  ({ theme, disabled, isRemovable, isSelected, hasPadding, statusVariant, hasBorder }) => {
     return [
       {
         width: 'fit-content',
@@ -49,14 +49,18 @@ export const Pill = styled.div(
   }
 );
 
-export const Icon = styled.div<PillVariantProps>(({ theme, disabled, statusVariant }: Theme & PillVariantProps) => [
+export const Icon = styled.div<PillVariantProps>(({ theme, disabled, statusVariant }) => [
   {
-    color:
-      statusVariant === 'default' && disabled ? theme.ElementsTextDisabled : getVariantColor({ theme, statusVariant }),
+    'div > svg': {
+      color:
+        statusVariant === 'default' && disabled
+          ? theme.ElementsTextDisabled
+          : getVariantColor({ theme, statusVariant }),
+    },
   },
 ]);
 
-export const RemoveIcon = styled.div<PillVariantProps>(({ theme, disabled }: Theme & PillVariantProps) => [
+export const RemoveIcon = styled.div<PillVariantProps>(({ theme, disabled }) => [
   {
     color: theme.ElementsTextDisabled,
     cursor: !disabled ? 'pointer' : 'default',
