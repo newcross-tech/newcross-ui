@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { TestProp } from '../../types';
 import Checkbox from '../Checkbox';
-import { OptionObjectType, OptionProps } from './CheckboxGroup.types';
+import {
+  CheckboxGroupPropsStrict,
+  OptionObjectType,
+} from './CheckboxGroup.types';
 import {
   getDefaultList,
   getIsOptionObject,
@@ -11,33 +13,28 @@ import {
   getValue,
 } from './utils';
 import Container from '../Container';
+import { OptionalProps } from '../../types/utility-types';
 
-export type CheckboxGroupProps = {
-  /**
-   * Label for the checkbox
-   */
-  label?: string;
-  /**
-   * Callback fired when the state is changed.
-   */
-  onChange?: (array: string[]) => void;
-  /**
-   * Accepts a List of checkboxes to display
-   */
-  options: OptionProps;
-  /**
-   * Accepts a List of checkboxes to be checked by default
-   */
-  defaultChecked: string[];
-} & TestProp;
+export type CheckboxGroupProps = OptionalProps<
+  CheckboxGroupPropsStrict,
+  'defaultChecked' | 'options' | 'label'
+>;
 
-const CheckboxGroup = ({
-  options,
-  onChange,
-  defaultChecked,
-  label = 'Select All',
-  testID,
-}: CheckboxGroupProps) => {
+const normalizeCheckboxGroupProps = (
+  props: CheckboxGroupProps
+): CheckboxGroupPropsStrict => {
+  return {
+    ...props,
+    label: props.label ?? 'Select All',
+    options: props.options ?? [],
+    defaultChecked: props.defaultChecked ?? [],
+  };
+};
+
+const CheckboxGroup = (_props: CheckboxGroupProps) => {
+  const { options, onChange, defaultChecked, label, testID } =
+    normalizeCheckboxGroupProps(_props);
+
   const [selectedList, setSelectedList] = useState<string[]>(
     defaultChecked.length ? getDefaultList(options, defaultChecked) : []
   );
