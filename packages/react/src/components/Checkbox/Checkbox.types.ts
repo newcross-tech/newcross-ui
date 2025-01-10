@@ -27,13 +27,18 @@ export type CheckboxPropsStrict = {
    * Callback fired when the state is changed.
    */
   onChange: (
-    selected: boolean,
-    event?: React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLElement>
+    event: React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLElement>
+  ) => void;
+  /**
+   * Callback fired when the state is changed.
+   */
+  onClick: (
+    event: React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLElement>
   ) => void;
   /**
    * Determines selected/checked state
    */
-  checked?: boolean;
+  checked: boolean;
   /**
    * Flag to enable/disable accessibility
    */

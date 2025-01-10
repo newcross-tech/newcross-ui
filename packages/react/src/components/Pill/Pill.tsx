@@ -1,85 +1,79 @@
-import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  cloneElement,
-  isValidElement,
-  ReactNode,
-  SyntheticEvent,
-  useState,
-} from 'react';
+import { faXmark } from '@fortawesome/pro-light-svg-icons/faXmark';
+import { SyntheticEvent, useState } from 'react';
 import { useToggle } from '../../hooks/useToggle';
-import { TestProp } from '../../types';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import * as Styled from './Pill.style';
-import { CustomStyle, PillVariant } from './Pill.types';
+import {
+  PillPaddingXSize,
+  PillTypographySize,
+  PillTypographyColor,
+  PillPropsStrict,
+} from './Pill.types';
+import Container from '../Container';
+import Icon from '../Icon';
+import Typography from '../Typography';
+import { OptionalProps } from '../../types/utility-types';
 
-export type PillProps = {
-  /**
-   * Text element to describe the pill.
-   */
-  label?: string;
-  /**
-   * Disables pill from being pressed
-   */
-  disabled?: boolean;
-  /**
-   * Each pill can opt to include an icon which will be displayed before the label.
-   */
-  icon?: ReactNode;
-  /**
-   * If true displays a delete icon next to the label
-   */
-  removable?: boolean;
-  /**
-   * Called when a single tap gesture is detected.
-   */
-  onClick?: (event: SyntheticEvent) => void;
-  /**
-   * Used to apply padding
-   */
-  hasPadding?: boolean;
-  /**
-   * Checks if the Component is selected
-   */
-  selected?: boolean;
-  /**
-   * Whether the pill has border
-   */
-  hasBorder?: boolean;
-  /**
-   * Used to define color palette of the Pills.
-   */
-  statusVariant?: PillVariant;
-  /**
-   * Used to add custom style to the pill container.
-   */
-  style?: CustomStyle;
-} & TestProp;
+export type PillProps = OptionalProps<
+  PillPropsStrict,
+  | 'disabled'
+  | 'hasBorder'
+  | 'hasPadding'
+  | 'removable'
+  | 'selected'
+  | 'size'
+  | 'statusVariant'
+  | 'label'
+  | 'style'
+  | 'testID'
+>;
 
-const baseTestId = 'pill';
-
-const Pill = ({
-  disabled = false,
-  removable = false,
-  icon,
-  onClick,
-  hasBorder = true,
-  selected = false,
-  label,
-  style = {
+const normalizePillProps = (props: PillProps): PillPropsStrict => ({
+  ...props,
+  disabled: props.disabled ?? false,
+  hasBorder: props.hasBorder ?? true,
+  hasPadding: props.hasPadding ?? true,
+  removable: props.removable ?? false,
+  selected: props.selected ?? false,
+  size: props.size ?? 'large',
+  statusVariant: props.statusVariant ?? 'default',
+  label: props.label ?? '',
+  style: props.style ?? {
     iconStyles: {},
     textStyles: {},
     coreStyles: {},
   },
-  hasPadding = true,
-  statusVariant = 'default',
-  testID = '',
-}: PillProps) => {
+  testID: props.testID ?? '',
+});
+
+const baseTestId = 'pill';
+
+const Pill = (_props: PillProps) => {
+  const {
+    disabled,
+    hasBorder,
+    hasPadding,
+    icon,
+    label,
+    onClick,
+    removable,
+    selected,
+    size,
+    statusVariant,
+    style,
+    testID,
+  } = normalizePillProps(_props);
+
+  const { iconStyles, textStyles, coreStyles } = style;
+
   const [isSelected, setSelected] = useState(selected);
   const [isDeleted, setIsDeleted] = useState(false);
 
+  const contentColor = disabled
+    ? PillTypographyColor.disabled
+    : PillTypographyColor[statusVariant];
+
   useToggle(selected, () => setSelected(selected));
-  const { iconStyles, textStyles, coreStyles } = style;
 
   const onRemoveHandler = (event: SyntheticEvent) => {
     if (disabled) return;
@@ -103,15 +97,26 @@ const Pill = ({
 
   if (isDeleted) return null;
 
+  const getPillTestId = (
+    disabled: boolean,
+    isSelected: boolean,
+    basetestId: string
+  ) => {
+    if (isSelected) {
+      return `${basetestId}-component${testID}-selected`;
+    }
+    if (disabled) {
+      return `${basetestId}-component${testID}-disabled
+`;
+    }
+    return `${basetestId}-component${testID}`;
+  };
+
   return (
     <Styled.Pill
       hasBorder={hasBorder}
       isSelected={isSelected}
-      data-testid={
-        isSelected
-          ? `${baseTestId}-component${testID}-selected`
-          : `${baseTestId}-component${testID}`
-      }
+      data-testid={getPillTestId(disabled, isSelected, baseTestId)}
       disabled={disabled}
       onClick={handleSelect}
       isRemovable={removable}
@@ -121,25 +126,31 @@ const Pill = ({
       statusVariant={statusVariant}
       style={coreStyles}
     >
-      <Styled.Content>
-        <Styled.Icon
-          data-testid={`${baseTestId}-icon`}
-          disabled={disabled}
-          hasIcon={!!icon}
-          style={iconStyles}
-          statusVariant={statusVariant}
-        >
-          {isValidElement(icon) && cloneElement(icon)}
-        </Styled.Icon>
-        <Styled.Text
-          disabled={disabled}
-          variant={'paragraph1'}
+      <Container
+        alignItems="center"
+        justifyContent="center"
+        py="sm"
+        px={PillPaddingXSize[size]}
+        gap="sm"
+      >
+        {icon && (
+          <Styled.Icon
+            data-testid={`${baseTestId}-icon`}
+            disabled={disabled}
+            style={iconStyles}
+            statusVariant={statusVariant}
+          >
+            {icon}
+          </Styled.Icon>
+        )}
+        <Typography
+          color={contentColor}
+          variant={PillTypographySize[size]}
           numberOfLines={2}
-          statusVariant={statusVariant}
           style={textStyles}
         >
           {label}
-        </Styled.Text>
+        </Typography>
         {removable && (
           <Styled.RemoveIcon
             data-testid={`${baseTestId}-clickable${testID}`}
@@ -147,13 +158,16 @@ const Pill = ({
             tabIndex={!disabled ? 0 : -1}
             onKeyDown={(event) => onKeyPressHandler(event, false)}
             disabled={disabled}
-            hasIcon={!!icon}
-            hasLabel={!!label}
+            statusVariant={statusVariant}
           >
-            <FontAwesomeIcon icon={faXmark} />
+            <Icon
+              variant={PillTypographySize[size]}
+              icon={faXmark}
+              color={contentColor}
+            />
           </Styled.RemoveIcon>
         )}
-      </Styled.Content>
+      </Container>
     </Styled.Pill>
   );
 };

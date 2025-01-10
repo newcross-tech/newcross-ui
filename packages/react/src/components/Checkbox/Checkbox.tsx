@@ -1,28 +1,41 @@
 import { faCheck } from '@fortawesome/pro-light-svg-icons/faCheck';
 import { faMinus } from '@fortawesome/pro-light-svg-icons/faMinus';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { OptionalProps } from '../../types';
 import * as Styled from './Checkbox.style';
 import { CheckboxPropsStrict } from './Checkbox.types';
 import Typography, { TypographyColors } from '../Typography';
 import { onSpacePressTrigger } from '../../utils';
+import Icon from '../Icon';
 
-export type CheckboxProps = OptionalProps<
-  CheckboxPropsStrict,
-  'allowTab' | 'disabled'
+export type CheckboxProps = {
+  onChange?(
+    selected: boolean,
+    event?: React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLElement>
+  ): void;
+} & OptionalProps<
+  Omit<CheckboxPropsStrict, 'onClick' | 'onChange'>,
+  'allowTab' | 'disabled' | 'checked'
 >;
 
-const normalizeCheckboxProps = (props: CheckboxProps): CheckboxPropsStrict => ({
-  ...props,
-  allowTab: props.allowTab ?? true,
-  disabled: props.disabled ?? false,
-  onChange(selected, event) {
-    if (this.disabled) return;
+const normalizeCheckboxProps = (props: CheckboxProps): CheckboxPropsStrict => {
+  const normalized: CheckboxPropsStrict = {
+    ...props,
+    allowTab: props.allowTab ?? true,
+    disabled: props.disabled ?? false,
+    checked: props.checked ?? false,
+    onClick(event) {
+      normalized.onChange(event);
+    },
+    onChange(event) {
+      event?.preventDefault();
 
-    event?.preventDefault();
-    this.onChange?.(selected, event);
-  },
-});
+      if (normalized.disabled) return;
+
+      props.onChange?.(!normalized.checked, event);
+    },
+  };
+  return normalized;
+};
 
 const Checkbox = (_props: CheckboxProps) => {
   const props = normalizeCheckboxProps(_props);
@@ -47,12 +60,13 @@ const Checkbox = (_props: CheckboxProps) => {
         testID="checkmark-box"
         disabled={props.disabled}
         hasError={props.hasError}
-        checked={!!props.checked}
+        checked={props.checked}
         type={props.type}
       >
-        {!!props.checked && (
-          <FontAwesomeIcon
-            data-testid={props.type ? 'indeterminate-icon' : 'checkmark-icon'}
+        {props.checked && (
+          <Icon
+            testID={props.type ? 'indeterminate-icon' : 'checkmark-icon'}
+            variant="p2"
             icon={icon}
           />
         )}
@@ -63,10 +77,7 @@ const Checkbox = (_props: CheckboxProps) => {
           variant="p1"
           color={getLabelColor(props)}
           onKeyDown={(event: React.KeyboardEvent<HTMLElement>) =>
-            onSpacePressTrigger(
-              event,
-              props.onChange.bind(props, !props.checked)
-            )
+            onSpacePressTrigger(event, props.onChange)
           }
           tabIndex={!props.disabled && props.allowTab ? 0 : -1}
         >
