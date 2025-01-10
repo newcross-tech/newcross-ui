@@ -72,9 +72,9 @@ const CheckboxGroup = (_props: CheckboxGroupProps) => {
     const selectedDisabledList = getSelectedList(disabledList, selectedList);
 
     const newList =
-      selectedEnabledList.length === 0
-        ? [...enabledList, ...selectedDisabledList]
-        : [...selectedDisabledList];
+      selectedEnabledList.length === enabledList.length
+        ? [...selectedDisabledList]
+        : [...enabledList, ...selectedDisabledList];
 
     setSelectedList(newList);
     onChangeHandler(newList);
