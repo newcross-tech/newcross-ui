@@ -1,11 +1,10 @@
 import { Children, cloneElement, ReactElement, useCallback } from 'react';
 import { TestProp } from '../../types';
 import { ToggleButtonProps } from '../ToggleButton';
-import { Container } from './ToggleButtonGroup.style';
 import { getMultipleSelectedValues } from './utils/getMultipleSelectedValues';
 import { calculateSelectedValue } from './utils/calculateSelectedValue';
 import { SingleSelect, MultiSelect } from './ToggleButtonGroup.types';
-
+import * as Styled from './ToggleButtonGroup.style';
 type ToggleButtonGroupGeneralProps = {
   /**
    * The content of the component.
@@ -29,8 +28,6 @@ const ToggleButtonGroup = ({
   variant,
   ...rest
 }: ToggleButtonGroupProps) => {
-  const isMulti = variant === 'multi';
-
   const handleOnClick = useCallback(
     (value: string) => {
       if (variant === 'single') {
@@ -46,9 +43,9 @@ const ToggleButtonGroup = ({
   );
 
   return (
-    <Container
-      direction={direction}
-      isMulti={isMulti}
+    <Styled.GroupWrapper
+      flexDirection={direction}
+      gap={'md'}
       data-testid="toggle-button-group"
       {...rest}
     >
@@ -62,7 +59,7 @@ const ToggleButtonGroup = ({
           variant: variant,
         });
       })}
-    </Container>
+    </Styled.GroupWrapper>
   );
 };
 
