@@ -3,13 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fireEvent, render } from '@testing-library/react';
 import { byTestId, byText } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
-import { executeKeyPress } from '../../utils/test/executeKeyPress';
+import { executeKeyPress } from '../../utils/test';
 import Link from '../Link';
 import Alert, { AlertProps } from './Alert';
 
+const alertActionText = 'Click Here';
+
 const renderComponent = (customProps: Partial<AlertProps>) => {
   const props = {
-    action: <Link variant="paragraph1">Click Here</Link>,
+    action: <Link variant="paragraph1">{alertActionText}</Link>,
     children: 'This is success. This is success. This is success.',
     ...customProps,
   };
@@ -21,6 +23,7 @@ describe('Alert component', () => {
   const ui = {
     alertComp: byTestId(`alert-component`),
     alertCloseIconComp: byTestId(`alert-close-icon`),
+    alertAction: byText(alertActionText),
   };
 
   it('should not have any a11y errors', async () => {
@@ -88,5 +91,13 @@ describe('Alert component', () => {
 
     // Assert
     expect(byTestId('alert-icon').get()).toBeInTheDocument();
+  });
+
+  it('renders successfully with action with a string', () => {
+    // Arrange & Act
+    renderComponent({ action: alertActionText });
+
+    // Assert
+    expect(ui.alertAction.get()).toBeInTheDocument();
   });
 });
