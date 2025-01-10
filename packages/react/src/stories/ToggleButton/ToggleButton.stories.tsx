@@ -21,13 +21,16 @@ export const Variants = () => {
     <Container display="block">
       <ToggleButton
         selected={false}
-        rightIcon={faCalendarDays}
+        rightIcon={<FontAwesomeIcon icon={faCalendarDays} />}
         fullWidth={false}
       >
         Apr
       </ToggleButton>
       <Container m="xs" />
-      <ToggleButton selected={true} rightIcon={faCalendarDays}>
+      <ToggleButton
+        selected={true}
+        rightIcon={<FontAwesomeIcon icon={faCalendarDays} />}
+      >
         Apr
       </ToggleButton>
       <Container m="xs" />
@@ -40,11 +43,19 @@ export const Variants = () => {
       </ToggleButton>
 
       <Container m="xs" />
-      <ToggleButton selected={false} leftIcon={faFilter} fullWidth>
+      <ToggleButton
+        selected={false}
+        leftIcon={<FontAwesomeIcon icon={faFilter} />}
+        fullWidth
+      >
         Filter By
       </ToggleButton>
       <Container m="xs" />
-      <ToggleButton selected={true} leftIcon={faFilter} fullWidth>
+      <ToggleButton
+        selected={true}
+        leftIcon={<FontAwesomeIcon icon={faFilter} />}
+        fullWidth
+      >
         Filter By
       </ToggleButton>
 
@@ -77,11 +88,17 @@ export const Overview = () => {
       dontInfo={DONT}
     >
       <Container display="block">
-        <ToggleButton selected={false} leftIcon={faFilter}>
+        <ToggleButton
+          selected={false}
+          leftIcon={<FontAwesomeIcon icon={faFilter} />}
+        >
           Filter By
         </ToggleButton>
         <Container m="xs" />
-        <ToggleButton selected={true} leftIcon={faFilter}>
+        <ToggleButton
+          selected={true}
+          leftIcon={<FontAwesomeIcon icon={faFilter} />}
+        >
           Filter By
         </ToggleButton>
       </Container>
@@ -97,7 +114,7 @@ const Template: Story<ToggleButtonProps> = (props) => {
       <ToggleButton
         {...props}
         selected={selected || props.selected}
-        leftIcon={faFilter}
+        leftIcon={<FontAwesomeIcon icon={faFilter} />}
         onClick={() => setSelected(!selected)}
       />
     </Container>

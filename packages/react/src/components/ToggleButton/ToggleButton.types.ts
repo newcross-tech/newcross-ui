@@ -1,10 +1,15 @@
-import { IconDefinition } from '@fortawesome/fontawesome-common-types';
-import { ReactNode } from 'react';
+import { ReactElement, ReactNode } from 'react';
 import {
   MultiSelect,
   SingleSelect,
 } from '../ToggleButtonGroup/ToggleButtonGroup.types';
 import { TestProp } from '../../types';
+
+export type ContentProps = TestProp & {
+  children?: ReactNode;
+  hasLeftContent?: boolean;
+  hasRightContent?: boolean;
+};
 
 export type ToggleButtonSizes = 'small' | 'large';
 
@@ -34,11 +39,11 @@ export type ToggleButtonPropsStrict = {
   /**
    * Set the left icon element.
    */
-  leftIcon?: IconDefinition;
+  leftIcon?: ReactElement;
   /**
    * Set the right icon element.
    */
-  rightIcon?: IconDefinition;
+  rightIcon?: ReactElement;
   /**
    * Set the disabled state of the button.
    */

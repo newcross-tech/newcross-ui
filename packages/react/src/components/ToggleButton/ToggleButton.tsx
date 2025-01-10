@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { useToggle } from '../../hooks/useToggle';
 import { OptionalProps } from '../../types';
-import * as Styled from './ToggleButton.style';
 import Typography from '../Typography';
-import Icon from '../Icon';
-import { ToggleButtonPropsStrict } from './ToggleButton.types';
-import _ from 'lodash';
+import { ContentProps, ToggleButtonPropsStrict } from './ToggleButton.types';
+import * as Styled from './ToggleButton.style';
+import Container from '../Container';
 
 export type ToggleButtonProps = OptionalProps<
   ToggleButtonPropsStrict,
@@ -23,6 +22,22 @@ const normalizeToggleButtonProps = (
   variant: _props.variant ?? 'single',
   ..._props,
 });
+
+const ToggleIcon = ({
+  testID,
+  children,
+  hasLeftContent,
+  hasRightContent,
+}: ContentProps) => (
+  <Container
+    display="block"
+    data-testid={testID}
+    mr={hasLeftContent ? 'sm' : undefined}
+    ml={hasRightContent ? 'sm' : undefined}
+  >
+    {children}
+  </Container>
+);
 
 const baseTestId = 'toggle-button';
 
@@ -70,13 +85,12 @@ const ToggleButton = (_props: ToggleButtonProps) => {
       {...rest}
     >
       {leftIcon && (
-        <Icon
+        <ToggleIcon
+          hasLeftContent={leftIcon && !!children}
           testID={`${baseTestId}-left-icon`}
-          variant="p2ActionRegular"
-          icon={leftIcon}
-          color={contentColor}
-          mr="sm"
-        />
+        >
+          {leftIcon}
+        </ToggleIcon>
       )}
       {typeof children === 'string' ? (
         <Typography
@@ -90,13 +104,12 @@ const ToggleButton = (_props: ToggleButtonProps) => {
         children
       )}
       {rightIcon && (
-        <Icon
+        <ToggleIcon
+          hasRightContent={rightIcon && !!children}
           testID={`${baseTestId}-right-icon`}
-          variant="p2ActionRegular"
-          icon={rightIcon}
-          color={contentColor}
-          ml="sm"
-        />
+        >
+          {rightIcon}
+        </ToggleIcon>
       )}
     </Styled.Wrapper>
   );
