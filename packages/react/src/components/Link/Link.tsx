@@ -12,7 +12,7 @@ export type LinkProps = OptionalProps<
 
 const normalizeLinkProps = (props: LinkProps): LinkPropsStrict => ({
   ...props,
-  variant: props.variant ?? 'paragraph1',
+  variant: props.variant ?? 'p1',
   disabled: props.disabled ?? false,
   mode: props.mode ?? 'light',
   get color() {

@@ -6,13 +6,13 @@ type ChildrenProps = {
 };
 
 export const Overview = ({ children }: ChildrenProps) => (
-  <Container mb="SpacingBase4">
-    <Typography variant="heading6">{children}</Typography>
+  <Container mb="xs">
+    <Typography variant="h5">{children}</Typography>
   </Container>
 );
 
 export const Regular = ({ children }: ChildrenProps) => (
-  <Container mb="SpacingBase8">
-    <Typography variant="subtitle1">{children}</Typography>
+  <Container mb="sm">
+    <Typography variant="p2Strong">{children}</Typography>
   </Container>
 );

@@ -25,6 +25,7 @@ describe('Pill Component', () => {
     pillIcon: byTestId(`${baseTestId}-icon`),
     pillComp: byTestId(`${baseTestId}-component`),
     pillCompSelected: byTestId(`${baseTestId}-component-selected`),
+    pillDisabled: byTestId(`${baseTestId}-component-disabled`),
   };
 
   it('should not have any a11y errors', async () => {
@@ -55,8 +56,8 @@ describe('Pill Component', () => {
 
   it('removes pill when pressing remove icon using Spacebar', () => {
     // Arrange
-    // Act
     renderComponent({ removable: true });
+    // Act
     executeKeyPress(ui.pillClickable.get());
     // Assert
     expect(ui.pillComp.query()).not.toBeInTheDocument();
@@ -80,7 +81,7 @@ describe('Pill Component', () => {
     expect(onClick).toHaveBeenCalled();
   });
 
-  it('does not triggers onClick when disabled prop is provided', () => {
+  it('does not trigger onClick when disabled prop is provided', () => {
     const onClick = jest.fn();
 
     // Act
@@ -95,7 +96,7 @@ describe('Pill Component', () => {
     expect(onClick).not.toHaveBeenCalled();
   });
 
-  it('does not triggers onClick when a variant other than default is provided', () => {
+  it('does not trigger onClick when a variant other than default is provided', () => {
     // Act
     renderComponent({
       statusVariant: 'error',
@@ -104,6 +105,22 @@ describe('Pill Component', () => {
     fireEvent.click(ui.pillComp.get());
 
     // Assert
+    expect(ui.pillCompSelected.query()).not.toBeInTheDocument();
+  });
+
+  it('renders with disabled state and prevents interactions', () => {
+    // Act
+    renderComponent({ disabled: true });
+
+    // Assert
+    const pill = ui.pillDisabled.get();
+    expect(pill).toBeInTheDocument();
+
+    // Attempt to interact with the disabled pill
+    fireEvent.click(pill);
+    executeKeyPress(pill);
+
+    // Assert: no interaction should occur
     expect(ui.pillCompSelected.query()).not.toBeInTheDocument();
   });
 });
