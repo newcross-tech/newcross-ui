@@ -1,107 +1,84 @@
-import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
-import { ReactNode } from 'react';
-import { AlertVariant, TestProp } from '../../types';
-import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
-import Card from '../Card';
+import { faXmark } from '@fortawesome/pro-light-svg-icons/faXmark';
+import { OptionalProps } from '../../types';
+import { onSpacePressTrigger } from '../../utils';
 import * as Styled from './Alert.style';
+import Container from '../Container';
+import Icon from '../Icon';
+import Typography from '../Typography';
+import { ALERT_ICON, ALERT_TEXT_COLOR, ALERT_TITLES } from './constants';
+import { AlertAction } from './AlertAction';
+import { AlertPropsStrict } from './Alert.types';
 
-export type AlertProps = {
-  /**
-   * Whether the alert has a close button.
-   */
-  hasButton?: boolean;
-  /**
-   * Whether the alert has a border.
-   */
-  hasBorder?: boolean;
-  /**
-   * The action to trigger when the close button is pressed.
-   */
-  onClose?: VoidFunction;
-  /**
-   * Accepts a variant of the Alert.
-   */
-  variant?: AlertVariant;
-  /**
-   * Overwrites a custom icon for the Alert.
-   */
-  icon?: ReactNode;
-  /**
-   * Whether the alert has a title.
-   */
-  hasTitle?: boolean;
-  /**
-   * Accepts a custom title.
-   */
-  title?: string;
-  /**
-   * Accepts children as the alert's message.
-   */
-  children?: ReactNode;
-  /**
-   * Whether the card is full width.
-   */
-  fullWidth?: boolean;
-  /**
-   * The action to be displayed in the alert.
-   */
-  action?: ReactNode;
-} & TestProp;
+export type AlertProps = OptionalProps<
+  AlertPropsStrict,
+  'hasTitle' | 'hasBorder' | 'fullWidth' | 'variant' | 'testID' | 'hasButton'
+>;
 
-const Alert = ({
-  icon,
-  title,
-  action,
-  onClose,
-  children,
-  hasButton,
-  hasTitle = true,
-  hasBorder = true,
-  fullWidth = true,
-  variant = 'success',
-  testID = 'alert',
-}: AlertProps) => (
-  <Card
-    disabled
-    hasRoundedCorners
-    hasShadow={false}
-    hasPadding={false}
-    fullWidth={fullWidth}
-  >
+const normalizeAlertProps = (props: AlertProps): AlertPropsStrict => ({
+  ...props,
+  hasTitle: props.hasTitle ?? true,
+  hasBorder: props.hasBorder ?? true,
+  hasButton: props.hasButton ?? false,
+  fullWidth: props.fullWidth ?? true,
+  variant: props.variant ?? 'success',
+  testID: props.testID ?? 'alert',
+});
+
+const Alert = (_props: AlertProps) => {
+  const props = normalizeAlertProps(_props);
+
+  return (
     <Styled.Alert
-      variant={variant}
-      hasBorder={hasBorder}
-      data-testid={`${testID}-component`}
+      variant={props.variant}
+      hasBorder={props.hasBorder}
+      testID={`${props.testID}-component`}
+      justifyContent="space-between"
+      p="sm"
+      gap="sm"
+      fullWidth={props.fullWidth}
     >
-      {icon || (
-        <Styled.IconStyle position={'left'} variant={variant}>
-          <Styled.Icon icon={Styled.getIcon()[variant]} />
-        </Styled.IconStyle>
-      )}
-      <Styled.TextContainer>
-        {hasTitle && (
-          <Styled.Text variant={'heading6'}>
-            {title || Styled.getTitle()[variant]}
-          </Styled.Text>
+      <Container gap="sm" p="sm" fullWidth>
+        {props.icon || (
+          <Icon
+            icon={ALERT_ICON[props.variant]}
+            variant="h3"
+            color={ALERT_TEXT_COLOR[props.variant]}
+            py="xs"
+          />
         )}
-        {children && (
-          <Styled.Text variant={'paragraph1'}>{children}</Styled.Text>
-        )}
-        {action}
-      </Styled.TextContainer>
-      {hasButton && (
-        <Styled.IconStyle
-          tabIndex={1}
-          onClick={onClose}
-          data-testid={`${testID}-close-icon`}
-          onKeyDown={(event) => onClose && onSpacePressTrigger(event, onClose)}
-          position={'right'}
-        >
-          <Styled.Icon icon={faXmark} />
-        </Styled.IconStyle>
+        <Container flexDirection="column" gap="xs" fullWidth>
+          {props.hasTitle && (
+            <Typography variant="h3" color={ALERT_TEXT_COLOR[props.variant]}>
+              {props.title ?? ALERT_TITLES[props.variant]}
+            </Typography>
+          )}
+          {props.children && (
+            <Typography variant="p1" color={ALERT_TEXT_COLOR[props.variant]}>
+              {props.children}
+            </Typography>
+          )}
+          {props.action && (
+            <AlertAction action={props.action} variant={props.variant} />
+          )}
+        </Container>
+      </Container>
+
+      {props.hasButton && (
+        <Styled.CloseIcon
+          icon={faXmark}
+          variant="h2"
+          color={ALERT_TEXT_COLOR[props.variant]}
+          tabIndex={0}
+          onClick={props.onClose}
+          testID={`${props.testID}-close-icon`}
+          onKeyDown={(event) =>
+            props.onClose && onSpacePressTrigger(event, props.onClose)
+          }
+          p="xs"
+        />
       )}
     </Styled.Alert>
-  </Card>
-);
+  );
+};
 
 export default Alert;
