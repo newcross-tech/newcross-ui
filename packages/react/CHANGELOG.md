@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.26.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.25.4...@newcross-ui/react@2.26.0) (2025-01-09)
+
+
+### Features
+
+* **HFAUI-54:** update pill ([#165](https://bitbucket.org/newcrossdev/newcross-ui/issues/165)) ([a79f182](https://bitbucket.org/newcrossdev/newcross-ui/commits/a79f182c4ce914d00cb7007d2840b2aba963c0f8))
+
+
+
+
+
+## [2.25.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.25.3...@newcross-ui/react@2.25.4) (2025-01-09)
+
+
+### Bug Fixes
+
+* **HFAUI-117:** link variant coloring ([#171](https://bitbucket.org/newcrossdev/newcross-ui/issues/171)) ([3ae9488](https://bitbucket.org/newcrossdev/newcross-ui/commits/3ae948858c2c221fc7561ea1ae5bb1b27dbb64a5))
+
+
+
+
+
 ## [2.25.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.25.2...@newcross-ui/react@2.25.3) (2024-12-23)
 
 **Note:** Version bump only for package @newcross-ui/react
