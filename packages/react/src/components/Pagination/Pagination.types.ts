@@ -1,6 +1,6 @@
 import { PaginationProps } from './Pagination';
 
-export type PaginationButtonType = 'previous' | 'page' | 'ellipsis' | 'next';
+export type PaginationButtonType = 'previous' | 'page' | 'next';
 
 export type StyledPaginationProps = Pick<PaginationProps, 'fullWidth'>;
 

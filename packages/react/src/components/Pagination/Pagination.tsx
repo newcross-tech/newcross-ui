@@ -1,10 +1,6 @@
 import usePagination from './usePagination';
-import * as Styled from './Pagination.style';
 import { PaginationArrowButton, PaginationButton } from './PaginationButton';
-import { useState, useRef } from 'react';
-import { useResize } from '../../hooks/useResize';
-import useTheme from '../../hooks/useTheme';
-import { getHaloValue } from '../../utils';
+import Container from '../Container';
 
 export type PaginationProps = {
   /**
@@ -31,60 +27,30 @@ const Pagination: React.FC<PaginationProps> = ({
   onChange,
   fullWidth,
 }) => {
-  const [widthOfContainer, setWidthOfContainer] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const theme = useTheme();
-
-  // CONTAINER_ELEMENTS_WIDTH = 372, which is the width of all pagination elements, which are always visible
-  // i.e. laft and right arrow, left and right ellipsis, selected element and paddings
-  const CONTAINER_ELEMENTS_WIDTH =
-    getPixelsFromHaloSpacing(theme.SpacingBase40) * 9 +
-    getPixelsFromHaloSpacing(theme.SpacingBase12);
-  const PAGINATION_BUTTON_WIDTH = getPixelsFromHaloSpacing(theme.SpacingBase40);
-  const LEFT_AND_RIGHT_SIBLING_COUNT = 2;
-
-  useResize({
-    ref,
-    containerSize: ref?.current?.offsetWidth || 0,
-    onResize: () => setWidthOfContainer(ref?.current?.offsetWidth || 0),
-  });
-
-  const maybeSiblingCount = Math.floor(
-    (widthOfContainer - CONTAINER_ELEMENTS_WIDTH) /
-      PAGINATION_BUTTON_WIDTH /
-      LEFT_AND_RIGHT_SIBLING_COUNT
-  );
-  const siblingCount = maybeSiblingCount < 0 ? 0 : maybeSiblingCount;
   const { items, selectedPage } = usePagination({
     selectedValue,
     count,
     onChange,
-    siblingCount,
+    size: fullWidth ? 'large' : 'small',
   });
 
   return (
-    <Styled.Pagination
+    <Container
       fullWidth={fullWidth}
-      ref={ref}
-      data-testid="pagination-container"
+      alignItems="center"
+      testID="pagination-container"
       role="navigation"
+      gap="sm"
     >
       <PaginationArrowButton {...items[0]} />
-      <Styled.PaginationButtonsContainer>
-        {items.slice(1, -1).map((item, index) => (
-          <div data-testid={`pagination-button-${index}`} key={index}>
-            <PaginationButton {...item} selected={selectedPage === item.page} />
-          </div>
-        ))}
-      </Styled.PaginationButtonsContainer>
+      {items.slice(1, -1).map((item, index) => (
+        <div data-testid={`pagination-button-${index}`} key={index}>
+          <PaginationButton {...item} selected={selectedPage === item.page} />
+        </div>
+      ))}
       <PaginationArrowButton {...items[items.length - 1]} />
-    </Styled.Pagination>
+    </Container>
   );
 };
 
 export default Pagination;
-
-// +getHaloValue removes 'rem' from spacing and returns a number
-// * 16 converts to pixels
-const getPixelsFromHaloSpacing = (spacing: string) =>
-  +getHaloValue(spacing) * 16;

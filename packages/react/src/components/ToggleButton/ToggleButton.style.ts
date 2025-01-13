@@ -25,18 +25,20 @@ const getBackgroundColor = ({
   return selected ? theme.ElementsSurfaceActionDefault : theme.ElementsSurfaceDefault;
 };
 
-export const Wrapper = styled(Container)<ToggleButtonProps>(({ theme, selected, disabled, size }) => ({
+export const Wrapper = styled(Container)<ToggleButtonProps>(({ theme, selected, disabled, size, styleAs }) => ({
   minHeight: getToggleButtonSize({ theme, size }),
   minWidth: getToggleButtonSize({ theme, size }),
-  borderStyle: 'solid',
-  borderWidth: theme.BorderBaseWidthSm,
-  borderColor: selected ? theme.ElementsBorderActionDefault : theme.ElementsBorderDefault,
-  borderRadius: theme.BorderBaseRadiusMd,
   cursor: disabled ? 'auto' : 'pointer',
-  backgroundColor: getBackgroundColor({ theme, disabled, selected }),
-  ':hover': {
-    backgroundColor: theme.ElementsSurfaceActionHover,
-    borderColor: theme.ElementsBorderActionDefault,
-  },
+  ...(styleAs === 'default' && {
+    borderStyle: 'solid',
+    borderWidth: theme.BorderBaseWidthSm,
+    borderColor: selected ? theme.ElementsBorderActionDefault : theme.ElementsBorderDefault,
+    borderRadius: theme.BorderBaseRadiusMd,
+    backgroundColor: getBackgroundColor({ theme, disabled, selected }),
+    ':hover': {
+      backgroundColor: theme.ElementsSurfaceActionHover,
+      borderColor: theme.ElementsBorderActionDefault,
+    },
+  }),
   ...getTabbedStateStyles(),
 }));

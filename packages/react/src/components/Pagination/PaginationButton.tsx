@@ -1,9 +1,9 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/pro-light-svg-icons/faChevronRight';
 import { faChevronLeft } from '@fortawesome/pro-light-svg-icons/faChevronLeft';
 import * as Styled from './Pagination.style';
 import { PaginationButtonType } from './Pagination.types';
-import useTheme from '../../hooks/useTheme';
+import Icon from '../Icon';
+import Typography from '../Typography';
 
 type PaginationButtonProps = {
   /**
@@ -37,31 +37,28 @@ export const PaginationButton: React.FC<PaginationButtonProps> = ({
   page,
   variant,
   ...rest
-}) =>
-  variant === 'ellipsis' ? (
-    <Styled.PaginationButton as="div" disabled>
-      ...
-    </Styled.PaginationButton>
-  ) : (
-    <Styled.PaginationButton {...rest}>{page}</Styled.PaginationButton>
-  );
+}) => (
+  <Styled.PaginationButton {...rest}>
+    <Typography variant="p2">{page}</Typography>
+  </Styled.PaginationButton>
+);
 
 export const PaginationArrowButton: React.FC<PaginationArrowButtonProps> = ({
   variant,
   disabled,
   ...rest
 }) => {
-  const theme = useTheme();
   const icon = variant === 'previous' ? faChevronLeft : faChevronRight;
 
   return (
-    <Styled.PaginationButton disabled={disabled} as="div" {...rest}>
-      <FontAwesomeIcon
-        icon={icon}
-        color={
-          disabled ? theme.ColorNeutralGrey200 : theme.ColorPrimaryGravitas
-        }
-      />
+    <Styled.PaginationButton styleAs="div" {...rest}>
+      {!disabled && (
+        <Icon
+          icon={icon}
+          variant="h2"
+          color={disabled ? 'disabled' : 'primary'}
+        />
+      )}
     </Styled.PaginationButton>
   );
 };
