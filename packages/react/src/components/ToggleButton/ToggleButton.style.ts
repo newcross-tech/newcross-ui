@@ -1,37 +1,42 @@
-import styled, { css } from 'styled-components';
-import { ExtendedTheme } from '../../types';
+import styled from 'styled-components';
 import { getTabbedStateStyles } from '../../utils';
-import Typography from '../Typography';
 import { ToggleButtonProps } from './ToggleButton';
-import { ContentProps } from './ToggleButton.types';
+import { ThemeDesignTokens } from '../../theme/ThemeProvider';
+import Container from '../Container';
+import { Theme } from '../../types';
 
-export const Container = styled.button<ToggleButtonProps>`
-  ${({ theme, selected, fullWidth }: ExtendedTheme<ToggleButtonProps>) => css`
-    padding: ${theme.ToggleButtonPaddingVertical} ${theme.ToggleButtonPaddingHorizontal};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: solid ${theme.ToggleButtonBorderWidth}
-      ${selected ? theme.ToggleButtonSelectedBorderColor : theme.ToggleButtonBorderColor};
-    border-radius: ${theme.ToggleButtonBorderRadius};
-    cursor: pointer;
-    background-color: ${selected ? theme.ToggleButtonSelectedBackgroundColor : theme.ToggleButtonBackgroundColor};
+const getToggleButtonSize = ({ theme, size }: Theme & Pick<ToggleButtonProps, 'size'>) => {
+  if (size === 'small') return theme.BaselineSpacesSpace32;
+  return theme.BaselineSpacesSpace48;
+};
 
-    width: ${fullWidth && '100%'};
-    min-width: fit-content;
-    ${getTabbedStateStyles()}
-  `};
-`;
+const getBackgroundColor = ({
+  theme,
+  disabled,
+  selected,
+}: {
+  theme: ThemeDesignTokens;
+  disabled?: boolean;
+  selected?: boolean;
+}) => {
+  if (disabled) {
+    return selected ? theme.ElementsSurfaceDisabled : theme.ElementsSurfaceDefault;
+  }
+  return selected ? theme.ElementsSurfaceActionDefault : theme.ElementsSurfaceDefault;
+};
 
-export const IconWrapper = styled.div<ExtendedTheme<ContentProps>>`
-  ${({ theme, hasLeftContent, hasRightContent }: ExtendedTheme<ContentProps>) => css`
-    margin-right: ${hasLeftContent && theme.ToggleButtonMargin};
-    margin-left: ${hasRightContent && theme.ToggleButtonMargin};
-    color: ${theme.ToggleButtonColor};
-  `};
-`;
-export const Text = styled(Typography)<Omit<ToggleButtonProps, 'variant'>>`
-  ${({ theme }: ExtendedTheme<Omit<ToggleButtonProps, 'variant'>>) => css`
-    color: ${theme.ToggleButtonColor};
-  `};
-`;
+export const Wrapper = styled(Container)<ToggleButtonProps>(({ theme, selected, disabled, size }) => ({
+  minHeight: getToggleButtonSize({ theme, size }),
+  minWidth: getToggleButtonSize({ theme, size }),
+  borderStyle: 'solid',
+  borderWidth: theme.BorderBaseWidthSm,
+  borderColor: selected ? theme.ElementsBorderActionDefault : theme.ElementsBorderDefault,
+  borderRadius: theme.BorderBaseRadiusMd,
+  cursor: disabled ? 'auto' : 'pointer',
+  backgroundColor: getBackgroundColor({ theme, disabled, selected }),
+  ':hover': {
+    backgroundColor: theme.ElementsSurfaceActionHover,
+    borderColor: theme.ElementsBorderActionDefault,
+  },
+  ...getTabbedStateStyles(),
+}));

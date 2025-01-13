@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { byTestId } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
 import ToggleButton from '../ToggleButton/ToggleButton';
@@ -6,6 +6,7 @@ import ToggleButtonGroup from './ToggleButtonGroup';
 import { getMultipleSelectedValues } from './utils/getMultipleSelectedValues';
 import { calculateSelectedValue } from './utils/calculateSelectedValue';
 import { SingleSelect, MultiSelect } from './ToggleButtonGroup.types';
+import { userEvent } from '@storybook/testing-library';
 
 describe('ToggleButtonGroup', () => {
   const ui = {
@@ -79,7 +80,7 @@ describe('ToggleButtonGroup', () => {
       </ToggleButtonGroup>
     );
 
-    fireEvent.click(ui.toggleGroupId('3').get());
+    userEvent.click(ui.toggleGroupId('3').get());
 
     // Assert
     expect(ui.toggleGroupSelectedId('1').get()).toBeVisible();
@@ -111,7 +112,7 @@ describe('ToggleButtonGroup', () => {
         </ToggleButton>
       </ToggleButtonGroup>
     );
-    fireEvent.click(ui.toggleGroupId('2').get());
+    userEvent.click(ui.toggleGroupId('2').get());
     // Assert
     expect(ui.toggleGroupSelectedId('1').get()).toBeVisible();
     expect(ui.toggleGroupId('2').get()).toBeVisible();

@@ -22,22 +22,27 @@ export const Variants = () => {
       <ToggleButton
         selected={false}
         rightIcon={<FontAwesomeIcon icon={faCalendarDays} />}
+        fullWidth={false}
       >
         Apr
       </ToggleButton>
-      <Container m="SpacingBase4" />
+      <Container m="xs" />
       <ToggleButton
         selected={true}
         rightIcon={<FontAwesomeIcon icon={faCalendarDays} />}
       >
         Apr
       </ToggleButton>
-      <Container m="SpacingBase4" />
-      <ToggleButton selected={false}>Fav (3)</ToggleButton>
-      <Container m="SpacingBase4" />
-      <ToggleButton selected={true}>Fav (3)</ToggleButton>
+      <Container m="xs" />
+      <ToggleButton selected={false} size="large">
+        Fav (3)
+      </ToggleButton>
+      <Container m="xs" />
+      <ToggleButton selected={true} size="large">
+        Fav (3)
+      </ToggleButton>
 
-      <Container m="SpacingBase4" />
+      <Container m="xs" />
       <ToggleButton
         selected={false}
         leftIcon={<FontAwesomeIcon icon={faFilter} />}
@@ -45,7 +50,7 @@ export const Variants = () => {
       >
         Filter By
       </ToggleButton>
-      <Container m="SpacingBase4" />
+      <Container m="xs" />
       <ToggleButton
         selected={true}
         leftIcon={<FontAwesomeIcon icon={faFilter} />}
@@ -54,7 +59,7 @@ export const Variants = () => {
         Filter By
       </ToggleButton>
 
-      <Container m="SpacingBase4" />
+      <Container m="xs" />
       <ToggleButton selected={false} fullWidth>
         <Container
           flexDirection="row"
@@ -82,14 +87,14 @@ export const Overview = () => {
       doInfo={DO}
       dontInfo={DONT}
     >
-      <Container display={'block'}>
+      <Container display="block">
         <ToggleButton
           selected={false}
           leftIcon={<FontAwesomeIcon icon={faFilter} />}
         >
           Filter By
         </ToggleButton>
-        <Container m="SpacingBase4" />
+        <Container m="xs" />
         <ToggleButton
           selected={true}
           leftIcon={<FontAwesomeIcon icon={faFilter} />}

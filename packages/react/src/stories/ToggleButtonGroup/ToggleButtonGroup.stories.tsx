@@ -42,7 +42,7 @@ export const Variants = () => {
         <ToggleButton value="2">Option B</ToggleButton>
         <ToggleButton value="3">Option C</ToggleButton>
       </ToggleButtonGroup>
-      <Container mb="SpacingBase4" />
+      <Container mb="xs" />
       <StoryTitle.Regular>
         Multiple Select Group with horizontal orientation
       </StoryTitle.Regular>
@@ -59,7 +59,7 @@ export const Variants = () => {
 
         <ToggleButton value="3">Option C</ToggleButton>
       </ToggleButtonGroup>
-      <Container m="SpacingBase12" />
+      <Container m="sm" />
       <StoryTitle.Regular>
         Multiple Select Group with vertical orientation
       </StoryTitle.Regular>
@@ -77,7 +77,7 @@ export const Variants = () => {
           <ToggleButton value="3">Aug</ToggleButton>
         </ToggleButtonGroup>
       </Container>
-      <Container mb="SpacingBase4" />
+      <Container mb="xs" />
       <StoryTitle.Regular>
         Multiple Select Group with vertical / horizontal orientation
       </StoryTitle.Regular>
@@ -95,6 +95,7 @@ export const Variants = () => {
             Belleview Care
           </ToggleButton>
         </ToggleButtonGroup>
+        <Container mb="sm" />
         <ToggleButtonGroup
           selectedValue={selectedHorizontalBtns}
           onToggle={setSelectedHorizonalBtns}
@@ -107,6 +108,7 @@ export const Variants = () => {
             Mount Pleasant
           </ToggleButton>
         </ToggleButtonGroup>
+        <Container mb="sm" />
         <ToggleButtonGroup
           selectedValue={selectedHorizontalBtns}
           onToggle={setSelectedHorizonalBtns}

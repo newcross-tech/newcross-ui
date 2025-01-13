@@ -72,12 +72,9 @@ const Pagination: React.FC<PaginationProps> = ({
       <PaginationArrowButton {...items[0]} />
       <Styled.PaginationButtonsContainer>
         {items.slice(1, -1).map((item, index) => (
-          <PaginationButton
-            data-testid={`pagination-button-${index}`}
-            key={index}
-            {...item}
-            selected={selectedPage === item.page}
-          />
+          <div data-testid={`pagination-button-${index}`} key={index}>
+            <PaginationButton {...item} selected={selectedPage === item.page} />
+          </div>
         ))}
       </Styled.PaginationButtonsContainer>
       <PaginationArrowButton {...items[items.length - 1]} />
