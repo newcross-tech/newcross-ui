@@ -1,9 +1,10 @@
 import { faCalendarDays } from '@fortawesome/pro-solid-svg-icons/faCalendarDays';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { byTestId, byText } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
 import ToggleButton, { ToggleButtonProps } from './ToggleButton';
+import { userEvent } from '@storybook/testing-library';
 
 const renderComponent = (customProps: Partial<ToggleButtonProps>) => {
   const props = {
@@ -46,7 +47,7 @@ describe('Toggle Button Component', () => {
 
     // Act
     renderComponent({ onClick });
-    fireEvent.click(ui.toggleComp.get());
+    userEvent.click(ui.toggleComp.get());
 
     // Assert
     expect(onClick).toHaveBeenCalled();
@@ -105,7 +106,7 @@ describe('Toggle Button Component', () => {
     // Act
     renderComponent({ variant: 'multi', onClick });
     const button = ui.toggleComp.get();
-    fireEvent.click(button);
+    userEvent.click(button);
 
     // Assert
     expect(button).toHaveAttribute('data-testid', 'toggle-button');
@@ -119,7 +120,7 @@ describe('Toggle Button Component', () => {
     // Act
     renderComponent({ disabled: true, onClick });
     const button = ui.toggleComp.get();
-    fireEvent.click(button);
+    userEvent.click(button);
 
     // Assert
     expect(onClick).not.toHaveBeenCalled();
@@ -132,7 +133,7 @@ describe('Toggle Button Component', () => {
     // Act
     renderComponent({ disabled: true, selected: false, onClick });
     const button = ui.toggleComp.get();
-    fireEvent.click(button);
+    userEvent.click(button);
 
     // Assert
     expect(onClick).not.toHaveBeenCalled();
