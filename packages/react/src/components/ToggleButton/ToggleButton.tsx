@@ -47,6 +47,7 @@ const ToggleButton = (_props: ToggleButtonProps) => {
     disabled,
     value,
     variant,
+    size,
     children,
     leftIcon,
     rightIcon,
@@ -74,7 +75,9 @@ const ToggleButton = (_props: ToggleButtonProps) => {
       semanticTag="button"
       alignItems="center"
       justifyContent="center"
-      p="sm"
+      size={size}
+      px="sm"
+      py={size === 'small' ? 'xs' : 'sm'}
       fullWidth={fullWidth}
       onClick={handleOnClick}
       selected={isMulti ? isSelected : selected}
