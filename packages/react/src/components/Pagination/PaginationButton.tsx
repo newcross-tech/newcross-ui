@@ -4,6 +4,7 @@ import { faChevronLeft } from '@fortawesome/pro-light-svg-icons/faChevronLeft';
 import * as Styled from './Pagination.style';
 import { PaginationButtonType } from './Pagination.types';
 import useTheme from '../../hooks/useTheme';
+import { TestProp } from '../../types';
 
 type PaginationButtonProps = {
   /**
@@ -26,7 +27,7 @@ type PaginationButtonProps = {
    * Whether the button is disabled or not.
    */
   disabled?: boolean;
-};
+} & TestProp;
 
 type PaginationArrowButtonProps = Pick<
   PaginationButtonProps,
