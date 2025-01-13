@@ -36,17 +36,30 @@ describe('Checkbox Group Component', () => {
     expect(ui.groupContainer.get()).toBeInTheDocument();
   });
 
-  it('when one or more child-Checkboxes are disabled, selectAll-Checkbox is disabled', () => {
+  it('when all child-Checkboxes are disabled, selectAll-Checkbox is disabled', () => {
     // Act
     renderComponent({
       options: [
-        { label: 'Apple', value: 'fruit1' },
+        { label: 'Apple', value: 'fruit1', disabled: true },
         { label: 'Banana', value: 'fruit2', disabled: true },
       ],
     });
 
     // Assert
     expect(ui.selectAllCheckbox.get()).toHaveAttribute('disabled');
+  });
+
+  it('when some child-Checkboxes are disabled, selectAll-Checkbox is not disabled', () => {
+    // Act
+    renderComponent({
+      options: [
+        { label: 'Apple', value: 'fruit1', disabled: true },
+        { label: 'Banana', value: 'fruit2' },
+      ],
+    });
+
+    // Assert
+    expect(ui.selectAllCheckbox.get()).not.toHaveAttribute('disabled');
   });
 
   it('selectAll-Checkbox is set to Indeterminate when one or more but all child-Checkboxes are checked', () => {
@@ -121,5 +134,24 @@ describe('Checkbox Group Component', () => {
 
     // Assert
     expect(ui.checkboxIcon.queryAll()).toHaveLength(0);
+  });
+
+  it('calls onChangeHandler with the correct list when a checkbox is selected or deselected', () => {
+    const onChange = jest.fn();
+
+    // Act
+    renderComponent({
+      onChange,
+      options: [
+        { label: 'Apple', value: 'fruit1' },
+        { label: 'Banana', value: 'fruit2' },
+        { label: 'Pear', value: 'fruit3' },
+      ],
+      defaultChecked: ['fruit1'],
+    });
+
+    fireEvent.click(byText('Banana').get());
+    // Assert
+    expect(onChange).toHaveBeenCalled();
   });
 });

@@ -69,6 +69,9 @@ export const Box = styled(Container)<Pick<CheckboxPropsStrict, 'hasError' | 'dis
       color: props.theme.ElementsIconDefaultDark,
       backgroundColor: props.theme.ElementsSurfaceDefault,
       transition: '0.2s ease-in-out',
+      svg: {
+        color: 'inherit',
+      },
     },
     !props.hasError && props.checked && getSelectedStyled(props),
     props.hasError && getHasErrorStyles(props),
