@@ -1,42 +1,40 @@
 import { useState } from 'react';
-import { TestProp } from '../../types';
 import Checkbox from '../Checkbox';
-import * as Styled from './CheckboxGroup.style';
-import { OptionProps } from './CheckboxGroup.types';
+import {
+  CheckboxGroupPropsStrict,
+  OptionObjectType,
+} from './CheckboxGroup.types';
 import {
   getDefaultList,
   getIsOptionObject,
   getLabel,
   getOptionsList,
+  getSelectedList,
   getValue,
 } from './utils';
+import Container from '../Container';
+import { OptionalProps } from '../../types/utility-types';
 
-export type CheckboxGroupProps = {
-  /**
-   * Label for the checkbox
-   */
-  label?: string;
-  /**
-   * Callback fired when the state is changed.
-   */
-  onChange?: (array: string[]) => void;
-  /**
-   * Accepts a List of checkboxes to display
-   */
-  options: OptionProps;
-  /**
-   * Accepts a List of checkboxes to be checked by default
-   */
-  defaultChecked: string[];
-} & TestProp;
+export type CheckboxGroupProps = OptionalProps<
+  CheckboxGroupPropsStrict,
+  'defaultChecked' | 'options' | 'label'
+>;
 
-const CheckboxGroup = ({
-  options,
-  onChange,
-  defaultChecked,
-  label = 'Select All',
-  testID,
-}: CheckboxGroupProps) => {
+const normalizeCheckboxGroupProps = (
+  props: CheckboxGroupProps
+): CheckboxGroupPropsStrict => {
+  return {
+    ...props,
+    label: props.label ?? 'Select All',
+    options: props.options ?? [],
+    defaultChecked: props.defaultChecked ?? [],
+  };
+};
+
+const CheckboxGroup = (_props: CheckboxGroupProps) => {
+  const { options, onChange, defaultChecked, label, testID } =
+    normalizeCheckboxGroupProps(_props);
+
   const [selectedList, setSelectedList] = useState<string[]>(
     defaultChecked.length ? getDefaultList(options, defaultChecked) : []
   );
@@ -44,9 +42,12 @@ const CheckboxGroup = ({
   const childHasError = options.some(
     (item) => getIsOptionObject(item) && item.hasError === true
   );
-  const childHasDisabled = options.some(
-    (item) => getIsOptionObject(item) && item.disabled === true
+
+  const childrenDisabled = (options as Array<string | OptionObjectType>).every(
+    (item: string | OptionObjectType) =>
+      getIsOptionObject(item) && item.disabled === true
   );
+
   const isIndeterminate = () =>
     options.length === selectedList.length ? undefined : 'indeterminate';
 
@@ -58,13 +59,23 @@ const CheckboxGroup = ({
     )
       return true;
   };
+
   const isDefaultChecked = (label: string) =>
     selectedList.some((item) => item === getLabel(label));
 
   const onChangeHandler = (newList: string[]) => onChange && onChange(newList);
 
   const handleCheckAll = () => {
-    const newList = !isAnySelected() ? getOptionsList(options) : [];
+    const disabledList = getOptionsList.disabled(options);
+    const enabledList = getOptionsList.enabled(options);
+    const selectedEnabledList = getSelectedList(enabledList, selectedList);
+    const selectedDisabledList = getSelectedList(disabledList, selectedList);
+
+    const newList =
+      selectedEnabledList.length === enabledList.length
+        ? [...selectedDisabledList]
+        : [...enabledList, ...selectedDisabledList];
+
     setSelectedList(newList);
     onChangeHandler(newList);
   };
@@ -96,18 +107,20 @@ const CheckboxGroup = ({
     });
 
   return (
-    <div data-testid="checkbox-group">
+    <Container flexDirection="column" gap="sm" testID="checkbox-group">
       <Checkbox
         type={isIndeterminate()}
         label={label}
         onChange={handleCheckAll}
-        disabled={childHasDisabled}
+        disabled={childrenDisabled}
         hasError={childHasError}
         checked={isAnySelected()}
         testID="checkbox-selectAll"
       />
-      <Styled.CheckboxList>{renderCheckboxList()}</Styled.CheckboxList>
-    </div>
+      <Container gap="sm" pl="md" flexDirection="column">
+        {renderCheckboxList()}
+      </Container>
+    </Container>
   );
 };
 export default CheckboxGroup;
