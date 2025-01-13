@@ -1,23 +1,18 @@
-import { Children, cloneElement, ReactElement, useCallback } from 'react';
-import { TestProp } from '../../types';
-import { ToggleButtonProps } from '../ToggleButton';
+import { Children, cloneElement, useCallback } from 'react';
 import { getMultipleSelectedValues } from './utils/getMultipleSelectedValues';
 import { calculateSelectedValue } from './utils/calculateSelectedValue';
-import { SingleSelect, MultiSelect } from './ToggleButtonGroup.types';
+import {
+  SingleSelect,
+  MultiSelect,
+  ToggleButtonGroupPropsStrict,
+} from './ToggleButtonGroup.types';
 import * as Styled from './ToggleButtonGroup.style';
-type ToggleButtonGroupGeneralProps = {
-  /**
-   * The content of the component.
-   */
-  children: Array<ReactElement<ToggleButtonProps>>;
-  /**
-   * Used to display the group in either a row or a column.
-   */
-  direction?: 'row' | 'column';
-} & TestProp;
+import { OptionalProps } from '../../types';
 
-export type ToggleButtonGroupProps = (SingleSelect | MultiSelect) &
-  ToggleButtonGroupGeneralProps;
+export type ToggleButtonGroupProps = OptionalProps<
+  ToggleButtonGroupPropsStrict,
+  'direction'
+>;
 
 // this component will be updated so it doesn't always take up
 // all the available space with this ticket https://newcross.atlassian.net/browse/HDS-52
@@ -36,7 +31,9 @@ const ToggleButtonGroup = ({
       } else {
         const multiProps = rest as MultiSelect;
         multiProps.onToggle &&
-          multiProps.onToggle(getMultipleSelectedValues(value, selectedValue));
+          multiProps.onToggle(
+            getMultipleSelectedValues(value, selectedValue as string[])
+          );
       }
     },
     [selectedValue]
@@ -46,7 +43,7 @@ const ToggleButtonGroup = ({
     <Styled.GroupWrapper
       flexDirection={direction}
       gap={'md'}
-      data-testid="toggle-button-group"
+      testID="toggle-button-group"
       {...rest}
     >
       {Children.map(children, (child) => {

@@ -31,7 +31,7 @@ const ToggleIcon = ({
 }: ContentProps) => (
   <Container
     display="block"
-    data-testid={testID}
+    testID={testID}
     mr={hasLeftContent ? 'sm' : undefined}
     ml={hasRightContent ? 'sm' : undefined}
   >
@@ -79,7 +79,7 @@ const ToggleButton = (_props: ToggleButtonProps) => {
       onClick={handleOnClick}
       selected={isMulti ? isSelected : selected}
       disabled={disabled}
-      data-testid={
+      testID={
         selected ? `${baseTestId}-selected${testID}` : `${baseTestId}${testID}`
       }
       {...rest}

@@ -1,7 +1,9 @@
-import { ToggleButtonGroupProps } from './ToggleButtonGroup';
+import { ReactElement } from 'react';
+import { ToggleButtonProps } from '../..';
+import { TestProp } from '../../types';
 
 export type ToggleButtonGroupExtended = Pick<
-  ToggleButtonGroupProps,
+  ToggleButtonGroupPropsStrict,
   'direction'
 > & { isMulti?: boolean };
 
@@ -16,3 +18,15 @@ export type MultiSelect = {
   onToggle: (arg: string[]) => void;
   variant: 'multi';
 };
+
+export type ToggleButtonGroupPropsStrict = {
+  /**
+   * The content of the component.
+   */
+  children: Array<ReactElement<ToggleButtonProps>>;
+  /**
+   * Used to display the group in either a row or a column.
+   */
+  direction: 'row' | 'column';
+} & TestProp &
+  (SingleSelect | MultiSelect);
