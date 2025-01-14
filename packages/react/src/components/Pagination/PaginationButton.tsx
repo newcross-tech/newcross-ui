@@ -36,7 +36,7 @@ export const PaginationButton: React.FC<PaginationItemPropsStrict> = ({
   ...rest
 }) => {
   const color = disabled ? 'disabled' : 'primary';
-  const ariaLabel = `Go to page ${page}`;
+  const ariaLabel = page;
 
   return (
     <Styled.PaginationButton

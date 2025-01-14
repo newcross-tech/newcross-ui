@@ -51,45 +51,45 @@ export const Variants = () => {
       <StoryTitle.Regular>
         Pagination with 12 elements - aligned to the start
       </StoryTitle.Regular>
-      <Typography variant="p2">size - small</Typography>
+      <Typography variant="p2">length - short</Typography>
       <StyledCard fullWidth>
         <Pagination count={12} />
       </StyledCard>
-      <Typography variant="p2">size - large</Typography>
+      <Typography variant="p2">length - long</Typography>
       <StyledCard fullWidth>
-        <Pagination count={12} size="large" />
+        <Pagination count={12} length="long" />
       </StyledCard>
-      <Typography variant="p2">size - small & disabled</Typography>
+      <Typography variant="p2">length - short & disabled</Typography>
       <StyledCard fullWidth>
         <Pagination count={12} disabled />
       </StyledCard>
-      <Typography variant="p2">size - large & disabled</Typography>
+      <Typography variant="p2">length - long & disabled</Typography>
       <StyledCard fullWidth>
-        <Pagination count={12} size="large" disabled />
+        <Pagination count={12} length="long" disabled />
       </StyledCard>
       <Container m="sm" />
       <StoryTitle.Regular>
         Pagination with 12 elements - full width
       </StoryTitle.Regular>
-      <Typography variant="p2">size - small</Typography>
+      <Typography variant="p2">length - short</Typography>
       <StyledCard fullWidth>
         <Pagination count={12} fullWidth selectedValue={12} />
       </StyledCard>
-      <Typography variant="p2">size - large</Typography>
+      <Typography variant="p2">length - long</Typography>
       <StyledCard fullWidth>
-        <Pagination count={12} fullWidth selectedValue={12} size="large" />
+        <Pagination count={12} fullWidth selectedValue={12} length="long" />
       </StyledCard>
-      <Typography variant="p2">size - small & disabled</Typography>
+      <Typography variant="p2">length - short & disabled</Typography>
       <StyledCard fullWidth>
         <Pagination count={12} fullWidth selectedValue={12} disabled />
       </StyledCard>
-      <Typography variant="p2">size - large & disabled</Typography>
+      <Typography variant="p2">length - long & disabled</Typography>
       <StyledCard fullWidth>
         <Pagination
           count={12}
           fullWidth
           selectedValue={12}
-          size="large"
+          length="long"
           disabled
         />
       </StyledCard>

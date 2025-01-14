@@ -3,13 +3,13 @@ import {
   PaginationItemType,
   PaginationItemPropsStrict,
   UsePaginationPropsStrict,
-} from './Pagination.types';
-import { useUpstreamState } from '../../hooks/useUpstreamState';
-import { OptionalProps } from '../../types';
+} from '../Pagination.types';
+import { useUpstreamState } from '../../../hooks/useUpstreamState';
+import { OptionalProps } from '../../../types';
 
 type UsePaginationProps = OptionalProps<
   UsePaginationPropsStrict,
-  'selectedValue' | 'size' | 'count'
+  'selectedValue' | 'length' | 'count'
 >;
 
 const normalizeUsePaginationProps = (
@@ -17,13 +17,13 @@ const normalizeUsePaginationProps = (
 ): UsePaginationPropsStrict => ({
   selectedValue: _props.selectedValue ?? 1,
   count: _props.count ?? 1,
-  size: _props.size ?? 'small',
+  length: _props.length ?? 'short',
   ..._props,
 });
 
 const PaginationPagesToShow = {
-  small: 4,
-  large: 7,
+  short: 4,
+  long: 7,
 };
 
 const usePagination = (_props: UsePaginationProps) => {
@@ -31,11 +31,11 @@ const usePagination = (_props: UsePaginationProps) => {
     selectedValue,
     count,
     onChange: handleChange,
-    size,
+    length,
   } = normalizeUsePaginationProps(_props);
 
   const [page, setPageState] = useUpstreamState<number>(selectedValue);
-  const pagesToShow = PaginationPagesToShow[size];
+  const pagesToShow = PaginationPagesToShow[length];
 
   const handleClick = useCallback(
     (value: number) => {

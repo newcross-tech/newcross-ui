@@ -1,4 +1,4 @@
-import usePagination from './usePagination';
+import usePagination from './hooks/usePagination';
 import { PaginationArrowButton, PaginationButton } from './PaginationButton';
 import Container from '../Container';
 import { OptionalProps } from '../../types';
@@ -6,7 +6,7 @@ import { PaginationPropsStrict } from './Pagination.types';
 
 export type PaginationProps = OptionalProps<
   PaginationPropsStrict,
-  'fullWidth' | 'size' | 'selectedValue' | 'count' | 'disabled'
+  'fullWidth' | 'length' | 'selectedValue' | 'count' | 'disabled'
 >;
 
 const normalizedPaginationProps = (
@@ -15,20 +15,20 @@ const normalizedPaginationProps = (
   selectedValue: _props.selectedValue ?? 1,
   count: _props.count ?? 1,
   fullWidth: _props.fullWidth ?? false,
-  size: _props.size ?? 'small',
+  length: _props.length ?? 'short',
   disabled: _props.disabled ?? false,
   ..._props,
 });
 
 const Pagination: React.FC<PaginationProps> = (_props: PaginationProps) => {
-  const { count, selectedValue, onChange, fullWidth, size, disabled } =
+  const { count, selectedValue, onChange, fullWidth, length, disabled } =
     normalizedPaginationProps(_props);
 
   const { items, selectedPage } = usePagination({
     selectedValue,
     count,
     onChange,
-    size,
+    length,
   });
 
   return (

@@ -1,6 +1,6 @@
 export type PaginationItemType = 'previous' | 'page' | 'next';
 
-export type PaginationSize = 'small' | 'large';
+export type PaginationLength = 'short' | 'long';
 
 export type PaginationItemPropsStrict = {
   /**
@@ -54,7 +54,7 @@ export type UsePaginationPropsStrict = {
    */
   onChange?: (v: number) => void;
   /**
-   * The size of the component.
+   * The length of the component.
    */
-  size: PaginationSize;
+  length: PaginationLength;
 };
