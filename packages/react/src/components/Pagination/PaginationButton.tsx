@@ -1,64 +1,52 @@
 import { faChevronRight } from '@fortawesome/pro-light-svg-icons/faChevronRight';
 import { faChevronLeft } from '@fortawesome/pro-light-svg-icons/faChevronLeft';
 import * as Styled from './Pagination.style';
-import { PaginationButtonType } from './Pagination.types';
+import { PaginationItemPropsStrict } from './Pagination.types';
 import Icon from '../Icon';
 import Typography from '../Typography';
 
-type PaginationButtonProps = {
-  /**
-   * Type of the current button.
-   */
-  variant: PaginationButtonType;
-  /**
-   * Current page number.
-   */
-  page: number;
-  /**
-   * Whether the button is selected or not.
-   */
-  selected: boolean;
-  /**
-   * Callback fired when the button is clicked.
-   */
-  onClick: () => void;
-  /**
-   * Whether the button is disabled or not.
-   */
-  disabled?: boolean;
-};
-
-type PaginationArrowButtonProps = Pick<
-  PaginationButtonProps,
-  'variant' | 'disabled'
->;
-
-export const PaginationButton: React.FC<PaginationButtonProps> = ({
+export const PaginationArrowButton: React.FC<PaginationItemPropsStrict> = ({
+  variant,
   page,
-  variant,
-  ...rest
-}) => (
-  <Styled.PaginationButton {...rest}>
-    <Typography variant="p2">{page}</Typography>
-  </Styled.PaginationButton>
-);
-
-export const PaginationArrowButton: React.FC<PaginationArrowButtonProps> = ({
-  variant,
   disabled,
+  hidden,
   ...rest
 }) => {
   const icon = variant === 'previous' ? faChevronLeft : faChevronRight;
+  const color = disabled ? 'disabled' : 'primary';
+  const ariaLabel =
+    variant === 'previous' ? 'Go to previous page' : 'Go to next page';
 
   return (
-    <Styled.PaginationButton styleAs="div" {...rest}>
-      {!disabled && (
-        <Icon
-          icon={icon}
-          variant="h2"
-          color={disabled ? 'disabled' : 'primary'}
-        />
-      )}
+    <Styled.PaginationButton
+      styleAs="div"
+      aria-label={ariaLabel}
+      disabled={disabled}
+      {...rest}
+    >
+      {!hidden && <Icon icon={icon} variant="h2" color={color} />}
+    </Styled.PaginationButton>
+  );
+};
+
+export const PaginationButton: React.FC<PaginationItemPropsStrict> = ({
+  variant,
+  page,
+  disabled,
+  ...rest
+}) => {
+  const color = disabled ? 'disabled' : 'primary';
+  const ariaLabel = `Go to page ${page}`;
+
+  return (
+    <Styled.PaginationButton
+      aria-label={ariaLabel}
+      disabled={disabled}
+      {...rest}
+    >
+      <Typography variant="p2" color={color}>
+        {page}
+      </Typography>
     </Styled.PaginationButton>
   );
 };

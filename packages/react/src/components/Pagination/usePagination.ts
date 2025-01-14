@@ -1,22 +1,41 @@
 import { useCallback } from 'react';
-import { PaginationButtonType } from './Pagination.types';
+import {
+  PaginationItemType,
+  PaginationItemPropsStrict,
+  UsePaginationPropsStrict,
+} from './Pagination.types';
 import { useUpstreamState } from '../../hooks/useUpstreamState';
+import { OptionalProps } from '../../types';
 
-type UsePaginationProps = {
-  count: number;
-  selectedValue?: number;
-  onChange?: (v: number) => void;
-  size: 'small' | 'large';
+type UsePaginationProps = OptionalProps<
+  UsePaginationPropsStrict,
+  'selectedValue' | 'size' | 'count'
+>;
+
+const normalizeUsePaginationProps = (
+  _props: UsePaginationProps
+): UsePaginationPropsStrict => ({
+  selectedValue: _props.selectedValue ?? 1,
+  count: _props.count ?? 1,
+  size: _props.size ?? 'small',
+  ..._props,
+});
+
+const PaginationPagesToShow = {
+  small: 4,
+  large: 7,
 };
 
-export default function usePagination({
-  count = 1,
-  selectedValue = 1,
-  onChange: handleChange,
-  size = 'small',
-}: UsePaginationProps) {
+const usePagination = (_props: UsePaginationProps) => {
+  const {
+    selectedValue,
+    count,
+    onChange: handleChange,
+    size,
+  } = normalizeUsePaginationProps(_props);
+
   const [page, setPageState] = useUpstreamState<number>(selectedValue);
-  const pagesToShow = size === 'small' ? 4 : 7;
+  const pagesToShow = PaginationPagesToShow[size];
 
   const handleClick = useCallback(
     (value: number) => {
@@ -25,10 +44,10 @@ export default function usePagination({
       }
       handleChange?.(value);
     },
-    [handleChange]
+    [setPageState, handleChange]
   );
 
-  const buttonPage = (type: PaginationButtonType) => {
+  const buttonPage = (type: PaginationItemType) => {
     switch (type) {
       case 'previous':
         return page > 1 ? page - 1 : page;
@@ -39,24 +58,16 @@ export default function usePagination({
     }
   };
 
-  const items: Array<{
-    onClick: () => void;
-    variant: PaginationButtonType | 'page';
-    page: number;
-    selected: boolean;
-    disabled: boolean;
-  }> = [];
+  const items: PaginationItemPropsStrict[] = [];
 
-  // Add "previous" button
   items.push({
     onClick: () => handleClick(buttonPage('previous')),
     variant: 'previous',
     page: buttonPage('previous'),
     selected: false,
-    disabled: page <= 1,
+    hidden: page <= 1,
   });
 
-  // Determine visible pages
   const startPage = Math.max(
     1,
     Math.min(page - Math.floor((pagesToShow - 1) / 2), count - pagesToShow + 1)
@@ -69,21 +80,22 @@ export default function usePagination({
       variant: 'page',
       page: i,
       selected: i === page,
-      disabled: false,
+      hidden: false,
     });
   }
 
-  // Add "next" button
   items.push({
     onClick: () => handleClick(buttonPage('next')),
     variant: 'next',
     page: buttonPage('next'),
     selected: false,
-    disabled: page >= count,
+    hidden: page >= count,
   });
 
   return {
     items,
     selectedPage: page,
   };
-}
+};
+
+export default usePagination;

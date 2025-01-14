@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { byTestId } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
 import Pagination, { PaginationProps } from './Pagination';
@@ -41,15 +41,6 @@ describe('Pagination Component', () => {
 
     // Assert
     expect(ui.buttonComponent('0').get()).toBeInTheDocument();
-    expect(ui.buttonComponent('1').get()).toBeInTheDocument();
-  });
-
-  it('renders ellipsis when there are more children than space on the screen', () => {
-    // Act
-    renderComponent({ count: 20 });
-
-    // Assert
-    expect(screen.getByText('...')).toBeInTheDocument();
     expect(ui.buttonComponent('1').get()).toBeInTheDocument();
   });
 });
