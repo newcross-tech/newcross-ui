@@ -46,7 +46,7 @@ function Table<T>({
         data={data}
         pagination={pagination}
         paginationComponent={PaginationComponent}
-        customStyles={getCustomStyles(theme, $isFirstColumnFixed)}
+        customStyles={getCustomStyles({ theme, $isFirstColumnFixed })}
         paginationPerPage={
           paginationPerPage ?? TABLE_DEFAULT_ROWS_PER_PAGE_OPTION
         }

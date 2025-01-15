@@ -1,8 +1,8 @@
 import { TableStyles } from 'react-data-table-component';
-import styled, { css, CSSObject } from 'styled-components';
-import { ThemeDesignTokens } from '../../theme/ThemeProvider';
+import styled, { CSSObject } from 'styled-components';
 import Container from '../Container';
-import { Theme } from '../../types';
+import { breakpoint } from '../../utils/css';
+import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 
 const getFixedColumnStyles = (isColumnFixed: boolean): CSSObject => ({
   position: isColumnFixed ? 'sticky' : 'static',
@@ -10,50 +10,47 @@ const getFixedColumnStyles = (isColumnFixed: boolean): CSSObject => ({
   zIndex: isColumnFixed ? 1 : 0,
 });
 
-export const getCustomStyles = (theme: ThemeDesignTokens, $isFirstColumnFixed: boolean): TableStyles => ({
+export const getCustomStyles = ({
+  theme,
+  $isFirstColumnFixed,
+}: {
+  theme: ThemeDesignTokens;
+  $isFirstColumnFixed: boolean;
+}): TableStyles => ({
   table: {
     style: {
-      borderBottom: `1px solid ${theme.ColorNeutralGrey300}`,
+      border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderDefault}`,
       backgroundColor: 'transparent',
-    },
-  },
-  headRow: {
-    style: {
-      backgroundColor: 'transparent',
+      borderRadius: theme.BorderBaseRadiusMd,
+      overflow: 'hidden',
     },
   },
   headCells: {
     style: {
-      backgroundColor: theme.BrandColorTertiary,
+      backgroundColor: theme.ElementsSurfaceDefaultSecondary,
       '&:not(:first-child)': {
-        borderLeft: `1px solid ${theme.ColorBaseGrey100}`,
+        borderLeft: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderDefault}`,
       },
       '&:first-child': {
-        borderTopLeftRadius: theme.BorderBaseRadiusLg,
         ...getFixedColumnStyles($isFirstColumnFixed),
-      },
-      '&:last-child': {
-        borderTopRightRadius: theme.BorderBaseRadiusLg,
       },
     },
   },
   cells: {
     style: {
       '&:first-child': {
-        borderLeft: `1px solid ${theme.ColorNeutralGrey300}`,
-        backgroundColor: theme.ColorNeutralWhite,
+        backgroundColor: theme.ElementsSurfaceDefault,
         ...getFixedColumnStyles($isFirstColumnFixed),
       },
-      borderRight: `1px solid ${theme.ColorNeutralGrey300}`,
+      '&:not(:last-child)': {
+        borderRight: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderDefault}`,
+      },
     },
   },
 });
 
 export const PaginationContainer = styled(Container)`
-  ${({ theme }: Theme) => css`
-    @media (max-width: ${theme.GridMobileBreakpoint}px) {
-      gap: ${theme.SpacingBase32};
-      flex-direction: column-reverse;
-    }
+  ${breakpoint.sm`
+    flex-direction: column-reverse;
   `}
 `;

@@ -30,9 +30,8 @@ const PaginationAdapter = ({
   );
 
   return (
-    <Styled.PaginationContainer justifyContent="space-between">
+    <Styled.PaginationContainer justifyContent="space-between" gap="sm">
       <Select
-        label="Records per page"
         id={'records-per-page'}
         options={paginationRowsPerPageOptions?.map((option: number) => ({
           label: `${option}`,
