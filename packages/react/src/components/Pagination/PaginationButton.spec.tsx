@@ -7,7 +7,7 @@ import { PaginationArrowButton, PaginationButton } from './PaginationButton';
 const onClickMock = jest.fn();
 
 const defaultArrowProps: PaginationItemPropsStrict = {
-  variant: 'next',
+  itemType: 'next',
   page: 2,
   disabled: false,
   hidden: false,
@@ -16,7 +16,7 @@ const defaultArrowProps: PaginationItemPropsStrict = {
 };
 
 const defaultPageProps: PaginationItemPropsStrict = {
-  variant: 'page',
+  itemType: 'page',
   page: 1,
   disabled: false,
   hidden: false,
@@ -41,7 +41,7 @@ describe('Pagination Component', () => {
   describe('PaginationArrowButton', () => {
     it('renders the "previous" arrow button correctly', () => {
       // Arrange
-      renderArrowComponent({ variant: 'previous', page: 1 });
+      renderArrowComponent({ itemType: 'previous', page: 1 });
 
       // Act
       const button = ui.arrowButtonPrevious.get();
@@ -52,7 +52,7 @@ describe('Pagination Component', () => {
 
     it('renders the "next" arrow button correctly', () => {
       // Arrange
-      renderArrowComponent({ variant: 'next', page: 2 });
+      renderArrowComponent({ itemType: 'next', page: 2 });
 
       // Act
       const button = ui.arrowButtonNext.get();

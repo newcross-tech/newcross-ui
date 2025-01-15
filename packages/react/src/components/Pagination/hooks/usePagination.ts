@@ -62,7 +62,7 @@ const usePagination = (_props: UsePaginationProps) => {
 
   items.push({
     onClick: () => handleClick(buttonPage('previous')),
-    variant: 'previous',
+    itemType: 'previous',
     page: buttonPage('previous'),
     selected: false,
     hidden: page <= 1,
@@ -77,7 +77,7 @@ const usePagination = (_props: UsePaginationProps) => {
   for (let i = startPage; i <= endPage; i++) {
     items.push({
       onClick: () => handleClick(i),
-      variant: 'page',
+      itemType: 'page',
       page: i,
       selected: i === page,
       hidden: false,
@@ -86,7 +86,7 @@ const usePagination = (_props: UsePaginationProps) => {
 
   items.push({
     onClick: () => handleClick(buttonPage('next')),
-    variant: 'next',
+    itemType: 'next',
     page: buttonPage('next'),
     selected: false,
     hidden: page >= count,

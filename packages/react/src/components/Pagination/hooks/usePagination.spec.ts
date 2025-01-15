@@ -28,12 +28,12 @@ describe('usePagination Hook', () => {
     expect(result.current.selectedPage).toBe(1);
     expect(result.current.items).toHaveLength(6); // 4 pages + previous + next
     expect(result.current.items[0]).toMatchObject({
-      variant: 'previous',
+      itemType: 'previous',
       page: 1,
       hidden: true,
     });
     expect(result.current.items[1]).toMatchObject({
-      variant: 'page',
+      itemType: 'page',
       page: 1,
       selected: true,
       hidden: false,
@@ -98,12 +98,12 @@ describe('usePagination Hook', () => {
 
     // Assert
     expect(result.current.items[0]).toMatchObject({
-      variant: 'previous',
+      itemType: 'previous',
       page: 1,
       hidden: true,
     });
     expect(result.current.items[1]).toMatchObject({
-      variant: 'page',
+      itemType: 'page',
       page: 1,
       selected: true,
     });
@@ -116,14 +116,14 @@ describe('usePagination Hook', () => {
     // Assert
     expect(result.current.items[result.current.items.length - 1]).toMatchObject(
       {
-        variant: 'next',
+        itemType: 'next',
         page: 10,
         hidden: true,
       }
     );
     expect(result.current.items[result.current.items.length - 2]).toMatchObject(
       {
-        variant: 'page',
+        itemType: 'page',
         page: 10,
         selected: true,
       }
