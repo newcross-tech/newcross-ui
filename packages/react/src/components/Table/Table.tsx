@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import DataTable, { IDataTableProps } from 'react-data-table-component';
+import DataTable from 'react-data-table-component';
 import PaginationAdapter from './PaginationAdapter';
 import { getCustomStyles } from './Table.style';
 import useTheme from '../../hooks/useTheme';
@@ -9,20 +9,40 @@ import {
   TABLE_RECORDS_PER_PAGE_OPTIONS,
 } from './constants';
 import { PaginationComponent } from 'react-data-table-component/dist/DataTable/types';
+import { OptionalProps } from '../../types';
+import { TablePropsStrict } from './Table.types';
 
-export type TableProps<T> = IDataTableProps<T> & {
-  $isFirstColumnFixed?: boolean;
-};
+export type TableProps<T> = OptionalProps<
+  TablePropsStrict<T>,
+  | 'pagination'
+  | 'paginationPerPage'
+  | 'paginationRowsPerPageOptions'
+  | '$isFirstColumnFixed'
+>;
 
-function Table<T>({
-  columns,
-  data,
-  pagination = true,
-  $isFirstColumnFixed = false,
-  paginationRowsPerPageOptions = TABLE_RECORDS_PER_PAGE_OPTIONS,
-  paginationPerPage = TABLE_DEFAULT_ROWS_PER_PAGE_OPTION,
-  ...props
-}: TableProps<T>) {
+const normalizeTableProps = <T,>(
+  _props: TableProps<T>
+): TablePropsStrict<T> => ({
+  pagination: _props.pagination ?? true,
+  $isFirstColumnFixed: _props.$isFirstColumnFixed ?? false,
+  paginationRowsPerPageOptions:
+    _props.paginationRowsPerPageOptions ?? TABLE_RECORDS_PER_PAGE_OPTIONS,
+  paginationPerPage:
+    _props.paginationPerPage ?? TABLE_DEFAULT_ROWS_PER_PAGE_OPTION,
+  ..._props,
+});
+
+function Table<T>(_props: TableProps<T>) {
+  const {
+    columns,
+    data,
+    pagination,
+    $isFirstColumnFixed,
+    paginationRowsPerPageOptions,
+    paginationPerPage,
+    ...props
+  } = normalizeTableProps(_props);
+
   const theme = useTheme();
 
   const PaginationComponent: PaginationComponent = useCallback(
@@ -47,9 +67,7 @@ function Table<T>({
         pagination={pagination}
         paginationComponent={PaginationComponent}
         customStyles={getCustomStyles({ theme, $isFirstColumnFixed })}
-        paginationPerPage={
-          paginationPerPage ?? TABLE_DEFAULT_ROWS_PER_PAGE_OPTION
-        }
+        paginationPerPage={paginationPerPage}
         paginationRowsPerPageOptions={paginationRowsPerPageOptions}
         {...props}
       />

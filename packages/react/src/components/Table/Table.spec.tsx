@@ -33,49 +33,87 @@ const data = Array.from({ length: 30 }, (_, index) => ({
   age: Math.floor(Math.random() * 80),
 }));
 
-const renderComponent = () => {
-  render(<Table columns={COLUMNS} data={data} />);
+const defaultProps = {
+  columns: COLUMNS,
+  data,
+};
+
+const renderTable = (props = {}) =>
+  render(<Table {...defaultProps} {...props} />);
+
+const ui = {
+  table: byRole('table'),
+  paginationContainer: byTestId('pagination-container'),
+  columnName: byText('Name'),
+  columnAge: byText('Age'),
+  dataRow: (name: string) => byText(name),
+  pageButton: (pageNumber: string) => byRole('button', { name: pageNumber }),
 };
 
 describe('Table', () => {
   it('renders successfully', () => {
-    renderComponent();
+    // Arrange & Act
+    renderTable();
+    const table = ui.table.get();
 
-    expect(byRole('table').get()).toBeInTheDocument();
+    // Assert
+    expect(table).toBeInTheDocument();
   });
 
   it('renders columns', () => {
-    renderComponent();
+    // Arrange & Act
+    renderTable();
+    const columnName = ui.columnName.get();
+    const columnAge = ui.columnAge.get();
 
-    expect(byText('Name').get()).toBeInTheDocument();
-    expect(byText('Age').get()).toBeInTheDocument();
+    // Assert
+    expect(columnName).toBeInTheDocument();
+    expect(columnAge).toBeInTheDocument();
   });
 
   it('renders data', () => {
-    renderComponent();
+    // Arrange & Act
+    renderTable();
+    const row = ui.dataRow('John 3').get();
 
-    expect(byText('John 3').get()).toBeInTheDocument();
+    // Assert
+    expect(row).toBeInTheDocument();
   });
 
   it('renders pagination', () => {
-    renderComponent();
+    // Arrange & Act
+    renderTable();
+    const pagination = ui.paginationContainer.get();
 
-    expect(byTestId('pagination-container').get()).toBeInTheDocument();
+    // Assert
+    expect(pagination).toBeInTheDocument();
   });
 
   it('handles pagination interaction', async () => {
-    renderComponent();
+    // Arrange & Act
+    renderTable();
+    const pageButton = ui.pageButton('2').get();
+    const firstRow = ui.dataRow('John 3').get();
 
-    expect(byText('John 3').get()).toBeInTheDocument();
-    expect(byText('John 8').query()).not.toBeInTheDocument();
+    // Act
+    userEvent.click(pageButton);
+    const secondRow = await ui.dataRow('John 8').find();
 
-    const secondPageButton = byRole('button', {
-      name: '2',
-    }).get();
+    // Assert
+    expect(firstRow).not.toBeInTheDocument();
+    expect(secondRow).toBeInTheDocument();
+  });
 
-    expect(secondPageButton).toBeInTheDocument();
-    userEvent.click(secondPageButton);
+  it('respects the provided paginationPerPage value', () => {
+    // Arrange & Act
+    renderTable({ paginationPerPage: 5 });
+    const firstRow = ui.dataRow('John 0').get();
+    const lastRow = ui.dataRow('John 4').get();
+    const outOfPageRow = ui.dataRow('John 5').query();
 
-    expect(await byText('John 8').find()).toBeInTheDocument();
+    // Assert
+    expect(firstRow).toBeInTheDocument();
+    expect(lastRow).toBeInTheDocument();
+    expect(outOfPageRow).not.toBeInTheDocument();
   });
 });

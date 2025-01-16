@@ -1,9 +1,9 @@
 import { useCallback } from 'react';
 import { SingleValue } from 'react-select';
-import { PaginationComponentProps } from 'react-data-table-component/dist/DataTable/types';
 import Select from '../Select';
 import Pagination from '../Pagination';
 import * as Styled from './Table.style';
+import { PaginationAdapterProps } from './Table.types';
 
 const PaginationAdapter = ({
   onChangeRowsPerPage,
@@ -12,9 +12,7 @@ const PaginationAdapter = ({
   rowsPerPage,
   onChangePage,
   paginationRowsPerPageOptions,
-}: PaginationComponentProps & {
-  paginationRowsPerPageOptions: number[];
-}) => {
+}: PaginationAdapterProps) => {
   const handleChangeRowsPerPage = useCallback(
     (newValue: SingleValue<{ value: number }>) => {
       const newRowsPerPage = newValue?.value ?? rowCount;

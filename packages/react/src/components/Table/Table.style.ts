@@ -52,5 +52,6 @@ export const getCustomStyles = ({
 export const PaginationContainer = styled(Container)`
   ${breakpoint.sm`
     flex-direction: column-reverse;
+    align-items: center;
   `}
 `;
