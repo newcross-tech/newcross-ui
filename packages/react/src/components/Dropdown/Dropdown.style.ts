@@ -84,7 +84,7 @@ export const BodyContent = styled(animated.div)<ErrorProps>`
     border-top-right-radius: 0;
     border-top: none;
 
-    ${getScrollbarStyles()}
+    ${getScrollbarStyles({ theme })}
   `};
 `;
 

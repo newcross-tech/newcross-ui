@@ -1,4 +1,5 @@
 import { fireEvent, render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { byPlaceholderText, byTestId, byText } from 'testing-library-selector';
 import TextInput, { TextInputProps } from './TextInput';
 import { axe } from '../../utils/test/axeConfig';
@@ -33,7 +34,10 @@ describe('TextInput Component', () => {
     eyeSlash: getAdjustedByTestId('eye-slash'),
     eye: getAdjustedByTestId('eye'),
     validationCheck: getAdjustedByTestId('validation-check'),
+    errorCheck: getAdjustedByTestId('error-check'),
     messageText: getAdjustedByTestId('message-text'),
+    requiredIndicator: getAdjustedByTestId('required-indicator'),
+    clearIcon: getAdjustedByTestId('clear-icon'),
   };
 
   it('should not have any a11y errors', async () => {
@@ -180,6 +184,23 @@ describe('TextInput Component', () => {
     expect(ui.validationCheck.get()).toBeTruthy();
   });
 
+  it('shows the error check mark when errorText is passed', () => {
+    // Arrange
+    const onChange = jest.fn();
+    const props: TextInputProps = {
+      value: 'test',
+      type: 'password',
+      errorText: 'this is an error',
+      onChange,
+    };
+
+    // Act
+    renderComponent({ ...props });
+
+    // Assert
+    expect(ui.errorCheck.get()).toBeTruthy();
+  });
+
   it('displays label successfully', () => {
     // Arrange
     const onChange = jest.fn();
@@ -273,6 +294,94 @@ describe('TextInput Component', () => {
 
     fireEvent.blur(input);
     expect(ui.container.get()).toBeTruthy();
+  });
+
+  it('should render required indicator when required prop is passed', () => {
+    // Arrange
+    const onChange = jest.fn();
+    const props: TextInputProps = {
+      value: 'test',
+      type: 'text',
+      label: 'TextField',
+      required: true,
+      onChange,
+    };
+
+    // Act
+    renderComponent({ ...props });
+
+    // Assert
+    expect(ui.requiredIndicator.get()).toBeTruthy();
+  });
+
+  it('clears the input field when clear icon is clicked', () => {
+    // Arrange
+    const onChange = jest.fn();
+    const props: TextInputProps = {
+      value: 'some text',
+      type: 'text',
+      onChange,
+    };
+
+    // Act
+    renderComponent({ ...props });
+
+    const input = ui.textInput.get();
+    fireEvent.focus(input);
+
+    const clearIcon = ui.clearIcon.get();
+    userEvent.click(clearIcon);
+
+    // Assert
+    expect(onChange).toHaveBeenCalledWith('');
+  });
+
+  it('renders subtitle when provided', () => {
+    // Arrange
+    const props: TextInputProps = {
+      subtitle: 'This is a subtitle',
+      type: 'text',
+    };
+
+    // Act
+    renderComponent({ ...props });
+
+    // Assert
+    expect(byText(/This is a subtitle/i).get()).toBeTruthy();
+  });
+
+  it('renders the label with "disabled" color when disabled is true', () => {
+    // Arrange
+    const props: TextInputProps = {
+      label: 'Test Label',
+      disabled: true,
+      type: 'text',
+    };
+
+    // Act
+    renderComponent({ ...props });
+
+    const label = ui.label.get();
+
+    // Assert
+    expect(label).toHaveStyle({ color: 'disabled' });
+  });
+
+  it('renders the label with "dangerError" color when hasError is true', () => {
+    // Arrange
+    const props: TextInputProps = {
+      label: 'Test Label',
+      errorText: 'This is an error',
+      type: 'text',
+    };
+
+    // Act
+    renderComponent({ ...props });
+
+    const label = ui.label.get();
+
+    // Assert
+    expect(label).toHaveStyle({ color: 'dangerError' });
   });
 });
 

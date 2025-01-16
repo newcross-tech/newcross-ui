@@ -1,101 +1,89 @@
-import { faSearch } from '@fortawesome/pro-light-svg-icons/faSearch';
-import { faCheck } from '@fortawesome/pro-solid-svg-icons/faCheck';
-import { faEye } from '@fortawesome/pro-solid-svg-icons/faEye';
-import { faEyeSlash } from '@fortawesome/pro-solid-svg-icons/faEyeSlash';
-import { faXmark } from '@fortawesome/pro-solid-svg-icons/faXmark';
 import {
-  forwardRef,
-  ForwardRefRenderFunction,
-  InputHTMLAttributes,
-  useState,
-} from 'react';
-import { TestProp } from '../../types';
+  faCircleXmark,
+  faEyeSlash,
+  faEye,
+  faXmark,
+  faSearch,
+  faCircleCheck,
+  faCircleExclamation,
+} from '@fortawesome/pro-light-svg-icons';
+import { forwardRef, ForwardRefRenderFunction, useState } from 'react';
+import { OptionalProps } from '../../types';
 import { TextArea } from './TextArea';
 import * as Styled from './TextInput.style';
-import { SearchIcon, LabelWithMargin } from './TextInput.style';
 import Container from '../Container';
-import { TypographyVariant } from '../Typography';
 import { HelperText } from './HelperText';
+import { TextInputPropsStrict } from './TextInput.types';
+import Icon from '../Icon';
+import Typography from '../Typography';
+import Label from '../Label';
 
-export type TextInputProps = Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  'onChange'
-> & {
-  /**
-   * Gives text input a label
-   */
-  label?: string;
-  /**
-   * Adds helper text
-   */
-  helperText?: string;
-  /**
-   * Adds error text
-   */
-  errorText?: string;
-  /**
-   * Updates text in input box
-   */
-  onChange?: (
-    newState: string,
-    event?: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => void;
-  /**
-   * Shows check mark when validation is met
-   */
-  isValid?: boolean;
-  /**
-   * if true, the text input will take up the full width of its container
-   */
-  fullWidth?: boolean;
-  /**
-   * If true alters text input to search bar styles
-   */
-  search?: boolean;
-  /**
-   * triggers the on press of the close icon
-   */
-  onClose?: VoidFunction;
-  /**
-   * Applies the theme typography styles to the label
-   */
-  labelVariant?: TypographyVariant;
-  /**
-   * Adds subtitle text
-   */
-  subtitle?: string;
-  /**
-   * Applies the theme typography styles to the subtitle
-   */
-  subtitleVariant?: TypographyVariant;
-} & TestProp;
+export type TextInputProps = OptionalProps<
+  TextInputPropsStrict,
+  | 'labelVariant'
+  | 'subtitleVariant'
+  | 'type'
+  | 'disabled'
+  | 'fullWidth'
+  | 'search'
+>;
+
+const normalizeTextInputProps = (
+  props: TextInputProps,
+  setIsFocused: (value: boolean) => void
+): TextInputPropsStrict => ({
+  ...props,
+  labelVariant: props.labelVariant ?? 'subtitle1',
+  subtitleVariant: props.subtitleVariant ?? 'subtitle2',
+  type: props.type ?? 'text',
+  disabled: props.disabled ?? false,
+  fullWidth: props.fullWidth ?? false,
+  search: props.search ?? false,
+  onClick: (event: React.MouseEvent<HTMLInputElement>) => {
+    props.onClick?.(event);
+    setIsFocused(true);
+  },
+  onBlur: (event: React.FocusEvent<HTMLInputElement>) => {
+    props.onBlur?.(event);
+    setIsFocused(false);
+  },
+  onFocus: (event: React.FocusEvent<HTMLInputElement>) => {
+    props.onFocus?.(event);
+    setIsFocused(true);
+  },
+});
 
 const baseTestId = 'text-input';
 
 const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
-  {
-    value,
-    type,
-    label,
-    onChange,
-    disabled,
-    helperText,
-    errorText,
-    maxLength,
-    placeholder,
-    isValid,
-    search,
-    onClose,
-    fullWidth,
-    testID,
-    labelVariant = 'subtitle1',
-    subtitle,
-    subtitleVariant = 'subtitle2',
-    ...otherProps
-  },
+  _props,
   ref
 ) => {
   const [isFocused, setIsFocused] = useState(false);
+  const {
+    label,
+    subtitle,
+    placeholder,
+    value,
+    onChange,
+    type,
+    disabled,
+    fullWidth,
+    search,
+    maxLength,
+    helperText,
+    errorText,
+    labelVariant,
+    subtitleVariant,
+    isValid,
+    onClose,
+    testID,
+    required,
+    onClick,
+    onBlur,
+    onFocus,
+    ...inputProps
+  } = normalizeTextInputProps(_props, setIsFocused);
 
   const [passwordVisibility, setPasswordVisibility] = useState(true);
   const onChangeHandler = (
@@ -104,52 +92,56 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
     onChange?.(event.target.value, event);
   };
 
-  const triggerFocusState = (isFocus: boolean) => {
-    setIsFocused(isFocus);
-  };
-
   const hasError = !!errorText;
-
   const isPasswordType = type === 'password';
   const isTextArea = type === 'textarea';
   const inputId = `${baseTestId}-component-${testID}`;
-  const {
-    onBlur: _onBlur,
-    onFocus: _onFocus,
-    onClick: _onClick,
-    ...other
-  } = otherProps;
 
-  const onClick = (e: React.MouseEvent<HTMLInputElement>) => {
-    otherProps.onClick?.(e);
-    triggerFocusState(true);
+  const getTextColor = (disabled: boolean, hasError: boolean) => {
+    if (disabled) return 'disabled';
+    if (hasError) return 'dangerError';
+
+    return 'defaultDark';
   };
 
-  const onBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    otherProps.onBlur?.(e);
-    triggerFocusState(false);
-  };
-
-  const onFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-    otherProps.onFocus?.(e);
-    triggerFocusState(true);
+  const preventEventPropagation = (event: React.MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
   };
 
   return (
     <Container flexDirection="column" fullWidth={fullWidth}>
       {label && (
-        <LabelWithMargin
-          htmlFor={inputId}
-          variant={labelVariant}
-          testID={`${inputId}-label`}
-        >
-          {label}
-        </LabelWithMargin>
+        <Container gap="xs" mb="xs">
+          <Label
+            htmlFor={inputId}
+            variant={labelVariant}
+            color={getTextColor(disabled, hasError)}
+            testID={`${inputId}-label`}
+          >
+            {label}
+          </Label>
+          {required && (
+            <Typography
+              testID={`${inputId}-required-indicator`}
+              variant={labelVariant}
+              color="dangerError"
+            >
+              *
+            </Typography>
+          )}
+        </Container>
       )}
+
       {subtitle && (
-        <LabelWithMargin variant={subtitleVariant} color="secondary">
-          {subtitle}
-        </LabelWithMargin>
+        <Container mb="xs">
+          <Label
+            variant={subtitleVariant}
+            color={hasError ? 'dangerError' : 'defaultDark'}
+          >
+            {subtitle}
+          </Label>
+        </Container>
       )}
 
       {isTextArea ? (
@@ -166,21 +158,29 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
           errorText={errorText}
         />
       ) : (
-        <Styled.Container
+        <Styled.TextInputContainer
+          alignItems="center"
+          justifyContent="space-between"
+          px="md"
           isFocused={isFocused}
+          isValid={isValid}
           hasError={hasError}
           search={search}
           disabled={disabled}
           fullWidth={fullWidth}
-          data-testid={
+          testID={
             isFocused ? `${inputId}-container-focused` : `${inputId}-container`
           }
         >
           <Container display="flex" fullWidth alignItems="center">
             {search && (
-              <Styled.LeftIconContainer data-testid={`${inputId}-search-icon`}>
-                <SearchIcon icon={faSearch} />
-              </Styled.LeftIconContainer>
+              <Container
+                testID={`${inputId}-search-icon`}
+                justifyContent="center"
+                pl="md"
+              >
+                <Icon icon={faSearch} variant="p1" />
+              </Container>
             )}
             <input
               id={inputId}
@@ -194,42 +194,87 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
               disabled={disabled}
               data-testid={inputId}
               placeholder={placeholder}
-              {...other}
+              {...inputProps}
             />
           </Container>
           {isPasswordType && (
             <Styled.RightIconContainer
-              data-testid={`${inputId}-eye-icon`}
+              testID={`${inputId}-eye-icon`}
+              p="xs"
+              justifyContent="center"
+              onMouseDown={(event) => preventEventPropagation(event)}
               onClick={() =>
                 !disabled && setPasswordVisibility(!passwordVisibility)
               }
             >
-              <Styled.PasswordIcon
+              <Icon
                 data-testid={
                   !passwordVisibility
                     ? `${inputId}-eye-slash`
                     : `${inputId}-eye`
                 }
                 icon={!passwordVisibility ? faEyeSlash : faEye}
+                variant="p1"
+                color={!disabled ? 'defaultDark' : 'disabled'}
               />
             </Styled.RightIconContainer>
           )}
-          {isValid && (
+          {isFocused && (
             <Styled.RightIconContainer
-              data-testid={`${inputId}-validation-check`}
+              testID={`${inputId}-clear-icon`}
+              justifyContent="center"
+              ml="xs"
+              /**
+               * Prevents the input from losing focus when clicking on the clear icon
+               * Preventing on the onClick does not work as expected, hence using onMouseDown
+               */
+              onMouseDown={(event) => preventEventPropagation(event)}
+              onClick={() => onChange?.('')}
             >
-              <Styled.ValidIcon icon={faCheck} />
+              <Icon
+                icon={faCircleXmark}
+                variant="p1"
+                color="actionPrimaryDark"
+              />
             </Styled.RightIconContainer>
           )}
-          {!!search && !!value && onClose && (
+          {isValid && !disabled && !isFocused && !hasError && (
+            <Container
+              testID={`${inputId}-validation-check`}
+              ml="xs"
+              justifyContent="center"
+            >
+              <Icon
+                icon={faCircleCheck}
+                variant="p1"
+                color="successStandalone"
+              />
+            </Container>
+          )}
+          {hasError && !disabled && !isValid && !isFocused && (
+            <Container
+              testID={`${inputId}-error-check`}
+              ml="xs"
+              justifyContent="center"
+            >
+              <Icon
+                icon={faCircleExclamation}
+                variant="p1"
+                color="dangerError"
+              />
+            </Container>
+          )}
+          {search && !!value && onClose && (
             <Styled.RightIconContainer
+              p="md"
+              justifyContent="center"
               onClick={onClose}
-              data-testid={`${inputId}-search-close-icon`}
+              testID={`${inputId}-search-close-icon`}
             >
-              <Styled.CloseIcon icon={faXmark} />
+              <Icon icon={faXmark} variant="p1" />
             </Styled.RightIconContainer>
           )}
-        </Styled.Container>
+        </Styled.TextInputContainer>
       )}
 
       {!isTextArea && (helperText || errorText) && (

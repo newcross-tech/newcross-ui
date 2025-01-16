@@ -18,7 +18,8 @@ export const TextArea = ({
   errorText,
 }: TextAreaProps) => (
   <Styled.TextAreaContainer
-    data-testid={`${baseTestId}-container-component-${testID}`}
+    flexDirection="column"
+    testID={`${baseTestId}-container-component-${testID}`}
     fullWidth={fullWidth}
   >
     <Styled.TextArea
@@ -49,6 +50,7 @@ export const TextArea = ({
       {!!maxLength && maxLength > 0 && (
         <Styled.LengthInfo
           variant={'paragraph2'}
+          color="defaultDarkSecondary"
           data-testid={`${baseTestId}-max-length-${testID}`}
         >
           {`${length}/${maxLength}`}

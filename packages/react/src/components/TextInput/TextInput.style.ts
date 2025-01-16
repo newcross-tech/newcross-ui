@@ -1,8 +1,7 @@
 import Typography from '../Typography';
-import styled, { css } from 'styled-components';
-import { getHaloValue } from '../../utils/getHaloValue';
-import { ExtendedTheme, Theme } from '../../types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styled from 'styled-components';
+import { getHaloValue } from '../../utils';
+import { ExtendedTheme } from '../../types';
 import { getScrollbarStyles } from '../../utils/css/getScrollbarStyles';
 import {
   ContainerProps,
@@ -12,174 +11,102 @@ import {
   TextAreaContainerProps,
 } from './TextInput.types';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
-import Label from '../Label/Label';
+import Container from '../Container';
 
-const getCommonStateStyles = ({ theme, hasError, disabled }: PropStylesTypes) =>
-  css`
-    ${hasError &&
-    css`
-      border: ${theme.TextInputWebSelectedBorderWidth} solid ${theme.TextInputErrorColor};
-    `}
-    ${disabled &&
-    css`
-      background-color: ${theme.TextInputDisabledBackgroundColor};
-    `}
-  `;
+const getCommonStateStyles = ({ theme, hasError, disabled, isValid }: PropStylesTypes) => ({
+  ...(hasError && {
+    border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderDangerError}`,
+  }),
+  ...(disabled && {
+    border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderDisabled}`,
+    backgroundColor: `${theme.ElementsSurfaceDisabled}`,
+  }),
+  ...(!hasError &&
+    !disabled &&
+    isValid && {
+      border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderSuccessStandalone}`,
+    }),
+  ...(!hasError &&
+    !disabled &&
+    !isValid && {
+      border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderDefault}`,
+    }),
+});
 
-const getFocusedStyles = (theme: ThemeDesignTokens) =>
-  css`
-    border: ${theme.TextInputWebSelectedBorderWidth} solid ${theme.TextInputSelectedBorderColor};
-  `;
+const getFocusedStyles = (theme: ThemeDesignTokens) => ({
+  border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderActionDefault}`,
+});
 
-export const Container = styled.div<ExtendedTheme<ContainerProps>>`
-  ${({ theme, hasError, fullWidth, search, disabled, isFocused }: ExtendedTheme<ContainerProps>) => css`
-    display: flex;
-    align-items: center;
-    border: ${theme.TextInputBorderWidth} solid ${theme.TextInputBorderColor};
-    border-radius: ${theme.TextInputBorderRadius};
+export const TextInputContainer = styled(Container)<ContainerProps>(
+  ({ theme, hasError, fullWidth, search, disabled, isFocused, isValid }) => ({
+    borderRadius: theme.BorderBaseRadiusMd,
+    backgroundColor: theme.ElementsSurfaceDefault,
+    ...getCommonStateStyles({ theme, hasError, isFocused, disabled, isValid }),
+    ...(isFocused && getFocusedStyles(theme)),
+    ...(search && {
+      borderRadius: theme.BorderBaseRadiusRounded,
+    }),
+    '& input': {
+      width: fullWidth ? '100%' : '90%',
+      border: 'none',
+      backgroundColor: 'transparent',
+      outlineWidth: 0,
+      fontFamily: theme.BaselineFontFontFamilyPoppinsRegular,
+      fontSize: theme.TypographyFontSize14,
+      lineHeight: theme.TypographyLineHeight20,
+      padding: `${theme.BaselineSpacesSpace12} 0`,
+      ...(search && {
+        paddingRight: theme.BaselineSpacesSpace12,
+        paddingLeft: theme.BaselineSpacesSpace12,
+      }),
+      [`+ ${RightIconContainer}`]: {
+        ...(disabled ? {} : { cursor: 'pointer' }),
+      },
+      '&:focus-visible': {
+        outline: 'none',
+      },
+    },
+  })
+);
 
-    background-color: ${theme.TextInputBackgroundColor};
-    justify-content: space-between;
-    ${getCommonStateStyles({ theme, hasError, isFocused, disabled })}
-    ${isFocused && getFocusedStyles(theme)};
-    ${search &&
-    css`
-      border-radius: ${theme.TextInputSearchBarBorderRadius};
-    `};
+export const RightIconContainer = styled(Container)(() => ({
+  cursor: 'pointer',
+}));
 
-    & input {
-      width: ${fullWidth ? '100%' : '90%'};
-      border: none;
-      background-color: transparent;
-      outline-width: 0;
-      font-family: ${theme.TextInputFontFamily};
-      font-size: ${theme.TextInputFontSize};
-      line-height: ${theme.TextInputLineHeight};
-      padding: ${theme.TextInputPaddingVertical} ${theme.TextInputPaddingHorizontal};
+export const MessageText = styled(Typography)<MessageTextProps>(({ theme, hasError }) => ({
+  color: hasError ? theme.ElementsTextDangerError : theme.ElementsTextDefaultDarkSecondary,
+  marginTop: theme.BaselineSpacesSpace4,
+  paddingRight: theme.BaselineSpacesSpace0,
+  paddingLeft: theme.BaselineSpacesSpace16,
+}));
 
-      ${search &&
-      css`
-        padding-right: ${theme.TextInputSearchBarPaddingHorizontal};
-        padding-left: ${theme.TextInputSearchBarPaddingHorizontal};
-      `}
+export const TextAreaContainer = styled(Container)<TextAreaContainerProps>(({ fullWidth }) => ({
+  ...(fullWidth ? {} : { width: 'fit-content' }),
+}));
 
-      + ${RightIconContainer} {
-        ${!disabled &&
-        css`
-          cursor: pointer;
-        `}
-      }
+export const TextArea = styled.textarea<StyledTextAreaProps>(
+  ({ theme, hasError, disabled, fullWidth }: ExtendedTheme<StyledTextAreaProps>) => ({
+    resize: 'none',
+    outline: 'none',
+    cursor: 'auto',
+    overflowY: 'auto',
+    borderRadius: theme.BorderBaseRadiusMd,
+    marginTop: theme.BaselineSpacesSpace4,
+    padding: theme.BaselineSpacesSpace16,
+    height: `${+getHaloValue(theme.BaselineSpacesSpace64) * 2}rem`,
+    ...(fullWidth ? {} : { width: `${+getHaloValue(theme.BaselineSpacesSpace8) * 32.25}rem` }),
+    fontFamily: theme.BaselineFontFontFamilyPoppinsRegular,
+    border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderDefault}`,
+    ...getScrollbarStyles({ theme }),
+    ...getCommonStateStyles({ theme, hasError, disabled }),
+    ...(!disabled && {
+      '&:focus, &:focus-visible': {
+        ...getFocusedStyles(theme),
+      },
+    }),
+  })
+);
 
-      &:focus-visible {
-        outline: none;
-      }
-    }
-  `}
-`;
-
-export const LeftIconContainer = styled.div`
-  justify-content: center;
-  ${({ theme }: Theme) => css`
-    padding-left: ${theme.TextInputRightIconPaddingHorizontal};
-  `}
-`;
-
-export const SearchIcon = styled(FontAwesomeIcon)`
-  ${({ theme }: Theme) => css`
-    color: ${theme.TextInputSearchBarSearchIconColor};
-  `}
-`;
-
-export const RightIconContainer = styled.div`
-  justify-content: center;
-  ${({ theme }: Theme) => css`
-    padding-right: ${theme.TextInputRightIconPaddingHorizontal};
-    padding-left: ${theme.TextInputRightIconPaddingHorizontal};
-  `}
-`;
-
-export const PasswordIcon = styled(FontAwesomeIcon)`
-  ${({ theme }: Theme) => css`
-    color: ${theme.TextInputRightIconColor};
-    cursor: pointer;
-  `}
-`;
-
-export const ValidIcon = styled(FontAwesomeIcon)`
-  ${({ theme }: Theme) => css`
-    color: ${theme.TextInputValidationCheckColor};
-  `}
-`;
-
-export const CloseIcon = styled(FontAwesomeIcon)`
-  ${({ theme }: Theme) => css`
-    color: ${theme.TextInputSearchBarCloseIconColor};
-  `}
-`;
-
-export const MessageText = styled(Typography)<MessageTextProps & Theme>`
-  ${({ theme, hasError }) => css`
-    color: ${theme.TextInputHelperTextColor};
-    margin-top: ${theme.TextInputMarginBottom};
-    padding-right: ${theme.SpacingBase0};
-    padding-left: ${theme.TextInputHelperTextPaddingHorizontal};
-    ${hasError &&
-    css`
-      color: ${theme.TextInputErrorColor};
-    `}
-  `}
-`;
-
-export const TextAreaContainer = styled.div<TextAreaContainerProps>`
-  display: flex;
-  flex-direction: column;
-  ${({ fullWidth }) =>
-    !fullWidth &&
-    css`
-      width: fit-content;
-    `};
-`;
-
-export const TextArea = styled.textarea<StyledTextAreaProps>`
-  ${({ theme, hasError, disabled, fullWidth }: ExtendedTheme<StyledTextAreaProps>) => css`
-    resize: none;
-    border: none;
-    outline: none;
-    cursor: auto;
-    overflow-y: auto;
-    border-radius: ${theme.CardBorderRadius};
-    margin-top: ${theme.SpacingBase4};
-    padding: ${theme.SpacingBase16};
-    height: ${+getHaloValue(theme.SpacingBase64) * 2}rem;
-    ${!fullWidth &&
-    css`
-      width: ${+getHaloValue(theme.SpacingBase8) * 32.25}rem;
-    `}
-    font-family: ${theme.TextInputFontFamily};
-    border: ${theme.TextInputWebSelectedBorderWidth} solid ${theme.TextInputBorderColor};
-
-    ${getScrollbarStyles()}
-    ${getCommonStateStyles({ theme, hasError, disabled })}
-
-    ${!disabled &&
-    css`
-      &:focus,
-      &:focus-visible {
-        ${getFocusedStyles(theme)}
-      }
-    `}
-  `};
-`;
-
-export const LengthInfo = styled(Typography)`
-  ${({ theme }: Theme) => css`
-    color: ${theme.ColorBaseGrey100};
-    margin-top: ${theme.SpacingBase8};
-  `};
-`;
-
-export const LabelWithMargin = styled(Label)`
-  ${({ theme }: Theme) => css`
-    margin-bottom: ${theme.SpacingBase4};
-  `};
-`;
+export const LengthInfo = styled(Typography)(({ theme }) => ({
+  marginTop: theme.BaselineSpacesSpace8,
+}));
