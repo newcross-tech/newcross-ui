@@ -6,7 +6,7 @@ export type PaginationItemPropsStrict = {
   /**
    * Type of the current button.
    */
-  variant: PaginationItemType;
+  itemType: PaginationItemType;
   /**
    * Current page number.
    */

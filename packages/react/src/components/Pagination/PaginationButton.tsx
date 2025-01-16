@@ -5,17 +5,16 @@ import { PaginationItemPropsStrict } from './Pagination.types';
 import Icon from '../Icon';
 import Typography from '../Typography';
 
-export const PaginationArrowButton: React.FC<PaginationItemPropsStrict> = ({
-  variant,
-  page,
+export const PaginationArrowButton = ({
+  itemType,
   disabled,
   hidden,
   ...rest
-}) => {
-  const icon = variant === 'previous' ? faChevronLeft : faChevronRight;
+}: Omit<PaginationItemPropsStrict, 'page'>) => {
+  const icon = itemType === 'previous' ? faChevronLeft : faChevronRight;
   const color = disabled ? 'disabled' : 'primary';
   const ariaLabel =
-    variant === 'previous' ? 'Go to previous page' : 'Go to next page';
+    itemType === 'previous' ? 'Go to previous page' : 'Go to next page';
 
   return (
     <Styled.PaginationButton
@@ -29,12 +28,11 @@ export const PaginationArrowButton: React.FC<PaginationItemPropsStrict> = ({
   );
 };
 
-export const PaginationButton: React.FC<PaginationItemPropsStrict> = ({
-  variant,
+export const PaginationButton = ({
   page,
   disabled,
   ...rest
-}) => {
+}: Omit<PaginationItemPropsStrict, 'itemType'>) => {
   const color = disabled ? 'disabled' : 'primary';
   const ariaLabel = page;
 
