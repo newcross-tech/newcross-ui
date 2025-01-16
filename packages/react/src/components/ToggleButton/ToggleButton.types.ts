@@ -13,6 +13,8 @@ export type ContentProps = TestProp & {
 
 export type ToggleButtonSizes = 'small' | 'large';
 
+export type ToggleButtonStyle = 'default' | 'div';
+
 export type ToggleButtonPropsStrict = {
   /**
    * Called when a single tap gesture is detected.
@@ -52,5 +54,12 @@ export type ToggleButtonPropsStrict = {
    * Defines the size of the button.
    */
   size: ToggleButtonSizes;
+  /**
+   * Defines the variant of the button.
+   */
   variant: (SingleSelect | MultiSelect)['variant'];
+  /**
+   * Display the button style as default or as div.
+   */
+  styleAs: ToggleButtonStyle;
 } & TestProp;

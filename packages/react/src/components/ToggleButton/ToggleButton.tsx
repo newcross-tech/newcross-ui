@@ -8,7 +8,7 @@ import Container from '../Container';
 
 export type ToggleButtonProps = OptionalProps<
   ToggleButtonPropsStrict,
-  'selected' | 'disabled' | 'value' | 'testID' | 'variant' | 'size'
+  'selected' | 'disabled' | 'value' | 'testID' | 'variant' | 'size' | 'styleAs'
 >;
 
 const normalizeToggleButtonProps = (
@@ -20,6 +20,7 @@ const normalizeToggleButtonProps = (
   value: _props.value ?? '',
   testID: _props.testID ?? '',
   variant: _props.variant ?? 'single',
+  styleAs: _props.styleAs ?? 'default',
   ..._props,
 });
 
@@ -47,12 +48,14 @@ const ToggleButton = (_props: ToggleButtonProps) => {
     disabled,
     value,
     variant,
+    size,
     children,
     leftIcon,
     rightIcon,
     fullWidth,
     onClick,
     testID,
+    styleAs,
     ...rest
   } = normalizeToggleButtonProps(_props);
 
@@ -74,11 +77,14 @@ const ToggleButton = (_props: ToggleButtonProps) => {
       semanticTag="button"
       alignItems="center"
       justifyContent="center"
-      p="sm"
+      size={size}
+      px="sm"
+      py={size === 'small' ? 'xs' : 'sm'}
       fullWidth={fullWidth}
       onClick={handleOnClick}
       selected={isMulti ? isSelected : selected}
       disabled={disabled}
+      styleAs={styleAs}
       testID={
         selected ? `${baseTestId}-selected${testID}` : `${baseTestId}${testID}`
       }

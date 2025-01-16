@@ -1,90 +1,58 @@
-import usePagination from './usePagination';
-import * as Styled from './Pagination.style';
+import usePagination from './hooks/usePagination';
 import { PaginationArrowButton, PaginationButton } from './PaginationButton';
-import { useState, useRef } from 'react';
-import { useResize } from '../../hooks/useResize';
-import useTheme from '../../hooks/useTheme';
-import { getHaloValue } from '../../utils';
+import Container from '../Container';
+import { OptionalProps } from '../../types';
+import { PaginationPropsStrict } from './Pagination.types';
 
-export type PaginationProps = {
-  /**
-   * The total number of pages.
-   */
-  count: number;
-  /**
-   * The page selected by default when the component is uncontrolled.
-   */
-  selectedValue?: number;
-  /**
-   * Callback fired when the state is changed.
-   */
-  onChange?: (value: number) => void;
-  /**
-   * Whether the component is full width.
-   */
-  fullWidth?: boolean;
-};
+export type PaginationProps = OptionalProps<
+  PaginationPropsStrict,
+  'fullWidth' | 'length' | 'selectedValue' | 'count' | 'disabled'
+>;
 
-const Pagination: React.FC<PaginationProps> = ({
-  count,
-  selectedValue,
-  onChange,
-  fullWidth,
-}) => {
-  const [widthOfContainer, setWidthOfContainer] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const theme = useTheme();
+const normalizedPaginationProps = (
+  _props: PaginationProps
+): PaginationPropsStrict => ({
+  selectedValue: _props.selectedValue ?? 1,
+  count: _props.count ?? 1,
+  fullWidth: _props.fullWidth ?? false,
+  length: _props.length ?? 'short',
+  disabled: _props.disabled ?? false,
+  ..._props,
+});
 
-  // CONTAINER_ELEMENTS_WIDTH = 372, which is the width of all pagination elements, which are always visible
-  // i.e. laft and right arrow, left and right ellipsis, selected element and paddings
-  const CONTAINER_ELEMENTS_WIDTH =
-    getPixelsFromHaloSpacing(theme.SpacingBase40) * 9 +
-    getPixelsFromHaloSpacing(theme.SpacingBase12);
-  const PAGINATION_BUTTON_WIDTH = getPixelsFromHaloSpacing(theme.SpacingBase40);
-  const LEFT_AND_RIGHT_SIBLING_COUNT = 2;
+const Pagination: React.FC<PaginationProps> = (_props: PaginationProps) => {
+  const { count, selectedValue, onChange, fullWidth, length, disabled } =
+    normalizedPaginationProps(_props);
 
-  useResize({
-    ref,
-    containerSize: ref?.current?.offsetWidth || 0,
-    onResize: () => setWidthOfContainer(ref?.current?.offsetWidth || 0),
-  });
-
-  const maybeSiblingCount = Math.floor(
-    (widthOfContainer - CONTAINER_ELEMENTS_WIDTH) /
-      PAGINATION_BUTTON_WIDTH /
-      LEFT_AND_RIGHT_SIBLING_COUNT
-  );
-  const siblingCount = maybeSiblingCount < 0 ? 0 : maybeSiblingCount;
   const { items, selectedPage } = usePagination({
     selectedValue,
     count,
     onChange,
-    siblingCount,
+    length,
   });
 
   return (
-    <Styled.Pagination
+    <Container
       fullWidth={fullWidth}
-      ref={ref}
-      data-testid="pagination-container"
+      alignItems="center"
+      justifyContent="center"
+      testID="pagination-container"
       role="navigation"
+      gap="sm"
     >
-      <PaginationArrowButton {...items[0]} />
-      <Styled.PaginationButtonsContainer>
-        {items.slice(1, -1).map((item, index) => (
-          <div data-testid={`pagination-button-${index}`} key={index}>
-            <PaginationButton {...item} selected={selectedPage === item.page} />
-          </div>
-        ))}
-      </Styled.PaginationButtonsContainer>
-      <PaginationArrowButton {...items[items.length - 1]} />
-    </Styled.Pagination>
+      <PaginationArrowButton {...items[0]} disabled={disabled} />
+      {items.slice(1, -1).map((item, index) => (
+        <div data-testid={`pagination-button-${index}`} key={index}>
+          <PaginationButton
+            {...item}
+            selected={selectedPage === item.page}
+            disabled={disabled}
+          />
+        </div>
+      ))}
+      <PaginationArrowButton {...items[items.length - 1]} disabled={disabled} />
+    </Container>
   );
 };
 
 export default Pagination;
-
-// +getHaloValue removes 'rem' from spacing and returns a number
-// * 16 converts to pixels
-const getPixelsFromHaloSpacing = (spacing: string) =>
-  +getHaloValue(spacing) * 16;

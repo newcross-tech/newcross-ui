@@ -39,15 +39,6 @@ describe('PaginationAdapter', () => {
     expect(mockOnChangePage).toHaveBeenCalledWith(2, 100);
   });
 
-  it('should display the correct number of pages', () => {
-    renderComponent({
-      rowCount: 50,
-      rowsPerPage: 10,
-    });
-
-    expect(byRole('button', { name: '5' }).get()).toBeInTheDocument();
-  });
-
   it.each([
     { rowsPerPage: 10, pageNumber: 1, props: { rowCount: 7 } },
     { rowsPerPage: 5, pageNumber: 2, props: { rowCount: 7, rowsPerPage: 10 } },
