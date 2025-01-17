@@ -1,20 +1,20 @@
 import { fireEvent, render } from '@testing-library/react';
 import { byTestId, byText } from 'testing-library-selector';
-import { axe } from '../../utils/test/axeConfig';
-import Typography from '../Typography';
-import Badge, { BadgeProps } from './Badge';
+import { axe } from '../../../utils/test/axeConfig';
+import Typography from '../../Typography';
+import LegacyBadge, { LegacyBadgeProps } from './LegacyBadge';
 
 const baseTestId = 'badge';
 
 describe('Badge Component', () => {
-  const renderComponent = (customProps: Partial<BadgeProps>) => {
+  const renderComponent = (customProps: Partial<LegacyBadgeProps>) => {
     const props = {
       badgeContent: 7,
       children: <Typography variant="paragraph1">{'Text'}</Typography>,
       ...customProps,
     };
 
-    render(<Badge {...props} />);
+    render(<LegacyBadge {...props} />);
   };
 
   const ui = {

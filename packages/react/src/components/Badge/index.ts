@@ -1,3 +1,6 @@
-export { default } from './Badge';
-export type { BadgeProps } from './Badge';
-export type { BadgeSizes, BadgePositions } from './Badge.types';
+export { default } from './LegacyBadge/LegacyBadge';
+export type { LegacyBadgeProps } from './LegacyBadge/LegacyBadge';
+export type {
+  BadgeSizes,
+  BadgePositions,
+} from './LegacyBadge/LegacyBadge.types';

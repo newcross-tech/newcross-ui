@@ -1,93 +1,39 @@
-import { ReactElement, ReactNode } from 'react';
-import { TestProp } from '../../types';
+import { OptionalProps } from '../../types';
 import * as Styled from './Badge.style';
-import { getTypographyVariant } from './Badge.style';
-import {
-  BadgeBackgroundColor,
-  BadgePositions,
-  BadgeSizes,
-} from './Badge.types';
-import { calculateDisplayNumber, isSingleChar } from './utils';
+import { BadgePropsStrict } from './Badge.types';
+import { LegacyBadgeProps } from './LegacyBadge';
 
-export type BadgeProps = {
-  /**
-   * Used to define size of the badge
-   */
-  size?: BadgeSizes;
-  /**
-   * Used to define the content of the badge
-   */
-  badgeContent?: number | string | ReactElement;
-  /**
-   * Used to define the max number to cap the value of the badge content
-   */
-  maxNumber?: number;
-  /**
-   * Support any kind of content
-   */
-  children?: ReactNode;
-  /**
-   * Used to define the position of the badge
-   * Positions are predefined
-   */
-  position?: BadgePositions;
+export type BadgeProps = NewBadgeProps & LegacyBadgeProps;
 
-  /**
-   * Used to add a cutout around the badge
-   * works for all positions and sizes, for a round badge
-   */
-  hasCutout?: boolean;
+type NewBadgeProps = OptionalProps<
+  BadgePropsStrict,
+  'size' | 'position' | 'maxNumber'
+>;
 
-  /**
-   * Called when a single tap gesture is detected.
-   */
-  onClick?: VoidFunction;
-  /**
-   * Used to define the background color of the badge
-   */
-  backgroundColor?: BadgeBackgroundColor;
-} & TestProp;
+const normalizeBadgeProps = (_props: BadgeProps): BadgePropsStrict => ({
+  size: _props.size ?? 'large',
+  maxNumber: _props.maxNumber ?? 999,
+  position: _props.position ?? 'topRight',
+  ..._props,
+});
 
-const Badge = ({
-  size = 'large',
-  badgeContent,
-  maxNumber = 999,
-  children,
-  position,
-  hasCutout = false,
-  onClick,
-  backgroundColor,
-  testID,
-}: BadgeProps) => {
-  const isSmallBadge = size === 'small';
-  const isNumber = typeof badgeContent === 'number';
-  const renderContent = !!badgeContent && !isSmallBadge;
-
-  const displayNumber = isNumber
-    ? calculateDisplayNumber(badgeContent, maxNumber)
-    : badgeContent;
-
-  return (
-    <Styled.Container
-      onClick={onClick}
-      data-testid={`badge-container-${testID}`}
+const SmallBadge = () => (
+  <Styled.Wrapper size="small" alignItems="center" justifyContent="center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="5"
+      height="4"
+      viewBox="0 0 5 4"
+      fill="none"
     >
-      <Styled.Content
-        isSingleChar={isSingleChar(displayNumber)}
-        renderContent={renderContent}
-        size={size}
-        position={position}
-        backgroundColor={backgroundColor}
-      >
-        <Styled.Text variant={getTypographyVariant()[size]}>
-          {renderContent && displayNumber}
-        </Styled.Text>
-      </Styled.Content>
-      <Styled.Cutout size={size} position={position} hasCutout={hasCutout}>
-        {children}
-      </Styled.Cutout>
-    </Styled.Container>
-  );
+      <circle cx="2.5" cy="2" r="2" fill="white" />
+    </svg>
+  </Styled.Wrapper>
+);
+
+const Badge = (_props: BadgeProps) => {
+  const { size, position, badgeContent, maxNumber, hasCutout, ...props } =
+    normalizeBadgeProps(_props);
 };
 
 export default Badge;
