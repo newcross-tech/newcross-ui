@@ -61,11 +61,6 @@ export type NewThemeSpacing = keyof Pick<
 
 export type ThemeSpacing = LegacyThemeSpacing | NewThemeSpacing;
 
-export type ThemeBreakpoints = keyof Pick<
-  ThemeDesignTokens,
-  'BreakpointsSm' | 'BreakpointsMd' | 'BreakpointsLg' | 'BreakpointsXl'
->;
-
 export type SemanticSpacing = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
 export type SemanticBreakpoints = 'sm' | 'md' | 'lg' | 'xl';

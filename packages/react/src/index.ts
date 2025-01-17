@@ -76,6 +76,7 @@ export { default as ThemeProvider } from './theme/ThemeProvider';
 export type { Theme, ExtendedTheme } from './types';
 export { default as useTheme } from './hooks/useTheme';
 export { useToast } from './hooks/useToast';
+export { useCurrentBreakpoint } from './hooks/useCurrentBreakpoint';
 export { default as Table } from './components/Table';
 export type { TableProps } from './components/Table';
 export { getCustomStyles } from './components/Table/Table.style';
