@@ -1,8 +1,8 @@
-import { Scheme, TestProp } from '../../types';
+import { Scheme, SemanticSpacing, TestProp } from '../../types';
 
 export type BadgeSizes = 'small' | 'medium' | 'large';
 
-export type BadgeType = 'number' | 'notification' | 'icon';
+export type BadgeType = 'default' | 'notification' | 'icon';
 
 export type BadgePositions =
   | 'topRight'
@@ -24,14 +24,26 @@ export const badgeSize: Record<
     width: '12px',
   },
   medium: {
-    height: '8px',
-    minWidth: '8px',
+    height: '20px',
+    minWidth: '20px',
   },
   large: {
-    height: '12px',
-    minWidth: '12px',
+    height: '32px',
+    minWidth: '32px',
   },
 };
+
+export const favoriteIconSize: Record<BadgeSizes, string> = {
+  small: '6px',
+  medium: '8px',
+  large: '16px',
+};
+
+export const badgeContentPadding: Partial<Record<BadgeSizes, SemanticSpacing>> =
+  {
+    medium: 'xs',
+    large: 'sm',
+  };
 
 export type BadgePropsStrict = {
   /**
@@ -64,4 +76,8 @@ export type BadgePropsStrict = {
    * works for all positions and sizes, for a round badge
    */
   hasCutout: boolean;
+  /**
+   * Defines if the badge is disabled
+   */
+  disabled: boolean;
 } & TestProp;

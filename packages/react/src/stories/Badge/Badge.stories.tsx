@@ -9,8 +9,9 @@ import {
 } from '@fortawesome/react-fontawesome';
 import { web } from '@newcross-ui/design-tokens';
 import styled, { css } from 'styled-components';
-import Badge, { BadgeProps, BadgeSizes } from '../../components/Badge';
+import Badge, { BadgeSizes } from '../../components/Badge';
 import Container from '../../components/Container';
+import { BadgeProps } from '../..';
 
 const { SpacingBase24, SpacingBase48 } = web.healthforce;
 
