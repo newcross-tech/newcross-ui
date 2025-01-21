@@ -7,6 +7,10 @@ const defaultTheme = theme.web[Brand.healthforce];
 
 export const ThemeContext = createContext(defaultTheme);
 export type ThemeDesignTokens = typeof defaultTheme;
+// helper to get the name of a design token
+export const themeDesignTokenName = <TName extends keyof ThemeDesignTokens>(
+  name: TName
+) => name;
 
 export type ThemeProviderProps = {
   children: ReactNode;

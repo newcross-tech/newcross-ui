@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.27.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.27.0...@newcross-ui/react@2.27.1) (2025-01-17)
+
+**Note:** Version bump only for package @newcross-ui/react
+
+
+
+
+
+# [2.27.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.26.6...@newcross-ui/react@2.27.0) (2025-01-17)
+
+
+### Features
+
+* implement useCurrentBreakpoint ([#176](https://bitbucket.org/newcrossdev/newcross-ui/issues/176)) ([a64a1c2](https://bitbucket.org/newcrossdev/newcross-ui/commits/a64a1c2ddf10c1013da62a5fdee97b332a285a28))
+
+
+
+
+
 ## [2.26.6](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.26.5...@newcross-ui/react@2.26.6) (2025-01-16)
 
 **Note:** Version bump only for package @newcross-ui/react

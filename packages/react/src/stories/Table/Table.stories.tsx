@@ -1,12 +1,13 @@
 import { ReactNode } from 'react';
 import { Meta, Story } from '@storybook/react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileArrowDown } from '@fortawesome/pro-light-svg-icons/faFileArrowDown';
 import Table, { TableProps } from '../../components/Table';
 import Typography from '../../components/Typography';
 import Container from '../../components/Container';
 import * as StoryTitle from '../StoryTitle';
 import Checkbox from '../../components/Checkbox';
+import Icon from '../../components/Icon';
+import ToggleButton from '../../components/ToggleButton';
 
 export default {
   title: 'React/Components/Table',
@@ -29,13 +30,13 @@ const generateColumn = (
   sortable = false
 ) => ({
   name: (
-    <Typography variant="subtitle1" color="primary">
+    <Typography variant="h3" color="primary">
       {title}
     </Typography>
   ),
   selector,
   cell: (row: InvoiceData) => (
-    <Typography variant="paragraph1" color="primary">
+    <Typography variant="p1" color="primary">
       {selector(row)}
     </Typography>
   ),
@@ -57,18 +58,15 @@ const COLUMNS_WITH_ACTION = [
   generateColumn('Last opened', (row) => row.lastOpened),
   {
     name: (
-      <Typography variant="subtitle1" color="primary">
+      <Typography variant="h3" color="primary">
         Timesheets
       </Typography>
     ),
     selector: () => '',
     cell: () => (
-      <FontAwesomeIcon
-        cursor="pointer"
-        onClick={() => alert('Action Triggered')}
-        icon={faFileArrowDown}
-        size="2x"
-      />
+      <ToggleButton onClick={() => alert('Action Triggered')} styleAs="div">
+        <Icon icon={faFileArrowDown} variant="h2" />
+      </ToggleButton>
     ),
     center: true,
   },
