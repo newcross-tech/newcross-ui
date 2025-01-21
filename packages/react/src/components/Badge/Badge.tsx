@@ -1,21 +1,20 @@
 import { OptionalProps } from '../../types';
 import Typography, { TypographyColors } from '../Typography';
 import * as Styled from './Badge.style';
-// import { faHeart } from '@fortawesome/pro-duotone-svg-icons/faHeart';
-import { faEnvelope } from '@fortawesome/pro-duotone-svg-icons/faEnvelope';
+import { faHeart } from '@fortawesome/pro-duotone-svg-icons/faHeart';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { badgeContentPadding, BadgePropsStrict } from './Badge.types';
 import LegacyBadge, { LegacyBadgeProps } from './LegacyBadge';
 import Container from '../Container';
 import { useTheme } from 'styled-components';
 import { cloneElement, isValidElement } from 'react';
-import { isLegacyBadgeProps } from './utils/isLegacyProps';
+import { isLegacyBadgeProps } from './utils/isLegacyBadgeProps';
 
 export type BadgeProps = NewBadgeProps | LegacyBadgeProps;
 
 type NewBadgeProps = OptionalProps<
   BadgePropsStrict,
-  'size' | 'maxNumber' | 'type' | 'scheme' | 'disabled' | 'hasCutout'
+  'size' | 'maxNumber' | 'type' | 'scheme' | 'disabled'
 >;
 
 const normalizeBadgeProps = (_props: NewBadgeProps): BadgePropsStrict => ({
@@ -24,7 +23,6 @@ const normalizeBadgeProps = (_props: NewBadgeProps): BadgePropsStrict => ({
   type: _props.type ?? 'default',
   scheme: _props.scheme ?? 'light',
   disabled: _props.disabled ?? false,
-  hasCutout: _props.hasCutout ?? false,
   ..._props,
 });
 
@@ -42,6 +40,7 @@ export const NotificationCycle = ({
       height="4"
       viewBox="0 0 5 4"
       fill="none"
+      data-testid="notification-cycle"
     >
       <circle
         cx="2.5"
@@ -59,7 +58,11 @@ const FavoriteBadge = ({
   type,
   disabled,
   hasCutout,
-}: Pick<BadgePropsStrict, 'type' | 'disabled' | 'scheme' | 'size'> & {
+  testID,
+}: Pick<
+  BadgePropsStrict,
+  'type' | 'disabled' | 'scheme' | 'size' | 'testID'
+> & {
   hasCutout: boolean;
 }) => (
   <Styled.Wrapper
@@ -70,9 +73,10 @@ const FavoriteBadge = ({
     type={type}
     disabled={disabled}
     hasCutout={hasCutout}
+    testID={`badge-container-favorite-${testID}`}
   >
     <Styled.FavoriteIcon
-      icon={faEnvelope as IconDefinition}
+      icon={faHeart as IconDefinition}
       size={size}
       scheme={scheme}
       disabled={disabled}
@@ -96,18 +100,6 @@ const NewBadge = (_props: NewBadgeProps) => {
 
   const hasCutout = isValidElement(children);
 
-  if (type === 'icon') {
-    return (
-      <FavoriteBadge
-        size={size}
-        scheme={scheme}
-        type={type}
-        disabled={disabled}
-        hasCutout={hasCutout}
-      />
-    );
-  }
-
   const typographyVariant = size === 'medium' ? 'p3Strong' : 'p1Strong';
 
   const getContent = () => {
@@ -130,6 +122,19 @@ const NewBadge = (_props: NewBadgeProps) => {
     if (scheme === 'dark' && type !== 'notification') return 'defaultDark';
     return 'defaultLight';
   };
+
+  if (type === 'icon') {
+    return (
+      <FavoriteBadge
+        size={size}
+        scheme={scheme}
+        type={type}
+        disabled={disabled}
+        hasCutout={hasCutout}
+        testID={testID}
+      />
+    );
+  }
 
   return (
     <Styled.BadgeWrapper
@@ -160,16 +165,20 @@ const NewBadge = (_props: NewBadgeProps) => {
         )}
       </Styled.Wrapper>
       {hasCutout && (
-        <Styled.Cutout size={size}>{cloneElement(children)}</Styled.Cutout>
+        <Styled.Cutout size={size} data-testid={`badge-cutout-${testID}`}>
+          {cloneElement(children)}
+        </Styled.Cutout>
       )}
     </Styled.BadgeWrapper>
   );
 };
 
-export default function Badge(props: BadgeProps) {
+const Badge = (props: BadgeProps) => {
   return isLegacyBadgeProps(props) ? (
     <LegacyBadge {...props} />
   ) : (
     <NewBadge {...props} />
   );
-}
+};
+
+export default Badge;
