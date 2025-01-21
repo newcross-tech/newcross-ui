@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { Scheme, SemanticSpacing, TestProp } from '../../types';
 
 export type BadgeSizes = 'small' | 'medium' | 'large';
@@ -61,7 +62,7 @@ export type BadgePropsStrict = {
   /**
    * Used to define the content of the badge
    */
-  badgeContent: number;
+  badgeContent: number | string;
   /**
    * Used to define the max number to cap the value of the badge content
    */
@@ -80,4 +81,12 @@ export type BadgePropsStrict = {
    * Defines if the badge is disabled
    */
   disabled: boolean;
+  /**
+   * Support any kind of content
+   */
+  children?: ReactNode;
+  /**
+   * Called when a single tap gesture is detected.
+   */
+  onClick?: VoidFunction;
 } & TestProp;

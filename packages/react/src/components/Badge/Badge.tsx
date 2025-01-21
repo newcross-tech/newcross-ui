@@ -1,30 +1,26 @@
 import { OptionalProps } from '../../types';
 import Typography, { TypographyColors } from '../Typography';
 import * as Styled from './Badge.style';
-import { faHeart } from '@fortawesome/pro-duotone-svg-icons/faHeart';
+// import { faHeart } from '@fortawesome/pro-duotone-svg-icons/faHeart';
+import { faEnvelope } from '@fortawesome/pro-duotone-svg-icons/faEnvelope';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { badgeContentPadding, BadgePropsStrict } from './Badge.types';
-import { LegacyBadgeProps } from './LegacyBadge';
+import LegacyBadge, { LegacyBadgeProps } from './LegacyBadge';
 import Container from '../Container';
 import { useTheme } from 'styled-components';
+import { cloneElement, isValidElement } from 'react';
+import { isLegacyBadgeProps } from './utils/isLegacyProps';
 
-export type BadgeProps = NewBadgeProps & LegacyBadgeProps;
+export type BadgeProps = NewBadgeProps | LegacyBadgeProps;
 
 type NewBadgeProps = OptionalProps<
   BadgePropsStrict,
-  | 'size'
-  | 'position'
-  | 'maxNumber'
-  | 'type'
-  | 'scheme'
-  | 'disabled'
-  | 'hasCutout'
+  'size' | 'maxNumber' | 'type' | 'scheme' | 'disabled' | 'hasCutout'
 >;
 
-const normalizeBadgeProps = (_props: BadgeProps): BadgePropsStrict => ({
+const normalizeBadgeProps = (_props: NewBadgeProps): BadgePropsStrict => ({
   size: _props.size ?? 'large',
   maxNumber: _props.maxNumber ?? 999,
-  position: _props.position ?? 'topRight',
   type: _props.type ?? 'default',
   scheme: _props.scheme ?? 'light',
   disabled: _props.disabled ?? false,
@@ -62,7 +58,10 @@ const FavoriteBadge = ({
   scheme,
   type,
   disabled,
-}: Pick<BadgePropsStrict, 'type' | 'disabled' | 'scheme' | 'size'>) => (
+  hasCutout,
+}: Pick<BadgePropsStrict, 'type' | 'disabled' | 'scheme' | 'size'> & {
+  hasCutout: boolean;
+}) => (
   <Styled.Wrapper
     scheme={scheme}
     size={size}
@@ -70,19 +69,32 @@ const FavoriteBadge = ({
     justifyContent="center"
     type={type}
     disabled={disabled}
+    hasCutout={hasCutout}
   >
     <Styled.FavoriteIcon
-      icon={faHeart as IconDefinition}
+      icon={faEnvelope as IconDefinition}
       size={size}
       scheme={scheme}
-      swapOpacity
+      disabled={disabled}
+      type={type}
     />
   </Styled.Wrapper>
 );
 
-const Badge: React.FC<BadgeProps> = (_props: BadgeProps) => {
-  const { size, badgeContent, maxNumber, type, scheme, disabled } =
-    normalizeBadgeProps(_props);
+const NewBadge = (_props: NewBadgeProps) => {
+  const {
+    size,
+    badgeContent,
+    maxNumber,
+    type,
+    scheme,
+    disabled,
+    children,
+    onClick,
+    testID,
+  } = normalizeBadgeProps(_props);
+
+  const hasCutout = isValidElement(children);
 
   if (type === 'icon') {
     return (
@@ -91,11 +103,20 @@ const Badge: React.FC<BadgeProps> = (_props: BadgeProps) => {
         scheme={scheme}
         type={type}
         disabled={disabled}
+        hasCutout={hasCutout}
       />
     );
   }
 
   const typographyVariant = size === 'medium' ? 'p3Strong' : 'p1Strong';
+
+  const getContent = () => {
+    if (typeof badgeContent === 'number') {
+      return badgeContent > maxNumber ? `${maxNumber}+` : badgeContent;
+    } else {
+      return badgeContent;
+    }
+  };
 
   const getContentColor = ({
     disabled,
@@ -111,28 +132,44 @@ const Badge: React.FC<BadgeProps> = (_props: BadgeProps) => {
   };
 
   return (
-    <Styled.Wrapper
-      scheme={scheme}
-      size={size}
-      type={type}
-      alignItems="center"
-      justifyContent="center"
+    <Styled.BadgeWrapper
+      onClick={onClick}
+      testID={`badge-container-${testID}`}
       disabled={disabled}
     >
-      {size === 'small' ? (
-        <NotificationCycle disabled={disabled} type={type} scheme={scheme} />
-      ) : (
-        <Container px={badgeContentPadding[size]}>
-          <Typography
-            variant={typographyVariant}
-            color={getContentColor({ disabled, scheme, type })}
-          >
-            {badgeContent > maxNumber ? `${maxNumber}+` : badgeContent}
-          </Typography>
-        </Container>
+      <Styled.Wrapper
+        scheme={scheme}
+        size={size}
+        type={type}
+        alignItems="center"
+        justifyContent="center"
+        disabled={disabled}
+        hasCutout={hasCutout}
+      >
+        {size === 'small' ? (
+          <NotificationCycle disabled={disabled} type={type} scheme={scheme} />
+        ) : (
+          <Container px={badgeContentPadding[size]}>
+            <Typography
+              variant={typographyVariant}
+              color={getContentColor({ disabled, scheme, type })}
+            >
+              {getContent()}
+            </Typography>
+          </Container>
+        )}
+      </Styled.Wrapper>
+      {hasCutout && (
+        <Styled.Cutout size={size}>{cloneElement(children)}</Styled.Cutout>
       )}
-    </Styled.Wrapper>
+    </Styled.BadgeWrapper>
   );
 };
 
-export default Badge;
+export default function Badge(props: BadgeProps) {
+  return isLegacyBadgeProps(props) ? (
+    <LegacyBadge {...props} />
+  ) : (
+    <NewBadge {...props} />
+  );
+}

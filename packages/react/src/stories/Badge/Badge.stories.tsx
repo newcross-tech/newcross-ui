@@ -12,6 +12,8 @@ import styled, { css } from 'styled-components';
 import Badge, { BadgeSizes } from '../../components/Badge';
 import Container from '../../components/Container';
 import { BadgeProps } from '../..';
+import { Scheme } from '../../types';
+import { BadgeType } from '../../components/Badge/Badge.types';
 
 const { SpacingBase24, SpacingBase48 } = web.healthforce;
 
@@ -45,32 +47,22 @@ const Icon = styled(FontAwesomeIcon)<IconProps>`
 
 export const VariantsWithIcons = () => {
   return (
-    <Container display="inline-flex" justifyContent="space-around">
-      <Container mx="SpacingBase8" />
-      <Badge size="small" position="topRight">
+    <Container display="inline-flex" justifyContent="space-around" gap="xl">
+      <Badge size="small">
         <StyledWrapper>
           <Icon icon={faBarsFilter} $size={SpacingBase24} />
         </StyledWrapper>
       </Badge>
-      <Container mx="SpacingBase8" />
-      <Badge size={'medium'} badgeContent={9} position={'topLeft'}>
+      <Badge size={'medium'} badgeContent={9}>
         <Icon icon={faUser} $size={SpacingBase24} />
       </Badge>
-      <Container mx="SpacingBase8" />
-      <Badge size={'large'} badgeContent={'!'} position={'bottomRight'}>
+      <Badge size={'large'} badgeContent={'!'}>
         <Icon icon={faTrainSubway} $size={SpacingBase48} />
-      </Badge>{' '}
-      <Container mx="SpacingBase32" />
-      <Badge size={'medium'} badgeContent={9} position={'topLeft'} hasCutout>
+      </Badge>
+      <Badge size={'medium'} badgeContent={9}>
         <Icon icon={faUser} $size={SpacingBase24} />
       </Badge>
-      <Container mx="SpacingBase8" />
-      <Badge
-        size={'large'}
-        badgeContent={'C'}
-        position={'bottomRight'}
-        hasCutout
-      >
+      <Badge size={'large'} badgeContent={'C'}>
         <Icon icon={faTrainSubway} $size={SpacingBase48} />
       </Badge>
     </Container>
@@ -79,29 +71,78 @@ export const VariantsWithIcons = () => {
 
 export const Variants = () => {
   return (
-    <Container justifyContent="space-around">
-      <Badge size={'small'} />
-      <Badge size={'medium'} badgeContent={9} />
-      <Badge size={'medium'} badgeContent={'?'} />
-      <Badge size={'large'} badgeContent={1000} maxNumber={999} />
-      <Badge size={'large'} badgeContent={'!'} />
-    </Container>
-  );
-};
-
-export const VariantsWithBackground = () => {
-  return (
-    <Container justifyContent="space-around">
-      <Badge size={'small'} backgroundColor="primary" />
-      <Badge size={'medium'} badgeContent={9} backgroundColor="secondary" />
-      <Badge size={'medium'} badgeContent={'?'} backgroundColor="warning" />
-      <Badge
-        size={'large'}
-        badgeContent={1000}
-        maxNumber={999}
-        backgroundColor="success"
-      />
-      <Badge size={'large'} badgeContent={'!'} backgroundColor="error" />
+    <Container flexDirection="column" gap="xl">
+      <Container justifyContent="space-around">
+        <Badge size={'small'} />
+        <Badge size={'medium'} badgeContent={9} />
+        <Badge size={'medium'} badgeContent={1000} />
+        <Badge size={'large'} badgeContent={9} />
+        <Badge size={'large'} badgeContent={1000} />
+      </Container>
+      <Container justifyContent="space-around">
+        <Badge size={'small'} scheme={'dark' as Scheme} />
+        <Badge size={'medium'} badgeContent={9} scheme={'dark' as Scheme} />
+        <Badge size={'medium'} badgeContent={1000} scheme={'dark' as Scheme} />
+        <Badge size={'large'} badgeContent={9} scheme={'dark' as Scheme} />
+        <Badge size={'large'} badgeContent={1000} scheme={'dark' as Scheme} />
+      </Container>
+      <Container justifyContent="space-around">
+        <Badge size={'small'} type={'notification' as BadgeType} />
+        <Badge
+          size={'medium'}
+          badgeContent={9}
+          type={'notification' as BadgeType}
+        />
+        <Badge
+          size={'medium'}
+          badgeContent={1000}
+          type={'notification' as BadgeType}
+        />
+        <Badge
+          size={'large'}
+          badgeContent={9}
+          type={'notification' as BadgeType}
+        />
+        <Badge
+          size={'large'}
+          badgeContent={1000}
+          type={'notification' as BadgeType}
+        />
+      </Container>
+      <Container justifyContent="space-around">
+        <Badge size={'small'} disabled />
+        <Badge size={'medium'} badgeContent={9} disabled />
+        <Badge size={'medium'} badgeContent={1000} disabled />
+        <Badge size={'large'} badgeContent={9} disabled />
+        <Badge size={'large'} badgeContent={1000} disabled />
+      </Container>
+      <Container justifyContent="space-around">
+        <Badge size={'small'} scheme={'dark' as Scheme} disabled />
+        <Badge
+          size={'medium'}
+          badgeContent={9}
+          scheme={'dark' as Scheme}
+          disabled
+        />
+        <Badge
+          size={'medium'}
+          badgeContent={1000}
+          scheme={'dark' as Scheme}
+          disabled
+        />
+        <Badge
+          size={'large'}
+          badgeContent={9}
+          scheme={'dark' as Scheme}
+          disabled
+        />
+        <Badge
+          size={'large'}
+          badgeContent={1000}
+          scheme={'dark' as Scheme}
+          disabled
+        />
+      </Container>
     </Container>
   );
 };
@@ -118,5 +159,4 @@ export const Interactive = Template.bind({});
 Interactive.args = {
   badgeContent: 9,
   size: 'large',
-  position: 'topRight',
 };

@@ -5,6 +5,8 @@ import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './AvatarInfo';
 import * as StoryTitle from '../StoryTitle';
+import { Scheme } from '../../types';
+import { BadgeType } from '../../components/Badge/Badge.types';
 
 export default {
   title: 'React/Components/Avatar',
@@ -15,12 +17,12 @@ interface VariantsComponentProps extends AvatarProps {
   badgeSize: BadgeSizes;
 }
 
-const BottomSpacing = () => <Container mb="SpacingBase12" />;
+const BottomSpacing = () => <Container mb="md" />;
 
 const person =
   'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3570&q=80';
 
-const HorizontalSpacing = () => <Container mx="SpacingBase12" />;
+const HorizontalSpacing = () => <Container mx="md" />;
 
 export const Overview = () => {
   return (
@@ -48,6 +50,9 @@ const variantProps: Array<AvatarProps> = [
 ];
 
 const VariantsComponent = ({ badgeSize, ...props }: VariantsComponentProps) => {
+  const onClick = () => {
+    window.alert('Avatar Clicked');
+  };
   return (
     <>
       <BottomSpacing />
@@ -58,7 +63,32 @@ const VariantsComponent = ({ badgeSize, ...props }: VariantsComponentProps) => {
             <HorizontalSpacing />
           </>
         ))}
-        <Badge size={badgeSize} position="topRight" hasCutout>
+        <Badge
+          size={badgeSize}
+          onClick={onClick}
+          disabled={props.inactive}
+          badgeContent={2}
+        >
+          <Avatar {...props} />
+        </Badge>
+        <HorizontalSpacing />
+        <Badge
+          size={badgeSize}
+          onClick={onClick}
+          disabled={props.inactive}
+          badgeContent={2}
+          scheme={'dark' as Scheme}
+        >
+          <Avatar {...props} />
+        </Badge>
+        <HorizontalSpacing />
+        <Badge
+          size={badgeSize}
+          onClick={onClick}
+          disabled={props.inactive}
+          badgeContent={2}
+          type={'notification' as BadgeType}
+        >
           <Avatar {...props} />
         </Badge>
         <HorizontalSpacing />
@@ -89,7 +119,7 @@ export const Variants = () => {
       <BottomSpacing />
 
       <StoryTitle.Regular>Disabled without Hover</StoryTitle.Regular>
-      <VariantsComponent inactive badgeSize="medium" />
+      <VariantsComponent inactive badgeSize="small" />
       <BottomSpacing />
     </Container>
   );
