@@ -1,9 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import Badge, { BadgeProps } from './Badge';
 import Typography from '../Typography';
+import { faHeart } from '@fortawesome/pro-solid-svg-icons/faHeart';
+import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { axe } from '../../utils/test/axeConfig';
 import { byTestId } from 'testing-library-selector';
-import { userEvent } from '@storybook/testing-library';
+import userEvent from '@testing-library/user-event';
 
 const renderComponent = (customProps: Partial<BadgeProps>) => {
   const props = {
@@ -18,9 +20,9 @@ const renderComponent = (customProps: Partial<BadgeProps>) => {
 describe('Badge Component', () => {
   const ui = {
     badgeContainer: (testID: string) => byTestId(`badge-container-${testID}`),
-    favoriteBadgeContainer: (testID: string) =>
-      byTestId(`badge-container-favorite-${testID}`),
     notificationCycle: () => byTestId('notification-cycle'),
+    iconBadge: () => byTestId('icon-badge'),
+    badgeCutout: (testID: string) => byTestId(`badge-cutout-${testID}`),
   };
 
   it('should not have any a11y violations', async () => {
@@ -58,12 +60,15 @@ describe('Badge Component', () => {
     expect(screen.getByText('5+')).toBeInTheDocument();
   });
 
-  it('renders the FavoriteBadge when type is icon', () => {
+  it('renders the Icon when badgeContent is an IconDefinition', () => {
     // Act
-    renderComponent({ type: 'icon', testID: 'favorite' });
+    renderComponent({
+      badgeContent: faHeart as IconDefinition,
+      testID: 'favorite',
+    });
 
     // Assert
-    expect(ui.favoriteBadgeContainer('favorite')).toBeInTheDocument();
+    expect(ui.iconBadge().get()).toBeInTheDocument();
   });
 
   it('renders the NotificationCycle when size is small', () => {
@@ -71,7 +76,7 @@ describe('Badge Component', () => {
     renderComponent({ size: 'small', type: 'notification' });
 
     // Assert
-    expect(ui.notificationCycle()).toBeInTheDocument();
+    expect(ui.notificationCycle().get()).toBeInTheDocument();
   });
 
   it('does not render badgeContent when size is small', () => {
@@ -86,9 +91,11 @@ describe('Badge Component', () => {
     // Act
     renderComponent({
       children: <Typography variant="p1">Cutout Child</Typography>,
+      testID: 'cutout',
     });
 
     // Assert
+    expect(ui.badgeCutout('cutout').get()).toBeInTheDocument();
     expect(screen.getByText('Cutout Child')).toBeInTheDocument();
   });
 
@@ -116,23 +123,11 @@ describe('Badge Component', () => {
     expect(onClick).not.toHaveBeenCalled();
   });
 
-  it('renders successfully with a favorite badge type and cutout', () => {
-    // Act
-    renderComponent({
-      type: 'icon',
-      children: <Typography variant="p1">Favorite</Typography>,
-      testID: 'favorite-cutout',
-    });
-
-    // Assert
-    expect(ui.favoriteBadgeContainer('favorite-cutout')).toBeInTheDocument();
-  });
-
   it('should not render NotificationCycle when size is not small', () => {
     // Act
     renderComponent({ size: 'large', type: 'notification', testID: 'large' });
 
     // Assert
-    expect(ui.notificationCycle()).not.toBeInTheDocument();
+    expect(ui.notificationCycle().query()).not.toBeInTheDocument();
   });
 });

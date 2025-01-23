@@ -1,38 +1,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Container from '../Container';
 import styled from 'styled-components';
-import { BadgePropsStrict, badgeSize, BadgeSizes, favoriteIconSize } from './Badge.types';
+import {
+  BadgePropsStrict,
+  badgeSize,
+  BadgeSizes,
+  contentPositionMap,
+  cutoutPositionMap,
+  favoriteIconSize,
+  maskSizeMap,
+} from './Badge.types';
 import { Theme } from '../../types';
-
-const maskSizeMap: Record<BadgeSizes, string> = {
-  small: '8px',
-  medium: '12px',
-  large: '19px',
-};
-
-const cutoutPositionMap: Record<string, Record<BadgeSizes, string>> = {
-  avatarHalo: {
-    small: '11px',
-    medium: '9px',
-    large: '9px',
-  },
-  avatarContent: {
-    small: '4px',
-    medium: '3px',
-    large: '5px',
-  },
-  iconContent: {
-    small: '4px',
-    medium: '3px',
-    large: '5px',
-  },
-};
-
-const contentPositionMap: Record<BadgeSizes, string> = {
-  small: '-2px',
-  medium: '-7px',
-  large: '-11px',
-};
 
 const getBackgroundColor = ({
   theme,
@@ -84,18 +62,19 @@ export const BadgeWrapper = styled(Container)<Pick<BadgePropsStrict, 'onClick' |
   })
 );
 
-export const FavoriteIcon = styled(FontAwesomeIcon)<Pick<BadgePropsStrict, 'type' | 'disabled' | 'scheme' | 'size'>>(
-  ({ theme, disabled, scheme, type, size }) => {
-    return {
-      height: favoriteIconSize[size],
-      width: favoriteIconSize[size],
-      '& .fa-primary , .fa-secondary': {
-        fill: getFillColor({ theme, disabled, scheme, type }),
-        opacity: 1,
-      },
-    };
-  }
-);
+export const FavoriteIcon = styled(FontAwesomeIcon)<
+  Pick<BadgePropsStrict, 'type' | 'disabled' | 'scheme'> & { customSize: BadgeSizes }
+>(({ theme, disabled, scheme, type, customSize }) => {
+  return {
+    height: favoriteIconSize[customSize],
+    width: favoriteIconSize[customSize],
+    color: getFillColor({ theme, disabled, scheme, type }),
+    '& .fa-primary , .fa-secondary': {
+      fill: getFillColor({ theme, disabled, scheme, type }),
+      opacity: 1,
+    },
+  };
+});
 
 export const Cutout = styled.div<Pick<BadgePropsStrict, 'size'>>(({ size }) => ({
   '> svg': {

@@ -2,6 +2,7 @@ import { Meta, Story } from '@storybook/react';
 import { faBarsFilter } from '@fortawesome/pro-light-svg-icons/faBarsFilter';
 import { faKitMedical } from '@fortawesome/pro-light-svg-icons/faKitMedical';
 import { faTrainSubway } from '@fortawesome/pro-light-svg-icons/faTrainSubway';
+import { faHeart } from '@fortawesome/pro-solid-svg-icons/faHeart';
 import { faUser } from '@fortawesome/pro-light-svg-icons/faUser';
 import {
   FontAwesomeIcon,
@@ -12,8 +13,6 @@ import styled, { css } from 'styled-components';
 import Badge, { BadgeSizes } from '../../components/Badge';
 import Container from '../../components/Container';
 import { BadgeProps } from '../..';
-import { Scheme } from '../../types';
-import { BadgeType } from '../../components/Badge/Badge.types';
 
 const { SpacingBase24, SpacingBase48 } = web.healthforce;
 
@@ -78,36 +77,23 @@ export const Variants = () => {
         <Badge size={'medium'} badgeContent={1000} />
         <Badge size={'large'} badgeContent={9} />
         <Badge size={'large'} badgeContent={1000} />
+        <Badge size={'large'} badgeContent={faHeart} />
       </Container>
       <Container justifyContent="space-around">
-        <Badge size={'small'} scheme={'dark' as Scheme} />
-        <Badge size={'medium'} badgeContent={9} scheme={'dark' as Scheme} />
-        <Badge size={'medium'} badgeContent={1000} scheme={'dark' as Scheme} />
-        <Badge size={'large'} badgeContent={9} scheme={'dark' as Scheme} />
-        <Badge size={'large'} badgeContent={1000} scheme={'dark' as Scheme} />
+        <Badge size={'small'} scheme={'dark'} />
+        <Badge size={'medium'} badgeContent={9} scheme={'dark'} />
+        <Badge size={'medium'} badgeContent={1000} scheme={'dark'} />
+        <Badge size={'large'} badgeContent={9} scheme={'dark'} />
+        <Badge size={'large'} badgeContent={1000} scheme={'dark'} />
+        <Badge size={'large'} badgeContent={faHeart} scheme={'dark'} />
       </Container>
       <Container justifyContent="space-around">
-        <Badge size={'small'} type={'notification' as BadgeType} />
-        <Badge
-          size={'medium'}
-          badgeContent={9}
-          type={'notification' as BadgeType}
-        />
-        <Badge
-          size={'medium'}
-          badgeContent={1000}
-          type={'notification' as BadgeType}
-        />
-        <Badge
-          size={'large'}
-          badgeContent={9}
-          type={'notification' as BadgeType}
-        />
-        <Badge
-          size={'large'}
-          badgeContent={1000}
-          type={'notification' as BadgeType}
-        />
+        <Badge size={'small'} type={'notification'} />
+        <Badge size={'medium'} badgeContent={9} type={'notification'} />
+        <Badge size={'medium'} badgeContent={1000} type={'notification'} />
+        <Badge size={'large'} badgeContent={9} type={'notification'} />
+        <Badge size={'large'} badgeContent={1000} type={'notification'} />
+        <Badge size={'large'} badgeContent={faHeart} type={'notification'} />
       </Container>
       <Container justifyContent="space-around">
         <Badge size={'small'} disabled />
@@ -115,33 +101,15 @@ export const Variants = () => {
         <Badge size={'medium'} badgeContent={1000} disabled />
         <Badge size={'large'} badgeContent={9} disabled />
         <Badge size={'large'} badgeContent={1000} disabled />
+        <Badge size={'large'} badgeContent={faHeart} disabled />
       </Container>
       <Container justifyContent="space-around">
-        <Badge size={'small'} scheme={'dark' as Scheme} disabled />
-        <Badge
-          size={'medium'}
-          badgeContent={9}
-          scheme={'dark' as Scheme}
-          disabled
-        />
-        <Badge
-          size={'medium'}
-          badgeContent={1000}
-          scheme={'dark' as Scheme}
-          disabled
-        />
-        <Badge
-          size={'large'}
-          badgeContent={9}
-          scheme={'dark' as Scheme}
-          disabled
-        />
-        <Badge
-          size={'large'}
-          badgeContent={1000}
-          scheme={'dark' as Scheme}
-          disabled
-        />
+        <Badge size={'small'} scheme={'dark'} disabled />
+        <Badge size={'medium'} badgeContent={9} scheme={'dark'} disabled />
+        <Badge size={'medium'} badgeContent={1000} scheme={'dark'} disabled />
+        <Badge size={'large'} badgeContent={9} scheme={'dark'} disabled />
+        <Badge size={'large'} badgeContent={1000} scheme={'dark'} disabled />
+        <Badge size={'large'} badgeContent={faHeart} scheme={'dark'} disabled />
       </Container>
     </Container>
   );

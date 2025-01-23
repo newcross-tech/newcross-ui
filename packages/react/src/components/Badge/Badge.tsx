@@ -1,8 +1,6 @@
 import { OptionalProps } from '../../types';
 import Typography, { TypographyColors } from '../Typography';
 import * as Styled from './Badge.style';
-import { faHeart } from '@fortawesome/pro-duotone-svg-icons/faHeart';
-import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { badgeContentPadding, BadgePropsStrict } from './Badge.types';
 import LegacyBadge, { LegacyBadgeProps } from './LegacyBadge';
 import Container from '../Container';
@@ -14,17 +12,41 @@ export type BadgeProps = NewBadgeProps | LegacyBadgeProps;
 
 type NewBadgeProps = OptionalProps<
   BadgePropsStrict,
-  'size' | 'maxNumber' | 'type' | 'scheme' | 'disabled'
+  'size' | 'maxNumber' | 'type' | 'scheme' | 'disabled' | 'badgeContent'
 >;
 
 const normalizeBadgeProps = (_props: NewBadgeProps): BadgePropsStrict => ({
+  ..._props,
   size: _props.size ?? 'large',
   maxNumber: _props.maxNumber ?? 999,
   type: _props.type ?? 'default',
   scheme: _props.scheme ?? 'light',
   disabled: _props.disabled ?? false,
-  ..._props,
+  get badgeContent() {
+    if (typeof _props.badgeContent === 'number') {
+      return _props.badgeContent > this.maxNumber
+        ? `${this.maxNumber}+`
+        : _props.badgeContent;
+    }
+    return _props.badgeContent ?? 0;
+  },
+  get onClick() {
+    return this.disabled ? undefined : _props.onClick;
+  },
 });
+
+const getContentColor = ({
+  disabled,
+  scheme,
+  type,
+}: Pick<
+  BadgePropsStrict,
+  'type' | 'disabled' | 'scheme'
+>): TypographyColors => {
+  if (disabled) return 'disabled';
+  if (scheme === 'dark' && type !== 'notification') return 'defaultDark';
+  return 'defaultLight';
+};
 
 export const NotificationCycle = ({
   disabled,
@@ -52,38 +74,47 @@ export const NotificationCycle = ({
   );
 };
 
-const FavoriteBadge = ({
+const BadgeContent = ({
   size,
+  badgeContent,
+  disabled,
   scheme,
   type,
-  disabled,
-  hasCutout,
-  testID,
 }: Pick<
   BadgePropsStrict,
-  'type' | 'disabled' | 'scheme' | 'size' | 'testID'
-> & {
-  hasCutout: boolean;
-}) => (
-  <Styled.Wrapper
-    scheme={scheme}
-    size={size}
-    alignItems="center"
-    justifyContent="center"
-    type={type}
-    disabled={disabled}
-    hasCutout={hasCutout}
-    testID={`badge-container-favorite-${testID}`}
-  >
-    <Styled.FavoriteIcon
-      icon={faHeart as IconDefinition}
-      size={size}
-      scheme={scheme}
-      disabled={disabled}
-      type={type}
-    />
-  </Styled.Wrapper>
-);
+  'size' | 'badgeContent' | 'disabled' | 'scheme' | 'type'
+>) => {
+  const typographyVariant = size === 'medium' ? 'p3Strong' : 'p1Strong';
+
+  if (!(typeof badgeContent === 'string' || typeof badgeContent === 'number')) {
+    return (
+      <Styled.FavoriteIcon
+        icon={badgeContent}
+        customSize={size}
+        scheme={scheme}
+        disabled={disabled}
+        type={type}
+        data-testid="icon-badge"
+      />
+    );
+  }
+
+  if (size === 'small')
+    return (
+      <NotificationCycle disabled={disabled} type={type} scheme={scheme} />
+    );
+
+  return (
+    <Container px={badgeContentPadding[size]}>
+      <Typography
+        variant={typographyVariant}
+        color={getContentColor({ disabled, scheme, type })}
+      >
+        {badgeContent}
+      </Typography>
+    </Container>
+  );
+};
 
 const NewBadge = (_props: NewBadgeProps) => {
   const {
@@ -100,42 +131,6 @@ const NewBadge = (_props: NewBadgeProps) => {
 
   const hasCutout = isValidElement(children);
 
-  const typographyVariant = size === 'medium' ? 'p3Strong' : 'p1Strong';
-
-  const getContent = () => {
-    if (typeof badgeContent === 'number') {
-      return badgeContent > maxNumber ? `${maxNumber}+` : badgeContent;
-    } else {
-      return badgeContent;
-    }
-  };
-
-  const getContentColor = ({
-    disabled,
-    scheme,
-    type,
-  }: Pick<
-    BadgePropsStrict,
-    'type' | 'disabled' | 'scheme'
-  >): TypographyColors => {
-    if (disabled) return 'disabled';
-    if (scheme === 'dark' && type !== 'notification') return 'defaultDark';
-    return 'defaultLight';
-  };
-
-  if (type === 'icon') {
-    return (
-      <FavoriteBadge
-        size={size}
-        scheme={scheme}
-        type={type}
-        disabled={disabled}
-        hasCutout={hasCutout}
-        testID={testID}
-      />
-    );
-  }
-
   return (
     <Styled.BadgeWrapper
       onClick={onClick}
@@ -151,18 +146,9 @@ const NewBadge = (_props: NewBadgeProps) => {
         disabled={disabled}
         hasCutout={hasCutout}
       >
-        {size === 'small' ? (
-          <NotificationCycle disabled={disabled} type={type} scheme={scheme} />
-        ) : (
-          <Container px={badgeContentPadding[size]}>
-            <Typography
-              variant={typographyVariant}
-              color={getContentColor({ disabled, scheme, type })}
-            >
-              {getContent()}
-            </Typography>
-          </Container>
-        )}
+        <BadgeContent
+          {...{ size, badgeContent, maxNumber, disabled, scheme, type }}
+        />
       </Styled.Wrapper>
       {hasCutout && (
         <Styled.Cutout size={size} data-testid={`badge-cutout-${testID}`}>

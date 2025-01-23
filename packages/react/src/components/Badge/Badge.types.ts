@@ -1,20 +1,10 @@
 import { ReactNode } from 'react';
+import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { Scheme, SemanticSpacing, TestProp } from '../../types';
 
 export type BadgeSizes = 'small' | 'medium' | 'large';
 
-export type BadgeType = 'default' | 'notification' | 'icon';
-
-export type BadgePositions =
-  | 'topRight'
-  | 'topLeft'
-  | 'bottomRight'
-  | 'bottomLeft';
-
-export type BadgeContentProps = Pick<BadgePropsStrict, 'size' | 'position'> & {
-  isSingleChar: boolean;
-  renderContent: boolean;
-};
+export type BadgeType = 'default' | 'notification';
 
 export const badgeSize: Record<
   BadgeSizes,
@@ -46,6 +36,36 @@ export const badgeContentPadding: Partial<Record<BadgeSizes, SemanticSpacing>> =
     large: 'sm',
   };
 
+export const maskSizeMap: Record<BadgeSizes, string> = {
+  small: '8.5px',
+  medium: '13px',
+  large: '19px',
+};
+
+export const cutoutPositionMap: Record<string, Record<BadgeSizes, string>> = {
+  avatarHalo: {
+    small: '11px',
+    medium: '9px',
+    large: '9px',
+  },
+  avatarContent: {
+    small: '3.5px',
+    medium: '3px',
+    large: '5px',
+  },
+  iconContent: {
+    small: '4px',
+    medium: '3px',
+    large: '5px',
+  },
+};
+
+export const contentPositionMap: Record<BadgeSizes, string> = {
+  small: '-2px',
+  medium: '-7px',
+  large: '-11px',
+};
+
 export type BadgePropsStrict = {
   /**
    * Used to define size of the badge
@@ -62,21 +82,11 @@ export type BadgePropsStrict = {
   /**
    * Used to define the content of the badge
    */
-  badgeContent: number | string;
+  badgeContent: number | string | IconDefinition;
   /**
    * Used to define the max number to cap the value of the badge content
    */
   maxNumber: number;
-  /**
-   * Used to define the position of the badge
-   * Positions are predefined
-   */
-  position: BadgePositions;
-  /**
-   * Used to add a cutout around the badge
-   * works for all positions and sizes, for a round badge
-   */
-  hasCutout: boolean;
   /**
    * Defines if the badge is disabled
    */
