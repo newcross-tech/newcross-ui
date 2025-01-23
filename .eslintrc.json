@@ -10,29 +10,36 @@
   ],
   "rules": {
     "react-hooks/rules-of-hooks": 1,
-    "no-restricted-imports": [
-      "error",
-      {
-        "paths": [
+    "no-duplicate-imports": "error"
+  },
+  "overrides": [
+    {
+      "files": ["packages/react-native/**/*.{ts,tsx,js,jsx}"],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
           {
-            "name": "@fortawesome/pro-regular-svg-icons",
-            "message": "import { [icon] } from @fortawesome/pro-regular-svg-icons/[icon] instead"
-          },
-          {
-            "name": "@fortawesome/pro-duotone-svg-icons",
-            "message": "import { [icon] } from @fortawesome/pro-duotone-svg-icons/[icon] instead"
-          },
-          {
-            "name": "@fortawesome/pro-light-svg-icons",
-            "message": "import { [icon] } from @fortawesome/pro-light-svg-icons/[icon] instead"
-          },
-          {
-            "name": "@fortawesome/pro-solid-svg-icons",
-            "message": "import { [icon] } from @fortawesome/pro-solid-svg-icons/[icon] instead"
+            "paths": [
+              {
+                "name": "@fortawesome/pro-regular-svg-icons",
+                "message": "import { [icon] } from @fortawesome/pro-regular-svg-icons/[icon] instead"
+              },
+              {
+                "name": "@fortawesome/pro-duotone-svg-icons",
+                "message": "import { [icon] } from @fortawesome/pro-duotone-svg-icons/[icon] instead"
+              },
+              {
+                "name": "@fortawesome/pro-light-svg-icons",
+                "message": "import { [icon] } from @fortawesome/pro-light-svg-icons/[icon] instead"
+              },
+              {
+                "name": "@fortawesome/pro-solid-svg-icons",
+                "message": "import { [icon] } from @fortawesome/pro-solid-svg-icons/[icon] instead"
+              }
+            ]
           }
         ]
       }
-    ],
-    "no-duplicate-imports": "error"
-  }
+    }
+  ]
 }

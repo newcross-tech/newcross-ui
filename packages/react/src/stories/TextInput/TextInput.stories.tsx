@@ -45,6 +45,7 @@ export const Variants = () => {
   const [text7, onChangeText7] = useState('text7');
   const [text8, onChangeText8] = useState('text8');
   const [text9, onChangeText9] = useState('text9');
+  const [text10, onChangeText10] = useState('text10');
 
   return (
     <Container flexDirection="column">
@@ -132,6 +133,16 @@ export const Variants = () => {
         subtitle="This is a subtitle"
       />
       <Container m="SpacingBase4" />
+
+      <StoryTitle.Regular>With a required indicator</StoryTitle.Regular>
+      <TextInput
+        value={text10}
+        type="text"
+        onChange={onChangeText10}
+        label="Label"
+        required
+      />
+      <Container m="SpacingBase4" />
     </Container>
   );
 };
@@ -210,4 +221,5 @@ Interactive.args = {
   search: false,
   maxLength: 400,
   fullWidth: false,
+  required: false,
 };

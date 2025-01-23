@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { Theme } from '../../types';
 import { getTabbedStateStyles } from '../../utils';
-import { getTypographyCoreStyles } from '../Typography';
+import { getTypographyColorStyle, getTypographyCoreStyles } from '../Typography';
 import { LabelProps } from './Label';
 
 export const Label = styled.label<LabelProps>(
-  ({ theme, variant, gutterBottom, numberOfLines, disabled }: Theme & LabelProps) => [
+  ({ theme, variant, gutterBottom, numberOfLines, disabled, color = 'defaultDark' }: Theme & LabelProps) => [
     getTypographyCoreStyles({
       variant,
       gutterBottom,
@@ -13,7 +13,7 @@ export const Label = styled.label<LabelProps>(
       mode: 'light',
     }),
     {
-      color: theme.RadioColor,
+      color: getTypographyColorStyle({ theme, mode: 'light', color }),
       'b,strong,em': {
         fontFamily: theme.BrandFontFamilySemiBold,
       },
