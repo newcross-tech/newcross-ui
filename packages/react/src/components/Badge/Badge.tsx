@@ -1,12 +1,12 @@
 import { OptionalProps } from '../../types';
 import Typography, { TypographyColors } from '../Typography';
 import * as Styled from './Badge.style';
-import { badgeContentPadding, BadgePropsStrict } from './Badge.types';
+import { BadgePropsStrict } from './Badge.types';
 import LegacyBadge, { LegacyBadgeProps } from './LegacyBadge';
 import Container from '../Container';
-import { useTheme } from 'styled-components';
 import { cloneElement, isValidElement } from 'react';
-import { isLegacyBadgeProps } from './utils/isLegacyBadgeProps';
+import { isLegacyBadgeProps } from './utils';
+import useTheme from '../../hooks/useTheme';
 
 export type BadgeProps = NewBadgeProps | LegacyBadgeProps;
 
@@ -88,7 +88,7 @@ const BadgeContent = ({
 
   if (!(typeof badgeContent === 'string' || typeof badgeContent === 'number')) {
     return (
-      <Styled.FavoriteIcon
+      <Styled.BadgeIcon
         icon={badgeContent}
         customSize={size}
         scheme={scheme}
@@ -105,7 +105,7 @@ const BadgeContent = ({
     );
 
   return (
-    <Container px={badgeContentPadding[size]}>
+    <Container px={size === 'medium' ? 'xs' : 'sm'}>
       <Typography
         variant={typographyVariant}
         color={getContentColor({ disabled, scheme, type })}

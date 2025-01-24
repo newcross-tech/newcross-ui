@@ -1,23 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Container from '../Container';
 import styled from 'styled-components';
-import {
-  BadgePropsStrict,
-  badgeSize,
-  BadgeSizes,
-  contentPositionMap,
-  cutoutPositionMap,
-  favoriteIconSize,
-  maskSizeMap,
-} from './Badge.types';
+import { BadgePropsStrict, BadgeSizes, BadgeStyleProps } from './Badge.types';
 import { Theme } from '../../types';
 
-const getBackgroundColor = ({
-  theme,
-  type,
-  scheme,
-  disabled,
-}: Theme & Pick<BadgePropsStrict, 'type' | 'scheme' | 'disabled'>): string => {
+const getBackgroundColor = ({ theme, type, scheme, disabled }: Theme & BadgeStyleProps): string => {
   if (type === 'notification' && !disabled) {
     return theme.ElementsSurfaceActionDanger;
   }
@@ -29,30 +16,48 @@ const getBackgroundColor = ({
   return disabled ? theme.ElementsSurfaceDisabledHighlight : theme.ElementsSurfaceHighlightStrong;
 };
 
-export const getFillColor = ({
-  theme,
-  disabled,
-  scheme,
-  type,
-}: Theme & Pick<BadgePropsStrict, 'type' | 'disabled' | 'scheme'>) => {
+export const getFillColor = ({ theme, disabled, scheme, type }: Theme & BadgeStyleProps) => {
   if (disabled) return theme.ElementsTextDisabled;
   if (scheme === 'dark' && type !== 'notification') return theme.ElementsTextDefaultDark;
   return theme.ElementsTextDefaultLight;
 };
 
-export const Wrapper = styled(Container)<
-  Pick<BadgePropsStrict, 'size' | 'type' | 'scheme' | 'disabled'> & { hasCutout: boolean }
->(({ theme, size, type, scheme, disabled, hasCutout }) => ({
-  ...badgeSize[size],
-  backgroundColor: getBackgroundColor({ theme, type, scheme, disabled }),
-  borderRadius: theme.BorderBaseRadiusRounded,
-  position: 'relative',
-  ...(hasCutout && {
-    position: 'absolute',
-    top: contentPositionMap[size],
-    right: contentPositionMap[size],
-  }),
-}));
+const getBadgeSize = ({ size }: Pick<BadgePropsStrict, 'size'>) =>
+  ({
+    small: {
+      height: '12px',
+      width: '12px',
+    },
+    medium: {
+      height: '20px',
+      minWidth: '20px',
+    },
+    large: {
+      height: '32px',
+      minWidth: '32px',
+    },
+  }[size]);
+
+const getContentPosition = ({ size }: Pick<BadgePropsStrict, 'size'>) =>
+  ({
+    small: '-2px',
+    medium: '-7px',
+    large: '-11px',
+  }[size]);
+
+export const Wrapper = styled(Container)<Pick<BadgePropsStrict, 'size'> & BadgeStyleProps & { hasCutout: boolean }>(
+  (props) => ({
+    ...getBadgeSize(props),
+    backgroundColor: getBackgroundColor(props),
+    borderRadius: props.theme.BorderBaseRadiusRounded,
+    position: 'relative',
+    ...(props.hasCutout && {
+      position: 'absolute',
+      top: getContentPosition(props),
+      right: getContentPosition(props),
+    }),
+  })
+);
 
 export const BadgeWrapper = styled(Container)<Pick<BadgePropsStrict, 'onClick' | 'disabled'>>(
   ({ onClick, disabled }) => ({
@@ -62,28 +67,62 @@ export const BadgeWrapper = styled(Container)<Pick<BadgePropsStrict, 'onClick' |
   })
 );
 
-export const FavoriteIcon = styled(FontAwesomeIcon)<
-  Pick<BadgePropsStrict, 'type' | 'disabled' | 'scheme'> & { customSize: BadgeSizes }
->(({ theme, disabled, scheme, type, customSize }) => {
+const getBadgeIconSize = ({ size }: Pick<BadgePropsStrict, 'size'>): string => {
   return {
-    height: favoriteIconSize[customSize],
-    width: favoriteIconSize[customSize],
-    color: getFillColor({ theme, disabled, scheme, type }),
-    '& .fa-primary , .fa-secondary': {
-      fill: getFillColor({ theme, disabled, scheme, type }),
-      opacity: 1,
+    small: '6px',
+    medium: '8px',
+    large: '16px',
+  }[size];
+};
+
+export const BadgeIcon = styled(FontAwesomeIcon)<BadgeStyleProps & { customSize: BadgeSizes }>((props) => ({
+  height: getBadgeIconSize({ size: props.customSize }),
+  width: getBadgeIconSize({ size: props.customSize }),
+  color: getFillColor(props),
+  '& .fa-primary, .fa-secondary': {
+    fill: getFillColor(props),
+    opacity: 1,
+  },
+}));
+
+const getCutoutStyles = (size: BadgeSizes) => {
+  const cutoutPositionMap: Record<string, Record<BadgeSizes, string>> = {
+    avatarHalo: {
+      small: '11px',
+      medium: '9.5px',
+      large: '11.2px',
+    },
+    avatarContent: {
+      small: '4px',
+      medium: '3px',
+      large: '5px',
+    },
+    iconContent: {
+      small: '4px',
+      medium: '3px',
+      large: '5px',
     },
   };
-});
+
+  const cutoutSizeMap: Record<BadgeSizes, string> = {
+    small: '8.5px',
+    medium: '13px',
+    large: '19px',
+  };
+
+  return {
+    '> svg': {
+      maskImage: `radial-gradient(circle at top ${cutoutPositionMap.iconContent[size]} right ${cutoutPositionMap.iconContent[size]}, transparent ${cutoutSizeMap[size]}, black 0)`,
+    },
+    '> div > div': {
+      maskImage: `radial-gradient(circle at top ${cutoutPositionMap.avatarContent[size]} right ${cutoutPositionMap.avatarContent[size]}, transparent ${cutoutSizeMap[size]}, black 0)`,
+    },
+    '> div::before': {
+      maskImage: `radial-gradient(circle at top ${cutoutPositionMap.avatarHalo[size]} right ${cutoutPositionMap.avatarHalo[size]}, transparent ${cutoutSizeMap[size]}, black 0)`,
+    },
+  };
+};
 
 export const Cutout = styled.div<Pick<BadgePropsStrict, 'size'>>(({ size }) => ({
-  '> svg': {
-    maskImage: `radial-gradient(circle at top ${cutoutPositionMap.iconContent[size]} right ${cutoutPositionMap.iconContent[size]}, transparent ${maskSizeMap[size]}, black 0)`,
-  },
-  '> div > div': {
-    maskImage: `radial-gradient(circle at top ${cutoutPositionMap.avatarContent[size]} right ${cutoutPositionMap.avatarContent[size]}, transparent ${maskSizeMap[size]}, black 0)`,
-  },
-  '> div::before': {
-    maskImage: `radial-gradient(circle at top ${cutoutPositionMap.avatarHalo[size]} right ${cutoutPositionMap.avatarHalo[size]}, transparent ${maskSizeMap[size]}, black 0)`,
-  },
+  ...getCutoutStyles(size),
 }));

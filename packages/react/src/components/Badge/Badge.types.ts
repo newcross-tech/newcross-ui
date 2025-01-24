@@ -1,70 +1,15 @@
 import { ReactNode } from 'react';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
-import { Scheme, SemanticSpacing, TestProp } from '../../types';
+import { Scheme, TestProp } from '../../types';
 
 export type BadgeSizes = 'small' | 'medium' | 'large';
 
 export type BadgeType = 'default' | 'notification';
 
-export const badgeSize: Record<
-  BadgeSizes,
-  { height: string; width?: string; minWidth?: string }
-> = {
-  small: {
-    height: '12px',
-    width: '12px',
-  },
-  medium: {
-    height: '20px',
-    minWidth: '20px',
-  },
-  large: {
-    height: '32px',
-    minWidth: '32px',
-  },
-};
-
-export const favoriteIconSize: Record<BadgeSizes, string> = {
-  small: '6px',
-  medium: '8px',
-  large: '16px',
-};
-
-export const badgeContentPadding: Partial<Record<BadgeSizes, SemanticSpacing>> =
-  {
-    medium: 'xs',
-    large: 'sm',
-  };
-
-export const maskSizeMap: Record<BadgeSizes, string> = {
-  small: '8.5px',
-  medium: '13px',
-  large: '19px',
-};
-
-export const cutoutPositionMap: Record<string, Record<BadgeSizes, string>> = {
-  avatarHalo: {
-    small: '11px',
-    medium: '9px',
-    large: '9px',
-  },
-  avatarContent: {
-    small: '3.5px',
-    medium: '3px',
-    large: '5px',
-  },
-  iconContent: {
-    small: '4px',
-    medium: '3px',
-    large: '5px',
-  },
-};
-
-export const contentPositionMap: Record<BadgeSizes, string> = {
-  small: '-2px',
-  medium: '-7px',
-  large: '-11px',
-};
+export type BadgeStyleProps = Pick<
+  BadgePropsStrict,
+  'type' | 'scheme' | 'disabled'
+>;
 
 export type BadgePropsStrict = {
   /**

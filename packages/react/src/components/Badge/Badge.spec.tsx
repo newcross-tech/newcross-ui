@@ -2,19 +2,12 @@ import { render, screen } from '@testing-library/react';
 import Badge, { BadgeProps } from './Badge';
 import Typography from '../Typography';
 import { faHeart } from '@fortawesome/pro-solid-svg-icons/faHeart';
-import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { axe } from '../../utils/test/axeConfig';
 import { byTestId } from 'testing-library-selector';
 import userEvent from '@testing-library/user-event';
 
 const renderComponent = (customProps: Partial<BadgeProps>) => {
-  const props = {
-    badgeContent: 7,
-    children: <Typography variant="p1">Text</Typography>,
-    ...customProps,
-  };
-
-  render(<Badge {...props} />);
+  render(<Badge {...customProps} />);
 };
 
 describe('Badge Component', () => {
@@ -44,6 +37,26 @@ describe('Badge Component', () => {
     expect(ui.badgeContainer('default').get()).toBeInTheDocument();
   });
 
+  it('renders successfully when size is medium', () => {
+    // Act
+    renderComponent({
+      testID: 'medium',
+      size: 'medium',
+      badgeContent: 'medium',
+    });
+
+    // Assert
+    expect(screen.getByText('medium')).toBeInTheDocument();
+  });
+
+  it('renders the correct badgeContent when the value does not exceeds maxNumber', () => {
+    // Act
+    renderComponent({ badgeContent: 5 });
+
+    // Assert
+    expect(screen.getByText('5')).toBeInTheDocument();
+  });
+
   it('renders the correct badgeContent when the value exceeds maxNumber', () => {
     // Act
     renderComponent({ badgeContent: 1000 });
@@ -63,8 +76,7 @@ describe('Badge Component', () => {
   it('renders the Icon when badgeContent is an IconDefinition', () => {
     // Act
     renderComponent({
-      badgeContent: faHeart as IconDefinition,
-      testID: 'favorite',
+      badgeContent: faHeart,
     });
 
     // Assert
@@ -129,5 +141,13 @@ describe('Badge Component', () => {
 
     // Assert
     expect(ui.notificationCycle().query()).not.toBeInTheDocument();
+  });
+
+  it('should render the LegacyBadge when the legacy prop is passed', () => {
+    // Act
+    renderComponent({ badgeContent: 'Legacy Badge', position: 'topRight' });
+
+    // Assert
+    expect(screen.getByText('Legacy Badge')).toBeInTheDocument();
   });
 });
