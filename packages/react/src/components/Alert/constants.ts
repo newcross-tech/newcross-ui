@@ -1,6 +1,6 @@
-import { faCircleCheck } from '@fortawesome/pro-light-svg-icons/faCircleCheck';
-import { faCircleExclamation } from '@fortawesome/pro-light-svg-icons/faCircleExclamation';
-import { faCircleInfo } from '@fortawesome/pro-light-svg-icons/faCircleInfo';
+import { faCircleCheck } from '@fortawesome/pro-regular-svg-icons/faCircleCheck';
+import { faCircleExclamation } from '@fortawesome/pro-regular-svg-icons/faCircleExclamation';
+import { faCircleInfo } from '@fortawesome/pro-regular-svg-icons/faCircleInfo';
 import { faEnvelope } from '@fortawesome/pro-duotone-svg-icons/faEnvelope';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 
