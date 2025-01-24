@@ -10,7 +10,7 @@ import Icon from '../Icon';
 export type CheckboxProps = {
   onChange?(
     selected: boolean,
-    event?: React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLElement>
+    event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>
   ): void;
 } & OptionalProps<
   Omit<CheckboxPropsStrict, 'onClick' | 'onChange'>,

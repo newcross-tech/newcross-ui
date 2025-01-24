@@ -1,83 +1,79 @@
 import { animated } from '@react-spring/web';
-import styled, { css } from 'styled-components';
-import { ExtendedTheme, Theme } from '../../types';
-import { getRgba, getTabbedStateStyles } from '../../utils';
+import styled from 'styled-components';
+import { getTabbedStateStyles } from '../../utils';
 import Typography from '../Typography';
-import { defaultSpringConfig } from './Tabs.constants';
-import { AnimatedTabArgs, DisabledType, TabsPropsDivider } from './Tabs.types';
+import { TabsPropsStrict } from './Tabs.types';
+import Container from '../Container';
+import { HTMLAttributes } from 'react';
 
-export const getAnimatedStyles = ({ translateValue, index }: AnimatedTabArgs) => {
+export const getAnimatedStyles = (props: Pick<TabsPropsStrict, 'currentIndex' | 'tabs'>) => {
   return {
     from: {
-      width: translateValue,
-      transform: `translateX(0px)`,
+      marginLeft: '0%',
     },
     to: {
-      width: translateValue,
-      transform: `translateX(${translateValue * index}px)`,
+      marginLeft: getActiveTabOffset(props),
     },
-
-    config: { ...defaultSpringConfig },
+    config: {
+      mass: 1,
+      tension: 100,
+      friction: 16,
+    },
   };
 };
-export const Container = styled.div`
-  min-width: fit-content;
-  ${({ theme }: Theme) => css`
-    background-color: ${theme.TabsBackgroundColor};
-    border-radius: ${theme.TabsBorderRadius};
-    padding: ${theme.TabsPaddingVertical} ${theme.TabsPaddingHorizontal};
-  `};
-`;
 
-export const InnerContainer = styled.div<DisabledType>`
-  display: flex;
-  align-items: center;
-  ${({ theme, disabled }: ExtendedTheme<DisabledType>) => css`
-    cursor: ${!disabled && 'pointer'};
-    height: ${theme.TabsHeight};
-  `};
-`;
+const getActiveTabWidth = ({ tabs }: Pick<TabsPropsStrict, 'tabs'>) => `${100 / tabs.length}%`;
+const getActiveTabOffset = ({ currentIndex, tabs }: Pick<TabsPropsStrict, 'currentIndex' | 'tabs'>) =>
+  `${(100 / tabs.length) * currentIndex}%`;
 
-export const Text = styled(Typography)`
-  ${getTabbedStateStyles()}
-`;
+export const TabsContainer = styled(Container)(({ theme }) => ({
+  minWidth: 'fit-content',
+  backgroundColor: theme.ElementsSurfaceDefault,
+  borderRadius: theme.BorderBaseRadiusRounded,
+}));
 
-export const Content = styled.div<DisabledType>`
-  ${({ theme, disabled }: ExtendedTheme<DisabledType>) => css`
-    color: ${disabled ? theme.TabsLabelDisabledColor : theme.TabsLabelColor};
-    padding-left: ${theme.TabsPaddingHorizontal};
-    padding-right: ${theme.TabsPaddingHorizontal};
-    ${getTabbedStateStyles()}
-  `};
-`;
+export const InnerContainer = styled(Container)<Pick<TabsPropsStrict, 'disabled'>>((props) => ({
+  position: 'relative',
+  flex: 1,
+  cursor: !props.disabled ? 'pointer' : 'inherit',
+  height: props.theme.BaselineSpacesSpace40,
+}));
 
-export const Tab = styled.div`
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-`;
+export const Text = styled(Typography)(() => ({
+  ...getTabbedStateStyles(),
+}));
 
-export const ActiveTab = styled(animated.div)<DisabledType>`
-  align-content: center;
-  position: absolute;
+export const Content = styled(Container)<Pick<TabsPropsStrict, 'disabled'> & HTMLAttributes<HTMLDivElement>>(
+  (props) => ({
+    color: props.disabled ? props.theme.ElementsTextDisabled : props.theme.ElementsTextDefaultDark,
+    ...getTabbedStateStyles(),
+  })
+);
 
-  ${({ theme, disabled }: ExtendedTheme<DisabledType>) => css`
-    background-color: ${theme.TabsActiveTabBackgroundColor};
-    border-radius: ${theme.TabsActiveTabBorderRadius};
+export const Tab = styled(Container)<{ isSelected: boolean; disabled: boolean }>(({ theme, isSelected, disabled }) => [
+  {
+    flex: 1,
+    zIndex: 1,
+    height: theme.BaselineSpacesSpace40,
+    borderRadius: theme.BorderBaseRadiusRounded,
+    transition: 'background-color 0.3s cubic-bezier(0, 0, 0, 1)',
+  },
+  !isSelected &&
+    !disabled && {
+      '&:hover': {
+        backgroundColor: theme.ElementsSurfaceActionHover,
+      },
+    },
+]);
 
-    height: ${theme.TabsActiveTabHeight};
-    background-color: ${disabled && theme.TabsActiveTabDisabledBackgroundColor};
-    box-shadow: ${theme.TabsActiveTabShadowOffsetWidth}px ${theme.TabsActiveTabShadowOffsetHeight}px
-      ${theme.TabsActiveTabShadowRadius}px ${getRgba(theme.TabsActiveTabShadowColor, theme.TabsActiveTabShadowOpacity)};
-  `};
-`;
-
-export const Divider = styled.div<TabsPropsDivider>`
-  ${({ theme, showDivider }: ExtendedTheme<TabsPropsDivider>) => css`
-    width: calc(${theme.TabsDividerWidth} / 4);
-    height: calc(${theme.TabsDividerHeight} / 2);
-    background-color: ${showDivider && theme.TabsDividerBackgroundColor};
-  `};
-`;
+export const ActiveTab = styled(animated(Container))<Pick<TabsPropsStrict, 'currentIndex' | 'tabs' | 'disabled'>>(
+  (props) => ({
+    position: 'absolute',
+    alignContent: 'center',
+    width: getActiveTabWidth(props),
+    marginLeft: getActiveTabOffset(props),
+    height: props.theme.BaselineSpacesSpace40,
+    backgroundColor: props.disabled ? props.theme.ElementsSurfaceDisabled : props.theme.ElementsSurfaceActionDefault,
+    borderRadius: props.theme.BorderBaseRadiusRounded,
+  })
+);
