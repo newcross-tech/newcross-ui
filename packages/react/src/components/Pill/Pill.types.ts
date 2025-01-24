@@ -40,6 +40,11 @@ export enum PillPaddingXSize {
   large = 'md',
 }
 
+export enum PillGapSize {
+  small = 'xs',
+  large = 'sm',
+}
+
 export enum PillTypographyColor {
   default = 'defaultDark',
   info = 'info',
