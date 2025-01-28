@@ -9,10 +9,10 @@ import {
 } from '@fortawesome/pro-light-svg-icons';
 import { forwardRef, ForwardRefRenderFunction, useState } from 'react';
 import { OptionalProps } from '../../types';
-import { TextArea } from './TextArea';
+import TextArea from './TextArea/';
 import * as Styled from './TextInput.style';
 import Container from '../Container';
-import { HelperText } from './HelperText';
+import HelperText from './HelperText/';
 import { TextInputPropsStrict } from './TextInput.types';
 import Icon from '../Icon';
 import Typography from '../Typography';
@@ -33,8 +33,8 @@ const normalizeTextInputProps = (
   setIsFocused: (value: boolean) => void
 ): TextInputPropsStrict => ({
   ...props,
-  labelVariant: props.labelVariant ?? 'subtitle1',
-  subtitleVariant: props.subtitleVariant ?? 'subtitle2',
+  labelVariant: props.labelVariant ?? 'h3',
+  subtitleVariant: props.subtitleVariant ?? 'p2',
   type: props.type ?? 'text',
   disabled: props.disabled ?? false,
   fullWidth: props.fullWidth ?? false,
@@ -110,9 +110,9 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
   };
 
   return (
-    <Container flexDirection="column" fullWidth={fullWidth}>
+    <Container flexDirection="column" gap="xs" fullWidth={fullWidth}>
       {label && (
-        <Container gap="xs" mb="xs">
+        <Container gap="xs">
           <Label
             htmlFor={inputId}
             variant={labelVariant}
@@ -121,7 +121,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
           >
             {label}
           </Label>
-          {required && (
+          {required && !disabled && (
             <Typography
               testID={`${inputId}-required-indicator`}
               variant={labelVariant}
@@ -134,23 +134,21 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
       )}
 
       {subtitle && (
-        <Container mb="xs">
-          <Label
-            variant={subtitleVariant}
-            color={hasError ? 'dangerError' : 'defaultDark'}
-          >
-            {subtitle}
-          </Label>
-        </Container>
+        <Label
+          variant={subtitleVariant}
+          color={hasError ? 'dangerError' : 'defaultDark'}
+        >
+          {subtitle}
+        </Label>
       )}
 
       {isTextArea ? (
         <TextArea
+          isValid={isValid}
           placeholder={placeholder}
           disabled={disabled}
           maxLength={maxLength}
           value={value}
-          fullWidth={fullWidth}
           length={typeof value === 'string' ? value.length : 0}
           onChangeHandler={onChangeHandler}
           testID={testID}
@@ -167,7 +165,6 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
           hasError={hasError}
           search={search}
           disabled={disabled}
-          fullWidth={fullWidth}
           testID={
             isFocused ? `${inputId}-container-focused` : `${inputId}-container`
           }
@@ -276,9 +273,9 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
           )}
         </Styled.TextInputContainer>
       )}
-
-      {!isTextArea && (helperText || errorText) && (
+      {!isTextArea && (
         <HelperText
+          disabled={disabled}
           errorText={errorText}
           helperText={helperText}
           testID={inputId}
