@@ -30,29 +30,30 @@ export type CustomStyle = {
 
 export type PillSize = 'small' | 'large';
 
-export enum PillTypographySize {
-  small = 'p2ActionRegular',
-  large = 'p1ActionRegular',
-}
+export const PillTypographySize = {
+  small: 'p2ActionRegular',
+  large: 'p1ActionRegular',
+} as const;
 
-export enum PillPaddingXSize {
-  small = 'sm',
-  large = 'md',
-}
+export const PillPaddingXSize = {
+  small: 'sm',
+  large: 'md',
+} as const;
 
-export enum PillGapSize {
-  small = 'xs',
-  large = 'sm',
-}
+export const PillGapSize = {
+  small: 'xs',
+  large: 'sm',
+} as const;
 
-export enum PillTypographyColor {
-  default = 'defaultDark',
-  info = 'info',
-  success = 'success',
-  warning = 'warning',
-  error = 'danger',
-  disabled = 'disabled',
-}
+export const PillTypographyColor = {
+  default: 'defaultDark',
+  info: 'info',
+  success: 'success',
+  warning: 'warning',
+  error: 'danger',
+  disabled: 'disabled',
+} as const;
+
 /**
  * @private
  */
