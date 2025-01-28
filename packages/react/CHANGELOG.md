@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.28.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.27.1...@newcross-ui/react@2.28.0) (2025-01-28)
+
+
+### Features
+
+* **HFAUI-158:** icon - expose spin prop ([#186](https://bitbucket.org/newcrossdev/newcross-ui/issues/186)) ([0913792](https://bitbucket.org/newcrossdev/newcross-ui/commits/09137920a38623fad52de2cc42b34269641a643b))
+
+
+
+
+
 ## [2.27.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.27.0...@newcross-ui/react@2.27.1) (2025-01-17)
 
 **Note:** Version bump only for package @newcross-ui/react
