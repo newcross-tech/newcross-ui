@@ -121,6 +121,6 @@ export const Button = styled(Container)<Pick<ButtonPropsStrict, 'variant' | 'sch
     ...baseStyles,
     ...stateStyles,
     ...activeStateStyles,
-    ...{ transition: 'background-color 0.2s ease-in-out', tramsition: 'color 0.2s ease-in-out' },
+    ...{ transition: 'background-color 0.2s ease-in-out, color 0.2s ease-in-out' },
   };
 });
