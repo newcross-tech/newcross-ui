@@ -9,7 +9,6 @@ import useTheme from '../../hooks/useTheme';
 import { TestProp } from '../../types';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import Checkbox from '../Checkbox';
-import * as TextStyled from '../TextInput/TextInput.style';
 import * as Styled from './Dropdown.style';
 import { MultiProps, SingleProps } from './Dropdown.types';
 import DropdownValue from './DropdownValue';
@@ -231,13 +230,13 @@ const Dropdown = ({
         </Styled.BodyContent>
       </Styled.BodyContainer>
       {errorText && (
-        <TextStyled.MessageText
+        <Styled.MessageText
           variant={'paragraph2'}
           testID={`${baseTestId}-error-text-${testID}`}
           hasError={true}
         >
           {errorText}
-        </TextStyled.MessageText>
+        </Styled.MessageText>
       )}
     </Styled.Container>
   );

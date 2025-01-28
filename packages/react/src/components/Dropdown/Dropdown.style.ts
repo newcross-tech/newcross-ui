@@ -5,7 +5,7 @@ import { getElipsisStyles, getTabbedStateStyles } from '../../utils/css';
 import { getScrollbarStyles } from '../../utils/css/getScrollbarStyles';
 import { getHaloValue } from '../../utils/getHaloValue';
 import HaloLabel, { LabelProps } from '../Label';
-import Typography from '../Typography';
+import Typography, { TypographyProps } from '../Typography';
 import { defaultAnimationSpeed, optionNumberOfLines } from './Dropdown.constants';
 import {
   DropdownAnimatedStyleArgs,
@@ -203,3 +203,10 @@ export const PillContainer = styled.div`
     gap: ${theme.SpacingBase8};
   `};
 `;
+
+export const MessageText = styled(Typography)<TypographyProps & { hasError?: boolean }>(({ theme, hasError }) => ({
+  color: hasError ? theme.ElementsTextDangerError : theme.ElementsTextDefaultDarkSecondary,
+  marginTop: theme.BaselineSpacesSpace4,
+  paddingRight: theme.BaselineSpacesSpace0,
+  paddingLeft: theme.BaselineSpacesSpace16,
+}));
