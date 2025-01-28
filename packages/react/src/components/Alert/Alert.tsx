@@ -1,4 +1,4 @@
-import { faXmark } from '@fortawesome/pro-light-svg-icons/faXmark';
+import { faXmark } from '@fortawesome/pro-regular-svg-icons/faXmark';
 import { OptionalProps } from '../../types';
 import { onSpacePressTrigger } from '../../utils';
 import * as Styled from './Alert.style';
