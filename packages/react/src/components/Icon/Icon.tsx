@@ -22,11 +22,8 @@ export type IconProps = {
    * The color of the icon.
    */
   color?: TypographyColors;
-  /**
-   * The rotation of the icon.
-   */
-  rotation?: FontAwesomeIconProps['rotation'];
-} & ContainerProps;
+} & ContainerProps &
+  Pick<FontAwesomeIconProps, 'rotation' | 'spin'>;
 
 const Icon = ({
   icon,
@@ -34,6 +31,7 @@ const Icon = ({
   color = 'defaultDark',
   scheme = 'light',
   rotation,
+  spin,
   ...rest
 }: IconProps) => {
   return (
@@ -44,6 +42,7 @@ const Icon = ({
         color={color}
         scheme={scheme}
         rotation={rotation}
+        spin={spin}
       />
     </Container>
   );
