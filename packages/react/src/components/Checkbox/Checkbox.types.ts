@@ -27,13 +27,13 @@ export type CheckboxPropsStrict = {
    * Callback fired when the state is changed.
    */
   onChange: (
-    event: React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLElement>
+    event: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>
   ) => void;
   /**
    * Callback fired when the state is changed.
    */
   onClick: (
-    event: React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLElement>
+    event: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>
   ) => void;
   /**
    * Determines selected/checked state

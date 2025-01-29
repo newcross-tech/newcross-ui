@@ -1,5 +1,5 @@
 import * as Styled from './Container.style';
-import { CSSProperties, InputHTMLAttributes } from 'react';
+import { CSSProperties, HTMLAttributes, InputHTMLAttributes } from 'react';
 import {
   NewContainerGapSpacing,
   NewContainerSpacing,
@@ -107,7 +107,12 @@ export type NewContainerProps = {
   role?: InputHTMLAttributes<HTMLElement>['role'];
 } & TestProp;
 
-export type ContainerProps = NewContainerProps | LegacyContainerProps;
+export type ContainerProps =
+  | (NewContainerProps | LegacyContainerProps) &
+      Pick<
+        HTMLAttributes<HTMLElement>,
+        'onClick' | 'onMouseDown' | 'onKeyDown'
+      >;
 
 const Container = (props: ContainerProps) => {
   if (isLegacyProps(props)) {

@@ -5,9 +5,11 @@ import Container from '../../components/Container';
 import useState from 'storybook-addon-state';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faKitMedical } from '@fortawesome/pro-light-svg-icons/faKitMedical';
-import { faUser } from '@fortawesome/pro-light-svg-icons/faUser';
+import { faUser } from '@fortawesome/pro-regular-svg-icons/faUser';
+import { faCalendarDays } from '@fortawesome/pro-regular-svg-icons/faCalendarDays';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './TabsInfo';
+import { Badge, Typography } from '../../index';
 
 export default {
   title: 'React/Components/Tabs',
@@ -53,6 +55,11 @@ export const Variants = () => {
     'currentIndexIcons',
     0
   );
+  const [currentIconsAndBadges, setCurrentIconsAndBadges] = useState(
+    'currentIconsAndBadges',
+    0
+  );
+
   const tabs = ['Label A', 'Label B'];
   const tabsMultiple = ['Label A', 'Label B', 'Label C', 'Label D'];
   const tabsDisabled = ['Label A', 'Label B'];
@@ -66,6 +73,14 @@ export const Variants = () => {
     <FontAwesomeIcon icon={faUser} />,
     <FontAwesomeIcon icon={faKitMedical} />,
   ];
+  const tabsWithIconsAndBadges = Array.from({ length: 2 }, () => (
+    <Container alignItems="center" gap="sm">
+      <FontAwesomeIcon icon={faCalendarDays} />
+      <Typography variant="p1">Label</Typography>
+      <Badge backgroundColor="primary" badgeContent={9} />
+    </Container>
+  ));
+
   return (
     <Container display="block">
       <Tabs
@@ -73,33 +88,39 @@ export const Variants = () => {
         currentIndex={currentIndex}
         onCurrentIndexChange={setCurrentIndex}
       />
-      <Container m="SpacingBase4" />
+      <Container m="xs" />
+      <Tabs
+        tabs={tabsWithIconsAndBadges}
+        currentIndex={currentIconsAndBadges}
+        onCurrentIndexChange={setCurrentIconsAndBadges}
+      />
+      <Container m="xs" />
       <Tabs
         tabs={tabsMultiple}
         currentIndex={currentIndexMultiple}
         onCurrentIndexChange={setCurrentIndexMultiple}
       />
-      <Container m="SpacingBase4" />
+      <Container m="xs" />
       <Tabs
         tabs={tabsDisabled}
         currentIndex={currentIndexDisabled}
         onCurrentIndexChange={setCurrentIndexDisabled}
         disabled
       />
-      <Container m="SpacingBase4" />
+      <Container m="xs" />
       <Tabs
         tabs={tabsWithElipses}
         currentIndex={currentIndexElipses}
         onCurrentIndexChange={setCurrentIndexElipses}
       />
-      <Container m="SpacingBase4" />
+      <Container m="xs" />
       <Tabs
         tabs={tabsWithIcons}
         currentIndex={currentIndexIcons}
         onCurrentIndexChange={setCurrentIndexIcons}
         disabled
       />
-      <Container m="SpacingBase4" />
+      <Container m="xs" />
     </Container>
   );
 };
@@ -115,7 +136,7 @@ export const VariantThatIsDisabled = () => {
         onCurrentIndexChange={setCurrentIndex}
         disabled
       />
-      <Container m="SpacingBase4" />
+      <Container m="xs" />
     </Container>
   );
 };
@@ -130,7 +151,7 @@ export const VariantWithMoreThanTwoLabels = () => {
         currentIndex={currentIndex}
         onCurrentIndexChange={setCurrentIndex}
       />
-      <Container m="SpacingBase4" />
+      <Container m="xs" />
     </Container>
   );
 };
@@ -148,7 +169,7 @@ export const VariantWithIcons = () => {
         currentIndex={currentIndex}
         onCurrentIndexChange={setCurrentIndex}
       />
-      <Container m="SpacingBase4" />
+      <Container m="xs" />
     </Container>
   );
 };
