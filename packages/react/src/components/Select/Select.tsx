@@ -1,22 +1,42 @@
-import { faChevronDown } from '@fortawesome/pro-light-svg-icons/faChevronDown';
-import { faXmark } from '@fortawesome/pro-light-svg-icons/faXmark';
-import { FunctionComponent, ReactElement, useMemo } from 'react';
 import {
   components,
   default as ReactSelect,
   GroupBase,
   createFilter,
-  Props,
   DropdownIndicatorProps,
   ClearIndicatorProps,
-  MenuListProps,
   MultiValueRemoveProps,
 } from 'react-select';
+import {
+  faChevronDown,
+  faXmark,
+  faCircleXmark,
+} from '@fortawesome/pro-light-svg-icons';
 import useTheme from '../../hooks/useTheme';
 import * as Styled from './Select.style';
 import { SelectContext, useSelectContext } from './SelectContext';
-import { TypographyVariant } from '../Typography';
-import { TestProp } from '../../types';
+import { AnySelectPropsStrict, SelectPropsStrict } from './Select.types';
+import { OptionalProps } from '../../types';
+import Container from '../Container';
+import HelperText from '../TextInput/HelperText';
+import Label from '../Label';
+import Typography from '../Typography';
+import Icon from '../Icon';
+
+const getIconColor = ({
+  isDisabled,
+  hasError,
+}: Pick<AnySelectPropsStrict, 'hasError' | 'isDisabled'>) => {
+  if (isDisabled) {
+    return 'disabled';
+  }
+
+  if (hasError) {
+    return 'dangerError';
+  }
+
+  return 'defaultDark';
+};
 
 const MultiValueRemove = <
   Option,
@@ -24,24 +44,14 @@ const MultiValueRemove = <
   Group extends GroupBase<Option> = GroupBase<Option>
 >(
   props: MultiValueRemoveProps<Option, IsMulti, Group>
-) => {
-  return (
-    <components.MultiValueRemove {...props}>
-      <Styled.PillCloseIcon icon={faXmark} />
-    </components.MultiValueRemove>
-  );
-};
-
-const CrossIcon: FunctionComponent = () => (
-  <Styled.RightIconContainer>
-    <Styled.XMarkIcon icon={faXmark} />
-  </Styled.RightIconContainer>
-);
-
-const DownChevron = ({ isDisabled }: { isDisabled: boolean }) => (
-  <Styled.RightIconContainer>
-    <Styled.ChevronIcon icon={faChevronDown} isDisabled={isDisabled} />
-  </Styled.RightIconContainer>
+) => (
+  <components.MultiValueRemove {...props}>
+    <Icon
+      icon={faXmark}
+      variant="p2"
+      color={props.selectProps.isDisabled ? 'disabled' : 'defaultDark'}
+    />
+  </components.MultiValueRemove>
 );
 
 const ClearIndicator = <
@@ -51,14 +61,20 @@ const ClearIndicator = <
 >(
   props: ClearIndicatorProps<Option, IsMulti, Group>
 ) => {
+  const { hasError } = useSelectContext();
   const {
-    children = <CrossIcon />,
     innerProps: { ref, ...restInnerProps },
   } = props;
+
+  const iconColor = getIconColor({
+    isDisabled: props.selectProps.isDisabled,
+    hasError,
+  });
+
   return (
-    <div {...restInnerProps} ref={ref} data-testid="crossicon">
-      {children}
-    </div>
+    <Container {...restInnerProps} ref={ref} testID="crossicon">
+      <Icon icon={faCircleXmark} variant="p1" color={iconColor} />
+    </Container>
   );
 };
 
@@ -68,27 +84,18 @@ const DropdownIndicator = <
   Group extends GroupBase<Option> = GroupBase<Option>
 >(
   props: DropdownIndicatorProps<Option, IsMulti, Group>
-) => (
-  <components.DropdownIndicator {...props}>
-    <DownChevron isDisabled={props.isDisabled} />
-  </components.DropdownIndicator>
-);
-
-const MenuList = <
-  Option,
-  IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
->(
-  props: React.PropsWithChildren<MenuListProps<Option, IsMulti, Group>>
 ) => {
-  const { children, ...rest } = props;
-  const { id } = useSelectContext();
-  const menuListId = `react-select-menu-list${id ? `-${id}` : ''}`;
+  const { hasError } = useSelectContext();
+
+  const iconColor = getIconColor({
+    isDisabled: props.isDisabled,
+    hasError,
+  });
 
   return (
-    <components.MenuList {...rest}>
-      <span id={menuListId}>{children}</span>
-    </components.MenuList>
+    <components.DropdownIndicator {...props}>
+      <Icon icon={faChevronDown} variant="p1" color={iconColor} />
+    </components.DropdownIndicator>
   );
 };
 
@@ -101,118 +108,99 @@ export type SelectProps<
   Option,
   IsMulti extends boolean = false,
   Group extends GroupBase<Option> = GroupBase<Option>
-> = Props<Option, IsMulti, Group> & {
-  /**
-   * Gives select a label
-   */
-  label?: string;
-  /**
-   * Adds helper text
-   */
-  helperText?: string | ReactElement;
-  /**
-   * Adds error text
-   */
-  errorText?: string;
-  /**
-   * Controls error styles
-   */
-  hasError?: boolean;
-  /**
-   * Adds id to select menu-list which is the parent div of the options
-   */
-  id: string;
-  /**
-   * Adds placeholder text
-   */
-  placeholder?: string;
-  /**
-   * Show disabled state
-   */
-  disabled?: boolean;
-  /**
-   * Applies the theme typography styles to the label
-   */
-  labelVariant?: TypographyVariant;
-  /**
-   * Adds subtitle text
-   */
-  subtitle?: string;
-  /**
-   * Applies the theme typography styles to the subtitle
-   */
-  subtitleVariant?: TypographyVariant;
-  /**
-   * Set custom z-index for the menu
-   */
-  $zIndex?: number;
-} & TestProp;
+> = OptionalProps<
+  SelectPropsStrict<Option, IsMulti, Group>,
+  'labelVariant' | 'subtitleVariant' | '$zIndex' | 'disabled' | 'hasError'
+>;
+
+const normalizeSelectProps = <
+  Option,
+  IsMulti extends boolean = false,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>(
+  props: SelectProps<Option, IsMulti, Group>
+): SelectPropsStrict<Option, IsMulti, Group> => ({
+  ...props,
+  labelVariant: props.labelVariant ?? 'h3',
+  subtitleVariant: props.subtitleVariant ?? 'p2',
+  hasError: props.hasError ?? false,
+  disabled: props.disabled ?? false,
+  $zIndex: props.$zIndex ?? 2,
+});
 
 const Select = <
   Option,
   IsMulti extends boolean = false,
   Group extends GroupBase<Option> = GroupBase<Option>
->({
-  options,
-  placeholder,
-  disabled,
-  errorText,
-  label,
-  helperText,
-  hasError,
-  isMulti,
-  labelVariant = 'subtitle1',
-  subtitle,
-  subtitleVariant = 'subtitle2',
-  testID,
-  $zIndex = 2,
-  ...rest
-}: SelectProps<Option, IsMulti, Group>) => {
+>(
+  _props: SelectProps<Option, IsMulti, Group>
+) => {
+  const props = normalizeSelectProps(_props);
+  const {
+    options,
+    placeholder,
+    disabled,
+    errorText,
+    label,
+    helperText,
+    hasError,
+    isMulti,
+    labelVariant,
+    subtitle,
+    subtitleVariant,
+    testID,
+    $zIndex,
+    required,
+    ...rest
+  } = props;
+
   const theme = useTheme();
 
-  const message = useMemo(() => {
-    if (errorText) {
-      return (
-        <Styled.MessageText
-          variant="paragraph2"
-          testID={`${baseTestId}-error-text`}
-          hasError={!!hasError}
-        >
-          {errorText}
-        </Styled.MessageText>
-      );
-    }
-    if (typeof helperText === 'string') {
-      return (
-        <Styled.MessageText
-          variant="paragraph2"
-          testID={`${baseTestId}-message-text`}
-          hasError={!!hasError}
-        >
-          {helperText}
-        </Styled.MessageText>
-      );
-    }
-    return helperText;
-  }, [errorText, helperText, hasError]);
+  const getTextColor = (disabled: boolean, hasError: boolean) => {
+    if (disabled) return 'disabled';
+    if (hasError) return 'dangerError';
+
+    return 'defaultDark';
+  };
 
   return (
-    <div
-      data-testid={
+    <Container
+      testID={
         testID ? `${baseTestId}-component-${testID}` : `${baseTestId}-component`
       }
+      flexDirection="column"
+      gap="xs"
     >
       {label && (
-        <Styled.Label variant={labelVariant} testID={`${baseTestId}-label`}>
-          {label}
-        </Styled.Label>
+        <Container gap="xs">
+          <Label
+            htmlFor={`${baseTestId}-label`}
+            variant={labelVariant}
+            color={getTextColor(disabled, hasError)}
+            testID={`${baseTestId}-label`}
+          >
+            {label}
+          </Label>
+          {required && !disabled && (
+            <Typography
+              testID={`${baseTestId}-label-required-indicator`}
+              variant={labelVariant}
+              color="dangerError"
+            >
+              *
+            </Typography>
+          )}
+        </Container>
       )}
       {subtitle && (
-        <Styled.Label variant={subtitleVariant} color="secondary">
+        <Label
+          variant={subtitleVariant}
+          color={getTextColor(disabled, hasError)}
+        >
           {subtitle}
-        </Styled.Label>
+        </Label>
       )}
-      <SelectContext.Provider value={{ id: rest?.id }}>
+      <SelectContext.Provider value={props}>
         <ReactSelect
           isDisabled={disabled}
           closeMenuOnSelect={!isMulti}
@@ -220,7 +208,6 @@ const Select = <
             MultiValueRemove,
             ClearIndicator,
             DropdownIndicator,
-            MenuList,
           }}
           styles={Styled.getCustomStyles<Option, IsMulti, Group>({
             theme,
@@ -231,12 +218,18 @@ const Select = <
           isMulti={isMulti}
           options={options}
           filterOption={createFilter({ ignoreAccents: false })} // required for performance reasons!
+          isClearable
           {...rest}
         />
       </SelectContext.Provider>
 
-      {(errorText || helperText) && message}
-    </div>
+      <HelperText
+        testID={`${baseTestId}-helper-text`}
+        errorText={errorText}
+        helperText={helperText}
+        disabled={disabled}
+      />
+    </Container>
   );
 };
 

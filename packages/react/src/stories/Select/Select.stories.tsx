@@ -169,6 +169,7 @@ const Template: Story<SelectProps<{ label: string; value: string }>> = ({
 
 export const Interactive = Template.bind({});
 Interactive.args = {
+  id: 'interactive-select',
   isMulti: false,
   options,
   placeholder: "Select a 'label'",

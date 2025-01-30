@@ -1,10 +1,11 @@
+import { ReactElement } from 'react';
 import { TestProp } from '../../../types';
 
 export type HelperTextPropsStrict = {
   /**
    * Adds helper text
    */
-  helperText?: string;
+  helperText?: string | ReactElement;
   /**
    * Adds error text
    */
