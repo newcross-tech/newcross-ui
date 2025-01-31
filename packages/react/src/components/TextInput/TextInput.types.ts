@@ -1,53 +1,39 @@
-import { InputHTMLAttributes, TextareaHTMLAttributes } from 'react';
+import { InputHTMLAttributes } from 'react';
 import { TestProp, Theme } from '../../types';
-import { TypographyProps, TypographyVariant } from '../Typography';
+import { TypographyVariant } from '../Typography';
 import { TextInputProps } from './TextInput';
 
-export type ErrorType = {
-  hasError?: boolean;
-};
 export type PropStylesTypes = {
   isFocused?: boolean;
   disabled?: boolean;
   isValid?: boolean;
-} & Theme &
-  ErrorType;
+  hasError?: boolean;
+} & Theme;
 
 export type ContainerProps = Pick<
   TextInputProps,
   'search' | 'disabled' | 'fullWidth' | 'isValid'
-> &
-  ErrorType & {
-    isFocused: boolean;
-  };
+> & {
+  hasError?: boolean;
+  isFocused: boolean;
+};
 
-export type MessageTextProps = TypographyProps & ErrorType;
-
-export type TextAreaContainerProps = Pick<TextInputProps, 'fullWidth'>;
-
-export type TextAreaProps = {
-  maxLength?: number;
-  length?: number;
-  helperText?: string;
-  errorText?: string;
-  onChangeHandler: (
-    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-  ) => void;
-} & TextAreaContainerProps &
-  TextareaHTMLAttributes<HTMLTextAreaElement> &
-  ErrorType &
-  TestProp;
-
-export type StyledTextAreaProps = Omit<TextAreaProps, 'onChangeHandler'> &
-  ErrorType;
-
-export type HelperTextProps = Pick<TextAreaProps, 'errorText' | 'helperText'> &
-  TestProp;
+type InputType =
+  | 'text'
+  | 'password'
+  | 'email'
+  | 'number'
+  | 'textarea'
+  | 'search';
 
 export type TextInputPropsStrict = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  'onChange' | 'disabled'
+  'onChange' | 'disabled' | 'type'
 > & {
+  /**
+   * Type of input
+   */
+  type: InputType;
   /**
    * Gives text input a label
    */
