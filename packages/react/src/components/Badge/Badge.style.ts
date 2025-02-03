@@ -3,6 +3,7 @@ import Container from '../Container';
 import styled from 'styled-components';
 import { BadgePropsStrict, BadgeSizes, BadgeStyleProps } from './Badge.types';
 import { Theme } from '../../types';
+import React, { ComponentProps } from 'react';
 
 const getBackgroundColor = ({ theme, type, scheme, disabled }: Theme & BadgeStyleProps): string => {
   if (type === 'notification' && !disabled) {
@@ -75,50 +76,58 @@ const getBadgeIconSize = ({ size }: Pick<BadgePropsStrict, 'size'>): string => {
   }[size];
 };
 
-export const BadgeIcon = styled(FontAwesomeIcon)<BadgeStyleProps & { customSize: BadgeSizes }>((props) => ({
-  height: getBadgeIconSize({ size: props.customSize }),
-  width: getBadgeIconSize({ size: props.customSize }),
-  color: getFillColor(props),
-  '& .fa-primary, .fa-secondary': {
-    fill: getFillColor(props),
-    opacity: 1,
-  },
-}));
+export const BadgeIcon = (() => {
+  const FontAwesomeIconWithoutSize: React.FC<Omit<ComponentProps<typeof FontAwesomeIcon>, 'size'>> = ({
+    size,
+    ...props
+  }: ComponentProps<typeof FontAwesomeIcon>) => React.createElement(FontAwesomeIcon, props);
+  return styled(FontAwesomeIconWithoutSize)<Pick<BadgePropsStrict, 'size' | 'disabled' | 'scheme' | 'type'>>(
+    (props) => ({
+      height: getBadgeIconSize(props),
+      width: getBadgeIconSize(props),
+      color: getFillColor(props),
+      '& .fa-primary, .fa-secondary': {
+        fill: getFillColor(props),
+        opacity: 1,
+      },
+    })
+  );
+})();
 
 const getCutoutStyles = (size: BadgeSizes) => {
-  const cutoutPositionMap: Record<string, Record<BadgeSizes, string>> = {
-    avatarHalo: {
-      small: '11px',
-      medium: '9.5px',
-      large: '11.2px',
-    },
-    avatarContent: {
-      small: '4px',
-      medium: '3px',
-      large: '5px',
-    },
-    iconContent: {
-      small: '4px',
-      medium: '3px',
-      large: '5px',
-    },
-  };
+  const iconContentCutoutPosition = {
+    small: '4px',
+    medium: '3px',
+    large: '5px',
+  }[size];
 
-  const cutoutSizeMap: Record<BadgeSizes, string> = {
+  const avatarContentCutoutPosition = {
+    small: '4px',
+    medium: '3px',
+    large: '5px',
+  }[size];
+
+  const avatarHaloCutoutPosition = {
+    small: '11px',
+    medium: '9.5px',
+    large: '11.2px',
+  }[size];
+
+  const cutoutSize = {
     small: '8.5px',
     medium: '13px',
     large: '19px',
-  };
+  }[size];
 
   return {
     '> svg': {
-      maskImage: `radial-gradient(circle at top ${cutoutPositionMap.iconContent[size]} right ${cutoutPositionMap.iconContent[size]}, transparent ${cutoutSizeMap[size]}, black 0)`,
+      maskImage: `radial-gradient(circle at top ${iconContentCutoutPosition} right ${iconContentCutoutPosition}, transparent ${cutoutSize}, black 0)`,
     },
     '> div > div': {
-      maskImage: `radial-gradient(circle at top ${cutoutPositionMap.avatarContent[size]} right ${cutoutPositionMap.avatarContent[size]}, transparent ${cutoutSizeMap[size]}, black 0)`,
+      maskImage: `radial-gradient(circle at top ${avatarContentCutoutPosition} right ${avatarContentCutoutPosition}, transparent ${cutoutSize}, black 0)`,
     },
     '> div::before': {
-      maskImage: `radial-gradient(circle at top ${cutoutPositionMap.avatarHalo[size]} right ${cutoutPositionMap.avatarHalo[size]}, transparent ${cutoutSizeMap[size]}, black 0)`,
+      maskImage: `radial-gradient(circle at top ${avatarHaloCutoutPosition} right ${avatarHaloCutoutPosition}, transparent ${cutoutSize}, black 0)`,
     },
   };
 };

@@ -90,7 +90,7 @@ const BadgeContent = ({
     return (
       <Styled.BadgeIcon
         icon={badgeContent}
-        customSize={size}
+        size={size}
         scheme={scheme}
         disabled={disabled}
         type={type}
