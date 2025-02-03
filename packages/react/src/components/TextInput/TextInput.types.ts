@@ -18,10 +18,22 @@ export type ContainerProps = Pick<
   isFocused: boolean;
 };
 
+type InputType =
+  | 'text'
+  | 'password'
+  | 'email'
+  | 'number'
+  | 'textarea'
+  | 'search';
+
 export type TextInputPropsStrict = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  'onChange' | 'disabled'
+  'onChange' | 'disabled' | 'type'
 > & {
+  /**
+   * Type of input
+   */
+  type: InputType;
   /**
    * Gives text input a label
    */

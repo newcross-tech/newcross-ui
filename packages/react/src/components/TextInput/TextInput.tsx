@@ -149,7 +149,6 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
           disabled={disabled}
           maxLength={maxLength}
           value={value}
-          fullWidth={fullWidth}
           length={typeof value === 'string' ? value.length : 0}
           onChangeHandler={onChangeHandler}
           testID={testID}
@@ -166,7 +165,6 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
           hasError={hasError}
           search={search}
           disabled={disabled}
-          fullWidth={fullWidth}
           testID={
             isFocused ? `${inputId}-container-focused` : `${inputId}-container`
           }

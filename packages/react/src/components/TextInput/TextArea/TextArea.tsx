@@ -7,7 +7,7 @@ const baseTestId = 'textarea';
 
 export type TextAreaProps = OptionalProps<
   TextAreaPropsStrict,
-  'isValid' | 'disabled' | 'fullWidth' | 'maxLength' | 'length'
+  'isValid' | 'disabled' | 'maxLength' | 'length'
 >;
 
 const normalizeTextAreaProps = (
@@ -16,7 +16,6 @@ const normalizeTextAreaProps = (
   ..._props,
   isValid: _props.isValid ?? false,
   disabled: _props.disabled ?? false,
-  fullWidth: _props.fullWidth ?? false,
   maxLength: _props.maxLength ?? 0,
   length: _props.length ?? 0,
 });
@@ -25,7 +24,6 @@ const TextArea = (_props: TextAreaProps) => {
   const {
     isValid,
     disabled,
-    fullWidth,
     maxLength,
     length,
     errorText,
@@ -43,7 +41,7 @@ const TextArea = (_props: TextAreaProps) => {
       flexDirection="column"
       gap="xs"
       testID={`${baseTestId}-container-component-${testID}`}
-      fullWidth={fullWidth}
+      fullWidth
     >
       <Styled.TextArea
         isValid={isValid}
@@ -55,7 +53,6 @@ const TextArea = (_props: TextAreaProps) => {
         value={value}
         maxLength={maxLength}
         length={length}
-        fullWidth={fullWidth}
       />
       <HelperText
         disabled={disabled}

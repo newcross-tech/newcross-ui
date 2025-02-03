@@ -5,8 +5,9 @@ import { getCommonStateStyles, getFocusedStyles } from '../TextInput.style';
 import { TextAreaPropsStrict } from './TextArea.types';
 import Container from '../../Container';
 
-export const Wrapper = styled(Container)<{ fullWidth: boolean }>(({ theme, fullWidth }) => ({
-  width: fullWidth ? '100%' : `${+getHaloValue(theme.BaselineSpacesSpace8) * 32.25}rem`,
+export const Wrapper = styled(Container)<{ fullWidth: boolean }>(({ theme }) => ({
+  // Calculate minWidth: BaselineSpacesSpace64 (4rem) * 4 = 16rem
+  minWidth: `${+getHaloValue(theme.BaselineSpacesSpace64) * 4}rem`,
 }));
 
 export const TextArea = styled.textarea<Omit<TextAreaPropsStrict, 'onChangeHandler'> & { hasError: boolean }>(

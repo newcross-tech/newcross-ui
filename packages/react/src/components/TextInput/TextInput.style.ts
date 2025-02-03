@@ -27,7 +27,7 @@ export const getFocusedStyles = ({ theme }: Theme) => ({
   border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderActionDefault}`,
 });
 
-export const TextInputContainer = styled(Container)<ContainerProps>((props) => ({
+export const TextInputContainer = styled(Container)<Omit<ContainerProps, 'fullWidth'>>((props) => ({
   borderRadius: props.theme.BorderBaseRadiusMd,
   backgroundColor: props.theme.ElementsSurfaceDefault,
   ...getCommonStateStyles(props),
@@ -36,7 +36,7 @@ export const TextInputContainer = styled(Container)<ContainerProps>((props) => (
     borderRadius: props.theme.BorderBaseRadiusRounded,
   }),
   '& input': {
-    width: props.fullWidth ? '100%' : '90%',
+    width: '100%',
     border: 'none',
     backgroundColor: 'transparent',
     outlineWidth: 0,

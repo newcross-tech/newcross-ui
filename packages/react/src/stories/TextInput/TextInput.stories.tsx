@@ -8,6 +8,12 @@ import { DESCRIPTION, DO, DONT, TITLE } from './TextInputInfo';
 export default {
   title: 'React/Components/TextInput',
   component: TextInput,
+  argTypes: {
+    type: {
+      control: { type: 'select' },
+      options: ['text', 'password', 'email', 'number', 'textarea', 'search'],
+    },
+  },
 } as Meta;
 
 export const Overview = () => {

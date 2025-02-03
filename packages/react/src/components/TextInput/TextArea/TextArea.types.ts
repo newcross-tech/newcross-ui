@@ -23,10 +23,6 @@ export type TextAreaPropsStrict = {
    */
   length: number;
   /**
-   * Applies full width to the component
-   */
-  fullWidth: boolean;
-  /**
    * Indicates if field is valid
    */
   isValid: boolean;

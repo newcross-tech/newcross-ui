@@ -6,7 +6,7 @@ import { axe } from '../../utils/test/axeConfig';
 
 const testID = '1';
 const renderComponent = (props: TextInputProps) => {
-  const customProps = {
+  const customProps: TextInputProps = {
     testID,
     type: 'text',
     placeholder: 'this is placeholder text',
