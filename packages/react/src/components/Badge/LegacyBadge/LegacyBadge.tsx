@@ -51,7 +51,7 @@ const LegacyBadge = ({
   badgeContent,
   maxNumber = 999,
   children,
-  position,
+  position = 'topRight',
   hasCutout = false,
   onClick,
   backgroundColor,

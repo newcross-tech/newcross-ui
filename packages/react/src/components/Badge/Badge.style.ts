@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Container from '../Container';
 import styled from 'styled-components';
-import { BadgePropsStrict, BadgeSizes, BadgeStyleProps } from './Badge.types';
+import { BadgePropsStrict, BadgeStyleProps } from './Badge.types';
 import { Theme } from '../../types';
 import React, { ComponentProps } from 'react';
 
@@ -23,19 +23,19 @@ export const getFillColor = ({ theme, disabled, scheme, type }: Theme & BadgeSty
   return theme.ElementsTextDefaultLight;
 };
 
-const getBadgeSize = ({ size }: Pick<BadgePropsStrict, 'size'>) =>
+const getBadgeSize = ({ theme, size }: Theme & Pick<BadgePropsStrict, 'size'>) =>
   ({
     small: {
-      height: '12px',
-      width: '12px',
+      height: theme.BaselineSpacesSpace12,
+      width: theme.BaselineSpacesSpace12,
     },
     medium: {
-      height: '20px',
-      minWidth: '20px',
+      height: theme.BaselineSpacesSpace20,
+      minWidth: theme.BaselineSpacesSpace20,
     },
     large: {
-      height: '32px',
-      minWidth: '32px',
+      height: theme.BaselineSpacesSpace32,
+      minWidth: theme.BaselineSpacesSpace32,
     },
   }[size]);
 
@@ -51,6 +51,7 @@ export const Wrapper = styled(Container)<Pick<BadgePropsStrict, 'size'> & BadgeS
     ...getBadgeSize(props),
     backgroundColor: getBackgroundColor(props),
     borderRadius: props.theme.BorderBaseRadiusRounded,
+    zIndex: 1,
     position: 'relative',
     ...(props.hasCutout && {
       position: 'absolute',
@@ -94,7 +95,7 @@ export const BadgeIcon = (() => {
   );
 })();
 
-const getCutoutStyles = (size: BadgeSizes) => {
+const getCutoutStyles = ({ size }: Pick<BadgePropsStrict, 'size'>) => {
   const iconContentCutoutPosition = {
     small: '4px',
     medium: '3px',
@@ -133,5 +134,5 @@ const getCutoutStyles = (size: BadgeSizes) => {
 };
 
 export const Cutout = styled.div<Pick<BadgePropsStrict, 'size'>>(({ size }) => ({
-  ...getCutoutStyles(size),
+  ...getCutoutStyles({ size }),
 }));
