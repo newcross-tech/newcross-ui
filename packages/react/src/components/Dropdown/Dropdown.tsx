@@ -136,9 +136,12 @@ const Dropdown = ({
   return (
     <Styled.Container ref={containerRef}>
       {label && (
-        <Styled.Label variant={'subtitle1'} testID={`${baseTestId}-label`}>
+        <Styled.DropdownLabel
+          variant={'subtitle1'}
+          testID={`${baseTestId}-label`}
+        >
           {label}
-        </Styled.Label>
+        </Styled.DropdownLabel>
       )}
       <Styled.HeaderContainer
         tabIndex={!disabled ? 0 : -1}

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 import PhoneNumberInput, {
   PhoneNumberInputProps,
-} from '../../components/PhoneNumberInput';
+} from '../../components/Fields/PhoneNumberInput';
 import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './PhoneNumberInput';

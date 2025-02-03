@@ -1,9 +1,9 @@
+import styled from 'styled-components';
 import { getHaloValue } from '../../../utils';
 import { getScrollbarStyles } from '../../../utils/css/getScrollbarStyles';
-import styled from 'styled-components';
-import { getCommonStateStyles, getFocusedStyles } from '../TextInput.style';
-import { TextAreaPropsStrict } from './TextArea.types';
 import Container from '../../Container';
+import { getCommonStateStyles, getFocusedStyles } from '../utils';
+import { TextAreaPropsStrict } from './TextArea.types';
 
 export const Wrapper = styled(Container)<{ fullWidth: boolean }>(({ theme }) => ({
   // Calculate minWidth: BaselineSpacesSpace64 (4rem) * 4 = 16rem

@@ -1,8 +1,8 @@
 import { fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { byPlaceholderText, byTestId, byText } from 'testing-library-selector';
-import TextInput, { TextInputProps } from './TextInput';
-import { axe } from '../../utils/test/axeConfig';
+import { axe } from '../../../utils/test/axeConfig';
+import TextInput, { TextInputProps } from '.';
 
 const testID = '1';
 const renderComponent = (props: TextInputProps) => {

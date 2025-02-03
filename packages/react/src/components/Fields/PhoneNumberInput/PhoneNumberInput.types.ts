@@ -1,6 +1,6 @@
-import { InputHTMLAttributes } from 'react';
-import { TestProp } from '../../types';
 import { PhoneInputProps } from 'react-international-phone';
+import { InputHTMLAttributes } from 'react';
+import { TestProp } from '../../../types';
 
 export type PhoneNumberInputPropsStrict = {
   /**

@@ -1,7 +1,7 @@
-import { render } from '@testing-library/react';
-import HelperText, { HelperTextProps } from './HelperText';
-import { axe } from '../../../utils/test/axeConfig';
 import { byTestId } from 'testing-library-selector';
+import { render } from '@testing-library/react';
+import { axe } from '../../../utils/test/axeConfig';
+import HelperText, { HelperTextProps } from './HelperText';
 
 const renderComponent = (customProps: Partial<HelperTextProps>) => {
   const props = {

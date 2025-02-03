@@ -1,6 +1,7 @@
 import { OptionalProps } from '../../../types';
 import Container from '../../Container';
 import Typography from '../../Typography';
+import { getTextColor } from '../utils';
 import { HelperTextPropsStrict } from './HelperText.types';
 
 export type HelperTextProps = OptionalProps<
@@ -29,13 +30,6 @@ const HelperText = (_props: HelperTextProps) => {
     testID,
   } = normalizeHelperTextProps(_props);
 
-  const getTextColor = () => {
-    if (disabled) return 'disabled';
-    if (errorText) return 'dangerError';
-
-    return 'defaultDarkSecondary';
-  };
-
   const hasText = Boolean(errorText) || Boolean(helperText);
 
   return (
@@ -48,7 +42,10 @@ const HelperText = (_props: HelperTextProps) => {
         <Typography
           variant="p2"
           testID={`${testID}-message-text`}
-          color={getTextColor()}
+          color={getTextColor.secondaryText({
+            disabled,
+            hasError: Boolean(errorText),
+          })}
         >
           {errorText || helperText}
         </Typography>
@@ -56,7 +53,10 @@ const HelperText = (_props: HelperTextProps) => {
       {displayLength && maxLength > 0 && (
         <Typography
           variant="p2"
-          color={getTextColor()}
+          color={getTextColor.secondaryText({
+            disabled,
+            hasError: Boolean(errorText),
+          })}
           testID={`textarea-max-length-${testID}`}
         >
           {`${length}/${maxLength}`}

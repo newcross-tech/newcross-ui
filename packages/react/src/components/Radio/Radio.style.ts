@@ -1,22 +1,9 @@
 import styled, { css } from 'styled-components';
 import { ExtendedTheme } from '../../types';
 import { getTabbedStateStyles } from '../../utils';
-import HaloLabel, { LabelProps } from '../Label';
 import { RadioValue } from './Radio.types';
 import { RadioProps } from './Radio';
-import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import Container from '../Container';
-
-const getLabelColor = (theme: ThemeDesignTokens, hasError?: boolean, disabled?: boolean) => {
-  if (disabled) return theme.ElementsTextDisabled;
-  return hasError ? theme.ElementsTextDangerError : theme.ElementsTextDefaultDark;
-};
-
-export const Label = styled(HaloLabel)<LabelProps & Pick<RadioProps<RadioValue>, 'hasError' | 'disabled'>>`
-  ${({ theme, hasError, disabled }: ExtendedTheme<Pick<RadioProps<RadioValue>, 'hasError' | 'disabled'>>) => css`
-    color: ${getLabelColor(theme, hasError, disabled)};
-  `}
-`;
 
 export const Radio = styled(Container)<
   ExtendedTheme<Pick<RadioProps<RadioValue>, 'disabled' | 'selected' | 'variant' | 'hasError' | 'onChange'>>
@@ -57,10 +44,6 @@ export const Radio = styled(Container)<
       &:not(:disabled) {
         &:active {
           opacity: 0.5;
-        }
-
-        & + ${Label} {
-          cursor: pointer;
         }
 
         &:hover {

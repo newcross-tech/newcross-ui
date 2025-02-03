@@ -1,19 +1,17 @@
 import { PhoneInput } from 'react-international-phone';
+import 'react-international-phone/style.css';
+import { useState } from 'react';
 import {
   faCircleXmark,
   faCircleExclamation,
   faCircleCheck,
 } from '@fortawesome/pro-light-svg-icons';
-import * as Styled from './PhoneNumberInput.styles';
-import 'react-international-phone/style.css';
-import HelperText from '../TextInput/HelperText';
-import Container from '../Container';
+import { OptionalProps } from '../../../types';
+import Icon from '../../Icon';
+import HelperText from '../HelperText';
 import Label from '../Label';
-import Typography from '../Typography';
-import { OptionalProps } from '../../types';
-import Icon from '../Icon';
-import { useState } from 'react';
 import { PhoneNumberInputPropsStrict } from './PhoneNumberInput.types';
+import * as Styled from './PhoneNumberInput.styles';
 
 export type PhoneNumberInputProps = OptionalProps<
   PhoneNumberInputPropsStrict,
@@ -56,13 +54,6 @@ const PhoneNumberInput = (_props: PhoneNumberInputProps) => {
     ...phoneInputProps
   } = normalizePhoneNumberInputProps(_props, setIsFocused);
 
-  const getTextColor = (disabled: boolean, hasError: boolean) => {
-    if (disabled) return 'disabled';
-    if (hasError) return 'dangerError';
-
-    return 'defaultDark';
-  };
-
   const phoneInputId = `phone-input-component-${testID}`;
   const preventEventPropagation = (event: React.MouseEvent) => {
     event.preventDefault();
@@ -78,25 +69,15 @@ const PhoneNumberInput = (_props: PhoneNumberInputProps) => {
       gap="xs"
     >
       {label && (
-        <Container gap="xs">
-          <Label
-            htmlFor={phoneInputId}
-            variant="h3"
-            color={getTextColor(disabled, isError)}
-            testID={`${phoneInputId}-label`}
-          >
-            {label}
-          </Label>
-          {required && !disabled && (
-            <Typography
-              testID={`${phoneInputId}-required-indicator`}
-              variant="h3"
-              color="dangerError"
-            >
-              *
-            </Typography>
-          )}
-        </Container>
+        <Label
+          htmlFor={phoneInputId}
+          required={required}
+          disabled={disabled}
+          testID={phoneInputId}
+          variant={'h3'}
+        >
+          {label}
+        </Label>
       )}
       <Styled.PhoneInputWrapper display="block">
         <PhoneInput disabled={disabled} {...phoneInputProps} />

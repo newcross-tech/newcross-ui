@@ -1,3 +1,4 @@
+import { forwardRef, ForwardRefRenderFunction, useState } from 'react';
 import {
   faCircleXmark,
   faEyeSlash,
@@ -7,16 +8,15 @@ import {
   faCircleCheck,
   faCircleExclamation,
 } from '@fortawesome/pro-light-svg-icons';
-import { forwardRef, ForwardRefRenderFunction, useState } from 'react';
-import { OptionalProps } from '../../types';
-import TextArea from './TextArea/';
-import * as Styled from './TextInput.style';
-import Container from '../Container';
-import HelperText from './HelperText/';
-import { TextInputPropsStrict } from './TextInput.types';
-import Icon from '../Icon';
-import Typography from '../Typography';
+import { OptionalProps } from '../../../types';
+import Container from '../../Container';
+import Icon from '../../Icon';
+import HelperText from '../HelperText';
 import Label from '../Label';
+import { getTextColor } from '../utils';
+import TextArea from '../TextArea';
+import * as Styled from './TextInput.style';
+import { TextInputPropsStrict } from './TextInput.types';
 
 export type TextInputProps = OptionalProps<
   TextInputPropsStrict,
@@ -97,13 +97,6 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
   const isTextArea = type === 'textarea';
   const inputId = `${baseTestId}-component-${testID}`;
 
-  const getTextColor = (disabled: boolean, hasError: boolean) => {
-    if (disabled) return 'disabled';
-    if (hasError) return 'dangerError';
-
-    return 'defaultDark';
-  };
-
   const preventEventPropagation = (event: React.MouseEvent) => {
     event.preventDefault();
     event.stopPropagation();
@@ -112,25 +105,16 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
   return (
     <Container flexDirection="column" gap="xs" fullWidth={fullWidth}>
       {label && (
-        <Container gap="xs">
-          <Label
-            htmlFor={inputId}
-            variant={labelVariant}
-            color={getTextColor(disabled, hasError)}
-            testID={`${inputId}-label`}
-          >
-            {label}
-          </Label>
-          {required && !disabled && (
-            <Typography
-              testID={`${inputId}-required-indicator`}
-              variant={labelVariant}
-              color="dangerError"
-            >
-              *
-            </Typography>
-          )}
-        </Container>
+        <Label
+          htmlFor={inputId}
+          variant={labelVariant}
+          color={getTextColor.primaryText({ disabled, hasError })}
+          testID={`${inputId}-label`}
+          required={required}
+          disabled={disabled}
+        >
+          {label}
+        </Label>
       )}
 
       {subtitle && (

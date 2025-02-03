@@ -1,7 +1,7 @@
 import { InputHTMLAttributes } from 'react';
-import { TestProp, Theme } from '../../types';
-import { TypographyVariant } from '../Typography';
-import { TextInputProps } from './TextInput';
+import { TestProp, Theme } from '../../../types';
+import { TypographyVariant } from '../../Typography';
+import { TextInputProps } from '.';
 
 export type PropStylesTypes = {
   isFocused?: boolean;

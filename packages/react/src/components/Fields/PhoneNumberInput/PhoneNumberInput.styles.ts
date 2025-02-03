@@ -1,11 +1,8 @@
 import styled from 'styled-components';
-import Container from '../Container';
+import { getScrollbarStyles } from '../../../utils/css/getScrollbarStyles';
+import Container from '../../Container';
+import { getCommonStateStyles, getFocusedStyles } from '../utils';
 import { PhoneNumberInputPropsStrict } from './PhoneNumberInput.types';
-import {
-  getCommonStateStyles,
-  getFocusedStyles,
-} from '../TextInput/TextInput.style';
-import { getScrollbarStyles } from '../../utils/css/getScrollbarStyles';
 
 export const Content = styled(Container)<
   Pick<PhoneNumberInputPropsStrict, 'isError' | 'disabled' | 'isValid'> & {

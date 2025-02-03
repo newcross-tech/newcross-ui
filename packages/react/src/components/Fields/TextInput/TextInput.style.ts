@@ -1,31 +1,7 @@
 import styled from 'styled-components';
-import { ContainerProps, PropStylesTypes } from './TextInput.types';
-import Container from '../Container';
-import { Theme } from '../../types';
-
-export const getCommonStateStyles = ({ theme, hasError, disabled, isValid }: PropStylesTypes) => ({
-  ...(hasError && {
-    border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderDangerError}`,
-  }),
-  ...(disabled && {
-    border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderDisabled}`,
-    backgroundColor: `${theme.ElementsSurfaceDisabled}`,
-  }),
-  ...(!hasError &&
-    !disabled &&
-    isValid && {
-      border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderSuccessStandalone}`,
-    }),
-  ...(!hasError &&
-    !disabled &&
-    !isValid && {
-      border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderDefault}`,
-    }),
-});
-
-export const getFocusedStyles = ({ theme }: Theme) => ({
-  border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderActionDefault}`,
-});
+import Container from '../../Container';
+import { getCommonStateStyles, getFocusedStyles } from '../utils';
+import { ContainerProps } from './TextInput.types';
 
 export const TextInputContainer = styled(Container)<Omit<ContainerProps, 'fullWidth'>>((props) => ({
   borderRadius: props.theme.BorderBaseRadiusMd,

@@ -4,7 +4,6 @@ import styled, { css } from 'styled-components';
 import { getElipsisStyles, getTabbedStateStyles } from '../../utils/css';
 import { getScrollbarStyles } from '../../utils/css/getScrollbarStyles';
 import { getHaloValue } from '../../utils/getHaloValue';
-import HaloLabel, { LabelProps } from '../Label';
 import Typography, { TypographyProps } from '../Typography';
 import { defaultAnimationSpeed, optionNumberOfLines } from './Dropdown.constants';
 import {
@@ -14,6 +13,7 @@ import {
   HeaderValueProps,
   OptionProps,
 } from './Dropdown.types';
+import Label, { LabelProps } from '../Fields/Label';
 
 const getPaddingStyles = (isMulti: boolean) => css`
   ${({ theme }) => css`
@@ -21,7 +21,7 @@ const getPaddingStyles = (isMulti: boolean) => css`
   `};
 `;
 
-export const Label = styled(HaloLabel)<LabelProps>`
+export const DropdownLabel = styled(Label)<LabelProps>`
   ${({ theme }) => css`
     display: inline-block;
     color: ${theme.RadioColor};

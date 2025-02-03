@@ -4,6 +4,7 @@ import { onSpacePressTrigger } from '../../utils';
 import * as Styled from './Radio.style';
 import { RadioValue, RadioVariant } from './Radio.types';
 import Container from '../Container';
+import Label from '../Fields/Label';
 
 export type RadioProps<T extends RadioValue> = {
   /**
@@ -85,7 +86,7 @@ function Radio<T extends RadioValue>({
           onKeyDown={(event) => onSpacePressTrigger(event, onChangeHandler)}
         />
       </Container>
-      <Styled.Label
+      <Label
         variant={'paragraph1'}
         testID={`${baseTestId}-label`}
         htmlFor={id}
@@ -93,7 +94,7 @@ function Radio<T extends RadioValue>({
         disabled={disabled}
       >
         {label}
-      </Styled.Label>
+      </Label>
     </Styled.Radio>
   );
 }
