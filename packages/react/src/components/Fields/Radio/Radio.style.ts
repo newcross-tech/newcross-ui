@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
-import { ExtendedTheme } from '../../types';
-import { getTabbedStateStyles } from '../../utils';
+import { ExtendedTheme } from '../../../types';
+import { getTabbedStateStyles } from '../../../utils';
 import { RadioValue } from './Radio.types';
 import { RadioProps } from './Radio';
-import Container from '../Container';
+import Container from '../../Container';
 
 export const Radio = styled(Container)<
   ExtendedTheme<Pick<RadioProps<RadioValue>, 'disabled' | 'selected' | 'variant' | 'hasError' | 'onChange'>>

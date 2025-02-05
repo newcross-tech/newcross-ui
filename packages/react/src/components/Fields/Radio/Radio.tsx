@@ -1,10 +1,10 @@
 import { ReactElement, ReactNode, useId } from 'react';
-import { TestProp } from '../../types';
-import { onSpacePressTrigger } from '../../utils';
+import { TestProp } from '../../../types';
+import { onSpacePressTrigger } from '../../../utils';
 import * as Styled from './Radio.style';
 import { RadioValue, RadioVariant } from './Radio.types';
-import Container from '../Container';
-import Label from '../Fields/Label';
+import Container from '../../Container';
+import Label from '../../Fields/Label';
 
 export type RadioProps<T extends RadioValue> = {
   /**

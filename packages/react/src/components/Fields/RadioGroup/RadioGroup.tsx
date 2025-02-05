@@ -1,9 +1,9 @@
 import { Children, cloneElement, ReactElement } from 'react';
-import { TestProp } from '../../types';
+import { TestProp } from '../../../types';
 import { RadioProps } from '../Radio';
 import { RadioValue, RadioVariant } from '../Radio/Radio.types';
 import { Container, RadioItem } from './RadioGroup.style';
-import { useUpstreamState } from '../../hooks/useUpstreamState';
+import { useUpstreamState } from '../../../hooks/useUpstreamState';
 
 export type RadioGroupProps<T extends RadioValue> = {
   /**

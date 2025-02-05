@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { RadioGroupProps } from './RadioGroup';
-import { ExtendedTheme } from '../../types';
+import { ExtendedTheme } from '../../../types';
 import { RadioValue } from '../Radio/Radio.types';
 
 export const Container = styled.div<RadioGroupProps<RadioValue>>`

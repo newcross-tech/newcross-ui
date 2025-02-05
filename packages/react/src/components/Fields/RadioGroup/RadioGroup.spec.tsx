@@ -1,8 +1,8 @@
 import userEvent from '@testing-library/user-event';
 import { render } from '@testing-library/react';
 import { byTestId } from 'testing-library-selector';
-import { axe } from '../../utils/test/axeConfig';
-import Radio from '../Radio/Radio';
+import { axe } from '../../../utils/test/axeConfig';
+import Radio from '../Radio';
 import RadioGroup, { RadioGroupProps } from './RadioGroup';
 
 const TEST_OPTION = {

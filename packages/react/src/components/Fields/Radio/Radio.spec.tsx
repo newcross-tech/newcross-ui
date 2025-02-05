@@ -2,8 +2,8 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Radio, { RadioProps } from './Radio';
 import { byTestId, byText } from 'testing-library-selector';
-import { axe } from '../../utils/test/axeConfig';
-import { executeKeyPress } from '../../utils/test';
+import { axe } from '../../../utils/test/axeConfig';
+import { executeKeyPress } from '../../../utils/test';
 
 const TEST_OPTION = {
   Value1: 1,

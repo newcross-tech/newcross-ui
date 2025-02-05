@@ -1,10 +1,10 @@
 import { Meta, Story } from '@storybook/react';
-import Radio, { RadioValue } from '../../components/Radio';
 import RadioGroup, {
   RadioGroupProps,
-} from '../../components/RadioGroup/RadioGroup';
+} from '../../components/Fields/RadioGroup/RadioGroup';
 import Container from '../../components/Container';
 import * as StoryTitle from '../StoryTitle';
+import Radio, { RadioValue } from '../../components/Fields/Radio';
 
 export default {
   title: 'React/Components/RadioGroup',
