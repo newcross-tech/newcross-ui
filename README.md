@@ -1,3 +1,5 @@
+trigger amplify
+
 # Halo Design System
 
 Design system consist of design tokens, React & React Native components for web and mobile projects in Newcross Healthcare
