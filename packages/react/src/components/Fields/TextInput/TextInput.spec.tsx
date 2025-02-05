@@ -36,7 +36,7 @@ describe('TextInput Component', () => {
     validationCheck: getAdjustedByTestId('validation-check'),
     errorCheck: getAdjustedByTestId('error-check'),
     messageText: getAdjustedByTestId('message-text'),
-    requiredIndicator: getAdjustedByTestId('required-indicator'),
+    requiredIndicator: getAdjustedByTestId('label-required-indicator'),
     clearIcon: getAdjustedByTestId('clear-icon'),
   };
 

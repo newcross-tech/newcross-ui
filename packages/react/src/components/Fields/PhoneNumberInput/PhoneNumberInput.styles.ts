@@ -85,7 +85,7 @@ export const Content = styled(Container)<
   '.react-international-phone-input, .react-international-phone-country-selector-dropdown__list-item-country-name, .react-international-phone-country-selector-dropdown__list-item-dial-code':
     {
       fontFamily: theme.BaselineFontFontFamilyPoppinsRegular,
-      fontSize: theme.BaselineFontFontSize14,
+      fontSize: theme.BaselineFontFontSize16,
       lineHeight: theme.BaselineFontFontSize20,
     },
   '.react-international-phone-country-selector-dropdown__list-item': {
@@ -120,6 +120,5 @@ export const IconWrapper = styled(Container)({
 });
 
 export const ClearIconWrapper = styled(IconWrapper)({
-  zIndex: 1,
   cursor: 'pointer',
 });

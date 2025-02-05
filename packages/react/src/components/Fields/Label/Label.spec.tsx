@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { byTestId } from 'testing-library-selector';
 import Label, { LabelProps } from './Label';
 
-const testID = '1';
+const testID = 'label-1';
 
 const renderComponent = (customProps?: Partial<LabelProps>) => {
   const props: LabelProps = {
@@ -15,12 +15,10 @@ const renderComponent = (customProps?: Partial<LabelProps>) => {
   render(<Label {...props} />);
 };
 
-const baseTestId = 'label';
-
 describe('Label Component', () => {
   const ui = {
-    labelComp: byTestId(`${baseTestId}-test-${testID}`),
-    requiredIndicator: byTestId(`${baseTestId}-required-indicator-${testID}`),
+    labelComp: byTestId(`${testID}`),
+    requiredIndicator: byTestId(`${testID}-required-indicator`),
   };
 
   it('renders successfully', () => {

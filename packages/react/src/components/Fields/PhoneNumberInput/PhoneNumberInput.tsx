@@ -96,13 +96,9 @@ const PhoneNumberInput = (_props: PhoneNumberInputProps) => {
           </Styled.IconWrapper>
         )}
         {isFocused && (
-          <Styled.IconWrapper
+          <Styled.ClearIconWrapper
             testID={`${phoneInputId}-clear-icon`}
             justifyContent="center"
-            /**
-             * Prevents the input from losing focus when clicking on the clear icon
-             * Preventing on the onClick does not work as expected, hence using onMouseDown
-             */
             onMouseDown={(event) => preventEventPropagationOnClear(event)}
             onClick={() =>
               phoneInputProps.onChange?.('', {
@@ -119,11 +115,12 @@ const PhoneNumberInput = (_props: PhoneNumberInputProps) => {
             }
           >
             <Icon icon={faCircleXmark} variant="p1" color="actionPrimaryDark" />
-          </Styled.IconWrapper>
+          </Styled.ClearIconWrapper>
         )}
       </Styled.PhoneInputWrapper>
       {helperText && (
         <HelperText
+          disabled={disabled}
           helperText={helperText}
           errorText={isError ? helperText : ''}
           testID={phoneInputId}
