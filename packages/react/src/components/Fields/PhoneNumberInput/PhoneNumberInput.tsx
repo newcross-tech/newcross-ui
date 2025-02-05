@@ -12,6 +12,7 @@ import HelperText from '../HelperText';
 import Label from '../Label';
 import { PhoneNumberInputPropsStrict } from './PhoneNumberInput.types';
 import * as Styled from './PhoneNumberInput.styles';
+import { preventEventPropagationOnClear } from '../utils';
 
 export type PhoneNumberInputProps = OptionalProps<
   PhoneNumberInputPropsStrict,
@@ -55,10 +56,7 @@ const PhoneNumberInput = (_props: PhoneNumberInputProps) => {
   } = normalizePhoneNumberInputProps(_props, setIsFocused);
 
   const phoneInputId = `phone-input-component-${testID}`;
-  const preventEventPropagation = (event: React.MouseEvent) => {
-    event.preventDefault();
-    event.stopPropagation();
-  };
+
   return (
     <Styled.Content
       isError={isError}
@@ -105,7 +103,7 @@ const PhoneNumberInput = (_props: PhoneNumberInputProps) => {
              * Prevents the input from losing focus when clicking on the clear icon
              * Preventing on the onClick does not work as expected, hence using onMouseDown
              */
-            onMouseDown={(event) => preventEventPropagation(event)}
+            onMouseDown={(event) => preventEventPropagationOnClear(event)}
             onClick={() =>
               phoneInputProps.onChange?.('', {
                 country: {

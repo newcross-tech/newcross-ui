@@ -13,7 +13,7 @@ import Container from '../../Container';
 import Icon from '../../Icon';
 import HelperText from '../HelperText';
 import Label from '../Label';
-import { getTextColor } from '../utils';
+import { getTextColor, preventEventPropagationOnClear } from '../utils';
 import TextArea from '../TextArea';
 import * as Styled from './TextInput.style';
 import { TextInputPropsStrict } from './TextInput.types';
@@ -97,11 +97,6 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
   const isTextArea = type === 'textarea';
   const inputId = `${baseTestId}-component-${testID}`;
 
-  const preventEventPropagation = (event: React.MouseEvent) => {
-    event.preventDefault();
-    event.stopPropagation();
-  };
-
   return (
     <Container flexDirection="column" gap="xs" fullWidth={fullWidth}>
       {label && (
@@ -183,7 +178,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
               testID={`${inputId}-eye-icon`}
               p="xs"
               justifyContent="center"
-              onMouseDown={(event) => preventEventPropagation(event)}
+              onMouseDown={(event) => preventEventPropagationOnClear(event)}
               onClick={() =>
                 !disabled && setPasswordVisibility(!passwordVisibility)
               }
@@ -205,11 +200,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
               testID={`${inputId}-clear-icon`}
               justifyContent="center"
               ml="xs"
-              /**
-               * Prevents the input from losing focus when clicking on the clear icon
-               * Preventing on the onClick does not work as expected, hence using onMouseDown
-               */
-              onMouseDown={(event) => preventEventPropagation(event)}
+              onMouseDown={(event) => preventEventPropagationOnClear(event)}
               onClick={() => onChange?.('')}
             >
               <Icon
