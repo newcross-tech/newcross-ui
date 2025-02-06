@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
-import { ExtendedTheme, Theme } from '../../types';
-import { AccordionAnimatedStyleArgs, AccordionContentProps, AnimationSpeedType } from './Accordion.types';
+import styled from 'styled-components';
+import { Theme } from '../../types';
+import { AccordionAnimatedStyleArgs, AccordionContentProps, AccordionPropsStrict } from './Accordion.types';
 import Container from '../Container';
 import Icon from '../Icon';
 
@@ -14,37 +14,28 @@ export const getAnimatedStyles = ({
   config: { duration: $animationSpeed * 1000 },
 });
 
-export const Wrapper = styled(Container)`
-  ${({ theme }: Theme) => css`
-    border-radius: ${theme.BorderBaseRadiusMd};
-    background-color: ${theme.ElementsSurfaceDefault};
-  `}
-`;
+export const Wrapper = styled(Container)(({ theme }) => ({
+  borderRadius: theme.BorderBaseRadiusMd,
+  backgroundColor: theme.ElementsSurfaceDefault,
+}));
 
-export const BodyContainer = styled(Container)`
-  overflow: hidden;
-`;
+export const BodyContainer = styled(Container)(() => ({
+  overflow: 'hidden',
+}));
 
-export const HeaderContainer = styled.div`
-  ${({ theme, isContentShown }: ExtendedTheme<AccordionContentProps>) => css`
-    ${isContentShown &&
-    css`
-      border-bottom: ${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderDefault};
-    `}
-  `}
-`;
+export const HeaderContainer = styled(Container)(({ theme, isContentShown }: Theme & AccordionContentProps) => ({
+  ...(isContentShown && {
+    borderBottom: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderDefault}`,
+  }),
+}));
 
-export const HeaderContent = styled(Container)`
-  cursor: pointer;
-  ${({ theme }: Theme) => css`
-    color: ${theme.ElementsTextDefaultDark};
-  `}
-`;
+export const HeaderContent = styled(Container)(({ theme }) => ({
+  cursor: 'pointer',
+  color: theme.ElementsTextDefaultDark,
+}));
 
-export const AnimatedIcon = styled(Icon)<AnimationSpeedType>`
-  ${({ $animationSpeed }) => css`
-    > svg {
-      transition: ${`all ${$animationSpeed}s ease-in-out`};
-    }
-  `}
-`;
+export const AnimatedIcon = styled(Icon)<Pick<AccordionPropsStrict, '$animationSpeed'>>(({ $animationSpeed }) => ({
+  '> svg': {
+    transition: `all ${$animationSpeed}s ease-in-out`,
+  },
+}));
