@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   ControlProps,
   CSSObjectWithLabel,
@@ -7,24 +6,16 @@ import {
   OptionProps,
   StylesConfig,
 } from 'react-select';
-import styled, { css } from 'styled-components';
 import { ExtendedTheme, Theme } from '../../types';
-import Typography from '../Typography';
-import { ErrorType } from './Select.types';
+import { AnySelectPropsStrict } from './Select.types';
 
 const defaultAnimationSpeed = 0.2;
 
 const getTypographyStyles = ({ theme }: Theme) => ({
-  fontFamily: theme.TextInputFontFamily,
-  fontSize: theme.TextInputFontSize,
-  lineHeight: theme.TextInputLineHeight,
+  fontFamily: theme.BaselineFontFontFamilyPoppinsRegular,
+  fontSize: theme.BaselineFontFontSize16,
+  lineHeight: theme.BaselineFontFontSize24,
 });
-
-const getPaddingStyles = ({ theme }: Theme) => {
-  return {
-    padding: `${theme.TextInputPaddingVertical} ${theme.TextInputPaddingHorizontal}`,
-  };
-};
 
 const getBorderStyles = <Option, IsMulti extends boolean = false, Group extends GroupBase<Option> = GroupBase<Option>>({
   state,
@@ -36,16 +27,16 @@ const getBorderStyles = <Option, IsMulti extends boolean = false, Group extends 
 }>) => {
   if (hasError) {
     return {
-      border: `1px solid ${theme.ColorBaseRed100}`,
+      border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderDangerError}`,
     };
   } else if (state.isFocused) {
     return {
-      border: `1px solid ${theme.ColorBaseMint100}`,
+      border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderActionDefault}`,
     };
   }
 
   return {
-    border: `1px solid ${theme.ColorBaseGrey200}`,
+    border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderDefault}`,
   };
 };
 
@@ -55,23 +46,23 @@ const getOptionStyles = <Option, IsMulti extends boolean = false, Group extends 
 ) => {
   if (isDisabled) {
     return {
-      color: theme.ColorBaseGrey100,
-      backgroundColor: theme.ColorBaseGrey500,
+      color: theme.ElementsTextDisabled,
+      backgroundColor: theme.ElementsSurfaceDisabled,
     };
   } else if (isSelected) {
     return {
-      color: theme.ColorPrimaryGravitas,
-      backgroundColor: theme.ColorBaseMint100,
+      color: theme.ElementsTextDefaultDark,
+      backgroundColor: theme.ElementsSurfaceActionDefault,
     };
   } else if (isFocused) {
     return {
-      color: theme.ColorPrimaryGravitas,
-      backgroundColor: theme.ColorBaseMint400,
+      color: theme.ElementsTextDefaultDark,
+      backgroundColor: theme.ElementsSurfaceActionHover,
     };
   }
 
   return {
-    color: theme.ColorPrimaryGravitas,
+    color: theme.ElementsTextDefaultDark,
   };
 };
 
@@ -83,7 +74,7 @@ export const getCustomStyles = <
   theme,
   hasError,
   $zIndex,
-}: ExtendedTheme<{ hasError: boolean; $zIndex: number }>) => {
+}: Theme & Pick<AnySelectPropsStrict, 'hasError' | '$zIndex'>) => {
   const customStyles: StylesConfig<Option, IsMulti, Group> & {
     listBox: (styles: CSSObjectWithLabel) => CSSObjectWithLabel;
     dropdownIndicator: (
@@ -99,17 +90,17 @@ export const getCustomStyles = <
     }),
     menuList: (styles) => ({
       ...styles,
-      border: `1px solid ${theme.ColorBaseMint100}`,
+      border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderActionDefault}`,
       borderRadius: theme.BorderBaseRadiusMd,
 
       '::-webkit-scrollbar': {
-        width: theme.SpacingBase4,
+        width: theme.BaselineSpacesSpace4,
       },
       '::-webkit-scrollbar-track': {
         borderRadius: theme.BorderBaseRadiusMd,
       },
       '::-webkit-scrollbar-thumb': {
-        background: theme.ColorNeutralGrey300,
+        background: theme.ElementsSurfaceDefaultSecondary,
         borderRadius: theme.BorderBaseRadiusMd,
       },
     }),
@@ -121,46 +112,43 @@ export const getCustomStyles = <
     option: (styles, { isDisabled, isFocused, isSelected, ...rest }) => ({
       ...styles,
       ...getTypographyStyles({ theme }),
-      padding: `${theme.SpacingBase8} ${theme.SpacingBase16}`,
+      padding: `${theme.BaselineSpacesSpace8} ${theme.BaselineSpacesSpace16}`,
       cursor: isDisabled ? 'not-allowed' : 'pointer',
       ...getOptionStyles({ theme }, { isDisabled, isSelected, isFocused, ...rest }),
 
       ':active': {
         ...styles[':active'],
-        backgroundColor: theme.ColorBaseMint400,
+        backgroundColor: theme.ElementsSurfaceActionHover,
       },
       ':hover': {
         ...styles[':hover'],
-        color: theme.ColorPrimaryGravitas,
+        color: theme.ElementsTextDefaultDark,
       },
     }),
     placeholder: (styles) => ({
       ...styles,
-      color: theme.ColorBaseGrey100,
+      color: theme.ElementsTextDisabled,
     }),
     input: (styles) => ({
       ...styles,
       margin: 0,
-      paddingBottom: 0,
-      paddingTop: 0,
-      color: theme.ColorPrimaryGravitas,
+      color: theme.ElementsTextDefaultDark,
     }),
     indicatorsContainer: (styles) => ({
       ...styles,
-      padding: `${theme.SpacingBase12} ${theme.SpacingBase16} ${theme.SpacingBase12} 0`,
+      padding: `${theme.BaselineSpacesSpace12} ${theme.BaselineSpacesSpace16} ${theme.BaselineSpacesSpace12} 0`,
       display: 'flex',
-      gap: theme.SpacingBase16,
+      gap: theme.BaselineSpacesSpace16,
     }),
     valueContainer: (styles, { isMulti }) => ({
       ...styles,
-      paddingTop: 0,
-      paddingBottom: 0,
-      gap: isMulti ? theme.SpacingBase8 : undefined,
+      padding: `${theme.BaselineSpacesSpace8} ${theme.BaselineSpacesSpace16}`,
+      gap: isMulti ? theme.BaselineSpacesSpace8 : undefined,
     }),
     control: (_, state) => ({
       ...getTypographyStyles({ theme }),
       ...getBorderStyles({ state, theme, hasError }),
-      backgroundColor: state.isDisabled ? theme.ColorBaseGrey500 : theme.ColorBaseWhite100,
+      backgroundColor: state.isDisabled ? theme.ElementsSurfaceDisabled : theme.ElementsSurfaceDefault,
       cursor: 'pointer',
       display: 'flex',
       boxShadow: 'none',
@@ -169,8 +157,7 @@ export const getCustomStyles = <
     }),
     singleValue: (styles, state) => ({
       ...styles,
-      ...getPaddingStyles({ theme }),
-      color: state.isDisabled ? theme.ColorBaseGrey100 : theme.ColorPrimaryGravitas,
+      color: state.isDisabled ? theme.ElementsTextDisabled : theme.ElementsTextDefaultDark,
     }),
     groupHeading: (styles) => ({
       ...styles,
@@ -180,55 +167,49 @@ export const getCustomStyles = <
     multiValue: (styles, state) => ({
       ...styles,
       backgroundColor: 'transparent',
-      border: `1px solid ${theme.ColorBaseMint100}`,
-      borderColor: state.isDisabled ? theme.ColorBaseGrey200 : theme.ColorBaseMint100,
-      color: state.isDisabled ? theme.ColorBaseGrey100 : theme.ColorPrimaryGravitas,
+      border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderActionDefault}`,
+      borderColor: state.isDisabled ? theme.ElementsBorderDisabled : theme.ElementsBorderHighlightStrong,
+      background: state.isDisabled ? theme.ElementsSurfaceDisabled : theme.ElementsSurfacePage,
       borderRadius: theme.BorderBaseRadiusLg,
       margin: '0',
-      padding: `${theme.SpacingBase4} 0 ${theme.SpacingBase4} ${theme.SpacingBase16}`,
+      padding: `${theme.BaselineSpacesSpace4} 0 ${theme.BaselineSpacesSpace4} ${theme.BaselineSpacesSpace16}`,
 
       /* multi value generic text */
       '> div': {
-        fontSize: theme.TypographyFontSize16,
-        lineHeight: theme.TypographyLineHeight24,
-        color: !state.isDisabled ? theme.ColorPrimaryGravitas : theme.ColorBaseGrey100,
+        fontSize: theme.BaselineFontFontSize16,
+        lineHeight: theme.BaselineFontFontSize24,
+        color: !state.isDisabled ? theme.ElementsTextDefaultDark : theme.ElementsTextDisabled,
         padding: '0',
       },
     }),
     multiValueRemove: (styles) => ({
       ...styles,
       cursor: 'pointer',
-      marginLeft: theme.SpacingBase8,
-      marginRight: theme.SpacingBase16,
+      marginLeft: theme.BaselineSpacesSpace8,
+      marginRight: theme.BaselineSpacesSpace16,
       ':hover': {
         background: 'transparent',
-      },
-
-      ' > svg': {
-        color: theme.ColorBaseGrey100,
       },
     }),
     multiValueLabel: (styles) => ({
       ...styles,
-      fontSize: theme.TypographyFontSize14,
+      fontSize: theme.BaselineFontFontSize14,
       color: theme.ColorBaseGrey100,
     }),
     noOptionsMessage: (styles) => ({
       ...styles,
       textAlign: 'center',
       ...getTypographyStyles({ theme }),
-      ...getPaddingStyles({ theme }),
     }),
     clearIndicator: (styles) => ({
       ...styles,
       padding: 0,
-      backgroundColor: theme.ColorBaseGrey100,
     }),
     indicatorSeparator: (styles) => ({
       ...styles,
       marginTop: 0,
       marginBottom: 0,
-      backgroundColor: theme.ColorBaseGrey200,
+      backgroundColor: theme.ElementsBorderDefault,
     }),
     dropdownIndicator: (styles, state) => ({
       ...styles,
@@ -239,54 +220,3 @@ export const getCustomStyles = <
   };
   return customStyles;
 };
-
-export const Label = styled(Typography)`
-  ${({ theme }: Theme) => css`
-    display: inline-block;
-    color: ${theme.ColorPrimaryGravitas};
-    margin-bottom: ${theme.SpacingBase4};
-  `};
-`;
-
-export const MessageText = styled(Typography)<ErrorType>`
-  ${({ theme, hasError }: ExtendedTheme<ErrorType>) => css`
-    color: ${theme.TextInputHelperTextColor};
-    margin-top: ${theme.TextInputMarginBottom};
-    padding-right: ${theme.TextInputHelperTextPaddingHorizontal};
-    padding-left: ${theme.TextInputHelperTextPaddingHorizontal};
-
-    ${hasError &&
-    css`
-      color: ${theme.TextInputErrorColor};
-    `}
-  `}
-`;
-
-export const PillCloseIcon = styled(FontAwesomeIcon)`
-  ${({ theme }) => css`
-    color: ${theme.ColorBaseGrey100};
-    width: ${theme.SpacingBase16};
-    height: ${theme.SpacingBase16};
-  `};
-`;
-
-export const XMarkIcon = styled(FontAwesomeIcon)`
-  ${({ theme }) => css`
-    color: ${theme.ColorBaseGrey100};
-    width: ${theme.SpacingBase16};
-    height: ${theme.SpacingBase16};
-  `};
-`;
-
-export const ChevronIcon = styled(FontAwesomeIcon)`
-  ${({ theme, isDisabled }: ExtendedTheme<{ isDisabled: boolean }>) => css`
-    transition: ${`all ${defaultAnimationSpeed}s ease-in-out`};
-    width: ${theme.SpacingBase16};
-    height: ${theme.SpacingBase16};
-    color: ${!isDisabled ? theme.ColorPrimaryGravitas : theme.ColorBaseGrey100};
-  `};
-`;
-
-export const RightIconContainer = styled.div`
-  justify-content: center;
-`;

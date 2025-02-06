@@ -1,5 +1,5 @@
 import * as Styled from './Container.style';
-import { CSSProperties, HTMLAttributes, InputHTMLAttributes } from 'react';
+import { CSSProperties, forwardRef, HTMLAttributes } from 'react';
 import {
   NewContainerGapSpacing,
   NewContainerSpacing,
@@ -101,16 +101,12 @@ export type NewContainerProps = {
    * @default 'div'
    */
   semanticTag?: SemanticContainerTags;
-  /**
-   * Aria role attribute
-   */
-  role?: InputHTMLAttributes<HTMLElement>['role'];
 } & TestProp;
 
 export type ContainerProps = (NewContainerProps | LegacyContainerProps) &
-  Pick<HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseDown'>;
+  Pick<HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseDown' | 'id' | 'role'>;
 
-const Container = (props: ContainerProps) => {
+const Container = forwardRef<HTMLElement, ContainerProps>((props, ref) => {
   if (isLegacyProps(props)) {
     return <LegacyContainer {...props} />;
   }
@@ -124,6 +120,7 @@ const Container = (props: ContainerProps) => {
   } = props;
   return (
     <Styled.Container
+      ref={ref}
       {...restProps}
       display={display}
       data-testid={testID}
@@ -133,6 +130,6 @@ const Container = (props: ContainerProps) => {
       {children}
     </Styled.Container>
   );
-};
+});
 
 export default Container;

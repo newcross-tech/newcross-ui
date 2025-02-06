@@ -1,10 +1,10 @@
 import { createContext, useContext } from 'react';
+import { AnySelectPropsStrict } from './Select.types';
 
-export type SelectContextValue = {
-  id?: string;
-};
-
-export const SelectContext = createContext<SelectContextValue | null>(null);
+export const SelectContext = createContext<Pick<
+  AnySelectPropsStrict,
+  'hasError'
+> | null>(null);
 
 export const useSelectContext = () => {
   const context = useContext(SelectContext);

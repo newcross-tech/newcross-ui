@@ -87,6 +87,7 @@ export const Content = styled(Container)<
       fontFamily: theme.BaselineFontFontFamilyPoppinsRegular,
       fontSize: theme.BaselineFontFontSize16,
       lineHeight: theme.BaselineFontFontSize20,
+      color: theme.ElementsTextDefaultDark,
     },
   '.react-international-phone-country-selector-dropdown__list-item': {
     height: theme.BaselineSpacesSpace48,
@@ -100,6 +101,8 @@ export const Content = styled(Container)<
   },
   '.react-international-phone-country-selector-dropdown': {
     ...getScrollbarStyles({ theme }),
+    border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsSurfaceActionDefault}`,
+    borderRadius: theme.BorderBaseRadiusMd,
   },
   '.react-international-phone-input--disabled, .react-international-phone-country-selector-button--disabled':
     {
