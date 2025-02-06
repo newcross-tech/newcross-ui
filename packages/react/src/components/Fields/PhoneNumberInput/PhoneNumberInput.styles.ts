@@ -103,6 +103,7 @@ export const Content = styled(Container)<
     ...getScrollbarStyles({ theme }),
     border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsSurfaceActionDefault}`,
     borderRadius: theme.BorderBaseRadiusMd,
+    top: theme.BaselineSpacesSpace56,
   },
   '.react-international-phone-input--disabled, .react-international-phone-country-selector-button--disabled':
     {
