@@ -77,7 +77,7 @@ const PhoneNumberInput = (_props: PhoneNumberInputProps) => {
           {label}
         </Label>
       )}
-      <Styled.PhoneInputWrapper display="block" testID={phoneInputId}>
+      <Styled.PhoneInputWrapper display="block" testID={phoneInputId} fullWidth>
         <PhoneInput disabled={disabled} {...phoneInputProps} />
         {isValid && !disabled && !isFocused && !isError && (
           <Styled.IconWrapper

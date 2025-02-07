@@ -113,7 +113,6 @@ export const Content = styled(Container)<
 
 export const PhoneInputWrapper = styled(Container)({
   position: 'relative',
-  width: '100%',
 });
 
 export const IconWrapper = styled(Container)({
