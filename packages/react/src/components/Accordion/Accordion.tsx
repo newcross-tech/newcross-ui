@@ -1,60 +1,41 @@
-import { RotateProp } from '@fortawesome/fontawesome-svg-core';
+import { useRef, useState } from 'react';
 import { animated, useSpring } from '@react-spring/web';
-import { ReactNode, useRef, useState } from 'react';
 import { faChevronDown } from '@fortawesome/pro-light-svg-icons/faChevronDown';
-import { useFirstRender } from '../../hooks/useFirstRender';
 import { useResize } from '../../hooks/useResize';
-import { useToggle } from '../../hooks/useToggle';
-import { TestProp } from '../../types';
-import { DEFAULT_ANIMATION_SPEED } from './Accordion.constants';
-import * as Styled from './Accordion.style';
+import { OptionalProps } from '../../types';
+import {
+  DEFAULT_ANIMATION_SPEED,
+  ROTATION_DEGREES,
+} from './Accordion.constants';
 import Container from '../Container';
 import Typography from '../Typography';
+import { AccordionPropsStrict } from './Accordion.types';
+import { useUpstreamState } from '../../hooks/useUpstreamState';
+import * as Styled from './Accordion.style';
 
-export type AccordionProps = {
-  /**
-   * Called when a single tap gesture is detected.
-   */
-  onClick?: () => void;
-  /**
-   * Each accordion can opt to include an icon which will be displayed before the section label in the header.
-   */
-  icon?: ReactNode;
-  /**
-   * If true, expands the accordion, otherwise collapse it. Setting this prop enables control over the accordion. Used only in stand-alone accordion or multiple selection accordion group.
-   */
-  expanded?: boolean;
-  /**
-   * The content of the component.
-   */
-  children?: ReactNode;
-  /**
-   * Text element to describe the accordion.
-   */
-  label?: ReactNode | string;
-  /**
-   * Used to override default animation speed.
-   */
-  $animationSpeed?: number;
-} & TestProp;
+export type AccordionProps = OptionalProps<
+  AccordionPropsStrict,
+  'expanded' | '$animationSpeed' | 'label'
+>;
+
+const normalizeAccordionProps = (
+  props: AccordionProps
+): AccordionPropsStrict => ({
+  ...props,
+  expanded: props.expanded ?? false,
+  $animationSpeed: props.$animationSpeed ?? DEFAULT_ANIMATION_SPEED,
+  label: props.label ?? 'Label',
+});
 
 const AnimatedContainer = animated.div;
 
-const Accordion = ({
-  icon,
-  testID,
-  onClick,
-  children,
-  expanded = false,
-  $animationSpeed = DEFAULT_ANIMATION_SPEED,
-  label = 'Label',
-}: AccordionProps) => {
-  const [openAccordion, setOpenAccordion] = useState(expanded);
+const Accordion = (_props: AccordionProps) => {
+  const { children, onClick, icon, expanded, label, testID, $animationSpeed } =
+    normalizeAccordionProps(_props);
+
+  const [openAccordion, setOpenAccordion] = useUpstreamState(expanded);
   const [contentMaxHeight, setContentMaxHeight] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
-  const { isFirstRender } = useFirstRender();
-
-  useToggle(expanded, () => setOpenAccordion(expanded));
 
   const toggleAccordion = () => {
     onClick ? onClick() : setOpenAccordion((prevState) => !prevState);
@@ -66,17 +47,13 @@ const Accordion = ({
     onResize: () => setContentMaxHeight(ref?.current?.scrollHeight ?? 0),
   });
 
-  const initialStyles = isFirstRender
-    ? {}
-    : Styled.getAnimatedStyles({
-        openAccordion,
-        contentMaxHeight,
-        $animationSpeed,
-      });
-
-  const springProps = useSpring({
-    ...initialStyles,
-  });
+  const springProps = useSpring(
+    Styled.getAnimatedStyles({
+      openAccordion,
+      contentMaxHeight,
+      $animationSpeed,
+    })
+  );
 
   return (
     <Styled.Wrapper
@@ -85,10 +62,11 @@ const Accordion = ({
     >
       <Styled.HeaderContainer
         isContentShown={openAccordion}
-        data-testid={`accordion-header-container-${testID}`}
+        testID={`accordion-header-container-${testID}`}
         onClick={toggleAccordion}
       >
         <Styled.HeaderContent
+          fullWidth
           gap="sm"
           alignItems="center"
           justifyContent="space-between"
@@ -105,7 +83,9 @@ const Accordion = ({
             <Styled.AnimatedIcon
               variant="h2"
               icon={faChevronDown}
-              rotation={(openAccordion ? 180 : 0) as RotateProp}
+              rotation={
+                openAccordion ? ROTATION_DEGREES.OPEN : ROTATION_DEGREES.CLOSED
+              }
               $animationSpeed={$animationSpeed}
             />
           </Container>
