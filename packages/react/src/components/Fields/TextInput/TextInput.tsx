@@ -13,7 +13,7 @@ import Container from '../../Container';
 import Icon from '../../Icon';
 import HelperText from '../HelperText';
 import Label from '../Label';
-import { getTextColor, preventEventPropagationOnClear } from '../utils';
+import { getTextColor, preventEventPropagation } from '../utils';
 import TextArea from '../TextArea';
 import * as Styled from './TextInput.style';
 import { TextInputPropsStrict } from './TextInput.types';
@@ -178,7 +178,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
               testID={`${inputId}-eye-icon`}
               p="xs"
               justifyContent="center"
-              onMouseDown={(event) => preventEventPropagationOnClear(event)}
+              onMouseDown={(event) => preventEventPropagation(event)}
               onClick={() =>
                 !disabled && setPasswordVisibility(!passwordVisibility)
               }
@@ -200,7 +200,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
               testID={`${inputId}-clear-icon`}
               justifyContent="center"
               ml="xs"
-              onMouseDown={(event) => preventEventPropagationOnClear(event)}
+              onMouseDown={(event) => preventEventPropagation(event)}
               onClick={() => onChange?.('')}
             >
               <Icon

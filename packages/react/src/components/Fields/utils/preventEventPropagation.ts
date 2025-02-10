@@ -3,7 +3,7 @@
  * Preventing on the onClick does not work as expected, hence using onMouseDown
  */
 
-export const preventEventPropagationOnClear = (event: React.MouseEvent) => {
+export const preventEventPropagation = (event: React.MouseEvent) => {
   event.preventDefault();
   event.stopPropagation();
 };

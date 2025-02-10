@@ -17,7 +17,7 @@ const renderComponent = (customProps?: Partial<LabelProps>) => {
 
 describe('Label Component', () => {
   const ui = {
-    labelComp: byTestId(`${testID}`),
+    labelComp: byTestId(testID),
     requiredIndicator: byTestId(`${testID}-required-indicator`),
   };
 
