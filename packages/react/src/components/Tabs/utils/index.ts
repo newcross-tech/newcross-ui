@@ -1,1 +1,0 @@
-export { getDividerPosition } from './getDividerPosition';

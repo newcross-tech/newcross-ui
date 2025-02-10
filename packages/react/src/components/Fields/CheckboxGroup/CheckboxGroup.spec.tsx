@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import { byTestId, byText } from 'testing-library-selector';
-import { axe } from '../../utils/test/axeConfig';
 import CheckboxGroup, { CheckboxGroupProps } from './CheckboxGroup';
+import { axe } from '../../../utils/test/axeConfig';
 
 const renderComponent = (customProps: Partial<CheckboxGroupProps>) => {
   const props = {

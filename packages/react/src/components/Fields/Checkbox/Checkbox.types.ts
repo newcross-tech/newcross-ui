@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { TestProp } from '../../types';
+import { TestProp } from '../../../types';
 
 export type CheckboxType = 'indeterminate';
 
@@ -22,7 +22,7 @@ export type CheckboxPropsStrict = {
   /**
    * Shows different styles when error is true
    */
-  hasError?: boolean;
+  hasError: boolean;
   /**
    * Callback fired when the state is changed.
    */

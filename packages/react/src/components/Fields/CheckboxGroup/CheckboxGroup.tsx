@@ -12,8 +12,8 @@ import {
   getSelectedList,
   getValue,
 } from './utils';
-import Container from '../Container';
-import { OptionalProps } from '../../types/utility-types';
+import { OptionalProps } from '../../../types';
+import Container from '../../Container';
 
 export type CheckboxGroupProps = OptionalProps<
   CheckboxGroupPropsStrict,

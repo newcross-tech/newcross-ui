@@ -104,7 +104,10 @@ export type NewContainerProps = {
 } & TestProp;
 
 export type ContainerProps = (NewContainerProps | LegacyContainerProps) &
-  Pick<HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseDown' | 'id' | 'role'>;
+  Pick<
+    HTMLAttributes<HTMLElement>,
+    'onClick' | 'onMouseDown' | 'onKeyDown' | 'id' | 'role'
+  >;
 
 const Container = forwardRef<HTMLElement, ContainerProps>((props, ref) => {
   if (isLegacyProps(props)) {

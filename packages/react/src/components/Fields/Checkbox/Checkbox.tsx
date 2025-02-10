@@ -1,11 +1,12 @@
 import { faCheck } from '@fortawesome/pro-light-svg-icons/faCheck';
 import { faMinus } from '@fortawesome/pro-light-svg-icons/faMinus';
-import { OptionalProps } from '../../types';
+import { OptionalProps } from '../../../types';
 import * as Styled from './Checkbox.style';
 import { CheckboxPropsStrict } from './Checkbox.types';
-import Typography, { TypographyColors } from '../Typography';
-import { onSpacePressTrigger } from '../../utils';
-import Icon from '../Icon';
+import Typography from '../../Typography';
+import { onSpacePressTrigger } from '../../../utils';
+import Icon from '../../Icon';
+import { getTextColor } from '../utils';
 
 export type CheckboxProps = {
   onChange?(
@@ -14,7 +15,7 @@ export type CheckboxProps = {
   ): void;
 } & OptionalProps<
   Omit<CheckboxPropsStrict, 'onClick' | 'onChange'>,
-  'allowTab' | 'disabled' | 'checked'
+  'allowTab' | 'disabled' | 'checked' | 'hasError'
 >;
 
 const normalizeCheckboxProps = (props: CheckboxProps): CheckboxPropsStrict => {
@@ -23,6 +24,7 @@ const normalizeCheckboxProps = (props: CheckboxProps): CheckboxPropsStrict => {
     allowTab: props.allowTab ?? true,
     disabled: props.disabled ?? false,
     checked: props.checked ?? false,
+    hasError: props.hasError ?? false,
     onClick(event) {
       normalized.onChange(event);
     },
@@ -41,15 +43,6 @@ const Checkbox = (_props: CheckboxProps) => {
   const props = normalizeCheckboxProps(_props);
 
   const icon = props.type === 'indeterminate' ? faMinus : faCheck;
-
-  const getLabelColor = ({
-    disabled,
-    hasError,
-  }: Pick<CheckboxProps, 'disabled' | 'hasError'>): TypographyColors => {
-    if (disabled) return 'disabled';
-
-    return hasError ? 'dangerError' : 'defaultDark';
-  };
 
   return (
     <Styled.Checkbox alignItems="center" gap="xs" {...props} role="checkbox">
@@ -75,10 +68,8 @@ const Checkbox = (_props: CheckboxProps) => {
         <Typography
           testID="checkbox-label"
           variant="p1"
-          color={getLabelColor(props)}
-          onKeyDown={(event: React.KeyboardEvent<HTMLElement>) =>
-            onSpacePressTrigger(event, props.onChange)
-          }
+          color={getTextColor.primaryText(props)}
+          onKeyDown={(event) => onSpacePressTrigger(event, props.onChange)}
           tabIndex={!props.disabled && props.allowTab ? 0 : -1}
         >
           {props.label}

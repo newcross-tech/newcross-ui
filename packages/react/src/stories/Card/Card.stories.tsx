@@ -5,7 +5,6 @@ import useState from 'storybook-addon-state';
 import styled, { css } from 'styled-components';
 import Badge from '../../components/Badge';
 import Card, { CardProps } from '../../components/Card';
-import CheckboxGroup from '../../components/CheckboxGroup';
 import ToggleButton from '../../components/ToggleButton';
 import ToggleButtonGroup from '../../components/ToggleButtonGroup';
 import Typography from '../../components/Typography';
@@ -16,6 +15,7 @@ import { DESCRIPTION, DO, DONT, TITLE } from './CardInfo';
 import { CardShift } from './CardShift';
 import * as StoryTitle from '../StoryTitle';
 import TextInput from '../../components/Fields/TextInput';
+import CheckboxGroup from '../../components/Fields/CheckboxGroup';
 
 export default {
   title: 'React/Components/Card',

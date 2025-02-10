@@ -1,4 +1,4 @@
-import { TestProp } from '../../types';
+import { TestProp } from '../../../types';
 
 export type OptionObjectType = {
   label: string;
