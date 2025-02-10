@@ -15,7 +15,7 @@ import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './CardInfo';
 import { CardShift } from './CardShift';
 import * as StoryTitle from '../StoryTitle';
-import TextInput from '../../components/TextInput';
+import TextInput from '../../components/Fields/TextInput';
 
 export default {
   title: 'React/Components/Card',

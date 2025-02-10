@@ -15,28 +15,13 @@ import {
 import useTheme from '../../hooks/useTheme';
 import * as Styled from './Select.style';
 import { SelectContext, useSelectContext } from './SelectContext';
-import { AnySelectPropsStrict, SelectPropsStrict } from './Select.types';
+import { SelectPropsStrict } from './Select.types';
 import { OptionalProps } from '../../types';
 import Container from '../Container';
-import HelperText from '../TextInput/HelperText';
-import Label from '../Label';
-import Typography from '../Typography';
+import HelperText from '../Fields/HelperText';
+import Label from '../Fields/Label';
 import Icon from '../Icon';
-
-const getIconColor = ({
-  isDisabled,
-  hasError,
-}: Pick<AnySelectPropsStrict, 'hasError' | 'isDisabled'>) => {
-  if (isDisabled) {
-    return 'disabled';
-  }
-
-  if (hasError) {
-    return 'dangerError';
-  }
-
-  return 'defaultDark';
-};
+import { getTextColor } from '../Fields/utils';
 
 const MultiValueRemove = <
   Option,
@@ -49,7 +34,10 @@ const MultiValueRemove = <
     <Icon
       icon={faXmark}
       variant="p2"
-      color={props.selectProps.isDisabled ? 'disabled' : 'defaultDark'}
+      color={getTextColor.primaryText({
+        disabled: props.selectProps.isDisabled,
+        hasError: false,
+      })}
     />
   </components.MultiValueRemove>
 );
@@ -66,8 +54,8 @@ const ClearIndicator = <
     innerProps: { ref, ...restInnerProps },
   } = props;
 
-  const iconColor = getIconColor({
-    isDisabled: props.selectProps.isDisabled,
+  const iconColor = getTextColor.primaryText({
+    disabled: props.selectProps.isDisabled,
     hasError,
   });
 
@@ -87,8 +75,8 @@ const DropdownIndicator = <
 ) => {
   const { hasError } = useSelectContext();
 
-  const iconColor = getIconColor({
-    isDisabled: props.isDisabled,
+  const iconColor = getTextColor.primaryText({
+    disabled: props.isDisabled,
     hasError,
   });
 
@@ -156,13 +144,6 @@ const Select = <
 
   const theme = useTheme();
 
-  const getTextColor = (disabled: boolean, hasError: boolean) => {
-    if (disabled) return 'disabled';
-    if (hasError) return 'dangerError';
-
-    return 'defaultDark';
-  };
-
   return (
     <Container
       testID={
@@ -172,30 +153,22 @@ const Select = <
       gap="xs"
     >
       {label && (
-        <Container gap="xs">
-          <Label
-            htmlFor={`${baseTestId}-label`}
-            variant={labelVariant}
-            color={getTextColor(disabled, hasError)}
-            testID={`${baseTestId}-label`}
-          >
-            {label}
-          </Label>
-          {required && !disabled && (
-            <Typography
-              testID={`${baseTestId}-label-required-indicator`}
-              variant={labelVariant}
-              color="dangerError"
-            >
-              *
-            </Typography>
-          )}
-        </Container>
+        <Label
+          htmlFor={`${baseTestId}-label`}
+          variant={labelVariant}
+          testID={`${baseTestId}-label`}
+          disabled={disabled}
+          required={required}
+          hasError={hasError}
+        >
+          {label}
+        </Label>
       )}
       {subtitle && (
         <Label
           variant={subtitleVariant}
-          color={getTextColor(disabled, hasError)}
+          disabled={disabled}
+          hasError={hasError}
         >
           {subtitle}
         </Label>

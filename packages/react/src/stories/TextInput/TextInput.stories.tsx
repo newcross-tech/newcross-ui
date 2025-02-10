@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
-import TextInput, { TextInputProps } from '../../components/TextInput';
+import TextInput, { TextInputProps } from '../../components/Fields/TextInput';
 import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './TextInputInfo';
