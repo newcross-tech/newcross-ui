@@ -56,7 +56,7 @@ function RadioGroup<T extends RadioValue>({
       {...rest}
     >
       {Children.map(children, (child) => {
-        const { value } = child.props;
+        const { value, disabled: disabledItem } = child.props;
 
         return (
           <RadioItem direction={direction} variant={variant}>
@@ -64,7 +64,7 @@ function RadioGroup<T extends RadioValue>({
               key: value,
               onChange: () => value && handleOnChange(value),
               selected: value === selectedOption,
-              disabled,
+              disabled: disabled || disabledItem,
               variant,
             })}
           </RadioItem>
