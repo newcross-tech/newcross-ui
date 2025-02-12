@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
-import { TypographyVariant } from '../Typography';
-import { TestProp } from '../../types';
+import { TypographyVariant } from '../../Typography';
+import { TestProp } from '../../../types';
 import { GroupBase, Props } from 'react-select';
 
 export type AnySelectPropsStrict = SelectPropsStrict<

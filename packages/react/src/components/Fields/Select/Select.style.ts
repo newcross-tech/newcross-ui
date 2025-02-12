@@ -6,7 +6,7 @@ import {
   OptionProps,
   StylesConfig,
 } from 'react-select';
-import { ExtendedTheme, Theme } from '../../types';
+import { ExtendedTheme, Theme } from '../../../types';
 import { AnySelectPropsStrict } from './Select.types';
 
 const defaultAnimationSpeed = 0.2;

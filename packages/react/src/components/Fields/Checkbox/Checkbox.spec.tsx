@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import { byTestId } from 'testing-library-selector';
-import { axe } from '../../utils/test/axeConfig';
-import { executeKeyPress } from '../../utils/test/executeKeyPress';
+import { axe } from '../../../utils/test/axeConfig';
+import { executeKeyPress } from '../../../utils/test/executeKeyPress';
 import Checkbox, { CheckboxProps } from './Checkbox';
 
 const renderComponent = (customProps: Partial<CheckboxProps>) => {

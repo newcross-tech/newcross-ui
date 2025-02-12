@@ -12,16 +12,16 @@ import {
   faXmark,
   faCircleXmark,
 } from '@fortawesome/pro-light-svg-icons';
-import useTheme from '../../hooks/useTheme';
+import useTheme from '../../../hooks/useTheme';
 import * as Styled from './Select.style';
 import { SelectContext, useSelectContext } from './SelectContext';
 import { SelectPropsStrict } from './Select.types';
-import { OptionalProps } from '../../types';
-import Container from '../Container';
-import HelperText from '../Fields/HelperText';
-import Label from '../Fields/Label';
-import Icon from '../Icon';
-import { getTextColor } from '../Fields/utils';
+import { OptionalProps } from '../../../types';
+import Container from '../../Container';
+import HelperText from '../HelperText';
+import Label from '../Label';
+import Icon from '../../Icon';
+import { getTextColor } from '../utils';
 
 const MultiValueRemove = <
   Option,

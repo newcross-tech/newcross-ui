@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import { Theme } from '../../types';
+import { Theme } from '../../../types';
 import { CheckboxPropsStrict } from './Checkbox.types';
-import Container from '../Container';
+import Container from '../../Container';
 
 const getBackgroundColorHoverStyles = ({
   theme,

@@ -8,6 +8,7 @@ import {
   PillTypographySize,
   PillTypographyColor,
   PillPropsStrict,
+  PillGapSize,
 } from './Pill.types';
 import Container from '../Container';
 import Icon from '../Icon';
@@ -129,9 +130,9 @@ const Pill = (_props: PillProps) => {
       <Container
         alignItems="center"
         justifyContent="center"
-        py="sm"
+        py="xs"
         px={PillPaddingXSize[size]}
-        gap="sm"
+        gap={PillGapSize[size]}
       >
         {icon && (
           <Styled.Icon

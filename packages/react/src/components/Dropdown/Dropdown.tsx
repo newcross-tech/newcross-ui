@@ -8,7 +8,7 @@ import { useOutsideDetector } from '../../hooks/useOutsideDetector';
 import useTheme from '../../hooks/useTheme';
 import { TestProp } from '../../types';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
-import Checkbox from '../Checkbox';
+import Checkbox from '../Fields/Checkbox';
 import * as Styled from './Dropdown.style';
 import { MultiProps, SingleProps } from './Dropdown.types';
 import DropdownValue from './DropdownValue';
