@@ -1,7 +1,7 @@
 import useTheme from './useTheme';
 import { useWindowSize } from './useWindowSize';
 import { useMemo } from 'react';
-import { Breakpoint, getBreakpointDesignToken } from '../utils/css/breakpoint';
+import { Breakpoint, getBreakpointValue } from '../utils/css/breakpoint';
 
 export function useCurrentBreakpoint(): Breakpoint | undefined {
   const theme = useTheme();
@@ -14,7 +14,7 @@ export function useCurrentBreakpoint(): Breakpoint | undefined {
 
     const breakpointNameToValue = (breakpoint: Breakpoint) => ({
       name: breakpoint,
-      value: theme[getBreakpointDesignToken(breakpoint)],
+      value: getBreakpointValue({ theme, breakpoint }),
     });
 
     const breakpoints = Object.values(Breakpoint)

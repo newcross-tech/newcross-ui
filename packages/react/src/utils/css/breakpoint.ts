@@ -22,11 +22,21 @@ export const getBreakpointDesignToken = (
   breakpoint: Breakpoint
 ): BreakpointDesignToken => BreakpointDesignToken[breakpoint];
 
+/**
+ * @private Used to get the specific value of a semantic breakpoint based on the theme
+ */
+export const getBreakpointValue = ({
+  theme,
+  breakpoint,
+}: Theme & { breakpoint: Breakpoint }) =>
+  theme[getBreakpointDesignToken(breakpoint)];
+
 const createMediaQuery =
-  (breakpoint: BreakpointDesignToken) =>
+  (breakpoint: Breakpoint) =>
   (...args: Parameters<typeof css>) =>
     css`
-      @media (max-width: ${({ theme }: Theme) => theme[breakpoint]}) {
+      @media (max-width: ${({ theme }: Theme) =>
+          getBreakpointValue({ theme, breakpoint })}) {
         ${css(...args)};
       }
     `;
@@ -34,6 +44,6 @@ const createMediaQuery =
 export const breakpoint = Object.fromEntries(
   Object.values(Breakpoint).map((breakpoint) => [
     breakpoint,
-    createMediaQuery(getBreakpointDesignToken(breakpoint)),
+    createMediaQuery(breakpoint),
   ])
 ) as Record<Breakpoint, ReturnType<typeof createMediaQuery>>;
