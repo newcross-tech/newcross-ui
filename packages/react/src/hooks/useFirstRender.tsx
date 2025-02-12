@@ -10,7 +10,6 @@ export const useFirstRender = () => {
   useLayoutEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
-      return;
     }
   }, []);
 

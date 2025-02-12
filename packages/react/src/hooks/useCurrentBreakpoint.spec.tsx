@@ -1,5 +1,5 @@
 import { useCurrentBreakpoint } from './useCurrentBreakpoint';
-import { Breakpoint, getBreakpointDesignToken } from '../utils/css/breakpoint';
+import { Breakpoint, getBreakpointValue } from '../utils/css/breakpoint';
 import { renderHook } from '@testing-library/react';
 import ThemeProvider from '../theme/ThemeProvider';
 import * as UseWindowSizeModule from './useWindowSize';
@@ -9,6 +9,10 @@ import Brand from '../theme/Brand';
 describe(useCurrentBreakpoint.name, () => {
   const testingBrand = Brand.healthforce;
   const testingTheme = theme.web[testingBrand];
+
+  const wrapper = (props: Required<React.PropsWithChildren>) => (
+    <ThemeProvider {...props} brand={testingBrand} />
+  );
 
   beforeEach(() => {
     jest.spyOn(UseWindowSizeModule, 'useWindowSize');
@@ -21,22 +25,31 @@ describe(useCurrentBreakpoint.name, () => {
     { windowWidth: 0, expectedBreakpoint: Breakpoint.sm },
     // windowWidth: sm - 1 = 299 => sm
     {
-      windowWidth: testingTheme[getBreakpointDesignToken(Breakpoint.sm)] - 1,
+      windowWidth:
+        getBreakpointValue({ theme: testingTheme, breakpoint: Breakpoint.sm }) -
+        1,
       expectedBreakpoint: Breakpoint.sm,
     },
     // windowWidth: sm + 1 = 301 => md
     {
-      windowWidth: testingTheme[getBreakpointDesignToken(Breakpoint.sm)] + 1,
+      windowWidth:
+        getBreakpointValue({ theme: testingTheme, breakpoint: Breakpoint.sm }) +
+        1,
       expectedBreakpoint: Breakpoint.md,
     },
     // windowWidth: md => md
     {
-      windowWidth: testingTheme[getBreakpointDesignToken(Breakpoint.md)],
+      windowWidth: getBreakpointValue({
+        theme: testingTheme,
+        breakpoint: Breakpoint.md,
+      }),
       expectedBreakpoint: Breakpoint.md,
     },
     // windowWidth: 2 * xl => xl
     {
-      windowWidth: testingTheme[getBreakpointDesignToken(Breakpoint.xl)] * 2,
+      windowWidth:
+        getBreakpointValue({ theme: testingTheme, breakpoint: Breakpoint.xl }) *
+        2,
       expectedBreakpoint: Breakpoint.xl,
     },
   ])(
@@ -50,9 +63,7 @@ describe(useCurrentBreakpoint.name, () => {
       // endregion
 
       // region Act
-      const { result } = renderHook(useCurrentBreakpoint, {
-        wrapper: (props) => <ThemeProvider {...props} brand={testingBrand} />,
-      });
+      const { result } = renderHook(useCurrentBreakpoint, { wrapper });
       // endregion
 
       // region Assert
@@ -60,4 +71,32 @@ describe(useCurrentBreakpoint.name, () => {
       // endregion
     }
   );
+
+  it('should react to downsizing properly', () => {
+    // region Arrange
+    jest.mocked(UseWindowSizeModule.useWindowSize).mockReturnValue({
+      width: getBreakpointValue({
+        theme: testingTheme,
+        breakpoint: Breakpoint.xl,
+      }),
+      height: undefined,
+    });
+    const { result, rerender } = renderHook(useCurrentBreakpoint, { wrapper });
+    // endregion
+
+    // region Act (execute a mock resize event)
+    jest.mocked(UseWindowSizeModule.useWindowSize).mockReturnValue({
+      width: getBreakpointValue({
+        theme: testingTheme,
+        breakpoint: Breakpoint.sm,
+      }),
+      height: undefined,
+    });
+    rerender();
+    // endregion
+
+    // region Assert
+    expect(result.current).toBe(Breakpoint.sm);
+    // endregion
+  });
 });
