@@ -4,6 +4,7 @@ import * as Styled from './Icon.style';
 import Container, { ContainerProps } from '../Container';
 import { Scheme } from '../../types';
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
+import { HTMLAttributes } from 'react';
 
 export type IconProps = {
   /**
@@ -23,7 +24,8 @@ export type IconProps = {
    */
   color?: TypographyColors;
 } & ContainerProps &
-  Pick<FontAwesomeIconProps, 'rotation' | 'spin'>;
+  Pick<FontAwesomeIconProps, 'rotation' | 'spin'> &
+  Pick<HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseDown' | 'onKeyDown'>;
 
 const Icon = ({
   icon,
