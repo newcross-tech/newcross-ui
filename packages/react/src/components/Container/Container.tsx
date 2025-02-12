@@ -101,13 +101,12 @@ export type NewContainerProps = {
    * @default 'div'
    */
   semanticTag?: SemanticContainerTags;
-} & TestProp;
+} & Pick<HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseDown' | 'onKeyDown'> &
+  TestProp;
 
-export type ContainerProps = (NewContainerProps | LegacyContainerProps) &
-  Pick<
-    HTMLAttributes<HTMLElement>,
-    'onClick' | 'onMouseDown' | 'onKeyDown' | 'id' | 'role'
-  >;
+export type ContainerProps =
+  | (NewContainerProps | LegacyContainerProps) &
+      Pick<HTMLAttributes<HTMLElement>, 'id' | 'role'>;
 
 const Container = forwardRef<HTMLElement, ContainerProps>((props, ref) => {
   if (isLegacyProps(props)) {
@@ -119,12 +118,14 @@ const Container = forwardRef<HTMLElement, ContainerProps>((props, ref) => {
     testID,
     display = 'flex',
     semanticTag = 'div',
+    onClick,
     ...restProps
   } = props;
   return (
     <Styled.Container
       ref={ref}
       {...restProps}
+      onClick={onClick}
       display={display}
       data-testid={testID}
       as={semanticTag}

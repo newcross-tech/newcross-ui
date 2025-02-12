@@ -65,6 +65,7 @@ export const Container = styled.div<ExtendedTheme<NewContainerProps>>`
     display,
     fullWidth,
     semanticTag,
+    onClick,
   }) => css`
     ${semanticTag === 'button' && resetButtonCSS()}
     ${applyResponsiveStyles(theme, 'margin', m)}
@@ -92,5 +93,6 @@ export const Container = styled.div<ExtendedTheme<NewContainerProps>>`
     ${alignItems && `align-items: ${alignItems};`}
     ${flexDirection && `flex-direction: ${flexDirection};`}
     ${fullWidth && `width: 100%;`}
+    ${onClick && `cursor: pointer;`}
   `}
 `;

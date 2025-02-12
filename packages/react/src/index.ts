@@ -87,3 +87,5 @@ export type { PhoneNumberInputProps } from './components/Fields/PhoneNumberInput
 export { default as Icon } from './components/Icon';
 export { default as NXLogo } from './components/NXLogo';
 export type { NXLogoProps } from './components/NXLogo';
+export { default as PageHeader } from './components/PageHeader';
+export type { PageHeaderProps } from './components/PageHeader';
