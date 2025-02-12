@@ -105,14 +105,10 @@ export type NewContainerProps = {
    * Aria role attribute
    */
   role?: InputHTMLAttributes<HTMLElement>['role'];
-} & TestProp;
+} & Pick<HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseDown' | 'onKeyDown'> &
+  TestProp;
 
-export type ContainerProps =
-  | (NewContainerProps | LegacyContainerProps) &
-      Pick<
-        HTMLAttributes<HTMLElement>,
-        'onClick' | 'onMouseDown' | 'onKeyDown'
-      >;
+export type ContainerProps = NewContainerProps | LegacyContainerProps;
 
 const Container = (props: ContainerProps) => {
   if (isLegacyProps(props)) {
@@ -124,11 +120,13 @@ const Container = (props: ContainerProps) => {
     testID,
     display = 'flex',
     semanticTag = 'div',
+    onClick,
     ...restProps
   } = props;
   return (
     <Styled.Container
       {...restProps}
+      onClick={onClick}
       display={display}
       data-testid={testID}
       as={semanticTag}
