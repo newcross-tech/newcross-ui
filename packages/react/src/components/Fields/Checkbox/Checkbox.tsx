@@ -6,7 +6,7 @@ import { CheckboxPropsStrict } from './Checkbox.types';
 import Typography from '../../Typography';
 import { onSpacePressTrigger } from '../../../utils';
 import Icon from '../../Icon';
-import { getTextColor } from '../utils';
+import { getTextColor } from '../Fields.style';
 
 export type CheckboxProps = {
   onChange?(

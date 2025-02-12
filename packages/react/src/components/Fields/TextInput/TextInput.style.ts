@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Container from '../../Container';
-import { getCommonStateStyles, getFocusedStyles } from '../utils';
+import { getCommonStateStyles, getFocusedStyles } from '../Fields.style';
 import { ContainerProps } from './TextInput.types';
 
 export const TextInputContainer = styled(Container)<Omit<ContainerProps, 'fullWidth'>>((props) => ({

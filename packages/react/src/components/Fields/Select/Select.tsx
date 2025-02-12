@@ -21,7 +21,7 @@ import Container from '../../Container';
 import HelperText from '../HelperText';
 import Label from '../Label';
 import Icon from '../../Icon';
-import { getTextColor } from '../utils';
+import { getTextColor } from '../Fields.style';
 
 const MultiValueRemove = <
   Option,

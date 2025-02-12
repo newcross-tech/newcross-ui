@@ -1,5 +1,5 @@
 import { OptionalProps } from '../../../types';
-import { getTextColor } from '../utils';
+import { getTextColor } from '../Fields.style';
 import Typography from '../../Typography';
 import * as Styled from './Label.style';
 import { LabelPropsStrict } from './Label.types';

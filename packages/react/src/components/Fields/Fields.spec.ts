@@ -1,5 +1,4 @@
-import { getTextColor } from '.';
-
+import * as Styled from './Fields.style';
 describe('getTextColor', () => {
   const testCases = [
     {
@@ -31,10 +30,10 @@ describe('getTextColor', () => {
   testCases.forEach(
     ({ disabled, hasError, expectedPrimary, expectedSecondary }) => {
       it(`should return correct values for disabled=${disabled} and hasError=${hasError}`, () => {
-        expect(getTextColor.primaryText({ disabled, hasError })).toBe(
+        expect(Styled.getTextColor.primaryText({ disabled, hasError })).toBe(
           expectedPrimary
         );
-        expect(getTextColor.secondaryText({ disabled, hasError })).toBe(
+        expect(Styled.getTextColor.secondaryText({ disabled, hasError })).toBe(
           expectedSecondary
         );
       });

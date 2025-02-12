@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { getScrollbarStyles } from '../../../utils/css/getScrollbarStyles';
 import Container from '../../Container';
-import { getCommonStateStyles, getFocusedStyles } from '../utils';
+import { getCommonStateStyles, getFocusedStyles } from '../Fields.style';
 import { PhoneNumberInputPropsStrict } from './PhoneNumberInput.types';
 
 export const Content = styled(Container)<

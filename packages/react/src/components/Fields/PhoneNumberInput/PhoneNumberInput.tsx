@@ -12,7 +12,7 @@ import HelperText from '../HelperText';
 import Label from '../Label';
 import { PhoneNumberInputPropsStrict } from './PhoneNumberInput.types';
 import * as Styled from './PhoneNumberInput.styles';
-import { preventEventPropagation } from '../utils';
+import { destroyEvent } from '../../../utils';
 
 export type PhoneNumberInputProps = OptionalProps<
   PhoneNumberInputPropsStrict,
@@ -99,7 +99,7 @@ const PhoneNumberInput = (_props: PhoneNumberInputProps) => {
           <Styled.ClearIconWrapper
             testID={`${phoneInputId}-clear-icon`}
             justifyContent="center"
-            onMouseDown={(event) => preventEventPropagation(event)}
+            onMouseDown={(event) => destroyEvent(event)}
             onClick={() =>
               phoneInputProps.onChange?.('', {
                 country: {

@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react';
 import React from 'react';
-import { preventEventPropagation } from './preventEventPropagation';
+import { destroyEvent } from './destroyEvent';
 import userEvent from '@testing-library/user-event';
 
-describe('preventEventPropagation', () => {
+describe('destroyEvent', () => {
   it('should call preventDefault and stopPropagation when triggered', () => {
     // Arrange
     const mockEvent = {
@@ -12,7 +12,7 @@ describe('preventEventPropagation', () => {
     } as unknown as React.MouseEvent;
 
     // Act
-    preventEventPropagation(mockEvent);
+    destroyEvent(mockEvent);
 
     // Assert
     expect(mockEvent.preventDefault).toHaveBeenCalled();
@@ -24,7 +24,7 @@ describe('preventEventPropagation', () => {
     const { getByTestId } = render(
       <div>
         <input data-testid="text-input" />
-        <button data-testid="clear-icon" onMouseDown={preventEventPropagation}>
+        <button data-testid="clear-icon" onMouseDown={destroyEvent}>
           X
         </button>
       </div>

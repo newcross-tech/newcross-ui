@@ -1,7 +1,7 @@
 import { OptionalProps } from '../../../types';
 import Container from '../../Container';
 import Typography from '../../Typography';
-import { getTextColor } from '../utils';
+import { getTextColor } from '../Fields.style';
 import { HelperTextPropsStrict } from './HelperText.types';
 
 export type HelperTextProps = OptionalProps<
