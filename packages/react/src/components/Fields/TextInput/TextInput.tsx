@@ -154,7 +154,7 @@ const TextInput: ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (
               <Container
                 testID={`${inputId}-search-icon`}
                 justifyContent="center"
-                pl="md"
+                pl="xs"
               >
                 <Icon icon={faSearch} variant="p1" />
               </Container>

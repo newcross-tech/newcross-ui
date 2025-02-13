@@ -139,6 +139,60 @@ export const PasswordVariants = () => {
   );
 };
 
+export const SearchVariants = () => {
+  const [search1, setSearch1] = useState('');
+  const [search2, setSearch2] = useState('User entered text');
+  const [search3, setSearch3] = useState('User entered text');
+  const [search4, setSearch4] = useState('');
+
+  return (
+    <Container flexDirection="column" gap="lg">
+      <TextInput
+        required
+        value={search1}
+        label="Label"
+        placeholder="Search here..."
+        type="search"
+        search={true}
+        onChange={setSearch1}
+        helperText="Short and supportive text"
+      />
+      <TextInput
+        required
+        value={search2}
+        label="Label"
+        placeholder="Search here..."
+        type="search"
+        search={true}
+        onChange={setSearch2}
+        isValid
+        helperText="Short and supportive text"
+      />
+      <TextInput
+        required
+        value={search3}
+        label="Label"
+        placeholder="Search here..."
+        type="search"
+        search={true}
+        onChange={setSearch3}
+        errorText="Short and supportive text"
+      />
+      <TextInput
+        required
+        value={search4}
+        disabled
+        label="Label"
+        placeholder="Search here..."
+        type="search"
+        search={true}
+        onChange={setSearch4}
+        helperText="Short and supportive text"
+      />
+    </Container>
+  );
+};
+
 export const TextAreaVariants = () => {
   const [text1a, setText1a] = useState('');
   const [text1b, setText1b] = useState('');
