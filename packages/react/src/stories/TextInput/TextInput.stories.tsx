@@ -1,14 +1,19 @@
 import { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
-import TextInput, { TextInputProps } from '../../components/TextInput';
+import TextInput, { TextInputProps } from '../../components/Fields/TextInput';
 import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './TextInputInfo';
-import * as StoryTitle from '../StoryTitle';
 
 export default {
   title: 'React/Components/TextInput',
   component: TextInput,
+  argTypes: {
+    type: {
+      control: { type: 'select' },
+      options: ['text', 'password', 'email', 'number', 'textarea', 'search'],
+    },
+  },
 } as Meta;
 
 export const Overview = () => {
@@ -35,152 +40,237 @@ export const Overview = () => {
 };
 
 export const Variants = () => {
-  const [password, setPassword] = useState('password');
-  const [text1, onChangeText1] = useState('text1');
-  const [text2, onChangeText2] = useState('text2');
-  const [text3, onChangeText3] = useState('text3');
-  const [text4, onChangeText4] = useState('text4');
-  const [text5, onChangeText5] = useState('text5');
-  const [text6, onChangeText6] = useState('text6');
-  const [text7, onChangeText7] = useState('text7');
-  const [text8, onChangeText8] = useState('text8');
-  const [text9, onChangeText9] = useState('text9');
+  const [text1, setText1] = useState('');
+  const [text2, setText2] = useState('User entered text');
+  const [text3, setText3] = useState('User entered text');
+  const [text4, setText4] = useState('');
 
   return (
-    <Container flexDirection="column">
-      <StoryTitle.Regular>Without placeholder</StoryTitle.Regular>
-      <TextInput value={text1} type="text" onChange={onChangeText1} />
-      <Container m="SpacingBase4" />
-
-      <StoryTitle.Regular>With placeholder</StoryTitle.Regular>
+    <Container flexDirection="column" gap="lg">
       <TextInput
-        placeholder="This is placeholder text"
+        required
+        value={text1}
+        label="Label"
+        placeholder="Default"
+        type="text"
+        onChange={setText1}
+        helperText="Short and supportive text"
+      />
+      <TextInput
+        required
         value={text2}
+        label="Label"
+        placeholder="Default"
         type="text"
-        onChange={onChangeText2}
+        onChange={setText2}
+        isValid
+        helperText="Short and supportive text"
       />
-      <Container m="SpacingBase4" />
-
-      <StoryTitle.Regular>With placeholder and disabled</StoryTitle.Regular>
       <TextInput
+        required
         value={text3}
+        label="Label"
+        placeholder="Default"
         type="text"
-        onChange={onChangeText3}
-        placeholder="Disabled"
+        onChange={setText3}
+        errorText="Short and supportive text"
+      />
+      <TextInput
+        required
+        value={text4}
         disabled
+        label="Label"
+        placeholder="Default"
+        type="text"
+        onChange={setText4}
+        helperText="Short and supportive text"
       />
-      <Container m="SpacingBase4" />
+    </Container>
+  );
+};
 
-      <StoryTitle.Regular>Password</StoryTitle.Regular>
+export const PasswordVariants = () => {
+  const [text1, setText1] = useState('');
+  const [text2, setText2] = useState('User entered text');
+  const [text3, setText3] = useState('User entered text');
+  const [text4, setText4] = useState('');
+
+  return (
+    <Container flexDirection="column" gap="lg">
       <TextInput
-        placeholder="Enter password"
+        required
+        value={text1}
+        label="Label"
+        placeholder="Default"
         type="password"
-        value={password}
-        onChange={(text: string) => setPassword(text)}
+        onChange={setText1}
+        helperText="Short and supportive text"
       />
-      <Container m="SpacingBase4" />
-
-      <StoryTitle.Regular>With validation check</StoryTitle.Regular>
-      <TextInput isValid value={text4} type="text" onChange={onChangeText4} />
-      <Container m="SpacingBase4" />
-
-      <StoryTitle.Regular>With a label</StoryTitle.Regular>
       <TextInput
-        value={text5}
-        type="text"
-        onChange={onChangeText5}
+        required
+        value={text2}
         label="Label"
+        placeholder="Default"
+        type="password"
+        onChange={setText2}
+        isValid
+        helperText="Short and supportive text"
       />
-      <Container m="SpacingBase4" />
-
-      <StoryTitle.Regular>With helper text</StoryTitle.Regular>
       <TextInput
-        value={text6}
-        type="text"
-        onChange={onChangeText6}
+        required
+        value={text3}
         label="Label"
-        helperText="This is the helper text"
+        placeholder="Default"
+        type="password"
+        onChange={setText3}
+        errorText="Short and supportive text"
       />
-      <Container m="SpacingBase4" />
-
-      <StoryTitle.Regular>With error text</StoryTitle.Regular>
       <TextInput
-        value={text7}
-        type="text"
-        onChange={onChangeText7}
+        required
+        value={text4}
+        disabled
         label="Label"
-        errorText="This is an error message"
+        placeholder="Default"
+        type="password"
+        onChange={setText4}
+        helperText="Short and supportive text"
       />
-      <Container m="SpacingBase4" />
-
-      <StoryTitle.Regular>With label variant - paragraph1</StoryTitle.Regular>
-      <TextInput
-        value={text8}
-        type="text"
-        onChange={onChangeText8}
-        label="Label"
-        labelVariant="paragraph1"
-      />
-      <Container m="SpacingBase4" />
-
-      <StoryTitle.Regular>With subtitle</StoryTitle.Regular>
-      <TextInput
-        value={text9}
-        type="text"
-        onChange={onChangeText9}
-        label="Label"
-        subtitle="This is a subtitle"
-      />
-      <Container m="SpacingBase4" />
     </Container>
   );
 };
 
 export const TextAreaVariants = () => {
-  const [, onChangeText1] = useState('text1');
-  const [text2, onChangeText2] = useState('');
-  const [text3, onChangeText3] = useState(
-    'This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar!This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar!  '
+  const [text1a, setText1a] = useState('');
+  const [text1b, setText1b] = useState('');
+  const [text2a, setText2a] = useState('User entered text');
+  const [text2b, setText2b] = useState('User entered text');
+  const [text3a, setText3a] = useState('User entered text');
+  const [text3b, setText3b] = useState('User entered text');
+  const [text4a, setText4a] = useState(
+    'This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar!'
   );
+  const [text4b, setText4b] = useState(
+    'This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar! This is really long text that triggers the scrollbar!'
+  );
+  const [text5a, setText5a] = useState('User entered text');
+  const [text5b, setText5b] = useState('User entered text');
+
   return (
-    <Container flexDirection="row">
-      <Container display="block">
-        <StoryTitle.Regular>TextArea</StoryTitle.Regular>
-        <Container m="SpacingBase4" />
+    <Container flexDirection="column" gap="lg">
+      <Container gap="lg">
         <TextInput
+          required
+          value={text1a}
           type={'textarea'}
           label={'Label'}
-          placeholder={'Please tell us more...'}
-          onChange={onChangeText1}
-          helperText="This is an helper text"
+          placeholder={'Default'}
+          onChange={setText1a}
+          helperText="Short and supportive text"
+        />
+        <TextInput
+          required
+          value={text1b}
+          type={'textarea'}
+          label={'Label'}
+          placeholder={'Default'}
+          onChange={setText1b}
+          helperText="Short and supportive text"
+          fullWidth
         />
       </Container>
-      <Container m="SpacingBase12" />
-
-      <Container display="block">
-        <StoryTitle.Regular>TextArea with maxLength</StoryTitle.Regular>
-        <Container m="SpacingBase4" />
+      <Container gap="lg">
         <TextInput
+          required
+          isValid
+          value={text2a}
           type={'textarea'}
           label={'Label'}
-          value={text2}
-          placeholder={'Please tell us more...'}
-          onChange={onChangeText2}
-          maxLength={400}
-          errorText="This is an error message"
+          onChange={setText2a}
+          maxLength={300}
+        />
+        <TextInput
+          required
+          isValid
+          value={text2b}
+          type={'textarea'}
+          label={'Label'}
+          onChange={setText2b}
+          maxLength={300}
+          fullWidth
         />
       </Container>
 
-      <Container m="SpacingBase12" />
-      <Container display="block">
-        <StoryTitle.Regular>TextArea with long text</StoryTitle.Regular>
-        <Container m="SpacingBase4" />
+      <Container gap="lg">
         <TextInput
-          value={text3}
+          required
           type={'textarea'}
           label={'Label'}
-          onChange={onChangeText3}
-          maxLength={500}
+          value={text3a}
+          placeholder={'Default'}
+          onChange={setText3a}
+          maxLength={300}
+          errorText="Short and supportive text"
+        />
+        <TextInput
+          required
+          type={'textarea'}
+          label={'Label'}
+          value={text3b}
+          placeholder={'Default'}
+          onChange={setText3b}
+          maxLength={300}
+          errorText="Short and supportive text"
+          fullWidth
+        />
+      </Container>
+
+      <Container gap="lg">
+        <TextInput
+          required
+          type={'textarea'}
+          label={'Label'}
+          value={text4a}
+          placeholder={'Default'}
+          onChange={setText4a}
+          maxLength={2000}
+          helperText="Short and supportive text"
+        />
+        <TextInput
+          required
+          type={'textarea'}
+          label={'Label'}
+          value={text4b}
+          placeholder={'Default'}
+          onChange={setText4b}
+          maxLength={2000}
+          helperText="Short and supportive text"
+          fullWidth
+        />
+      </Container>
+
+      <Container gap="lg">
+        <TextInput
+          required
+          disabled
+          type={'textarea'}
+          label={'Label'}
+          value={text5a}
+          placeholder={'Default'}
+          onChange={setText5a}
+          maxLength={300}
+          helperText="Short and supportive text"
+        />
+        <TextInput
+          required
+          disabled
+          type={'textarea'}
+          label={'Label'}
+          value={text5b}
+          placeholder={'Default'}
+          onChange={setText5b}
+          maxLength={300}
+          helperText="Short and supportive text"
+          fullWidth
         />
       </Container>
     </Container>
@@ -210,4 +300,5 @@ Interactive.args = {
   search: false,
   maxLength: 400,
   fullWidth: false,
+  required: false,
 };

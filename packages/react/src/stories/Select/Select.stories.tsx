@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react';
-import Select, { SelectProps } from '../../components/Select';
+import Select, { SelectProps } from '../../components/Fields/Select';
 import { DESCRIPTION, DO, DONT, TITLE } from './Select.info';
 import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
@@ -169,6 +169,7 @@ const Template: Story<SelectProps<{ label: string; value: string }>> = ({
 
 export const Interactive = Template.bind({});
 Interactive.args = {
+  id: 'interactive-select',
   isMulti: false,
   options,
   placeholder: "Select a 'label'",
