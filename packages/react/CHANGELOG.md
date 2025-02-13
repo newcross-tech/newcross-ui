@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.29.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.28.3...@newcross-ui/react@2.29.0) (2025-02-13)
+
+
+### Features
+
+* **HFAUI-15:** create page header ([#197](https://bitbucket.org/newcrossdev/newcross-ui/issues/197)) ([922fae6](https://bitbucket.org/newcrossdev/newcross-ui/commits/922fae68dc2362388d1386315b8bb0ada780b875))
+
+
+
+
+
 ## [2.28.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.28.2...@newcross-ui/react@2.28.3) (2025-01-29)
 
 **Note:** Version bump only for package @newcross-ui/react
