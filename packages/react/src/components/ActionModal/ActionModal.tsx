@@ -9,8 +9,13 @@ import {
 import 'react-sheet-slide/style.css';
 import * as Styled from './ActionModal.style';
 import { faXmark } from '@fortawesome/pro-light-svg-icons/faXmark';
+import { faExclamationCircle } from '@fortawesome/pro-regular-svg-icons/faExclamationCircle';
 import { OptionalProps } from '../../types';
 import { ActionModalPropsStrict } from './ActionModal.types';
+import Typography from '../Typography';
+import Container from '../Container';
+import { useCurrentBreakpoint } from '../../hooks/useCurrentBreakpoint';
+import Icon from '../Icon';
 
 export type ActionModalProps = OptionalProps<
   ActionModalPropsStrict,
@@ -50,6 +55,9 @@ const ActionModal = (_props: ActionModalProps) => {
 
   const baseName = 'action-modal-';
 
+  const currentBreakpoint = useCurrentBreakpoint();
+  const isMobile = currentBreakpoint === 'sm';
+
   return (
     <Portal>
       <Styled.SheetWrapper
@@ -70,66 +78,55 @@ const ActionModal = (_props: ActionModalProps) => {
           {...rest}
         >
           <Header className={`${baseName}header`}>
-            <Styled.IndicatorWrapper
-              justifyContent="center"
-              p="SpacingBase16"
-              $isAlwaysModal={$isAlwaysModal}
-            >
-              <Styled.Indicator
-                $isAlwaysModal={$isAlwaysModal}
-                px="SpacingBase48"
-              />
-            </Styled.IndicatorWrapper>
-            <Styled.HeaderContent
-              pt="SpacingBase32"
-              pb="SpacingBase0"
-              px="SpacingBase24"
-              flexDirection="column"
-            >
-              <Styled.Header
-                justifyContent="space-between"
-                pb="SpacingBase8"
-                $isAlwaysModal={$isAlwaysModal}
+            {!$isAlwaysModal && isMobile && <Styled.DragBar my="md" />}
+            <Container flexDirection="column" gap="sm">
+              <Container
+                justifyContent={isMobile ? 'flex-start' : 'space-between'}
+                alignItems="center"
+                gap="sm"
               >
-                <Styled.Heading
-                  variant="heading2"
-                  color="primary"
+                {isMobile && (
+                  <Icon
+                    variant="h2"
+                    icon={faExclamationCircle}
+                    color="defaultDark"
+                    data-testid={`${baseName}exclamation-icon`}
+                  />
+                )}
+                <Typography
+                  variant="h2"
+                  color="defaultDark"
+                  align="left"
                   testID={`${baseName}title`}
                 >
                   {title}
-                </Styled.Heading>
-                {!canCloseOnActionOnly && (
-                  <Styled.Icon
+                </Typography>
+                {!canCloseOnActionOnly && !isMobile && (
+                  <Icon
+                    variant="h2"
                     icon={faXmark}
-                    size="2x"
-                    width="16px"
-                    height="16px"
-                    $isAlwaysModal={$isAlwaysModal}
+                    color="defaultDark"
                     onClick={onDismiss}
                     data-testid={`${baseName}close-icon`}
                   />
                 )}
-              </Styled.Header>
+              </Container>
               {subtitle && (
-                <Styled.Subtitle
-                  variant="paragraph1"
-                  color="primary"
+                <Typography
+                  variant="p1"
+                  color="defaultDark"
                   testID={`${baseName}subtitle`}
                 >
                   {subtitle}
-                </Styled.Subtitle>
+                </Typography>
               )}
-            </Styled.HeaderContent>
+            </Container>
           </Header>
           {content && (
             <Content className={`${baseName}content`}>
               <Styled.ContentWapper
-                $isAlwaysModal={$isAlwaysModal}
                 $hasGreyBackground={$hasGreyBackground}
                 $hasPadding={$hasPadding}
-                pt="SpacingBase24"
-                px="SpacingBase24"
-                pb={footer ? 'SpacingBase0' : 'SpacingBase40'}
                 flexDirection="column"
                 data-testid="content-wrapper"
               >
@@ -139,15 +136,9 @@ const ActionModal = (_props: ActionModalProps) => {
           )}
           <Footer className={`${baseName}footer`}>
             {footer && (
-              <Styled.FooterWrapper
-                $isAlwaysModal={$isAlwaysModal}
-                px="SpacingBase24"
-                py="SpacingBase32"
-                flexDirection="column"
-                data-testid="footer-wrapper"
-              >
+              <Container flexDirection="column" data-testid="footer-wrapper">
                 {footer}
-              </Styled.FooterWrapper>
+              </Container>
             )}
           </Footer>
         </Sheet>
