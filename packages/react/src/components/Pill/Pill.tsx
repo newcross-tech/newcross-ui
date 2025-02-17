@@ -89,10 +89,7 @@ const Pill = (_props: PillProps) => {
   }
 
   function toggle() {
-    if (disabled) return;
-    if (removable) return;
-    if (!onClick) return;
-    if (variant !== 'default') return;
+    if (disabled || removable || !onClick || variant !== 'default') return;
     setSelected((prev) => !prev);
   }
 

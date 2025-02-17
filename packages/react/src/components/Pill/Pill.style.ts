@@ -32,27 +32,25 @@ export const getVariantColor = ({ theme, variant }: Theme & Pick<PillPropsStrict
 };
 
 export const Pill = styled.div<
-  Theme & Pick<PillPropsStrict, 'disabled' | 'removable' | 'selected' | 'hasPadding' | 'variant' | 'hasBorder'>
->((props) => {
-  return [
-    {
-      width: 'fit-content',
-      height: 'fit-content',
-      margin: props.hasPadding ? props.theme.BaselineSpacesSpace8 : undefined,
-      borderRadius: props.theme.BorderBaseRadiusRounded,
-      backgroundColor: getBackgroundColor(props),
-    },
-    props.hasBorder && {
-      border: `solid ${props.theme.BorderBaseWidthSm}`,
-      borderColor: props.variant ? getVariantColor(props) : undefined,
-    },
-    props.variant === 'default' && {
-      borderColor: props.disabled ? props.theme.ElementsBorderDisabled : props.theme.ElementsBorderHighlightStrong,
-      cursor: !props.disabled && !props.removable ? 'pointer' : 'default',
-    },
-    getTabbedStateStyles(),
-  ];
-});
+  Pick<PillPropsStrict, 'disabled' | 'removable' | 'selected' | 'hasPadding' | 'variant' | 'hasBorder'>
+>((props) => [
+  {
+    width: 'fit-content',
+    height: 'fit-content',
+    margin: props.hasPadding ? props.theme.BaselineSpacesSpace8 : undefined,
+    borderRadius: props.theme.BorderBaseRadiusRounded,
+    backgroundColor: getBackgroundColor(props),
+  },
+  props.hasBorder && {
+    border: `solid ${props.theme.BorderBaseWidthSm}`,
+    borderColor: props.variant ? getVariantColor(props) : undefined,
+  },
+  props.variant === 'default' && {
+    borderColor: props.disabled ? props.theme.ElementsBorderDisabled : props.theme.ElementsBorderHighlightStrong,
+    cursor: !props.disabled && !props.removable ? 'pointer' : 'default',
+  },
+  getTabbedStateStyles(),
+]);
 
 export const Icon = styled.div<Pick<PillPropsStrict, 'disabled' | 'variant'>>((props) => [
   {
