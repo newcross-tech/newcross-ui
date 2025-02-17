@@ -1,28 +1,16 @@
 import { CSSProperties, ReactNode, SyntheticEvent } from 'react';
-import { TestProp } from '../../types';
+import { TestProp, ValueFrom } from '../../types';
 
-type ExtendedPillProps = PillPropsStrict & {
-  isRemovable: boolean;
-  isSelected: boolean;
-};
+export const PillVariant = {
+  default: 'default',
+  info: 'info',
+  success: 'success',
+  warning: 'warning',
+  error: 'error',
+} as const;
+export type PillVariant = ValueFrom<typeof PillVariant>;
 
-export type PillVariantProps = Pick<
-  PillPropsStrict,
-  'disabled' | 'statusVariant'
->;
-
-export type BackGroundProps = PillVariantProps &
-  Pick<SelectedProps, 'isSelected'>;
-
-export type SelectedProps = PillVariantProps &
-  Pick<
-    ExtendedPillProps,
-    'hasPadding' | 'isSelected' | 'isRemovable' | 'hasBorder'
-  >;
-
-export type PillVariant = 'default' | 'info' | 'success' | 'warning' | 'error';
-
-export type CustomStyle = {
+export type PillCustomStyle = {
   iconStyles?: CSSProperties;
   textStyles?: CSSProperties;
   coreStyles?: CSSProperties;
@@ -79,9 +67,9 @@ export type PillPropsStrict = {
    */
   removable: boolean;
   /**
-   * Called when a single tap gesture is detected.
+   * @description Called when the pill is clicked
    */
-  onClick?: (event: SyntheticEvent) => void;
+  onClick?(event: SyntheticEvent): void;
   /**
    * Used to apply padding
    */
@@ -97,9 +85,9 @@ export type PillPropsStrict = {
   /**
    * Used to define color palette of the Pills.
    */
-  statusVariant: PillVariant;
+  variant: PillVariant;
   /**
    * Used to add custom style to the pill container.
    */
-  style: CustomStyle;
+  style: PillCustomStyle;
 } & TestProp;
