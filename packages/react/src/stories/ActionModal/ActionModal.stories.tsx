@@ -7,7 +7,7 @@ import { DESCRIPTION, DO, DONT, TITLE } from './ActionModalInfo';
 import * as StoryTitle from '../StoryTitle';
 import ActionModal, { ActionModalProps } from '../../components/ActionModal';
 import Typography from '../../components/Typography';
-import Select from '../../components/Select';
+import Select from '../../components/Fields/Select';
 
 /**
  * To use the library styles you need to import import 'react-sheet-slide/style.css';
@@ -143,5 +143,4 @@ Interactive.args = {
   title: MODAL_TITLE,
   subtitle: MODAL_SUBTITLE,
   content: MODAL_CONTENT,
-  footer: renderModalFooter(),
 };

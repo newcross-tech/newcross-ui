@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import Container from '../Container';
-import { getRgba } from '../../utils/getRgba';
-import { breakpoint } from '../../utils/css';
-import { ActionModalPropsStrict } from './ActionModal.types';
+import { ActionModalPropsStrict, BOTTOM_SHEET_BREAKPOINT } from './ActionModal.types';
 
 export const DragBar = styled(Container)(({ theme }) => [
   {
@@ -16,10 +14,12 @@ export const DragBar = styled(Container)(({ theme }) => [
 
 export const ContentWapper = styled(Container)<Pick<ActionModalPropsStrict, '$hasGreyBackground' | '$hasPadding'>>(
   ({ theme, $hasPadding, $hasGreyBackground }) => [
-    breakpoint.sm({
-      ...($hasPadding && { paddingTop: theme.BaselineSpacesSpace16 }),
-      ...($hasGreyBackground && { backgroundColor: theme.ElementsSurfacePage }),
-    }),
+    {
+      [`@media (max-width: ${BOTTOM_SHEET_BREAKPOINT}px)`]: {
+        ...($hasPadding && { paddingTop: theme.BaselineSpacesSpace16 }),
+        ...($hasGreyBackground && { backgroundColor: theme.ElementsSurfacePage }),
+      },
+    },
   ]
 );
 
@@ -57,32 +57,27 @@ export const SheetWrapper = styled(Container)<
       }),
     },
     '.action-modal-backdrop': {
-      backgroundColor: getRgba(theme.TabsActiveTabShadowColor, theme.OpacityBaseMd),
+      backgroundColor: theme.ThemesNeutral950,
+      opacity: theme.OpacityBaseMd,
       padding: 0,
       margin: 0,
       borderRadius: 0,
       clipPath: 'none',
       transform: 'unset',
-      opacity: 1,
     },
     'div[role="dialog"]': {
       height: 'auto',
-      maxHeight: '90vh',
       backgroundColor: theme.ElementsSurfaceDefault,
-      ...($isAlwaysModal
-        ? {
-            margin: theme.BaselineSpacesSpace24,
-          }
-        : {
-            [`@media (min-width: ${theme.BreakpointsSm + 1}px)`]: {
-              margin: theme.BaselineSpacesSpace24,
-            },
-          }),
-      [`@media (min-width: ${theme.BreakpointsSm}px)`]: {
-        maxHeight: '70vh',
-        minWidth: '500px',
-        maxWidth: '800px',
-        width: '50%',
+      maxHeight: '70vh',
+      minWidth: '500px',
+      maxWidth: '800px',
+      width: '50%',
+      [`@media (min-width: ${BOTTOM_SHEET_BREAKPOINT + 1}px) and (max-width: ${theme.BreakpointsMd}px)`]: {
+        minWidth: '90%',
+      },
+      [`@media (max-width: ${BOTTOM_SHEET_BREAKPOINT}px)`]: {
+        maxHeight: '90vh',
+        minWidth: $isAlwaysModal ? '90%' : '100%',
       },
     },
   },

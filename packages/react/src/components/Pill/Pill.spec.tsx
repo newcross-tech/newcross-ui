@@ -1,17 +1,18 @@
 import { faDog } from '@fortawesome/pro-solid-svg-icons/faDog';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { byTestId, byText } from 'testing-library-selector';
 import { axe } from '../../utils/test/axeConfig';
 import { executeKeyPress } from '../../utils/test/executeKeyPress';
 import Pill, { PillProps } from './Pill';
+import userEvent from '@testing-library/user-event';
 
-const renderComponent = (customProps: Partial<PillProps>) => {
+const renderComponent = (overrides?: Partial<PillProps>) => {
   const props = {
     label: 'Label',
     disabled: false,
     removable: false,
-    ...customProps,
+    ...overrides,
   };
 
   render(<Pill {...props} />);
@@ -23,8 +24,8 @@ describe('Pill Component', () => {
   const ui = {
     pillClickable: byTestId(`${baseTestId}-clickable`),
     pillIcon: byTestId(`${baseTestId}-icon`),
-    pillComp: byTestId(`${baseTestId}-component`),
-    pillCompSelected: byTestId(`${baseTestId}-component-selected`),
+    pill: byTestId(`${baseTestId}-component`),
+    pillSelected: byTestId(`${baseTestId}-component-selected`),
     pillDisabled: byTestId(`${baseTestId}-component-disabled`),
   };
 
@@ -41,17 +42,17 @@ describe('Pill Component', () => {
     renderComponent({});
 
     // Assert
-    expect(ui.pillComp.get()).toBeInTheDocument();
+    expect(ui.pill.get()).toBeInTheDocument();
     expect(byText(/Label/i).get()).toBeInTheDocument();
   });
 
   it('selects pill when Spacebar', () => {
     // Act
-    renderComponent({});
+    renderComponent();
 
-    executeKeyPress(ui.pillComp.get());
+    executeKeyPress(ui.pill.get());
     // Assert
-    expect(ui.pillCompSelected.get()).toBeInTheDocument();
+    expect(ui.pillSelected.get()).toBeInTheDocument();
   });
 
   it('removes pill when pressing remove icon using Spacebar', () => {
@@ -60,7 +61,7 @@ describe('Pill Component', () => {
     // Act
     executeKeyPress(ui.pillClickable.get());
     // Assert
-    expect(ui.pillComp.query()).not.toBeInTheDocument();
+    expect(ui.pill.query()).not.toBeInTheDocument();
   });
 
   it('renders successfully when icon prop is given', () => {
@@ -75,7 +76,7 @@ describe('Pill Component', () => {
 
     // Act
     renderComponent({ removable: true, onClick });
-    fireEvent.click(ui.pillClickable.get());
+    userEvent.click(ui.pillClickable.get());
 
     // Assert
     expect(onClick).toHaveBeenCalled();
@@ -90,7 +91,7 @@ describe('Pill Component', () => {
       onClick,
       disabled: true,
     });
-    fireEvent.click(ui.pillClickable.get());
+    userEvent.click(ui.pillClickable.get());
 
     // Assert
     expect(onClick).not.toHaveBeenCalled();
@@ -102,10 +103,10 @@ describe('Pill Component', () => {
       statusVariant: 'error',
     });
 
-    fireEvent.click(ui.pillComp.get());
+    userEvent.click(ui.pill.get());
 
     // Assert
-    expect(ui.pillCompSelected.query()).not.toBeInTheDocument();
+    expect(ui.pillSelected.query()).not.toBeInTheDocument();
   });
 
   it('renders with disabled state and prevents interactions', () => {
@@ -117,10 +118,10 @@ describe('Pill Component', () => {
     expect(pill).toBeInTheDocument();
 
     // Attempt to interact with the disabled pill
-    fireEvent.click(pill);
+    userEvent.click(pill);
     executeKeyPress(pill);
 
     // Assert: no interaction should occur
-    expect(ui.pillCompSelected.query()).not.toBeInTheDocument();
+    expect(ui.pillSelected.query()).not.toBeInTheDocument();
   });
 });

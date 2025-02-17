@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.30.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.30.0...@newcross-ui/react@2.30.1) (2025-02-13)
+
+**Note:** Version bump only for package @newcross-ui/react
+
+
+
+
+
+# [2.30.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.29.0...@newcross-ui/react@2.30.0) (2025-02-13)
+
+
+### Features
+
+* **HFAUI-0000:** Input Fields ([#179](https://bitbucket.org/newcrossdev/newcross-ui/issues/179)) ([70aaced](https://bitbucket.org/newcrossdev/newcross-ui/commits/70aacede00dc2427643751a54e093f70e1f328f4))
+* **HFAUI-183:** update search bar ([#203](https://bitbucket.org/newcrossdev/newcross-ui/issues/203)) ([b9d6504](https://bitbucket.org/newcrossdev/newcross-ui/commits/b9d65041eba22bdbe25618c29180660f02be39bb))
+
+
+
+
+
+# [2.29.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.28.3...@newcross-ui/react@2.29.0) (2025-02-13)
+
+
+### Features
+
+* **HFAUI-15:** create page header ([#197](https://bitbucket.org/newcrossdev/newcross-ui/issues/197)) ([922fae6](https://bitbucket.org/newcrossdev/newcross-ui/commits/922fae68dc2362388d1386315b8bb0ada780b875))
+
+
+
+
+
 ## [2.28.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.28.2...@newcross-ui/react@2.28.3) (2025-01-29)
 
 **Note:** Version bump only for package @newcross-ui/react

@@ -1,14 +1,17 @@
-import { css } from 'styled-components';
 import { Theme } from '../../types';
 
-export const getScrollbarStyles = () => css`
-  ${({ theme }: Theme) => css`
-    ::-webkit-scrollbar {
-      width: ${theme.SpacingBase4};
-    }
-    ::-webkit-scrollbar-thumb {
-      background: ${theme.ColorNeutralGrey300};
-      border-radius: ${theme.TextInputBorderRadius};
-    }
-  `};
-`;
+export const getScrollbarStyles = ({ theme }: Theme) => ({
+  '::-webkit-scrollbar': {
+    width: theme.BaselineSpacesSpace4,
+    background: 'transparent',
+  },
+
+  '::-webkit-scrollbar-track': {
+    background: 'transparent',
+  },
+
+  '::-webkit-scrollbar-thumb': {
+    borderRadius: theme.BorderBaseRadiusMd,
+    background: theme.ElementsSurfaceDefaultSecondary,
+  },
+});

@@ -1,6 +1,6 @@
 import { Meta, Story } from '@storybook/react';
 import Container, { ContainerProps } from '../../components/Container';
-import TextInput from '../../components/TextInput';
+import TextInput from '../../components/Fields/TextInput';
 import { DESCRIPTION, DO, DONT, TITLE } from './ContainerInfo';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import Card from '../../components/Card';

@@ -5,7 +5,7 @@ import Table, { TableProps } from '../../components/Table';
 import Typography from '../../components/Typography';
 import Container from '../../components/Container';
 import * as StoryTitle from '../StoryTitle';
-import Checkbox from '../../components/Checkbox';
+import Checkbox from '../../components/Fields/Checkbox';
 import Icon from '../../components/Icon';
 import ToggleButton from '../../components/ToggleButton';
 

@@ -1,5 +1,7 @@
 import { SheetProps } from 'react-sheet-slide';
 
+export const BOTTOM_SHEET_BREAKPOINT = 640;
+
 export type ActionModalPropsStrict = {
   /**
    * Action modal's title

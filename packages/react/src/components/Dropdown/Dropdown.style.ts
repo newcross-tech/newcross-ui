@@ -4,8 +4,7 @@ import styled, { css } from 'styled-components';
 import { getElipsisStyles, getTabbedStateStyles } from '../../utils/css';
 import { getScrollbarStyles } from '../../utils/css/getScrollbarStyles';
 import { getHaloValue } from '../../utils/getHaloValue';
-import HaloLabel, { LabelProps } from '../Label';
-import Typography from '../Typography';
+import Typography, { TypographyProps } from '../Typography';
 import { defaultAnimationSpeed, optionNumberOfLines } from './Dropdown.constants';
 import {
   DropdownAnimatedStyleArgs,
@@ -14,6 +13,7 @@ import {
   HeaderValueProps,
   OptionProps,
 } from './Dropdown.types';
+import Label, { LabelProps } from '../Fields/Label';
 
 const getPaddingStyles = (isMulti: boolean) => css`
   ${({ theme }) => css`
@@ -21,7 +21,7 @@ const getPaddingStyles = (isMulti: boolean) => css`
   `};
 `;
 
-export const Label = styled(HaloLabel)<LabelProps>`
+export const DropdownLabel = styled(Label)<LabelProps>`
   ${({ theme }) => css`
     display: inline-block;
     color: ${theme.RadioColor};
@@ -84,7 +84,7 @@ export const BodyContent = styled(animated.div)<ErrorProps>`
     border-top-right-radius: 0;
     border-top: none;
 
-    ${getScrollbarStyles()}
+    ${getScrollbarStyles({ theme })}
   `};
 `;
 
@@ -203,3 +203,10 @@ export const PillContainer = styled.div`
     gap: ${theme.SpacingBase8};
   `};
 `;
+
+export const MessageText = styled(Typography)<TypographyProps & { hasError?: boolean }>(({ theme, hasError }) => ({
+  color: hasError ? theme.ElementsTextDangerError : theme.ElementsTextDefaultDarkSecondary,
+  marginTop: theme.BaselineSpacesSpace4,
+  paddingRight: theme.BaselineSpacesSpace0,
+  paddingLeft: theme.BaselineSpacesSpace16,
+}));

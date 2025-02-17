@@ -110,7 +110,7 @@ describe('ActionModal', () => {
   it('should call onDismiss when clicking on the close icon', () => {
     // Arrange
     const onDismiss = jest.fn();
-    renderActionModal({ ...defaultProps, onDismiss });
+    renderActionModal({ ...defaultProps, onDismiss, $isAlwaysModal: true });
 
     // Act
     const closeIcon = byTestId('action-modal-close-icon').get();

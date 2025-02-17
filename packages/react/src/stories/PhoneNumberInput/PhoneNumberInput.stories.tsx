@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 import PhoneNumberInput, {
   PhoneNumberInputProps,
-} from '../../components/PhoneNumberInput';
+} from '../../components/Fields/PhoneNumberInput';
 import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './PhoneNumberInput';
@@ -27,25 +27,51 @@ export const Overview = () => {
   );
 };
 
-export const Variants = () => {
-  const [phone, setPhone] = useState('3456454564');
+export const PhoneNumberVariants = () => {
+  const [phone1, setPhone1] = useState('');
+  const [phone2, setPhone2] = useState('3456454564');
+  const [phone3, setPhone3] = useState('');
+  const [phone4, setPhone4] = useState('');
 
   return (
-    <Container flexDirection="column">
+    <Container flexDirection="column" gap="lg">
       <PhoneNumberInput
-        label={'Phone number With Default Country'}
-        defaultCountry="gb"
+        required
+        value={phone1}
+        label="Phone Number"
+        placeholder="Enter your phone number"
+        onChange={setPhone1}
+        helperText="Enter a valid phone number"
       />
-      <Container m="SpacingBase8" />
 
       <PhoneNumberInput
-        value={phone}
-        label={'Phone number With a value'}
-        onChange={setPhone}
+        required
+        value={phone2}
+        label="Phone Number with Value"
+        onChange={setPhone2}
+        isValid
+        helperText="Valid phone number"
       />
-      <Container m="SpacingBase8" />
 
-      <PhoneNumberInput label={'Phone number Disabled'} disabled />
+      <PhoneNumberInput
+        required
+        value={phone3}
+        label="Phone Number with Error"
+        placeholder="Enter your phone number"
+        onChange={setPhone3}
+        isError
+        helperText="Invalid phone number"
+      />
+
+      <PhoneNumberInput
+        required
+        value={phone4}
+        label="Disabled Phone Number"
+        placeholder="Enter your phone number"
+        onChange={setPhone4}
+        disabled
+        helperText="This input is disabled"
+      />
     </Container>
   );
 };

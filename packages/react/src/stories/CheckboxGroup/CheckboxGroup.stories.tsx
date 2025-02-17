@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/react';
 import CheckboxGroup, {
   CheckboxGroupProps,
-} from '../../components/CheckboxGroup';
+} from '../../components/Fields/CheckboxGroup';
 import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './CheckboxGroupInfo';

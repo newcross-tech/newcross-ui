@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { SingleValue } from 'react-select';
-import Select from '../Select';
+import Select from '../Fields/Select';
 import Pagination from '../Pagination';
 import * as Styled from './Table.style';
 import { PaginationAdapterProps } from './Table.types';

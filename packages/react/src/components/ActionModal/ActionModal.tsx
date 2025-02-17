@@ -14,8 +14,8 @@ import { OptionalProps } from '../../types';
 import { ActionModalPropsStrict } from './ActionModal.types';
 import Typography from '../Typography';
 import Container from '../Container';
-import { useCurrentBreakpoint } from '../../hooks/useCurrentBreakpoint';
 import Icon from '../Icon';
+import { useIsBottomSheetBreakpoint } from './hooks/useIsBottomSheetBreakpoint';
 
 export type ActionModalProps = OptionalProps<
   ActionModalPropsStrict,
@@ -55,8 +55,8 @@ const ActionModal = (_props: ActionModalProps) => {
 
   const baseName = 'action-modal-';
 
-  const currentBreakpoint = useCurrentBreakpoint();
-  const isMobile = currentBreakpoint === 'sm';
+  const isBottomSheetBreakpoint = useIsBottomSheetBreakpoint();
+  const isBottomSheet = isBottomSheetBreakpoint && !$isAlwaysModal;
 
   return (
     <Portal>
@@ -78,19 +78,25 @@ const ActionModal = (_props: ActionModalProps) => {
           {...rest}
         >
           <Header className={`${baseName}header`}>
-            {!$isAlwaysModal && isMobile && <Styled.DragBar my="md" />}
-            <Container flexDirection="column" gap="sm">
+            {isBottomSheet && <Styled.DragBar my="md" />}
+            <Container
+              flexDirection="column"
+              gap="sm"
+              px={isBottomSheet ? 'md' : 'lg'}
+              pt={isBottomSheet ? 'sm' : 'lg'}
+              pb={isBottomSheet ? 'sm' : 'md'}
+            >
               <Container
-                justifyContent={isMobile ? 'flex-start' : 'space-between'}
+                justifyContent={isBottomSheet ? 'flex-start' : 'space-between'}
                 alignItems="center"
                 gap="sm"
               >
-                {isMobile && (
+                {isBottomSheet && (
                   <Icon
                     variant="h2"
                     icon={faExclamationCircle}
                     color="defaultDark"
-                    data-testid={`${baseName}exclamation-icon`}
+                    testID={`${baseName}exclamation-icon`}
                   />
                 )}
                 <Typography
@@ -101,13 +107,13 @@ const ActionModal = (_props: ActionModalProps) => {
                 >
                   {title}
                 </Typography>
-                {!canCloseOnActionOnly && !isMobile && (
+                {!canCloseOnActionOnly && !isBottomSheet && (
                   <Icon
                     variant="h2"
                     icon={faXmark}
                     color="defaultDark"
                     onClick={onDismiss}
-                    data-testid={`${baseName}close-icon`}
+                    testID={`${baseName}close-icon`}
                   />
                 )}
               </Container>
@@ -125,6 +131,8 @@ const ActionModal = (_props: ActionModalProps) => {
           {content && (
             <Content className={`${baseName}content`}>
               <Styled.ContentWapper
+                px={isBottomSheet ? 'md' : 'lg'}
+                pb={isBottomSheet && !footer ? 'md' : 'lg'}
                 $hasGreyBackground={$hasGreyBackground}
                 $hasPadding={$hasPadding}
                 flexDirection="column"
@@ -136,7 +144,13 @@ const ActionModal = (_props: ActionModalProps) => {
           )}
           <Footer className={`${baseName}footer`}>
             {footer && (
-              <Container flexDirection="column" data-testid="footer-wrapper">
+              <Container
+                flexDirection="column"
+                data-testid="footer-wrapper"
+                pt={isBottomSheet ? 'sm' : 'md'}
+                px={isBottomSheet ? 'md' : 'lg'}
+                pb={isBottomSheet ? 'md' : 'lg'}
+              >
                 {footer}
               </Container>
             )}
