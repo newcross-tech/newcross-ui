@@ -48,7 +48,7 @@ describe('Pill Component', () => {
 
   it('selects pill when Spacebar', () => {
     // Act
-    renderComponent({ onClick: jest.fn() });
+    renderComponent();
 
     executeKeyPress(ui.pill.get());
     // Assert

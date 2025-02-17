@@ -10,7 +10,6 @@ import useTheme from '../../hooks/useTheme';
 import { PillVariant } from '../../components/Pill/Pill.types';
 import Icon from '../../components/Icon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { noop } from '../../utils/noop';
 
 export default {
   title: 'React/Components/Pill',
@@ -60,12 +59,12 @@ export const Variants = () => {
           </Container>
         </Container>
 
-        {/* Selected / Clickable Pill */}
+        {/* Selected Pill */}
         <Container flexDirection="column" gap="sm">
-          <StoryTitle.Regular>Selected / Clickable Pill</StoryTitle.Regular>
+          <StoryTitle.Regular>Selected Pill</StoryTitle.Regular>
           <Container flexDirection="row" gap="sm" alignItems="center">
-            <Pill onClick={noop} label="Large" selected />
-            <Pill onClick={noop} label="Small" selected size="small" />
+            <Pill label="Large" selected />
+            <Pill label="Small" selected size="small" />
           </Container>
         </Container>
 
