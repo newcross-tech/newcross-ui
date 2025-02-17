@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.30.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.30.1...@newcross-ui/react@2.30.2) (2025-02-17)
+
+
+### Bug Fixes
+
+* **HFAUI-197:** non-interactive pill behaviour ([#207](https://bitbucket.org/newcrossdev/newcross-ui/issues/207)) ([ede303e](https://bitbucket.org/newcrossdev/newcross-ui/commits/ede303ea2e8a34b5dfe3b8b50128183e2fa47682))
+
+
+
+
+
 ## [2.30.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.30.0...@newcross-ui/react@2.30.1) (2025-02-13)
 
 **Note:** Version bump only for package @newcross-ui/react
