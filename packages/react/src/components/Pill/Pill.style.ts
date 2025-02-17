@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 import { getTabbedStateStyles } from '../../utils';
-import { BackGroundProps, PillVariant, PillVariantProps, SelectedProps } from './Pill.types';
+import { PillPropsStrict } from './Pill.types';
 import { Theme } from '../../types';
 
-const getBackgroundColor = ({ theme, disabled, isSelected, statusVariant }: Theme & BackGroundProps) => {
+const getBackgroundColor = ({
+  theme,
+  disabled,
+  selected,
+  variant,
+}: Theme & Pick<PillPropsStrict, 'disabled' | 'selected' | 'variant'>) => {
   if (disabled) return theme.ElementsSurfaceDisabled;
-  if (isSelected) return theme.ElementsSurfaceActionHoverSecondary;
+  if (selected) return theme.ElementsSurfaceActionHoverSecondary;
 
   return {
     default: theme.ElementsSurfacePage,
@@ -13,54 +18,51 @@ const getBackgroundColor = ({ theme, disabled, isSelected, statusVariant }: Them
     error: theme.ElementsSurfaceDanger,
     info: theme.ElementsSurfaceInfo,
     warning: theme.ElementsSurfaceWarning,
-  }[statusVariant];
+  }[variant];
 };
 
-export const getVariantColor = ({ theme, statusVariant }: Theme & { statusVariant: PillVariant }): string => {
+export const getVariantColor = ({ theme, variant }: Theme & Pick<PillPropsStrict, 'variant'>): string => {
   return {
     default: theme.ElementsTextDefaultDark,
     info: theme.ElementsTextInfo,
     success: theme.ElementsTextSuccess,
     error: theme.ElementsTextDanger,
     warning: theme.ElementsTextWarning,
-  }[statusVariant];
+  }[variant];
 };
 
-export const Pill = styled.div<Theme & SelectedProps>(
-  ({ theme, disabled, isRemovable, isSelected, hasPadding, statusVariant, hasBorder }) => {
-    return [
-      {
-        width: 'fit-content',
-        height: 'fit-content',
-        margin: hasPadding ? theme.BaselineSpacesSpace8 : undefined,
-        borderRadius: theme.BorderBaseRadiusRounded,
-        backgroundColor: getBackgroundColor({ theme, disabled, isSelected, statusVariant }),
-      },
-      hasBorder && {
-        border: `solid ${theme.BorderBaseWidthSm}`,
-        borderColor: statusVariant ? getVariantColor({ theme, statusVariant }) : undefined,
-      },
-      statusVariant === 'default' && {
-        borderColor: disabled ? theme.ElementsBorderDisabled : theme.ElementsBorderHighlightStrong,
-        cursor: !disabled && !isRemovable ? 'pointer' : 'default',
-      },
-      getTabbedStateStyles(),
-    ];
-  }
-);
+export const Pill = styled.div<
+  Theme & Pick<PillPropsStrict, 'disabled' | 'removable' | 'selected' | 'hasPadding' | 'variant' | 'hasBorder'>
+>((props) => {
+  return [
+    {
+      width: 'fit-content',
+      height: 'fit-content',
+      margin: props.hasPadding ? props.theme.BaselineSpacesSpace8 : undefined,
+      borderRadius: props.theme.BorderBaseRadiusRounded,
+      backgroundColor: getBackgroundColor(props),
+    },
+    props.hasBorder && {
+      border: `solid ${props.theme.BorderBaseWidthSm}`,
+      borderColor: props.variant ? getVariantColor(props) : undefined,
+    },
+    props.variant === 'default' && {
+      borderColor: props.disabled ? props.theme.ElementsBorderDisabled : props.theme.ElementsBorderHighlightStrong,
+      cursor: !props.disabled && !props.removable ? 'pointer' : 'default',
+    },
+    getTabbedStateStyles(),
+  ];
+});
 
-export const Icon = styled.div<PillVariantProps>(({ theme, disabled, statusVariant }) => [
+export const Icon = styled.div<Pick<PillPropsStrict, 'disabled' | 'variant'>>((props) => [
   {
     'div > svg': {
-      color:
-        statusVariant === 'default' && disabled
-          ? theme.ElementsTextDisabled
-          : getVariantColor({ theme, statusVariant }),
+      color: props.variant === 'default' && props.disabled ? props.theme.ElementsTextDisabled : getVariantColor(props),
     },
   },
 ]);
 
-export const RemoveIcon = styled.div<PillVariantProps>(({ theme, disabled }) => [
+export const RemoveIcon = styled.div<Pick<PillPropsStrict, 'disabled'>>(({ theme, disabled }) => [
   {
     color: theme.ElementsTextDisabled,
     cursor: !disabled ? 'pointer' : 'default',
