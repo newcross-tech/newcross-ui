@@ -57,6 +57,7 @@ const ActionModal = (_props: ActionModalProps) => {
 
   const isBottomSheetBreakpoint = useIsBottomSheetBreakpoint();
   const isBottomSheet = isBottomSheetBreakpoint && !$isAlwaysModal;
+  const applyPadding = isBottomSheet ? 'md' : 'lg';
 
   return (
     <Portal>
@@ -78,13 +79,15 @@ const ActionModal = (_props: ActionModalProps) => {
           {...rest}
         >
           <Header className={`${baseName}header`}>
-            {isBottomSheet && <Styled.DragBar my="md" />}
+            {isBottomSheet && (
+              <Styled.DragBar my="md" testID={`${baseName}drag-bar`} />
+            )}
             <Container
               flexDirection="column"
               gap="sm"
-              px={isBottomSheet ? 'md' : 'lg'}
+              px={applyPadding}
               pt={isBottomSheet ? 'sm' : 'lg'}
-              pb={isBottomSheet ? 'sm' : 'md'}
+              pb={'md'}
             >
               <Container
                 justifyContent={isBottomSheet ? 'flex-start' : 'space-between'}
@@ -131,8 +134,8 @@ const ActionModal = (_props: ActionModalProps) => {
           {content && (
             <Content className={`${baseName}content`}>
               <Styled.ContentWapper
-                px={isBottomSheet ? 'md' : 'lg'}
-                pb={isBottomSheet && !footer ? 'md' : 'lg'}
+                px={applyPadding}
+                pb={!footer ? applyPadding : undefined}
                 $hasGreyBackground={$hasGreyBackground}
                 $hasPadding={$hasPadding}
                 flexDirection="column"
@@ -147,9 +150,9 @@ const ActionModal = (_props: ActionModalProps) => {
               <Container
                 flexDirection="column"
                 data-testid="footer-wrapper"
-                pt={isBottomSheet ? 'sm' : 'md'}
-                px={isBottomSheet ? 'md' : 'lg'}
-                pb={isBottomSheet ? 'md' : 'lg'}
+                pt={'md'}
+                px={applyPadding}
+                pb={applyPadding}
               >
                 {footer}
               </Container>

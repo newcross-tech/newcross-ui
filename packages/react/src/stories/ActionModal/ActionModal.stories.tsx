@@ -143,4 +143,5 @@ Interactive.args = {
   title: MODAL_TITLE,
   subtitle: MODAL_SUBTITLE,
   content: MODAL_CONTENT,
+  footer: renderModalFooter(),
 };
