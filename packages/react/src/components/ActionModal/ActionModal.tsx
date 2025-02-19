@@ -16,6 +16,7 @@ import Typography from '../Typography';
 import Container from '../Container';
 import Icon from '../Icon';
 import { useIsBottomSheetBreakpoint } from './hooks/useIsBottomSheetBreakpoint';
+import { isValidElement, cloneElement } from 'react';
 
 export type ActionModalProps = OptionalProps<
   ActionModalPropsStrict,
@@ -41,6 +42,7 @@ const ActionModal = (_props: ActionModalProps) => {
   const {
     title,
     subtitle,
+    stickyContent,
     content,
     footer,
     onDismiss,
@@ -129,6 +131,10 @@ const ActionModal = (_props: ActionModalProps) => {
                   {subtitle}
                 </Typography>
               )}
+              {isValidElement(stickyContent) &&
+                cloneElement(stickyContent, {
+                  key: `${baseName}sticky-content`,
+                })}
             </Container>
           </Header>
           {content && (

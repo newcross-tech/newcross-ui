@@ -12,11 +12,15 @@ export type ActionModalPropsStrict = {
    */
   subtitle?: string;
   /**
+   * Action modal's sticky component placed in header after subtitle, usually CTAs or Fields
+   */
+  stickyContent?: React.ReactNode;
+  /**
    * Action modal's content component
    */
   content?: React.ReactNode;
   /**
-   * Action modal's foote component, usually CTAs
+   * Action modal's footer component, usually CTAs
    */
   footer?: React.ReactNode;
   /**

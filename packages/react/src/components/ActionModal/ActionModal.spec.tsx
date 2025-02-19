@@ -59,6 +59,7 @@ const ui = {
   exclamationIcon: byTestId('action-modal-exclamation-icon'),
   footerWrapper: byTestId('footer-wrapper'),
   dragBar: byTestId('action-modal-drag-bar'),
+  stickyContent: byTestId('action-modal-sticky-content'),
 };
 
 const renderActionModal = (props: ActionModalProps) => {
@@ -95,6 +96,22 @@ describe('ActionModal', () => {
     expect(byText('(This is where the content goes)').get()).toBeVisible();
     expect(byText('A Way Out').get()).toBeVisible();
     expect(byText('Decision').get()).toBeVisible();
+  });
+
+  it('should render sticky content if provided', () => {
+    // Arrange
+    const stickyElement = (
+      <Typography variant="p1" testID="action-modal-sticky-content">
+        I am sticky content!
+      </Typography>
+    );
+
+    // Act
+    renderActionModal({ ...defaultProps, stickyContent: stickyElement });
+
+    // Assert
+    expect(ui.stickyContent.get()).toBeVisible();
+    expect(byText('I am sticky content!').get()).toBeVisible();
   });
 
   it('should have no footer when there is no footer prop', () => {
