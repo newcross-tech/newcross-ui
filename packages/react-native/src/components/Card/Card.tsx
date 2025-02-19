@@ -74,9 +74,13 @@ export type CardProps = {
    */
   isPressable?: boolean;
   /**
-   *Extra content on the bottom side of the Card.
+   * Extra content on the bottom side of the Card.
    */
   extraFooterContent?: ReactNode;
+  /**
+   *  Overwrites or extends the styles applied to the extra footer content.
+   * */
+  extraFooterStyle?: ViewStyle;
   /**
    * opacity disabled
    * */
@@ -99,6 +103,7 @@ const Card = ({
   isPressable = true,
   extraFooterContent = null,
   isOpacityDisabled = false,
+  extraFooterStyle,
   ...rest
 }: CardProps) => {
   const theme = useTheme();
@@ -157,7 +162,10 @@ const Card = ({
           onTouchEnd={(e) => {
             e.stopPropagation();
           }}
-          style={styles.footerContent}
+          style={{
+            ...styles.footerContent,
+            ...extraFooterStyle,
+          }}
         >
           {extraFooterContent}
         </View>
