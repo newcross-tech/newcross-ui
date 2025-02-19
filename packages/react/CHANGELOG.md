@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.30.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.30.2...@newcross-ui/react@2.30.3) (2025-02-19)
+
+
+### Bug Fixes
+
+* **HFAUI-202:** replace container forward ref with ref prop ([#208](https://bitbucket.org/newcrossdev/newcross-ui/issues/208)) ([f4f5575](https://bitbucket.org/newcrossdev/newcross-ui/commits/f4f557514f574e1120b991bb1fb01bb08941a5a5))
+
+
+
+
+
 ## [2.30.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.30.1...@newcross-ui/react@2.30.2) (2025-02-17)
 
 
