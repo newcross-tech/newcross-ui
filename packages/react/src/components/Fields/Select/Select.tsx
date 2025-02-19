@@ -22,6 +22,7 @@ import HelperText from '../HelperText';
 import Label from '../Label';
 import Icon from '../../Icon';
 import { getTextColor } from '../Fields.style';
+import { Ref } from 'react';
 
 const MultiValueRemove = <
   Option,
@@ -60,7 +61,11 @@ const ClearIndicator = <
   });
 
   return (
-    <Container {...restInnerProps} ref={ref} testID="crossicon">
+    <Container
+      {...restInnerProps}
+      ref={ref as Ref<HTMLElement>}
+      testID="crossicon"
+    >
       <Icon icon={faCircleXmark} variant="p1" color={iconColor} />
     </Container>
   );

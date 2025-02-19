@@ -1,5 +1,5 @@
 import * as Styled from './Container.style';
-import { CSSProperties, forwardRef, HTMLAttributes } from 'react';
+import { CSSProperties, HTMLAttributes, Ref, ReactNode } from 'react';
 import {
   NewContainerGapSpacing,
   NewContainerSpacing,
@@ -10,7 +10,7 @@ import { isLegacyProps } from './utils';
 import LegacyContainer, { LegacyContainerProps } from './LegacyContainer';
 
 export type NewContainerProps = {
-  children?: React.ReactNode;
+  children?: ReactNode;
   /**
    * CSS: `margin-left` and `margin-right` and `margin-top` and `margin-bottom`
    */
@@ -106,9 +106,11 @@ export type NewContainerProps = {
 
 export type ContainerProps =
   | (NewContainerProps | LegacyContainerProps) &
-      Pick<HTMLAttributes<HTMLElement>, 'id' | 'role'>;
+      Pick<HTMLAttributes<HTMLElement>, 'id' | 'role'> & {
+        ref?: Ref<HTMLElement>;
+      };
 
-const Container = forwardRef<HTMLElement, ContainerProps>((props, ref) => {
+const Container = (props: ContainerProps) => {
   if (isLegacyProps(props)) {
     return <LegacyContainer {...props} />;
   }
@@ -123,7 +125,6 @@ const Container = forwardRef<HTMLElement, ContainerProps>((props, ref) => {
   } = props;
   return (
     <Styled.Container
-      ref={ref}
       {...restProps}
       onClick={onClick}
       display={display}
@@ -134,6 +135,6 @@ const Container = forwardRef<HTMLElement, ContainerProps>((props, ref) => {
       {children}
     </Styled.Container>
   );
-});
+};
 
 export default Container;
