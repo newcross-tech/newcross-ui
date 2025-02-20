@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.30.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.30.3...@newcross-ui/react@2.30.4) (2025-02-20)
+
+
+### Bug Fixes
+
+* **HFAUI-198:** blur select on clear ([#210](https://bitbucket.org/newcrossdev/newcross-ui/issues/210)) ([4e745c5](https://bitbucket.org/newcrossdev/newcross-ui/commits/4e745c5caf323293916da52caad4ac3f20714aca))
+
+
+
+
+
 ## [2.30.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.30.2...@newcross-ui/react@2.30.3) (2025-02-19)
 
 
