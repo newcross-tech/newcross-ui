@@ -23,6 +23,7 @@ import Label from '../Label';
 import Icon from '../../Icon';
 import { getTextColor } from '../Fields.style';
 import { Ref } from 'react';
+import { destroyEvent } from '../../../utils';
 
 const MultiValueRemove = <
   Option,
@@ -65,6 +66,10 @@ const ClearIndicator = <
       {...restInnerProps}
       ref={ref as Ref<HTMLElement>}
       testID="crossicon"
+      onMouseDown={(event) => {
+        destroyEvent(event);
+        props.clearValue();
+      }}
     >
       <Icon icon={faCircleXmark} variant="p1" color={iconColor} />
     </Container>
@@ -197,6 +202,7 @@ const Select = <
           options={options}
           filterOption={createFilter({ ignoreAccents: false })} // required for performance reasons!
           isClearable
+          blurInputOnSelect
           {...rest}
         />
       </SelectContext.Provider>
