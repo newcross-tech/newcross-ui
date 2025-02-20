@@ -162,10 +162,7 @@ const Card = ({
           onTouchEnd={(e) => {
             e.stopPropagation();
           }}
-          style={{
-            ...styles.footerContent,
-            ...extraFooterStyle,
-          }}
+          style={[styles.footerContent, extraFooterStyle]}
         >
           {extraFooterContent}
         </View>
