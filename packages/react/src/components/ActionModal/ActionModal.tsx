@@ -5,94 +5,61 @@ import {
   Footer,
   detents,
   Portal,
-  SheetProps,
 } from 'react-sheet-slide';
 import 'react-sheet-slide/style.css';
 import * as Styled from './ActionModal.style';
 import { faXmark } from '@fortawesome/pro-light-svg-icons/faXmark';
+import { faExclamationCircle } from '@fortawesome/pro-regular-svg-icons/faExclamationCircle';
+import { OptionalProps } from '../../types';
+import { ActionModalPropsStrict } from './ActionModal.types';
+import Typography from '../Typography';
+import Container from '../Container';
+import Icon from '../Icon';
+import { useIsBottomSheetBreakpoint } from './hooks/useIsBottomSheetBreakpoint';
+import { isValidElement, cloneElement } from 'react';
 
-export type ActionModalProps = {
-  /**
-   * Action modal's title
-   */
-  title: string;
-  /**
-   * Action modal's subtitle
-   */
-  subtitle?: string;
-  /**
-   * Action modal's content component
-   */
-  content?: React.ReactNode;
-  /**
-   * Action modal's foote component, usually CTAs
-   */
-  footer?: React.ReactNode;
-  /**
-   * Set if the sheet is open. When this prop is changed the sheet will animate and the unmount/remount.
-   * When the component fully unmounts, onClose will be called.
-   */
-  open: SheetProps['open'];
-  /**
-   * Called when the sheet is dragged down or the user clicks on the backdrop.
-   * Also called when the user presses Esc. This method should include setOpen(false) to ensure open is false.
-   * Otherwise the sheet may not close properly.
-   */
-  onDismiss: SheetProps['onDismiss'];
-  /**
-   * Called when the sheet finishes the close animation and is fully unmounted.
-   */
-  onClose?: SheetProps['onClose'];
-  /**
-   * Prop to control when a modal should be used instead of a sheet.
-   * If you want to always use a modal, set this to true.
-   * Otherwise it will default to true on any device larger than (max-width: 640px) to use a modal on desktop.
-   */
-  $isAlwaysModal?: boolean;
-  /**
-   * Prop that control if the ContentWapper should have grey background for screen smaller than 640px.
-   */
-  $hasGreyBackground?: boolean;
-  /**
-   * Prop to control if the ContentWapper should have padding for screen smaller than 640px.
-   */
-  $hasPadding?: boolean;
-  /**
-   * The sheet also supports forwarding a ref that will be added onto the sheet root.
-   */
-  ref?: React.RefObject<HTMLDivElement>;
-  /**
-   * Prop to control the overflow-y of the content.
-   * When the content includes elements with absolute position, like a dropdown, the overflow-y should be set to 'visible'.
-   */
-  $overflowY?: 'auto' | 'hidden' | 'scroll' | 'visible' | 'initial' | 'inherit';
-  /**
-   * Set custom z-index for the action modal
-   */
-  $zIndex?: number;
-  /**
-   * Prop to enforce action in the sheet and not allow user to close it.
-   * If true the sheet cannot be closed by click outside and close button is not displayed.
-   * Default is false.
-   */
-  canCloseOnActionOnly?: boolean;
-};
+export type ActionModalProps = OptionalProps<
+  ActionModalPropsStrict,
+  | '$hasPadding'
+  | '$isAlwaysModal'
+  | '$hasGreyBackground'
+  | '$overflowY'
+  | '$zIndex'
+>;
 
-const ActionModal = ({
-  title,
-  content,
-  subtitle,
-  footer,
-  $hasPadding = false,
-  $isAlwaysModal = false,
-  $hasGreyBackground = false,
-  $overflowY = 'auto',
-  $zIndex = 2,
-  canCloseOnActionOnly = false,
-  onDismiss,
-  ...rest
-}: ActionModalProps) => {
+const normalizeActionModalProps = (
+  _props: ActionModalProps
+): ActionModalPropsStrict => ({
+  ..._props,
+  $hasPadding: _props.$hasPadding ?? false,
+  $isAlwaysModal: _props.$isAlwaysModal ?? false,
+  $hasGreyBackground: _props.$hasGreyBackground ?? false,
+  $overflowY: _props.$overflowY ?? 'auto',
+  $zIndex: _props.$zIndex ?? 2,
+});
+
+const ActionModal = (_props: ActionModalProps) => {
+  const {
+    title,
+    subtitle,
+    stickyContent,
+    content,
+    footer,
+    onDismiss,
+    $isAlwaysModal,
+    $overflowY,
+    $zIndex,
+    $hasPadding,
+    $hasGreyBackground,
+    canCloseOnActionOnly,
+    ...rest
+  } = normalizeActionModalProps(_props);
+
   const baseName = 'action-modal-';
+
+  const isBottomSheetBreakpoint = useIsBottomSheetBreakpoint();
+  const isBottomSheet = isBottomSheetBreakpoint && !$isAlwaysModal;
+  const applyPadding = isBottomSheet ? 'md' : 'lg';
 
   return (
     <Portal>
@@ -114,66 +81,69 @@ const ActionModal = ({
           {...rest}
         >
           <Header className={`${baseName}header`}>
-            <Styled.IndicatorWrapper
-              justifyContent="center"
-              p="SpacingBase16"
-              $isAlwaysModal={$isAlwaysModal}
-            >
-              <Styled.Indicator
-                $isAlwaysModal={$isAlwaysModal}
-                px="SpacingBase48"
-              />
-            </Styled.IndicatorWrapper>
-            <Styled.HeaderContent
-              pt="SpacingBase32"
-              pb="SpacingBase0"
-              px="SpacingBase24"
+            {isBottomSheet && (
+              <Styled.DragBar my="md" testID={`${baseName}drag-bar`} />
+            )}
+            <Container
               flexDirection="column"
+              gap="sm"
+              px={applyPadding}
+              pt={isBottomSheet ? 'sm' : 'lg'}
+              pb={'md'}
             >
-              <Styled.Header
-                justifyContent="space-between"
-                pb="SpacingBase8"
-                $isAlwaysModal={$isAlwaysModal}
+              <Container
+                justifyContent={isBottomSheet ? 'flex-start' : 'space-between'}
+                alignItems="center"
+                gap="sm"
               >
-                <Styled.Heading
-                  variant="heading2"
-                  color="primary"
+                {isBottomSheet && (
+                  <Icon
+                    variant="h2"
+                    icon={faExclamationCircle}
+                    color="defaultDark"
+                    testID={`${baseName}exclamation-icon`}
+                  />
+                )}
+                <Typography
+                  variant="h2"
+                  color="defaultDark"
+                  align="left"
                   testID={`${baseName}title`}
                 >
                   {title}
-                </Styled.Heading>
-                {!canCloseOnActionOnly && (
-                  <Styled.Icon
+                </Typography>
+                {!canCloseOnActionOnly && !isBottomSheet && (
+                  <Icon
+                    variant="h2"
                     icon={faXmark}
-                    size="2x"
-                    width="16px"
-                    height="16px"
-                    $isAlwaysModal={$isAlwaysModal}
+                    color="defaultDark"
                     onClick={onDismiss}
-                    data-testid={`${baseName}close-icon`}
+                    testID={`${baseName}close-icon`}
                   />
                 )}
-              </Styled.Header>
+              </Container>
               {subtitle && (
-                <Styled.Subtitle
-                  variant="paragraph1"
-                  color="primary"
+                <Typography
+                  variant="p1"
+                  color="defaultDark"
                   testID={`${baseName}subtitle`}
                 >
                   {subtitle}
-                </Styled.Subtitle>
+                </Typography>
               )}
-            </Styled.HeaderContent>
+              {isValidElement(stickyContent) &&
+                cloneElement(stickyContent, {
+                  key: `${baseName}sticky-content`,
+                })}
+            </Container>
           </Header>
           {content && (
             <Content className={`${baseName}content`}>
               <Styled.ContentWapper
-                $isAlwaysModal={$isAlwaysModal}
+                px={applyPadding}
+                pb={!footer ? applyPadding : undefined}
                 $hasGreyBackground={$hasGreyBackground}
                 $hasPadding={$hasPadding}
-                pt="SpacingBase24"
-                px="SpacingBase24"
-                pb={footer ? 'SpacingBase0' : 'SpacingBase40'}
                 flexDirection="column"
                 data-testid="content-wrapper"
               >
@@ -183,15 +153,15 @@ const ActionModal = ({
           )}
           <Footer className={`${baseName}footer`}>
             {footer && (
-              <Styled.FooterWrapper
-                $isAlwaysModal={$isAlwaysModal}
-                px="SpacingBase24"
-                py="SpacingBase32"
+              <Container
                 flexDirection="column"
                 data-testid="footer-wrapper"
+                pt={'md'}
+                px={applyPadding}
+                pb={applyPadding}
               >
                 {footer}
-              </Styled.FooterWrapper>
+              </Container>
             )}
           </Footer>
         </Sheet>
