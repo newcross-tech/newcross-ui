@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.52.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.51.0...@newcross-ui/react-native@1.52.0) (2025-02-20)
+
+
+### Features
+
+* **HFX-1395:** fix style override ([#211](https://bitbucket.org/newcrossdev/newcross-ui/issues/211)) ([ba088ad](https://bitbucket.org/newcrossdev/newcross-ui/commits/ba088ad93554b27f93ae32915234095dc4b1df01))
+
+
+
+
+
 # [1.51.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.50.12...@newcross-ui/react-native@1.51.0) (2025-02-20)
 
 
