@@ -19,7 +19,8 @@ import { BadgeBlack, Badge as BadgeSVG } from './svg';
 import { View, Platform, ScrollView } from 'react-native';
 import { ExtraCardContent } from './ExtraCardContent';
 
-const { SpacingBase24, CardPadding, SpacingBase12 } = native.healthforce;
+const { SpacingBase24, CardPadding, SpacingBase12, ColorPrimaryGravitas } =
+  native.healthforce;
 
 export default {
   title: 'ReactNative/Components/Card',
@@ -122,6 +123,20 @@ export const Variants: Story<CardProps> = () => {
           thumbnailContent={<CardThumbnail shiftCardStatus="night" />}
           color={CardColors.secondary}
           extraFooterContent={<ExtraCardContent />}
+        ></Card>
+        <Spacing />
+        <Card
+          hasRightIcon={false}
+          hasRoundedCorners
+          hasBorder
+          fullWidth
+          thumbnailContent={<CardThumbnail shiftCardStatus="night" />}
+          color={CardColors.secondary}
+          extraFooterContent={<ExtraCardContent isDarkBg />}
+          extraFooterStyle={{
+            backgroundColor: ColorPrimaryGravitas,
+            borderColor: ColorPrimaryGravitas,
+          }}
         ></Card>
         <Spacing />
       </Container>
