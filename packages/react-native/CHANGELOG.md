@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.51.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.50.12...@newcross-ui/react-native@1.51.0) (2025-02-20)
+
+
+### Features
+
+* **HFX-1395:** add footer styles prop to react native card ([#209](https://bitbucket.org/newcrossdev/newcross-ui/issues/209)) ([569093c](https://bitbucket.org/newcrossdev/newcross-ui/commits/569093c8d07980637f47710f9706fdeee43c563d))
+
+
+
+
+
 ## [1.50.12](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.50.11...@newcross-ui/react-native@1.50.12) (2024-12-23)
 
 **Note:** Version bump only for package @newcross-ui/react-native
