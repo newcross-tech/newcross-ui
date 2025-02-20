@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.31.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.30.4...@newcross-ui/react@2.31.0) (2025-02-20)
+
+
+### Features
+
+* **HFAUI-60:** update action modal ([#205](https://bitbucket.org/newcrossdev/newcross-ui/issues/205)) ([00a406a](https://bitbucket.org/newcrossdev/newcross-ui/commits/00a406a30aa997f513087aa5520aea76a27fbb55))
+
+
+
+
+
 ## [2.30.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.30.3...@newcross-ui/react@2.30.4) (2025-02-20)
 
 
