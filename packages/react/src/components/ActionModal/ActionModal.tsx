@@ -1,3 +1,4 @@
+import 'react-sheet-slide/style.css';
 import {
   Sheet,
   Header,
@@ -6,7 +7,6 @@ import {
   detents,
   Portal,
 } from 'react-sheet-slide';
-import 'react-sheet-slide/style.css';
 import * as Styled from './ActionModal.style';
 import { faXmark } from '@fortawesome/pro-light-svg-icons/faXmark';
 import { faExclamationCircle } from '@fortawesome/pro-regular-svg-icons/faExclamationCircle';

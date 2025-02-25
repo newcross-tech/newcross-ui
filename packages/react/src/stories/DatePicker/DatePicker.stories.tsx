@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react';
 import DatePicker, {
   DatePickerProps,
 } from '../../components/Fields/DatePicker';
-import Container from '../../components/Container';
+import { useState } from 'react';
 
 export default {
   title: 'React/Components/DatePicker',
@@ -10,10 +10,13 @@ export default {
 } as Meta;
 
 const Template: Story<DatePickerProps> = () => {
+  const [selected, setSelected] = useState<Date>(new Date());
   return (
-    <Container>
-      <DatePicker disabled={false} />
-    </Container>
+    <DatePicker
+      disabled={false}
+      selected={selected}
+      onChange={(date: Date | null) => date && setSelected(date)}
+    />
   );
 };
 
