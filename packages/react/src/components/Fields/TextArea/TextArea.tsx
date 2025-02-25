@@ -16,8 +16,10 @@ const normalizeTextAreaProps = (
   ..._props,
   isValid: _props.isValid ?? false,
   disabled: _props.disabled ?? false,
-  maxLength: _props.maxLength ?? 0,
-  length: _props.length ?? 0,
+  maxLength: _props.maxLength ?? -1,
+  length:
+    _props.length ??
+    (typeof _props.value === 'string' ? _props.value.length : 0),
 });
 
 const TextArea = (_props: TextAreaProps) => {
@@ -50,7 +52,7 @@ const TextArea = (_props: TextAreaProps) => {
         placeholder={placeholder}
         hasError={hasError}
         data-testid={`${baseTestId}-component-${testID}`}
-        onChange={(event) => onChangeHandler(event)}
+        onChange={onChangeHandler}
         value={value}
         maxLength={maxLength}
         length={length}
