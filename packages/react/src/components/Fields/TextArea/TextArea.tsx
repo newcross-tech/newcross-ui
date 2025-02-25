@@ -34,7 +34,8 @@ const TextArea = (_props: TextAreaProps) => {
     testID,
   } = normalizeTextAreaProps(_props);
 
-  const hasError = !!errorText || length > maxLength;
+  const displayLength = !!maxLength && maxLength > 0;
+  const hasError = !!errorText || (displayLength && length > maxLength);
 
   return (
     <Styled.Wrapper
@@ -60,7 +61,7 @@ const TextArea = (_props: TextAreaProps) => {
         helperText={helperText}
         maxLength={maxLength}
         length={length}
-        displayLength={!!maxLength && maxLength > 0}
+        displayLength={displayLength}
         testID={testID}
       />
     </Styled.Wrapper>
