@@ -1,4 +1,3 @@
-import React, { forwardRef } from 'react';
 import Container from '../../Container';
 import Label from '../Label';
 import HelperText from '../HelperText';
@@ -7,14 +6,12 @@ import * as Styled from './DatePicker.style';
 import { OptionalProps } from '../../../types';
 import ReactDatePicker from 'react-datepicker';
 import TextInput from '../TextInput';
-import Icon from '../../Icon';
-import {
-  faChevronLeft,
-  faChevronRight,
-} from '@fortawesome/pro-light-svg-icons';
-import Typography from '../../Typography';
+import { DatePickerHeader } from './DatePickerHeader';
 
-export type DatePickerProps = OptionalProps<DatePickerPropsStrict, 'selected'>;
+export type DatePickerProps = OptionalProps<
+  DatePickerPropsStrict,
+  'selected' | 'showMonthYearDropdown'
+>;
 
 const normalizeDatePickerProps = (
   _props: DatePickerProps
@@ -22,62 +19,8 @@ const normalizeDatePickerProps = (
   ..._props,
   selected: _props.selected ?? new Date(),
   dateFormat: _props.dateFormat ?? 'dd/MM/yyyy',
+  showMonthYearDropdown: _props.showMonthYearDropdown ?? false,
 });
-
-const DatePickerInput = forwardRef<
-  HTMLInputElement,
-  { value?: string; onClick?: VoidFunction; className?: string }
->(({ value, onClick, className }, ref) => {
-  return (
-    <TextInput
-      value={value || ''}
-      onClick={onClick}
-      className={className}
-      ref={ref}
-    />
-  );
-});
-
-type DatePickerHeaderProps = {
-  date: Date;
-  decreaseMonth: VoidFunction;
-  increaseMonth: VoidFunction;
-  prevMonthButtonDisabled: boolean;
-  nextMonthButtonDisabled: boolean;
-};
-
-const DatePickerHeader = ({
-  date,
-  decreaseMonth,
-  increaseMonth,
-  prevMonthButtonDisabled,
-  nextMonthButtonDisabled,
-}: DatePickerHeaderProps) => {
-  return (
-    <Container
-      fullWidth
-      display="flex"
-      justifyContent="space-between"
-      alignItems="center"
-    >
-      <Icon
-        icon={faChevronLeft}
-        variant="h5"
-        color={prevMonthButtonDisabled ? 'disabled' : 'defaultLight'}
-        onClick={prevMonthButtonDisabled ? undefined : decreaseMonth}
-      />
-      <Typography variant="h5" color="defaultLight">
-        {date.toLocaleString('default', { month: 'long' })} {date.getFullYear()}
-      </Typography>
-      <Icon
-        icon={faChevronRight}
-        variant="h5"
-        color={nextMonthButtonDisabled ? 'disabled' : 'defaultLight'}
-        onClick={nextMonthButtonDisabled ? undefined : increaseMonth}
-      />
-    </Container>
-  );
-};
 
 const DatePicker = (_props: DatePickerProps) => {
   const { label, helperText, errorText, required, disabled, ...rest } =
@@ -93,9 +36,12 @@ const DatePicker = (_props: DatePickerProps) => {
       <Styled.ReactDatePickerWrapper>
         <ReactDatePicker
           disabled={disabled}
-          customInput={<DatePickerInput />}
+          customInput={<TextInput />}
           renderCustomHeader={(headerProps) => (
-            <DatePickerHeader {...headerProps} />
+            <DatePickerHeader
+              showMonthYearDropdown={rest.showMonthYearDropdown}
+              {...headerProps}
+            />
           )}
           {...rest}
         />

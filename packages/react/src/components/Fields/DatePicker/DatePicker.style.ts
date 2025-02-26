@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import 'react-datepicker/dist/react-datepicker.css';
+import Container from '../../Container';
 
 export const ReactDatePickerWrapper = styled.div(({ theme }) => [
   {
@@ -51,6 +52,7 @@ export const ReactDatePickerWrapper = styled.div(({ theme }) => [
       justifyContent: 'space-between',
       alignItems: 'center',
       minHeight: theme.BaselineSpacesSpace32,
+      margin: theme.BaselineSpacesSpace0,
     },
   },
   {
@@ -86,16 +88,16 @@ export const ReactDatePickerWrapper = styled.div(({ theme }) => [
     },
   },
   {
+    '& .react-datepicker__day--today': {
+      background: theme.ElementsSurfaceDefaultSecondary,
+    },
+  },
+  {
     '& .react-datepicker__day--selected': {
       fontFamily: theme.BaselineFontFontFamilyPoppinsSemiBold,
       fontWeight: theme.BaselineFontFontWeightSemiBold,
       background: theme.ElementsSurfaceActionDefault,
       color: theme.ElementsTextDefaultDark,
-    },
-  },
-  {
-    '& .react-datepicker__day--today': {
-      background: theme.ElementsSurfaceDefaultSecondary,
     },
   },
   {
@@ -112,5 +114,25 @@ export const ReactDatePickerWrapper = styled.div(({ theme }) => [
     '& .react-datepicker__day--outside-month': {
       opacity: 0,
     },
+  },
+]);
+
+export const UpperHeaderContainer = styled(Container)(({ theme }) => [
+  {
+    height: theme.BaselineSpacesSpace32,
+  },
+]);
+
+export const DatePickerMonthYearSelect = styled.select(({ theme }) => [
+  {
+    paddingTop: theme.BaselineSpacesSpace4,
+    paddingBottom: theme.BaselineSpacesSpace4,
+    paddingLeft: theme.BaselineSpacesSpace8,
+    paddingRight: theme.BaselineSpacesSpace8,
+    backgroundColor: theme.ElementsSurfacePage,
+    border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderHighlightStrong}`,
+    borderRadius: theme.BorderBaseRadiusRounded,
+    fontFamily: theme.BaselineFontFontFamilyPoppinsRegular,
+    fontSize: theme.BaselineFontFontSize14,
   },
 ]);

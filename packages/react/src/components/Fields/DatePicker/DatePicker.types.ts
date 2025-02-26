@@ -1,6 +1,17 @@
 import { TestProp } from '../../../types';
 import { DatePickerProps as ReactDatePickerProps } from 'react-datepicker';
 
+export type DatePickerHeaderProps = {
+  date: ReactDatePickerProps['date'];
+  decreaseMonth: VoidFunction;
+  increaseMonth: VoidFunction;
+  changeMonth: (month: number) => void;
+  changeYear: (year: number) => void;
+  prevMonthButtonDisabled: boolean;
+  nextMonthButtonDisabled: boolean;
+  showMonthYearDropdown: boolean;
+} & TestProp;
+
 export type DatePickerPropsStrict = {
   /**
    * Gives text input a label
@@ -22,6 +33,7 @@ export type DatePickerPropsStrict = {
    * Sets disabled state of the input
    */
   disabled: boolean;
-  selected?: Date;
-} & Omit<ReactDatePickerProps, 'selected'> &
+  selected: Date;
+  showMonthYearDropdown: boolean;
+} & Omit<ReactDatePickerProps, 'selected' | 'showMonthYearDropdown'> &
   TestProp;
