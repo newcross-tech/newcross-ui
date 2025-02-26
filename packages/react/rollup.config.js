@@ -33,10 +33,8 @@ export default [
       '@react-spring/web',
       'react-select',
       'react-data-table-component',
-      '@newcross-ui/design-tokens',
       '@use-gesture/react',
       'react-international-phone',
-      'react-sheet-slide',
     ],
   },
 ];

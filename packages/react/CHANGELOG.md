@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.31.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.31.2...@newcross-ui/react@2.31.3) (2025-02-26)
+
+
+### Bug Fixes
+
+* **HFX-1592:** bundle tokens and slide sheet with library ([#215](https://bitbucket.org/newcrossdev/newcross-ui/issues/215)) ([ae44049](https://bitbucket.org/newcrossdev/newcross-ui/commits/ae44049badf99780999c9c82cf9540c917ae4013))
+
+
+
+
+
 ## [2.31.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.31.1...@newcross-ui/react@2.31.2) (2025-02-26)
 
 
