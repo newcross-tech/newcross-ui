@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.31.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.31.1...@newcross-ui/react@2.31.2) (2025-02-26)
+
+
+### Bug Fixes
+
+* **HFX-1592:** external css not bundled with the library ([#214](https://bitbucket.org/newcrossdev/newcross-ui/issues/214)) ([b05bfa6](https://bitbucket.org/newcrossdev/newcross-ui/commits/b05bfa66df2f379980d9387df8ded14fa1a25cda))
+
+
+
+
+
 ## [2.31.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.31.0...@newcross-ui/react@2.31.1) (2025-02-26)
 
 

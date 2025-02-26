@@ -7,6 +7,11 @@ export type ButtonScheme = 'dark' | 'light';
 
 export type ButtonSizes = 'small' | 'large';
 
+export enum TypographyValues {
+  small = 'p2Action',
+  large = 'p1Action',
+}
+
 export type ButtonPropsStrict = {
   /**
    * Used to define background variant
