@@ -97,7 +97,24 @@ export const ReactDatePickerWrapper = styled.div(({ theme }) => [
       fontFamily: theme.BaselineFontFontFamilyPoppinsSemiBold,
       fontWeight: theme.BaselineFontFontWeightSemiBold,
       background: theme.ElementsSurfaceActionDefault,
-      color: theme.ElementsTextDefaultDark,
+    },
+  },
+  {
+    '& .react-datepicker__day--selecting-range-start': {
+      background: theme.ElementsSurfaceActionDefault,
+      borderRadius: `${theme.BorderBaseRadiusSm} 0 0 ${theme.BorderBaseRadiusSm}`,
+    },
+  },
+  {
+    '& .react-datepicker__day--in-selecting-range': {
+      background: theme.ElementsSurfaceActionHoverSecondary,
+      borderRadius: theme.BaselineSpacesSpace0,
+    },
+  },
+  {
+    '& .react-datepicker__day--selecting-range-end': {
+      background: theme.ElementsSurfaceActionHover,
+      borderRadius: `0 ${theme.BorderBaseRadiusSm} ${theme.BorderBaseRadiusSm} 0`,
     },
   },
   {

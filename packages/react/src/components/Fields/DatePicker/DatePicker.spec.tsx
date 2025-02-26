@@ -46,7 +46,7 @@ describe('DatePicker', () => {
     it('renders static text when showMonthYearDropdown is false', () => {
       // Act
       render(
-        <DatePickerHeader {...defaultProps} showMonthYearDropdown={true} />
+        <DatePickerHeader {...defaultProps} showMonthYearDropdown={false} />
       );
 
       // Assert
@@ -128,7 +128,7 @@ describe('DatePicker', () => {
         <DatePickerHeader
           {...defaultProps}
           changeMonth={changeMonthMock}
-          showMonthYearDropdown={false}
+          showMonthYearDropdown={true}
         />
       );
 
@@ -146,7 +146,7 @@ describe('DatePicker', () => {
         <DatePickerHeader
           {...defaultProps}
           changeYear={changeYearMock}
-          showMonthYearDropdown={false}
+          showMonthYearDropdown={true}
         />
       );
 
