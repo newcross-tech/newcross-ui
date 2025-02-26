@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { getIconSize, getTabbedStateStyles } from '../../utils/css';
-import { TypographyValues } from './Button';
-import { ButtonPropsStrict } from './Button.types';
+import { ButtonPropsStrict, TypographyValues } from './Button.types';
 import Container from '../Container';
 import { Theme } from '../../types';
 
