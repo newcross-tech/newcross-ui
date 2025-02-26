@@ -1,6 +1,6 @@
 {
   "name": "@newcross-ui/react",
-  "version": "2.31.1",
+  "version": "2.31.2",
   "description": "Components for react apps",
   "author": "itdev@newcrosshealthcare.com",
   "license": "MIT",
@@ -14,9 +14,16 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "main": "build/cjs/index.js",
-  "module": "build/esm/index.js",
-  "types": "build/esm/index.d.ts",
+  "main": "build/index.cjs.js",
+  "module": "build/index.esm.js",
+  "types": "build/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./build/index.esm.js",
+      "require": "./build/index.cjs.js",
+      "types": "./build/index.d.ts"
+    }
+  },
   "files": [
     "build"
   ],

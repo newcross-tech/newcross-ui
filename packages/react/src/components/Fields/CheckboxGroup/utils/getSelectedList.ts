@@ -1,4 +1,5 @@
-import { getIsOptionObject, getValue } from '.';
+import { getValue } from './getValue';
+import { getIsOptionObject } from './getIsOptionObject';
 import { OptionObjectType, OptionProps } from '../CheckboxGroup.types';
 
 export const getSelectedList = (

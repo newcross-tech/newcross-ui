@@ -20,9 +20,11 @@ export default [
       typescript({
         tsconfig: './tsconfig.json',
         exclude: ['**/*.spec.ts', '**/stories/**', '**/utils/test/**'],
+        declaration: true,
+        rootDir: 'src/',
       }),
       terser(),
-      css(),
+      css({ inject: true }),
     ],
     external: [
       'react',
@@ -31,6 +33,10 @@ export default [
       '@react-spring/web',
       'react-select',
       'react-data-table-component',
+      '@newcross-ui/design-tokens',
+      '@use-gesture/react',
+      'react-international-phone',
+      'react-sheet-slide',
     ],
   },
 ];

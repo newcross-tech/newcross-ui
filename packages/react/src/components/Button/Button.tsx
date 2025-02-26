@@ -1,7 +1,7 @@
 import { OptionalProps } from '../../types';
 import Typography from '../Typography';
 import * as Styled from './Button.style';
-import { ButtonPropsStrict } from './Button.types';
+import { ButtonPropsStrict, TypographyValues } from './Button.types';
 
 export type ButtonProps = OptionalProps<
   ButtonPropsStrict,
@@ -16,11 +16,6 @@ const normalizeButtonProps = (_props: ButtonProps): ButtonPropsStrict => ({
   fullWidth: _props.fullWidth ?? false,
   disabled: _props.disabled ?? false,
 });
-
-export enum TypographyValues {
-  small = 'p2Action',
-  large = 'p1Action',
-}
 
 const Button = (_props: ButtonProps) => {
   const {
