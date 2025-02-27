@@ -12,6 +12,12 @@ export default {
   component: DatePicker,
 } as Meta;
 
+const addDays = (date: Date, days: number) => {
+  const newDate = new Date(date);
+  newDate.setDate(newDate.getDate() + days);
+  return newDate;
+};
+
 export const Overview = () => {
   const [date, setDate] = useState(new Date());
 
@@ -39,6 +45,7 @@ export const Variants = () => {
   const [disabledDate, setDisabledDate] = useState(new Date());
   const [minDate, setMinDate] = useState(new Date());
   const [excludeDate, setExcludeDate] = useState(new Date());
+  const [dropdownDate, setDropdownDate] = useState(new Date());
 
   return (
     <Container flexDirection="column" gap="lg">
@@ -68,14 +75,23 @@ export const Variants = () => {
         selected={minDate}
         onChange={setMinDate}
       />
-      {/* Exclude specific dates (for example, the 10th and 20th of February 2025) */}
+      {/* Exclude specific dates */}
       <DatePicker
         required
         label="Exclude Dates"
-        helperText="10th and 20th are disabled"
-        excludeDates={[new Date(2025, 1, 10), new Date(2025, 1, 20)]}
+        helperText="Next 2 days are disabled"
+        excludeDates={[addDays(new Date(), 1), addDays(new Date(), 2)]}
         selected={excludeDate}
         onChange={setExcludeDate}
+      />
+      {/* Variant with dropdown */}
+      <DatePicker
+        required
+        label="Month and Year Dropdown"
+        showMonthYearDropdown
+        helperText="Pick a month or year from the dropdown"
+        selected={dropdownDate}
+        onChange={setDropdownDate}
       />
     </Container>
   );
@@ -101,6 +117,13 @@ export const RangeVariants = () => {
     new Date()
   );
   const [excludeEndDate, setExcludeEndDate] = useState<Date | null>(new Date());
+
+  const [dropdownStartDate, setDropdownStartDate] = useState<Date | null>(
+    new Date()
+  );
+  const [dropdownEndDate, setDropdownEndDate] = useState<Date | null>(
+    new Date()
+  );
 
   const onChangeHandler = (
     dates: [Date | null, Date | null],
@@ -160,12 +183,26 @@ export const RangeVariants = () => {
         label="Range Exclude Dates"
         selectsRange
         helperText="Next 2 days are disabled"
-        excludeDates={[new Date()]}
+        excludeDates={[addDays(new Date(), 1), addDays(new Date(), 2)]}
         selected={excludeStartDate ?? undefined}
         startDate={excludeStartDate}
         endDate={excludeEndDate}
         onChange={(dates: [Date | null, Date | null]) =>
           onChangeHandler(dates, setExcludeStartDate, setExcludeEndDate)
+        }
+      />
+
+      <DatePicker
+        required
+        label="Month and Year Dropdown"
+        showMonthYearDropdown
+        selectsRange
+        helperText="Pick a month or year from the dropdown"
+        selected={dropdownStartDate ?? undefined}
+        startDate={dropdownStartDate}
+        endDate={dropdownEndDate}
+        onChange={(dates: [Date | null, Date | null]) =>
+          onChangeHandler(dates, setDropdownStartDate, setDropdownEndDate)
         }
       />
     </Container>
