@@ -14,10 +14,10 @@ const copyFileToRoot = (fileName) => {
     writeBundle: (options) => {
       const outputDir = path.dirname(options.file || packageJson.main);
       const sourcePath = path.join(outputDir, fileName);
-      const destPath = path.join(process.cwd(), fileName);
+      const targetPath = path.join(process.cwd(), fileName);
 
       if (fs.existsSync(sourcePath)) {
-        fs.copyFileSync(sourcePath, destPath);
+        fs.copyFileSync(sourcePath, targetPath);
       }
     },
   };
