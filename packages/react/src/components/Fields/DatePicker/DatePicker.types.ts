@@ -35,5 +35,8 @@ export type DatePickerPropsStrict = {
   disabled: boolean;
   selected: Date;
   showMonthYearDropdown: boolean;
-} & Omit<ReactDatePickerProps, 'selected' | 'showMonthYearDropdown'> &
+} & Omit<
+  ReactDatePickerProps,
+  'selected' | 'showMonthYearDropdown' | 'disabled'
+> &
   TestProp;

@@ -19,6 +19,17 @@ export const DatePickerHeader = ({
   showMonthYearDropdown,
   testID,
 }: DatePickerHeaderProps) => {
+  const clickHandler = ({
+    disabled,
+    onClick,
+  }: {
+    disabled: boolean;
+    onClick: VoidFunction;
+  }) => {
+    if (disabled) return;
+    onClick();
+  };
+
   const monthNames = [
     'January',
     'February',
@@ -50,7 +61,12 @@ export const DatePickerHeader = ({
         icon={faChevronLeft}
         variant="h4"
         color={prevMonthButtonDisabled ? 'disabled' : 'defaultLight'}
-        onClick={prevMonthButtonDisabled ? undefined : decreaseMonth}
+        onClick={() =>
+          clickHandler({
+            disabled: prevMonthButtonDisabled,
+            onClick: decreaseMonth,
+          })
+        }
         testID={`date-picker-header-left-arrow-${testID}`}
       />
       {showMonthYearDropdown ? (
@@ -92,7 +108,12 @@ export const DatePickerHeader = ({
         icon={faChevronRight}
         variant="h4"
         color={nextMonthButtonDisabled ? 'disabled' : 'defaultLight'}
-        onClick={nextMonthButtonDisabled ? undefined : increaseMonth}
+        onClick={() =>
+          clickHandler({
+            disabled: nextMonthButtonDisabled,
+            onClick: increaseMonth,
+          })
+        }
         testID={`date-picker-header-right-arrow-${testID}`}
       />
     </Styled.UpperHeaderContainer>

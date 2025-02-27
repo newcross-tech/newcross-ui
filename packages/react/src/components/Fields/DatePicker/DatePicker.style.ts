@@ -1,16 +1,19 @@
 import styled from 'styled-components';
 import 'react-datepicker/dist/react-datepicker.css';
 import Container from '../../Container';
+import { getRgba } from '../../../utils';
 
 export const ReactDatePickerWrapper = styled.div(({ theme }) => [
   {
     '& .react-datepicker': {
       width: '240px',
-      background: '#fff',
-      boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.25)',
+      boxShadow: `${theme.ShadowBaseOffsetSm}px ${theme.ShadowBaseOffsetLg}px ${theme.ShadowBaseElevationMd}px ${
+        theme.ShadowBaseOffsetSm
+      }px ${getRgba('rgb(0, 0, 0)', 0.25)}`,
       borderRadius: theme.BorderBaseRadiusMd,
       display: 'flex',
       flexDirection: 'column',
+      border: theme.BaselineSpacesSpace0,
     },
   },
   {
@@ -88,32 +91,47 @@ export const ReactDatePickerWrapper = styled.div(({ theme }) => [
     },
   },
   {
+    '.react-datepicker__day--disabled': {
+      color: theme.ElementsTextDisabled,
+      '&:hover': {
+        cursor: 'not-allowed',
+        backgroundColor: 'transparent',
+      },
+    },
+  },
+  {
     '& .react-datepicker__day--today': {
-      background: theme.ElementsSurfaceDefaultSecondary,
+      border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderDefault}`,
     },
   },
   {
-    '& .react-datepicker__day--selected': {
-      fontFamily: theme.BaselineFontFontFamilyPoppinsSemiBold,
-      fontWeight: theme.BaselineFontFontWeightSemiBold,
-      background: theme.ElementsSurfaceActionDefault,
+    '& .react-datepicker__day--selected, & .react-datepicker__day--selected.react-datepicker__day--range-start.react-datepicker__day--range-end.react-datepicker__day--in-range':
+      {
+        fontFamily: theme.BaselineFontFontFamilyPoppinsSemiBold,
+        fontWeight: theme.BaselineFontFontWeightSemiBold,
+        background: theme.ElementsSurfaceActionDefault,
+        borderRadius: theme.BorderBaseRadiusSm,
+      },
+  },
+  {
+    '& .react-datepicker__day--in-selecting-range, & .react-datepicker__day--in-range': {
+      background: theme.ElementsSurfaceActionHoverSecondary,
+      borderRadius: theme.BaselineSpacesSpace0,
+      ':hover': {
+        background: theme.ElementsSurfaceActionHover,
+        borderRadius: `0 ${theme.BorderBaseRadiusSm} ${theme.BorderBaseRadiusSm} 0`,
+      },
     },
   },
   {
-    '& .react-datepicker__day--selecting-range-start': {
+    '& .react-datepicker__day--selecting-range-start, & .react-datepicker__day--range-start': {
       background: theme.ElementsSurfaceActionDefault,
       borderRadius: `${theme.BorderBaseRadiusSm} 0 0 ${theme.BorderBaseRadiusSm}`,
     },
   },
   {
-    '& .react-datepicker__day--in-selecting-range': {
-      background: theme.ElementsSurfaceActionHoverSecondary,
-      borderRadius: theme.BaselineSpacesSpace0,
-    },
-  },
-  {
-    '& .react-datepicker__day--selecting-range-end': {
-      background: theme.ElementsSurfaceActionHover,
+    '& .react-datepicker__day--selecting-range-end, & .react-datepicker__day--range-end': {
+      background: theme.ElementsSurfaceActionDefault,
       borderRadius: `0 ${theme.BorderBaseRadiusSm} ${theme.BorderBaseRadiusSm} 0`,
     },
   },
@@ -130,6 +148,7 @@ export const ReactDatePickerWrapper = styled.div(({ theme }) => [
   {
     '& .react-datepicker__day--outside-month': {
       opacity: 0,
+      '&:hover': { cursor: 'not-allowed' },
     },
   },
 ]);

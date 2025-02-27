@@ -10,13 +10,14 @@ import { DatePickerHeader } from './DatePickerHeader';
 
 export type DatePickerProps = OptionalProps<
   DatePickerPropsStrict,
-  'selected' | 'showMonthYearDropdown'
+  'selected' | 'showMonthYearDropdown' | 'disabled'
 >;
 
 const normalizeDatePickerProps = (
   _props: DatePickerProps
 ): DatePickerPropsStrict => ({
   ..._props,
+  disabled: _props.disabled ?? false,
   selected: _props.selected ?? new Date(),
   dateFormat: _props.dateFormat ?? 'dd/MM/yyyy',
   showMonthYearDropdown: _props.showMonthYearDropdown ?? false,
