@@ -37,6 +37,7 @@ jobs:
           path: |
             storybook-static/**
             packages/**/build/**
+            packages/react/styles.css
 
   deploy_acceptance:
     needs: build
