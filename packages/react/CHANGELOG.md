@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.31.5](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.31.4...@newcross-ui/react@2.31.5) (2025-02-27)
+
+
+### Bug Fixes
+
+* **HFX-1592:** update readme doc ([d261d06](https://bitbucket.org/newcrossdev/newcross-ui/commits/d261d06d8b1d918be65dcdeaa4d0baaf4cb1c4ac))
+
+
+
+
+
 ## [2.31.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.31.3...@newcross-ui/react@2.31.4) (2025-02-27)
 
 
