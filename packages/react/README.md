@@ -35,6 +35,7 @@ Wrap your application in a ThemeProvider
 ```javascript
 import React from 'react';
 import { ThemeProvider, Brand } from '@newcross-ui/react';
+import '@newcross-ui/react/styles.css';
 import RootComponent from './RootComponent';
 
 const App = () => {
