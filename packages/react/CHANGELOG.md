@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.31.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.31.3...@newcross-ui/react@2.31.4) (2025-02-27)
+
+
+### Bug Fixes
+
+* **HFX-1592:** expose styles file to include all 3rd party css files ([#216](https://bitbucket.org/newcrossdev/newcross-ui/issues/216)) ([a80cff5](https://bitbucket.org/newcrossdev/newcross-ui/commits/a80cff52d10b0eb4d39bbd12facb7a0ee3f86a7b))
+
+
+
+
+
 ## [2.31.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.31.2...@newcross-ui/react@2.31.3) (2025-02-26)
 
 
