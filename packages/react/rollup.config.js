@@ -4,7 +4,24 @@ import typescript from '@rollup/plugin-typescript';
 import { terser } from 'rollup-plugin-terser';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import css from 'rollup-plugin-import-css';
+import fs from 'node:fs';
+import path from 'node:path';
 import packageJson from './package.json';
+
+const copyFileToRoot = (fileName) => {
+  return {
+    name: 'copy-file-to-root',
+    writeBundle: (options) => {
+      const outputDir = path.dirname(options.file || packageJson.main);
+      const sourcePath = path.join(outputDir, fileName);
+      const destPath = path.join(process.cwd(), fileName);
+
+      if (fs.existsSync(sourcePath)) {
+        fs.copyFileSync(sourcePath, destPath);
+      }
+    },
+  };
+};
 
 export default [
   {
@@ -24,7 +41,8 @@ export default [
         rootDir: 'src/',
       }),
       terser(),
-      css({ inject: true }),
+      css({ output: 'styles.css' }),
+      copyFileToRoot('styles.css'),
     ],
     external: [
       'react',
@@ -35,6 +53,7 @@ export default [
       'react-data-table-component',
       '@use-gesture/react',
       'react-international-phone',
+      'react-sheet-slide',
     ],
   },
 ];
