@@ -9,7 +9,7 @@ export type DatePickerHeaderProps = {
   changeYear: (year: number) => void;
   prevMonthButtonDisabled: boolean;
   nextMonthButtonDisabled: boolean;
-  showMonthYearDropdown: boolean;
+  showMonthYearPicker: boolean;
 } & TestProp;
 
 export type DatePickerPropsStrict = {
@@ -28,25 +28,11 @@ export type DatePickerPropsStrict = {
   /**
    * Indicate whether the label is indicating that the input is required
    */
-  required?: boolean;
+  required: boolean;
   /**
    * Sets disabled state of the input
    */
   disabled: boolean;
-  selected: Date;
-  showMonthYearDropdown: boolean;
-  selectsRange: boolean;
-  onChange: (date: Date | Date[] | null, event?: onChangeEvent) => void;
-} & Omit<
-  ReactDatePickerProps,
-  | 'selected'
-  | 'showMonthYearDropdown'
-  | 'disabled'
-  | 'selectsRange'
-  | 'onChange'
-> &
+  showMonthYearPicker: boolean;
+} & Omit<ReactDatePickerProps, 'disabled' | 'showMonthYearPicker'> &
   TestProp;
-
-export type onChangeEvent =
-  | React.KeyboardEvent<HTMLElement>
-  | React.MouseEvent<HTMLElement, MouseEvent>;

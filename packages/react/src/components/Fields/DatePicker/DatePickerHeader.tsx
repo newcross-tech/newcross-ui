@@ -16,7 +16,7 @@ export const DatePickerHeader = ({
   changeYear,
   prevMonthButtonDisabled,
   nextMonthButtonDisabled,
-  showMonthYearDropdown,
+  showMonthYearPicker,
   testID,
 }: DatePickerHeaderProps) => {
   const clickHandler = ({
@@ -69,7 +69,7 @@ export const DatePickerHeader = ({
         }
         testID={`date-picker-header-left-arrow-${testID}`}
       />
-      {showMonthYearDropdown ? (
+      {showMonthYearPicker ? (
         <Container gap="xs">
           <Styled.DatePickerMonthYearSelect
             value={date.getMonth()}

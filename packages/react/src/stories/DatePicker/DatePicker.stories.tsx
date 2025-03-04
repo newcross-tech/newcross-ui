@@ -88,7 +88,7 @@ export const Variants = () => {
       <DatePicker
         required
         label="Month and Year Dropdown"
-        showMonthYearDropdown
+        showMonthYearPicker
         helperText="Pick a month or year from the dropdown"
         selected={dropdownDate}
         onChange={setDropdownDate}
@@ -126,7 +126,7 @@ export const RangeVariants = () => {
   );
 
   const onChangeHandler = (
-    dates: [Date | null, Date | null],
+    dates: [Date, Date],
     setStart: React.Dispatch<React.SetStateAction<Date | null>>,
     setEnd: React.Dispatch<React.SetStateAction<Date | null>>
   ) => {
@@ -195,7 +195,7 @@ export const RangeVariants = () => {
       <DatePicker
         required
         label="Month and Year Dropdown"
-        showMonthYearDropdown
+        showMonthYearPicker
         selectsRange
         helperText="Pick a month or year from the dropdown"
         selected={dropdownStartDate ?? undefined}
