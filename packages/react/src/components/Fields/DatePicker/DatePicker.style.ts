@@ -165,10 +165,10 @@ export const DatePickerMonthYearSelect = styled.select(({ theme }) => [
     paddingBottom: theme.BaselineSpacesSpace4,
     paddingLeft: theme.BaselineSpacesSpace8,
     paddingRight: theme.BaselineSpacesSpace8,
-    backgroundColor: theme.ElementsSurfacePage,
-    border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderHighlightStrong}`,
-    borderRadius: theme.BorderBaseRadiusRounded,
+    border: 'none',
+    backgroundColor: 'transparent',
     fontFamily: theme.BaselineFontFontFamilyPoppinsRegular,
     fontSize: theme.BaselineFontFontSize14,
+    color: theme.ElementsTextActionSecondaryLight,
   },
 ]);

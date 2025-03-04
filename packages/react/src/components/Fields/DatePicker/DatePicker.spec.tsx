@@ -7,6 +7,7 @@ import DatePicker, { DatePickerProps } from './DatePicker';
 describe('DatePicker', () => {
   const defaultDate = new Date('2025-02-21T00:00:00'); // February 21, 2025
 
+  // Add selectsRange: false for single-date mode
   const defaultProps: DatePickerProps = {
     label: 'Test DatePicker Label',
     helperText: 'Test helper text',
@@ -15,6 +16,7 @@ describe('DatePicker', () => {
     disabled: false,
     selected: defaultDate,
     showMonthYearDropdown: false,
+    onChange: jest.fn(),
   };
 
   const renderComponent = (overrideProps?: Partial<DatePickerProps>) => {
@@ -64,13 +66,18 @@ describe('DatePicker', () => {
       selectsRange: true,
       startDate: defaultDate,
       endDate: defaultDate,
+      onChange: jest.fn(), // provide an appropriate onChange handler for range mode
     });
 
     // Assert
+    // In range mode, assume your component renders a string like "21/02/2025 - 21/02/2025"
     expect(screen.getByText('21/02/2025 - 21/02/2025')).toBeInTheDocument();
   });
 
   it('renders single date picker if selectsRange is false', () => {
+    // Act
+    renderComponent();
+
     // Assert
     expect(screen.getByText('21/02/2025')).toBeInTheDocument();
   });

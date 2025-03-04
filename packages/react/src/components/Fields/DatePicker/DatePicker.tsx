@@ -10,22 +10,42 @@ import { DatePickerHeader } from './DatePickerHeader';
 
 export type DatePickerProps = OptionalProps<
   DatePickerPropsStrict,
-  'disabled' | 'showMonthYearDropdown' | 'required' | 'dateFormat'
+  'selected' | 'showMonthYearDropdown' | 'disabled'
 >;
 
 const normalizeDatePickerProps = (
   _props: DatePickerProps
-): DatePickerPropsStrict => ({
-  ..._props,
-  dateFormat: _props.dateFormat ?? 'dd/MM/yyyy',
-  disabled: _props.disabled ?? false,
-  showMonthYearDropdown: _props.showMonthYearDropdown ?? false,
-  required: _props.required ?? false,
-});
+): DatePickerPropsStrict => {
+  const base = {
+    ..._props,
+    disabled: _props.disabled ?? false,
+    selected: _props.selected ?? new Date(),
+    dateFormat: _props.dateFormat ?? 'dd/MM/yyyy',
+    showMonthYearDropdown: _props.showMonthYearDropdown ?? false,
+    required: _props.required ?? false,
+  };
+
+  if (_props.selectsMultiple === true) {
+    return { ...base, selectsMultiple: true } as DatePickerPropsStrict;
+  } else {
+    return {
+      ...base,
+      selectsRange: _props.selectsRange === true,
+    } as DatePickerPropsStrict;
+  }
+};
 
 const DatePicker = (_props: DatePickerProps) => {
-  const { label, helperText, errorText, required, disabled, ...rest } =
-    normalizeDatePickerProps(_props);
+  const props = normalizeDatePickerProps(_props);
+  const {
+    label,
+    helperText,
+    errorText,
+    required,
+    disabled,
+    showMonthYearDropdown,
+    ...rest
+  } = props;
 
   return (
     <Container flexDirection="column" fullWidth>
@@ -40,7 +60,7 @@ const DatePicker = (_props: DatePickerProps) => {
           customInput={<TextInput />}
           renderCustomHeader={(headerProps) => (
             <DatePickerHeader
-              showMonthYearDropdown={rest.showMonthYearDropdown}
+              showMonthYearDropdown={showMonthYearDropdown}
               {...headerProps}
             />
           )}

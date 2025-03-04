@@ -1,5 +1,28 @@
 import { TestProp } from '../../../types';
 import { DatePickerProps as ReactDatePickerProps } from 'react-datepicker';
+import React from 'react';
+
+export type onChangeEvent =
+  | React.KeyboardEvent<HTMLElement>
+  | React.MouseEvent<HTMLElement, MouseEvent>;
+
+// Single date mode: neither range nor multiple.
+export type SingleDateProps = {
+  selectsRange?: never;
+  selectsMultiple?: never;
+};
+
+// Range mode: selectsRange must be true.
+export type RangeDateProps = {
+  selectsRange: true;
+  selectsMultiple?: never;
+};
+
+// Multiple date mode: selectsMultiple must be true.
+export type MultipleDateProps = {
+  selectsRange?: never;
+  selectsMultiple: true;
+};
 
 export type DatePickerHeaderProps = {
   date: ReactDatePickerProps['date'];
@@ -13,36 +36,33 @@ export type DatePickerHeaderProps = {
 } & TestProp;
 
 export type DatePickerPropsStrict = {
-  /**
-   * Gives text input a label
-   */
+  /** Label text */
   label?: string;
-  /**
-   * Adds helper text
-   */
+  /** Helper text */
   helperText?: string;
-  /**
-   * Adds error text
-   */
+  /** Error text */
   errorText?: string;
-  /**
-   * Indicate whether the label is indicating that the input is required
-   */
+  /** Indicates whether the field is required */
   required: boolean;
-  /**
-   * Sets disabled state of the input
-   */
+  /** Sets disabled state of the input */
   disabled: boolean;
-  /**
-   * Show month and year dropdown
-   */
+  /** The currently selected date (for single-date mode) */
+  selected: Date;
+  /** Whether to show month/year dropdowns */
   showMonthYearDropdown: boolean;
-  /**
-   * Date format
-   */
-  dateFormat: string;
-} & Omit<
-  ReactDatePickerProps,
-  'disabled' | 'showMonthYearDropdown' | 'dateFormat' | 'required'
-> &
+  onChange?: (
+    date: Date | Date[] | [Date | null, Date | null] | null,
+    event?: onChangeEvent
+  ) => void;
+} & (SingleDateProps | RangeDateProps | MultipleDateProps) &
+  Omit<
+    ReactDatePickerProps,
+    | 'selected'
+    | 'showMonthYearDropdown'
+    | 'disabled'
+    | 'required'
+    | 'selectsRange'
+    | 'onChange'
+    | 'selectsMultiple'
+  > &
   TestProp;

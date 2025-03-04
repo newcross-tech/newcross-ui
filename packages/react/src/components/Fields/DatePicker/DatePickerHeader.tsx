@@ -70,7 +70,7 @@ export const DatePickerHeader = ({
         testID={`date-picker-header-left-arrow-${testID}`}
       />
       {showMonthYearDropdown ? (
-        <Container gap="xs">
+        <Container gap="xs" mx="sm">
           <Styled.DatePickerMonthYearSelect
             value={date.getMonth()}
             onChange={(e) =>
