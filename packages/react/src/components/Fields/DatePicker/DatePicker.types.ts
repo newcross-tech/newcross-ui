@@ -35,8 +35,18 @@ export type DatePickerPropsStrict = {
   disabled: boolean;
   selected: Date;
   showMonthYearDropdown: boolean;
+  selectsRange: boolean;
+  onChange: (date: Date | Date[] | null, event?: onChangeEvent) => void;
 } & Omit<
   ReactDatePickerProps,
-  'selected' | 'showMonthYearDropdown' | 'disabled'
+  | 'selected'
+  | 'showMonthYearDropdown'
+  | 'disabled'
+  | 'selectsRange'
+  | 'onChange'
 > &
   TestProp;
+
+export type onChangeEvent =
+  | React.KeyboardEvent<HTMLElement>
+  | React.MouseEvent<HTMLElement, MouseEvent>;

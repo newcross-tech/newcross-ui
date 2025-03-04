@@ -10,7 +10,7 @@ import { DatePickerHeader } from './DatePickerHeader';
 
 export type DatePickerProps = OptionalProps<
   DatePickerPropsStrict,
-  'selected' | 'showMonthYearDropdown' | 'disabled'
+  'selected' | 'showMonthYearDropdown' | 'disabled' | 'selectsRange'
 >;
 
 const normalizeDatePickerProps = (
@@ -21,11 +21,20 @@ const normalizeDatePickerProps = (
   selected: _props.selected ?? new Date(),
   dateFormat: _props.dateFormat ?? 'dd/MM/yyyy',
   showMonthYearDropdown: _props.showMonthYearDropdown ?? false,
+  selectsRange: _props.selectsRange ?? false,
 });
 
 const DatePicker = (_props: DatePickerProps) => {
-  const { label, helperText, errorText, required, disabled, ...rest } =
-    normalizeDatePickerProps(_props);
+  const {
+    label,
+    helperText,
+    errorText,
+    required,
+    disabled,
+    onChange,
+    selectsRange,
+    ...rest
+  } = normalizeDatePickerProps(_props);
 
   return (
     <Container flexDirection="column" fullWidth>
@@ -44,6 +53,7 @@ const DatePicker = (_props: DatePickerProps) => {
               {...headerProps}
             />
           )}
+          onChange={onChange}
           {...rest}
         />
       </Styled.ReactDatePickerWrapper>
