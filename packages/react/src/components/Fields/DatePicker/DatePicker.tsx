@@ -10,7 +10,7 @@ import { DatePickerHeader } from './DatePickerHeader';
 
 export type DatePickerProps = OptionalProps<
   DatePickerPropsStrict,
-  'selected' | 'showMonthYearDropdown' | 'disabled'
+  'selected' | 'showMonthYearDropdown' | 'disabled' | 'required'
 >;
 
 const normalizeDatePickerProps = (
@@ -36,7 +36,6 @@ const normalizeDatePickerProps = (
 };
 
 const DatePicker = (_props: DatePickerProps) => {
-  const props = normalizeDatePickerProps(_props);
   const {
     label,
     helperText,
@@ -44,20 +43,23 @@ const DatePicker = (_props: DatePickerProps) => {
     required,
     disabled,
     showMonthYearDropdown,
+    testID,
     ...rest
-  } = props;
+  } = normalizeDatePickerProps(_props);
+
+  const baseTestId = `date-picker-${testID}`;
 
   return (
     <Container flexDirection="column" fullWidth>
       {label && (
-        <Label required={required} disabled={disabled}>
+        <Label required={required} disabled={disabled} testID={baseTestId}>
           {label}
         </Label>
       )}
       <Styled.ReactDatePickerWrapper>
         <ReactDatePicker
           disabled={disabled}
-          customInput={<TextInput />}
+          customInput={<TextInput testID={baseTestId} />}
           renderCustomHeader={(headerProps) => (
             <DatePickerHeader
               showMonthYearDropdown={showMonthYearDropdown}
@@ -72,6 +74,7 @@ const DatePicker = (_props: DatePickerProps) => {
           disabled={disabled}
           helperText={helperText}
           errorText={errorText}
+          testID={baseTestId}
         />
       )}
     </Container>

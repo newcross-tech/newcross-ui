@@ -1,27 +1,29 @@
+// DatePicker.test.tsx
 import { render, screen, fireEvent } from '@testing-library/react';
 import { byTestId } from 'testing-library-selector';
+import DatePicker, { DatePickerProps } from './DatePicker';
 import { DatePickerHeader } from './DatePickerHeader';
 import { DatePickerHeaderProps } from './DatePicker.types';
-import DatePicker, { DatePickerProps } from './DatePicker';
 
 describe('DatePicker', () => {
   const defaultDate = new Date('2025-02-21T00:00:00'); // February 21, 2025
-
-  // Add selectsRange: false for single-date mode
+  const testID = 'test-1';
   const defaultProps: DatePickerProps = {
     label: 'Test DatePicker Label',
     helperText: 'Test helper text',
     errorText: '',
-    required: false,
-    disabled: false,
-    selected: defaultDate,
-    showMonthYearDropdown: false,
     onChange: jest.fn(),
+    testID: testID,
   };
 
   const renderComponent = (overrideProps?: Partial<DatePickerProps>) => {
     const props = { ...defaultProps, ...overrideProps };
     return render(<DatePicker {...props} />);
+  };
+
+  const ui = {
+    textInput: byTestId(`text-input-component-date-picker-${testID}`),
+    messageText: byTestId(`date-picker-${testID}-message-text`),
   };
 
   beforeEach(() => {
@@ -66,27 +68,28 @@ describe('DatePicker', () => {
       selectsRange: true,
       startDate: defaultDate,
       endDate: defaultDate,
-      onChange: jest.fn(), // provide an appropriate onChange handler for range mode
+      onChange: jest.fn(),
     });
-
+    const inputElement = ui.textInput.get() as HTMLInputElement;
+    const inputValue = inputElement.value;
     // Assert
-    // In range mode, assume your component renders a string like "21/02/2025 - 21/02/2025"
-    expect(screen.getByText('21/02/2025 - 21/02/2025')).toBeInTheDocument();
+    expect(inputValue).toBe('21/02/2025 - 21/02/2025');
   });
 
   it('renders single date picker if selectsRange is false', () => {
     // Act
-    renderComponent();
-
+    renderComponent({ selected: defaultDate });
+    const inputElement = ui.textInput.get() as HTMLInputElement;
+    const inputValue = inputElement.value;
     // Assert
-    expect(screen.getByText('21/02/2025')).toBeInTheDocument();
+    expect(inputValue).toBe('21/02/2025');
   });
 
   describe('DatePickerHeader', () => {
     const defaultDate = new Date('2025-02-21T00:00:00'); // February 21, 2025
-    const testID = 'test-1';
+    const headerTestID = 'test-1';
 
-    const defaultProps: DatePickerHeaderProps = {
+    const defaultHeaderProps: DatePickerHeaderProps = {
       date: defaultDate,
       decreaseMonth: jest.fn(),
       increaseMonth: jest.fn(),
@@ -95,14 +98,14 @@ describe('DatePicker', () => {
       prevMonthButtonDisabled: false,
       nextMonthButtonDisabled: false,
       showMonthYearDropdown: true,
-      testID,
+      testID: headerTestID,
     };
 
-    const ui = {
-      leftArrow: byTestId(`date-picker-header-left-arrow-${testID}`),
-      rightArrow: byTestId(`date-picker-header-right-arrow-${testID}`),
-      monthSelect: byTestId(`date-picker-header-month-select-${testID}`),
-      yearSelect: byTestId(`date-picker-header-year-select-${testID}`),
+    const headerUI = {
+      leftArrow: byTestId(`date-picker-header-left-arrow-${headerTestID}`),
+      rightArrow: byTestId(`date-picker-header-right-arrow-${headerTestID}`),
+      monthSelect: byTestId(`date-picker-header-month-select-${headerTestID}`),
+      yearSelect: byTestId(`date-picker-header-year-select-${headerTestID}`),
     };
 
     beforeEach(() => {
@@ -111,34 +114,36 @@ describe('DatePicker', () => {
 
     it('renders dropdown selects when showMonthYearDropdown is true', () => {
       // Act
-      render(<DatePickerHeader {...defaultProps} />);
-
+      render(<DatePickerHeader {...defaultHeaderProps} />);
       // Assert
-      expect(ui.monthSelect.get()).toBeInTheDocument();
-      expect(ui.yearSelect.get()).toBeInTheDocument();
+      expect(headerUI.monthSelect.get()).toBeInTheDocument();
+      expect(headerUI.yearSelect.get()).toBeInTheDocument();
     });
 
     it('renders static text when showMonthYearDropdown is false', () => {
       // Act
       render(
-        <DatePickerHeader {...defaultProps} showMonthYearDropdown={false} />
+        <DatePickerHeader
+          {...defaultHeaderProps}
+          showMonthYearDropdown={false}
+        />
       );
-
       // Assert
-      expect(ui.monthSelect.query()).toBeNull();
-      expect(ui.yearSelect.query()).toBeNull();
+      expect(headerUI.monthSelect.query()).toBeNull();
+      expect(headerUI.yearSelect.query()).toBeNull();
     });
 
     it('calls decreaseMonth when left arrow is clicked (enabled)', () => {
       // Arrange
       const decreaseMonthMock = jest.fn();
       render(
-        <DatePickerHeader {...defaultProps} decreaseMonth={decreaseMonthMock} />
+        <DatePickerHeader
+          {...defaultHeaderProps}
+          decreaseMonth={decreaseMonthMock}
+        />
       );
-
       // Act
-      fireEvent.click(ui.leftArrow.get());
-
+      fireEvent.click(headerUI.leftArrow.get());
       // Assert
       expect(decreaseMonthMock).toHaveBeenCalled();
     });
@@ -148,15 +153,13 @@ describe('DatePicker', () => {
       const decreaseMonthMock = jest.fn();
       render(
         <DatePickerHeader
-          {...defaultProps}
+          {...defaultHeaderProps}
           decreaseMonth={decreaseMonthMock}
           prevMonthButtonDisabled={true}
         />
       );
-
       // Act
-      fireEvent.click(ui.leftArrow.get());
-
+      fireEvent.click(headerUI.leftArrow.get());
       // Assert
       expect(decreaseMonthMock).not.toHaveBeenCalled();
     });
@@ -165,12 +168,13 @@ describe('DatePicker', () => {
       // Arrange
       const increaseMonthMock = jest.fn();
       render(
-        <DatePickerHeader {...defaultProps} increaseMonth={increaseMonthMock} />
+        <DatePickerHeader
+          {...defaultHeaderProps}
+          increaseMonth={increaseMonthMock}
+        />
       );
-
       // Act
-      fireEvent.click(ui.rightArrow.get());
-
+      fireEvent.click(headerUI.rightArrow.get());
       // Assert
       expect(increaseMonthMock).toHaveBeenCalled();
     });
@@ -180,15 +184,13 @@ describe('DatePicker', () => {
       const increaseMonthMock = jest.fn();
       render(
         <DatePickerHeader
-          {...defaultProps}
+          {...defaultHeaderProps}
           increaseMonth={increaseMonthMock}
           nextMonthButtonDisabled={true}
         />
       );
-
       // Act
-      fireEvent.click(ui.rightArrow.get());
-
+      fireEvent.click(headerUI.rightArrow.get());
       // Assert
       expect(increaseMonthMock).not.toHaveBeenCalled();
     });
@@ -198,15 +200,13 @@ describe('DatePicker', () => {
       const changeMonthMock = jest.fn();
       render(
         <DatePickerHeader
-          {...defaultProps}
+          {...defaultHeaderProps}
           changeMonth={changeMonthMock}
           showMonthYearDropdown={true}
         />
       );
-
       // Act
-      fireEvent.change(ui.monthSelect.get(), { target: { value: '3' } });
-
+      fireEvent.change(headerUI.monthSelect.get(), { target: { value: '3' } });
       // Assert
       expect(changeMonthMock).toHaveBeenCalledWith(3);
     });
@@ -216,15 +216,15 @@ describe('DatePicker', () => {
       const changeYearMock = jest.fn();
       render(
         <DatePickerHeader
-          {...defaultProps}
+          {...defaultHeaderProps}
           changeYear={changeYearMock}
           showMonthYearDropdown={true}
         />
       );
-
       // Act
-      fireEvent.change(ui.yearSelect.get(), { target: { value: '2030' } });
-
+      fireEvent.change(headerUI.yearSelect.get(), {
+        target: { value: '2030' },
+      });
       // Assert
       expect(changeYearMock).toHaveBeenCalledWith(2030);
     });
