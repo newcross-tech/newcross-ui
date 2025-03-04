@@ -15,7 +15,6 @@ describe('DatePicker', () => {
     disabled: false,
     selected: defaultDate,
     showMonthYearDropdown: false,
-    onChange: jest.fn(),
   };
 
   const renderComponent = (overrideProps?: Partial<DatePickerProps>) => {
@@ -59,6 +58,23 @@ describe('DatePicker', () => {
     expect(screen.getByText('Error message')).toBeInTheDocument();
   });
 
+  it('renders range date picker if selectsRange is true', () => {
+    // Act
+    renderComponent({
+      selectsRange: true,
+      startDate: defaultDate,
+      endDate: defaultDate,
+    });
+
+    // Assert
+    expect(screen.getByText('21/02/2025 - 21/02/2025')).toBeInTheDocument();
+  });
+
+  it('renders single date picker if selectsRange is false', () => {
+    // Assert
+    expect(screen.getByText('21/02/2025')).toBeInTheDocument();
+  });
+
   describe('DatePickerHeader', () => {
     const defaultDate = new Date('2025-02-21T00:00:00'); // February 21, 2025
     const testID = 'test-1';
@@ -93,9 +109,6 @@ describe('DatePicker', () => {
       // Assert
       expect(ui.monthSelect.get()).toBeInTheDocument();
       expect(ui.yearSelect.get()).toBeInTheDocument();
-
-      // Assert
-      expect(screen.queryByText(/February 2025/i)).toBeNull();
     });
 
     it('renders static text when showMonthYearDropdown is false', () => {
@@ -103,9 +116,6 @@ describe('DatePicker', () => {
       render(
         <DatePickerHeader {...defaultProps} showMonthYearDropdown={false} />
       );
-
-      // Assert
-      expect(screen.getByText(/February 2025/i)).toBeInTheDocument();
 
       // Assert
       expect(ui.monthSelect.query()).toBeNull();

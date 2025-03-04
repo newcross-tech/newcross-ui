@@ -126,7 +126,7 @@ export const RangeVariants = () => {
   );
 
   const onChangeHandler = (
-    dates: [Date | null, Date | null],
+    dates: [Date, Date],
     setStart: React.Dispatch<React.SetStateAction<Date | null>>,
     setEnd: React.Dispatch<React.SetStateAction<Date | null>>
   ) => {

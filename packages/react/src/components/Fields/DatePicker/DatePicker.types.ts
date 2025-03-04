@@ -28,25 +28,21 @@ export type DatePickerPropsStrict = {
   /**
    * Indicate whether the label is indicating that the input is required
    */
-  required?: boolean;
+  required: boolean;
   /**
    * Sets disabled state of the input
    */
   disabled: boolean;
-  selected: Date;
+  /**
+   * Show month and year dropdown
+   */
   showMonthYearDropdown: boolean;
-  selectsRange: boolean;
-  onChange: (date: Date | Date[] | null, event?: onChangeEvent) => void;
+  /**
+   * Date format
+   */
+  dateFormat: string;
 } & Omit<
   ReactDatePickerProps,
-  | 'selected'
-  | 'showMonthYearDropdown'
-  | 'disabled'
-  | 'selectsRange'
-  | 'onChange'
+  'disabled' | 'showMonthYearDropdown' | 'dateFormat' | 'required'
 > &
   TestProp;
-
-export type onChangeEvent =
-  | React.KeyboardEvent<HTMLElement>
-  | React.MouseEvent<HTMLElement, MouseEvent>;
