@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.31.6](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.31.5...@newcross-ui/react@2.31.6) (2025-03-04)
+
+
+### Bug Fixes
+
+* **Select:** do not require id property ([#218](https://bitbucket.org/newcrossdev/newcross-ui/issues/218)) ([f19fab7](https://bitbucket.org/newcrossdev/newcross-ui/commits/f19fab76b17d35ed491bad03e6ee0f3e8e5be7e7))
+
+
+
+
+
 ## [2.31.5](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.31.4...@newcross-ui/react@2.31.5) (2025-02-27)
 
 

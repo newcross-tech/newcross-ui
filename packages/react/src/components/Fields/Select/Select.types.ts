@@ -33,7 +33,7 @@ export type SelectPropsStrict<
   /**
    * Adds id to select menu-list which is the parent div of the options
    */
-  id: string;
+  id?: string;
   /**
    * Adds placeholder text
    */
