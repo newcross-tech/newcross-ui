@@ -88,7 +88,7 @@ export const Variants = () => {
       {/* Variant with dropdown */}
       <DatePicker
         required
-        label="Month and Year Dropdown"
+        label="Month & Year Dropdown"
         showMonthYearDropdown
         helperText="Pick a month or year from the dropdown"
         selected={dropdownDate}
@@ -97,7 +97,7 @@ export const Variants = () => {
       {/* Variant with custom year dropdown range*/}
       <DatePicker
         required
-        label="Month and Year Dropdown with custom year range"
+        label="Month & Year Dropdown with custom month & year range"
         showMonthYearDropdown
         helperText="Pick a month or year from the dropdown"
         selected={customDropdownDate}
@@ -226,7 +226,7 @@ export const RangeVariants = () => {
 
       <DatePicker
         required
-        label="Month and Year Dropdown"
+        label="Month & Year Dropdown"
         showMonthYearDropdown
         selectsRange
         helperText="Pick a month or year from the dropdown"
@@ -244,7 +244,7 @@ export const RangeVariants = () => {
 
       <DatePicker
         required
-        label="Month and Year Dropdown with custom year range"
+        label="Month & Year Dropdown with custom month & year range"
         showMonthYearDropdown
         selectsRange
         helperText="Pick a month or year from the dropdown"
