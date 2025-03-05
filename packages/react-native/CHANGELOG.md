@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.53.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.52.0...@newcross-ui/react-native@1.53.0) (2025-03-05)
+
+
+### Features
+
+* **HFX-1594:** improvements in react native components ([#219](https://bitbucket.org/newcrossdev/newcross-ui/issues/219)) ([2392de6](https://bitbucket.org/newcrossdev/newcross-ui/commits/2392de68cf54e06976818ac8c32d2a5209f6b8ac))
+
+
+
+
+
 # [1.52.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react-native@1.51.0...@newcross-ui/react-native@1.52.0) (2025-02-20)
 
 
