@@ -1,5 +1,9 @@
 import { Meta, Story } from '@storybook/react';
-import { ToggleButton, ToggleButtonProps } from '@newcross-ui/react-native';
+import {
+  BadgeSizes,
+  ToggleButton,
+  ToggleButtonProps,
+} from '@newcross-ui/react-native';
 import Container from '../Container';
 import Spacing from '../Spacing';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -35,6 +39,19 @@ export const Variants = () => {
       <ToggleButton selected={false}>Fav (3)</ToggleButton>
       <Spacing />
       <ToggleButton selected={true}>Fav (3)</ToggleButton>
+
+      <Spacing />
+      <ToggleButton selected={false} badgeContent="3">
+        Updated
+      </ToggleButton>
+      <Spacing />
+      <ToggleButton
+        selected={true}
+        badgeContent="3"
+        badgeSize={BadgeSizes.small}
+      >
+        Updated
+      </ToggleButton>
 
       <Spacing />
       <ToggleButton

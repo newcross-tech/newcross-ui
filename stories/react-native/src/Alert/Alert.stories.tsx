@@ -2,15 +2,20 @@ import { Meta, Story } from '@storybook/react';
 import {
   Alert,
   AlertProps,
+  Badge,
+  BadgeSizes,
   Link,
   Typography,
   TypographyVariant,
 } from '@newcross-ui/react-native';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import Container from '../Container';
 import Spacing from '../Spacing';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './AlertInfo';
+import { native } from '@newcross-ui/design-tokens';
+
+const { SpacingBase8 } = native.healthforce;
 
 export default {
   title: 'ReactNative/Components/Alert',
@@ -75,6 +80,25 @@ export const Variants = () => {
           Variant without children and link
         </Typography>
         <Alert variant="info" />
+        <Spacing />
+        <Typography variant={TypographyVariant.heading4}>
+          Variant with complex content
+        </Typography>
+        <Alert variant="info">
+          <Typography variant={TypographyVariant.paragraph3}>
+            This is info. This is info. This is info.
+          </Typography>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Typography variant={TypographyVariant.paragraph3}>
+              This is info. This is info. This is info.
+            </Typography>
+            <Badge
+              badgeContent="1"
+              size={BadgeSizes.medium}
+              style={{ marginLeft: SpacingBase8 }}
+            />
+          </View>
+        </Alert>
       </Container>
     </ScrollView>
   );
