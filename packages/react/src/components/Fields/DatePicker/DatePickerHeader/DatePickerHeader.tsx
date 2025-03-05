@@ -1,24 +1,51 @@
-import Icon from '../../Icon';
-import Typography from '../../Typography';
-import { DatePickerHeaderProps } from './DatePicker.types';
-import * as Styled from './DatePicker.style';
+import Icon from '../../../Icon';
+import Typography from '../../../Typography';
+import * as Styled from './DatePickerHeader.style';
 import {
   faChevronLeft,
   faChevronRight,
 } from '@fortawesome/pro-light-svg-icons';
-import Container from '../../Container';
+import Container from '../../../Container';
+import { OptionalProps } from '../../../../types';
+import { useMemo } from 'react';
+import { getMonthRange, getYearRange } from '../utils';
+import { DatePickerHeaderPropsStrict } from './DatePickerHeader.types';
 
-export const DatePickerHeader = ({
-  date = new Date(),
-  decreaseMonth,
-  increaseMonth,
-  changeMonth,
-  changeYear,
-  prevMonthButtonDisabled,
-  nextMonthButtonDisabled,
-  showMonthYearDropdown,
-  testID,
-}: DatePickerHeaderProps) => {
+export type DatePickerHeaderProps = OptionalProps<
+  DatePickerHeaderPropsStrict,
+  'date' | 'monthDropdownRange' | 'yearDropdownRange'
+>;
+
+const normalizeDatePickerProps = (
+  _props: DatePickerHeaderProps
+): DatePickerHeaderPropsStrict => ({
+  ..._props,
+  date: _props.date ?? new Date(),
+  monthDropdownRange: _props.monthDropdownRange ?? {
+    startMonth: 0,
+    endMonth: 11,
+  },
+  yearDropdownRange: _props.yearDropdownRange ?? {
+    yearsAgo: 100,
+    yearsAhead: 10,
+  },
+});
+
+const DatePickerHeader = (_props: DatePickerHeaderProps) => {
+  const {
+    date,
+    decreaseMonth,
+    increaseMonth,
+    changeMonth,
+    changeYear,
+    prevMonthButtonDisabled,
+    nextMonthButtonDisabled,
+    showMonthYearDropdown,
+    monthDropdownRange,
+    yearDropdownRange,
+    testID,
+  } = normalizeDatePickerProps(_props);
+
   const clickHandler = ({
     disabled,
     onClick,
@@ -30,26 +57,14 @@ export const DatePickerHeader = ({
     onClick();
   };
 
-  const monthNames = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
+  const months = useMemo(() => {
+    return getMonthRange(monthDropdownRange);
+  }, [monthDropdownRange]);
 
-  const currentYear = date.getFullYear();
-  const years = [];
-  for (let y = currentYear - 100; y <= currentYear + 10; y++) {
-    years.push(y);
-  }
+  const years = useMemo(() => {
+    return getYearRange(yearDropdownRange);
+  }, [yearDropdownRange]);
+
   return (
     <Styled.UpperHeaderContainer
       fullWidth
@@ -78,7 +93,7 @@ export const DatePickerHeader = ({
             }
             data-testid={`date-picker-header-month-select-${testID}`}
           >
-            {monthNames.map((month, idx) => (
+            {months.map((month, idx) => (
               <option key={month} value={idx}>
                 {month}
               </option>
@@ -119,3 +134,5 @@ export const DatePickerHeader = ({
     </Styled.UpperHeaderContainer>
   );
 };
+
+export default DatePickerHeader;

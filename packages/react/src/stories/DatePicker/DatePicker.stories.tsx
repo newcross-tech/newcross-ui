@@ -46,6 +46,7 @@ export const Variants = () => {
   const [minDate, setMinDate] = useState(new Date());
   const [excludeDate, setExcludeDate] = useState(new Date());
   const [dropdownDate, setDropdownDate] = useState(new Date());
+  const [customDropdownDate, setCustomDropdownDate] = useState(new Date());
 
   return (
     <Container flexDirection="column" gap="lg">
@@ -93,6 +94,16 @@ export const Variants = () => {
         selected={dropdownDate}
         onChange={(date) => setDropdownDate(date as Date)}
       />
+      {/* Variant with custom year dropdown range*/}
+      <DatePicker
+        required
+        label="Month and Year Dropdown with custom year range"
+        showMonthYearDropdown
+        helperText="Pick a month or year from the dropdown"
+        selected={customDropdownDate}
+        yearDropdownRange={{ yearsAgo: 2, yearsAhead: 2 }}
+        onChange={(date) => setCustomDropdownDate(date as Date)}
+      />
     </Container>
   );
 };
@@ -124,6 +135,10 @@ export const RangeVariants = () => {
   const [dropdownEndDate, setDropdownEndDate] = useState<Date | null>(
     new Date()
   );
+  const [customDropdownStartDate, setCustomDropdownStartDate] =
+    useState<Date | null>(new Date());
+  const [customDropdownEndDate, setCustomDropdownEndDate] =
+    useState<Date | null>(new Date());
 
   const onChangeHandler = (
     dates: [Date | null, Date | null],
@@ -214,9 +229,28 @@ export const RangeVariants = () => {
         showMonthYearDropdown
         selectsRange
         helperText="Pick a month or year from the dropdown"
+        selected={customDropdownStartDate ?? undefined}
+        startDate={customDropdownStartDate}
+        endDate={customDropdownEndDate}
+        onChange={(date) =>
+          onChangeHandler(
+            date as [Date | null, Date | null],
+            setCustomDropdownStartDate,
+            setCustomDropdownEndDate
+          )
+        }
+      />
+
+      <DatePicker
+        required
+        label="Month and Year Dropdown with custom year range"
+        showMonthYearDropdown
+        selectsRange
+        helperText="Pick a month or year from the dropdown"
         selected={dropdownStartDate ?? undefined}
         startDate={dropdownStartDate}
         endDate={dropdownEndDate}
+        yearDropdownRange={{ yearsAgo: 2, yearsAhead: 2 }}
         onChange={(date) =>
           onChangeHandler(
             date as [Date | null, Date | null],

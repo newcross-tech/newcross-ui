@@ -54,6 +54,7 @@ export default [
       '@use-gesture/react',
       'react-international-phone',
       'react-sheet-slide',
+      'react-datepicker',
     ],
   },
 ];

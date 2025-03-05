@@ -6,11 +6,16 @@ import * as Styled from './DatePicker.style';
 import { OptionalProps } from '../../../types';
 import ReactDatePicker from 'react-datepicker';
 import TextInput from '../TextInput';
-import { DatePickerHeader } from './DatePickerHeader';
+import DatePickerHeader from './DatePickerHeader';
 
 export type DatePickerProps = OptionalProps<
   DatePickerPropsStrict,
-  'selected' | 'showMonthYearDropdown' | 'disabled' | 'required'
+  | 'selected'
+  | 'showMonthYearDropdown'
+  | 'disabled'
+  | 'required'
+  | 'monthDropdownRange'
+  | 'yearDropdownRange'
 >;
 
 const normalizeDatePickerProps = (
@@ -23,6 +28,14 @@ const normalizeDatePickerProps = (
     dateFormat: _props.dateFormat ?? 'dd/MM/yyyy',
     showMonthYearDropdown: _props.showMonthYearDropdown ?? false,
     required: _props.required ?? false,
+    monthDropdownRange: _props.monthDropdownRange ?? {
+      startMonth: 0,
+      endMonth: 11,
+    },
+    yearDropdownRange: _props.yearDropdownRange ?? {
+      yearsAgo: 100,
+      yearsAhead: 10,
+    },
   };
 
   if (_props.selectsMultiple === true) {
@@ -43,6 +56,8 @@ const DatePicker = (_props: DatePickerProps) => {
     required,
     disabled,
     showMonthYearDropdown,
+    monthDropdownRange,
+    yearDropdownRange,
     testID,
     ...rest
   } = normalizeDatePickerProps(_props);
@@ -63,6 +78,8 @@ const DatePicker = (_props: DatePickerProps) => {
           renderCustomHeader={(headerProps) => (
             <DatePickerHeader
               showMonthYearDropdown={showMonthYearDropdown}
+              monthDropdownRange={monthDropdownRange}
+              yearDropdownRange={yearDropdownRange}
               {...headerProps}
             />
           )}

@@ -1,39 +1,26 @@
 import { TestProp } from '../../../types';
 import { DatePickerProps as ReactDatePickerProps } from 'react-datepicker';
 import React from 'react';
+import { MonthRange, YearRange } from './DatePickerHeader';
 
 export type onChangeEvent =
   | React.KeyboardEvent<HTMLElement>
   | React.MouseEvent<HTMLElement, MouseEvent>;
 
-// Single date mode: neither range nor multiple.
 export type SingleDateProps = {
   selectsRange?: never;
   selectsMultiple?: never;
 };
 
-// Range mode: selectsRange must be true.
 export type RangeDateProps = {
   selectsRange: true;
   selectsMultiple?: never;
 };
 
-// Multiple date mode: selectsMultiple must be true.
 export type MultipleDateProps = {
   selectsRange?: never;
   selectsMultiple: true;
 };
-
-export type DatePickerHeaderProps = {
-  date: ReactDatePickerProps['date'];
-  decreaseMonth: VoidFunction;
-  increaseMonth: VoidFunction;
-  changeMonth: (month: number) => void;
-  changeYear: (year: number) => void;
-  prevMonthButtonDisabled: boolean;
-  nextMonthButtonDisabled: boolean;
-  showMonthYearDropdown: boolean;
-} & TestProp;
 
 export type DatePickerPropsStrict = {
   /** Label text */
@@ -50,6 +37,10 @@ export type DatePickerPropsStrict = {
   selected: Date;
   /** Whether to show month/year dropdowns */
   showMonthYearDropdown: boolean;
+  /** Whether to select a range of months for dropdown header */
+  monthDropdownRange: MonthRange;
+  /** Whether to select a range of years for dropdown header */
+  yearDropdownRange: YearRange;
   onChange?: (
     date: Date | Date[] | [Date | null, Date | null] | null,
     event?: onChangeEvent
