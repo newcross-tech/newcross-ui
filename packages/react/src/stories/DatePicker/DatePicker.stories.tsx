@@ -101,6 +101,7 @@ export const Variants = () => {
         showMonthYearDropdown
         helperText="Pick a month or year from the dropdown"
         selected={customDropdownDate}
+        monthDropdownRange={{ startMonth: 2, endMonth: 6 }}
         yearDropdownRange={{ yearsAgo: 2, yearsAhead: 2 }}
         onChange={(date) => setCustomDropdownDate(date as Date)}
       />
@@ -250,6 +251,7 @@ export const RangeVariants = () => {
         selected={dropdownStartDate ?? undefined}
         startDate={dropdownStartDate}
         endDate={dropdownEndDate}
+        monthDropdownRange={{ startMonth: 2, endMonth: 6 }}
         yearDropdownRange={{ yearsAgo: 2, yearsAhead: 2 }}
         onChange={(date) =>
           onChangeHandler(

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import 'react-datepicker/dist/react-datepicker.css';
-import Container from '../../Container';
 import { getRgba } from '../../../utils';
 
 export const ReactDatePickerWrapper = styled.div(({ theme }) => [

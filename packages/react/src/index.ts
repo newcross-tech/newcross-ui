@@ -89,3 +89,5 @@ export { default as NXLogo } from './components/NXLogo';
 export type { NXLogoProps } from './components/NXLogo';
 export { default as PageHeader } from './components/PageHeader';
 export type { PageHeaderProps } from './components/PageHeader';
+export { default as DatePicker } from './components/Fields/DatePicker';
+export type { DatePickerProps } from './components/Fields/DatePicker';
