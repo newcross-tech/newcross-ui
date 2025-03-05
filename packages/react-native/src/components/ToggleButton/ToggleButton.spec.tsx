@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCalendarDays } from '@fortawesome/pro-solid-svg-icons/faCalendarDays';
 
 describe('Toggle Button Component', () => {
-  it('renders sucessfully', () => {
+  it('renders successfully', () => {
     // Arrange
     const props: ToggleButtonProps = {
       children: 'Sort',
@@ -120,5 +120,20 @@ describe('Toggle Button Component', () => {
 
     // Assert
     expect(getByTestId('toggle-button-right-icon')).toBeTruthy();
+  });
+  it('renders successfully with badge', () => {
+    // Arrange
+    const props: ToggleButtonProps = {
+      children: 'Sort',
+      selected: false,
+      testID: 'test',
+      badgeContent: 'badge',
+    };
+    // Act
+    const { getByText } = render(<ToggleButton {...props} />);
+
+    // Assert
+    expect(getByText(/Sort/i)).toBeTruthy();
+    expect(getByText(/badge/i)).toBeTruthy();
   });
 });

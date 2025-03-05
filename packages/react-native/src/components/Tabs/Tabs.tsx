@@ -43,6 +43,10 @@ export type TabsProps = {
    * Badge styles
    * */
   badgeStyle?: ViewStyle;
+  /**
+   * Badge size
+   */
+  badgeSize?: BadgeSizes;
 };
 
 const Tabs = ({
@@ -53,6 +57,7 @@ const Tabs = ({
   style,
   badgeCountObject,
   badgeStyle,
+  badgeSize = BadgeSizes.medium,
   ...rest
 }: TabsProps) => {
   const theme = useTheme();
@@ -79,7 +84,7 @@ const Tabs = ({
   /**
    * this controls the logic of when the divider is shown
    * it should not show the divider on either side of the active tab
-   * it should not show the divider at the end of the containter
+   * it should not show the divider at the end of the container
    * @param tabIndex
    * @returns boolean
    */
@@ -149,7 +154,7 @@ const Tabs = ({
                         <Badge
                           testID={`tab-badge-${index}`}
                           badgeContent={badgeCount}
-                          size={BadgeSizes.medium}
+                          size={badgeSize}
                         />
                       )}
                     </View>

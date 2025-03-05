@@ -4,10 +4,16 @@ import React, {
   isValidElement,
   ReactNode,
 } from 'react';
-import { Pressable, GestureResponderEvent, ViewStyle } from 'react-native';
+import {
+  Pressable,
+  GestureResponderEvent,
+  ViewStyle,
+  View,
+} from 'react-native';
 import toggleStyle from './ToggleButton.style';
 import { ClonedIcon } from './ToggleButton.types';
 import Typography, { TypographyVariant } from '../Typography';
+import Badge, { BadgeSizes } from '../Badge';
 
 export type ToggleButtonProps = {
   /**
@@ -49,6 +55,18 @@ export type ToggleButtonProps = {
    * Set the right icon element.
    */
   rightIcon?: ReactElement;
+  /**
+   * Badge content
+   */
+  badgeContent?: string;
+  /**
+   * Badge styles
+   * */
+  badgeStyle?: ViewStyle;
+  /**
+   * Badge size
+   */
+  badgeSize?: BadgeSizes;
 };
 
 const ToggleButton = ({
@@ -61,6 +79,9 @@ const ToggleButton = ({
   value,
   testID,
   style,
+  badgeContent,
+  badgeStyle,
+  badgeSize = BadgeSizes.medium,
   ...rest
 }: ToggleButtonProps) => {
   const styles = toggleStyle({
@@ -70,7 +91,6 @@ const ToggleButton = ({
     rightIcon,
     children,
   });
-
   const renderIcon = ({ testID, leftIcon, rightIcon }: ToggleButtonProps) => {
     const icon = leftIcon || rightIcon;
     return (
@@ -109,6 +129,16 @@ const ToggleButton = ({
       >
         {children}
       </Typography>
+      <View
+        style={{
+          ...styles.badge,
+          ...badgeStyle,
+        }}
+      >
+        {!!badgeContent && (
+          <Badge badgeContent={badgeContent} size={badgeSize} />
+        )}
+      </View>
       {rightIcon &&
         renderIcon({
           rightIcon,
