@@ -49,6 +49,7 @@
     "babel-loader": "^8.2.3",
     "babel-plugin-react-native-web": "^0.17.7",
     "commitizen": "^4.2.4",
+    "date-fns": "^3.6.0",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.4.0",

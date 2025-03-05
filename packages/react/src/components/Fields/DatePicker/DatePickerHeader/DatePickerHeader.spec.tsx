@@ -1,6 +1,7 @@
 import { byTestId } from 'testing-library-selector';
 import DatePickerHeader, { DatePickerHeaderProps } from './DatePickerHeader';
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { userEvent } from '@storybook/testing-library';
 
 describe('DatePickerHeader', () => {
   const defaultDate = new Date('2025-02-21T00:00:00'); // February 21, 2025
@@ -57,7 +58,7 @@ describe('DatePickerHeader', () => {
       />
     );
     // Act
-    fireEvent.click(headerUI.leftArrow.get());
+    userEvent.click(headerUI.leftArrow.get());
     // Assert
     expect(decreaseMonthMock).toHaveBeenCalled();
   });
@@ -73,7 +74,7 @@ describe('DatePickerHeader', () => {
       />
     );
     // Act
-    fireEvent.click(headerUI.leftArrow.get());
+    userEvent.click(headerUI.leftArrow.get());
     // Assert
     expect(decreaseMonthMock).not.toHaveBeenCalled();
   });
@@ -88,7 +89,7 @@ describe('DatePickerHeader', () => {
       />
     );
     // Act
-    fireEvent.click(headerUI.rightArrow.get());
+    userEvent.click(headerUI.rightArrow.get());
     // Assert
     expect(increaseMonthMock).toHaveBeenCalled();
   });
@@ -104,7 +105,7 @@ describe('DatePickerHeader', () => {
       />
     );
     // Act
-    fireEvent.click(headerUI.rightArrow.get());
+    userEvent.click(headerUI.rightArrow.get());
     // Assert
     expect(increaseMonthMock).not.toHaveBeenCalled();
   });
@@ -120,7 +121,8 @@ describe('DatePickerHeader', () => {
       />
     );
     // Act
-    fireEvent.change(headerUI.monthSelect.get(), { target: { value: '3' } });
+
+    userEvent.selectOptions(headerUI.monthSelect.get(), ['3']);
     // Assert
     expect(changeMonthMock).toHaveBeenCalledWith(3);
   });
@@ -136,9 +138,7 @@ describe('DatePickerHeader', () => {
       />
     );
     // Act
-    fireEvent.change(headerUI.yearSelect.get(), {
-      target: { value: '2030' },
-    });
+    userEvent.selectOptions(headerUI.yearSelect.get(), ['2030']);
     // Assert
     expect(changeYearMock).toHaveBeenCalledWith(2030);
   });

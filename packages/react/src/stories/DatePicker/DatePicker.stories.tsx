@@ -4,6 +4,7 @@ import DatePicker, {
   DatePickerProps,
 } from '../../components/Fields/DatePicker';
 import Container from '../../components/Container';
+import { addDays } from 'date-fns';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './DatePickerInfo';
 
@@ -11,12 +12,6 @@ export default {
   title: 'React/Components/DatePicker',
   component: DatePicker,
 } as Meta;
-
-const addDays = (date: Date, days: number) => {
-  const newDate = new Date(date);
-  newDate.setDate(newDate.getDate() + days);
-  return newDate;
-};
 
 export const Overview = () => {
   const [date, setDate] = useState(new Date());

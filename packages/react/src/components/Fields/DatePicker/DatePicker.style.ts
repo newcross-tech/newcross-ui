@@ -1,14 +1,11 @@
 import styled from 'styled-components';
 import 'react-datepicker/dist/react-datepicker.css';
-import { getRgba } from '../../../utils';
 
 export const ReactDatePickerWrapper = styled.div(({ theme }) => [
   {
     '& .react-datepicker': {
       width: '240px',
-      boxShadow: `${theme.ShadowBaseOffsetSm}px ${theme.ShadowBaseOffsetLg}px ${theme.ShadowBaseElevationMd}px ${
-        theme.ShadowBaseOffsetSm
-      }px ${getRgba('rgb(0, 0, 0)', 0.25)}`,
+      boxShadow: `${theme.ShadowBaseOffsetSm}px ${theme.ShadowBaseOffsetLg}px ${theme.ShadowBaseElevationMd}px ${theme.ShadowBaseOffsetSm}px rgba(0, 0, 0, 0.25)`,
       borderRadius: theme.BorderBaseRadiusMd,
       display: 'flex',
       flexDirection: 'column',

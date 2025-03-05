@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import Icon from '../../../Icon';
 import Typography from '../../../Typography';
 import * as Styled from './DatePickerHeader.style';
@@ -13,13 +14,21 @@ import { DatePickerHeaderPropsStrict } from './DatePickerHeader.types';
 
 export type DatePickerHeaderProps = OptionalProps<
   DatePickerHeaderPropsStrict,
-  'date' | 'monthDropdownRange' | 'yearDropdownRange'
+  | 'date'
+  | 'monthDropdownRange'
+  | 'yearDropdownRange'
+  | 'prevMonthButtonDisabled'
+  | 'nextMonthButtonDisabled'
+  | 'showMonthYearDropdown'
 >;
 
 const normalizeDatePickerProps = (
   _props: DatePickerHeaderProps
 ): DatePickerHeaderPropsStrict => ({
   ..._props,
+  prevMonthButtonDisabled: _props.prevMonthButtonDisabled ?? false,
+  nextMonthButtonDisabled: _props.nextMonthButtonDisabled ?? false,
+  showMonthYearDropdown: _props.showMonthYearDropdown ?? false,
   date: _props.date ?? new Date(),
   monthDropdownRange: _props.monthDropdownRange ?? {
     startMonth: 0,
@@ -28,6 +37,14 @@ const normalizeDatePickerProps = (
   yearDropdownRange: _props.yearDropdownRange ?? {
     yearsAgo: 100,
     yearsAhead: 10,
+  },
+  get decreaseMonth() {
+    if (this.prevMonthButtonDisabled) return undefined;
+    return _props.decreaseMonth;
+  },
+  get increaseMonth() {
+    if (this.nextMonthButtonDisabled) return undefined;
+    return _props.increaseMonth;
   },
 });
 
@@ -43,19 +60,9 @@ const DatePickerHeader = (_props: DatePickerHeaderProps) => {
     showMonthYearDropdown,
     monthDropdownRange,
     yearDropdownRange,
+
     testID,
   } = normalizeDatePickerProps(_props);
-
-  const clickHandler = ({
-    disabled,
-    onClick,
-  }: {
-    disabled: boolean;
-    onClick: VoidFunction;
-  }) => {
-    if (disabled) return;
-    onClick();
-  };
 
   const months = useMemo(() => {
     return getMonthRange(monthDropdownRange);
@@ -76,12 +83,7 @@ const DatePickerHeader = (_props: DatePickerHeaderProps) => {
         icon={faChevronLeft}
         variant="h4"
         color={prevMonthButtonDisabled ? 'disabled' : 'defaultLight'}
-        onClick={() =>
-          clickHandler({
-            disabled: prevMonthButtonDisabled,
-            onClick: decreaseMonth,
-          })
-        }
+        onClick={decreaseMonth}
         testID={`date-picker-header-left-arrow-${testID}`}
       />
       {showMonthYearDropdown ? (
@@ -115,20 +117,14 @@ const DatePickerHeader = (_props: DatePickerHeaderProps) => {
         </Container>
       ) : (
         <Typography variant="h4" color="defaultLight">
-          {date.toLocaleString('default', { month: 'long' })}{' '}
-          {date.getFullYear()}
+          {format(date, 'MMMM yyyy')}
         </Typography>
       )}
       <Icon
         icon={faChevronRight}
         variant="h4"
         color={nextMonthButtonDisabled ? 'disabled' : 'defaultLight'}
-        onClick={() =>
-          clickHandler({
-            disabled: nextMonthButtonDisabled,
-            onClick: increaseMonth,
-          })
-        }
+        onClick={increaseMonth}
         testID={`date-picker-header-right-arrow-${testID}`}
       />
     </Styled.UpperHeaderContainer>

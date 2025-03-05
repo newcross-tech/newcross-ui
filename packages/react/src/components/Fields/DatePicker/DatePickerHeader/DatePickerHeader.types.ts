@@ -22,12 +22,12 @@ export type DatePickerHeaderPropsStrict = {
   /**
    * Function to call when the left (previous) arrow is clicked.
    */
-  decreaseMonth: VoidFunction;
+  decreaseMonth?: VoidFunction;
 
   /**
    * Function to call when the right (next) arrow is clicked.
    */
-  increaseMonth: VoidFunction;
+  increaseMonth?: VoidFunction;
 
   /**
    * Function to change the month.

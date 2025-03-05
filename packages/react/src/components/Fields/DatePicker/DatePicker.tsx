@@ -14,8 +14,11 @@ export type DatePickerProps = OptionalProps<
   | 'showMonthYearDropdown'
   | 'disabled'
   | 'required'
+  | 'dateFormat'
   | 'monthDropdownRange'
   | 'yearDropdownRange'
+  | 'nextMonthButtonDisabled'
+  | 'prevMonthButtonDisabled'
 >;
 
 const normalizeDatePickerProps = (
@@ -26,8 +29,8 @@ const normalizeDatePickerProps = (
     disabled: _props.disabled ?? false,
     selected: _props.selected ?? new Date(),
     dateFormat: _props.dateFormat ?? 'dd/MM/yyyy',
-    showMonthYearDropdown: _props.showMonthYearDropdown ?? false,
     required: _props.required ?? false,
+    showMonthYearDropdown: _props.showMonthYearDropdown ?? false,
     monthDropdownRange: _props.monthDropdownRange ?? {
       startMonth: 0,
       endMonth: 11,
@@ -36,6 +39,8 @@ const normalizeDatePickerProps = (
       yearsAgo: 100,
       yearsAhead: 10,
     },
+    nextMonthButtonDisabled: _props.nextMonthButtonDisabled ?? false,
+    prevMonthButtonDisabled: _props.prevMonthButtonDisabled ?? false,
   };
 
   if (_props.selectsMultiple === true) {
@@ -58,6 +63,8 @@ const DatePicker = (_props: DatePickerProps) => {
     showMonthYearDropdown,
     monthDropdownRange,
     yearDropdownRange,
+    nextMonthButtonDisabled,
+    prevMonthButtonDisabled,
     testID,
     ...rest
   } = normalizeDatePickerProps(_props);
@@ -77,10 +84,12 @@ const DatePicker = (_props: DatePickerProps) => {
           customInput={<TextInput testID={baseTestId} />}
           renderCustomHeader={(headerProps) => (
             <DatePickerHeader
+              {...headerProps}
               showMonthYearDropdown={showMonthYearDropdown}
               monthDropdownRange={monthDropdownRange}
               yearDropdownRange={yearDropdownRange}
-              {...headerProps}
+              nextMonthButtonDisabled={nextMonthButtonDisabled}
+              prevMonthButtonDisabled={prevMonthButtonDisabled}
             />
           )}
           {...rest}
