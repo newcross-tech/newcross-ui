@@ -35,10 +35,6 @@ export type SelectPropsStrict<
    */
   id?: string;
   /**
-   * Adds placeholder text
-   */
-  placeholder?: string;
-  /**
    * Show disabled state
    */
   disabled: boolean;
