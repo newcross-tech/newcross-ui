@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.31.7](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.31.6...@newcross-ui/react@2.31.7) (2025-03-06)
+
+
+### Bug Fixes
+
+* **Select:** placeholder types ([#220](https://bitbucket.org/newcrossdev/newcross-ui/issues/220)) ([24f5504](https://bitbucket.org/newcrossdev/newcross-ui/commits/24f55042a49e44cc4c01b7f53845859dc53d25c7))
+
+
+
+
+
 ## [2.31.6](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.31.5...@newcross-ui/react@2.31.6) (2025-03-04)
 
 
