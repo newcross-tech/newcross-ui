@@ -13,7 +13,7 @@ export type DatePickerPropsStrict = Pick<
 > &
   DistributedOmit<
     ReactDatePickerProps,
-    'selected' | 'showMonthYearDropdown' | 'disabled' | 'required'
+    'showMonthYearDropdown' | 'disabled' | 'required'
   > &
   TestProp & {
     /** Label text */
@@ -26,6 +26,4 @@ export type DatePickerPropsStrict = Pick<
     required: boolean;
     /** Sets disabled state of the input */
     disabled: boolean;
-    /** The currently selected date (for single-date mode) */
-    selected: Date;
   };

@@ -14,7 +14,7 @@ export default {
 } as Meta;
 
 export const Overview = () => {
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState<Date | null>(new Date());
 
   return (
     <InfoTemplate
@@ -28,7 +28,7 @@ export const Overview = () => {
           label="Date Picker"
           helperText="Select a single date"
           selected={date}
-          onChange={(date) => setDate(date)}
+          onChange={setDate}
         />
       </Container>
     </InfoTemplate>
@@ -37,11 +37,13 @@ export const Overview = () => {
 
 export const Variants = () => {
   const [defaultDate, setDefaultDate] = useState<Date | null>(new Date());
-  const [disabledDate, setDisabledDate] = useState(new Date());
-  const [minDate, setMinDate] = useState(new Date());
-  const [excludeDate, setExcludeDate] = useState(new Date());
-  const [dropdownDate, setDropdownDate] = useState(new Date());
-  const [customDropdownDate, setCustomDropdownDate] = useState(new Date());
+  const [disabledDate, setDisabledDate] = useState<Date | null>(new Date());
+  const [minDate, setMinDate] = useState<Date | null>(new Date());
+  const [excludeDate, setExcludeDate] = useState<Date | null>(new Date());
+  const [dropdownDate, setDropdownDate] = useState<Date | null>(new Date());
+  const [customDropdownDate, setCustomDropdownDate] = useState<Date | null>(
+    new Date()
+  );
 
   return (
     <Container flexDirection="column" gap="lg">
@@ -60,7 +62,7 @@ export const Variants = () => {
         helperText="This field is disabled"
         disabled
         selected={disabledDate}
-        onChange={(date) => setDisabledDate(date)}
+        onChange={setDisabledDate}
       />
       {/* Disable days before today */}
       <DatePicker
@@ -69,7 +71,7 @@ export const Variants = () => {
         helperText="Days before today are disabled"
         minDate={new Date()}
         selected={minDate}
-        onChange={(date) => setMinDate(date)}
+        onChange={setMinDate}
       />
       {/* Exclude specific dates */}
       <DatePicker
@@ -78,7 +80,7 @@ export const Variants = () => {
         helperText="Next 2 days are disabled"
         excludeDates={[addDays(new Date(), 1), addDays(new Date(), 2)]}
         selected={excludeDate}
-        onChange={(date) => setExcludeDate(date)}
+        onChange={setExcludeDate}
       />
       {/* Variant with dropdown */}
       <DatePicker
@@ -87,7 +89,7 @@ export const Variants = () => {
         showMonthYearDropdown
         helperText="Pick a month or year from the dropdown"
         selected={dropdownDate}
-        onChange={(date) => setDropdownDate(date)}
+        onChange={setDropdownDate}
       />
       {/* Variant with custom year dropdown range*/}
       <DatePicker
@@ -98,7 +100,7 @@ export const Variants = () => {
         selected={customDropdownDate}
         monthDropdownRange={{ startMonth: 2, endMonth: 6 }}
         yearDropdownRange={{ yearsAgo: 2, yearsAhead: 2 }}
-        onChange={(date) => setCustomDropdownDate(date)}
+        onChange={setCustomDropdownDate}
       />
     </Container>
   );
