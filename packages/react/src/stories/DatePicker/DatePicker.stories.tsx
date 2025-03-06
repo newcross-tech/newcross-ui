@@ -28,7 +28,7 @@ export const Overview = () => {
           label="Date Picker"
           helperText="Select a single date"
           selected={date}
-          onChange={(date) => setDate(date as Date)}
+          onChange={(date) => setDate(date)}
         />
       </Container>
     </InfoTemplate>
@@ -36,7 +36,7 @@ export const Overview = () => {
 };
 
 export const Variants = () => {
-  const [defaultDate, setDefaultDate] = useState(new Date());
+  const [defaultDate, setDefaultDate] = useState<Date | null>(new Date());
   const [disabledDate, setDisabledDate] = useState(new Date());
   const [minDate, setMinDate] = useState(new Date());
   const [excludeDate, setExcludeDate] = useState(new Date());
@@ -51,7 +51,7 @@ export const Variants = () => {
         label="Default"
         helperText="Normal date picker"
         selected={defaultDate}
-        onChange={(date) => setDefaultDate(date as Date)}
+        onChange={setDefaultDate}
       />
       {/* Disabled variant */}
       <DatePicker
@@ -60,7 +60,7 @@ export const Variants = () => {
         helperText="This field is disabled"
         disabled
         selected={disabledDate}
-        onChange={(date) => setDisabledDate(date as Date)}
+        onChange={(date) => setDisabledDate(date)}
       />
       {/* Disable days before today */}
       <DatePicker
@@ -69,7 +69,7 @@ export const Variants = () => {
         helperText="Days before today are disabled"
         minDate={new Date()}
         selected={minDate}
-        onChange={(date) => setMinDate(date as Date)}
+        onChange={(date) => setMinDate(date)}
       />
       {/* Exclude specific dates */}
       <DatePicker
@@ -78,7 +78,7 @@ export const Variants = () => {
         helperText="Next 2 days are disabled"
         excludeDates={[addDays(new Date(), 1), addDays(new Date(), 2)]}
         selected={excludeDate}
-        onChange={(date) => setExcludeDate(date as Date)}
+        onChange={(date) => setExcludeDate(date)}
       />
       {/* Variant with dropdown */}
       <DatePicker
@@ -87,7 +87,7 @@ export const Variants = () => {
         showMonthYearDropdown
         helperText="Pick a month or year from the dropdown"
         selected={dropdownDate}
-        onChange={(date) => setDropdownDate(date as Date)}
+        onChange={(date) => setDropdownDate(date)}
       />
       {/* Variant with custom year dropdown range*/}
       <DatePicker
@@ -98,7 +98,7 @@ export const Variants = () => {
         selected={customDropdownDate}
         monthDropdownRange={{ startMonth: 2, endMonth: 6 }}
         yearDropdownRange={{ yearsAgo: 2, yearsAhead: 2 }}
-        onChange={(date) => setCustomDropdownDate(date as Date)}
+        onChange={(date) => setCustomDropdownDate(date)}
       />
     </Container>
   );
@@ -156,12 +156,8 @@ export const RangeVariants = () => {
         selected={defaultStartDate ?? undefined}
         startDate={defaultStartDate}
         endDate={defaultEndDate}
-        onChange={(date) =>
-          onChangeHandler(
-            date as [Date | null, Date | null],
-            setDefaultStartDate,
-            setDefaultEndDate
-          )
+        onChange={(date: [Date | null, Date | null]) =>
+          onChangeHandler(date, setDefaultStartDate, setDefaultEndDate)
         }
       />
 
@@ -174,12 +170,8 @@ export const RangeVariants = () => {
         selected={disabledStartDate ?? undefined}
         startDate={disabledStartDate}
         endDate={disabledEndDate}
-        onChange={(date) =>
-          onChangeHandler(
-            date as [Date | null, Date | null],
-            setDisabledStartDate,
-            setDisabledEndDate
-          )
+        onChange={(date: [Date | null, Date | null]) =>
+          onChangeHandler(date, setDisabledStartDate, setDisabledEndDate)
         }
       />
 
@@ -192,12 +184,8 @@ export const RangeVariants = () => {
         selected={minStartDate ?? undefined}
         startDate={minStartDate}
         endDate={minEndDate}
-        onChange={(date) =>
-          onChangeHandler(
-            date as [Date | null, Date | null],
-            setMinStartDate,
-            setMinEndDate
-          )
+        onChange={(date: [Date | null, Date | null]) =>
+          onChangeHandler(date, setMinStartDate, setMinEndDate)
         }
       />
 
@@ -210,12 +198,8 @@ export const RangeVariants = () => {
         selected={excludeStartDate ?? undefined}
         startDate={excludeStartDate}
         endDate={excludeEndDate}
-        onChange={(date) =>
-          onChangeHandler(
-            date as [Date | null, Date | null],
-            setExcludeStartDate,
-            setExcludeEndDate
-          )
+        onChange={(date: [Date | null, Date | null]) =>
+          onChangeHandler(date, setExcludeStartDate, setExcludeEndDate)
         }
       />
 
@@ -228,9 +212,9 @@ export const RangeVariants = () => {
         selected={customDropdownStartDate ?? undefined}
         startDate={customDropdownStartDate}
         endDate={customDropdownEndDate}
-        onChange={(date) =>
+        onChange={(date: [Date | null, Date | null]) =>
           onChangeHandler(
-            date as [Date | null, Date | null],
+            date,
             setCustomDropdownStartDate,
             setCustomDropdownEndDate
           )
@@ -248,12 +232,8 @@ export const RangeVariants = () => {
         endDate={dropdownEndDate}
         monthDropdownRange={{ startMonth: 2, endMonth: 6 }}
         yearDropdownRange={{ yearsAgo: 2, yearsAhead: 2 }}
-        onChange={(date) =>
-          onChangeHandler(
-            date as [Date | null, Date | null],
-            setDropdownStartDate,
-            setDropdownEndDate
-          )
+        onChange={(date: [Date | null, Date | null]) =>
+          onChangeHandler(date, setDropdownStartDate, setDropdownEndDate)
         }
       />
     </Container>
@@ -261,16 +241,14 @@ export const RangeVariants = () => {
 };
 
 const Template: Story<DatePickerProps> = () => {
-  const [selected, setSelected] = useState<Date>(new Date());
+  const [selected, setSelected] = useState<Date | null>(new Date());
 
   return (
     <DatePicker
       label="Date Picker"
       helperText="Select a single date"
-      selected={selected}
-      onChange={(date) => {
-        setSelected(date as Date);
-      }}
+      selected={selected ?? undefined}
+      onChange={setSelected}
     />
   );
 };

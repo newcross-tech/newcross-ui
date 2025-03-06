@@ -24,7 +24,7 @@ export type DatePickerProps = OptionalProps<
 const normalizeDatePickerProps = (
   _props: DatePickerProps
 ): DatePickerPropsStrict => {
-  const base = {
+  return {
     ..._props,
     disabled: _props.disabled ?? false,
     selected: _props.selected ?? new Date(),
@@ -42,15 +42,6 @@ const normalizeDatePickerProps = (
     nextMonthButtonDisabled: _props.nextMonthButtonDisabled ?? false,
     prevMonthButtonDisabled: _props.prevMonthButtonDisabled ?? false,
   };
-
-  if (_props.selectsMultiple === true) {
-    return { ...base, selectsMultiple: true } as DatePickerPropsStrict;
-  } else {
-    return {
-      ...base,
-      selectsRange: _props.selectsRange === true,
-    } as DatePickerPropsStrict;
-  }
 };
 
 const DatePicker = (_props: DatePickerProps) => {

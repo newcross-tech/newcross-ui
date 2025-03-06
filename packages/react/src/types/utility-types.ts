@@ -1,7 +1,9 @@
-export type RequiredProps<T, K extends keyof T> = Omit<T, K> &
-  Required<Pick<T, K>>;
-export type OptionalProps<T, K extends keyof T> = Omit<T, K> &
-  Partial<Pick<T, K>>;
+import { DistributedOmit, DistributedPick } from 'type-fest';
+
+export type RequiredProps<T, K extends keyof T> = DistributedOmit<T, K> &
+  Required<DistributedPick<T, K>>;
+export type OptionalProps<T, K extends keyof T> = DistributedOmit<T, K> &
+  Partial<DistributedPick<T, K>>;
 
 /**
  * Helper for writing `ValueFrom<typeof SomeConstant>` instead of `typeof SomeConstant[keyof typeof SomeConstant]`.

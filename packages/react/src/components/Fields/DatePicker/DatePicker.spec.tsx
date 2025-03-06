@@ -5,17 +5,17 @@ import DatePicker, { DatePickerProps } from './DatePicker';
 describe('DatePicker', () => {
   const defaultDate = new Date('2025-02-21T00:00:00'); // February 21, 2025
   const testID = 'test-1';
-  const defaultProps: DatePickerProps = {
-    label: 'Test DatePicker Label',
-    helperText: 'Test helper text',
-    errorText: '',
-    onChange: jest.fn(),
-    testID: testID,
-  };
 
   const renderComponent = (overrideProps?: Partial<DatePickerProps>) => {
-    const props = { ...defaultProps, ...overrideProps };
-    return render(<DatePicker {...props} />);
+    return render(
+      <DatePicker
+        label="Test DatePicker Label"
+        helperText="Test helper text"
+        onChange={jest.fn()}
+        testID={testID}
+        {...(overrideProps as DatePickerProps)}
+      />
+    );
   };
 
   const ui = {
