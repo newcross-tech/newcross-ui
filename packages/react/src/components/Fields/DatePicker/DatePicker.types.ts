@@ -1,7 +1,6 @@
-import { TestProp } from '../../../types';
+import { DistributedOmit, TestProp } from '../../../types';
 import { DatePickerProps as ReactDatePickerProps } from 'react-datepicker';
 import { DatePickerHeaderProps } from './DatePickerHeader';
-import { DistributedOmit } from 'type-fest';
 
 export type DatePickerPropsStrict = Pick<
   DatePickerHeaderProps,
@@ -13,7 +12,7 @@ export type DatePickerPropsStrict = Pick<
 > &
   DistributedOmit<
     ReactDatePickerProps,
-    'selected' | 'showMonthYearDropdown' | 'disabled' | 'required'
+    'showMonthYearDropdown' | 'disabled' | 'required'
   > &
   TestProp & {
     /** Label text */
@@ -26,6 +25,4 @@ export type DatePickerPropsStrict = Pick<
     required: boolean;
     /** Sets disabled state of the input */
     disabled: boolean;
-    /** The currently selected date (for single-date mode) */
-    selected: Date;
   };
