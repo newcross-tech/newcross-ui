@@ -1,74 +1,60 @@
 import { faChevronRight } from '@fortawesome/pro-light-svg-icons/faChevronRight';
-import { ReactNode } from 'react';
-import { TestProp } from '../../types';
 import * as Styled from './Card.style';
-import { CardVariants } from './Card.types';
+import { CardPropsStrict } from './Card.types';
+import { OptionalProps } from '../../types';
 
-export type CardProps = {
-  /**
-   * Supports any kind of content
-   */
-  children?: ReactNode;
-  /**
-   * Called when a single tap gesture is detected.
-   */
-  onClick?: VoidFunction;
-  /**
-   * Whether the click behavior is disabled.
-   */
-  disabled?: boolean;
-  /**
-   * Whether the card has round border
-   */
-  hasBorder?: boolean;
-  /**
-   * Whether the card has round corners
-   */
-  hasRoundedCorners?: boolean;
-  /**
-   * Sets the card border color
-   */
-  variant?: CardVariants;
-  /**
-   * Whether the card is full width
-   */
-  fullWidth?: boolean;
-  /**
-   * Whether the card has padding
-   */
-  hasPadding?: boolean;
-  /**
-   * Whether the card has an icon on the right hand side
-   */
-  hasRightIcon?: boolean;
-  /**
-   * Whether the cards have a shadow.
-   */
-  hasShadow?: boolean;
-  /**
-   * To show custom sectoin on the left side of card
-   */
-  thumbnailContent?: ReactNode;
-} & TestProp;
+export type CardProps = OptionalProps<
+  CardPropsStrict,
+  | 'hasPadding'
+  | 'variant'
+  | 'hasShadow'
+  | 'testID'
+  | 'hasBorder'
+  | 'hasRoundedCorners'
+  | 'fullWidth'
+  | 'hasRightIcon'
+  | 'onClick'
+  | 'backgroundColor'
+  | 'disabled'
+>;
 
-const Card = ({
-  children,
-  hasBorder,
-  hasRoundedCorners,
-  fullWidth,
-  disabled,
-  hasPadding = true,
-  onClick,
-  thumbnailContent,
-  variant = 'primary',
-  hasRightIcon,
-  hasShadow = true,
-  testID = 'card',
-  ...rest
-}: CardProps) => {
-  const clickHandler = () => {
-    if (disabled) return;
-    onClick && onClick();
+const normalizeCardProps = (_props: CardProps): CardPropsStrict => ({
+  ..._props,
+  disabled: _props.disabled ?? false,
+  hasPadding: _props.hasPadding ?? true,
+  hasBorder: _props.hasBorder ?? false,
+  hasRoundedCorners: _props.hasRoundedCorners ?? false,
+  fullWidth: _props.fullWidth ?? false,
+  hasRightIcon: _props.hasRightIcon ?? false,
+  variant: _props.variant ?? 'primary',
+  hasShadow: _props.hasShadow ?? true,
+  testID: _props.testID ?? 'card',
+  backgroundColor: _props.backgroundColor ?? 'default',
+});
+
+const Card = (_props: CardProps) => {
+  const {
+    children,
+    onClick,
+    disabled,
+    hasBorder,
+    hasRoundedCorners,
+    fullWidth,
+    hasPadding,
+    hasRightIcon,
+    hasShadow,
+    thumbnailContent,
+    variant,
+    testID,
+    backgroundColor,
+    ...rest
+  } = normalizeCardProps(_props);
+
+  const handleOnClick = () => {
+    if (disabled) return undefined;
+    if (onClick) {
+      onClick();
+    }
   };
 
   return (
@@ -77,31 +63,29 @@ const Card = ({
       hasShadow={hasShadow}
       fullWidth={fullWidth}
       variant={variant}
-      hasBorder={hasBorder}
-      isClickable={!!onClick}
-      tabIndex={!disabled ? 0 : -1}
-      data-testid={`${testID}-component`}
-      thumbnailContent={thumbnailContent}
+      testID={`${testID}-component`}
       hasRoundedCorners={hasRoundedCorners}
-      onClick={clickHandler}
+      onClick={handleOnClick}
       {...rest}
     >
       {thumbnailContent && (
         <Styled.LeftContent
-          hasRoundedCorners={hasRoundedCorners}
           variant={variant}
           hasBorder={hasBorder}
+          hasRoundedCorners={hasRoundedCorners}
         >
           {thumbnailContent}
         </Styled.LeftContent>
       )}
       <Styled.MainContent
+        p={hasPadding ? 'md' : undefined}
+        alignItems="center"
+        justifyContent={hasRightIcon ? 'space-between' : 'flex-start'}
         variant={variant}
         hasBorder={hasBorder}
-        fullWidth={fullWidth}
-        hasPadding={hasPadding}
-        hasRightIcon={hasRightIcon}
         hasRoundedCorners={hasRoundedCorners}
+        thumbnailContent={thumbnailContent}
+        backgroundColor={backgroundColor}
       >
         {children}
         {hasRightIcon && (

@@ -1,101 +1,66 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
-import { ThemeDesignTokens } from '../../theme/ThemeProvider';
-import { ExtendedTheme, Theme } from '../../types';
-import { getRgba, getTabbedStateStyles } from '../../utils';
-import { CardProps } from '../Card';
-import { CardVariants, StyledCardProps } from './Card.types';
+import styled from 'styled-components';
+import { Theme } from '../../types';
+import { getTabbedStateStyles } from '../../utils';
+import { CardPropsStrict } from './Card.types';
+import Container from '../Container';
+import { getBackgroundColor } from '../../utils/css';
 
-export const getColorValues = (theme: ThemeDesignTokens): Record<CardVariants, FlattenSimpleInterpolation> => ({
-  primary: css`
-    ${theme.CardBorderColorPrimary}
-  `,
-  secondary: css`
-    ${theme.CardBorderColorSecondary}
-  `,
-  tertiary: css`
-    ${theme.CardBorderColorTertiary}
-  `,
-});
+export const getColor = ({ theme, variant }: Theme & Pick<CardPropsStrict, 'variant'>): string =>
+  ({
+    primary: theme.CardBorderColorPrimary,
+    secondary: theme.CardBorderColorSecondary,
+    tertiary: theme.CardBorderColorTertiary,
+  }[variant]);
 
-export const Card = styled.div<StyledCardProps>`
-  ${({
-    theme,
-    disabled,
-    isClickable,
-    hasShadow,
-    hasRoundedCorners,
-    fullWidth,
-    thumbnailContent,
-  }: ExtendedTheme<StyledCardProps>) => css`
-    display: flex;
-    width: ${fullWidth && '100%'};
+export const Card = styled(Container)<
+  Pick<CardPropsStrict, 'disabled' | 'hasShadow' | 'hasRoundedCorners' | 'onClick' | 'variant'>
+>(({ theme, disabled, hasShadow, hasRoundedCorners, onClick }) => [
+  {
+    tabIndex: !disabled ? 0 : -1,
+    cursor: !!onClick && !disabled ? 'pointer' : 'default',
+    ...(hasRoundedCorners && { borderRadius: theme.BorderBaseRadiusMd }),
+    ...(hasShadow && {
+      boxShadow: `${theme.ShadowBaseOffsetSm}px ${theme.ShadowBaseOffsetMd}px ${theme.ShadowBaseElevationSm}px  rgba(0, 0, 0, 0.25)`,
+    }),
+  },
+  getTabbedStateStyles(),
+]);
 
-    border-radius: ${hasRoundedCorners && theme.CardBorderRadius};
-    ${getTabbedStateStyles()}
+export const MainContent = styled(Container)<
+  Pick<CardPropsStrict, 'hasBorder' | 'variant' | 'hasRoundedCorners' | 'thumbnailContent' | 'backgroundColor'>
+>((props) => [
+  {
+    flex: 1,
+    ...(props.hasBorder && { border: `${props.theme.BorderBaseWidthSm} solid ${getColor(props)}` }),
+    ...(props.hasRoundedCorners &&
+      (props.thumbnailContent
+        ? {
+            borderTopRightRadius: props.theme.BorderBaseRadiusMd,
+            borderBottomRightRadius: props.theme.BorderBaseRadiusMd,
+          }
+        : {
+            borderRadius: props.theme.BorderBaseRadiusMd,
+          })),
+  },
+  getBackgroundColor(props),
+]);
 
-    ${!!isClickable &&
-    !disabled &&
-    css`
-      cursor: pointer;
-    `};
+export const LeftContent = styled.div<Pick<CardPropsStrict, 'hasBorder' | 'variant' | 'hasRoundedCorners'>>((props) => [
+  {
+    overflow: 'hidden',
+    ...(props.hasBorder && {
+      border: `${props.theme.BorderBaseWidthSm} solid ${getColor(props)}`,
+    }),
+    ...(props.hasRoundedCorners && {
+      borderTopLeftRadius: props.theme.BorderBaseRadiusMd,
+      borderBottomLeftRadius: props.theme.BorderBaseRadiusMd,
+    }),
+  },
+]);
 
-    ${hasShadow &&
-    css`
-      box-shadow: ${theme.TabsActiveTabShadowOffsetWidth}px ${theme.TabsActiveTabShadowOffsetHeight}px
-        ${theme.CardShadowRadius} ${getRgba(theme.CardShadowColor, theme.CardShadowOpacity)};
-    `};
-
-    > ${MainContent} {
-      ${hasRoundedCorners &&
-      (thumbnailContent
-        ? css`
-            border-top-right-radius: ${theme.CardBorderRadius};
-            border-bottom-right-radius: ${theme.CardBorderRadius};
-          `
-        : css`
-            border-radius: ${theme.CardBorderRadius};
-          `)}
-    }
-
-    > ${LeftContent} {
-      ${hasRoundedCorners &&
-      css`
-        border-top-left-radius: ${theme.CardBorderRadius};
-        border-bottom-left-radius: ${theme.CardBorderRadius};
-      `};
-    }
-  `};
-`;
-
-export const MainContent = styled.div<CardProps>`
-  ${({ theme, hasBorder, hasPadding, hasRightIcon, variant }: ExtendedTheme<CardProps>) => css`
-    display: flex;
-    flex: 1;
-    align-items: center;
-    padding: ${hasPadding && theme.CardPadding};
-    background-color: ${theme.ColorNeutralWhite};
-    justify-content: ${hasRightIcon ? 'space-between' : 'flex-start'};
-
-    ${hasBorder &&
-    css`
-      border: ${theme.CardBorderWidth} solid ${getColorValues(theme)[variant as CardVariants]};
-    `};
-  `};
-`;
-
-export const LeftContent = styled.div<CardProps>`
-  ${({ theme, hasBorder, variant }: ExtendedTheme<CardProps>) => css`
-    overflow: hidden;
-    ${hasBorder &&
-    css`
-      border: ${theme.CardBorderWidth} solid ${getColorValues(theme)[variant as CardVariants]};
-    `};
-  `};
-`;
-
-export const FontIcon = styled(FontAwesomeIcon)`
-  ${({ theme }: Theme) => css`
-    height: ${theme.SpacingBase24};
-  `};
-`;
+export const FontIcon = styled(FontAwesomeIcon)(({ theme }) => [
+  {
+    height: theme.BaselineSpacesSpace24,
+  },
+]);
