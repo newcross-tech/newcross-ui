@@ -27,7 +27,9 @@ const normalizeLabelProps = (_props: LabelProps): LabelPropsStrict => ({
   },
 });
 
-const Label = (_props: LabelProps) => {
+export const Label = (_props: LabelProps) => {
+  const props = normalizeLabelProps(_props);
+
   const {
     children,
     required,
@@ -35,17 +37,20 @@ const Label = (_props: LabelProps) => {
     hasError,
     variant,
     color,
-    testID,
+    testID: _legacyTestId,
+    'data-testid': _testId,
     htmlFor,
     ...rest
-  } = normalizeLabelProps(_props);
+  } = props;
+
+  const testIds = labelTestIds(props);
 
   return (
-    <Container gap="xs">
+    <Container gap="xs" data-testid={testIds.root}>
       <Styled.Label
         htmlFor={htmlFor}
         disabled={disabled}
-        data-testid={testID}
+        data-testid={testIds.label}
         {...rest}
       >
         <Typography variant={variant} color={color}>
@@ -54,7 +59,7 @@ const Label = (_props: LabelProps) => {
       </Styled.Label>
       {required && !disabled && (
         <Typography
-          testID={`${testID}-required-indicator`}
+          data-testid={testIds.required}
           variant={variant}
           color="dangerError"
         >
@@ -64,5 +69,29 @@ const Label = (_props: LabelProps) => {
     </Container>
   );
 };
+
+/**
+ * Normalizes the differences between the legacy `testID` prop and the new `data-testid` prop and provides backwards compatibility.
+ * In normal conditions you should not need such function
+ */
+function labelTestIds({
+  'data-testid': testId,
+  testID: legacyTestId,
+}: Pick<LabelPropsStrict, 'testID' | 'data-testid'>) {
+  if (testId) {
+    const baseTestId = [testId, 'label'].filter(Boolean).join('-');
+    return {
+      root: testId,
+      label: baseTestId,
+      required: `${baseTestId}-required`,
+    };
+  }
+
+  return {
+    root: undefined,
+    label: legacyTestId,
+    required: `${legacyTestId}-required-indicator`,
+  };
+}
 
 export default Label;

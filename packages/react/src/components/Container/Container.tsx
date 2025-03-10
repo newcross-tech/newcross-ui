@@ -110,14 +110,15 @@ export type ContainerProps =
         ref?: Ref<HTMLElement>;
       };
 
-const Container = (props: ContainerProps) => {
+export const Container = (props: ContainerProps) => {
   if (isLegacyProps(props)) {
     return <LegacyContainer {...props} />;
   }
 
   const {
     children,
-    testID,
+    testID: legacyTestId,
+    'data-testid': testId,
     display = 'flex',
     semanticTag = 'div',
     onClick,
@@ -128,7 +129,7 @@ const Container = (props: ContainerProps) => {
       {...restProps}
       onClick={onClick}
       display={display}
-      data-testid={testID}
+      data-testid={testId ?? legacyTestId}
       as={semanticTag}
       semanticTag={semanticTag}
     >

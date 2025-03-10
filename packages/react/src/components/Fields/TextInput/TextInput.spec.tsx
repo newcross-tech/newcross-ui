@@ -28,8 +28,6 @@ describe('TextInput Component', () => {
     label: getAdjustedByTestId('label'),
     textInput: byTestId(getCoreTestId()),
     placeholder: (regex: RegExp) => byPlaceholderText(regex),
-    container: getAdjustedByTestId('container'),
-    containerFocused: getAdjustedByTestId('container-focused'),
     eyeIcon: getAdjustedByTestId('eye-icon'),
     eyeSlash: getAdjustedByTestId('eye-slash'),
     eye: getAdjustedByTestId('eye'),
@@ -270,30 +268,49 @@ describe('TextInput Component', () => {
     expect(ui.textInput.get()).toBeTruthy();
   });
 
-  it('focuses the text input and testing for id existence', () => {
-    // Arrange
+  it('interaction focuses the text input', () => {
+    // region Arrange
     const onChange = jest.fn();
     const props: TextInputProps = {
       value: 'test',
       type: 'text',
       onChange,
     };
+    renderComponent({ ...props });
+    // endregion
 
-    // Act
+    // region Act
+    const input = ui.textInput.get();
+    userEvent.click(input);
+    // endregion
+
+    // region Assert
+    expect(input).toHaveFocus();
+    // endregion
+  });
+
+  it('unfocuses input on blur', () => {
+    // region Arrange
+    const onChange = jest.fn();
+    const props: TextInputProps = {
+      value: 'test',
+      type: 'text',
+      onChange,
+    };
     renderComponent({ ...props });
 
     const input = ui.textInput.get();
-    fireEvent.click(input);
+    userEvent.click(input);
+    // endregion
 
-    // Assert
-    const containerFocused = ui.containerFocused.get();
-    expect(containerFocused).toBeTruthy();
+    // region Act
+    userEvent.tab();
+    userEvent.click(document.body);
+    // endregion
 
-    fireEvent.focus(input);
-    expect(containerFocused).toBeTruthy();
-
-    fireEvent.blur(input);
-    expect(ui.container.get()).toBeTruthy();
+    // region Assert
+    expect(input).not.toHaveFocus();
+    // endregion
   });
 
   it('should render required indicator when required prop is passed', () => {
