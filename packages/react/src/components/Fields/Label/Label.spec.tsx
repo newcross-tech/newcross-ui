@@ -1,26 +1,39 @@
 import { render, screen } from '@testing-library/react';
 import { byTestId } from 'testing-library-selector';
-import Label, { LabelProps } from './Label';
+import { Label, LabelProps } from './Label';
 
-const testID = 'label-1';
-
-const renderComponent = (customProps?: Partial<LabelProps>) => {
-  const props: LabelProps = {
-    children: 'My Label',
-    htmlFor: 'input-id',
-    testID,
-    ...customProps,
-  };
-
-  render(<Label {...props} />);
-};
-
-describe('Label Component', () => {
-  const ui = {
-    labelComp: byTestId(testID),
-    requiredIndicator: byTestId(`${testID}-required-indicator`),
-  };
-
+describe.each([
+  {
+    renderComponent: (props?: Partial<LabelProps>) =>
+      render(
+        <Label
+          children="My Label"
+          htmlFor="input-id"
+          testID="my-element"
+          {...props}
+        />
+      ),
+    ui: {
+      labelComp: byTestId('my-element'),
+      requiredIndicator: byTestId(`my-element-required-indicator`),
+    },
+  },
+  {
+    renderComponent: (props?: Partial<LabelProps>) =>
+      render(
+        <Label
+          children="My Label"
+          htmlFor="input-id"
+          data-testid="my-element"
+          {...props}
+        />
+      ),
+    ui: {
+      labelComp: byTestId('my-element-label'),
+      requiredIndicator: byTestId('my-element-label-required'),
+    },
+  },
+])('Label Component', ({ renderComponent, ui }) => {
   it('renders successfully', () => {
     // Act
     renderComponent();

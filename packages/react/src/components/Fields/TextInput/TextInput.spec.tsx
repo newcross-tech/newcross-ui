@@ -2,42 +2,66 @@ import { fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { byPlaceholderText, byTestId, byText } from 'testing-library-selector';
 import { axe } from '../../../utils/test/axeConfig';
-import TextInput, { TextInputProps } from '.';
+import { TextInput, TextInputProps } from '.';
 
-const testID = '1';
-const renderComponent = (props: TextInputProps) => {
-  const customProps: TextInputProps = {
-    testID,
-    type: 'text',
-    placeholder: 'this is placeholder text',
-    ...props,
-  };
-
-  render(<TextInput {...customProps} />);
-};
-
-const baseTestId = 'text-input';
-
-const getCoreTestId = () => `${baseTestId}-component-${testID}`;
-
-const getAdjustedByTestId = (suffix: string) =>
-  byTestId(`${getCoreTestId()}-${suffix}`);
-
-describe('TextInput Component', () => {
-  const ui = {
-    label: getAdjustedByTestId('label'),
-    textInput: byTestId(getCoreTestId()),
-    placeholder: (regex: RegExp) => byPlaceholderText(regex),
-    eyeIcon: getAdjustedByTestId('eye-icon'),
-    eyeSlash: getAdjustedByTestId('eye-slash'),
-    eye: getAdjustedByTestId('eye'),
-    validationCheck: getAdjustedByTestId('validation-check'),
-    errorCheck: getAdjustedByTestId('error-check'),
-    messageText: getAdjustedByTestId('message-text'),
-    requiredIndicator: getAdjustedByTestId('label-required-indicator'),
-    clearIcon: getAdjustedByTestId('clear-icon'),
-  };
-
+describe.each([
+  {
+    renderComponent: (props?: Partial<TextInputProps>) => {
+      render(
+        <TextInput
+          type="text"
+          placeholder="this is placeholder text"
+          testID="1"
+          {...props}
+        />
+      );
+    },
+    ui: {
+      label: byTestId('text-input-component-1-label'),
+      textInput: byTestId('text-input-component-1'),
+      placeholder: byPlaceholderText,
+      eyeIcon: byTestId('text-input-component-1-eye-icon'),
+      eyeSlash: byTestId('text-input-component-1-eye-slash'),
+      eye: byTestId('text-input-component-1-eye'),
+      validationCheck: byTestId('text-input-component-1-validation-check'),
+      errorCheck: byTestId('text-input-component-1-error-check'),
+      messageText: byTestId('text-input-component-1-message-text'),
+      requiredIndicator: byTestId(
+        'text-input-component-1-label-required-indicator'
+      ),
+      clearIcon: byTestId('text-input-component-1-clear-icon'),
+      searchIcon: byTestId('text-input-component-1-search-icon'),
+      searchCloseIcon: byTestId('text-input-component-1-search-close-icon'),
+    },
+  },
+  {
+    renderComponent: (props?: Partial<TextInputProps>) => {
+      render(
+        <TextInput
+          type="text"
+          placeholder="this is placeholder text"
+          data-testid="1"
+          {...props}
+        />
+      );
+    },
+    ui: {
+      label: byTestId('1-text-input-label'),
+      textInput: byTestId('1-text-input-input'),
+      placeholder: byPlaceholderText,
+      eyeIcon: byTestId('1-text-input-password-visibility'),
+      eyeSlash: byTestId('1-text-input-password-visible-icon'),
+      eye: byTestId('1-text-input-password-hidden-icon'),
+      validationCheck: byTestId('1-text-input-valid'),
+      errorCheck: byTestId('1-text-input-error'),
+      messageText: byTestId('1-text-input-helper-text'),
+      requiredIndicator: byTestId('1-text-input-label-label-required'),
+      clearIcon: byTestId('1-text-input-clear'),
+      searchIcon: byTestId('1-text-input-search'),
+      searchCloseIcon: byTestId('1-text-input-search-close'),
+    },
+  },
+])('TextInput Component', ({ renderComponent, ui }) => {
   it('should not have any a11y errors', async () => {
     // Arrange
     const onChange = jest.fn();
@@ -99,7 +123,7 @@ describe('TextInput Component', () => {
     // Act
     renderComponent({ ...props });
 
-    fireEvent.change(ui.textInput.get(), { target: { value: 't' } });
+    userEvent.type(ui.textInput.get(), 't');
 
     // Assert
     expect(onChange).toHaveBeenCalledTimes(1);
@@ -118,8 +142,8 @@ describe('TextInput Component', () => {
     renderComponent({ ...props });
 
     const eyeIcon = ui.eyeIcon.get();
-    fireEvent.click(eyeIcon); // make password visible
-    fireEvent.click(eyeIcon); // hide password
+    userEvent.click(eyeIcon); // make password visible
+    userEvent.click(eyeIcon); // hide password
 
     // Assert
     expect(eyeIcon).toBeTruthy();
@@ -139,7 +163,7 @@ describe('TextInput Component', () => {
     renderComponent({ ...props });
 
     const eyeIcon = ui.eyeIcon.get();
-    fireEvent.click(eyeIcon); // make password visible
+    userEvent.click(eyeIcon); // make password visible
 
     // Assert
     expect(ui.eyeSlash.query()).not.toBeInTheDocument();
@@ -158,8 +182,8 @@ describe('TextInput Component', () => {
     renderComponent({ ...props });
 
     const eyeIcon = ui.eyeIcon.get();
-    fireEvent.click(eyeIcon); // make password visible
-    fireEvent.click(eyeIcon); // hide password
+    userEvent.click(eyeIcon); // make password visible
+    userEvent.click(eyeIcon); // hide password
 
     // Assert
     expect(eyeIcon).toBeTruthy();
@@ -400,78 +424,73 @@ describe('TextInput Component', () => {
     // Assert
     expect(label).toHaveStyle({ color: 'dangerError' });
   });
-});
 
-describe('SearchBar Component', () => {
-  const ui = {
-    searchIcon: getAdjustedByTestId('search-icon'),
-    searchCloseIcon: getAdjustedByTestId('search-close-icon'),
-  };
+  describe('SearchBar', () => {
+    it('should not have any a11y errors', async () => {
+      // Arrange
+      const props: TextInputProps = {
+        value: '',
+        label: 'TextField',
+        onChange: jest.fn(),
+        search: true,
+        onClose: jest.fn(),
+      };
 
-  it('should not have any a11y errors', async () => {
-    // Arrange
-    const props: TextInputProps = {
-      value: '',
-      label: 'TextField',
-      onChange: jest.fn(),
-      search: true,
-      onClose: jest.fn(),
-    };
+      // Act
+      renderComponent({ ...props });
 
-    // Act
-    renderComponent({ ...props });
+      const results = await axe(document.body);
+      expect(results).toHaveNoViolations();
+    });
 
-    const results = await axe(document.body);
-    expect(results).toHaveNoViolations();
-  });
+    it('displays text input as a search bar component when search prop is passed', () => {
+      // Arrange
+      const props: TextInputProps = {
+        value: '',
+        onChange: jest.fn(),
+        search: true,
+        onClose: jest.fn(),
+      };
 
-  it('displays text input as a search bar component when search prop is passed', () => {
-    // Arrange
-    const props: TextInputProps = {
-      value: '',
-      onChange: jest.fn(),
-      search: true,
-      onClose: jest.fn(),
-    };
+      // Act
+      renderComponent({ ...props });
 
-    // Act
-    renderComponent({ ...props });
+      // Assert
+      expect(ui.searchIcon.get()).toBeTruthy();
+    });
 
-    // Assert
-    expect(ui.searchIcon.get()).toBeTruthy();
-  });
+    it('displays close icon when search bar value is not empty', () => {
+      // Arrange
+      const props: TextInputProps = {
+        value: 'I am search for ...',
+        onChange: jest.fn(),
+        search: true,
+        onClose: jest.fn(),
+      };
 
-  it('displays close icon when search bar value is not empty', () => {
-    // Arrange
-    const props: TextInputProps = {
-      value: 'I am search for ...',
-      onChange: jest.fn(),
-      search: true,
-      onClose: jest.fn(),
-    };
+      // Act
+      renderComponent({ ...props });
 
-    // Act
-    renderComponent({ ...props });
+      // Assert
+      expect(ui.searchCloseIcon.get()).toBeTruthy();
+    });
 
-    // Assert
-    expect(ui.searchCloseIcon.get()).toBeTruthy();
-  });
+    it('triggers an onPress when onClose is pressed', () => {
+      // Arrange
+      const onClose = jest.fn();
+      const props: TextInputProps = {
+        value: 'I am search for ...',
+        onChange: jest.fn(),
+        search: true,
+        onClose,
+      };
 
-  it('triggers an onPress when onClose is pressed', () => {
-    // Arrange
-    const onClose = jest.fn();
-    const props: TextInputProps = {
-      value: 'I am search for ...',
-      onChange: jest.fn(),
-      search: true,
-      onClose,
-    };
+      // Act
+      renderComponent({ ...props });
+      userEvent.click(ui.searchCloseIcon.get());
 
-    // Act
-    renderComponent({ ...props });
-    fireEvent.click(ui.searchCloseIcon.get());
-
-    // Assert
-    expect(onClose).toBeCalled();
+      // Assert
+      expect(onClose).toBeCalled();
+    });
   });
 });
