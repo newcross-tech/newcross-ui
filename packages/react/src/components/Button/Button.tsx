@@ -1,59 +1,37 @@
-import { ButtonHTMLAttributes, ReactElement } from 'react';
-import { TestProp } from '../../types';
+import { OptionalProps } from '../../types';
 import Typography from '../Typography';
 import * as Styled from './Button.style';
-import { ButtonScheme, ButtonSizes, ButtonVariant } from './Button.types';
+import { ButtonPropsStrict, TypographyValues } from './Button.types';
 
-export type ButtonProps = {
-  /**
-   * Used to define background variant
-   */
-  variant?: ButtonVariant;
-  /**
-   * Use to define the background the button is applied to
-   */
-  scheme?: ButtonScheme;
-  /**
-   * Used to define size of button
-   */
-  size?: ButtonSizes;
-  /**
-   * To toggle between auto and full width button
-   */
-  fullWidth?: boolean;
-  /**
-   * Set the left icon element.
-   */
-  leftIcon?: ReactElement;
-  /**
-   * Set the right icon element.
-   */
-  rightIcon?: ReactElement;
-  /**
-   * Set disabled state of button
-   */
-  disabled?: boolean;
-} & TestProp &
-  ButtonHTMLAttributes<HTMLButtonElement>;
+export type ButtonProps = OptionalProps<
+  ButtonPropsStrict,
+  'size' | 'variant' | 'scheme' | 'fullWidth' | 'disabled'
+>;
 
-export enum TypographyValues {
-  small = 'p2Action',
-  large = 'p1Action',
-}
+const normalizeButtonProps = (_props: ButtonProps): ButtonPropsStrict => ({
+  ..._props,
+  variant: _props.variant ?? 'primary',
+  scheme: _props.scheme ?? 'light',
+  size: _props.size ?? 'large',
+  fullWidth: _props.fullWidth ?? false,
+  disabled: _props.disabled ?? false,
+});
 
-const Button = ({
-  children,
-  variant = 'primary',
-  scheme = 'light',
-  size = 'large',
-  leftIcon,
-  rightIcon,
-  testID,
-  fullWidth = false,
-  ...rest
-}: ButtonProps) => {
+const Button = (_props: ButtonProps) => {
+  const {
+    variant,
+    scheme,
+    size,
+    fullWidth,
+    children,
+    leftIcon,
+    rightIcon,
+    testID,
+    ...rest
+  } = normalizeButtonProps(_props);
   const iconOnly = !children && (leftIcon || rightIcon);
   const paddingX = iconOnly ? 'sm' : size === 'small' ? 'md' : 'lg';
+  const paddingY = size === 'small' ? 'xs' : 'sm';
 
   return (
     <Styled.Button
@@ -65,7 +43,7 @@ const Button = ({
       alignItems="center"
       justifyContent="center"
       gap="sm"
-      py="sm"
+      py={paddingY}
       px={paddingX}
       testID={testID}
       {...rest}

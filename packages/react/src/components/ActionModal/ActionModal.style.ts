@@ -1,212 +1,84 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import Container from '../Container';
-import Typography from '../Typography';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { getRgba } from '../../utils/getRgba';
-import { ExtendedTheme, Theme } from '../../types';
+import { ActionModalPropsStrict, BOTTOM_SHEET_BREAKPOINT } from './ActionModal.types';
 
-export const IndicatorWrapper = styled(Container)`
-  ${({ theme, $isAlwaysModal }: ExtendedTheme<{ $isAlwaysModal: boolean }>) => css`
-    display: none;
+export const DragBar = styled(Container)(({ theme }) => [
+  {
+    justifySelf: 'center',
+    height: theme.BaselineSpacesSpace4,
+    width: theme.BaselineSpacesSpace52,
+    borderRadius: theme.BorderBaseRadiusRounded,
+    backgroundColor: theme.ElementsSurfaceDefaultSecondary,
+  },
+]);
 
-    @media (max-width: 640px) {
-      display: ${$isAlwaysModal ? 'none' : 'flex'};
-      box-shadow: ${theme.TabsActiveTabShadowOffsetWidth}px ${theme.TabsActiveTabShadowOffsetHeight}px
-        ${theme.TabsActiveTabShadowRadius}px
-        ${getRgba(theme.TabsActiveTabShadowColor, theme.TabsActiveTabShadowOpacity)};
-    }
-  `}
-`;
+export const ContentWapper = styled(Container)<Pick<ActionModalPropsStrict, '$hasGreyBackground' | '$hasPadding'>>(
+  ({ theme, $hasPadding, $hasGreyBackground }) => [
+    {
+      [`@media (max-width: ${BOTTOM_SHEET_BREAKPOINT}px)`]: {
+        ...($hasPadding && { paddingTop: theme.BaselineSpacesSpace16 }),
+        ...($hasGreyBackground && { backgroundColor: theme.ElementsSurfacePage }),
+      },
+    },
+  ]
+);
 
-export const Indicator = styled(Container)`
-  ${({ theme, $isAlwaysModal }: ExtendedTheme<{ $isAlwaysModal: boolean }>) =>
-    !$isAlwaysModal &&
-    css`
-      @media (max-width: 640px) {
-        height: ${theme.SpacingBase8};
-        border-radius: ${theme.BorderBaseRadiusSm};
-        background-color: ${theme.ColorBaseGrey200};
-      }
-    `}
-`;
-
-export const Heading = styled(Typography)`
-  flex-grow: 1;
-
-  @media (max-width: 640px) {
-    text-align: start;
-    font-size: ${({ theme }: Theme) => theme.TypographyFontSize20};
-    line-height: ${({ theme }: Theme) => theme.TypographyLineHeight32};
-  }
-`;
-
-export const HeaderContent = styled(Container)`
-  ${({ theme }: Theme) => css`
-    @media (max-width: 640px) {
-      padding: ${theme.SpacingBase24} ${theme.SpacingBase16};
-    }
-  `}
-`;
-export const Header = styled(Container)`
-  ${({ theme, $isAlwaysModal }: ExtendedTheme<{ $isAlwaysModal: boolean }>) => css`
-    ${$isAlwaysModal && `border-bottom: 1px solid ${theme.ColorBaseGrey200};`}
-    @media (min-width: 640px) {
-      border-bottom: 1px solid ${theme.ColorBaseGrey200};
-    }
-  `}
-`;
-
-export const Icon = styled(FontAwesomeIcon)`
-  ${({ $isAlwaysModal, theme }: ExtendedTheme<{ $isAlwaysModal: boolean }>) => css`
-    cursor: pointer;
-    color: ${theme.ColorPrimaryGravitas};
-    @media (min-width: 640px) {
-      display: block !important;
-    }
-
-    @media (max-width: 640px) {
-      display: ${$isAlwaysModal ? 'block !important' : 'none'};
-    }
-  `}
-`;
-
-export const Subtitle = styled(Typography)`
-  padding-top: ${({ theme }) => theme.SpacingBase16};
-  padding-bottom: ${({ theme }) => theme.SpacingBase12};
-
-  @media (max-width: 640px) {
-    padding: 0;
-
-    font-size: ${({ theme }: Theme) => theme.TypographyFontSize14};
-    line-height: ${({ theme }: Theme) => theme.TypographyLineHeight20};
-  }
-`;
-
-export const ContentWapper = styled(Container)`
-  ${({
-    theme,
-    $isAlwaysModal,
-    $hasGreyBackground,
-    $hasPadding,
-  }: ExtendedTheme<{
-    $isAlwaysModal: boolean;
-    $hasGreyBackground: boolean;
-    $hasPadding: boolean;
-  }>) =>
-    !$isAlwaysModal &&
-    css`
-      @media (max-width: 640px) {
-        padding: ${theme.SpacingBase0} ${theme.SpacingBase16} ${theme.SpacingBase24} ${theme.SpacingBase16};
-        ${$hasPadding &&
-        css`
-          padding-top: ${theme.SpacingBase16};
-        `}
-        ${$hasGreyBackground &&
-        css`
-          background-color: ${theme.ColorBaseGrey500};
-        `}
-      }
-    `}
-`;
-
-export const FooterWrapper = styled(Container)`
-  ${({ theme, $isAlwaysModal }: ExtendedTheme<{ $isAlwaysModal: boolean }>) =>
-    !$isAlwaysModal &&
-    css`
-      @media (max-width: 640px) {
-        padding: ${theme.SpacingBase16};
-      }
-    `}
-`;
-
-export const SheetWrapper = styled(Container)`
-  ${({
-    theme,
-    $isAlwaysModal,
-    $overflowY,
-    $zIndex,
-    $hasFooter,
-  }: ExtendedTheme<{ $isAlwaysModal: boolean; $overflowY: string; $zIndex: number; $hasFooter: boolean }>) => css`
-    > div {
-      z-index: ${$zIndex};
-    }
-
-    .action-modal-header,
-    .action-modal-content,
-    .action-modal-footer {
-      z-index: ${$zIndex};
-      background-color: transparent;
-      position: relative;
-      border: none;
-      box-shadow: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .action-modal-header {
-      cursor: auto;
-      svg {
-        display: none;
-      }
-    }
-
-    .action-modal-footer {
-      ${!$hasFooter &&
-      css`
-        display: none;
-      `}
-      ${!$isAlwaysModal &&
-      css`
-        @media (max-width: 640px) {
-          box-shadow: ${theme.TabsActiveTabShadowOffsetWidth}px -${theme.TabsActiveTabShadowOffsetHeight}px ${theme.TabsActiveTabShadowRadius}px
-            ${getRgba(theme.TabsActiveTabShadowColor, theme.TabsActiveTabShadowOpacity)};
-        }
-      `}
-    }
-
-    div[role='dialog'],
-    .action-modal-content,
-    .action-modal-content > div {
-      overflow: unset;
-      ${$overflowY && `overflow-y: ${$overflowY};`}
-    }
-
-    .action-modal-backdrop {
-      background-color: ${getRgba(theme.TabsActiveTabShadowColor, theme.OpacityBaseMd)};
-      padding: 0;
-      margin: 0;
-      border-radius: 0;
-      clip-path: none;
-      transform: unset;
-      opacity: 1 !important;
-    }
-
-    div[role='dialog'] {
-      height: auto;
-      max-height: 90vh;
-      background-color: ${theme.ColorBaseWhite100};
-
-      ${$isAlwaysModal
-        ? css`
-            margin: ${theme.SpacingBase24};
-          `
-        : css`
-            @media (min-width: 641px) {
-              margin: ${theme.SpacingBase24};
-            }
-          `}
-
-      @media (min-width: ${theme.BreakpointsMd}px) {
-        max-height: 70vh;
-        min-width: 500px;
-        max-width: 800px;
-        width: 50%;
-      }
-
-      @media (max-width: ${theme.BreakpointsMd}px) and (min-width: 641px) {
-        min-width: 280px;
-        max-width: 100%;
-      }
-    }
-  `}
-`;
+export const SheetWrapper = styled(Container)<
+  Pick<ActionModalPropsStrict, '$isAlwaysModal' | '$overflowY' | '$zIndex'> & { $hasFooter: boolean }
+>(({ theme, $isAlwaysModal, $overflowY, $zIndex, $hasFooter }) => [
+  {
+    '> div': {
+      zIndex: $zIndex,
+    },
+    '.action-modal-header, .action-modal-content, .action-modal-footer': {
+      zIndex: $zIndex,
+      backgroundColor: 'transparent',
+      position: 'relative',
+      border: 'none',
+      boxShadow: 'none',
+      padding: 0,
+      margin: 0,
+    },
+    '.action-modal-header': {
+      cursor: 'auto',
+      '> svg': {
+        display: 'none',
+      },
+    },
+    '.action-modal-footer': {
+      ...(!$hasFooter && {
+        display: 'none',
+      }),
+    },
+    'div[role="dialog"], .action-modal-content, .action-modal-content > div': {
+      overflow: 'unset',
+      ...($overflowY && {
+        overflowY: $overflowY,
+      }),
+    },
+    '.action-modal-backdrop': {
+      backgroundColor: theme.ThemesNeutral950,
+      opacity: theme.OpacityBaseMd,
+      padding: 0,
+      margin: 0,
+      borderRadius: 0,
+      clipPath: 'none',
+      transform: 'unset',
+    },
+    'div[role="dialog"]': {
+      height: 'auto',
+      backgroundColor: theme.ElementsSurfaceDefault,
+      maxHeight: '70vh',
+      minWidth: '500px',
+      maxWidth: '800px',
+      width: '50%',
+      [`@media (min-width: ${BOTTOM_SHEET_BREAKPOINT + 1}px) and (max-width: ${theme.BreakpointsMd}px)`]: {
+        minWidth: '90%',
+      },
+      [`@media (max-width: ${BOTTOM_SHEET_BREAKPOINT}px)`]: {
+        maxHeight: '90vh',
+        minWidth: $isAlwaysModal ? '90%' : '100%',
+      },
+    },
+  },
+]);

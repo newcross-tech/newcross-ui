@@ -2,7 +2,20 @@ import { ReactElement } from 'react';
 import { Scheme } from '../../types';
 import { NXLogoProps } from './NXLogo';
 
-export const logoPaths: Record<
+export const LOGO_SIZE = {
+  logo: {
+    lg: { width: 64, height: 64 },
+    md: { width: 40, height: 40 },
+    sm: { width: 24, height: 24 },
+  },
+  logomark: {
+    lg: { width: 300, height: 64 },
+    md: { width: 186, height: 40 },
+    sm: { width: 110, height: 24 },
+  },
+};
+
+export const LOGO_PATHS: Record<
   NXLogoProps['type'],
   Record<Scheme, ReactElement>
 > = {
@@ -10,7 +23,6 @@ export const logoPaths: Record<
     dark: (
       <svg
         width="32"
-        height="32"
         viewBox="0 0 124 124"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +40,6 @@ export const logoPaths: Record<
     light: (
       <svg
         width="32"
-        height="32"
         viewBox="0 0 124 124"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

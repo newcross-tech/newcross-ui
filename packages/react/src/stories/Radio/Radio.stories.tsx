@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react';
-import Radio, { RadioProps, RadioValue } from '../../components/Radio';
+import Radio, { RadioProps, RadioValue } from '../../components/Fields/Radio';
 import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './Radio.info';

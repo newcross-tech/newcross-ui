@@ -37,6 +37,9 @@ const toggleStyle = ({
       marginLeft: rightIcon && children ? theme.ToggleButtonMargin : undefined,
       color: theme.ToggleButtonColor,
     },
+    badge: {
+      marginLeft: theme.SpacingBase8,
+    },
   });
 };
 

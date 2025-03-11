@@ -1,28 +1,16 @@
 import { CSSProperties, ReactNode, SyntheticEvent } from 'react';
-import { TestProp } from '../../types';
+import { TestProp, ValueFrom } from '../../types';
 
-type ExtendedPillProps = PillPropsStrict & {
-  isRemovable: boolean;
-  isSelected: boolean;
-};
+export const PillVariant = {
+  default: 'default',
+  info: 'info',
+  success: 'success',
+  warning: 'warning',
+  error: 'error',
+} as const;
+export type PillVariant = ValueFrom<typeof PillVariant>;
 
-export type PillVariantProps = Pick<
-  PillPropsStrict,
-  'disabled' | 'statusVariant'
->;
-
-export type BackGroundProps = PillVariantProps &
-  Pick<SelectedProps, 'isSelected'>;
-
-export type SelectedProps = PillVariantProps &
-  Pick<
-    ExtendedPillProps,
-    'hasPadding' | 'isSelected' | 'isRemovable' | 'hasBorder'
-  >;
-
-export type PillVariant = 'default' | 'info' | 'success' | 'warning' | 'error';
-
-export type CustomStyle = {
+export type PillCustomStyle = {
   iconStyles?: CSSProperties;
   textStyles?: CSSProperties;
   coreStyles?: CSSProperties;
@@ -30,24 +18,30 @@ export type CustomStyle = {
 
 export type PillSize = 'small' | 'large';
 
-export enum PillTypographySize {
-  small = 'p2ActionRegular',
-  large = 'p1ActionRegular',
-}
+export const PillTypographySize = {
+  small: 'p2ActionRegular',
+  large: 'p1ActionRegular',
+} as const;
 
-export enum PillPaddingXSize {
-  small = 'sm',
-  large = 'md',
-}
+export const PillPaddingXSize = {
+  small: 'sm',
+  large: 'md',
+} as const;
 
-export enum PillTypographyColor {
-  default = 'defaultDark',
-  info = 'info',
-  success = 'success',
-  warning = 'warning',
-  error = 'danger',
-  disabled = 'disabled',
-}
+export const PillGapSize = {
+  small: 'xs',
+  large: 'sm',
+} as const;
+
+export const PillTypographyColor = {
+  default: 'defaultDark',
+  info: 'info',
+  success: 'success',
+  warning: 'warning',
+  error: 'danger',
+  disabled: 'disabled',
+} as const;
+
 /**
  * @private
  */
@@ -73,9 +67,9 @@ export type PillPropsStrict = {
    */
   removable: boolean;
   /**
-   * Called when a single tap gesture is detected.
+   * @description Called when the pill is clicked
    */
-  onClick?: (event: SyntheticEvent) => void;
+  onClick?(event: SyntheticEvent): void;
   /**
    * Used to apply padding
    */
@@ -91,9 +85,9 @@ export type PillPropsStrict = {
   /**
    * Used to define color palette of the Pills.
    */
-  statusVariant: PillVariant;
+  variant: PillVariant;
   /**
    * Used to add custom style to the pill container.
    */
-  style: CustomStyle;
+  style: PillCustomStyle;
 } & TestProp;

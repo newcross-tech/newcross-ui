@@ -30,11 +30,15 @@ We need to install these libraries `styled-components` and `@types/styled-compon
 
 **How to use design tokens with react components**
 
-Wrap your application in a ThemeProvider
+To use the design system components and their styles:
+
+1. Wrap your application with `ThemeProvider`
+2. Import the `styles.css` file to handle third-party package styles
 
 ```javascript
 import React from 'react';
 import { ThemeProvider, Brand } from '@newcross-ui/react';
+import '@newcross-ui/react/styles.css';
 import RootComponent from './RootComponent';
 
 const App = () => {

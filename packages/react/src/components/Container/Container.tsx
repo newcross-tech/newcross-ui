@@ -1,5 +1,5 @@
 import * as Styled from './Container.style';
-import { CSSProperties, InputHTMLAttributes } from 'react';
+import { CSSProperties, HTMLAttributes, Ref, ReactNode } from 'react';
 import {
   NewContainerGapSpacing,
   NewContainerSpacing,
@@ -10,7 +10,7 @@ import { isLegacyProps } from './utils';
 import LegacyContainer, { LegacyContainerProps } from './LegacyContainer';
 
 export type NewContainerProps = {
-  children?: React.ReactNode;
+  children?: ReactNode;
   /**
    * CSS: `margin-left` and `margin-right` and `margin-top` and `margin-bottom`
    */
@@ -101,13 +101,14 @@ export type NewContainerProps = {
    * @default 'div'
    */
   semanticTag?: SemanticContainerTags;
-  /**
-   * Aria role attribute
-   */
-  role?: InputHTMLAttributes<HTMLElement>['role'];
-} & TestProp;
+} & Pick<HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseDown' | 'onKeyDown'> &
+  TestProp;
 
-export type ContainerProps = NewContainerProps | LegacyContainerProps;
+export type ContainerProps =
+  | (NewContainerProps | LegacyContainerProps) &
+      Pick<HTMLAttributes<HTMLElement>, 'id' | 'role'> & {
+        ref?: Ref<HTMLElement>;
+      };
 
 const Container = (props: ContainerProps) => {
   if (isLegacyProps(props)) {
@@ -119,11 +120,13 @@ const Container = (props: ContainerProps) => {
     testID,
     display = 'flex',
     semanticTag = 'div',
+    onClick,
     ...restProps
   } = props;
   return (
     <Styled.Container
       {...restProps}
+      onClick={onClick}
       display={display}
       data-testid={testID}
       as={semanticTag}

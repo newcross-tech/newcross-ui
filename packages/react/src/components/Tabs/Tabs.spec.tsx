@@ -5,7 +5,7 @@ import { fireEvent, render } from '@testing-library/react';
 import { byTestId, byText } from 'testing-library-selector';
 import Tabs, { TabsProps } from './Tabs';
 import { axe } from '../../utils/test/axeConfig';
-import { executeKeyPress } from '../../utils/test/executeKeyPress';
+import { executeKeyPress } from '../../utils/test';
 const renderComponent = (customProps: Partial<TabsProps>) => {
   const props = {
     tabs: ['Label A', 'Label B'],

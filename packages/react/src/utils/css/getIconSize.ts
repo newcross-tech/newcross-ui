@@ -3,8 +3,8 @@ import { TypographyVariant } from '../../components/Typography';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
 import { typographyMap } from '../../components/Typography/Typography.constants';
 import { Theme } from '../../types';
-import { getSortedBreakpoints } from '..';
-import { breakpoint } from '.';
+import { getSortedBreakpoints } from '../getSortedBreakpoints';
+import { breakpoint } from './breakpoint';
 import { TypographyFontSizes } from '../../components/Typography/Typography.types';
 
 export const getIconSize = (
