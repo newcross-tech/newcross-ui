@@ -1,22 +1,6 @@
 import { InputHTMLAttributes } from 'react';
-import { TestProp, Theme } from '../../../types';
+import { RequiredProps, TestProp } from '../../../types';
 import { TypographyVariant } from '../../Typography';
-import { TextInputProps } from '.';
-
-export type PropStylesTypes = {
-  isFocused?: boolean;
-  disabled?: boolean;
-  isValid?: boolean;
-  hasError?: boolean;
-} & Theme;
-
-export type ContainerProps = Pick<
-  TextInputProps,
-  'search' | 'disabled' | 'fullWidth' | 'isValid'
-> & {
-  hasError?: boolean;
-  isFocused: boolean;
-};
 
 type InputType =
   | 'text'
@@ -26,9 +10,9 @@ type InputType =
   | 'textarea'
   | 'search';
 
-export type TextInputPropsStrict = Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  'onChange' | 'disabled' | 'type'
+export type TextInputPropsStrict = RequiredProps<
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'disabled' | 'type'>,
+  'id'
 > & {
   /**
    * Type of input
@@ -89,4 +73,14 @@ export type TextInputPropsStrict = Omit<
    * Sets disabled state of the input
    */
   disabled: boolean;
+  /**
+   * @private
+   * @internal
+   */
+  isFocused: boolean;
+  /**
+   * @private
+   * @internal
+   */
+  hasError: boolean;
 } & TestProp;

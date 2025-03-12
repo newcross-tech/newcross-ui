@@ -1,25 +1,25 @@
 import { Theme } from '../../types';
-import { PropStylesTypes } from './TextInput/TextInput.types';
-
-type TextStateProps = {
-  disabled: boolean;
-  hasError: boolean;
-};
+import { TextInputPropsStrict } from './TextInput/TextInput.types';
 
 export const getTextColor = {
-  primaryText: ({ disabled, hasError }: TextStateProps) => {
+  primaryText: ({ disabled, hasError }: Pick<TextInputPropsStrict, 'disabled' | 'hasError'>) => {
     if (disabled) return 'disabled';
     if (hasError) return 'dangerError';
     return 'defaultDark';
   },
-  secondaryText: ({ disabled, hasError }: TextStateProps) => {
+  secondaryText: ({ disabled, hasError }: Pick<TextInputPropsStrict, 'disabled' | 'hasError'>) => {
     if (disabled) return 'disabled';
     if (hasError) return 'dangerError';
     return 'defaultDarkSecondary';
   },
 };
 
-export const getCommonStateStyles = ({ theme, hasError, disabled, isValid }: PropStylesTypes) => ({
+export const getCommonStateStyles = ({
+  theme,
+  hasError,
+  disabled,
+  isValid,
+}: Partial<Pick<TextInputPropsStrict, 'disabled' | 'isValid' | 'hasError'>> & Theme) => ({
   ...(hasError && {
     border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderDangerError}`,
   }),

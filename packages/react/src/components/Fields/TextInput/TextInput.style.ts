@@ -1,9 +1,11 @@
 import styled from 'styled-components';
-import Container from '../../Container';
+import { Container } from '../../Container';
 import { getCommonStateStyles, getFocusedStyles } from '../Fields.style';
-import { ContainerProps } from './TextInput.types';
+import { TextInputPropsStrict } from './TextInput.types';
 
-export const TextInputContainer = styled(Container)<Omit<ContainerProps, 'fullWidth'>>((props) => ({
+export const TextInputContainer = styled(Container)<
+  Pick<TextInputPropsStrict, 'search' | 'disabled' | 'isValid' | 'isFocused' | 'hasError'>
+>((props) => ({
   borderRadius: props.theme.BorderBaseRadiusMd,
   backgroundColor: props.theme.ElementsSurfaceDefault,
   ...getCommonStateStyles(props),

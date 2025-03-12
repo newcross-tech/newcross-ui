@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { getHaloValue } from '../../../utils';
 import { getScrollbarStyles } from '../../../utils/css/getScrollbarStyles';
-import Container from '../../Container';
+import { Container } from '../../Container';
 import { getCommonStateStyles, getFocusedStyles } from '../Fields.style';
 import { TextAreaPropsStrict } from './TextArea.types';
 
@@ -10,7 +10,7 @@ export const Wrapper = styled(Container)<{ fullWidth: boolean }>(({ theme }) => 
   minWidth: `${+getHaloValue(theme.BaselineSpacesSpace64) * 4}rem`,
 }));
 
-export const TextArea = styled.textarea<Omit<TextAreaPropsStrict, 'onChangeHandler'> & { hasError: boolean }>(
+export const TextArea = styled.textarea<Pick<TextAreaPropsStrict, 'disabled' | 'isValid' | 'hasError' | 'length'>>(
   (props) => ({
     resize: 'none',
     outline: 'none',

@@ -19,29 +19,27 @@ const normalizeHelperTextProps = (
   displayLength: _props.displayLength ?? false,
 });
 
-const HelperText = (_props: HelperTextProps) => {
-  const {
-    errorText,
-    helperText,
-    disabled,
-    maxLength,
-    length,
-    displayLength,
-    testID,
-  } = normalizeHelperTextProps(_props);
+export const HelperText = (_props: HelperTextProps) => {
+  const props = normalizeHelperTextProps(_props);
+
+  const { errorText, helperText, disabled, maxLength, length, displayLength } =
+    props;
 
   const hasText = Boolean(errorText) || Boolean(helperText);
+
+  const testIds = helperTextTestIds(props);
 
   return (
     <Container
       px="sm"
       justifyContent={hasText ? 'space-between' : 'flex-end'}
       gap="sm"
+      data-testid={testIds.root}
     >
       {hasText && (
         <Typography
           variant="p2"
-          testID={`${testID}-message-text`}
+          data-testid={testIds.text}
           color={getTextColor.secondaryText({
             disabled,
             hasError: Boolean(errorText),
@@ -57,7 +55,7 @@ const HelperText = (_props: HelperTextProps) => {
             disabled,
             hasError: Boolean(errorText),
           })}
-          testID={`textarea-max-length-${testID}`}
+          data-testid={testIds.maxLength}
         >
           {`${length}/${maxLength}`}
         </Typography>
@@ -65,5 +63,25 @@ const HelperText = (_props: HelperTextProps) => {
     </Container>
   );
 };
+
+function helperTextTestIds({
+  'data-testid': testId,
+  testID: legacyTestId,
+}: Pick<HelperTextPropsStrict, 'testID' | 'data-testid'>) {
+  if (testId) {
+    const baseTestId = [testId, 'helper-text'].filter(Boolean).join('-');
+    return {
+      root: testId,
+      text: `${baseTestId}-text`,
+      maxLength: `${baseTestId}-max-length`,
+    };
+  }
+
+  return {
+    root: undefined,
+    text: `${legacyTestId}-message-text`,
+    maxLength: `textarea-max-length-${legacyTestId}`,
+  };
+}
 
 export default HelperText;
