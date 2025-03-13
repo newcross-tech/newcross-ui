@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.32.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.32.0...@newcross-ui/react@2.32.1) (2025-03-12)
+
+
+### Bug Fixes
+
+* **HFAUI-245:** text input ids ([#223](https://bitbucket.org/newcrossdev/newcross-ui/issues/223)) ([8f8447b](https://bitbucket.org/newcrossdev/newcross-ui/commits/8f8447bd7c46f694ba7087222f0013f75750b48b))
+
+
+
+
+
 # [2.32.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.31.7...@newcross-ui/react@2.32.0) (2025-03-06)
 
 
