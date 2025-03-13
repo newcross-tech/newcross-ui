@@ -3,6 +3,266 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.32.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.32.0...@newcross-ui/react@2.32.1) (2025-03-12)
+
+
+### Bug Fixes
+
+* **HFAUI-245:** text input ids ([#223](https://bitbucket.org/newcrossdev/newcross-ui/issues/223)) ([8f8447b](https://bitbucket.org/newcrossdev/newcross-ui/commits/8f8447bd7c46f694ba7087222f0013f75750b48b))
+
+
+
+
+
+# [2.32.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.31.7...@newcross-ui/react@2.32.0) (2025-03-06)
+
+
+### Features
+
+* **HFAUI-206:** create date picker ([#212](https://bitbucket.org/newcrossdev/newcross-ui/issues/212)) ([14897e6](https://bitbucket.org/newcrossdev/newcross-ui/commits/14897e6cccea774cc8db930500f06c03dfd97c20))
+
+
+
+
+
+## [2.31.7](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.31.6...@newcross-ui/react@2.31.7) (2025-03-06)
+
+
+### Bug Fixes
+
+* **Select:** placeholder types ([#220](https://bitbucket.org/newcrossdev/newcross-ui/issues/220)) ([24f5504](https://bitbucket.org/newcrossdev/newcross-ui/commits/24f55042a49e44cc4c01b7f53845859dc53d25c7))
+
+
+
+
+
+## [2.31.6](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.31.5...@newcross-ui/react@2.31.6) (2025-03-04)
+
+
+### Bug Fixes
+
+* **Select:** do not require id property ([#218](https://bitbucket.org/newcrossdev/newcross-ui/issues/218)) ([f19fab7](https://bitbucket.org/newcrossdev/newcross-ui/commits/f19fab76b17d35ed491bad03e6ee0f3e8e5be7e7))
+
+
+
+
+
+## [2.31.5](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.31.4...@newcross-ui/react@2.31.5) (2025-02-27)
+
+
+### Bug Fixes
+
+* **HFX-1592:** update readme doc ([d261d06](https://bitbucket.org/newcrossdev/newcross-ui/commits/d261d06d8b1d918be65dcdeaa4d0baaf4cb1c4ac))
+
+
+
+
+
+## [2.31.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.31.3...@newcross-ui/react@2.31.4) (2025-02-27)
+
+
+### Bug Fixes
+
+* **HFX-1592:** expose styles file to include all 3rd party css files ([#216](https://bitbucket.org/newcrossdev/newcross-ui/issues/216)) ([a80cff5](https://bitbucket.org/newcrossdev/newcross-ui/commits/a80cff52d10b0eb4d39bbd12facb7a0ee3f86a7b))
+
+
+
+
+
+## [2.31.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.31.2...@newcross-ui/react@2.31.3) (2025-02-26)
+
+
+### Bug Fixes
+
+* **HFX-1592:** bundle tokens and slide sheet with library ([#215](https://bitbucket.org/newcrossdev/newcross-ui/issues/215)) ([ae44049](https://bitbucket.org/newcrossdev/newcross-ui/commits/ae44049badf99780999c9c82cf9540c917ae4013))
+
+
+
+
+
+## [2.31.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.31.1...@newcross-ui/react@2.31.2) (2025-02-26)
+
+
+### Bug Fixes
+
+* **HFX-1592:** external css not bundled with the library ([#214](https://bitbucket.org/newcrossdev/newcross-ui/issues/214)) ([b05bfa6](https://bitbucket.org/newcrossdev/newcross-ui/commits/b05bfa66df2f379980d9387df8ded14fa1a25cda))
+
+
+
+
+
+## [2.31.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.31.0...@newcross-ui/react@2.31.1) (2025-02-26)
+
+
+### Bug Fixes
+
+* **HFAUI-226:** fix invalid error state ([#213](https://bitbucket.org/newcrossdev/newcross-ui/issues/213)) ([630b95d](https://bitbucket.org/newcrossdev/newcross-ui/commits/630b95d705b13b86b6dfee323e145f1f2135d838))
+
+
+
+
+
+# [2.31.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.30.4...@newcross-ui/react@2.31.0) (2025-02-20)
+
+
+### Features
+
+* **HFAUI-60:** update action modal ([#205](https://bitbucket.org/newcrossdev/newcross-ui/issues/205)) ([00a406a](https://bitbucket.org/newcrossdev/newcross-ui/commits/00a406a30aa997f513087aa5520aea76a27fbb55))
+
+
+
+
+
+## [2.30.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.30.3...@newcross-ui/react@2.30.4) (2025-02-20)
+
+
+### Bug Fixes
+
+* **HFAUI-198:** blur select on clear ([#210](https://bitbucket.org/newcrossdev/newcross-ui/issues/210)) ([4e745c5](https://bitbucket.org/newcrossdev/newcross-ui/commits/4e745c5caf323293916da52caad4ac3f20714aca))
+
+
+
+
+
+## [2.30.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.30.2...@newcross-ui/react@2.30.3) (2025-02-19)
+
+
+### Bug Fixes
+
+* **HFAUI-202:** replace container forward ref with ref prop ([#208](https://bitbucket.org/newcrossdev/newcross-ui/issues/208)) ([f4f5575](https://bitbucket.org/newcrossdev/newcross-ui/commits/f4f557514f574e1120b991bb1fb01bb08941a5a5))
+
+
+
+
+
+## [2.30.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.30.1...@newcross-ui/react@2.30.2) (2025-02-17)
+
+
+### Bug Fixes
+
+* **HFAUI-197:** non-interactive pill behaviour ([#207](https://bitbucket.org/newcrossdev/newcross-ui/issues/207)) ([ede303e](https://bitbucket.org/newcrossdev/newcross-ui/commits/ede303ea2e8a34b5dfe3b8b50128183e2fa47682))
+
+
+
+
+
+## [2.30.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.30.0...@newcross-ui/react@2.30.1) (2025-02-13)
+
+**Note:** Version bump only for package @newcross-ui/react
+
+
+
+
+
+# [2.30.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.29.0...@newcross-ui/react@2.30.0) (2025-02-13)
+
+
+### Features
+
+* **HFAUI-0000:** Input Fields ([#179](https://bitbucket.org/newcrossdev/newcross-ui/issues/179)) ([70aaced](https://bitbucket.org/newcrossdev/newcross-ui/commits/70aacede00dc2427643751a54e093f70e1f328f4))
+* **HFAUI-183:** update search bar ([#203](https://bitbucket.org/newcrossdev/newcross-ui/issues/203)) ([b9d6504](https://bitbucket.org/newcrossdev/newcross-ui/commits/b9d65041eba22bdbe25618c29180660f02be39bb))
+
+
+
+
+
+# [2.29.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.28.3...@newcross-ui/react@2.29.0) (2025-02-13)
+
+
+### Features
+
+* **HFAUI-15:** create page header ([#197](https://bitbucket.org/newcrossdev/newcross-ui/issues/197)) ([922fae6](https://bitbucket.org/newcrossdev/newcross-ui/commits/922fae68dc2362388d1386315b8bb0ada780b875))
+
+
+
+
+
+## [2.28.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.28.2...@newcross-ui/react@2.28.3) (2025-01-29)
+
+**Note:** Version bump only for package @newcross-ui/react
+
+
+
+
+
+## [2.28.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.28.1...@newcross-ui/react@2.28.2) (2025-01-29)
+
+**Note:** Version bump only for package @newcross-ui/react
+
+
+
+
+
+## [2.28.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.28.0...@newcross-ui/react@2.28.1) (2025-01-28)
+
+**Note:** Version bump only for package @newcross-ui/react
+
+
+
+
+
+# [2.28.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.27.1...@newcross-ui/react@2.28.0) (2025-01-28)
+
+
+### Features
+
+* **HFAUI-158:** icon - expose spin prop ([#186](https://bitbucket.org/newcrossdev/newcross-ui/issues/186)) ([0913792](https://bitbucket.org/newcrossdev/newcross-ui/commits/09137920a38623fad52de2cc42b34269641a643b))
+
+
+
+
+
+## [2.27.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.27.0...@newcross-ui/react@2.27.1) (2025-01-17)
+
+**Note:** Version bump only for package @newcross-ui/react
+
+
+
+
+
+# [2.27.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.26.6...@newcross-ui/react@2.27.0) (2025-01-17)
+
+
+### Features
+
+* implement useCurrentBreakpoint ([#176](https://bitbucket.org/newcrossdev/newcross-ui/issues/176)) ([a64a1c2](https://bitbucket.org/newcrossdev/newcross-ui/commits/a64a1c2ddf10c1013da62a5fdee97b332a285a28))
+
+
+
+
+
+## [2.26.6](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.26.5...@newcross-ui/react@2.26.6) (2025-01-16)
+
+**Note:** Version bump only for package @newcross-ui/react
+
+
+
+
+
+## [2.26.5](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.26.4...@newcross-ui/react@2.26.5) (2025-01-13)
+
+**Note:** Version bump only for package @newcross-ui/react
+
+
+
+
+
+## [2.26.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.26.3...@newcross-ui/react@2.26.4) (2025-01-13)
+
+**Note:** Version bump only for package @newcross-ui/react
+
+
+
+
+
+## [2.26.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.26.2...@newcross-ui/react@2.26.3) (2025-01-13)
+
+**Note:** Version bump only for package @newcross-ui/react
+
+
+
+
+
 ## [2.26.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.26.1...@newcross-ui/react@2.26.2) (2025-01-10)
 
 **Note:** Version bump only for package @newcross-ui/react

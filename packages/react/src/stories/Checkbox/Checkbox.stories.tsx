@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react';
-import Checkbox, { CheckboxProps } from '../../components/Checkbox';
+import Checkbox, { CheckboxProps } from '../../components/Fields/Checkbox';
 import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './CheckboxInfo';

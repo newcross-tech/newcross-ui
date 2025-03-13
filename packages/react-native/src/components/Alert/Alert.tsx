@@ -119,14 +119,17 @@ const Alert = ({
             {title || defaultTitle[variant]}
           </Typography>
         )}
-        {children && (
-          <Typography
-            style={contentStyle || styles.text}
-            variant={TypographyVariant.paragraph3}
-          >
-            {children}
-          </Typography>
-        )}
+        {children &&
+          (typeof children === 'string' ? (
+            <Typography
+              style={contentStyle || styles.text}
+              variant={TypographyVariant.paragraph3}
+            >
+              {children}
+            </Typography>
+          ) : (
+            <View style={contentStyle || styles.text}>{children}</View>
+          ))}
         {action}
       </View>
       {hasCloseButton && (

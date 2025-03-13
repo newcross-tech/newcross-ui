@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react';
-import { Tabs, TabsProps } from '@newcross-ui/react-native';
+import { BadgeSizes, Tabs, TabsProps } from '@newcross-ui/react-native';
 import Container from '../Container';
 import Spacing from '../Spacing';
 import useState from 'storybook-addon-state';
@@ -119,7 +119,7 @@ export const VariantThatIsDisabled = () => {
   );
 };
 
-export const VariantWithBadges = () => {
+export const VariantsWithBadges = () => {
   const [currentIndex, setCurrentIndex] = useState('currentIndex', 0);
   const tabs = ['Label A', 'Label B'];
   const badgeCountObject = {
@@ -133,6 +133,14 @@ export const VariantWithBadges = () => {
         currentIndex={currentIndex}
         onCurrentIndexChange={setCurrentIndex}
         badgeCountObject={badgeCountObject}
+      />
+      <Spacing />
+      <Tabs
+        tabs={tabs}
+        currentIndex={currentIndex}
+        onCurrentIndexChange={setCurrentIndex}
+        badgeCountObject={badgeCountObject}
+        badgeSize={BadgeSizes.small}
       />
       <Spacing />
     </Container>

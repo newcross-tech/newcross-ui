@@ -1,67 +1,50 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/pro-light-svg-icons/faChevronRight';
 import { faChevronLeft } from '@fortawesome/pro-light-svg-icons/faChevronLeft';
 import * as Styled from './Pagination.style';
-import { PaginationButtonType } from './Pagination.types';
-import useTheme from '../../hooks/useTheme';
+import { PaginationItemPropsStrict } from './Pagination.types';
+import Icon from '../Icon';
+import Typography from '../Typography';
 
-type PaginationButtonProps = {
-  /**
-   * Type of the current button.
-   */
-  variant: PaginationButtonType;
-  /**
-   * Current page number.
-   */
-  page: number;
-  /**
-   * Whether the button is selected or not.
-   */
-  selected: boolean;
-  /**
-   * Callback fired when the button is clicked.
-   */
-  onClick: () => void;
-  /**
-   * Whether the button is disabled or not.
-   */
-  disabled?: boolean;
-};
-
-type PaginationArrowButtonProps = Pick<
-  PaginationButtonProps,
-  'variant' | 'disabled'
->;
-
-export const PaginationButton: React.FC<PaginationButtonProps> = ({
-  page,
-  variant,
-  ...rest
-}) =>
-  variant === 'ellipsis' ? (
-    <Styled.PaginationButton as="div" disabled>
-      ...
-    </Styled.PaginationButton>
-  ) : (
-    <Styled.PaginationButton {...rest}>{page}</Styled.PaginationButton>
-  );
-
-export const PaginationArrowButton: React.FC<PaginationArrowButtonProps> = ({
-  variant,
+export const PaginationArrowButton = ({
+  itemType,
   disabled,
+  hidden,
   ...rest
-}) => {
-  const theme = useTheme();
-  const icon = variant === 'previous' ? faChevronLeft : faChevronRight;
+}: Omit<PaginationItemPropsStrict, 'page'>) => {
+  const icon = itemType === 'previous' ? faChevronLeft : faChevronRight;
+  const color = disabled ? 'disabled' : 'primary';
+  const ariaLabel =
+    itemType === 'previous' ? 'Go to previous page' : 'Go to next page';
 
   return (
-    <Styled.PaginationButton disabled={disabled} as="div" {...rest}>
-      <FontAwesomeIcon
-        icon={icon}
-        color={
-          disabled ? theme.ColorNeutralGrey200 : theme.ColorPrimaryGravitas
-        }
-      />
+    <Styled.PaginationButton
+      styleAs="div"
+      aria-label={ariaLabel}
+      disabled={disabled}
+      {...rest}
+    >
+      {!hidden && <Icon icon={icon} variant="h2" color={color} />}
+    </Styled.PaginationButton>
+  );
+};
+
+export const PaginationButton = ({
+  page,
+  disabled,
+  ...rest
+}: Omit<PaginationItemPropsStrict, 'itemType'>) => {
+  const color = disabled ? 'disabled' : 'primary';
+  const ariaLabel = page;
+
+  return (
+    <Styled.PaginationButton
+      aria-label={ariaLabel}
+      disabled={disabled}
+      {...rest}
+    >
+      <Typography variant="p2" color={color}>
+        {page}
+      </Typography>
     </Styled.PaginationButton>
   );
 };

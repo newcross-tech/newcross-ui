@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/react';
 import CheckboxGroup, {
   CheckboxGroupProps,
-} from '../../components/CheckboxGroup';
+} from '../../components/Fields/CheckboxGroup';
 import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './CheckboxGroupInfo';
@@ -44,14 +44,14 @@ export const Variants = () => {
         defaultChecked={['Apple', 'Banana', 'Pear']}
         options={['Apple', 'Banana', 'Pear']}
       />
-      <Container m="SpacingBase12" />
+      <Container m="sm" />
       <StoryTitle.Regular>One or more is Checked</StoryTitle.Regular>
 
       <CheckboxGroup
         defaultChecked={['Banana']}
         options={['Apple', 'Banana', 'Pear']}
       />
-      <Container m="SpacingBase12" />
+      <Container m="sm" />
       <StoryTitle.Regular>One or more is Disabled</StoryTitle.Regular>
 
       <CheckboxGroup
@@ -62,7 +62,33 @@ export const Variants = () => {
           { label: 'Pear', value: 'fruit3' },
         ]}
       />
-      <Container m="SpacingBase12" />
+      <Container m="sm" />
+      <StoryTitle.Regular>
+        Some are Disabled and one of them checked
+      </StoryTitle.Regular>
+
+      <CheckboxGroup
+        defaultChecked={['Apple']}
+        options={[
+          { label: 'Apple', value: 'fruit1', disabled: true },
+          { label: 'Banana', value: 'fruit2', disabled: true },
+          { label: 'Pear', value: 'fruit3' },
+        ]}
+      />
+      <Container m="sm" />
+      <StoryTitle.Regular>
+        Some are Disabled and all of them checked
+      </StoryTitle.Regular>
+
+      <CheckboxGroup
+        defaultChecked={['Apple', 'Banana', 'Pear']}
+        options={[
+          { label: 'Apple', value: 'fruit1', disabled: true },
+          { label: 'Banana', value: 'fruit2', disabled: true },
+          { label: 'Pear', value: 'fruit3' },
+        ]}
+      />
+      <Container m="sm" />
       <StoryTitle.Regular>One or more has Error</StoryTitle.Regular>
 
       <CheckboxGroup

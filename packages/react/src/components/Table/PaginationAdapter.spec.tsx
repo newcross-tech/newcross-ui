@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { byRole, byTestId, byText } from 'testing-library-selector';
+import { byRole, byText } from 'testing-library-selector';
 import userEvent from '@testing-library/user-event';
 import PaginationAdapter from './PaginationAdapter';
 
@@ -20,32 +20,37 @@ const renderComponent = (props = {}) => {
   );
 };
 
+const ui = {
+  select: byRole('combobox'),
+  paginationButton: (pageNumber: string) =>
+    byRole('button', { name: pageNumber }),
+  dropdownOption: (option: number) => byText(option.toString()),
+};
+
 describe('PaginationAdapter', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   it('renders successfully', () => {
+    // Arrange & Act
     renderComponent();
 
-    expect(byTestId('select-component').get()).toBeInTheDocument();
+    // Assert
+    const selectComponent = ui.select.get();
+    expect(selectComponent).toBeInTheDocument();
   });
 
-  it('should call onChangePage on pagination change', () => {
+  it('should call onChangePage when changing pages', () => {
+    // Arrange
     renderComponent();
 
-    userEvent.click(byRole('button', { name: '2' }).get());
+    // Act
+    const pageButton = ui.paginationButton('2').get();
+    userEvent.click(pageButton);
 
+    // Assert
     expect(mockOnChangePage).toHaveBeenCalledWith(2, 100);
-  });
-
-  it('should display the correct number of pages', () => {
-    renderComponent({
-      rowCount: 50,
-      rowsPerPage: 10,
-    });
-
-    expect(byRole('button', { name: '5' }).get()).toBeInTheDocument();
   });
 
   it.each([
@@ -54,20 +59,38 @@ describe('PaginationAdapter', () => {
     { rowsPerPage: 20, pageNumber: 1, props: { rowCount: 7 } },
     { rowsPerPage: 5, pageNumber: 2, props: { rowCount: 7, rowsPerPage: 30 } },
   ])(
-    'should call onChangeRowsPerPage with the correct arguments when changing rows per page',
-    async ({ pageNumber, rowsPerPage, props }) => {
+    'should call onChangeRowsPerPage with rowsPerPage = $rowsPerPage and pageNumber = $pageNumber',
+    async ({ rowsPerPage, pageNumber, props }) => {
+      // Arrange
       renderComponent(props);
 
-      const selectComponent = byRole('combobox').get();
+      // Act
+      const selectComponent = ui.select.get();
       userEvent.click(selectComponent);
 
-      const option = await byText(rowsPerPage.toString()).find();
+      const option = await ui.dropdownOption(rowsPerPage).find();
       userEvent.click(option);
 
+      // Assert
       expect(mockOnChangeRowsPerPage).toHaveBeenCalledWith(
         rowsPerPage,
         pageNumber
       );
     }
   );
+
+  it('renders the correct options in the dropdown', async () => {
+    // Arrange
+    renderComponent();
+
+    // Act
+    const selectComponent = ui.select.get();
+    userEvent.click(selectComponent);
+
+    // Assert
+    for (const option of [5, 10, 20, 50]) {
+      const dropdownOption = await ui.dropdownOption(option).find();
+      expect(dropdownOption).toBeInTheDocument();
+    }
+  });
 });

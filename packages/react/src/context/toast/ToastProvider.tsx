@@ -33,7 +33,7 @@ export const ToastProvider = ({ children, zIndex }: ToastProviderProps) => {
   const [toasts, dispatch] = useReducer(reducer, initialState);
 
   const renderToast = () => (
-    <Styled.Container zIndex={zIndex}>
+    <Styled.ToastContainer zIndex={zIndex}>
       {toasts.map(({ message, variant, show = true, ...rest }) => {
         const key = `${variant}-${message}`;
 
@@ -50,7 +50,7 @@ export const ToastProvider = ({ children, zIndex }: ToastProviderProps) => {
           />
         );
       })}
-    </Styled.Container>
+    </Styled.ToastContainer>
   );
 
   return (

@@ -1,6 +1,5 @@
-import { faXmark } from '@fortawesome/pro-light-svg-icons/faXmark';
+import { faXmark } from '@fortawesome/pro-light-svg-icons';
 import { SyntheticEvent, useState } from 'react';
-import { useToggle } from '../../hooks/useToggle';
 import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
 import * as Styled from './Pill.style';
 import {
@@ -8,11 +7,14 @@ import {
   PillTypographySize,
   PillTypographyColor,
   PillPropsStrict,
+  PillGapSize,
+  PillVariant,
 } from './Pill.types';
 import Container from '../Container';
 import Icon from '../Icon';
 import Typography from '../Typography';
 import { OptionalProps } from '../../types/utility-types';
+import { useUpstreamState } from '../../hooks/useUpstreamState';
 
 export type PillProps = OptionalProps<
   PillPropsStrict,
@@ -22,11 +24,16 @@ export type PillProps = OptionalProps<
   | 'removable'
   | 'selected'
   | 'size'
-  | 'statusVariant'
+  | 'variant'
   | 'label'
   | 'style'
   | 'testID'
->;
+> & {
+  /**
+   * @deprecated Use {@link variant} instead.
+   */
+  statusVariant?: PillVariant;
+};
 
 const normalizePillProps = (props: PillProps): PillPropsStrict => ({
   ...props,
@@ -36,14 +43,13 @@ const normalizePillProps = (props: PillProps): PillPropsStrict => ({
   removable: props.removable ?? false,
   selected: props.selected ?? false,
   size: props.size ?? 'large',
-  statusVariant: props.statusVariant ?? 'default',
+  variant: props.variant ?? props.statusVariant ?? 'default',
   label: props.label ?? '',
   style: props.style ?? {
     iconStyles: {},
     textStyles: {},
     coreStyles: {},
   },
-  testID: props.testID ?? '',
 });
 
 const baseTestId = 'pill';
@@ -59,86 +65,72 @@ const Pill = (_props: PillProps) => {
     removable,
     selected,
     size,
-    statusVariant,
+    variant,
     style,
     testID,
+    'data-testid': dataTestId,
   } = normalizePillProps(_props);
+
+  const testId = dataTestId ?? testID ?? '';
 
   const { iconStyles, textStyles, coreStyles } = style;
 
-  const [isSelected, setSelected] = useState(selected);
+  const [selectedOverride, setSelected] = useUpstreamState(selected);
   const [isDeleted, setIsDeleted] = useState(false);
 
   const contentColor = disabled
     ? PillTypographyColor.disabled
-    : PillTypographyColor[statusVariant];
+    : PillTypographyColor[variant];
 
-  useToggle(selected, () => setSelected(selected));
-
-  const onRemoveHandler = (event: SyntheticEvent) => {
+  function remove(event: SyntheticEvent) {
     if (disabled) return;
     setIsDeleted(true);
-    onClick && onClick(event);
-  };
+    onClick?.(event);
+  }
 
-  const handleSelect = () => {
-    if (disabled || removable || statusVariant !== 'default') return;
-    setSelected(!isSelected);
-  };
-
-  const onKeyPressHandler = (
-    event: React.KeyboardEvent<HTMLElement>,
-    isSelectable: boolean
-  ) => {
-    onSpacePressTrigger(event, () =>
-      isSelectable ? handleSelect() : onRemoveHandler(event)
-    );
-  };
+  function toggle() {
+    if (disabled || removable || onClick || variant !== 'default') return;
+    setSelected((prev) => !prev);
+  }
 
   if (isDeleted) return null;
 
-  const getPillTestId = (
-    disabled: boolean,
-    isSelected: boolean,
-    basetestId: string
-  ) => {
-    if (isSelected) {
-      return `${basetestId}-component${testID}-selected`;
-    }
-    if (disabled) {
-      return `${basetestId}-component${testID}-disabled
-`;
-    }
-    return `${basetestId}-component${testID}`;
-  };
+  const pillTestId = [
+    baseTestId,
+    `component${testId}`,
+    selectedOverride ? 'selected' : '',
+    disabled ? 'disabled' : '',
+  ]
+    .filter(Boolean)
+    .join('-');
 
   return (
     <Styled.Pill
       hasBorder={hasBorder}
-      isSelected={isSelected}
-      data-testid={getPillTestId(disabled, isSelected, baseTestId)}
+      selected={selectedOverride}
+      data-testid={pillTestId}
       disabled={disabled}
-      onClick={handleSelect}
-      isRemovable={removable}
+      onClick={toggle}
+      removable={removable}
       tabIndex={!disabled && !removable ? 0 : -1}
-      onKeyDown={(event) => onKeyPressHandler(event, true)}
+      onKeyDown={(event) => onSpacePressTrigger(event, toggle)}
       hasPadding={hasPadding}
-      statusVariant={statusVariant}
+      variant={variant}
       style={coreStyles}
     >
       <Container
         alignItems="center"
         justifyContent="center"
-        py="sm"
+        py="xs"
         px={PillPaddingXSize[size]}
-        gap="sm"
+        gap={PillGapSize[size]}
       >
         {icon && (
           <Styled.Icon
             data-testid={`${baseTestId}-icon`}
             disabled={disabled}
             style={iconStyles}
-            statusVariant={statusVariant}
+            variant={variant}
           >
             {icon}
           </Styled.Icon>
@@ -153,12 +145,11 @@ const Pill = (_props: PillProps) => {
         </Typography>
         {removable && (
           <Styled.RemoveIcon
-            data-testid={`${baseTestId}-clickable${testID}`}
-            onClick={onRemoveHandler}
+            data-testid={`${baseTestId}-clickable${testId}`}
+            onClick={remove}
             tabIndex={!disabled ? 0 : -1}
-            onKeyDown={(event) => onKeyPressHandler(event, false)}
+            onKeyDown={(event) => onSpacePressTrigger(event, remove)}
             disabled={disabled}
-            statusVariant={statusVariant}
           >
             <Icon
               variant={PillTypographySize[size]}

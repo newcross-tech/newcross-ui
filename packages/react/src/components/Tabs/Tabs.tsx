@@ -1,102 +1,80 @@
 import { useSpring } from '@react-spring/web';
-import { Fragment, ReactNode, useRef, useState } from 'react';
-import { useResize } from '../../hooks/useResize';
-import { onSpacePressTrigger } from '../../utils/onSpacePressTrigger';
+import { onSpacePressTrigger } from '../../utils';
 import * as Styled from './Tabs.style';
-import { getDividerPosition } from './utils';
+import { OptionalProps } from '../../types';
+import { TabsPropsStrict } from './Tabs.types';
 
-export type TabsProps = {
-  /**
-   * Array of labels for the segments
-   */
-  tabs: Array<ReactNode | string>;
-  /**
-   * Index value for the current tab.
-   */
-  currentIndex: number;
-  /**
-   * Callback function for selecting a tab.
-   * Returns index value of selected tab.
-   */
-  onCurrentIndexChange: (newState: number) => void;
-  /**
-   * Disables segment from being pressed
-   */
-  disabled?: boolean;
-};
+export type TabsProps = OptionalProps<TabsPropsStrict, 'disabled'>;
+
+const normalizedTabsProps = (props: TabsProps): TabsPropsStrict => ({
+  ...props,
+  disabled: props.disabled ?? false,
+});
 
 const baseTestId = 'tab';
 
-const Tabs = ({
-  tabs,
-  currentIndex,
-  onCurrentIndexChange,
-  disabled = false,
-}: TabsProps) => {
-  const [widthOfContainer, setWidthOfContainer] = useState(0);
-  const [index, setIndex] = useState(currentIndex);
-  const translateValue = widthOfContainer / tabs.length;
-
-  if (index !== currentIndex) setIndex(currentIndex);
-
-  const ref = useRef<HTMLDivElement>(null);
-
-  useResize({
-    ref,
-    containerSize: ref?.current?.offsetWidth || 0,
-    onResize: () => setWidthOfContainer(ref?.current?.offsetWidth || 0),
-  });
+const Tabs = (_props: TabsProps) => {
+  const { currentIndex, tabs, onCurrentIndexChange, disabled } =
+    normalizedTabsProps(_props);
 
   const springProps = useSpring(
-    Styled.getAnimatedStyles({ translateValue, index })
+    Styled.getAnimatedStyles({ tabs, currentIndex })
   );
 
   return (
-    <Styled.Container>
-      <Styled.InnerContainer disabled={disabled} ref={ref}>
-        <Styled.ActiveTab disabled={disabled} style={springProps} />
+    <Styled.TabsContainer p="xs">
+      <Styled.InnerContainer alignItems="center" gap="xs" disabled={disabled}>
+        <Styled.ActiveTab
+          currentIndex={currentIndex}
+          tabs={tabs}
+          style={springProps}
+          disabled={disabled}
+        />
         {tabs.map((tab, index) => {
-          const isString = typeof tab === 'string';
           const isSelectedTab = currentIndex === index;
 
           return (
-            <Fragment key={index}>
-              <Styled.Tab
-                data-testid={`${baseTestId}-${index}`}
-                onClick={() => !disabled && onCurrentIndexChange(index)}
-                onKeyDown={(event) =>
-                  onSpacePressTrigger(
-                    event,
-                    () => !disabled && onCurrentIndexChange(index)
-                  )
-                }
-              >
-                {isString ? (
-                  <Styled.Text
-                    tabIndex={!disabled ? 0 : -1}
-                    variant={isSelectedTab ? 'heading6' : 'paragraph1'}
-                    numberOfLines={1}
-                  >
-                    <Styled.Content disabled={disabled}>{tab}</Styled.Content>
-                  </Styled.Text>
-                ) : (
-                  <Styled.Content
-                    disabled={disabled}
-                    tabIndex={!disabled ? 0 : -1}
-                    data-testid={`${baseTestId}-view-${index}`}
-                  >
+            <Styled.Tab
+              key={index}
+              justifyContent="center"
+              alignItems="center"
+              isSelected={isSelectedTab}
+              disabled={disabled}
+              testID={`${baseTestId}-${index}`}
+              onClick={() => !disabled && onCurrentIndexChange(index)}
+              onKeyDown={(event) =>
+                onSpacePressTrigger(
+                  event,
+                  () => !disabled && onCurrentIndexChange(index)
+                )
+              }
+            >
+              {typeof tab === 'string' ? (
+                <Styled.Text
+                  tabIndex={!disabled ? 0 : -1}
+                  variant={isSelectedTab ? 'heading6' : 'paragraph1'}
+                  numberOfLines={1}
+                >
+                  <Styled.Content display="block" px="md" disabled={disabled}>
                     {tab}
                   </Styled.Content>
-                )}
-              </Styled.Tab>
-              <Styled.Divider
-                showDivider={getDividerPosition(index, currentIndex, tabs)}
-              />
-            </Fragment>
+                </Styled.Text>
+              ) : (
+                <Styled.Content
+                  display="block"
+                  px="md"
+                  disabled={disabled}
+                  tabIndex={!disabled ? 0 : -1}
+                  testID={`${baseTestId}-view-${index}`}
+                >
+                  {tab}
+                </Styled.Content>
+              )}
+            </Styled.Tab>
           );
         })}
       </Styled.InnerContainer>
-    </Styled.Container>
+    </Styled.TabsContainer>
   );
 };
 

@@ -31,12 +31,13 @@ jobs:
           yarn build
           yarn test
           yarn build-storybook
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
           path: |
             storybook-static/**
             packages/**/build/**
+            packages/react/styles.css
 
   deploy_acceptance:
     needs: build
@@ -49,7 +50,7 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'yarn'
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: build-artifacts
       - name: Deploy to acceptance
@@ -70,7 +71,7 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'yarn'
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: build-artifacts
       - name: Setup git push permissions

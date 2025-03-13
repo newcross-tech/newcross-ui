@@ -4,6 +4,7 @@ import * as Styled from './Icon.style';
 import Container, { ContainerProps } from '../Container';
 import { Scheme } from '../../types';
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
+import { HTMLAttributes } from 'react';
 
 export type IconProps = {
   /**
@@ -22,11 +23,9 @@ export type IconProps = {
    * The color of the icon.
    */
   color?: TypographyColors;
-  /**
-   * The rotation of the icon.
-   */
-  rotation?: FontAwesomeIconProps['rotation'];
-} & ContainerProps;
+} & ContainerProps &
+  Pick<FontAwesomeIconProps, 'rotation' | 'spin'> &
+  Pick<HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseDown' | 'onKeyDown'>;
 
 const Icon = ({
   icon,
@@ -34,6 +33,7 @@ const Icon = ({
   color = 'defaultDark',
   scheme = 'light',
   rotation,
+  spin,
   ...rest
 }: IconProps) => {
   return (
@@ -44,6 +44,7 @@ const Icon = ({
         color={color}
         scheme={scheme}
         rotation={rotation}
+        spin={spin}
       />
     </Container>
   );
