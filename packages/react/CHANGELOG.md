@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.33.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.32.1...@newcross-ui/react@2.33.0) (2025-03-14)
+
+
+### Features
+
+* **HFAUI-232:** update card ([#222](https://bitbucket.org/newcrossdev/newcross-ui/issues/222)) ([3dac4d4](https://bitbucket.org/newcrossdev/newcross-ui/commits/3dac4d46d27856be6d29109ac7c107e48cdd86ee))
+
+
+
+
+
 ## [2.32.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.32.0...@newcross-ui/react@2.32.1) (2025-03-12)
 
 
