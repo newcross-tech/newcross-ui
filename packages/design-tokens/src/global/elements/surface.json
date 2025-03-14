@@ -14,6 +14,10 @@
         "value": "{themes.primary.500}",
         "type": "surface"
       },
+      "highlight-extra-strong": {
+        "value": "{themes.primary.600}",
+        "type": "surface"
+      },
       "page": { "value": "{themes.neutral.50}", "type": "surface" },
       "action-default": {
         "value": "{themes.secondary.500}",

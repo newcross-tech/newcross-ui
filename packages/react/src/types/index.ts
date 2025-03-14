@@ -107,4 +107,22 @@ export const responsiveSpacingMap: Record<
   },
 };
 
+export type SemanticSurfaceColors =
+  | 'default'
+  | 'defaultSecondary'
+  | 'highlightSubtle'
+  | 'highlightStrong'
+  | 'page'
+  | 'actionDefault'
+  | 'actionHover'
+  | 'actionHoverSecondary'
+  | 'actionDanger'
+  | 'actionDangerHover'
+  | 'disabled'
+  | 'disabledHighlight'
+  | 'success'
+  | 'info'
+  | 'warning'
+  | 'danger';
+
 export * from './utility-types';
