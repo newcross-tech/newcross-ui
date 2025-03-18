@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.33.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.33.0...@newcross-ui/react@2.33.1) (2025-03-18)
+
+
+### Bug Fixes
+
+* **HFAUI-252:** zindex fix and apply css to direct child ([#224](https://bitbucket.org/newcrossdev/newcross-ui/issues/224)) ([22aabe1](https://bitbucket.org/newcrossdev/newcross-ui/commits/22aabe17cab501b8ec1024759453251dad713e8b))
+
+
+
+
+
 # [2.33.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.32.1...@newcross-ui/react@2.33.0) (2025-03-14)
 
 
