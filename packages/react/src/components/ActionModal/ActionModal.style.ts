@@ -31,7 +31,6 @@ export const SheetWrapper = styled(Container)<
       zIndex: $zIndex,
     },
     '.action-modal-header, .action-modal-content, .action-modal-footer': {
-      zIndex: $zIndex,
       backgroundColor: 'transparent',
       position: 'relative',
       border: 'none',
@@ -50,7 +49,7 @@ export const SheetWrapper = styled(Container)<
         display: 'none',
       }),
     },
-    'div[role="dialog"], .action-modal-content, .action-modal-content > div': {
+    '> div > div[role="dialog"], .action-modal-content, .action-modal-content > div': {
       overflow: 'unset',
       ...($overflowY && {
         overflowY: $overflowY,
@@ -65,7 +64,7 @@ export const SheetWrapper = styled(Container)<
       clipPath: 'none',
       transform: 'unset',
     },
-    'div[role="dialog"]': {
+    '> div > div[role="dialog"]': {
       height: 'auto',
       backgroundColor: theme.ElementsSurfaceDefault,
       maxHeight: '70vh',
