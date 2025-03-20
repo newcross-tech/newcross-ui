@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.33.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.33.1...@newcross-ui/react@2.33.2) (2025-03-20)
+
+
+### Bug Fixes
+
+* **HFAUI-268:** date picker - the user cannot type in the input ([#225](https://bitbucket.org/newcrossdev/newcross-ui/issues/225)) ([76d7914](https://bitbucket.org/newcrossdev/newcross-ui/commits/76d7914178ebcd0682abbf3819f5cc0447997104))
+
+
+
+
+
 ## [2.33.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.33.0...@newcross-ui/react@2.33.1) (2025-03-18)
 
 
