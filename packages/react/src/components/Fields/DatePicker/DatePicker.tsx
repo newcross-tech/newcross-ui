@@ -27,7 +27,6 @@ const normalizeDatePickerProps = (
   return {
     ..._props,
     disabled: _props.disabled ?? false,
-    selected: _props.selected ?? new Date(),
     dateFormat: _props.dateFormat ?? 'dd/MM/yyyy',
     required: _props.required ?? false,
     showMonthYearDropdown: _props.showMonthYearDropdown ?? false,
