@@ -28,6 +28,7 @@ export type TextInputProps = OptionalProps<
   | 'fullWidth'
   | 'search'
   | 'id'
+  | 'hasBorder'
 >;
 
 const useNormalizeTextInputProps = (
@@ -47,6 +48,7 @@ const useNormalizeTextInputProps = (
     isFocused,
     hasError: !!props.errorText,
     id: props.id ?? uniqueId,
+    hasBorder: props.hasBorder ?? true,
     onClick: (event: React.MouseEvent<HTMLInputElement>) => {
       props.onClick?.(event);
       setIsFocused(true);
@@ -90,6 +92,7 @@ export const TextInput = forwardRef(
       onClick,
       onBlur,
       onFocus,
+      hasBorder,
       ...inputProps
     } = props;
 
@@ -150,6 +153,7 @@ export const TextInput = forwardRef(
               hasError={hasError}
               search={search}
               disabled={disabled}
+              hasBorder={hasBorder}
               {...testIds.wrapper}
             >
               <Container display="flex" fullWidth alignItems="center">

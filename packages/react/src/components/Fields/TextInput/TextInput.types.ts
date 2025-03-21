@@ -74,6 +74,11 @@ export type TextInputPropsStrict = RequiredProps<
    */
   disabled: boolean;
   /**
+   * If true, the input has border
+   * @default true
+   */
+  hasBorder: boolean;
+  /**
    * @private
    * @internal
    */
