@@ -4,15 +4,9 @@ import { getCommonStateStyles, getFocusedStyles } from '../Fields.style';
 import { TextInputPropsStrict } from './TextInput.types';
 
 export const TextInputContainer = styled(Container)<
-  Pick<TextInputPropsStrict, 'search' | 'disabled' | 'isValid' | 'isFocused' | 'hasError'>
+  Pick<TextInputPropsStrict, 'search' | 'disabled' | 'isValid' | 'isFocused' | 'hasError' | 'hasBorder'>
 >((props) => ({
-  borderRadius: props.theme.BorderBaseRadiusMd,
   backgroundColor: props.theme.ElementsSurfaceDefault,
-  ...getCommonStateStyles(props),
-  ...(props.isFocused && getFocusedStyles(props)),
-  ...(props.search && {
-    borderRadius: props.theme.BorderBaseRadiusRounded,
-  }),
   '& input': {
     width: '100%',
     border: 'none',
@@ -27,11 +21,16 @@ export const TextInputContainer = styled(Container)<
       paddingLeft: props.theme.BaselineSpacesSpace12,
     }),
     [`+ ${RightIconContainer}`]: {
-      ...(props.disabled ? {} : { cursor: 'pointer' }),
+      cursor: props.disabled ? 'default' : 'pointer',
     },
     '&:focus-visible': {
       outline: 'none',
     },
+    ...(props.hasBorder && {
+      borderRadius: props.search ? props.theme.BorderBaseRadiusRounded : props.theme.BorderBaseRadiusMd,
+      ...getCommonStateStyles(props),
+      ...(props.isFocused && getFocusedStyles(props)),
+    }),
   },
 }));
 
