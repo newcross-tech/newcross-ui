@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.34.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.33.2...@newcross-ui/react@2.34.0) (2025-03-21)
+
+
+### Features
+
+* **HFAUI-256:** text input without border ([#226](https://bitbucket.org/newcrossdev/newcross-ui/issues/226)) ([2b101d4](https://bitbucket.org/newcrossdev/newcross-ui/commits/2b101d42124b87890790354b6bbe14f596d36f78))
+
+
+
+
+
 ## [2.33.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.33.1...@newcross-ui/react@2.33.2) (2025-03-20)
 
 
