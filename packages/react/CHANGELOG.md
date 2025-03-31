@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.34.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.33.2...@newcross-ui/react@2.34.0) (2025-03-21)
+
+
+### Features
+
+* **HFAUI-256:** text input without border ([#226](https://bitbucket.org/newcrossdev/newcross-ui/issues/226)) ([2b101d4](https://bitbucket.org/newcrossdev/newcross-ui/commits/2b101d42124b87890790354b6bbe14f596d36f78))
+
+
+
+
+
+## [2.33.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.33.1...@newcross-ui/react@2.33.2) (2025-03-20)
+
+
+### Bug Fixes
+
+* **HFAUI-268:** date picker - the user cannot type in the input ([#225](https://bitbucket.org/newcrossdev/newcross-ui/issues/225)) ([76d7914](https://bitbucket.org/newcrossdev/newcross-ui/commits/76d7914178ebcd0682abbf3819f5cc0447997104))
+
+
+
+
+
+## [2.33.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.33.0...@newcross-ui/react@2.33.1) (2025-03-18)
+
+
+### Bug Fixes
+
+* **HFAUI-252:** zindex fix and apply css to direct child ([#224](https://bitbucket.org/newcrossdev/newcross-ui/issues/224)) ([22aabe1](https://bitbucket.org/newcrossdev/newcross-ui/commits/22aabe17cab501b8ec1024759453251dad713e8b))
+
+
+
+
+
+# [2.33.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.32.1...@newcross-ui/react@2.33.0) (2025-03-14)
+
+
+### Features
+
+* **HFAUI-232:** update card ([#222](https://bitbucket.org/newcrossdev/newcross-ui/issues/222)) ([3dac4d4](https://bitbucket.org/newcrossdev/newcross-ui/commits/3dac4d46d27856be6d29109ac7c107e48cdd86ee))
+
+
+
+
+
 ## [2.32.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.32.0...@newcross-ui/react@2.32.1) (2025-03-12)
 
 
