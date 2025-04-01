@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.34.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.34.0...@newcross-ui/react@2.34.1) (2025-04-01)
+
+
+### Bug Fixes
+
+* **HFAUI-309:** rearrange border style application ([#227](https://bitbucket.org/newcrossdev/newcross-ui/issues/227)) ([3bfd070](https://bitbucket.org/newcrossdev/newcross-ui/commits/3bfd07020065bdfcbd54a1b981bf2dbf68111ff0))
+
+
+
+
+
 # [2.34.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.33.2...@newcross-ui/react@2.34.0) (2025-03-21)
 
 
