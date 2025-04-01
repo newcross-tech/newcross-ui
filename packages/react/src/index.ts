@@ -89,3 +89,5 @@ export { default as PageHeader } from './components/PageHeader';
 export type { PageHeaderProps } from './components/PageHeader';
 export { default as DatePicker } from './components/Fields/DatePicker';
 export type { DatePickerProps } from './components/Fields/DatePicker';
+export { default as Calendar } from './components/Fields/Calendar';
+export type { CalendarProps } from './components/Fields/Calendar';
