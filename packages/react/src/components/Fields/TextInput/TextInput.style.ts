@@ -26,12 +26,12 @@ export const TextInputContainer = styled(Container)<
     '&:focus-visible': {
       outline: 'none',
     },
-    ...(props.hasBorder && {
-      borderRadius: props.search ? props.theme.BorderBaseRadiusRounded : props.theme.BorderBaseRadiusMd,
-      ...getCommonStateStyles(props),
-      ...(props.isFocused && getFocusedStyles(props)),
-    }),
   },
+  ...(props.hasBorder && {
+    borderRadius: props.search ? props.theme.BorderBaseRadiusRounded : props.theme.BorderBaseRadiusMd,
+    ...getCommonStateStyles(props),
+    ...(props.isFocused && getFocusedStyles(props)),
+  }),
 }));
 
 export const RightIconContainer = styled(Container)(() => ({
