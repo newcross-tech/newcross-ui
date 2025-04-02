@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.34.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.34.1...@newcross-ui/react@2.34.2) (2025-04-02)
+
+**Note:** Version bump only for package @newcross-ui/react
+
+
+
+
+
 ## [2.34.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.34.0...@newcross-ui/react@2.34.1) (2025-04-01)
 
 
