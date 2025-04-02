@@ -2,6 +2,7 @@ import { Meta, Story } from '@storybook/react';
 import { faBarsFilter } from '@fortawesome/pro-light-svg-icons/faBarsFilter';
 import { faKitMedical } from '@fortawesome/pro-light-svg-icons/faKitMedical';
 import { faTrainSubway } from '@fortawesome/pro-light-svg-icons/faTrainSubway';
+import { faHeart } from '@fortawesome/pro-solid-svg-icons/faHeart';
 import { faUser } from '@fortawesome/pro-light-svg-icons/faUser';
 import {
   FontAwesomeIcon,
@@ -9,8 +10,9 @@ import {
 } from '@fortawesome/react-fontawesome';
 import { web } from '@newcross-ui/design-tokens';
 import styled, { css } from 'styled-components';
-import Badge, { BadgeProps, BadgeSizes } from '../../components/Badge';
+import Badge, { BadgeSizes } from '../../components/Badge';
 import Container from '../../components/Container';
+import { BadgeProps } from '../..';
 
 const { SpacingBase24, SpacingBase48 } = web.healthforce;
 
@@ -44,32 +46,22 @@ const Icon = styled(FontAwesomeIcon)<IconProps>`
 
 export const VariantsWithIcons = () => {
   return (
-    <Container display="inline-flex" justifyContent="space-around">
-      <Container mx="SpacingBase8" />
-      <Badge size="small" position="topRight">
+    <Container display="inline-flex" justifyContent="space-around" gap="xl">
+      <Badge size="small">
         <StyledWrapper>
           <Icon icon={faBarsFilter} $size={SpacingBase24} />
         </StyledWrapper>
       </Badge>
-      <Container mx="SpacingBase8" />
-      <Badge size={'medium'} badgeContent={9} position={'topLeft'}>
+      <Badge size={'medium'} badgeContent={9}>
         <Icon icon={faUser} $size={SpacingBase24} />
       </Badge>
-      <Container mx="SpacingBase8" />
-      <Badge size={'large'} badgeContent={'!'} position={'bottomRight'}>
+      <Badge size={'large'} badgeContent={'!'}>
         <Icon icon={faTrainSubway} $size={SpacingBase48} />
-      </Badge>{' '}
-      <Container mx="SpacingBase32" />
-      <Badge size={'medium'} badgeContent={9} position={'topLeft'} hasCutout>
+      </Badge>
+      <Badge size={'medium'} badgeContent={9}>
         <Icon icon={faUser} $size={SpacingBase24} />
       </Badge>
-      <Container mx="SpacingBase8" />
-      <Badge
-        size={'large'}
-        badgeContent={'C'}
-        position={'bottomRight'}
-        hasCutout
-      >
+      <Badge size={'large'} badgeContent={'C'}>
         <Icon icon={faTrainSubway} $size={SpacingBase48} />
       </Badge>
     </Container>
@@ -78,29 +70,47 @@ export const VariantsWithIcons = () => {
 
 export const Variants = () => {
   return (
-    <Container justifyContent="space-around">
-      <Badge size={'small'} />
-      <Badge size={'medium'} badgeContent={9} />
-      <Badge size={'medium'} badgeContent={'?'} />
-      <Badge size={'large'} badgeContent={1000} maxNumber={999} />
-      <Badge size={'large'} badgeContent={'!'} />
-    </Container>
-  );
-};
-
-export const VariantsWithBackground = () => {
-  return (
-    <Container justifyContent="space-around">
-      <Badge size={'small'} backgroundColor="primary" />
-      <Badge size={'medium'} badgeContent={9} backgroundColor="secondary" />
-      <Badge size={'medium'} badgeContent={'?'} backgroundColor="warning" />
-      <Badge
-        size={'large'}
-        badgeContent={1000}
-        maxNumber={999}
-        backgroundColor="success"
-      />
-      <Badge size={'large'} badgeContent={'!'} backgroundColor="error" />
+    <Container flexDirection="column" gap="xl">
+      <Container justifyContent="space-around">
+        <Badge size={'small'} />
+        <Badge size={'medium'} badgeContent={9} />
+        <Badge size={'medium'} badgeContent={1000} />
+        <Badge size={'large'} badgeContent={9} />
+        <Badge size={'large'} badgeContent={1000} />
+        <Badge size={'large'} badgeContent={faHeart} />
+      </Container>
+      <Container justifyContent="space-around">
+        <Badge size={'small'} scheme={'dark'} />
+        <Badge size={'medium'} badgeContent={9} scheme={'dark'} />
+        <Badge size={'medium'} badgeContent={1000} scheme={'dark'} />
+        <Badge size={'large'} badgeContent={9} scheme={'dark'} />
+        <Badge size={'large'} badgeContent={1000} scheme={'dark'} />
+        <Badge size={'large'} badgeContent={faHeart} scheme={'dark'} />
+      </Container>
+      <Container justifyContent="space-around">
+        <Badge size={'small'} type={'notification'} />
+        <Badge size={'medium'} badgeContent={9} type={'notification'} />
+        <Badge size={'medium'} badgeContent={1000} type={'notification'} />
+        <Badge size={'large'} badgeContent={9} type={'notification'} />
+        <Badge size={'large'} badgeContent={1000} type={'notification'} />
+        <Badge size={'large'} badgeContent={faHeart} type={'notification'} />
+      </Container>
+      <Container justifyContent="space-around">
+        <Badge size={'small'} disabled />
+        <Badge size={'medium'} badgeContent={9} disabled />
+        <Badge size={'medium'} badgeContent={1000} disabled />
+        <Badge size={'large'} badgeContent={9} disabled />
+        <Badge size={'large'} badgeContent={1000} disabled />
+        <Badge size={'large'} badgeContent={faHeart} disabled />
+      </Container>
+      <Container justifyContent="space-around">
+        <Badge size={'small'} scheme={'dark'} disabled />
+        <Badge size={'medium'} badgeContent={9} scheme={'dark'} disabled />
+        <Badge size={'medium'} badgeContent={1000} scheme={'dark'} disabled />
+        <Badge size={'large'} badgeContent={9} scheme={'dark'} disabled />
+        <Badge size={'large'} badgeContent={1000} scheme={'dark'} disabled />
+        <Badge size={'large'} badgeContent={faHeart} scheme={'dark'} disabled />
+      </Container>
     </Container>
   );
 };
@@ -117,5 +127,4 @@ export const Interactive = Template.bind({});
 Interactive.args = {
   badgeContent: 9,
   size: 'large',
-  position: 'topRight',
 };
