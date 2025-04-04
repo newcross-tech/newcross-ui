@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import 'react-datepicker/dist/react-datepicker.css';
+import { commonDatepickerStyles } from '../DatePicker';
 
 export const ReactCalendarWrapper = styled.div(({ theme }) => [
+  commonDatepickerStyles({ theme }),
   {
     '& .react-datepicker': {
       width: '100%',
@@ -84,85 +86,6 @@ export const ReactCalendarWrapper = styled.div(({ theme }) => [
       justifyContent: 'space-around',
       flex: 1,
       marginBottom: theme.BaselineSpacesSpace4,
-    },
-  },
-  {
-    '& .react-datepicker__day': {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      fontFamily: theme.BaselineFontFontFamilyPoppinsRegular,
-      fontSize: theme.BaselineFontFontSize14,
-      width: theme.BaselineSpacesSpace32,
-      height: theme.BaselineSpacesSpace32,
-      borderRadius: theme.BorderBaseRadiusSm,
-      color: theme.ElementsTextDefaultDark,
-      margin: theme.BaselineSpacesSpace0,
-      '&:hover': {
-        background: theme.ElementsSurfaceActionHover,
-        cursor: 'pointer',
-      },
-    },
-  },
-  {
-    '.react-datepicker__day--disabled': {
-      color: theme.ElementsTextDisabled,
-      '&:hover': {
-        cursor: 'not-allowed',
-        backgroundColor: 'transparent',
-      },
-    },
-  },
-  {
-    '& .react-datepicker__day--today': {
-      border: `${theme.BorderBaseWidthSm} solid ${theme.ElementsBorderDefault}`,
-    },
-  },
-  {
-    '& .react-datepicker__day--selected, & .react-datepicker__day--selected.react-datepicker__day--range-start.react-datepicker__day--range-end.react-datepicker__day--in-range':
-      {
-        fontFamily: theme.BaselineFontFontFamilyPoppinsSemiBold,
-        fontWeight: theme.BaselineFontFontWeightSemiBold,
-        background: theme.ElementsSurfaceActionDefault,
-        borderRadius: theme.BorderBaseRadiusSm,
-      },
-  },
-  {
-    '& .react-datepicker__day--in-selecting-range, & .react-datepicker__day--in-range': {
-      background: theme.ElementsSurfaceActionHoverSecondary,
-      borderRadius: theme.BaselineSpacesSpace0,
-      ':hover': {
-        background: theme.ElementsSurfaceActionHover,
-        borderRadius: `0 ${theme.BorderBaseRadiusSm} ${theme.BorderBaseRadiusSm} 0`,
-      },
-    },
-  },
-  {
-    '& .react-datepicker__day--selecting-range-start, & .react-datepicker__day--range-start': {
-      background: theme.ElementsSurfaceActionDefault,
-      borderRadius: `${theme.BorderBaseRadiusSm} 0 0 ${theme.BorderBaseRadiusSm}`,
-    },
-  },
-  {
-    '& .react-datepicker__day--selecting-range-end, & .react-datepicker__day--range-end': {
-      background: theme.ElementsSurfaceActionDefault,
-      borderRadius: `0 ${theme.BorderBaseRadiusSm} ${theme.BorderBaseRadiusSm} 0`,
-    },
-  },
-  {
-    '& .react-datepicker__triangle': {
-      display: 'none',
-    },
-  },
-  {
-    '& .react-datepicker__day--keyboard-selected': {
-      background: theme.ElementsSurfaceDisabledHighlight,
-    },
-  },
-  {
-    '& .react-datepicker__day--outside-month': {
-      opacity: 0,
-      '&:hover': { cursor: 'not-allowed' },
     },
   },
   {

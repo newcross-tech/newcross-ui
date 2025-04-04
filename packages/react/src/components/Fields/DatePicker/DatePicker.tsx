@@ -85,14 +85,12 @@ const DatePicker = (_props: DatePickerProps) => {
           {...rest}
         />
       </Styled.ReactDatePickerWrapper>
-      {helperText && (
-        <HelperText
-          disabled={disabled}
-          helperText={helperText}
-          errorText={errorText}
-          testID={baseTestId}
-        />
-      )}
+      <HelperText
+        disabled={disabled}
+        helperText={helperText}
+        errorText={errorText}
+        testID={baseTestId}
+      />
     </Container>
   );
 };

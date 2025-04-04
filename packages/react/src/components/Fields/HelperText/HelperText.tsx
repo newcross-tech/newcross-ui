@@ -29,6 +29,10 @@ export const HelperText = (_props: HelperTextProps) => {
 
   const testIds = helperTextTestIds(props);
 
+  if (!hasText && !displayLength) {
+    return null;
+  }
+
   return (
     <Container
       px="sm"

@@ -46,7 +46,7 @@ export const Variants = () => {
       <Calendar
         required
         label="Default"
-        helperText="Normal date picker"
+        helperText="Normal Calendar "
         selected={defaultDate}
         onChange={setDefaultDate}
       />
