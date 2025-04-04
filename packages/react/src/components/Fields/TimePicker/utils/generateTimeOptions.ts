@@ -16,9 +16,6 @@ export const generateTimeOptions = ({
 }: GenerateOptionsParams): Options<{ value: Date; label: string }> => {
   const options: { value: Date; label: string }[] = [];
 
-  // Save the original baseDate for later inclusion check
-  const originalBaseDate = new Date(baseDate);
-
   // Create the start date by applying the offset to the original base date.
   const startDate = addMinutes(new Date(baseDate), offset);
   const endTime = addMinutes(startDate, duration);
@@ -36,14 +33,6 @@ export const generateTimeOptions = ({
     }
     options.push({ value: new Date(current), label });
     current = addMinutes(current, step);
-  }
-
-  // Include the original baseDate only if it falls within the generated range.
-  if (originalBaseDate >= startDate && originalBaseDate <= endTime) {
-    const originalTime = format(originalBaseDate, 'HH:mm');
-    if (!options.some((o) => format(o.value, 'HH:mm') === originalTime)) {
-      options.unshift({ value: originalBaseDate, label: originalTime });
-    }
   }
 
   return options;

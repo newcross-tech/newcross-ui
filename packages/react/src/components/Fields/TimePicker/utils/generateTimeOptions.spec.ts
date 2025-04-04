@@ -5,9 +5,8 @@ describe('generateTimeOptions', () => {
   it.each([
     [
       'should generate correct time options',
-      // Base date: Jan 1, 2021, 10:00
       {
-        baseDate: new Date(2021, 0, 1, 10, 0),
+        baseDate: new Date(2021, 0, 1, 10, 0), // Jan 1, 2021, 10:00
         offset: 0,
         step: 15,
         duration: 60,
@@ -22,9 +21,8 @@ describe('generateTimeOptions', () => {
     ],
     [
       'should generate correct time options with offset',
-      // Base date: Jan 1, 2021, 10:00, with an offset of 60 minutes → starts at 11:00
       {
-        baseDate: new Date(2021, 0, 1, 10, 0),
+        baseDate: new Date(2021, 0, 1, 10, 0), // Jan 1, 2021, 10:00
         offset: 60,
         step: 15,
         duration: 60,
@@ -39,9 +37,8 @@ describe('generateTimeOptions', () => {
     ],
     [
       'should label next day options correctly',
-      // Base date: Jan 1, 2021, 23:45
       {
-        baseDate: new Date(2021, 0, 1, 23, 45),
+        baseDate: new Date(2021, 0, 1, 23, 45), // Jan 1, 2021, 23:45
         offset: 0,
         step: 15,
         duration: 30,
@@ -54,10 +51,9 @@ describe('generateTimeOptions', () => {
     ],
     [
       'should label previous day options correctly',
-      // Base date: Jan 2, 2021, 00:15, with offset -30 → Jan 1, 2021, 23:45
       {
-        baseDate: new Date(2021, 0, 2, 0, 15),
-        offset: -30,
+        baseDate: new Date(2021, 0, 2, 0, 15), // Jan 2, 2021, 00:15
+        offset: -30, // Starts at Jan 1, 2021, 23:45
         step: 15,
         duration: 30,
       },

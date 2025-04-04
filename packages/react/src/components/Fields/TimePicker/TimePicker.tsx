@@ -63,8 +63,6 @@ const TimePicker = <Option,>(_props: TimePickerProps<Option>) => {
       disabled={isDisabled}
       options={options as unknown as readonly Option[]}
       filterOption={customFilterOption}
-      placeholder="Select time"
-      isClearable
     />
   );
 };
