@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import 'react-datepicker/dist/react-datepicker.css';
+import { Theme } from '../../../types';
 
 export const ReactDatePickerWrapper = styled.div(({ theme }) => [
+  commonDatepickerStyles({ theme }),
   {
     '& .react-datepicker': {
       width: '240px',
@@ -10,11 +12,6 @@ export const ReactDatePickerWrapper = styled.div(({ theme }) => [
       display: 'flex',
       flexDirection: 'column',
       border: theme.BaselineSpacesSpace0,
-    },
-  },
-  {
-    '& .react-datepicker-wrapper': {
-      width: '100%',
     },
   },
   {
@@ -41,11 +38,6 @@ export const ReactDatePickerWrapper = styled.div(({ theme }) => [
     },
   },
   {
-    '& .react-datepicker__navigation--previous, & .react-datepicker__navigation--next': {
-      top: theme.BaselineSpacesSpace8,
-    },
-  },
-  {
     '& .react-datepicker__day-names': {
       display: 'flex',
       justifyContent: 'space-between',
@@ -66,6 +58,19 @@ export const ReactDatePickerWrapper = styled.div(({ theme }) => [
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
+    },
+  },
+]);
+
+export const commonDatepickerStyles = ({ theme }: Theme) => [
+  {
+    '& .react-datepicker-wrapper': {
+      width: '100%',
+    },
+  },
+  {
+    '& .react-datepicker__navigation--previous, & .react-datepicker__navigation--next': {
+      top: theme.BaselineSpacesSpace8,
     },
   },
   {
@@ -147,4 +152,4 @@ export const ReactDatePickerWrapper = styled.div(({ theme }) => [
       '&:hover': { cursor: 'not-allowed' },
     },
   },
-]);
+];

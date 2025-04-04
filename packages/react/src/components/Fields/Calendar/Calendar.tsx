@@ -64,13 +64,11 @@ const Calendar = (_props: CalendarProps) => {
       <Styled.ReactCalendarWrapper>
         <ReactDatePicker inline {...rest} />
       </Styled.ReactCalendarWrapper>
-      {helperText && (
-        <HelperText
-          helperText={helperText}
-          errorText={errorText}
-          testID={baseTestId}
-        />
-      )}
+      <HelperText
+        helperText={helperText}
+        errorText={errorText}
+        testID={baseTestId}
+      />
     </Container>
   );
 };
