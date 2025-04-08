@@ -51,7 +51,6 @@ export type { TabsProps } from './components/Tabs';
 export { TextInput, type TextInputProps } from './components/Fields/TextInput';
 export { default as Toast } from './components/Toast';
 export type { ToastProps } from './components/Toast';
-export { ToastProvider } from './context/toast/ToastProvider';
 export { default as ToggleButton } from './components/ToggleButton';
 export type { ToggleButtonProps } from './components/ToggleButton';
 export { default as ToggleButtonGroup } from './components/ToggleButtonGroup';
@@ -73,7 +72,12 @@ export { default as Brand } from './theme/Brand';
 export { default as ThemeProvider } from './theme/ThemeProvider';
 export type { Theme, ExtendedTheme } from './types';
 export { default as useTheme } from './hooks/useTheme';
-export { useToast } from './hooks/useToast';
+export {
+  useToast,
+  ToastProvider,
+  ToastPortal,
+  enqueueToast,
+} from './hooks/useToast';
 export { useCurrentBreakpoint } from './hooks/useCurrentBreakpoint';
 export { default as Table } from './components/Table';
 export type { TableProps } from './components/Table';
