@@ -54,9 +54,7 @@ export const Variants = () => {
   );
 };
 
-const Template: Story<TimePickerProps<{ value: string; label: string }>> = ({
-  ...rest
-}) => (
+const Template: Story<TimePickerProps> = ({ ...rest }) => (
   <Container>
     <TimePicker {...rest} />
   </Container>

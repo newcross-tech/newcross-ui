@@ -4,8 +4,8 @@ import { TimePickerPropsStrict } from './TimePicker.types';
 import { OptionalProps } from '../../../types';
 import { format } from 'date-fns';
 
-export type TimePickerProps<Option> = OptionalProps<
-  TimePickerPropsStrict<Option>,
+export type TimePickerProps = OptionalProps<
+  TimePickerPropsStrict,
   | 'startTime'
   | 'offset'
   | 'step'
@@ -17,9 +17,9 @@ export type TimePickerProps<Option> = OptionalProps<
   | 'hasError'
 >;
 
-const normaliseTimePickerProps = <Option,>(
-  _props: TimePickerProps<Option>
-): TimePickerPropsStrict<Option> => ({
+const normaliseTimePickerProps = (
+  _props: TimePickerProps
+): TimePickerPropsStrict => ({
   ..._props,
   startTime: _props.startTime ?? '00:00',
   offset: _props.offset ?? 0,
@@ -32,7 +32,7 @@ const normaliseTimePickerProps = <Option,>(
   $zIndex: _props.$zIndex ?? 2,
 });
 
-const TimePicker = <Option,>(_props: TimePickerProps<Option>) => {
+const TimePicker = (_props: TimePickerProps) => {
   const { baseDate, offset, step, duration, startTime, disabled, ...rest } =
     normaliseTimePickerProps(_props);
 
@@ -61,7 +61,7 @@ const TimePicker = <Option,>(_props: TimePickerProps<Option>) => {
     <Select
       {...rest}
       disabled={isDisabled}
-      options={options as unknown as readonly Option[]}
+      options={options}
       filterOption={customFilterOption}
     />
   );

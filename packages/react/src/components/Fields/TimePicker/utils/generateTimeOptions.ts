@@ -1,11 +1,16 @@
 import { format, addMinutes } from 'date-fns';
 import { Options } from 'react-select';
 
-type GenerateOptionsParams = {
+type GenerateTimeOptionsParams = {
   baseDate: Date;
   offset: number;
   step: number;
   duration: number;
+};
+
+export type TimeOption = {
+  value: Date;
+  label: string;
 };
 
 export const generateTimeOptions = ({
@@ -13,8 +18,8 @@ export const generateTimeOptions = ({
   offset,
   step,
   duration,
-}: GenerateOptionsParams): Options<{ value: Date; label: string }> => {
-  const options: { value: Date; label: string }[] = [];
+}: GenerateTimeOptionsParams): Options<TimeOption> => {
+  const options: TimeOption[] = [];
 
   // Create the start date by applying the offset to the original base date.
   const startDate = addMinutes(new Date(baseDate), offset);
