@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.35.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.34.2...@newcross-ui/react@2.35.0) (2025-04-08)
+
+
+### Features
+
+* make toast queue outside react ([#230](https://bitbucket.org/newcrossdev/newcross-ui/issues/230)) ([c7d9ae0](https://bitbucket.org/newcrossdev/newcross-ui/commits/c7d9ae0cd8c4178b93a3acb2c58d4dd4b76acb02))
+
+
+
+
+
 ## [2.34.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.34.1...@newcross-ui/react@2.34.2) (2025-04-02)
 
 **Note:** Version bump only for package @newcross-ui/react
