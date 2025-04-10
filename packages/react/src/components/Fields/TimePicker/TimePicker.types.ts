@@ -1,8 +1,9 @@
 import { ReactElement } from 'react';
 import { TypographyVariant } from '../../Typography';
 import { Props } from 'react-select';
+import { TimeOption } from './utils/generateTimeOptions';
 
-export type TimePickerPropsStrict<Option> = Props<Option> & {
+export type TimePickerPropsStrict = Props<TimeOption> & {
   /**
    * Gives select a label
    */
