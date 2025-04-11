@@ -7,13 +7,13 @@ import {
   Link,
   Typography,
   TypographyVariant,
-} from '@newcross-ui/react-native';
+} from '@newcross-tech/ui-react-native';
 import { ScrollView, View } from 'react-native';
 import Container from '../Container';
 import Spacing from '../Spacing';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './AlertInfo';
-import { native } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-tech/ui-design-tokens';
 
 const { SpacingBase8 } = native.healthforce;
 

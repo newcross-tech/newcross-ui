@@ -3,7 +3,7 @@ import {
   BadgeSizes,
   ToggleButton,
   ToggleButtonProps,
-} from '@newcross-ui/react-native';
+} from '@newcross-tech/ui-react-native';
 import Container from '../Container';
 import Spacing from '../Spacing';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';

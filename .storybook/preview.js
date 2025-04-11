@@ -1,5 +1,5 @@
 import { useReducer } from 'react';
-import * as Web from '@newcross-ui/react';
+import * as Web from '@newcross-tech/ui-react';
 import {
   bottomSheetReducer,
   BottomSheetActionType,
@@ -8,9 +8,9 @@ import {
   getBottomSheetContent,
 } from '@newcross-stories/react-native/src/BottomSheet';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import * as tokens from '@newcross-ui/design-tokens';
-import { BottomSheet } from '@newcross-ui/react-native';
-import * as Native from '@newcross-ui/react-native';
+import * as tokens from '@newcross-tech/ui-design-tokens';
+import { BottomSheet } from '@newcross-tech/ui-react-native';
+import * as Native from '@newcross-tech/ui-react-native';
 import { ToastProvider } from "../packages/react/src/hooks/useToast";
 
 const { ColorNeutralWhite, ColorNeutralGrey300 } = tokens.web.healthforce;

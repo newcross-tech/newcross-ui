@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { native } from '@newcross-ui/design-tokens';
-import { Typography, TypographyVariant } from '@newcross-ui/react-native';
+import { native } from '@newcross-tech/ui-design-tokens';
+import { Typography, TypographyVariant } from '@newcross-tech/ui-react-native';
 
 const { SpacingBase8, ColorBaseWhite100, ColorPrimaryGravitas } =
   native.healthforce;

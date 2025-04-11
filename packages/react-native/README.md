@@ -18,10 +18,10 @@ If that is not the case, we strongly recommend that you follow the [getting star
 
 ## Installation
 
-To start using the `@newcross-ui/react-native` components on your project, first you will need to install it
+To start using the `@newcross-tech/ui-react-native` components on your project, first you will need to install it
 
 ```sh
-yarn add @newcross-ui/react-native
+yarn add @newcross-tech/ui-react-native
 ```
 
 **Dependencies**
@@ -48,7 +48,7 @@ Wrap your application in a ThemeProvider
 
 ```javascript
 import React from 'react';
-import { ThemeProvider, Brand } from '@newcross-ui/react-native';
+import { ThemeProvider, Brand } from '@newcross-tech/ui-react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import RootComponent from './RootComponent';
 
@@ -68,7 +68,7 @@ const App = () => {
 ```javascript
 import React from 'react';
 import { View, Text } from 'react-native';
-import { Radio, useTheme } from '@newcross-ui/react-native';
+import { Radio, useTheme } from '@newcross-tech/ui-react-native';
 
 export const App = () => {
   const theme = useTheme();

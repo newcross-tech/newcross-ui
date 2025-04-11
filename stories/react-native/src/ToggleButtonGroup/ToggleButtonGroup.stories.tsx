@@ -6,8 +6,8 @@ import {
   ToggleButtonGroup,
   ToggleButtonGroupOrientation,
   ToggleButtonGroupProps,
-} from '@newcross-ui/react-native';
-import { native } from '@newcross-ui/design-tokens';
+} from '@newcross-tech/ui-react-native';
+import { native } from '@newcross-tech/ui-design-tokens';
 import useState from 'storybook-addon-state';
 import Spacing, { SpacingPositions, SpacingSizes } from '../Spacing';
 import Container from '../Container';

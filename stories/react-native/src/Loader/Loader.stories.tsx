@@ -1,10 +1,10 @@
 import React from 'react';
 import { ViewStyle } from 'react-native';
 import { Meta, Story } from '@storybook/react';
-import { Loader, LoaderProps } from '@newcross-ui/react-native';
+import { Loader, LoaderProps } from '@newcross-tech/ui-react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faBird } from '@fortawesome/pro-solid-svg-icons/faBird';
-import { native } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-tech/ui-design-tokens';
 import { isWebPlatform } from '../utils';
 import Container from '../Container';
 

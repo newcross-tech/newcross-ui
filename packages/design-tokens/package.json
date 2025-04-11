@@ -1,5 +1,5 @@
 {
-  "name": "@newcross-ui/design-tokens",
+  "name": "@newcross-tech/ui-design-tokens",
   "version": "1.48.0",
   "description": "Design tokens for native and web projects across multiple brands",
   "author": "itdev@newcrosshealthcare.com",
@@ -17,7 +17,7 @@
     "url": "https://bitbucket.org/newcrossdev/newcross-ui/issues"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "@newcross-tech:registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "prebuild": "rm -rf build",

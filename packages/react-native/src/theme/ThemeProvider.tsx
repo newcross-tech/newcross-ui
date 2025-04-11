@@ -1,5 +1,5 @@
 import React, { createContext, ReactNode } from 'react';
-import * as theme from '@newcross-ui/design-tokens';
+import * as theme from '@newcross-tech/ui-design-tokens';
 import Brand from './Brand';
 
 const defaultTheme = theme.native[Brand.healthforce];

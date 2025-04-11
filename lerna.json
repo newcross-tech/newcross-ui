@@ -1,13 +1,16 @@
 {
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "packages": ["packages/*", "stories/*"],
   "npmClient": "yarn",
   "useWorkspaces": true,
   "version": "independent",
   "command": {
     "publish": {
+      "private": false,
       "conventionalCommits": true
     },
     "version": {
+      "private": false,
       "message": "chore(release): publish [skip ci] [skip-cd]"
     }
   }

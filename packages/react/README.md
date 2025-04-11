@@ -18,10 +18,10 @@ If that is not the case, we strongly recommend that you follow the [getting star
 
 ## Installation
 
-To start using the `@newcross-ui/react` components on your project, first you will need to install it
+To start using the `@newcross-tech/ui-react` components on your project, first you will need to install it
 
 ```sh
-yarn add @newcross-ui/react
+yarn add @newcross-tech/ui-react
 ```
 
 **Dependencies**
@@ -37,8 +37,8 @@ To use the design system components and their styles:
 
 ```javascript
 import React from 'react';
-import { ThemeProvider, Brand } from '@newcross-ui/react';
-import '@newcross-ui/react/styles.css';
+import { ThemeProvider, Brand } from '@newcross-tech/ui-react';
+import '@newcross-tech/ui-react/styles.css';
 import RootComponent from './RootComponent';
 
 const App = () => {
@@ -54,7 +54,7 @@ const App = () => {
 
 ```javascript
 import React from 'react';
-import { Button } from '@newcross-ui/react';
+import { Button } from '@newcross-tech/ui-react';
 
 export const App = () => {
   const onClick = () => console.log('I am clicked!');

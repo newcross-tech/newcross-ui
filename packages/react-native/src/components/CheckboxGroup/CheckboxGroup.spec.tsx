@@ -1,6 +1,6 @@
 import React from 'react';
 import { screen, render, fireEvent } from '@testing-library/react-native';
-import { native } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-tech/ui-design-tokens';
 import CheckboxGroup, { CheckboxGroupProps } from './CheckboxGroup';
 
 const { CheckboxErrorBackgroundColor } = native.healthforce;

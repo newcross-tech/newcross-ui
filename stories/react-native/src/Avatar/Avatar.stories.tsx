@@ -8,7 +8,7 @@ import {
   Badge,
   BadgeSizes,
   BadgePositions,
-} from '@newcross-ui/react-native';
+} from '@newcross-tech/ui-react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faStar } from '@fortawesome/pro-regular-svg-icons/faStar';
 import Container from '../Container';

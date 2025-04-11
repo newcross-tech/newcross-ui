@@ -13,10 +13,10 @@ Design tokens library contains all the design decisions across web and mobile ap
 
 ## Installation
 
-To start using the `@newcross-ui/design-tokens` on your project, first you will need to install it
+To start using the `@newcross-tech/ui-design-tokens` on your project, first you will need to install it
 
 ```sh
-yarn add @newcross-ui/design-tokens
+yarn add @newcross-tech/ui-design-tokens
 ```
 
 ### Using the tokens in your app
@@ -24,7 +24,7 @@ yarn add @newcross-ui/design-tokens
 ```javascript
 // pick the brand and associated tokens
 
-import { native } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-tech/ui-design-tokens';
 
 const {
   RadioHeight,

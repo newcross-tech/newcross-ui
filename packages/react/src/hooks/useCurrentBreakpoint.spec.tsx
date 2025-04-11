@@ -3,7 +3,7 @@ import { Breakpoint, getBreakpointValue } from '../utils/css/breakpoint';
 import { renderHook } from '@testing-library/react';
 import ThemeProvider from '../theme/ThemeProvider';
 import * as UseWindowSizeModule from './useWindowSize';
-import * as theme from '@newcross-ui/design-tokens';
+import * as theme from '@newcross-tech/ui-design-tokens';
 import Brand from '../theme/Brand';
 
 describe(useCurrentBreakpoint.name, () => {

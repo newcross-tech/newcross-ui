@@ -4,6 +4,7 @@ frontend:
     preBuild:
       commands:
         - nvm install
+        - export GITHUB_TOKEN=${GH_REPO_SHARED_PAT}
         - yarn install
     build:
       commands:

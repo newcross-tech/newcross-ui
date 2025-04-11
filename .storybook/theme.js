@@ -1,5 +1,5 @@
 import { create } from '@storybook/theming';
-import { web } from '@newcross-ui/design-tokens';
+import { web } from '@newcross-tech/ui-design-tokens';
 
 const { ColorPrimaryGravitas, ColorPrimaryVigour, ColorNeutralWhite } =
   web.healthforce;

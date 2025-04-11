@@ -5,6 +5,7 @@ on:
     types: [opened, synchronize, reopened]
 
 env:
+  GITHUB_TOKEN: ${{ secrets.GH_PACKAGES_SHARED_PAT }}
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   FONTAWESOME_NPM_TOKEN: ${{ secrets.FONTAWESOME_NPM_TOKEN }}
 

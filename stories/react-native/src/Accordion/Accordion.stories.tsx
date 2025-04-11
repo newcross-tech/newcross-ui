@@ -5,7 +5,7 @@ import {
   AccordionGroup,
   Typography,
   TypographyVariant,
-} from '@newcross-ui/react-native';
+} from '@newcross-tech/ui-react-native';
 import { View } from 'react-native';
 import Container from '../Container';
 import Spacing, { SpacingSizes } from '../Spacing';
@@ -15,7 +15,7 @@ import { faCircleInfo } from '@fortawesome/pro-solid-svg-icons/faCircleInfo';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './AccordionInfo';
 import { ScrollView } from 'react-native-gesture-handler';
-import { native } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-tech/ui-design-tokens';
 
 const { BrandColorPrimary, SpacingBase12 } = native.healthforce;
 

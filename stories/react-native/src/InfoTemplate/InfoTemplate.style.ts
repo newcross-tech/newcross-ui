@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { native } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-tech/ui-design-tokens';
 import { isWebPlatform } from '../utils';
 
 const {

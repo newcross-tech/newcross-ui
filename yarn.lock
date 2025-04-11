@@ -3589,6 +3589,22 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
+"@newcross-tech/ui-design-tokens@file:packages/design-tokens":
+  version "1.48.0"
+
+"@newcross-tech/ui-react-native@file:packages/react-native":
+  version "1.53.1"
+  dependencies:
+    "@fortawesome/fontawesome-svg-core" "^6.1.1"
+    "@fortawesome/pro-light-svg-icons" "^6.1.1"
+    "@fortawesome/pro-regular-svg-icons" "^6.1.1"
+    "@fortawesome/pro-solid-svg-icons" "^6.1.1"
+    "@fortawesome/react-native-fontawesome" "^0.2.7"
+    "@miblanchard/react-native-slider" "^2.3.1"
+    "@newcross-tech/ui-design-tokens" "file:../../../Library/Caches/Yarn/v6/npm-@newcross-ui-react-native-1.53.1-e0e40603-b96b-45de-b906-0d7496868160-1744375489780/node_modules/@newcross-tech/ui-design-tokens"
+    react-native-calendars "1.1305.0"
+    react-native-linear-gradient "^2.6.2"
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz"

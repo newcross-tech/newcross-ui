@@ -5,7 +5,7 @@ import {
   AccordionProps,
   Typography,
   TypographyVariant,
-} from '@newcross-ui/react-native';
+} from '@newcross-tech/ui-react-native';
 import Spacing, { SpacingSizes } from '../Spacing';
 import Container from '../Container';
 import { getParameters, isWebPlatform } from '../utils';

@@ -8,7 +8,7 @@ import {
   FontAwesomeIcon,
   FontAwesomeIconProps,
 } from '@fortawesome/react-fontawesome';
-import { web } from '@newcross-ui/design-tokens';
+import { web } from '@newcross-tech/ui-design-tokens';
 import styled, { css } from 'styled-components';
 import Badge, { BadgeSizes } from '../../components/Badge';
 import Container from '../../components/Container';

@@ -3,7 +3,7 @@ import Brand from './Brand';
 import ThemeProvider from './ThemeProvider';
 import useTheme from '../hooks/useTheme';
 
-jest.mock('@newcross-ui/design-tokens', () => ({
+jest.mock('@newcross-tech/ui-design-tokens', () => ({
   web: { healthforce: { foo: 'bar' }, homeclinic: { foo: 'bar' } },
 }));
 

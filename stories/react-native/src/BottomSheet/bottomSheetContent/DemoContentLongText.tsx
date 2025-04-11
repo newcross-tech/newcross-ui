@@ -4,9 +4,9 @@ import {
   Button,
   Typography,
   TypographyVariant,
-} from '@newcross-ui/react-native';
+} from '@newcross-tech/ui-react-native';
 import Spacing, { SpacingPositions } from '../../Spacing';
-import { native } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-tech/ui-design-tokens';
 import { Fragment } from 'react';
 
 const { SpacingBase24 } = native.healthforce;

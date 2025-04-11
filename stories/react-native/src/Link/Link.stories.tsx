@@ -1,6 +1,11 @@
-import { Link, LinkProps, LinkSizes, Mode } from '@newcross-ui/react-native';
+import {
+  Link,
+  LinkProps,
+  LinkSizes,
+  Mode,
+} from '@newcross-tech/ui-react-native';
 import { Meta, Story } from '@storybook/react';
-import { native } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-tech/ui-design-tokens';
 import { faCircleChevronLeft } from '@fortawesome/pro-solid-svg-icons/faCircleChevronLeft';
 import { View } from 'react-native';
 import Container from '../Container';

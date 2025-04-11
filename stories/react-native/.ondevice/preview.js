@@ -1,6 +1,6 @@
 import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds';
-import { native } from '@newcross-ui/design-tokens';
-import { ThemeProvider, Brand, BottomSheet } from '@newcross-ui/react-native';
+import { native } from '@newcross-tech/ui-design-tokens';
+import { ThemeProvider, Brand, BottomSheet } from '@newcross-tech/ui-react-native';
 import React from 'react';
 import {
   BottomSheetActionType,

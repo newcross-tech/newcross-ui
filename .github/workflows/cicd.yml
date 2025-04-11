@@ -6,6 +6,7 @@ on:
       - 'main'
 
 env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   FONTAWESOME_NPM_TOKEN: ${{ secrets.FONTAWESOME_NPM_TOKEN }}
   PUBLISH_PACKAGES_PAT: ${{ secrets.GH_PACKAGES_SHARED_PAT }}
@@ -60,13 +61,16 @@ jobs:
           serverless deploy -s acceptance
 
   deploy_production:
+    permissions:
+      packages: write
+      contents: read
     needs: deploy_acceptance
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ env.PUBLISH_PACKAGES_PAT }}
+          persist-credentials: false
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
@@ -74,11 +78,14 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: build-artifacts
-      - name: Setup git push permissions
-        run: |
-          git config --global user.name 'NewcrossGitHubSA'
-          git config --global user.email 'github-actions@newcrosshealthcare.com'
+      - name: Setup Git
+        uses: newcross-tech/git-auth-config-action@v1-5
+        with:
+          token: ${{ secrets.GH_REPO_SHARED_PAT }}
+          repository: ${{ github.repository }}
       - name: Deploy to production
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npm i -g serverless@3.7.1 serverless-s3-sync@3.0.0 lerna@4.0.0 husky@7.0.0
 

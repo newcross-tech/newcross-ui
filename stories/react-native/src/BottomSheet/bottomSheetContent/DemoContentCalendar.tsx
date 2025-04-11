@@ -1,3 +1,3 @@
-import { Calendar } from '@newcross-ui/react-native';
+import { Calendar } from '@newcross-tech/ui-react-native';
 
 export const DemoContentCalendar = () => <Calendar />;
