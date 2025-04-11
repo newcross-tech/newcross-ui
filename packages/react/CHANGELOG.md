@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.36.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.35.0...@newcross-ui/react@2.36.0) (2025-04-11)
+
+
+### Features
+
+* **HFAUI-229:** create timepicker ([#229](https://bitbucket.org/newcrossdev/newcross-ui/issues/229)) ([12b269b](https://bitbucket.org/newcrossdev/newcross-ui/commits/12b269b8ee4a1bf5034cb8bf028f2f51829e9838))
+
+
+
+
+
 # [2.35.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.34.2...@newcross-ui/react@2.35.0) (2025-04-08)
 
 
