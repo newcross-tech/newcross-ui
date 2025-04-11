@@ -1,7 +1,7 @@
 import { animated } from '@react-spring/web';
 import styled from 'styled-components';
 import { getRgba } from '../../utils';
-import { ToastProviderProps } from '../../context/toast/ToastProvider';
+import { ToastProviderProps } from '../../hooks/useToast/store';
 import Container from '../Container';
 import { ToastPropsStrict } from './Toast.types';
 
