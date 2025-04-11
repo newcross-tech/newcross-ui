@@ -39,7 +39,8 @@ const AccordionGroup = ({
       {Children.map(children, (child, index) => {
         return cloneElement(child, {
           expanded:
-            exclusiveSelection && exclusiveExpansionAccordionIndex === index,
+            (!exclusiveSelection && child.props.expanded) ||
+            (exclusiveSelection && exclusiveExpansionAccordionIndex === index),
           onClick: exclusiveSelection
             ? () => onExclusivePress(index)
             : undefined,

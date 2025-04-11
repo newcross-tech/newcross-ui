@@ -56,17 +56,18 @@ export const Variants = () => {
       </StoryTitle.Regular>
       <Container my="SpacingBase4" />
       <AccordionGroup exclusiveSelection={false}>
-        <Accordion label={'Section 1'}>
-          <Typography variant={'paragraph2'}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            consequat.Mauris quis dapibus nisi. Donec malesuada condimentum
-            lorem vel pharetra. Ut sed ex ante. Ut erat tellus, venenatis vitae
-            consequat nec, vestibulum at metus. Quisque et lectus in tortor
-            mattis cursus ut vel sapien.
-          </Typography>
+        <Accordion label={'Section 1'} expanded>
+          <Container flexDirection="column" m="auto" alignItems="center">
+            <Typography variant="heading4">
+              Center aligned contents on Expanded Accordion
+            </Typography>
+            <Typography variant="paragraph1">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do
+              eiusmod tempor incididunt.
+            </Typography>
+          </Container>
         </Accordion>
-        <Accordion label={'Section 2'}>
+        <Accordion label={'Section 2'} expanded>
           <Typography variant={'paragraph2'}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
