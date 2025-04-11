@@ -206,7 +206,6 @@ const Select = <
           {...rest}
         />
       </SelectContext.Provider>
-
       <HelperText
         testID={`${baseTestId}-helper-text`}
         errorText={errorText}

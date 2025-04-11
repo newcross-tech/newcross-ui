@@ -118,14 +118,12 @@ const PhoneNumberInput = (_props: PhoneNumberInputProps) => {
           </Styled.ClearIconWrapper>
         )}
       </Styled.PhoneInputWrapper>
-      {helperText && (
-        <HelperText
-          disabled={disabled}
-          helperText={helperText}
-          errorText={isError ? helperText : ''}
-          testID={phoneInputId}
-        />
-      )}
+      <HelperText
+        disabled={disabled}
+        helperText={helperText}
+        errorText={isError ? helperText : ''}
+        testID={phoneInputId}
+      />
     </Styled.Content>
   );
 };

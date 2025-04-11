@@ -95,3 +95,5 @@ export { default as DatePicker } from './components/Fields/DatePicker';
 export type { DatePickerProps } from './components/Fields/DatePicker';
 export { default as TimePicker } from './components/Fields/TimePicker';
 export type { TimePickerProps } from './components/Fields/TimePicker';
+export { default as Calendar } from './components/Fields/Calendar';
+export type { CalendarProps } from './components/Fields/Calendar';
