@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.37.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.36.1...@newcross-ui/react@2.37.0) (2025-04-11)
+
+
+### Features
+
+* **HFAUI-228:** create calendar ([#228](https://bitbucket.org/newcrossdev/newcross-ui/issues/228)) ([e6f869a](https://bitbucket.org/newcrossdev/newcross-ui/commits/e6f869ae91bef4df456417c7b774b740d2fdde59))
+
+
+
+
+
 ## [2.36.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.36.0...@newcross-ui/react@2.36.1) (2025-04-11)
 
 
