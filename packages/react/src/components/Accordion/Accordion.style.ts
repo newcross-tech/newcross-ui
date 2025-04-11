@@ -12,6 +12,7 @@ export const getAnimatedStyles = ({
   opacity: openAccordion ? 1 : 0,
   maxHeight: openAccordion && contentMaxHeight ? `${contentMaxHeight}px` : '0px',
   config: { duration: $animationSpeed * 1000 },
+  width: '100%',
 });
 
 export const Wrapper = styled(Container)(({ theme }) => ({
