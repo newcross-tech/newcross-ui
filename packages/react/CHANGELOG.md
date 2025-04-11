@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.36.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.36.0...@newcross-ui/react@2.36.1) (2025-04-11)
+
+
+### Bug Fixes
+
+* **HFX-1669:** accordion group expanded prop fix ([#232](https://bitbucket.org/newcrossdev/newcross-ui/issues/232)) ([2f8ba18](https://bitbucket.org/newcrossdev/newcross-ui/commits/2f8ba1800edb53c72588d6398e64065506f80e20))
+
+
+
+
+
 # [2.36.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/react@2.35.0...@newcross-ui/react@2.36.0) (2025-04-11)
 
 
