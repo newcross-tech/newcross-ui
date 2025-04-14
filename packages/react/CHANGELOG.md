@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.0.0...@newcross-tech/ui-react@3.0.1) (2025-04-14)
+
+
+### Bug Fixes
+
+* lerna npm target ([771d3f6](https://github.com/newcross-tech/newcross-ui/commit/771d3f6e30746fbc694ff1e7ba395414750187f0))
+
+
+
+
+
 # 3.0.0 (2025-04-14)
 
 
