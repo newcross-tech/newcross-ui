@@ -1,6 +1,6 @@
 import { faUser } from '@fortawesome/pro-light-svg-icons/faUser';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { native } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-tech/ui-design-tokens';
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { ScrollView } from 'react-native';
@@ -15,7 +15,7 @@ import {
   TypographyVariant,
   Card,
   Badge,
-} from '@newcross-ui/react-native';
+} from '@newcross-tech/ui-react-native';
 import { faCalendarDays } from '@fortawesome/pro-light-svg-icons/faCalendarDays';
 import { faBarsFilter } from '@fortawesome/pro-regular-svg-icons/faBarsFilter';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';

@@ -5,7 +5,7 @@ import {
   TextInputProps,
   Typography,
   TypographyVariant,
-} from '@newcross-ui/react-native';
+} from '@newcross-tech/ui-react-native';
 import Spacing from '../Spacing';
 import Container from '../Container';
 import { isWebPlatform } from '../utils';

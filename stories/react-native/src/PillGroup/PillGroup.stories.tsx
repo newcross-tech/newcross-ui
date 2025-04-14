@@ -8,7 +8,7 @@ import {
   PillGroupProps,
   Typography,
   TypographyVariant,
-} from '@newcross-ui/react-native';
+} from '@newcross-tech/ui-react-native';
 import Container from '../Container';
 import { isWebPlatform, getParameters } from '../utils';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';

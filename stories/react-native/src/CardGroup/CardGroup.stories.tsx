@@ -5,8 +5,8 @@ import {
   CardGroupProps,
   Typography,
   TypographyVariant,
-} from '@newcross-ui/react-native';
-import { native } from '@newcross-ui/design-tokens';
+} from '@newcross-tech/ui-react-native';
+import { native } from '@newcross-tech/ui-design-tokens';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faUser } from '@fortawesome/pro-light-svg-icons/faUser';
 import Spacing from '../Spacing';

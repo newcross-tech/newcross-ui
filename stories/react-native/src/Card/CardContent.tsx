@@ -1,6 +1,6 @@
-import { Typography, TypographyVariant } from '@newcross-ui/react-native';
+import { Typography, TypographyVariant } from '@newcross-tech/ui-react-native';
 import { TextStyle, View, ViewStyle } from 'react-native';
-import { native } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-tech/ui-design-tokens';
 
 const { SpacingBase24 } = native.healthforce;
 

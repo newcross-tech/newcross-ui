@@ -1,6 +1,6 @@
 import { ScrollView, View } from 'react-native';
 import { Meta, Story } from '@storybook/react';
-import { Radio, RadioProps, TextInput } from '@newcross-ui/react-native';
+import { Radio, RadioProps, TextInput } from '@newcross-tech/ui-react-native';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './RadioInfo';

@@ -6,8 +6,8 @@ import {
   TypographyVariant,
   Link,
   LinkSizes,
-} from '@newcross-ui/react-native';
-import { native } from '@newcross-ui/design-tokens';
+} from '@newcross-tech/ui-react-native';
+import { native } from '@newcross-tech/ui-design-tokens';
 import { View, Image, ScrollView } from 'react-native';
 import useState from 'storybook-addon-state';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';

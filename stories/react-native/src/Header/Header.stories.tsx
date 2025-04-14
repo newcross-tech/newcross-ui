@@ -6,8 +6,8 @@ import {
   HeaderColors,
   Typography,
   TypographyVariant,
-} from '@newcross-ui/react-native';
-import { native } from '@newcross-ui/design-tokens';
+} from '@newcross-tech/ui-react-native';
+import { native } from '@newcross-tech/ui-design-tokens';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faSliders } from '@fortawesome/pro-light-svg-icons/faSliders';
 import Container from '../Container';

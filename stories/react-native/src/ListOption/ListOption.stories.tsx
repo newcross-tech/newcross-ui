@@ -9,7 +9,7 @@ import {
   TypographyVariant,
   BottomSheet,
   Button,
-} from '@newcross-ui/react-native';
+} from '@newcross-tech/ui-react-native';
 import Container from '../Container';
 import Spacing from '../Spacing';
 import { getParameters, isWebPlatform } from '../utils';
@@ -20,7 +20,7 @@ import { faCircle } from '@fortawesome/pro-solid-svg-icons/faCircle';
 import { faUser } from '@fortawesome/pro-solid-svg-icons/faUser';
 import { faClose } from '@fortawesome/pro-solid-svg-icons/faClose';
 import useState from 'storybook-addon-state';
-import { native } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-tech/ui-design-tokens';
 
 export default {
   title: 'ReactNative/Components/ListOption',

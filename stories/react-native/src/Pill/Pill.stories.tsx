@@ -8,8 +8,8 @@ import {
   PillVariant,
   Typography,
   TypographyVariant,
-} from '@newcross-ui/react-native';
-import { native } from '@newcross-ui/design-tokens';
+} from '@newcross-tech/ui-react-native';
+import { native } from '@newcross-tech/ui-design-tokens';
 import Container from '../Container';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faBird } from '@fortawesome/pro-solid-svg-icons/faBird';

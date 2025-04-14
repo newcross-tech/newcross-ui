@@ -8,7 +8,7 @@ import {
   RadioGroupProps,
   Typography,
   TypographyVariant,
-} from '@newcross-ui/react-native';
+} from '@newcross-tech/ui-react-native';
 import Container from '../Container';
 import Spacing, { SpacingSizes } from '../Spacing';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';

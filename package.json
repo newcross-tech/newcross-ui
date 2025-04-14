@@ -1,5 +1,5 @@
 {
-  "name": "newcross-ui",
+  "name": "@newcross-tech/ui",
   "private": true,
   "workspaces": [
     "packages/*",

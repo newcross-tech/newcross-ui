@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { View, StyleSheet, ViewStyle } from 'react-native';
-import { native } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-tech/ui-design-tokens';
 
 const { SpacingBase12 } = native.healthforce;
 

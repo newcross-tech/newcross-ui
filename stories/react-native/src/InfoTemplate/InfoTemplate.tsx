@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, ReactNode } from 'react';
 import { View, ViewStyle, ScrollView } from 'react-native';
 import Spacing, { SpacingSizes } from '../Spacing';
-import { Typography, TypographyVariant } from '@newcross-ui/react-native';
+import { Typography, TypographyVariant } from '@newcross-tech/ui-react-native';
 import infoTemplateStyle from './InfoTemplate.style';
 
 type HeaderProps = {

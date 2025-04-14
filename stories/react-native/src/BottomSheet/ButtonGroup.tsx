@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native';
-import { native } from '@newcross-ui/design-tokens';
-import { Button, ButtonSizes } from '@newcross-ui/react-native';
+import { native } from '@newcross-tech/ui-design-tokens';
+import { Button, ButtonSizes } from '@newcross-tech/ui-react-native';
 import Spacing, { SpacingPositions } from '../Spacing';
 
 const { SpacingBase8, BrandColorSecondary300 } = native.healthforce;

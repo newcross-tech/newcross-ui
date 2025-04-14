@@ -7,7 +7,7 @@ import {
   DropDown,
   ListOption,
   DropdownProps,
-} from '@newcross-ui/react-native';
+} from '@newcross-tech/ui-react-native';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { TITLE, DESCRIPTION, DO, DONT } from './DropdownInfo';
 

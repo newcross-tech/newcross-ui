@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [1.48.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.47.3...@newcross-ui/design-tokens@1.48.0) (2025-03-14)
+# [1.48.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.47.3...@newcross-tech/ui-design-tokens@1.48.0) (2025-03-14)
 
 
 ### Features
@@ -14,15 +14,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.47.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.47.2...@newcross-ui/design-tokens@1.47.3) (2024-12-23)
+## [1.47.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.47.2...@newcross-tech/ui-design-tokens@1.47.3) (2024-12-23)
 
-**Note:** Version bump only for package @newcross-ui/design-tokens
-
-
+**Note:** Version bump only for package @newcross-tech/ui-design-tokens
 
 
 
-## [1.47.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.47.1...@newcross-ui/design-tokens@1.47.2) (2024-12-05)
+
+
+## [1.47.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.47.1...@newcross-tech/ui-design-tokens@1.47.2) (2024-12-05)
 
 
 ### Reverts
@@ -33,15 +33,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.47.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.47.0...@newcross-ui/design-tokens@1.47.1) (2024-11-29)
+## [1.47.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.47.0...@newcross-tech/ui-design-tokens@1.47.1) (2024-11-29)
 
-**Note:** Version bump only for package @newcross-ui/design-tokens
-
-
+**Note:** Version bump only for package @newcross-tech/ui-design-tokens
 
 
 
-# [1.47.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.46.2...@newcross-ui/design-tokens@1.47.0) (2024-11-27)
+
+
+# [1.47.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.46.2...@newcross-tech/ui-design-tokens@1.47.0) (2024-11-27)
 
 
 ### Features
@@ -52,23 +52,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.46.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.46.1...@newcross-ui/design-tokens@1.46.2) (2024-11-27)
+## [1.46.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.46.1...@newcross-tech/ui-design-tokens@1.46.2) (2024-11-27)
 
-**Note:** Version bump only for package @newcross-ui/design-tokens
-
-
-
-
-
-## [1.46.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.46.0...@newcross-ui/design-tokens@1.46.1) (2024-11-27)
-
-**Note:** Version bump only for package @newcross-ui/design-tokens
+**Note:** Version bump only for package @newcross-tech/ui-design-tokens
 
 
 
 
 
-# [1.46.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.45.0...@newcross-ui/design-tokens@1.46.0) (2024-11-06)
+## [1.46.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.46.0...@newcross-tech/ui-design-tokens@1.46.1) (2024-11-27)
+
+**Note:** Version bump only for package @newcross-tech/ui-design-tokens
+
+
+
+
+
+# [1.46.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.45.0...@newcross-tech/ui-design-tokens@1.46.0) (2024-11-06)
 
 
 ### Features
@@ -79,7 +79,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.45.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.44.0...@newcross-ui/design-tokens@1.45.0) (2024-10-30)
+# [1.45.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.44.0...@newcross-tech/ui-design-tokens@1.45.0) (2024-10-30)
 
 
 ### Features
@@ -93,7 +93,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.44.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.43.3...@newcross-ui/design-tokens@1.44.0) (2024-10-16)
+# [1.44.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.43.3...@newcross-tech/ui-design-tokens@1.44.0) (2024-10-16)
 
 
 ### Features
@@ -104,23 +104,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.43.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.43.2...@newcross-ui/design-tokens@1.43.3) (2024-09-27)
+## [1.43.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.43.2...@newcross-tech/ui-design-tokens@1.43.3) (2024-09-27)
 
-**Note:** Version bump only for package @newcross-ui/design-tokens
-
-
-
-
-
-## [1.43.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.43.1...@newcross-ui/design-tokens@1.43.2) (2024-08-01)
-
-**Note:** Version bump only for package @newcross-ui/design-tokens
+**Note:** Version bump only for package @newcross-tech/ui-design-tokens
 
 
 
 
 
-## [1.43.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.43.0...@newcross-ui/design-tokens@1.43.1) (2024-05-15)
+## [1.43.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.43.1...@newcross-tech/ui-design-tokens@1.43.2) (2024-08-01)
+
+**Note:** Version bump only for package @newcross-tech/ui-design-tokens
+
+
+
+
+
+## [1.43.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.43.0...@newcross-tech/ui-design-tokens@1.43.1) (2024-05-15)
 
 
 ### Bug Fixes
@@ -131,7 +131,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.43.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.42.2...@newcross-ui/design-tokens@1.43.0) (2024-04-30)
+# [1.43.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.42.2...@newcross-tech/ui-design-tokens@1.43.0) (2024-04-30)
 
 
 ### Features
@@ -142,23 +142,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.42.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.42.1...@newcross-ui/design-tokens@1.42.2) (2024-01-04)
+## [1.42.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.42.1...@newcross-tech/ui-design-tokens@1.42.2) (2024-01-04)
 
-**Note:** Version bump only for package @newcross-ui/design-tokens
-
-
-
-
-
-## [1.42.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.42.0...@newcross-ui/design-tokens@1.42.1) (2023-11-10)
-
-**Note:** Version bump only for package @newcross-ui/design-tokens
+**Note:** Version bump only for package @newcross-tech/ui-design-tokens
 
 
 
 
 
-# [1.42.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.41.1...@newcross-ui/design-tokens@1.42.0) (2023-11-07)
+## [1.42.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.42.0...@newcross-tech/ui-design-tokens@1.42.1) (2023-11-10)
+
+**Note:** Version bump only for package @newcross-tech/ui-design-tokens
+
+
+
+
+
+# [1.42.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.41.1...@newcross-tech/ui-design-tokens@1.42.0) (2023-11-07)
 
 
 ### Features
@@ -169,15 +169,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.41.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.41.0...@newcross-ui/design-tokens@1.41.1) (2023-10-12)
+## [1.41.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.41.0...@newcross-tech/ui-design-tokens@1.41.1) (2023-10-12)
 
-**Note:** Version bump only for package @newcross-ui/design-tokens
-
-
+**Note:** Version bump only for package @newcross-tech/ui-design-tokens
 
 
 
-# [1.41.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.40.1...@newcross-ui/design-tokens@1.41.0) (2023-10-09)
+
+
+# [1.41.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.40.1...@newcross-tech/ui-design-tokens@1.41.0) (2023-10-09)
 
 
 ### Features
@@ -188,15 +188,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.40.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.40.0...@newcross-ui/design-tokens@1.40.1) (2023-10-05)
+## [1.40.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.40.0...@newcross-tech/ui-design-tokens@1.40.1) (2023-10-05)
 
-**Note:** Version bump only for package @newcross-ui/design-tokens
-
-
+**Note:** Version bump only for package @newcross-tech/ui-design-tokens
 
 
 
-# [1.40.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.39.0...@newcross-ui/design-tokens@1.40.0) (2023-10-04)
+
+
+# [1.40.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.39.0...@newcross-tech/ui-design-tokens@1.40.0) (2023-10-04)
 
 
 ### Features
@@ -207,7 +207,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.39.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.38.0...@newcross-ui/design-tokens@1.39.0) (2023-09-27)
+# [1.39.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.38.0...@newcross-tech/ui-design-tokens@1.39.0) (2023-09-27)
 
 
 ### Features
@@ -218,7 +218,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.38.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.37.1...@newcross-ui/design-tokens@1.38.0) (2023-09-27)
+# [1.38.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.37.1...@newcross-tech/ui-design-tokens@1.38.0) (2023-09-27)
 
 
 ### Features
@@ -229,15 +229,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.37.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.37.0...@newcross-ui/design-tokens@1.37.1) (2023-07-31)
+## [1.37.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.37.0...@newcross-tech/ui-design-tokens@1.37.1) (2023-07-31)
 
-**Note:** Version bump only for package @newcross-ui/design-tokens
-
-
+**Note:** Version bump only for package @newcross-tech/ui-design-tokens
 
 
 
-# [1.37.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.36.1...@newcross-ui/design-tokens@1.37.0) (2023-07-26)
+
+
+# [1.37.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.36.1...@newcross-tech/ui-design-tokens@1.37.0) (2023-07-26)
 
 
 ### Features
@@ -248,15 +248,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.36.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.36.0...@newcross-ui/design-tokens@1.36.1) (2023-07-20)
+## [1.36.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.36.0...@newcross-tech/ui-design-tokens@1.36.1) (2023-07-20)
 
-**Note:** Version bump only for package @newcross-ui/design-tokens
-
-
+**Note:** Version bump only for package @newcross-tech/ui-design-tokens
 
 
 
-# [1.36.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.35.4...@newcross-ui/design-tokens@1.36.0) (2023-07-12)
+
+
+# [1.36.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.35.4...@newcross-tech/ui-design-tokens@1.36.0) (2023-07-12)
 
 
 ### Features
@@ -267,39 +267,39 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.35.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.35.3...@newcross-ui/design-tokens@1.35.4) (2023-06-07)
+## [1.35.4](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.35.3...@newcross-tech/ui-design-tokens@1.35.4) (2023-06-07)
 
-**Note:** Version bump only for package @newcross-ui/design-tokens
-
-
-
-
-
-## [1.35.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.35.2...@newcross-ui/design-tokens@1.35.3) (2023-04-12)
-
-**Note:** Version bump only for package @newcross-ui/design-tokens
+**Note:** Version bump only for package @newcross-tech/ui-design-tokens
 
 
 
 
 
-## [1.35.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.35.0...@newcross-ui/design-tokens@1.35.2) (2023-03-16)
+## [1.35.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.35.2...@newcross-tech/ui-design-tokens@1.35.3) (2023-04-12)
 
-**Note:** Version bump only for package @newcross-ui/design-tokens
-
-
-
-
-
-## [1.35.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.35.0...@newcross-ui/design-tokens@1.35.1) (2023-03-14)
-
-**Note:** Version bump only for package @newcross-ui/design-tokens
+**Note:** Version bump only for package @newcross-tech/ui-design-tokens
 
 
 
 
 
-# [1.35.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.34.1...@newcross-ui/design-tokens@1.35.0) (2023-02-03)
+## [1.35.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.35.0...@newcross-tech/ui-design-tokens@1.35.2) (2023-03-16)
+
+**Note:** Version bump only for package @newcross-tech/ui-design-tokens
+
+
+
+
+
+## [1.35.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.35.0...@newcross-tech/ui-design-tokens@1.35.1) (2023-03-14)
+
+**Note:** Version bump only for package @newcross-tech/ui-design-tokens
+
+
+
+
+
+# [1.35.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.34.1...@newcross-tech/ui-design-tokens@1.35.0) (2023-02-03)
 
 
 ### Features
@@ -310,7 +310,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.34.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.34.0...@newcross-ui/design-tokens@1.34.1) (2022-12-14)
+## [1.34.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.34.0...@newcross-tech/ui-design-tokens@1.34.1) (2022-12-14)
 
 
 ### Bug Fixes
@@ -321,7 +321,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.34.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.33.0...@newcross-ui/design-tokens@1.34.0) (2022-12-07)
+# [1.34.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.33.0...@newcross-tech/ui-design-tokens@1.34.0) (2022-12-07)
 
 
 ### Features
@@ -332,7 +332,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.33.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.32.0...@newcross-ui/design-tokens@1.33.0) (2022-12-01)
+# [1.33.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.32.0...@newcross-tech/ui-design-tokens@1.33.0) (2022-12-01)
 
 
 ### Features
@@ -343,7 +343,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.32.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.31.0...@newcross-ui/design-tokens@1.32.0) (2022-11-04)
+# [1.32.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.31.0...@newcross-tech/ui-design-tokens@1.32.0) (2022-11-04)
 
 
 ### Features
@@ -354,7 +354,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.31.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.30.3...@newcross-ui/design-tokens@1.31.0) (2022-11-03)
+# [1.31.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.30.3...@newcross-tech/ui-design-tokens@1.31.0) (2022-11-03)
 
 
 ### Features
@@ -365,23 +365,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.30.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.30.2...@newcross-ui/design-tokens@1.30.3) (2022-10-27)
+## [1.30.3](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.30.2...@newcross-tech/ui-design-tokens@1.30.3) (2022-10-27)
 
-**Note:** Version bump only for package @newcross-ui/design-tokens
-
-
-
-
-
-## [1.30.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.30.1...@newcross-ui/design-tokens@1.30.2) (2022-10-21)
-
-**Note:** Version bump only for package @newcross-ui/design-tokens
+**Note:** Version bump only for package @newcross-tech/ui-design-tokens
 
 
 
 
 
-## [1.30.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.30.0...@newcross-ui/design-tokens@1.30.1) (2022-10-18)
+## [1.30.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.30.1...@newcross-tech/ui-design-tokens@1.30.2) (2022-10-21)
+
+**Note:** Version bump only for package @newcross-tech/ui-design-tokens
+
+
+
+
+
+## [1.30.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.30.0...@newcross-tech/ui-design-tokens@1.30.1) (2022-10-18)
 
 
 ### Bug Fixes
@@ -392,7 +392,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.30.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.29.0...@newcross-ui/design-tokens@1.30.0) (2022-10-15)
+# [1.30.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.29.0...@newcross-tech/ui-design-tokens@1.30.0) (2022-10-15)
 
 
 ### Features
@@ -403,7 +403,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.29.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.28.0...@newcross-ui/design-tokens@1.29.0) (2022-10-05)
+# [1.29.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.28.0...@newcross-tech/ui-design-tokens@1.29.0) (2022-10-05)
 
 
 ### Features
@@ -414,7 +414,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.28.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.27.0...@newcross-ui/design-tokens@1.28.0) (2022-09-27)
+# [1.28.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.27.0...@newcross-tech/ui-design-tokens@1.28.0) (2022-09-27)
 
 
 ### Features
@@ -427,7 +427,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.27.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.26.0...@newcross-ui/design-tokens@1.27.0) (2022-09-20)
+# [1.27.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.26.0...@newcross-tech/ui-design-tokens@1.27.0) (2022-09-20)
 
 
 ### Features
@@ -441,7 +441,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.26.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.25.0...@newcross-ui/design-tokens@1.26.0) (2022-09-07)
+# [1.26.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.25.0...@newcross-tech/ui-design-tokens@1.26.0) (2022-09-07)
 
 
 ### Features
@@ -453,7 +453,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.25.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.24.1...@newcross-ui/design-tokens@1.25.0) (2022-08-31)
+# [1.25.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.24.1...@newcross-tech/ui-design-tokens@1.25.0) (2022-08-31)
 
 
 ### Features
@@ -466,7 +466,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.24.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.24.0...@newcross-ui/design-tokens@1.24.1) (2022-08-16)
+## [1.24.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.24.0...@newcross-tech/ui-design-tokens@1.24.1) (2022-08-16)
 
 
 ### Bug Fixes
@@ -477,7 +477,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.24.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.23.0...@newcross-ui/design-tokens@1.24.0) (2022-08-12)
+# [1.24.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.23.0...@newcross-tech/ui-design-tokens@1.24.0) (2022-08-12)
 
 
 ### Features
@@ -491,7 +491,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.23.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.22.0...@newcross-ui/design-tokens@1.23.0) (2022-07-26)
+# [1.23.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.22.0...@newcross-tech/ui-design-tokens@1.23.0) (2022-07-26)
 
 
 ### Features
@@ -502,7 +502,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.22.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.21.0...@newcross-ui/design-tokens@1.22.0) (2022-07-26)
+# [1.22.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.21.0...@newcross-tech/ui-design-tokens@1.22.0) (2022-07-26)
 
 
 ### Features
@@ -514,7 +514,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.21.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.20.0...@newcross-ui/design-tokens@1.21.0) (2022-07-13)
+# [1.21.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.20.0...@newcross-tech/ui-design-tokens@1.21.0) (2022-07-13)
 
 
 ### Features
@@ -527,7 +527,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.20.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.19.0...@newcross-ui/design-tokens@1.20.0) (2022-07-01)
+# [1.20.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.19.0...@newcross-tech/ui-design-tokens@1.20.0) (2022-07-01)
 
 
 ### Features
@@ -538,7 +538,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.19.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.18.0...@newcross-ui/design-tokens@1.19.0) (2022-06-29)
+# [1.19.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.18.0...@newcross-tech/ui-design-tokens@1.19.0) (2022-06-29)
 
 
 ### Features
@@ -549,7 +549,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.18.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.17.0...@newcross-ui/design-tokens@1.18.0) (2022-06-15)
+# [1.18.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.17.0...@newcross-tech/ui-design-tokens@1.18.0) (2022-06-15)
 
 
 ### Features
@@ -560,7 +560,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.17.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.16.1...@newcross-ui/design-tokens@1.17.0) (2022-06-15)
+# [1.17.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.16.1...@newcross-tech/ui-design-tokens@1.17.0) (2022-06-15)
 
 
 ### Features
@@ -571,15 +571,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.16.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.16.0...@newcross-ui/design-tokens@1.16.1) (2022-05-31)
+## [1.16.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.16.0...@newcross-tech/ui-design-tokens@1.16.1) (2022-05-31)
 
-**Note:** Version bump only for package @newcross-ui/design-tokens
-
-
+**Note:** Version bump only for package @newcross-tech/ui-design-tokens
 
 
 
-# [1.16.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.15.0...@newcross-ui/design-tokens@1.16.0) (2022-05-24)
+
+
+# [1.16.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.15.0...@newcross-tech/ui-design-tokens@1.16.0) (2022-05-24)
 
 
 ### Features
@@ -590,7 +590,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.15.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.14.0...@newcross-ui/design-tokens@1.15.0) (2022-05-20)
+# [1.15.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.14.0...@newcross-tech/ui-design-tokens@1.15.0) (2022-05-20)
 
 
 ### Features
@@ -601,7 +601,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.14.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.13.0...@newcross-ui/design-tokens@1.14.0) (2022-05-11)
+# [1.14.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.13.0...@newcross-tech/ui-design-tokens@1.14.0) (2022-05-11)
 
 
 ### Features
@@ -612,7 +612,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.13.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.12.0...@newcross-ui/design-tokens@1.13.0) (2022-05-10)
+# [1.13.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.12.0...@newcross-tech/ui-design-tokens@1.13.0) (2022-05-10)
 
 
 ### Features
@@ -623,7 +623,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.12.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.11.0...@newcross-ui/design-tokens@1.12.0) (2022-05-06)
+# [1.12.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.11.0...@newcross-tech/ui-design-tokens@1.12.0) (2022-05-06)
 
 
 ### Features
@@ -634,7 +634,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.11.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.10.0...@newcross-ui/design-tokens@1.11.0) (2022-05-03)
+# [1.11.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.10.0...@newcross-tech/ui-design-tokens@1.11.0) (2022-05-03)
 
 
 ### Features
@@ -645,7 +645,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.10.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.9.0...@newcross-ui/design-tokens@1.10.0) (2022-04-20)
+# [1.10.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.9.0...@newcross-tech/ui-design-tokens@1.10.0) (2022-04-20)
 
 
 ### Features
@@ -656,7 +656,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.9.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.8.0...@newcross-ui/design-tokens@1.9.0) (2022-04-19)
+# [1.9.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.8.0...@newcross-tech/ui-design-tokens@1.9.0) (2022-04-19)
 
 
 ### Features
@@ -667,7 +667,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.8.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.7.0...@newcross-ui/design-tokens@1.8.0) (2022-04-19)
+# [1.8.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.7.0...@newcross-tech/ui-design-tokens@1.8.0) (2022-04-19)
 
 
 ### Features
@@ -678,7 +678,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.7.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.6.0...@newcross-ui/design-tokens@1.7.0) (2022-04-05)
+# [1.7.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.6.0...@newcross-tech/ui-design-tokens@1.7.0) (2022-04-05)
 
 
 ### Features
@@ -689,7 +689,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.6.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.5.1...@newcross-ui/design-tokens@1.6.0) (2022-04-05)
+# [1.6.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.5.1...@newcross-tech/ui-design-tokens@1.6.0) (2022-04-05)
 
 
 ### Features
@@ -700,15 +700,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.5.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.5.0...@newcross-ui/design-tokens@1.5.1) (2022-03-25)
+## [1.5.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.5.0...@newcross-tech/ui-design-tokens@1.5.1) (2022-03-25)
 
-**Note:** Version bump only for package @newcross-ui/design-tokens
-
-
+**Note:** Version bump only for package @newcross-tech/ui-design-tokens
 
 
 
-# [1.5.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.4.0...@newcross-ui/design-tokens@1.5.0) (2022-03-23)
+
+
+# [1.5.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.4.0...@newcross-tech/ui-design-tokens@1.5.0) (2022-03-23)
 
 
 ### Features
@@ -719,7 +719,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.4.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.3.2...@newcross-ui/design-tokens@1.4.0) (2022-03-22)
+# [1.4.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.3.2...@newcross-tech/ui-design-tokens@1.4.0) (2022-03-22)
 
 
 ### Features
@@ -730,7 +730,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.3.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.3.1...@newcross-ui/design-tokens@1.3.2) (2022-03-21)
+## [1.3.2](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.3.1...@newcross-tech/ui-design-tokens@1.3.2) (2022-03-21)
 
 
 ### Bug Fixes
@@ -741,15 +741,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.3.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.3.0...@newcross-ui/design-tokens@1.3.1) (2022-03-17)
+## [1.3.1](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.3.0...@newcross-tech/ui-design-tokens@1.3.1) (2022-03-17)
 
-**Note:** Version bump only for package @newcross-ui/design-tokens
-
-
+**Note:** Version bump only for package @newcross-tech/ui-design-tokens
 
 
 
-# [1.3.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.2.0...@newcross-ui/design-tokens@1.3.0) (2022-03-17)
+
+
+# [1.3.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.2.0...@newcross-tech/ui-design-tokens@1.3.0) (2022-03-17)
 
 
 ### Features
@@ -760,7 +760,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.2.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-ui/design-tokens@1.1.0...@newcross-ui/design-tokens@1.2.0) (2022-03-15)
+# [1.2.0](https://bitbucket.org/newcrossdev/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.1.0...@newcross-tech/ui-design-tokens@1.2.0) (2022-03-15)
 
 
 ### Features

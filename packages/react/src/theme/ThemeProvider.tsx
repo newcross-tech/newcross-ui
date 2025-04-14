@@ -1,5 +1,5 @@
 import { createContext, ReactNode } from 'react';
-import * as theme from '@newcross-ui/design-tokens';
+import * as theme from '@newcross-tech/ui-design-tokens';
 import { ThemeProvider as SCThemeProvider } from 'styled-components';
 import Brand from './Brand';
 

@@ -1,7 +1,10 @@
 import { View, Text } from 'react-native';
 import { Meta, Story } from '@storybook/react';
 import useState from 'storybook-addon-state';
-import { ToggleSwitch, ToggleSwitchProps } from '@newcross-ui/react-native';
+import {
+  ToggleSwitch,
+  ToggleSwitchProps,
+} from '@newcross-tech/ui-react-native';
 import Container from '../Container';
 import Spacing from '../Spacing';
 

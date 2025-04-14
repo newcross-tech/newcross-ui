@@ -3,7 +3,7 @@ import {
   Typography,
   TypographyProps,
   TypographyVariant,
-} from '@newcross-ui/react-native';
+} from '@newcross-tech/ui-react-native';
 import Container from '../Container';
 import Spacing from '../Spacing';
 import { Fragment } from 'react';

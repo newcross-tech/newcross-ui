@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import { Svg, Path } from 'react-native-svg';
 import React from 'react';
-import { native } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-tech/ui-design-tokens';
 
 const { BrandColorSecondary100, ColorNeutralWhite } = native.healthforce;
 

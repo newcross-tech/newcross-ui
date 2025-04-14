@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react';
 import { Platform } from 'react-native';
-import { native } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-tech/ui-design-tokens';
 
 const isWeb = Platform.OS === 'web';
 const { SpacingBase12 } = native.healthforce;

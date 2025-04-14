@@ -1,7 +1,7 @@
 import { faCalendarDays } from '@fortawesome/pro-light-svg-icons/faCalendarDays';
 import { faUser } from '@fortawesome/pro-light-svg-icons/faUser';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { native } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-tech/ui-design-tokens';
 import {
   Badge,
   Card,
@@ -10,7 +10,7 @@ import {
   FloatingActionButtonGroupProps,
   Typography,
   TypographyVariant,
-} from '@newcross-ui/react-native';
+} from '@newcross-tech/ui-react-native';
 import { Meta, Story } from '@storybook/react';
 import React from 'react';
 import { ScrollView } from 'react-native';

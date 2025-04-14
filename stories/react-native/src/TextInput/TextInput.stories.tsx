@@ -1,8 +1,12 @@
-import { TextInput, TextInputProps, Mode } from '@newcross-ui/react-native';
+import {
+  TextInput,
+  TextInputProps,
+  Mode,
+} from '@newcross-tech/ui-react-native';
 import { Meta, Story } from '@storybook/react';
 import { ScrollView } from 'react-native';
 import useState from 'storybook-addon-state';
-import { native } from '@newcross-ui/design-tokens';
+import { native } from '@newcross-tech/ui-design-tokens';
 import Container from '../Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { isWebPlatform } from '../utils';

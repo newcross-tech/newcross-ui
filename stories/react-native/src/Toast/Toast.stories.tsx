@@ -7,7 +7,7 @@ import {
   ButtonSizes,
   Typography,
   TypographyVariant,
-} from '@newcross-ui/react-native';
+} from '@newcross-tech/ui-react-native';
 import Container from '../Container';
 import Spacing, { SpacingPositions } from '../Spacing';
 import useState from 'storybook-addon-state';

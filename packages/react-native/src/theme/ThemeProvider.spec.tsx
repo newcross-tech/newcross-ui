@@ -7,7 +7,7 @@ import useTheme from '../hooks/useTheme';
 
 const tokens = { foo: 'bar' };
 
-jest.mock('@newcross-ui/design-tokens', () => ({
+jest.mock('@newcross-tech/ui-design-tokens', () => ({
   native: { homeclinic: tokens, healthforce: tokens },
 }));
 

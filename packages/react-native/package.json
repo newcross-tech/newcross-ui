@@ -1,5 +1,5 @@
 {
-  "name": "@newcross-ui/react-native",
+  "name": "@newcross-tech/ui-react-native",
   "version": "1.53.1",
   "description": "Components for react native apps",
   "author": "itdev@newcrosshealthcare.com",
@@ -12,7 +12,7 @@
     "url": "https://bitbucket.org/newcrossdev/newcross-ui/issues"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "@newcross-tech:registry": "https://npm.pkg.github.com"
   },
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -43,7 +43,7 @@
     "@fortawesome/pro-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-native-fontawesome": "^0.2.7",
     "@miblanchard/react-native-slider": "^2.3.1",
-    "@newcross-ui/design-tokens": "^1.48.0",
+    "@newcross-tech/ui-design-tokens": "^1.48.0",
     "react-native-calendars": "1.1305.0",
     "react-native-linear-gradient": "^2.6.2"
   }

@@ -1,6 +1,6 @@
 import { View } from 'react-native';
-import { Typography, TypographyVariant } from '@newcross-ui/react-native';
-import { native } from '@newcross-ui/design-tokens';
+import { Typography, TypographyVariant } from '@newcross-tech/ui-react-native';
+import { native } from '@newcross-tech/ui-design-tokens';
 import { ShiftCardDay, ShiftCardNight, ShiftCardSleeper } from './svg';
 
 const { BrandColorPrimary, ColorNeutralWhite } = native.healthforce;

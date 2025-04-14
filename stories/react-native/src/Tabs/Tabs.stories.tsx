@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react';
-import { BadgeSizes, Tabs, TabsProps } from '@newcross-ui/react-native';
+import { BadgeSizes, Tabs, TabsProps } from '@newcross-tech/ui-react-native';
 import Container from '../Container';
 import Spacing from '../Spacing';
 import useState from 'storybook-addon-state';

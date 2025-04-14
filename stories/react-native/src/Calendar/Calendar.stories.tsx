@@ -6,7 +6,7 @@ import {
   CalendarProps,
   Typography,
   TypographyVariant,
-} from '@newcross-ui/react-native';
+} from '@newcross-tech/ui-react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import Container from '../Container';
 import { isWebPlatform, getParameters } from '../utils';
