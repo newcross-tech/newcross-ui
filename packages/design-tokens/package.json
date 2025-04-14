@@ -11,10 +11,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/newcrossdev/newcross-ui.git"
-  },
-  "bugs": {
-    "url": "https://bitbucket.org/newcrossdev/newcross-ui/issues"
+    "url": "git+ssh://git@github.com:newcross-tech/newcross-ui.git",
+    "directory": "packages/design-tokens"
   },
   "publishConfig": {
     "@newcross-tech:registry": "https://npm.pkg.github.com"
