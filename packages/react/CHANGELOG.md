@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.0.2...@newcross-tech/ui-react@3.1.0) (2025-04-15)
+
+
+### Features
+
+* **HFAUI-323:** add flex css prop ([#236](https://github.com/newcross-tech/newcross-ui/issues/236)) ([fb1d72a](https://github.com/newcross-tech/newcross-ui/commit/fb1d72a30ed4f7b980c98ffda319f8db914ff04b))
+
+
+
+
+
 ## [3.0.2](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.0.1...@newcross-tech/ui-react@3.0.2) (2025-04-15)
 
 
