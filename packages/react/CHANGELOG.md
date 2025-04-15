@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.2](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.0.1...@newcross-tech/ui-react@3.0.2) (2025-04-15)
+
+
+### Bug Fixes
+
+* **HFAUI-321:** add gap between label and datepicker ([#235](https://github.com/newcross-tech/newcross-ui/issues/235)) ([82a7224](https://github.com/newcross-tech/newcross-ui/commit/82a7224e3928b55ae50953251f0f4ec4511ab01d))
+
+
+
+
+
 ## [3.0.1](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.0.0...@newcross-tech/ui-react@3.0.1) (2025-04-14)
 
 
