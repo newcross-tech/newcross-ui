@@ -58,6 +58,7 @@ export const Container = styled.div<ExtendedTheme<NewContainerProps>>`
     pt,
     pb,
     flexDirection,
+    flex,
     flexWrap,
     justifyContent,
     alignItems,
@@ -94,5 +95,6 @@ export const Container = styled.div<ExtendedTheme<NewContainerProps>>`
     ${flexDirection && `flex-direction: ${flexDirection};`}
     ${fullWidth && `width: 100%;`}
     ${onClick && `cursor: pointer;`}
+    ${flex && `flex: ${flex};`}
   `}
 `;

@@ -187,6 +187,10 @@ export type LegacyContainerProps = {
    */
   fullWidth?: boolean;
   /**
+   * CSS: `flex`
+   */
+  flex?: CSSProperties['flex'];
+  /**
    * CSS: `flex-direction`
    */
   flexDirection?: CSSProperties['flexDirection'];

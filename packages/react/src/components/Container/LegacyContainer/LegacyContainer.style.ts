@@ -70,6 +70,7 @@ export const LegacyContainer = styled.div<ExtendedTheme<LegacyContainerProps>>`
     ptMobile,
     pbMobile,
     flexDirection,
+    flex,
     flexWrap,
     justifyContent,
     alignItems,
@@ -87,6 +88,7 @@ export const LegacyContainer = styled.div<ExtendedTheme<LegacyContainerProps>>`
     ${alignItems && `align-items: ${alignItems};`}
     ${flexDirection && `flex-direction: ${flexDirection};`}
     ${fullWidth && `width: 100%;`}
+    ${flex && `flex: ${flex};`}
     ${generateStyle(theme, 'margin', m)}
     ${generateStyle(theme, 'margin-left', mx)}
     ${generateStyle(theme, 'margin-right', mx)}
