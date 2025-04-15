@@ -62,7 +62,7 @@ const DatePicker = (_props: DatePickerProps) => {
   const baseTestId = `date-picker-${testID}`;
 
   return (
-    <Container flexDirection="column" fullWidth>
+    <Container flexDirection="column" gap="sm" fullWidth>
       {label && (
         <Label required={required} disabled={disabled} testID={baseTestId}>
           {label}
