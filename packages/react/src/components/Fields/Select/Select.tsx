@@ -161,6 +161,7 @@ const Select = <
       }
       flexDirection="column"
       gap="xs"
+      fullWidth
     >
       {label && (
         <Label
