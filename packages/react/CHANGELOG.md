@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.1.0...@newcross-tech/ui-react@3.2.0) (2025-04-16)
+
+
+### Features
+
+* **HFAUI-322:** fullwidth select ([#234](https://github.com/newcross-tech/newcross-ui/issues/234)) ([9ad200f](https://github.com/newcross-tech/newcross-ui/commit/9ad200f36098bef5f2385aa4e357f51f76e055df))
+
+
+
+
+
 # [3.1.0](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.0.2...@newcross-tech/ui-react@3.1.0) (2025-04-15)
 
 
