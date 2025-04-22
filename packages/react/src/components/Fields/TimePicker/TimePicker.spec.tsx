@@ -8,7 +8,7 @@ describe('TimePicker', () => {
     [
       'should render options starting from "00:00" when startTime is not provided',
       {
-        baseDate: new Date('2021-01-01T00:00:00'),
+        baseDate: '2021-01-01T00:00:00',
         // No startTime provided → defaults to "00:00"
       },
       '00:00',
@@ -16,7 +16,7 @@ describe('TimePicker', () => {
     [
       'should render options starting from the given startTime',
       {
-        baseDate: new Date('2021-01-01T00:00:00'),
+        baseDate: '2021-01-01T00:00:00',
         startTime: '08:00',
       },
       '08:00',
@@ -35,19 +35,41 @@ describe('TimePicker', () => {
     });
   });
 
-  it('should disable the TimePicker when disabled prop is true', async () => {
-    // Arrange: Render TimePicker with disabled prop set.
+  it.each([
+    [
+      'should disable the TimePicker when disabled prop is true',
+      { baseDate: '2021-01-01T00:00:00', disabled: true },
+    ],
+    [
+      'should disable the TimePicker when baseDate is missing',
+      {
+        /* no baseDate prop */
+      },
+    ],
+  ])('%s', async (_, props) => {
+    render(
+      <TimePicker {...props} label="TimePicker" placeholder="Select time" />
+    );
+    const combobox = screen.getByRole('combobox', { hidden: true });
+    expect(combobox).toBeDisabled();
+  });
+
+  it('should call onChange with the selected time when an option is clicked', async () => {
+    const onChange = jest.fn();
     render(
       <TimePicker
-        baseDate={new Date('2021-01-01T00:00:00')}
-        disabled
+        baseDate="2021-01-01T00:00:00"
+        onChange={onChange}
         label="TimePicker"
         placeholder="Select time"
       />
     );
-    // Act: Retrieve the combobox (even if hidden) using getByRole.
+    // Open the dropdown by clicking the combobox.
     const combobox = screen.getByRole('combobox', { hidden: true });
-    // Assert: The combobox should be disabled.
-    expect(combobox).toBeDisabled();
+    await userEvent.click(combobox);
+    // Click the '00:00' option.
+    await userEvent.click(screen.getByText('00:00'));
+    // Assert that onChange was called once with '00:00'
+    expect(onChange).toHaveBeenCalledTimes(1);
   });
 });

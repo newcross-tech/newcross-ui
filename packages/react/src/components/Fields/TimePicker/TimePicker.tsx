@@ -1,8 +1,9 @@
 import Select from '../Select';
 import { generateTimeOptions, parseTimeInput } from './utils';
-import { TimePickerPropsStrict } from './TimePicker.types';
+import { TimeOption, TimePickerPropsStrict } from './TimePicker.types';
 import { OptionalProps } from '../../../types';
 import { format } from 'date-fns';
+import { SingleValue } from 'react-select';
 
 export type TimePickerProps = OptionalProps<
   TimePickerPropsStrict,
@@ -28,16 +29,26 @@ const normaliseTimePickerProps = (
   labelVariant: _props.labelVariant ?? 'h3',
   subtitleVariant: _props.subtitleVariant ?? 'p2',
   hasError: _props.hasError ?? false,
-  disabled: _props.disabled ?? false,
   $zIndex: _props.$zIndex ?? 2,
+  get disabled() {
+    return _props.disabled || !_props.baseDate;
+  },
 });
 
 const TimePicker = (_props: TimePickerProps) => {
-  const { baseDate, offset, step, duration, startTime, disabled, ...rest } =
-    normaliseTimePickerProps(_props);
+  const {
+    baseDate,
+    offset,
+    step,
+    duration,
+    startTime,
+    disabled,
+    value,
+    onChange,
+    ...rest
+  } = normaliseTimePickerProps(_props);
 
-  const isDisabled = disabled || !baseDate;
-  const adjustedStartDate = new Date(baseDate);
+  const adjustedStartDate = !baseDate ? new Date() : new Date(baseDate);
   const [startHours, startMinutes] = startTime.split(':').map(Number);
   adjustedStartDate.setHours(startHours, startMinutes, 0, 0);
 
@@ -48,21 +59,33 @@ const TimePicker = (_props: TimePickerProps) => {
     duration,
   });
 
-  const customFilterOption = (option: any, rawInput: string): boolean => {
+  const selectedOption = options.find((o) => o.value === value) || null;
+
+  const customFilterOption = (
+    option: TimeOption,
+    rawInput: string
+  ): boolean => {
     const normalizedInput = parseTimeInput(rawInput);
     if (normalizedInput) {
-      const optionTime = format(option.data.value, 'HH:mm');
+      const optionTime = format(new Date(option.value), 'HH:mm');
       return optionTime.includes(normalizedInput);
     }
-    return option.data.label.toLowerCase().includes(rawInput.toLowerCase());
+    return option.label.toLowerCase().includes(rawInput.toLowerCase());
+  };
+
+  const handleChange = (newValue: SingleValue<TimeOption>) => {
+    onChange?.(newValue?.value ?? '');
   };
 
   return (
-    <Select
+    <Select<TimeOption, false>
       {...rest}
-      disabled={isDisabled}
+      isMulti={false}
+      disabled={disabled}
       options={options}
       filterOption={customFilterOption}
+      value={selectedOption}
+      onChange={handleChange}
     />
   );
 };
