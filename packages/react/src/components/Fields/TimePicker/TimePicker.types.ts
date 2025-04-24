@@ -2,10 +2,7 @@ import { ReactElement } from 'react';
 import { TypographyVariant } from '../../Typography';
 import { Props } from 'react-select';
 
-export type TimeOption = {
-  value: string;
-  label: string;
-};
+export type TimeOption = { value: string; label: string };
 
 export type TimePickerPropsStrict = Omit<
   Props<TimeOption>,

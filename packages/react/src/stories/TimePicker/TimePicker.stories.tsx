@@ -70,8 +70,6 @@ export const Usage = () => {
               <TimePicker
                 value={startDate}
                 baseDate={startDate}
-                isOptionSelected={(option) => option.value === startDate}
-                formatOptionLabel={(option) => option.label}
                 label="Start Time"
                 startTime="00:00"
                 placeholder="Select a time..."
@@ -84,8 +82,6 @@ export const Usage = () => {
               <TimePicker
                 baseDate={startDate}
                 value={endDate}
-                isOptionSelected={(option) => option.value === endDate}
-                formatOptionLabel={(option) => option.label}
                 startTime={
                   startDate ? format(new Date(startDate), 'HH:mm') : undefined
                 }

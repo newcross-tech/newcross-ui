@@ -59,12 +59,9 @@ const TimePicker = (_props: TimePickerProps) => {
     duration,
   });
 
-  const selectedOption = options.find((o) => o.value === value) || null;
+  const selectedOption = options.find((o) => o.value === value);
 
-  const customFilterOption = (
-    option: TimeOption,
-    rawInput: string
-  ): boolean => {
+  const filterOption = (option: TimeOption, rawInput: string): boolean => {
     const normalizedInput = parseTimeInput(rawInput);
     if (normalizedInput) {
       const optionTime = format(new Date(option.value), 'HH:mm');
@@ -83,7 +80,7 @@ const TimePicker = (_props: TimePickerProps) => {
       isMulti={false}
       disabled={disabled}
       options={options}
-      filterOption={customFilterOption}
+      filterOption={filterOption}
       value={selectedOption}
       onChange={handleChange}
     />
