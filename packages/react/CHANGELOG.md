@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.2](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.2.1...@newcross-tech/ui-react@3.2.2) (2025-04-24)
+
+
+### Bug Fixes
+
+* **HFAUI-328:** second try ([#238](https://github.com/newcross-tech/newcross-ui/issues/238)) ([8587900](https://github.com/newcross-tech/newcross-ui/commit/8587900b24571c9ea03a11ec12d484e3ec4e3735))
+
+
+
+
+
 ## [3.2.1](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.2.0...@newcross-tech/ui-react@3.2.1) (2025-04-24)
 
 
