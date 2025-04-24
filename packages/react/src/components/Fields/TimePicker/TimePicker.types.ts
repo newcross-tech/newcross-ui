@@ -1,9 +1,16 @@
 import { ReactElement } from 'react';
 import { TypographyVariant } from '../../Typography';
 import { Props } from 'react-select';
-import { TimeOption } from './utils/generateTimeOptions';
 
-export type TimePickerPropsStrict = Props<TimeOption> & {
+export type TimeOption = {
+  value: string;
+  label: string;
+};
+
+export type TimePickerPropsStrict = Omit<
+  Props<TimeOption>,
+  'value' | 'onChange'
+> & {
   /**
    * Gives select a label
    */
@@ -55,7 +62,7 @@ export type TimePickerPropsStrict = Props<TimeOption> & {
   /**
    * The date the we use as starting point to generate the options.
    */
-  baseDate: Date;
+  baseDate?: string | null;
   /**
    * The first time to show in the options (as "HH:mm").
    */
@@ -75,7 +82,7 @@ export type TimePickerPropsStrict = Props<TimeOption> & {
   /**
    * The current selected time (as "HH:mm").
    */
-  value?: string;
+  value?: string | null;
   /**
    * The function to call when the value changes.
    */

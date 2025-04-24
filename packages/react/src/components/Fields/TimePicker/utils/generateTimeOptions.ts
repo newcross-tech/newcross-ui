@@ -1,16 +1,12 @@
 import { format, addMinutes } from 'date-fns';
 import { Options } from 'react-select';
+import { TimeOption } from '../TimePicker.types';
 
 type GenerateTimeOptionsParams = {
   baseDate: Date;
   offset: number;
   step: number;
   duration: number;
-};
-
-export type TimeOption = {
-  value: Date;
-  label: string;
 };
 
 export const generateTimeOptions = ({
@@ -36,7 +32,7 @@ export const generateTimeOptions = ({
     } else if (current.getDate() < baseDate.getDate()) {
       label += ' (Previous Day)';
     }
-    options.push({ value: new Date(current), label });
+    options.push({ value: current.toISOString(), label });
     current = addMinutes(current, step);
   }
 
