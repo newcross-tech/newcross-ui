@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.1](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.2.0...@newcross-tech/ui-react@3.2.1) (2025-04-24)
+
+
+### Bug Fixes
+
+* **HFAUI-328:** fix value on TimePicker ([#237](https://github.com/newcross-tech/newcross-ui/issues/237)) ([2d9a4ca](https://github.com/newcross-tech/newcross-ui/commit/2d9a4cad82333510e707e55e301bf98a4a97b996))
+
+
+
+
+
 # [3.2.0](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.1.0...@newcross-tech/ui-react@3.2.0) (2025-04-16)
 
 
