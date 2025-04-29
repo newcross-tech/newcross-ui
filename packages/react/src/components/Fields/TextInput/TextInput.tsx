@@ -13,7 +13,6 @@ import { Container } from '../../Container';
 import Icon from '../../Icon';
 import { HelperText } from '../HelperText';
 import { Label } from '../Label';
-import { getTextColor } from '../Fields.style';
 import { TextArea } from './TextArea';
 import * as Styled from './TextInput.style';
 import { TextInputPropsStrict } from './TextInput.types';
@@ -81,6 +80,7 @@ export const TextInput = forwardRef(
       helperText,
       errorText,
       labelVariant,
+      mode,
       subtitleVariant,
       isValid,
       onClose,
@@ -111,7 +111,7 @@ export const TextInput = forwardRef(
           <Label
             htmlFor={inputProps.id}
             variant={labelVariant}
-            color={getTextColor.primaryText(props)}
+            mode={mode}
             {...testIds.label}
             required={required}
             disabled={disabled}
@@ -124,6 +124,7 @@ export const TextInput = forwardRef(
           <Label
             variant={subtitleVariant}
             color={hasError ? 'dangerError' : 'defaultDark'}
+            mode={mode}
           >
             {subtitle}
           </Label>

@@ -41,7 +41,53 @@
       "success": { "value": "{themes.success.50}", "type": "surface" },
       "info": { "value": "{themes.info.50}", "type": "surface" },
       "warning": { "value": "{themes.warning.50}", "type": "surface" },
-      "danger": { "value": "{themes.danger.50}", "type": "surface" }
+      "danger": { "value": "{themes.danger.50}", "type": "surface" },
+      "dark-mode": {
+        "default": { "value": "{themes.neutral.700}", "type": "surface" },
+        "default-secondary": {
+          "value": "{themes.neutral.200}",
+          "type": "surface"
+        },
+        "highlight-subtle": {
+          "value": "{themes.secondary.600}",
+          "type": "surface"
+        },
+        "highlight-strong": {
+          "value": "{themes.primary.600}",
+          "type": "surface"
+        },
+        "highlight-extra-strong": {
+          "value": "{themes.primary.600}",
+          "type": "surface"
+        },
+        "page": { "value": "{themes.neutral.900}", "type": "surface" },
+        "action-default": {
+          "value": "{themes.secondary.500}",
+          "type": "surface"
+        },
+        "action-hover": {
+          "value": "{themes.secondary.200}",
+          "type": "surface"
+        },
+        "action-hover-secondary": {
+          "value": "{themes.secondary.100}",
+          "type": "surface"
+        },
+        "action-danger": { "value": "{themes.danger.200}", "type": "surface" },
+        "action-danger-hover": {
+          "value": "{themes.danger.300}",
+          "type": "surface"
+        },
+        "disabled": { "value": "{themes.neutral.800}", "type": "surface" },
+        "disabled-highlight": {
+          "value": "{themes.neutral.900}",
+          "type": "surface"
+        },
+        "success": { "value": "{themes.success.700}", "type": "surface" },
+        "info": { "value": "{themes.info.700}", "type": "surface" },
+        "warning": { "value": "{themes.warning.700}", "type": "surface" },
+        "danger": { "value": "{themes.danger.700}", "type": "surface" }
+      }
     }
   }
 }

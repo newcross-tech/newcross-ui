@@ -1,5 +1,5 @@
 import { InputHTMLAttributes } from 'react';
-import { RequiredProps, TestProp } from '../../../types';
+import { Mode, RequiredProps, TestProp } from '../../../types';
 import { TypographyVariant } from '../../Typography';
 
 type InputType =
@@ -56,10 +56,15 @@ export type TextInputPropsStrict = RequiredProps<
   /**
    * Applies the theme typography styles to the label
    */
-  labelVariant: TypographyVariant;
+  labelVariant?: TypographyVariant;
+  /**
+   * Applies the theme color styles to the label
+   */
+  mode?: Mode;
   /**
    * Adds subtitle text
    */
+
   subtitle?: string;
   /**
    * Applies the theme typography styles to the subtitle
