@@ -108,7 +108,12 @@ export type SelectProps<
   Group extends GroupBase<Option> = GroupBase<Option>
 > = OptionalProps<
   SelectPropsStrict<Option, IsMulti, Group>,
-  'labelVariant' | 'subtitleVariant' | '$zIndex' | 'disabled' | 'hasError'
+  | 'labelVariant'
+  | 'subtitleVariant'
+  | '$zIndex'
+  | 'disabled'
+  | 'hasError'
+  | 'fullWidth'
 >;
 
 const normalizeSelectProps = <
@@ -124,6 +129,8 @@ const normalizeSelectProps = <
   hasError: props.hasError ?? false,
   disabled: props.disabled ?? false,
   $zIndex: props.$zIndex ?? 2,
+  isClearable: props.isClearable ?? true,
+  fullWidth: props.fullWidth ?? true,
 });
 
 const Select = <
@@ -149,6 +156,8 @@ const Select = <
     testID,
     $zIndex,
     required,
+    isClearable,
+    fullWidth,
     ...rest
   } = props;
 
@@ -161,7 +170,7 @@ const Select = <
       }
       flexDirection="column"
       gap="xs"
-      fullWidth
+      fullWidth={fullWidth}
     >
       {label && (
         <Label
@@ -202,7 +211,7 @@ const Select = <
           isMulti={isMulti}
           options={options}
           filterOption={createFilter({ ignoreAccents: false })} // required for performance reasons!
-          isClearable
+          isClearable={isClearable}
           blurInputOnSelect
           {...rest}
         />

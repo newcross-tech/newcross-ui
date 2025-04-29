@@ -40,6 +40,8 @@ const PaginationAdapter = ({
           value: rowsPerPage,
         }}
         onChange={handleChangeRowsPerPage}
+        isClearable={false}
+        fullwidth={false}
       />
       <Pagination
         count={Math.ceil(rowCount / rowsPerPage)}
