@@ -8,6 +8,8 @@ import Container from '../../components/Container';
 import InfoTemplate from '../InfoTemplate/InfoTemplate';
 import { DESCRIPTION, DO, DONT, TITLE } from './AccordionInfo';
 import * as StoryTitle from '../StoryTitle';
+import Button from '../../components/Button';
+import { useState } from 'react';
 
 export default {
   title: 'React/Components/Accordion',
@@ -80,6 +82,7 @@ export const Overview = () => {
 };
 
 export const Variants = () => {
+  const [expanded, setExpanded] = useState(false);
   return (
     <Container flexDirection="column">
       <StoryTitle.Regular>Default Accordion</StoryTitle.Regular>
@@ -115,6 +118,37 @@ export const Variants = () => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. consequat.
         </Typography>
+      </Accordion>
+      <StoryTitle.Regular>Accordion with expandable content</StoryTitle.Regular>
+      <Container my="xs" />
+      <Accordion
+        label={'Information'}
+        icon={<FontAwesomeIcon icon={faCircleInfo} />}
+        expanded={true}
+      >
+        <Container flexDirection="column" gap="xs">
+          <Typography variant="p1" color="defaultDark">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            consequat.
+          </Typography>
+          {expanded && (
+            <Typography variant="p1" color="defaultDark">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              consequat.
+            </Typography>
+          )}
+          <Button
+            variant="secondary"
+            size="small"
+            onClick={() => {
+              setExpanded(!expanded);
+            }}
+          >
+            {expanded ? 'Show less' : 'Show more'}
+          </Button>
+        </Container>
       </Accordion>
     </Container>
   );

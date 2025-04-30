@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
-import { TestProp } from '../../../types';
+import { Mode, TestProp } from '../../../types';
+import { TypographyVariant } from '../../Typography';
 
 export type CheckboxType = 'indeterminate';
 
@@ -15,6 +16,14 @@ export type CheckboxPropsStrict = {
    * Label for the checkbox
    */
   label?: ReactNode;
+  /**
+   * Applies the theme typography styles to the label
+   */
+  labelVariant: TypographyVariant;
+  /**
+   * Applies the theme color styles to the label
+   */
+  mode?: Mode;
   /**
    * Whether the press behavior is disabled.
    */

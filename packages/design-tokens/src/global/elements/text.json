@@ -18,11 +18,38 @@
       "action-danger": { "value": "{themes.neutral.0}", "type": "text" },
       "disabled": { "value": "{themes.neutral.500}", "type": "text" },
       "success": { "value": "{themes.success.700}", "type": "text" },
-      "success-standalone": { "value": "{themes.success.600}", "type": "text" },
+      "success-standalone": { "value": "{themes.success.500}", "type": "text" },
       "info": { "value": "{themes.info.700}", "type": "text" },
       "warning": { "value": "{themes.warning.800}", "type": "text" },
       "danger": { "value": "{themes.danger.700}", "type": "text" },
-      "danger-error": { "value": "{themes.danger.500}", "type": "text" }
+      "danger-error": { "value": "{themes.danger.500}", "type": "text" },
+      "dark-mode": {
+        "default-dark": { "value": "{themes.neutral.50}", "type": "text" },
+        "default-light": { "value": "{themes.neutral.900}", "type": "text" },
+        "default-dark-secondary": {
+          "value": "{themes.neutral.50}",
+          "type": "text"
+        },
+        "action-primary-dark": {
+          "value": "{themes.primary.500}",
+          "type": "text"
+        },
+        "action-secondary-light": {
+          "value": "{themes.neutral.0}",
+          "type": "text"
+        },
+        "action-danger": { "value": "{themes.danger.900}", "type": "text" },
+        "disabled": { "value": "{themes.neutral.700}", "type": "text" },
+        "success": { "value": "{themes.success.300}", "type": "text" },
+        "success-standalone": {
+          "value": "{themes.success.300}",
+          "type": "text"
+        },
+        "info": { "value": "{themes.info.300}", "type": "text" },
+        "warning": { "value": "{themes.warning.300}", "type": "text" },
+        "danger": { "value": "{themes.danger.300}", "type": "text" },
+        "danger-error": { "value": "{themes.danger.200}", "type": "text" }
+      }
     }
   }
 }

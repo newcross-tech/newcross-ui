@@ -16,7 +16,7 @@ import { destroyEvent } from '../../../utils';
 
 export type PhoneNumberInputProps = OptionalProps<
   PhoneNumberInputPropsStrict,
-  'disabled' | 'isError' | 'isValid' | 'required'
+  'disabled' | 'isError' | 'isValid' | 'required' | 'labelVariant'
 >;
 
 const normalizePhoneNumberInputProps = (
@@ -24,6 +24,7 @@ const normalizePhoneNumberInputProps = (
   setIsFocused: (value: boolean) => void
 ): PhoneNumberInputPropsStrict => ({
   ...props,
+  labelVariant: props.labelVariant ?? 'h3',
   disabled: props.disabled ?? false,
   isError: props.isError ?? false,
   isValid: props.isValid ?? false,
@@ -51,6 +52,8 @@ const PhoneNumberInput = (_props: PhoneNumberInputProps) => {
     helperText,
     disabled,
     required,
+    labelVariant,
+    mode,
     testID,
     ...phoneInputProps
   } = normalizePhoneNumberInputProps(_props, setIsFocused);
@@ -72,7 +75,8 @@ const PhoneNumberInput = (_props: PhoneNumberInputProps) => {
           required={required}
           disabled={disabled}
           testID={phoneInputId}
-          variant={'h3'}
+          variant={labelVariant}
+          mode={mode}
         >
           {label}
         </Label>

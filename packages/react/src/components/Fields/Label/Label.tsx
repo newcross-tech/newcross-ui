@@ -7,7 +7,7 @@ import Container from '../../Container';
 
 export type LabelProps = OptionalProps<
   LabelPropsStrict,
-  'required' | 'disabled' | 'hasError' | 'variant' | 'color'
+  'required' | 'disabled' | 'hasError' | 'variant' | 'color' | 'mode'
 >;
 
 const normalizeLabelProps = (_props: LabelProps): LabelPropsStrict => ({
@@ -16,15 +16,7 @@ const normalizeLabelProps = (_props: LabelProps): LabelPropsStrict => ({
   disabled: _props.disabled ?? false,
   hasError: _props.hasError ?? false,
   variant: _props.variant ?? 'h3',
-  get color() {
-    return (
-      _props.color ??
-      getTextColor.primaryText({
-        disabled: this.disabled,
-        hasError: this.hasError,
-      })
-    );
-  },
+  mode: _props.mode ?? 'light',
 });
 
 export const Label = (_props: LabelProps) => {
@@ -34,8 +26,9 @@ export const Label = (_props: LabelProps) => {
     children,
     required,
     disabled,
-    hasError,
     variant,
+    hasError,
+    mode,
     color,
     testID: _legacyTestId,
     'data-testid': _testId,
@@ -53,7 +46,11 @@ export const Label = (_props: LabelProps) => {
         data-testid={testIds.label}
         {...rest}
       >
-        <Typography variant={variant} color={color}>
+        <Typography
+          variant={variant}
+          color={color ?? getTextColor.primaryText(props)}
+          mode={mode}
+        >
           {children}
         </Typography>
       </Styled.Label>

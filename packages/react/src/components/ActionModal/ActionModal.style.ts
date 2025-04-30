@@ -31,6 +31,9 @@ export const SheetWrapper = styled(Container)<
       zIndex: $zIndex,
     },
     '.action-modal-header, .action-modal-content, .action-modal-footer': {
+      // NOTE: This z-index is important for cases when we have a Select component inside the modal
+      // when the Select is opened, it needs to be above the modal content
+      zIndex: $zIndex,
       backgroundColor: 'transparent',
       position: 'relative',
       border: 'none',
