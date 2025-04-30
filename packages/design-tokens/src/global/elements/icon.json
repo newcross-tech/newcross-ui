@@ -20,7 +20,32 @@
       "info": { "value": "{themes.info.700}", "type": "icon" },
       "warning": { "value": "{themes.warning.800}", "type": "icon" },
       "danger": { "value": "{themes.danger.700}", "type": "icon" },
-      "danger-error": { "value": "{themes.danger.500}", "type": "icon" }
+      "danger-error": { "value": "{themes.danger.500}", "type": "icon" },
+      "dark-mode": {
+        "default-dark": { "value": "{themes.primary.500}", "type": "icon" },
+        "default-light": { "value": "{themes.neutral.0}", "type": "icon" },
+        "default-dark-secondary": {
+          "value": "{themes.neutral.700}",
+          "type": "icon"
+        },
+        "default-variant-2": {
+          "value": "{themes.secondary.500}",
+          "type": "icon"
+        },
+        "action-default": { "value": "{themes.primary.500}", "type": "icon" },
+        "action-variant": { "value": "{themes.neutral.0}", "type": "icon" },
+        "action-danger": { "value": "{themes.danger.900}", "type": "icon" },
+        "disabled": { "value": "{themes.neutral.700}", "type": "icon" },
+        "success": { "value": "{themes.success.200}", "type": "icon" },
+        "success-standalone": {
+          "value": "{themes.success.200}",
+          "type": "icon"
+        },
+        "info": { "value": "{themes.info.200}", "type": "icon" },
+        "warning": { "value": "{themes.warning.200}", "type": "icon" },
+        "danger": { "value": "{themes.danger.200}", "type": "icon" },
+        "danger-error": { "value": "{themes.danger.200}", "type": "icon" }
+      }
     }
   }
 }

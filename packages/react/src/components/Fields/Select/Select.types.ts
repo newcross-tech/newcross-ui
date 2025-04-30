@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { TypographyVariant } from '../../Typography';
-import { TestProp } from '../../../types';
+import { Mode, TestProp } from '../../../types';
 import { GroupBase, Props } from 'react-select';
 
 export type AnySelectPropsStrict = SelectPropsStrict<
@@ -41,7 +41,11 @@ export type SelectPropsStrict<
   /**
    * Applies the theme typography styles to the label
    */
-  labelVariant: TypographyVariant;
+  labelVariant?: TypographyVariant;
+  /**
+   * Applies the theme color styles to the label
+   */
+  mode?: Mode;
   /**
    * Adds subtitle text
    */

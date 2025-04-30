@@ -151,6 +151,7 @@ const Select = <
     hasError,
     isMulti,
     labelVariant,
+    mode,
     subtitle,
     subtitleVariant,
     testID,
@@ -176,6 +177,7 @@ const Select = <
         <Label
           htmlFor={`${baseTestId}-label`}
           variant={labelVariant}
+          mode={mode}
           testID={`${baseTestId}-label`}
           disabled={disabled}
           required={required}

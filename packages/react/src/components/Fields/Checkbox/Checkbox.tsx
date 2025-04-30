@@ -15,12 +15,14 @@ export type CheckboxProps = {
   ): void;
 } & OptionalProps<
   Omit<CheckboxPropsStrict, 'onClick' | 'onChange'>,
-  'allowTab' | 'disabled' | 'checked' | 'hasError'
+  'allowTab' | 'disabled' | 'checked' | 'hasError' | 'labelVariant' | 'mode'
 >;
 
 const normalizeCheckboxProps = (props: CheckboxProps): CheckboxPropsStrict => {
   const normalized: CheckboxPropsStrict = {
     ...props,
+    mode: props.mode ?? 'light',
+    labelVariant: props.labelVariant ?? 'p1',
     allowTab: props.allowTab ?? true,
     disabled: props.disabled ?? false,
     checked: props.checked ?? false,
@@ -67,8 +69,9 @@ const Checkbox = (_props: CheckboxProps) => {
       {props.label && (
         <Typography
           testID="checkbox-label"
-          variant="p1"
+          variant={props.labelVariant}
           color={getTextColor.primaryText(props)}
+          mode={props.mode}
           onKeyDown={(event) => onSpacePressTrigger(event, props.onChange)}
           tabIndex={!props.disabled && props.allowTab ? 0 : -1}
         >

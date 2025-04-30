@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { animated, useSpring } from '@react-spring/web';
 import { faChevronDown } from '@fortawesome/pro-light-svg-icons/faChevronDown';
 import { useResize } from '../../hooks/useResize';
@@ -46,6 +46,11 @@ const Accordion = (_props: AccordionProps) => {
     containerSize: ref?.current?.scrollHeight ?? 0,
     onResize: () => setContentMaxHeight(ref?.current?.scrollHeight ?? 0),
   });
+
+  // NOTE: This is needed if the content of the accordion changes dynamically
+  useEffect(() => {
+    setContentMaxHeight(ref?.current?.scrollHeight ?? 0);
+  }, [children]);
 
   const springProps = useSpring(
     Styled.getAnimatedStyles({

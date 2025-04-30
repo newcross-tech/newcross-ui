@@ -12,7 +12,7 @@ import { web } from '@newcross-tech/ui-design-tokens';
 import styled, { css } from 'styled-components';
 import Badge, { BadgeSizes } from '../../components/Badge';
 import Container from '../../components/Container';
-import { BadgeProps } from '../..';
+import { Avatar, BadgeProps } from '../..';
 
 const { SpacingBase24, SpacingBase48 } = web.healthforce;
 
@@ -63,6 +63,9 @@ export const VariantsWithIcons = () => {
       </Badge>
       <Badge size={'large'} badgeContent={'C'}>
         <Icon icon={faTrainSubway} $size={SpacingBase48} />
+      </Badge>
+      <Badge size={'large'} badgeContent={faHeart}>
+        <Avatar size={64} clickable />
       </Badge>
     </Container>
   );

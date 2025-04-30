@@ -1,10 +1,11 @@
 import { ReactElement, ReactNode, useId } from 'react';
-import { TestProp } from '../../../types';
+import { Mode, TestProp } from '../../../types';
 import { onSpacePressTrigger } from '../../../utils';
 import * as Styled from './Radio.style';
 import { RadioValue, RadioVariant } from './Radio.types';
 import Container from '../../Container';
 import Label from '../../Fields/Label';
+import { TypographyVariant } from '../../Typography';
 
 export type RadioProps<T extends RadioValue> = {
   /**
@@ -16,9 +17,18 @@ export type RadioProps<T extends RadioValue> = {
    */
   label: ReactNode;
   /**
+   * Applies the theme typography styles to the label
+   */
+  labelVariant?: TypographyVariant;
+  /**
+   * Applies the theme color styles to the label
+   */
+  mode?: Mode;
+  /**
    * The currently selected value within the group or an array of
    * selected values
    */
+
   value: T;
   /**
    * Called when a single tap gesture is detected.
@@ -48,6 +58,8 @@ function Radio<T extends RadioValue>({
   selected = false,
   disabled = false,
   label,
+  labelVariant = 'paragraph1',
+  mode,
   onChange,
   value,
   testID = '',
@@ -87,7 +99,8 @@ function Radio<T extends RadioValue>({
         />
       </Container>
       <Label
-        variant={'paragraph1'}
+        variant={labelVariant}
+        mode={mode}
         testID={`${baseTestId}-label`}
         htmlFor={id}
         hasError={hasError}

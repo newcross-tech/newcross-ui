@@ -1,6 +1,7 @@
 import { PhoneInputProps } from 'react-international-phone';
 import { InputHTMLAttributes } from 'react';
-import { TestProp } from '../../../types';
+import { Mode, TestProp } from '../../../types';
+import { TypographyVariant } from '../../Typography';
 
 export type PhoneNumberInputPropsStrict = {
   /**
@@ -8,8 +9,17 @@ export type PhoneNumberInputPropsStrict = {
    */
   label?: string;
   /**
+   * Applies the theme typography styles to the label
+   */
+  labelVariant?: TypographyVariant;
+  /**
+   * Applies the theme color styles to the label
+   */
+  mode?: Mode;
+  /**
    * Gives phone number input an error state
    */
+
   isError: boolean;
   /**
    * Shows check mark when validation is met
