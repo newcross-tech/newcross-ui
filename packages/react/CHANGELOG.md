@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.2.3...@newcross-tech/ui-react@3.3.0) (2025-04-30)
+
+
+### Features
+
+* **HFAUI-341:** make isClearable optional for select ([#239](https://github.com/newcross-tech/newcross-ui/issues/239)) ([6b29961](https://github.com/newcross-tech/newcross-ui/commit/6b29961d0994c198578dd16d10f80a542b2f7fd3))
+
+
+
+
+
 ## [3.2.3](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.2.2...@newcross-tech/ui-react@3.2.3) (2025-04-30)
 
 **Note:** Version bump only for package @newcross-tech/ui-react
