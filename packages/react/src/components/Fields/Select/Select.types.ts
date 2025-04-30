@@ -62,4 +62,8 @@ export type SelectPropsStrict<
    * Indicate whether the label is indicating that the input is required
    */
   required?: boolean;
+  /**
+   * Set the select to be full width
+   */
+  fullWidth: boolean;
 } & TestProp;
