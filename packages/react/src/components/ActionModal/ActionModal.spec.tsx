@@ -202,4 +202,18 @@ describe('ActionModal', () => {
     // Assert
     expect(ui.dragBar.get()).toBeVisible();
   });
+  it('should not render the icon when `shouldHideIcon` is true', () => {
+    // Arrange
+    jest
+      .spyOn(useIsBottomSheetBreakpointHook, 'useIsBottomSheetBreakpoint')
+      .mockReturnValue(true);
+    // Act
+    renderActionModal({
+      ...defaultProps,
+      shouldHideIcon: true,
+    });
+
+    // Assert
+    expect(ui.exclamationIcon.query()).not.toBeInTheDocument();
+  });
 });

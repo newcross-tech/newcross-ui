@@ -52,6 +52,7 @@ const ActionModal = (_props: ActionModalProps) => {
     $hasPadding,
     $hasGreyBackground,
     canCloseOnActionOnly,
+    shouldHideIcon = false,
     ...rest
   } = normalizeActionModalProps(_props);
 
@@ -96,7 +97,7 @@ const ActionModal = (_props: ActionModalProps) => {
                 alignItems="center"
                 gap="sm"
               >
-                {isBottomSheet && (
+                {isBottomSheet && !shouldHideIcon && (
                   <Icon
                     variant="h2"
                     icon={faExclamationCircle}

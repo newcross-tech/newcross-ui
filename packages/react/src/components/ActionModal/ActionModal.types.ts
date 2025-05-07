@@ -71,4 +71,9 @@ export type ActionModalPropsStrict = {
    * Default is false.
    */
   canCloseOnActionOnly?: boolean;
+  /**
+   * Prop to control if the icon should be shown in the header.
+   * Default is false.
+   */
+  shouldHideIcon?: boolean;
 };
