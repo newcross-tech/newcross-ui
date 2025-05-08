@@ -1,6 +1,6 @@
 {
   "name": "@newcross-tech/ui-react",
-  "version": "3.3.1",
+  "version": "3.3.2",
   "description": "Components for react apps",
   "author": "itdev@newcrosshealthcare.com",
   "license": "MIT",
@@ -39,7 +39,7 @@
     "styled-components": ">=5.0.0"
   },
   "dependencies": {
-    "@newcross-tech/ui-design-tokens": "^1.49.2",
+    "@newcross-tech/ui-design-tokens": "^1.49.3",
     "@react-spring/web": "^9.5.5",
     "@use-gesture/react": "^10",
     "react-data-table-component": "^7.6.2",
