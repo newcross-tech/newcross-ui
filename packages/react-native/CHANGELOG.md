@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.54.5](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react-native@1.54.4...@newcross-tech/ui-react-native@1.54.5) (2025-05-08)
+
+
+### Bug Fixes
+
+* broken version ([9c486b7](https://github.com/newcross-tech/newcross-ui/commit/9c486b7062884ad98ae4a401fd5d4bda4b0fc541))
+
+
+
+
+
 ## [1.54.4](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react-native@1.54.3...@newcross-tech/ui-react-native@1.54.4) (2025-05-08)
 
 
