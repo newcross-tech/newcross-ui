@@ -1,0 +1,34 @@
+name: Setup Node.js and npm modules
+description: Installs node and npm dependencies, and caches them for future runs.
+
+inputs:
+  github_packages_token:
+    description: 'The token to use for github packages authentication'
+    required: true
+  fontawesome_npm_token:
+    description: 'The token to use for fontawesome npm packages'
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        persist-credentials: false
+
+    - name: Install Node.js
+      uses: actions/setup-node@v4
+      env:
+        GITHUB_TOKEN: ${{ inputs.github_packages_token }}
+        FONTAWESOME_NPM_TOKEN: ${{ inputs.fontawesome_npm_token }}
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'yarn'
+
+    - name: Install dependencies
+      env:
+        GITHUB_TOKEN: ${{ inputs.github_packages_token }}
+        FONTAWESOME_NPM_TOKEN: ${{ inputs.fontawesome_npm_token }}
+      shell: sh
+      run: yarn --frozen-lockfile
