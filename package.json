@@ -97,7 +97,7 @@
     "lint:fix": "_() { eslint --fix ${@:-'**/*.{ts,tsx,json}'}; }; _",
     "format:check": "prettier --check '**/*.{ts,tsx,json}'",
     "format": "_() { prettier --write ${@:-'**/*.{ts,tsx,json}'}; }; _",
-    "prepare": "husky install",
+    "prepare": "husky install || true",
     "storybook": "start-storybook -p 6006",
     "build": "lerna run build",
     "build:watch": "lerna run build:watch --parallel",
