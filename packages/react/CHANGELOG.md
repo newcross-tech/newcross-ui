@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.3.1...@newcross-tech/ui-react@3.4.0) (2025-05-08)
+
+
+### Features
+
+* **HFAUI-355:** allow any radio group children ([#247](https://github.com/newcross-tech/newcross-ui/issues/247)) ([97acadd](https://github.com/newcross-tech/newcross-ui/commit/97acadd3d0f07ffa24abee197fefdec7c8fa9799))
+
+
+
+
+
 ## [3.3.1](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.3.0...@newcross-tech/ui-react@3.3.1) (2025-05-07)
 
 **Note:** Version bump only for package @newcross-tech/ui-react
