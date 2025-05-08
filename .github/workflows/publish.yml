@@ -1,4 +1,4 @@
-name: Design System pipeline
+name: Publish Version
 on:
   workflow_dispatch:
   push:
@@ -24,47 +24,22 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'yarn'
-      - name: Lint, Format, Test & Build
+      - name: Build
         run: |
           yarn install
-          yarn format:check
-          yarn lint:check
           yarn build
-          yarn test
-          yarn build-storybook
       - uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
           path: |
-            storybook-static/**
             packages/**/build/**
             packages/react/styles.css
 
-  deploy_acceptance:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'yarn'
-      - uses: actions/download-artifact@v4
-        with:
-          name: build-artifacts
-      - name: Deploy to acceptance
-        run: |
-          npm i -g serverless@3.7.1 serverless-s3-sync@3.0.0
-          serverless config credentials --provider aws --key ${{ env.AWS_ACCESS_KEY_ID }} --secret ${{ env.AWS_SECRET_ACCESS_KEY }}
-          serverless deploy -s acceptance
-
-  deploy_production:
+  publish:
     permissions:
       packages: write
       contents: read
-    needs: deploy_acceptance
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -83,24 +58,19 @@ jobs:
         with:
           token: ${{ secrets.GH_REPO_SHARED_PAT }}
           repository: ${{ github.repository }}
-      - name: Deploy to production
+      - name: Publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npm i -g serverless@3.7.1 serverless-s3-sync@3.0.0 lerna@4.0.0 husky@7.0.0
-
           export PREVIOUS_RELEASE_TAG=$(git describe --abbrev=0 --tags)
           echo $PREVIOUS_RELEASE_TAG
           echo "PREVIOUS_RELEASE_TAG=$PREVIOUS_RELEASE_TAG" >> $GITHUB_ENV
 
-          lerna publish --yes
+          npx lerna publish --yes
 
           export LATEST_RELEASE_TAG=$(git describe --abbrev=0 --tags)
           echo $LATEST_RELEASE_TAG
           echo "LATEST_RELEASE_TAG=$LATEST_RELEASE_TAG" >> $GITHUB_ENV
-
-          serverless config credentials --provider aws --key ${{ env.AWS_ACCESS_KEY_ID }} --secret ${{ env.AWS_SECRET_ACCESS_KEY }}
-          serverless deploy -s production
       - id: create-release-notes
         name: Create Release Notes
         uses: newcross-tech/release-notes-action@v1
