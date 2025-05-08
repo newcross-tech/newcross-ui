@@ -1,0 +1,59 @@
+name: Publish Version
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  FONTAWESOME_NPM_TOKEN: ${{ secrets.FONTAWESOME_NPM_TOKEN }}
+
+jobs:
+  main:
+    permissions:
+      packages: write
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/deps-setup
+        with:
+          github_packages_token: ${{ secrets.GH_PACKAGES_SHARED_PAT }}
+          fontawesome_npm_token: ${{ secrets.FONTAWESOME_NPM_TOKEN }}
+      - name: Build
+        run: yarn build
+      - name: Setup Git
+        uses: newcross-tech/git-auth-config-action@v1-5
+        with:
+          token: ${{ secrets.GH_REPO_SHARED_PAT }}
+          repository: ${{ github.repository }}
+      - name: Publish
+        run: |
+          export PREVIOUS_RELEASE_TAG=$(git describe --abbrev=0 --tags)
+          echo $PREVIOUS_RELEASE_TAG
+          echo "PREVIOUS_RELEASE_TAG=$PREVIOUS_RELEASE_TAG" >> $GITHUB_ENV
+
+          npx lerna publish --yes
+
+          export LATEST_RELEASE_TAG=$(git describe --abbrev=0 --tags)
+          echo $LATEST_RELEASE_TAG
+          echo "LATEST_RELEASE_TAG=$LATEST_RELEASE_TAG" >> $GITHUB_ENV
+      - uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            packages/**/build/**
+            packages/react/styles.css
+      - id: create-release-notes
+        name: Create Release Notes
+        uses: newcross-tech/release-notes-action@v1
+        with:
+          service-name: ${{ github.event.repository.name }}
+          source-tag: ${{ env.PREVIOUS_RELEASE_TAG }}
+          target-tag: ${{ env.LATEST_RELEASE_TAG }}
+          git-pat: ${{ secrets.GH_REPO_SHARED_PAT }}
+          jira-user: ${{ vars.RELEASE_NOTES_JIRA_USER }}
+          jira-pat: ${{ secrets.RELEASE_NOTES_JIRA_PAT }}
