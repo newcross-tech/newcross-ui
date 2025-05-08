@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.49.4](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-design-tokens@1.49.3...@newcross-tech/ui-design-tokens@1.49.4) (2025-05-08)
+
+
+### Bug Fixes
+
+* broken version ([06ac5ca](https://github.com/newcross-tech/newcross-ui/commit/06ac5ca3bd8c7d31d8f76e412649ddf1b568f6d1))
+
+
+
+
+
 ## 1.49.3 (2025-05-08)
 
 **Note:** Version bump only for package @newcross-tech/ui-design-tokens

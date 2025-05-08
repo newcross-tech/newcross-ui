@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.1](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.4.0...@newcross-tech/ui-react@3.4.1) (2025-05-08)
+
+
+### Bug Fixes
+
+* broken version ([06ac5ca](https://github.com/newcross-tech/newcross-ui/commit/06ac5ca3bd8c7d31d8f76e412649ddf1b568f6d1))
+
+
+
+
+
 # [3.4.0](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.3.2...@newcross-tech/ui-react@3.4.0) (2025-05-08)
 
 
