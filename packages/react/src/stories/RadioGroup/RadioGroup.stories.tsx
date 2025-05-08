@@ -5,6 +5,7 @@ import RadioGroup, {
 import Container from '../../components/Container';
 import * as StoryTitle from '../StoryTitle';
 import Radio, { RadioValue } from '../../components/Fields/Radio';
+import { Typography } from '../../index';
 
 export default {
   title: 'React/Components/RadioGroup',
@@ -59,6 +60,24 @@ export const Variants = () => {
         <Radio value="13" label="A" />
         <Radio value="14" label="B" />
         <Radio value="15" label="C" />
+      </RadioGroup>
+
+      <Container m="SpacingBase4" />
+      <StoryTitle.Regular>
+        Radio Group with Text Between Options
+      </StoryTitle.Regular>
+      <RadioGroup direction="column" defaultSelected="14" variant="secondary">
+        <Radio value="13" label="A" />
+        <Typography variant="p3Strong">
+          Please note, the next options may require additional steps later
+        </Typography>
+        <Container my="sm" />
+        <Container pl="sm" flexDirection="column">
+          <Container flexDirection="column">
+            <Radio value="14" label="B" />
+            <Radio value="15" label="C" />
+          </Container>
+        </Container>
       </RadioGroup>
     </Container>
   );

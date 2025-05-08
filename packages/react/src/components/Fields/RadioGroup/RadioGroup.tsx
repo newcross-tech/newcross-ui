@@ -1,6 +1,6 @@
 import { Children, cloneElement, ReactElement } from 'react';
 import { TestProp } from '../../../types';
-import { RadioProps } from '../Radio';
+import Radio, { RadioProps } from '../Radio';
 import { RadioValue, RadioVariant } from '../Radio/Radio.types';
 import { Container, RadioItem } from './RadioGroup.style';
 import { useUpstreamState } from '../../../hooks/useUpstreamState';
@@ -13,7 +13,7 @@ export type RadioGroupProps<T extends RadioValue> = {
   /**
    * The content of the component,
    */
-  children: Array<ReactElement<RadioProps<T>>>;
+  children: Array<ReactElement>;
   /**
    * Callback fired when the state is changed.
    */
@@ -48,6 +48,35 @@ function RadioGroup<T extends RadioValue>({
     onChange?.(value);
   };
 
+  function renderRadioGroupConsumer(child: ReactElement<RadioProps<T>>) {
+    return (
+      <RadioItem direction={direction} variant={variant}>
+        {cloneElement(child, {
+          key: child.props.value,
+          onChange: () =>
+            child.props.value && handleOnChange(child.props.value),
+          selected: child.props.value === selectedOption,
+          disabled: disabled || child.props.disabled,
+          variant,
+        })}
+      </RadioItem>
+    );
+  }
+
+  function renderRadioGroupConsumers(child: ReactElement): ReactElement {
+    if (child.type === Radio) {
+      return renderRadioGroupConsumer(child);
+    }
+
+    if (child?.props?.children) {
+      return cloneElement(child, {
+        children: Children.map(child.props.children, renderRadioGroupConsumers),
+      });
+    }
+
+    return child;
+  }
+
   return (
     <Container
       disabled={disabled}
@@ -55,21 +84,7 @@ function RadioGroup<T extends RadioValue>({
       data-testid="radio-group"
       {...rest}
     >
-      {Children.map(children, (child) => {
-        const { value, disabled: disabledItem } = child.props;
-
-        return (
-          <RadioItem direction={direction} variant={variant}>
-            {cloneElement(child, {
-              key: value,
-              onChange: () => value && handleOnChange(value),
-              selected: value === selectedOption,
-              disabled: disabled || disabledItem,
-              variant,
-            })}
-          </RadioItem>
-        );
-      })}
+      {Children.map(children, renderRadioGroupConsumers)}
     </Container>
   );
 }
