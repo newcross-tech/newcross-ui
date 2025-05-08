@@ -1,0 +1,55 @@
+image: node:16
+
+clone:
+  depth: full
+
+pipelines:
+  pull-requests:
+    '**':
+      - step:
+          name: Lint, Format & Test
+          caches:
+            - node
+          script:
+            - yarn install
+            - yarn format:check
+            - yarn lint:check
+            - yarn build
+            - git checkout main
+            - git checkout $BITBUCKET_BRANCH
+            - npm run test --branch=main
+
+  branches:
+    main:
+      - step:
+          name: Lint, Format, Test & Build
+          caches:
+            - node
+          script:
+            - yarn install
+            - yarn format:check
+            - yarn lint:check
+            - yarn build
+            - yarn test
+            - yarn build-storybook
+          artifacts:
+            - storybook-static/**
+            - packages/**/build/**
+
+      - step:
+          name: Deploy to acceptance
+          deployment: acceptance
+          script:
+            - npm i -g serverless@3.7.1 serverless-s3-sync@3.0.0
+            - serverless config credentials --provider aws --key ${AWS_ACCESS_KEY_ID} --secret ${AWS_SECRET_ACCESS_KEY}
+            - serverless deploy -s acceptance
+
+      - step:
+          name: Deploy to production
+          deployment: production
+          script:
+            - git remote set-url origin ${BITBUCKET_GIT_SSH_ORIGIN}
+            - npm i -g serverless@3.7.1 serverless-s3-sync@3.0.0 lerna@4.0.0
+            - serverless config credentials --provider aws --key ${AWS_ACCESS_KEY_ID} --secret ${AWS_SECRET_ACCESS_KEY}
+            - serverless deploy -s production
+            - lerna publish --yes

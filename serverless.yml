@@ -1,0 +1,115 @@
+service: design-system
+
+plugins:
+  - serverless-s3-sync
+
+custom:
+  env: ${file(environment.js):${opt:stage, self:provider.stage, "acceptance"}}
+  s3Sync:
+    - bucketName: ${self:custom.env.bucketName}
+      localDir: storybook-static
+
+provider:
+  name: aws
+  region: ${self:custom.env.region}
+
+resources:
+  Resources:
+    DesignSystemBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.env.bucketName}
+        WebsiteConfiguration:
+          IndexDocument: index.html
+          ErrorDocument: index.html
+    DesignSystemBucketPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        Bucket: !Ref DesignSystemBucket
+        PolicyDocument:
+          Statement:
+            - Effect: Allow
+              Action:
+                - s3:GetObject
+              Resource:
+                Fn::Join:
+                  - /
+                  - - Fn::GetAtt:
+                        - DesignSystemBucket
+                        - Arn
+                    - '*'
+              Principal:
+                CanonicalUser:
+                  Fn::GetAtt:
+                    - DesignSystemOriginAccessIdentity
+                    - S3CanonicalUserId
+    DesignSystemOriginAccessIdentity:
+      Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+      Properties:
+        CloudFrontOriginAccessIdentityConfig:
+          Comment: Origin Access Identity to Access Design System Bucket
+    DesignSystemCloudFront:
+      Type: AWS::CloudFront::Distribution
+      DependsOn:
+        - DesignSystemBucket
+      Properties:
+        DistributionConfig:
+          Origins:
+            - DomainName:
+                Fn::GetAtt:
+                  - DesignSystemBucket
+                  - RegionalDomainName
+              Id: S3Origin
+              S3OriginConfig:
+                OriginAccessIdentity:
+                  Fn::Join:
+                    - /
+                    - - origin-access-identity
+                      - cloudfront
+                      - !Ref DesignSystemOriginAccessIdentity
+          CustomErrorResponses:
+            - ErrorCachingMinTTL: 0
+              ErrorCode: 403
+              ResponseCode: 200
+              ResponsePagePath: /index.html
+          DefaultCacheBehavior:
+            AllowedMethods:
+              - GET
+              - HEAD
+            Compress: true
+            ForwardedValues:
+              QueryString: true
+              Headers:
+                - 'Origin'
+                - 'Access-Control-Request-Method'
+                - 'Access-Control-Request-Headers'
+              Cookies:
+                Forward: none
+            TargetOriginId: S3Origin
+            ViewerProtocolPolicy: redirect-to-https
+            MinTTL: 0
+            MaxTTL: 0
+            DefaultTTL: 0
+          Comment: Design system website for ${opt:stage, self:provider.stage, "acceptance"}
+          HttpVersion: http2
+          Enabled: true
+          PriceClass: PriceClass_100
+          ViewerCertificate:
+            AcmCertificateArn: ${self:custom.env.certificateArn}
+            MinimumProtocolVersion: TLSv1.1_2016
+            SslSupportMethod: sni-only
+          Aliases:
+            - ${self:custom.env.bucketName}
+    DesignSystemDNSName:
+      Type: AWS::Route53::RecordSetGroup
+      Properties:
+        HostedZoneId: ${self:custom.env.domainHostedZoneId} # route53 domain hostedzone id
+        RecordSets:
+          - Name: ${self:custom.env.recordSet}
+            Type: A
+            AliasTarget:
+              HostedZoneId: ${self:custom.env.globalHostedZoneId} # global cloudfront hostedzone id
+              DNSName:
+                Fn::GetAtt:
+                  - DesignSystemCloudFront
+                  - DomainName

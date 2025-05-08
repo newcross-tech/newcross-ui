@@ -4,19 +4,25 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
+env:
+  GITHUB_TOKEN: ${{ secrets.GH_PACKAGES_SHARED_PAT }}
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  FONTAWESOME_NPM_TOKEN: ${{ secrets.FONTAWESOME_NPM_TOKEN }}
+
 jobs:
   pull_request:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - uses: ./.github/actions/deps-setup
+      - uses: actions/setup-node@v3
         with:
-          github_packages_token: ${{ secrets.GH_PACKAGES_SHARED_PAT }}
-          fontawesome_npm_token: ${{ secrets.FONTAWESOME_NPM_TOKEN }}
+          node-version: '16'
+          cache: 'yarn'
       - name: Lint, Format & Test
         run: |
+          yarn install --frozen-lockfile
           yarn format:check
           yarn lint:check
           yarn build
