@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.4.0...@newcross-tech/ui-react@3.5.0) (2025-05-12)
+
+
+### Features
+
+* react - disable minification ([#248](https://github.com/newcross-tech/newcross-ui/issues/248)) ([5a6b0e6](https://github.com/newcross-tech/newcross-ui/commit/5a6b0e6e95045f2c563377656e32538302b7f9c8))
+
+
+
+
+
 # [3.4.0](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.3.1...@newcross-tech/ui-react@3.4.0) (2025-05-08)
 
 
