@@ -269,7 +269,7 @@ function textInputTestIds({
   if (testId) {
     const baseTestId = [testId, 'text-input'].filter(Boolean).join('-');
     return {
-      root: { 'data-tesid': testId },
+      root: { 'data-testid': testId },
       wrapper: { 'data-testid': baseTestId },
       label: { 'data-testid': `${baseTestId}-label` },
       search: { 'data-testid': `${baseTestId}-search` },
