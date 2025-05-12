@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.1](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.5.0...@newcross-tech/ui-react@3.5.1) (2025-05-12)
+
+
+### Bug Fixes
+
+* **HFAUI-0:** text input testid typo ([b57b2fa](https://github.com/newcross-tech/newcross-ui/commit/b57b2fa8b7cdca59920b8425cd6e8a0186749c70))
+
+
+
+
+
 # [3.5.0](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.4.0...@newcross-tech/ui-react@3.5.0) (2025-05-12)
 
 
