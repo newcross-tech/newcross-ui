@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.2](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.5.1...@newcross-tech/ui-react@3.5.2) (2025-05-15)
+
+
+### Bug Fixes
+
+* **HFAUI-375:** fix page header title color ([#249](https://github.com/newcross-tech/newcross-ui/issues/249)) ([40c817a](https://github.com/newcross-tech/newcross-ui/commit/40c817abc6028c507f4cc4def323dc4bfc355f35))
+
+
+
+
+
 ## [3.5.1](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.5.0...@newcross-tech/ui-react@3.5.1) (2025-05-12)
 
 
