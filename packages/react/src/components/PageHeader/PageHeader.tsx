@@ -25,7 +25,7 @@ const PageHeader = ({
               icon={faChevronLeft}
             />
           )}
-          <Typography variant="h1" testID="page-title">
+          <Typography variant="h1" color="defaultDark">
             {title}
           </Typography>
         </Container>
