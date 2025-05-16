@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.3](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.5.2...@newcross-tech/ui-react@3.5.3) (2025-05-16)
+
+
+### Bug Fixes
+
+* **HFAUI-342:** default it not to scroll into view ([#250](https://github.com/newcross-tech/newcross-ui/issues/250)) ([6201b18](https://github.com/newcross-tech/newcross-ui/commit/6201b185ef9caf94d064497086f07cf9d1648334))
+
+
+
+
+
 ## [3.5.2](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.5.1...@newcross-tech/ui-react@3.5.2) (2025-05-15)
 
 
