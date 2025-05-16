@@ -131,6 +131,7 @@ const normalizeSelectProps = <
   $zIndex: props.$zIndex ?? 2,
   isClearable: props.isClearable ?? true,
   fullWidth: props.fullWidth ?? true,
+  menuShouldScrollIntoView: props.menuShouldScrollIntoView ?? false,
 });
 
 const Select = <
@@ -159,6 +160,7 @@ const Select = <
     required,
     isClearable,
     fullWidth,
+    menuShouldScrollIntoView,
     ...rest
   } = props;
 
@@ -215,6 +217,7 @@ const Select = <
           filterOption={createFilter({ ignoreAccents: false })} // required for performance reasons!
           isClearable={isClearable}
           blurInputOnSelect
+          menuShouldScrollIntoView={menuShouldScrollIntoView}
           {...rest}
         />
       </SelectContext.Provider>
