@@ -93,4 +93,8 @@ export type TextInputPropsStrict = RequiredProps<
    * @internal
    */
   hasError: boolean;
+  /**
+   * If true, the input can clear its value
+   */
+  isClearable: boolean;
 } & TestProp;
