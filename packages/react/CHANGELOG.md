@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.4](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.5.3...@newcross-tech/ui-react@3.5.4) (2025-05-28)
+
+
+### Bug Fixes
+
+* **HFAUI-400:** make gap smaller in datepicker ([#251](https://github.com/newcross-tech/newcross-ui/issues/251)) ([e144a84](https://github.com/newcross-tech/newcross-ui/commit/e144a84718cfcaa672bbd58c158604f3a8f8af48))
+
+
+
+
+
 ## [3.5.3](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.5.2...@newcross-tech/ui-react@3.5.3) (2025-05-16)
 
 
