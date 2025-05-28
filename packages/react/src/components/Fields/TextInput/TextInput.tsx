@@ -28,6 +28,7 @@ export type TextInputProps = OptionalProps<
   | 'search'
   | 'id'
   | 'hasBorder'
+  | 'isClearable'
 >;
 
 const useNormalizeTextInputProps = (
@@ -48,6 +49,7 @@ const useNormalizeTextInputProps = (
     hasError: !!props.errorText,
     id: props.id ?? uniqueId,
     hasBorder: props.hasBorder ?? true,
+    isClearable: props.isClearable ?? true,
     onClick: (event: React.MouseEvent<HTMLInputElement>) => {
       props.onClick?.(event);
       setIsFocused(true);
@@ -93,6 +95,7 @@ export const TextInput = forwardRef(
       onBlur,
       onFocus,
       hasBorder,
+      isClearable,
       ...inputProps
     } = props;
 
@@ -201,7 +204,7 @@ export const TextInput = forwardRef(
                   />
                 </Styled.RightIconContainer>
               )}
-              {isFocused && (
+              {isFocused && isClearable && (
                 <Styled.RightIconContainer
                   {...testIds.clear}
                   justifyContent="center"

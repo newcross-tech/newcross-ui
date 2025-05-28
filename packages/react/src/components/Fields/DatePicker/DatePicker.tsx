@@ -19,6 +19,7 @@ export type DatePickerProps = OptionalProps<
   | 'yearDropdownRange'
   | 'nextMonthButtonDisabled'
   | 'prevMonthButtonDisabled'
+  | 'isClearable'
 >;
 
 const normalizeDatePickerProps = (
@@ -29,6 +30,7 @@ const normalizeDatePickerProps = (
     disabled: _props.disabled ?? false,
     dateFormat: _props.dateFormat ?? 'dd/MM/yyyy',
     required: _props.required ?? false,
+    isClearable: _props.isClearable ?? true,
     showMonthYearDropdown: _props.showMonthYearDropdown ?? false,
     monthDropdownRange: _props.monthDropdownRange ?? {
       startMonth: 0,
@@ -55,6 +57,7 @@ const DatePicker = (_props: DatePickerProps) => {
     yearDropdownRange,
     nextMonthButtonDisabled,
     prevMonthButtonDisabled,
+    isClearable,
     testID,
     ...rest
   } = normalizeDatePickerProps(_props);
@@ -62,7 +65,7 @@ const DatePicker = (_props: DatePickerProps) => {
   const baseTestId = `date-picker-${testID}`;
 
   return (
-    <Container flexDirection="column" gap="sm" fullWidth>
+    <Container flexDirection="column" gap="xs" fullWidth>
       {label && (
         <Label required={required} disabled={disabled} testID={baseTestId}>
           {label}
@@ -71,7 +74,9 @@ const DatePicker = (_props: DatePickerProps) => {
       <Styled.ReactDatePickerWrapper>
         <ReactDatePicker
           disabled={disabled}
-          customInput={<TextInput testID={baseTestId} />}
+          customInput={
+            <TextInput testID={baseTestId} isClearable={isClearable} />
+          }
           renderCustomHeader={(headerProps) => (
             <DatePickerHeader
               {...headerProps}

@@ -25,4 +25,6 @@ export type DatePickerPropsStrict = Pick<
     required: boolean;
     /** Sets disabled state of the input */
     disabled: boolean;
+    /** If true, the input can clear its value */
+    isClearable: boolean;
   };
