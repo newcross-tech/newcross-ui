@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.5](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.5.4...@newcross-tech/ui-react@3.5.5) (2025-05-29)
+
+
+### Bug Fixes
+
+* **HFAUI-0000:** button hover ([#252](https://github.com/newcross-tech/newcross-ui/issues/252)) ([4a2c313](https://github.com/newcross-tech/newcross-ui/commit/4a2c3139ef51b43282f7142e51c8fc7208ef4e42))
+
+
+
+
+
 ## [3.5.4](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.5.3...@newcross-tech/ui-react@3.5.4) (2025-05-28)
 
 
