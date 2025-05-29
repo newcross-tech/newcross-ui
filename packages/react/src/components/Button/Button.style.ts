@@ -11,20 +11,20 @@ const getBorderStyle = ({ theme, color }: Theme & { color: string }) => ({
 const getHoverStyles = ({ theme, variant }: Theme & Pick<ButtonPropsStrict, 'variant'>) => {
   return {
     primary: {
-      ':hover': {
+      '&:hover': {
         backgroundColor: theme.ElementsSurfaceActionHover,
         borderColor: theme.ElementsSurfaceActionHover,
       },
     },
     secondary: {
-      ':hover': {
+      '&:hover': {
         backgroundColor: theme.ElementsSurfaceActionHoverSecondary,
         borderColor: theme.ElementsBorderActionDefault,
         color: theme.ElementsTextActionPrimaryDark,
       },
     },
     danger: {
-      ':hover': {
+      '&:hover': {
         backgroundColor: theme.ElementsSurfaceActionDangerHover,
         borderColor: theme.ElementsSurfaceActionDangerHover,
       },
