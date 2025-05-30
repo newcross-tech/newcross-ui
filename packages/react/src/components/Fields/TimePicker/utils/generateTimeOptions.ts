@@ -1,4 +1,4 @@
-import { format, addMinutes } from 'date-fns';
+import { format, addMinutes, isSameDay, isAfter, isBefore } from 'date-fns';
 import { Options } from 'react-select';
 import { TimeOption } from '../TimePicker.types';
 
@@ -17,7 +17,6 @@ export const generateTimeOptions = ({
 }: GenerateTimeOptionsParams): Options<TimeOption> => {
   const options: TimeOption[] = [];
 
-  // Create the start date by applying the offset to the original base date.
   const startDate = addMinutes(new Date(baseDate), offset);
   const endTime = addMinutes(startDate, duration);
 
@@ -26,11 +25,12 @@ export const generateTimeOptions = ({
     const optionTime = format(current, 'HH:mm');
     let label = optionTime;
 
-    // Append day indicators if the current option's day is different from the baseDate's day.
-    if (current.getDate() > baseDate.getDate()) {
-      label += ' (Next Day)';
-    } else if (current.getDate() < baseDate.getDate()) {
-      label += ' (Previous Day)';
+    if (!isSameDay(current, baseDate)) {
+      if (isAfter(current, baseDate)) {
+        label += ' (Next Day)';
+      } else if (isBefore(current, baseDate)) {
+        label += ' (Previous Day)';
+      }
     }
     options.push({ value: current.toISOString(), label });
     current = addMinutes(current, step);

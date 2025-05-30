@@ -63,6 +63,65 @@ describe('generateTimeOptions', () => {
         { value: new Date(2021, 0, 2, 0, 15), label: '00:15' },
       ],
     ],
+    [
+      'should label next day options correctly across month boundary',
+      {
+        baseDate: new Date(2021, 0, 31, 23, 45), // Jan 31, 2021, 23:45
+        offset: 0,
+        step: 15,
+        duration: 30,
+      },
+      [
+        { value: new Date(2021, 0, 31, 23, 45), label: '23:45' },
+        { value: new Date(2021, 1, 1, 0, 0), label: '00:00 (Next Day)' },
+        { value: new Date(2021, 1, 1, 0, 15), label: '00:15 (Next Day)' },
+      ],
+    ],
+    [
+      'should label previous day options correctly across month boundary',
+      {
+        baseDate: new Date(2021, 1, 1, 0, 15), // Feb 1, 2021, 00:15
+        offset: -30, // Starts at Jan 31, 2021, 23:45
+        step: 15,
+        duration: 30,
+      },
+      [
+        { value: new Date(2021, 0, 31, 23, 45), label: '23:45 (Previous Day)' },
+        { value: new Date(2021, 1, 1, 0, 0), label: '00:00' },
+        { value: new Date(2021, 1, 1, 0, 15), label: '00:15' },
+      ],
+    ],
+    [
+      'should label next day options correctly across year boundary',
+      {
+        baseDate: new Date(2020, 11, 31, 23, 45), // Dec 31, 2020, 23:45
+        offset: 0,
+        step: 15,
+        duration: 30,
+      },
+      [
+        { value: new Date(2020, 11, 31, 23, 45), label: '23:45' },
+        { value: new Date(2021, 0, 1, 0, 0), label: '00:00 (Next Day)' },
+        { value: new Date(2021, 0, 1, 0, 15), label: '00:15 (Next Day)' },
+      ],
+    ],
+    [
+      'should label previous day options correctly across year boundary',
+      {
+        baseDate: new Date(2021, 0, 1, 0, 15), // Jan 1, 2021, 00:15
+        offset: -30, // Starts at Dec 31, 2020, 23:45
+        step: 15,
+        duration: 30,
+      },
+      [
+        {
+          value: new Date(2020, 11, 31, 23, 45),
+          label: '23:45 (Previous Day)',
+        },
+        { value: new Date(2021, 0, 1, 0, 0), label: '00:00' },
+        { value: new Date(2021, 0, 1, 0, 15), label: '00:15' },
+      ],
+    ],
   ])('%s', (_, params, expected) => {
     const options = generateTimeOptions(params);
     // Convert Date values to formatted strings for comparison.
