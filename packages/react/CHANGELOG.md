@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.6](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.5.5...@newcross-tech/ui-react@3.5.6) (2025-05-30)
+
+
+### Bug Fixes
+
+* **HFAUI-412:** timepicker edge cases ([#253](https://github.com/newcross-tech/newcross-ui/issues/253)) ([133bb87](https://github.com/newcross-tech/newcross-ui/commit/133bb87c886872b997173f9e4498d67e68564565))
+
+
+
+
+
 ## [3.5.5](https://github.com/newcross-tech/newcross-ui/compare/@newcross-tech/ui-react@3.5.4...@newcross-tech/ui-react@3.5.5) (2025-05-29)
 
 
