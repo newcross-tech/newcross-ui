@@ -2,8 +2,11 @@ import { ProgressHTMLAttributes } from 'react';
 import { TypographyProps, TypographyVariant } from '../Typography';
 import { ProgressBarProps } from './ProgressBar';
 
-export type ProgressBarVariant = 'determinate' | 'indeterminate';
+export type ProgressBarVariant = 'determinate' | 'indeterminate' | 'steps';
 
+/**
+ * Deprecated
+ */
 export type ProgressBarLabelPositions =
   | 'topCenter'
   | 'topRight'
@@ -12,20 +15,15 @@ export type ProgressBarLabelPositions =
   | 'bottomRight'
   | 'bottomLeft';
 
-export type LabelPositionProps = Required<
-  Pick<ProgressBarProps, 'labelPosition'>
->;
-
-type SameLabelProps = {
+export type WrapperProps = Pick<ProgressBarProps, 'labelPosition'> & {
   isEachLabelSamePosition: boolean;
 };
 
-export type ContainerProps = LabelPositionProps & SameLabelProps;
-
 export type ProgressValueProps = Required<
   Pick<ProgressBarProps, 'progressLabelPosition'>
-> &
-  SameLabelProps;
+> & {
+  isEachLabelSamePosition: boolean;
+};
 
 type CommonProps = {
   isIndeterminate: boolean;
@@ -38,23 +36,27 @@ export type AnimatedStyleArgs = CommonProps & {
 export type CommonTextProps = {
   applyWidthStyles: boolean;
   variant: TypographyVariant;
+  color: TypographyProps['color'];
 };
 
 export type ProgressProps = CommonProps &
-  ProgressHTMLAttributes<HTMLProgressElement>;
+  ProgressHTMLAttributes<HTMLProgressElement> & {
+    variant: ProgressBarVariant;
+    disabled: boolean;
+  };
 
 export type AllLabelProps = TypographyProps &
   Pick<ProgressBarProps, 'labelPosition'> & {
     applyWidthStyles: boolean;
   };
 
-export type ApplyCenteredStyleArgs = LabelPositionProps &
-  Required<
+export type ApplyCenteredStyleArgs = Required<
+  Pick<ProgressBarProps, 'labelPosition'> &
     Pick<ProgressBarProps, 'progressLabelPosition'> & {
       forceWidthStyles: boolean;
     }
-  >;
+>;
 
-export type DifferentLabelProps = AllLabelProps &
-  SameLabelProps &
-  LabelPositionProps;
+export type DifferentLabelProps = AllLabelProps & {
+  isEachLabelSamePosition: boolean;
+};

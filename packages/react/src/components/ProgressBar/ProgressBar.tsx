@@ -1,4 +1,3 @@
-import { animated, useSpring } from '@react-spring/web';
 import {
   defaultMaxProgress,
   defaultMinProgress,
@@ -14,9 +13,15 @@ import { applyWidthStyles, normaliseValue } from './utils';
 
 export type ProgressBarProps = {
   /**
+   * Deprecated: default position is 'topLeft'
    * Use labelPosition to position the label element.
    */
   labelPosition?: ProgressBarLabelPositions;
+  /**
+   * Deprecated: default position is 'topRight'
+   * Use progressLabelPosition to position the progress element.
+   */
+  progressLabelPosition?: ProgressBarLabelPositions;
   /**
    * Text element to describe the progress bar action.
    */
@@ -25,10 +30,6 @@ export type ProgressBarProps = {
    * The variant to use. Use indeterminate when there is no progress value.
    */
   variant?: ProgressBarVariant;
-  /**
-   * Use progressLabelPosition to position the progress element.
-   */
-  progressLabelPosition?: ProgressBarLabelPositions;
   /**
    * Hide the progress text element.
    */
@@ -45,6 +46,10 @@ export type ProgressBarProps = {
    * The value of the progress indicator for the determinate variant. Value between 0 and 100.
    */
   progress?: number;
+  /**
+   * Sets the ProgressBar to disabled.
+   */
+  disabled?: boolean;
 };
 
 const ProgressBar = ({
@@ -56,9 +61,9 @@ const ProgressBar = ({
   minProgress = defaultMinProgress,
   maxProgress = defaultMaxProgress,
   variant = 'determinate',
+  disabled = false,
 }: ProgressBarProps) => {
   const isIndeterminate = variant === 'indeterminate';
-
   const isEachLabelSamePosition = labelPosition === progressLabelPosition;
   const normalisedProgress = normaliseValue(progress, minProgress, maxProgress);
   const isDeterminateAndHasProgressLabel = !isIndeterminate && hasProgressLabel;
@@ -68,23 +73,17 @@ const ProgressBar = ({
     value: progress ? normalisedProgress : undefined,
   };
 
-  const springProps = useSpring(
-    Styled.getAnimatedStyles({
-      isIndeterminate,
-      normalisedProgress,
-    })
-  );
-
   const commonTextProps: CommonTextProps = {
     applyWidthStyles: applyWidthStyles({
       labelPosition,
       progressLabelPosition,
       forceWidthStyles: !hasProgressLabel || isIndeterminate,
     }),
-    variant: 'paragraph1',
+    variant: 'h3',
+    color: disabled ? 'disabled' : 'defaultDark',
   };
 
-  const getSamePositionContent = () => (
+  const renderSamePositionContent = () => (
     <>
       <Styled.LabelText {...commonTextProps} numberOfLines={2}>
         {label}
@@ -97,7 +96,7 @@ const ProgressBar = ({
     </>
   );
 
-  const getDifferentPositionContent = () => (
+  const renderDifferentPositionContent = () => (
     <>
       <Styled.DifferentLabel
         {...commonTextProps}
@@ -111,19 +110,39 @@ const ProgressBar = ({
         <Styled.ProgressValue
           isEachLabelSamePosition={isEachLabelSamePosition}
           progressLabelPosition={progressLabelPosition}
-          variant={'paragraph1'}
+          variant="p2"
           testID="progress-label-container"
+          color={disabled ? 'disabled' : 'defaultDark'}
         >
-          {normalisedProgress}%
+          {variant !== 'steps'
+            ? `${normalisedProgress}%`
+            : `${progress}/${maxProgress}`}
         </Styled.ProgressValue>
       )}
     </>
   );
 
+  const renderSteps = () =>
+    Array.from({ length: maxProgress }).map((_, index) => {
+      const isCompleted = index < progress;
+      return (
+        <Styled.Step
+          data-testid={`${
+            isCompleted ? 'completed' : 'uncompleted'
+          }-step-${index}`}
+          key={index}
+          isCompleted={isCompleted}
+          isLast={index === maxProgress - 1}
+          disabled={disabled}
+        />
+      );
+    });
+
   return (
-    <Styled.Container
+    <Styled.Wrapper
       labelPosition={labelPosition}
       isEachLabelSamePosition={isEachLabelSamePosition}
+      data-testid={`${disabled ? 'disabled-' : ''}progress-bar`}
     >
       <Styled.HeaderContent
         data-testid={`${
@@ -132,20 +151,33 @@ const ProgressBar = ({
         labelPosition={labelPosition}
       >
         {isEachLabelSamePosition
-          ? getSamePositionContent()
-          : getDifferentPositionContent()}
+          ? renderSamePositionContent()
+          : renderDifferentPositionContent()}
       </Styled.HeaderContent>
       <Styled.Meter
         isIndeterminate={isIndeterminate}
-        data-testid={isIndeterminate ? 'indeterminate' : 'determinate'}
+        testID={isIndeterminate ? 'indeterminate' : 'determinate'}
         role="progressbar"
         aria-describedby="loading-zone"
         aria-label={label || `${variant}-progressbar`}
+        variant={variant}
+        disabled={disabled}
+        mt="sm"
+        gap={variant === 'steps' ? 'xs' : undefined}
         {...progressProps}
       >
-        <animated.span style={springProps} />
+        {variant !== 'steps' ? (
+          <Styled.Progress
+            isIndeterminate={isIndeterminate}
+            normalisedProgress={normalisedProgress}
+            variant={variant}
+            disabled={disabled}
+          />
+        ) : (
+          renderSteps()
+        )}
       </Styled.Meter>
-    </Styled.Container>
+    </Styled.Wrapper>
   );
 };
 

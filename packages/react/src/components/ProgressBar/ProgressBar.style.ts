@@ -1,19 +1,19 @@
-import { config } from '@react-spring/web';
+import { animated, config } from '@react-spring/web';
 import styled, { css, FlattenSimpleInterpolation, keyframes } from 'styled-components';
 import { ThemeDesignTokens } from '../../theme/ThemeProvider';
-import { ExtendedTheme, Theme } from '../../types';
+import { ExtendedTheme } from '../../types';
 import Typography from '../Typography';
 import { bottomLabelPositions, defaultAnimationSpeed } from './ProgressBar.constants';
 import {
   AllLabelProps,
   AnimatedStyleArgs,
-  ContainerProps,
+  WrapperProps,
   DifferentLabelProps,
-  LabelPositionProps,
   ProgressBarLabelPositions,
   ProgressProps,
   ProgressValueProps,
 } from './ProgressBar.types';
+import Container from '../Container';
 
 export const getAnimatedStyles = ({ isIndeterminate, normalisedProgress }: AnimatedStyleArgs) => ({
   width: !isIndeterminate ? `${normalisedProgress}%` : '100%',
@@ -47,32 +47,32 @@ export const getLabelPositionValues = (
   isEachLabelSamePosition: boolean
 ): Record<ProgressBarLabelPositions, FlattenSimpleInterpolation> => ({
   topCenter: css`
-    bottom: ${isEachLabelSamePosition ? theme.SpacingBase24 : theme.SpacingBase0};
+    bottom: ${isEachLabelSamePosition ? theme.BaselineSpacesSpace24 : theme.BaselineSpacesSpace0};
   `,
   topLeft: css`
-    left: ${theme.SpacingBase0};
-    bottom: ${isEachLabelSamePosition ? theme.SpacingBase24 : theme.SpacingBase0};
+    left: ${theme.BaselineSpacesSpace0};
+    bottom: ${isEachLabelSamePosition ? theme.BaselineSpacesSpace24 : theme.BaselineSpacesSpace0};
   `,
   topRight: css`
-    right: ${theme.SpacingBase0};
-    bottom: ${isEachLabelSamePosition ? theme.SpacingBase24 : theme.SpacingBase0};
+    right: ${theme.BaselineSpacesSpace0};
+    bottom: ${isEachLabelSamePosition ? theme.BaselineSpacesSpace24 : theme.BaselineSpacesSpace0};
   `,
   bottomCenter: css`
-    top: ${theme.SpacingBase24};
+    top: ${theme.BaselineSpacesSpace24};
   `,
   bottomLeft: css`
-    left: ${theme.SpacingBase0};
-    top: ${theme.SpacingBase24};
+    left: ${theme.BaselineSpacesSpace0};
+    top: ${theme.BaselineSpacesSpace24};
   `,
   bottomRight: css`
-    right: ${theme.SpacingBase0};
-    top: ${theme.SpacingBase24};
+    right: ${theme.BaselineSpacesSpace0};
+    top: ${theme.BaselineSpacesSpace24};
   `,
 });
 
-export const Container = styled.label`
+export const Wrapper = styled.label`
   position: relative;
-  ${({ labelPosition, isEachLabelSamePosition }: ExtendedTheme<ContainerProps>) => css`
+  ${({ labelPosition = 'topLeft', isEachLabelSamePosition }: ExtendedTheme<WrapperProps>) => css`
     ${isEachLabelSamePosition &&
     isBottomPosition(labelPosition) &&
     css`
@@ -86,20 +86,14 @@ const isBottomPosition = (labelPosition: ProgressBarLabelPositions) => bottomLab
 
 export const HeaderContent = styled.div`
   position: relative;
-  ${({ labelPosition }: ExtendedTheme<LabelPositionProps>) => css`
+  ${({ labelPosition }: ExtendedTheme<{ labelPosition: ProgressBarLabelPositions }>) => css`
     justify-content: center;
     ${getCoreFlexStyles()}
     ${getAlignItemsContainerStyles()[labelPosition as ProgressBarLabelPositions]};
   `};
 `;
 
-const CoreText = styled(Typography)`
-  ${({ theme }: Theme) => css`
-    color: ${theme.RadioColor};
-  `};
-`;
-
-export const LabelText = styled(CoreText)<ExtendedTheme<AllLabelProps>>`
+export const LabelText = styled(Typography)<ExtendedTheme<AllLabelProps>>`
   ${({ applyWidthStyles }: ExtendedTheme<AllLabelProps>) => css`
     max-width: ${applyWidthStyles ? '80%' : '40%'};
   `};
@@ -117,7 +111,7 @@ export const DifferentLabel = styled(LabelText)<ExtendedTheme<DifferentLabelProp
   `}
 `;
 
-export const ProgressValue = styled(CoreText)`
+export const ProgressValue = styled(Typography)`
   ${({ theme, isEachLabelSamePosition, progressLabelPosition }: ExtendedTheme<ProgressValueProps>) => css`
     position: absolute;
     ${getCoreFlexStyles()};
@@ -140,38 +134,89 @@ const progressLoading = keyframes`
  }
 `;
 
-const getTrackColorValue = (theme: ThemeDesignTokens) => theme.ProgressBarFillBackgroundColor;
+const getTrackColorValue = (theme: ThemeDesignTokens, disabled: boolean) =>
+  disabled ? theme.ElementsSurfaceDisabledHighlight : theme.ElementsSurfaceActionDefault;
 
-const getIndeterminateStyles = (theme: ThemeDesignTokens) => css`
+const getIndeterminateStyles = (theme: ThemeDesignTokens, disabled: boolean) => css`
   background: linear-gradient(
     to right,
-    ${theme.ProgressBarTrackBackgroundColor} 45%,
-    ${getTrackColorValue(theme)} 0%,
-    ${getTrackColorValue(theme)} 55%,
-    ${theme.ProgressBarTrackBackgroundColor} 0%
+    ${theme.ElementsSurfaceDefault} 45%,
+    ${getTrackColorValue(theme, disabled)} 0%,
+    ${getTrackColorValue(theme, disabled)} 55%,
+    ${theme.ElementsSurfaceDefault} 0%
   );
   animation: ${progressLoading} ${defaultAnimationSpeed}s infinite ease-in;
 `;
 
-export const Meter = styled.div`
-  ${({ theme, isIndeterminate }: ExtendedTheme<ProgressProps>) => css`
-    height: ${theme.ProgressBarFillHeight};
-    background-color: ${theme.ProgressBarTrackBackgroundColor};
-    border-radius: ${theme.ProgressBarTrackBorderRadius};
-    margin-top: ${theme.ProgressBarTrackMarginTop};
-    margin-bottom: ${theme.ProgressBarTrackMarginBottom};
+const getMeterBackground = (theme: ThemeDesignTokens, variant: string, disabled: boolean): string => {
+  if (disabled && variant === 'steps') {
+    return theme.ElementsSurfaceDefault;
+  }
+  if (!disabled && variant === 'steps') {
+    return 'transparent';
+  }
+  if (disabled && variant !== 'steps') {
+    return theme.ElementsSurfaceDisabled;
+  }
+  return theme.ElementsSurfaceDefault;
+};
 
-    > span {
-      display: block;
-      height: 100%;
-      border-radius: ${theme.ProgressBarTrackBorderRadius};
-      background-color: ${theme.ProgressBarFillBackgroundColor};
-      overflow: hidden;
+export const Meter = styled(Container)`
+  ${({ theme, variant = 'determinate', disabled }: ExtendedTheme<ProgressProps>) => css`
+    height: ${theme.BaselineSpacesSpace8};
+    background-color: ${getMeterBackground(theme, variant, disabled)};
+    border-radius: ${theme.BorderBaseRadiusLg};
+  `};
+`;
 
-      ${isIndeterminate &&
-      css`
-        ${getIndeterminateStyles(theme)}
-      `};
+export const Progress = styled(animated.span)<ProgressProps & AnimatedStyleArgs>`
+  ${({ theme, isIndeterminate, normalisedProgress, disabled }) => css`
+    ${getAnimatedStyles({
+      isIndeterminate,
+      normalisedProgress,
+    })}
+    display: block;
+    height: 100%;
+    border-radius: ${theme.BorderBaseRadiusLg};
+    background-color: ${disabled ? theme.ElementsSurfaceDisabledHighlight : theme.ElementsSurfaceActionDefault};
+    overflow: hidden;
+
+    ${isIndeterminate &&
+    css`
+      ${getIndeterminateStyles(theme, disabled)};
+    `}
+  `}
+`;
+
+const getStepBackground = (theme: ThemeDesignTokens, isCompleted: boolean, disabled: boolean): string => {
+  if (isCompleted && disabled) {
+    return theme.ElementsSurfaceDisabledHighlight;
+  }
+  if (isCompleted && !disabled) {
+    return theme.ElementsSurfaceActionDefault;
+  }
+  if (!isCompleted && disabled) {
+    return theme.ElementsSurfaceDisabled;
+  }
+  return theme.ElementsSurfaceDefault;
+};
+
+export const Step = styled.div`
+  ${({
+    theme,
+    isCompleted,
+    disabled,
+  }: ExtendedTheme<{ isCompleted: boolean; isLast: boolean; disabled: boolean }>) => css`
+    flex-grow: 1;
+    background-color: ${getStepBackground(theme, isCompleted, disabled)};
+    &:first-child {
+      border-top-left-radius: ${theme.BorderBaseRadiusLg};
+      border-bottom-left-radius: ${theme.BorderBaseRadiusLg};
+    }
+
+    &:last-child {
+      border-top-right-radius: ${theme.BorderBaseRadiusLg};
+      border-bottom-right-radius: ${theme.BorderBaseRadiusLg};
     }
   `};
 `;
